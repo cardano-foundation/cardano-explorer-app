@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "lib": ["dom", "es2018", "esnext.asynciterable"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "sourceMap": true,
+    "strict": true,
+    "jsx": "preserve",
+    "module": "esnext",
+    "target": "esnext",
+    "strictPropertyInitialization": false
+  },
+  "include": ["source/**/*.*", "generated/**/*.*"],
+  "exclude": ["node_modules/**/*.*"]
+}

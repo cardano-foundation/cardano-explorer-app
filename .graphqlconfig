@@ -1,0 +1,11 @@
+{
+  "name": "Cardano Explorer GraphQL Schema",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "dev": {
+        "url": "http://127.0.0.1:3000/"
+      }
+    }
+  }
+}
