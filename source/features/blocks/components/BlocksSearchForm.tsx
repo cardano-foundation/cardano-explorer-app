@@ -2,15 +2,17 @@ import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
 import { Input } from 'react-polymorph/lib/components/Input';
+import { Block } from '../../../../generated/typings/graphql-schema';
 
-import { useBlocks } from '../hooks';
-import styles from './BlocksSearch.scss';
+import styles from './BlocksSearchForm.scss';
 
-const BlocksSearch = () => {
-  const { actions, api, store } = useBlocks();
+interface IProps {
+  triggerBlockSearch: (id: string) => void;
+  searchResult: Pick<Block, 'id'> | null;
+}
+
+const BlocksSearchForm = (props: IProps) => {
   const [blockIdValue, setBlockIdValue] = useState('');
-  const triggerBlockSearch = () =>
-    actions.searchBlockById.trigger({ id: blockIdValue });
   return (
     <div className={styles.root}>
       <h1>Block Search</h1>
@@ -20,20 +22,20 @@ const BlocksSearch = () => {
         onChange={v => setBlockIdValue(v)}
         onKeyPress={e => {
           if (e.key === 'Enter') {
-            triggerBlockSearch();
+            props.triggerBlockSearch(blockIdValue);
           }
         }}
       />
       <Button
         className={styles.searchButton}
         label="search"
-        onClick={triggerBlockSearch}
+        onClick={() => props.triggerBlockSearch(blockIdValue)}
       />
 
       <h2>Result</h2>
-      {JSON.stringify(store.searchedBlock)}
+      {JSON.stringify(props.searchResult)}
     </div>
   );
 };
 
-export default observer(BlocksSearch);
+export default observer(BlocksSearchForm);

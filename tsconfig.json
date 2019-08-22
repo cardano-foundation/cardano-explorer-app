@@ -1,19 +1,22 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "noImplicitAny": true,
+    "allowJs": false,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "jsx": "preserve",
     "lib": ["dom", "es2018", "esnext.asynciterable"],
+    "module": "esnext",
     "moduleResolution": "node",
-    "noEmit": true,
+    "noEmit": false,
+    "noImplicitAny": true,
+    "rootDirs": ["source", "generated", "stories"],
     "sourceMap": true,
     "strict": true,
-    "jsx": "preserve",
-    "module": "esnext",
-    "target": "esnext",
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "target": "esnext"
   },
-  "include": ["source/**/*.*", "generated/**/*.*"],
-  "exclude": ["node_modules/**/*.*"]
+  "include": ["source/**/*", "generated/**/*", "stories/**/*"],
+  "exclude": ["node_modules", "build"]
 }
