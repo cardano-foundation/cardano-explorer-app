@@ -23,3 +23,9 @@ You should now see the …
 
 - Frontend at http://localhost:4000
 - GraphQL playground at http://localhost:3000/
+
+## Storybook
+
+All visual components should be developed in Storybook first.
+
+Run `yarn storybook`
