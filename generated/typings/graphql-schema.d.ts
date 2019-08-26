@@ -6,132 +6,105 @@ export type Scalars = {
   Boolean: boolean,
   Int: number,
   Float: number,
-  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
+  /** The `BigInt` scalar type represents non-fractional signed whole numeric values.
+   * BigInt can represent values between -(2^53) + 1 and 2^53 - 1. 
+ */
+  BigInt: any,
+  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+   * `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+   * 8601 standard for representation of dates and times using the Gregorian calendar.
+ */
   DateTime: any,
   /** The `Upload` scalar type represents a file upload. */
   Upload: any,
 };
 
+
+
 export type Block = {
   __typename?: 'Block',
-  hash: Scalars['String'],
   id: Scalars['ID'],
-  merkleRootHash: Scalars['String'],
+  merkelRootHash?: Maybe<Scalars['String']>,
   number: Scalars['Int'],
-  previousBlock?: Maybe<Block>,
+  previousBlockNo?: Maybe<Scalars['Int']>,
+  /** previousBlock: Block */
   size: Scalars['Float'],
-  slot: Slot,
+  slotNo?: Maybe<Scalars['Int']>,
   transactions: Array<Maybe<Transaction>>,
 };
 
+
+export type BlockTransactionsArgs = {
+  limit?: Maybe<Scalars['Int']>
+};
+
 export type BlockFilter = {
-  afterHeight?: Maybe<Scalars['Int']>,
-  beforeHeight?: Maybe<Scalars['Int']>,
-  epoch?: Maybe<Scalars['Int']>,
-  slot?: Maybe<Scalars['Int']>,
+  ids?: Maybe<Array<Maybe<Scalars['ID']>>>,
+  numbers?: Maybe<Array<Maybe<Scalars['Int']>>>,
 };
 
 export enum CacheControlScope {
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
+  Public = 'PUBLIC',
+  Private = 'PRIVATE'
 }
 
-
-export type Epoch = {
-  __typename?: 'Epoch',
-  blocks: Array<Maybe<Block>>,
-  number: Scalars['Int'],
-  slots: Array<Slot>,
-  transactions?: Maybe<Array<Maybe<Transaction>>>,
-};
 
 export type Ledger = {
   __typename?: 'Ledger',
   blockHeight: Scalars['Int'],
 };
 
-export type Mempool = {
-  __typename?: 'Mempool',
-  transaction: Transaction,
-  transactionCount: Scalars['Int'],
-  transactions: Array<Maybe<Transaction>>,
-};
-
-
-export type MempoolTransactionArgs = {
-  id: Scalars['ID']
-};
-
-
-export type MempoolTransactionsArgs = {
-  id: Scalars['ID']
-};
-
 export type Query = {
   __typename?: 'Query',
-  blocks: Array<Block>,
-  epochs: Array<Epoch>,
+  blocks: Array<Maybe<Block>>,
   transactions: Array<Maybe<Transaction>>,
+  ledger?: Maybe<Ledger>,
 };
 
 
 export type QueryBlocksArgs = {
-  filter?: Maybe<BlockFilter>,
-  ids?: Maybe<Array<Scalars['String']>>
-};
-
-
-export type QueryEpochsArgs = {
-  numbers?: Maybe<Array<Scalars['Int']>>
+  filter: BlockFilter,
+  first?: Maybe<Scalars['Int']>
 };
 
 
 export type QueryTransactionsArgs = {
-  filter?: Maybe<TransactionFilter>,
-  hashes?: Maybe<Array<Scalars['String']>>
-};
-
-export type Slot = {
-  __typename?: 'Slot',
-  block?: Maybe<Block>,
-  epoch: Epoch,
+  filter: TransactionFilter,
+  first?: Maybe<Scalars['Int']>
 };
 
 export type Transaction = {
   __typename?: 'Transaction',
-  fee: Scalars['Float'],
-  hash: Scalars['String'],
-  id: Scalars['ID'],
-  inputs: Array<TransactionInput>,
+  blockNo?: Maybe<Scalars['Int']>,
+  fee: Scalars['Int'],
+  id: Scalars['String'],
+  inputs: Array<Maybe<TransactionInput>>,
   outputs: Array<TransactionOutput>,
 };
 
 export type TransactionFilter = {
-  epoch?: Maybe<Scalars['Int']>,
-  hashes?: Maybe<Array<Maybe<Scalars['String']>>>,
-  inBlockId?: Maybe<Scalars['ID']>,
-  inBlockNo?: Maybe<Scalars['Int']>,
-  includedAfter?: Maybe<Scalars['DateTime']>,
-  includedBefore?: Maybe<Scalars['DateTime']>,
-  slot?: Maybe<Scalars['Int']>,
+  ids?: Maybe<Array<Maybe<Scalars['ID']>>>,
 };
 
 export type TransactionInput = {
   __typename?: 'TransactionInput',
-  address: Scalars['String'],
   sourceTxId: Scalars['String'],
-  sourceTxOutputIndex: Scalars['Int'],
+  sourceTxIndex: Scalars['Int'],
+  address: Scalars['String'],
+  value: Scalars['BigInt'],
 };
 
 export type TransactionOutput = {
   __typename?: 'TransactionOutput',
+  txId: Scalars['String'],
+  index: Scalars['Int'],
+  value: Scalars['BigInt'],
   address: Scalars['String'],
-  value: Scalars['Int'],
 };
 
 export type GetBlocksQueryVariables = {
-  ids?: Maybe<Array<Scalars['String']>>
+  filter: BlockFilter
 };
 
 
-export type GetBlocksQuery = ({ __typename?: 'Query' } & { blocks: Array<({ __typename?: 'Block' } & Pick<Block, 'id'> & { transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'hash'>)>> })> });
+export type GetBlocksQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'> & { transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> })>> });
