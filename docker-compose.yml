@@ -1,9 +1,10 @@
 version: '3.7'
 services:
   api:
-    image: rhyslbw/cardano-graphql:0.1.0
+    image: rhyslbw/cardano-graphql:0.2.0
     restart: always
     environment:
+      - POSTGRES_HOST=postgres
       - API_PORT=3000
     ports:
       - ${API_PORT:-3000}:3000
