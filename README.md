@@ -1,7 +1,7 @@
 Cardano Explorer App
 ====================
 
-Frontend web app for the Cardano Explorer. This project depends on the [Cardano GraphQL API Service](https://github.com/input-output-hk/cardano-graphql), as defined in the [docker stack](docker-compose.yml).
+Frontend web app for the Cardano Explorer. This project depends on the [Cardano GraphQL API Service](https://github.com/input-output-hk/cardano-graphql), as defined in the [docker stack](docker-compose.yml). The schema typings are generated from the running API service, and should be regenerated when changing the version.
 
 ## Development
 1. `docker-compose up`
