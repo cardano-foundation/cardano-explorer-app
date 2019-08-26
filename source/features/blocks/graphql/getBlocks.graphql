@@ -1,8 +1,8 @@
-query getBlocks($ids: [String!]) {
-  blocks(ids: $ids) {
+query getBlocks($filter: BlockFilter!]) {
+  blocks(filter: $filter) {
     id
     transactions {
-      hash
+      id
     }
   }
 }
