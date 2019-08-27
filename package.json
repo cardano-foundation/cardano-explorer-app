@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "dev": "ENV_PATH=./.env.local next dev source -p 4000",
-    "build": "next build source",
+    "build": "ENV_PATH=./.env.prod next build source",
     "test": "cucumber-js --require-module ts-node/register --require 'features/steps/**/*.ts' -f node_modules/cucumber-pretty --format-options '{\"snippetInterface\": \"async-await\"}'",
     "test:watch": "nodemon --watch source --watch features -e js,ts,feature --exec yarn test --tags @watch",
     "generate:graphql-typings": "graphql-codegen",
@@ -108,6 +108,6 @@
     "webpack": "4.27.1"
   },
   "engines": {
-    "node": "10.16.x"
+    "node": "10.x.x"
   }
 }
