@@ -1,13 +1,13 @@
 version: '3.7'
 services:
   api:
-    image: rhyslbw/cardano-graphql:0.2.0
+    image: samjeston/cardano-graphql-dev:develop
     restart: always
     environment:
       - POSTGRES_HOST=postgres
       - API_PORT=3000
     ports:
-      - ${API_PORT:-3000}:3000
+      - 3000:3000
   postgres:
-    image: rhyslbw/api-postgres-3-epochs:0.1.0
+    image: samjeston/cardano-graphql-pgseed:develop
     restart: always
