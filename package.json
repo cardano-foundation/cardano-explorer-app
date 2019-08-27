@@ -108,6 +108,6 @@
     "webpack": "4.27.1"
   },
   "engines": {
-    "node": "10.16.x"
+    "node": "10.x.x"
   }
 }

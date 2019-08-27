@@ -5,7 +5,6 @@ pipeline {
   stages {
     stage('Install') {
       steps {
-        sh 'test yarn && echo "Yarn already installed" || npm i -g yarn'
         sh 'yarn i'
       }
     }
