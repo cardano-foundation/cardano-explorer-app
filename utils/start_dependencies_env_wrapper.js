@@ -18,7 +18,7 @@ const proc = spawn('sh', ['utils/start_dependencies.sh'], {
 
 proc.stdout.on('data', (data) => {
   console.log(data.toString())
-});
+})
 
 proc.stderr.on('data', (data) => {
   console.error(data.toString());
