@@ -1,0 +1,18 @@
+.root {
+  height: 415px;
+  width: 100%;
+
+  .imageContainer {
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
+
+  .titleContainer {
+    bottom: 128px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+  }
+}
