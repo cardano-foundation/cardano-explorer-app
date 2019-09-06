@@ -31,7 +31,7 @@ export class BlocksStore extends Store {
 
   private searchBlockById = ({ id }: { id: string }) => {
     this.blocksApi.getBlocksByIdsQuery.execute({
-      filter: { ids: [id] },
+      where: { id: { _in: [id] } },
     });
   };
 }
