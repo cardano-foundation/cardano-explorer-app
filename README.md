@@ -11,7 +11,9 @@ Frontend web app for the Cardano Explorer. This project depends on the [Cardano 
 ### Stop
 `yarn stop-dependencies`
 
-By default the app will be at http://localhost:4000, and an instance of the GraphQL Playground at http://localhost:3000/.
+By default the app will be at http://localhost:4000, and an instance of the GraphQL Playground at http://localhost:3100/.
+
+The GraphQL API port can be customized with the GRAPHQL_PORT variable in .env.local. This value is respected by `yarn start-dependencies`.
 
 `yarn start-dependencies` will pull the most recent development containers for cardano-graphql and the seed database. It will also regenerate the typings from any schema changes, which may lead to a git diff. This is to be expected and should be committed. 
 

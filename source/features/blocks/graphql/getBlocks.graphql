@@ -1,5 +1,15 @@
-query getBlocks($filter: BlockFilter!) {
-  blocks(filter: $filter) {
+query getBlocks(
+  $limit: Int,
+  $order_by: [blocks_order_by!],
+  $offset: Int,
+  $where: blocks_filter
+) {
+  blocks(
+    limit: $limit,
+    order_by: $order_by,
+    offset: $offset,
+    where: $where
+  ) {
     id
     transactions {
       id
