@@ -8,7 +8,7 @@ if (environment.DEBUG) {
 }
 
 // Render empty on server
-let IndexPage = () => <NoSSR />;
+let ErrorPage = () => <NoSSR />;
 
 if (environment.IS_CLIENT) {
   // tslint:disable-next-line:no-var-requires
@@ -32,17 +32,18 @@ if (environment.IS_CLIENT) {
   const FooterContainer = require('../features/shared/footer/containers/FooterContainer')
     .default;
 
-  IndexPage = () => (
+  ErrorPage = () => (
     <NoSSR>
       <Layout>
         <HeaderContainer />
         <SearchContainer />
         <EpochContainer />
         <EpochsContainer />
+        <BlocksContainer />
         <FooterContainer />
       </Layout>
     </NoSSR>
   );
 }
 
-export default IndexPage;
+export default ErrorPage;

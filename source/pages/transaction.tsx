@@ -39,6 +39,7 @@ if (environment.IS_CLIENT) {
         <SearchContainer />
         <EpochContainer />
         <EpochsContainer />
+        <BlocksContainer />
         <FooterContainer />
       </Layout>
     </NoSSR>
