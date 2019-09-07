@@ -1,7 +1,4 @@
 import { observer } from 'mobx-react-lite';
-import { useState } from 'react';
-import { Button } from 'react-polymorph/lib/components/Button';
-import { Input } from 'react-polymorph/lib/components/Input';
 import { Block } from '../../../../../../generated/typings/graphql-schema';
 
 import styles from './index.scss';
@@ -12,29 +9,53 @@ interface IProps {
 }
 
 const Footer = (props: IProps) => {
-  const [blockIdValue, setBlockIdValue] = useState('');
   return (
-    <div className={styles.root}>
-      <h1>Block Search</h1>
-      <Input
-        placeholder="Enter block id …"
-        value={blockIdValue}
-        onChange={v => setBlockIdValue(v)}
-        onKeyPress={e => {
-          if (e.key === 'Enter') {
-            props.triggerBlockSearch(blockIdValue);
-          }
-        }}
-      />
-      <Button
-        className={styles.searchButton}
-        label="search"
-        onClick={() => props.triggerBlockSearch(blockIdValue)}
-      />
-
-      <h2>Result</h2>
-      {JSON.stringify(props.searchResult)}
-    </div>
+    <footer className={styles.footerContainer}>
+      <div className={styles.footerTopContainer}>
+        <p className={styles.copyright}></p>
+        <div className={styles.logos}>
+          <img className={styles.iohkLogo} />
+          <p className={styles.iohkText}></p>
+          <img className={styles.twitterLogo} />
+          <img className={styles.facebookLogo} />
+          <img className={styles.youtubeLogo} />
+          <img className={styles.newsletterLogo} />
+        </div>
+      </div>
+      <div className={styles.footerMiddleContainer}>
+        <hr className={styles.footerSeparator} />
+      </div>
+      <div className={styles.footerBottomContainer}>
+        <div className={styles.cardanoTextContainer}>
+          <h5 className={styles.cardanoTextTitle}></h5>
+          <p className={styles.cardanoText}></p>
+        </div>
+        <div className={styles.aboutCardanoMenuContainer}>
+          <h5 className={styles.aboutCardanoTitle}></h5>
+          <ul className={styles.aboutCardanoMenu}>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+        <div className={styles.joinTheCommunityMenuContainer}>
+          <h5 className={styles.joinTheCommunityTitle}></h5>
+          <ul className={styles.joinTheCommunityMenu}>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
   );
 };
 

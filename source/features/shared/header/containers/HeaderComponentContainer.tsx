@@ -5,7 +5,7 @@ import { useBlocks } from '../hooks';
 
 export const HeaderComponentContainerRaw = () => {
   const { actions, store } = useBlocks();
-  return <Header title={''} backgroundImageUrl={''} />;
+  return <Header title={'Header'} backgroundImageUrl={''} />;
 };
 
 export const HeaderComponentContainer = observer(HeaderComponentContainerRaw);

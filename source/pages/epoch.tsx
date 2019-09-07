@@ -36,10 +36,6 @@ if (environment.IS_CLIENT) {
     <NoSSR>
       <Layout>
         <HeaderContainer />
-        <SearchContainer />
-        <EpochContainer />
-        <EpochsContainer />
-        <BlocksContainer />
         <FooterContainer />
       </Layout>
     </NoSSR>
