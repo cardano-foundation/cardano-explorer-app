@@ -13,5 +13,17 @@
       opacity: 0.3;
       text-transform: uppercase;
     }
+
+    .logos {
+      display: flex;
+    }
+  }
+
+  .footerMiddleContainer {
+    .footerSeparator {
+      background-color: #ffffff;
+      margin: 9px 0;
+      opacity: 0.1;
+    }
   }
 }
