@@ -1,7 +1,17 @@
-.root {
-  padding: 20px;
-}
+.footerContainer {
+  .footerTopContainer {
+    display: flex;
 
-.searchButton {
-  margin-top: 1em;
+    .copyright {
+      color: #ffffff;
+      font-family: 'Proxima Nova', sans-serif;
+      font-stretch: normal;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 1.5;
+      letter-spacing: 1.2px;
+      opacity: 0.3;
+      text-transform: uppercase;
+    }
+  }
 }

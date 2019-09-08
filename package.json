@@ -52,6 +52,8 @@
     "mobx-localstorage": "2.0.0-alpha.1",
     "mobx-react-lite": "1.4.1",
     "next": "9.0.4",
+    "next-fonts": "^0.18.0",
+    "next-images": "^1.1.2",
     "react": "16.8.6",
     "react-apollo-hooks": "0.4.5",
     "react-dom": "16.8.6",
@@ -83,6 +85,7 @@
     "@zeit/next-bundle-analyzer": "0.1.2",
     "@zeit/next-css": "1.0.1",
     "@zeit/next-sass": "1.0.1",
+    "autoprefixer": "^9.6.1",
     "babel-loader": "8.0.6",
     "babel-plugin-inline-react-svg": "1.0.1",
     "babel-plugin-lodash": "3.3.4",
@@ -111,5 +114,10 @@
   },
   "engines": {
     "node": "10.x.x"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 4 versions",
+    "not ie <= 9"
+  ]
 }

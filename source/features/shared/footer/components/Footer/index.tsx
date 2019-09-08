@@ -4,15 +4,15 @@ import { Block } from '../../../../../../generated/typings/graphql-schema';
 import styles from './index.scss';
 
 interface IProps {
-  triggerBlockSearch: (id: string) => void;
-  searchResult: Pick<Block, 'id'> | null;
+  footerPropFirst: string;
+  footerPropSecond: string;
 }
 
 const Footer = (props: IProps) => {
   return (
     <footer className={styles.footerContainer}>
       <div className={styles.footerTopContainer}>
-        <p className={styles.copyright}></p>
+        <p className={styles.copyright}>Cardano {new Date().getFullYear()}</p>
         <div className={styles.logos}>
           <img className={styles.iohkLogo} />
           <p className={styles.iohkText}></p>

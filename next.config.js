@@ -2,6 +2,8 @@ const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 const withSass = require('@zeit/next-sass');
+const withFonts = require('next-fonts');
+const withImages = require('next-images');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
@@ -44,6 +46,18 @@ module.exports = withPlugins(
             reportFilename: '../bundles/client.html',
           },
         },
+      },
+    ],
+    [
+      withFonts,
+      {
+        enableSvg: true,
+      },
+    ],
+    [
+      withImages,
+      {
+        inlineImageLimit: 16384,
       },
     ],
   ],

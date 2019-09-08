@@ -1,14 +1,8 @@
-import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import SearchForm from '../source/features/shared/search/components/SearchForm';
+import Footer from '../source/features/shared/footer/components/Footer';
 import { ThemeDecorator } from './support/ThemeDecorator';
 
-storiesOf('Blocks', module)
+storiesOf('Footer', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Blocks Search', () => (
-    <SearchForm
-      searchResult={null}
-      triggerBlockSearch={action('triggerBlockSearch')}
-    />
-  ));
+  .add('Footer', () => <Footer footerPropFirst={''} footerPropSecond={''} />);
