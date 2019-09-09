@@ -1,10 +1,15 @@
 .footerContainer {
+  padding-bottom: 78px;
+
   .footerTopContainer {
+    align-items: center;
     display: flex;
+    justify-content: space-between;
 
     .copyright {
       color: #ffffff;
       font-family: 'Proxima Nova', sans-serif;
+      font-size: 12px;
       font-stretch: normal;
       font-style: normal;
       font-weight: normal;
@@ -15,15 +20,145 @@
     }
 
     .logos {
+      align-items: center;
       display: flex;
+      justify-content: space-evenly;
+
+      .iohkLogo {
+        height: 22px;
+        width: 29px;
+      }
+
+      .iohkText {
+        color: #ffffff;
+        font-family: 'Proxima Nova', sans-serif;
+        font-size: 10px;
+        font-stretch: normal;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1.6;
+        letter-spacing: 1px;
+        opacity: 0.3;
+        padding-left: 10px;
+        text-transform: uppercase;
+      }
+
+      .socialIcons {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        .twitterIcon,
+        .facebookIcon,
+        .youtubeIcon,
+        .newsletterIcon {
+          height: 12px;
+          margin-left: 10px;
+          object-fit: contain;
+          width: 14px;
+        }
+      }
     }
   }
 
   .footerMiddleContainer {
     .footerSeparator {
       background-color: #ffffff;
+      height: 2px;
       margin: 9px 0;
       opacity: 0.1;
+    }
+  }
+
+  .footerBottomContainer {
+    display: flex;
+
+    .cardanoTextContainer {
+      max-width: 75%;
+
+      .cardanoTextTitle {
+        color: rgba(255, 255, 255, 0.3);
+        font-family: 'Proxima Nova', sans-serif;
+        font-size: 10px;
+        font-stretch: normal;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 1.6;
+        letter-spacing: 0.2px;
+
+        span {
+          color: rgba(31, 193, 195, 0.3);
+          font-family: 'Proxima Nova Semibold', sans-serif;
+          font-weight: 600;
+        }
+      }
+
+      .cardanoText {
+        color: rgba(255, 255, 255, 0.3);
+        font-family: 'Proxima Nova', sans-serif;
+        font-size: 10px;
+        font-stretch: normal;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 1.6;
+        letter-spacing: 0.2px;
+
+        span {
+          font-style: italic;
+        }
+
+        p {
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+
+    .aboutCardanoMenuContainer,
+    .joinTheCommunityMenuContainer {
+      max-width: 17.5%;
+      padding-left: 40px;
+
+      .aboutCardanoTitle,
+      .joinTheCommunityTitle {
+        color: #ffffff;
+        font-family: 'Proxima Nova Semibold', sans-serif;
+        font-size: 10px;
+        font-stretch: normal;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.8;
+        letter-spacing: 0.5px;
+        opacity: 0.3;
+      }
+
+      .aboutCardanoMenu,
+      .joinTheCommunityMenu {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+
+        li {
+          a {
+            color: #ffffff;
+            font-family: 'Proxima Nova', sans-serif;
+            font-size: 10px;
+            font-stretch: normal;
+            font-style: normal;
+            font-weight: 300;
+            opacity: 0.3;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+
+            &.emailLink {
+              color: rgba(31, 193, 195, 0.3);
+              font-weight: 600;
+              opacity: 1;
+            }
+          }
+        }
+      }
     }
   }
 }

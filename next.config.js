@@ -13,7 +13,7 @@ const ENV_PATH = process.env.ENV_PATH;
 if (!ENV_PATH)
   throw new Error('ENV_PATH must be provided to build the project.');
 
-require('dotenv').config({ path: path.join(__dirname, ENV_PATH) });
+require('dotenv').config({path: path.join(__dirname, ENV_PATH)});
 
 module.exports = withPlugins(
   [
@@ -87,6 +87,11 @@ module.exports = withPlugins(
             loader: 'graphql-tag/loader',
           },
         ],
+      });
+
+      config.module.rules.push({
+        test: /\.svg$/,
+        loader: 'svg-inline-loader?classPrefix'
       });
       return config;
     },

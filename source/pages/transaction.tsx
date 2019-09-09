@@ -11,12 +11,9 @@ if (environment.DEBUG) {
 let TransactionPage = () => <NoSSR />;
 
 if (environment.IS_CLIENT) {
-  // tslint:disable-next-line:no-var-requires
   const Layout = require('../layout/Layout').default;
-  // tslint:disable-next-line:no-var-requires
   const HeaderContainer = require('../features/shared/header/containers/HeaderContainer')
     .default;
-  // tslint:disable-next-line:no-var-requires
   const FooterContainer = require('../features/shared/footer/containers/FooterContainer')
     .default;
 

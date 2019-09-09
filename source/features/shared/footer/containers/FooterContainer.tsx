@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { searchContext } from '../contexts';
 import { blocksContextDefault } from '../index';
 import { FooterComponentContainer } from './FooterComponentContainer';
