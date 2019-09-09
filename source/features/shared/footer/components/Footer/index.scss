@@ -25,23 +25,32 @@
       display: flex;
       justify-content: space-evenly;
 
-      .iohkLogo {
-        height: 22px;
-        width: 29px;
-      }
+      .logoText {
+        align-items: center;
+        display: flex;
 
-      .iohkText {
-        color: #ffffff;
-        font-family: 'Proxima Nova', sans-serif;
-        font-size: 10px;
-        font-stretch: normal;
-        font-style: normal;
-        font-weight: normal;
-        line-height: 1.6;
-        letter-spacing: 1px;
-        opacity: 0.3;
-        padding-left: 10px;
-        text-transform: uppercase;
+        .iohkLogo {
+          height: 22px;
+          width: 29px;
+        }
+
+        .iohkText {
+          color: #ffffff;
+          font-family: 'Proxima Nova', sans-serif;
+          font-size: 10px;
+          font-stretch: normal;
+          font-style: normal;
+          font-weight: normal;
+          line-height: 1.6;
+          letter-spacing: 1px;
+          opacity: 0.3;
+          padding-left: 10px;
+          text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+          padding-bottom: 15px;
+        }
       }
 
       .socialIcons {
@@ -59,6 +68,14 @@
           width: 14px;
         }
       }
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
     }
   }
 
@@ -110,53 +127,84 @@
           padding: 0;
         }
       }
+
+      @media (max-width: 768px) {
+        max-width: 100%;
+      }
     }
 
-    .aboutCardanoMenuContainer,
-    .joinTheCommunityMenuContainer {
-      max-width: 23.25%;
-      padding-left: 35px;
+    .footerMenusContainer {
+      display: flex;
 
-      .aboutCardanoTitle,
-      .joinTheCommunityTitle {
-        color: #ffffff;
-        font-family: 'Proxima Nova Semibold', sans-serif;
-        font-size: 10px;
-        font-stretch: normal;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 1.8;
-        letter-spacing: 0.5px;
-        opacity: 0.3;
-      }
+      .aboutCardanoMenuContainer,
+      .joinTheCommunityMenuContainer {
+        padding-left: 35px;
 
-      .aboutCardanoMenu,
-      .joinTheCommunityMenu {
-        list-style: none;
-        padding: 0;
-        text-align: left;
+        .aboutCardanoTitle,
+        .joinTheCommunityTitle {
+          color: #ffffff;
+          font-family: 'Proxima Nova Semibold', sans-serif;
+          font-size: 10px;
+          font-stretch: normal;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 1.8;
+          letter-spacing: 0.5px;
+          opacity: 0.3;
+        }
 
-        li {
-          a {
-            color: #ffffff;
-            font-family: 'Proxima Nova', sans-serif;
-            font-size: 10px;
-            font-stretch: normal;
-            font-style: normal;
-            font-weight: 300;
-            opacity: 0.3;
-            line-height: 1.8;
-            letter-spacing: 0.5px;
-            text-decoration: none;
+        .aboutCardanoMenu,
+        .joinTheCommunityMenu {
+          list-style: none;
+          padding: 0;
+          text-align: left;
 
-            &.emailLink {
-              color: rgba(235, 34, 86, 0.5);
-              font-weight: 600;
-              opacity: 1;
+          li {
+            a {
+              color: #ffffff;
+              font-family: 'Proxima Nova', sans-serif;
+              font-size: 10px;
+              font-stretch: normal;
+              font-style: normal;
+              font-weight: 300;
+              opacity: 0.3;
+              line-height: 1.8;
+              letter-spacing: 0.5px;
+              text-decoration: none;
+
+              &.emailLink {
+                color: rgba(235, 34, 86, 0.5);
+                font-weight: 600;
+                opacity: 1;
+              }
             }
           }
         }
+
+        @media (max-width: 992px) {
+          min-width: 27.25%;
+        }
+
+        @media (max-width: 768px) {
+          max-width: initial;
+          min-width: initial;
+          padding-left: 0;
+        }
       }
+
+      @media (max-width: 992px) {
+        justify-content: space-between;
+        min-width: 47%;
+      }
+
+      @media (max-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
     }
   }
 }

@@ -19,8 +19,10 @@ const Footer = (props: IProps) => {
       <div className={styles.footerTopContainer}>
         <p className={styles.copyright}>Cardano {new Date().getFullYear()}</p>
         <div className={styles.logos}>
-          <img src={iohkLogo} className={styles.iohkLogo} />
-          <p className={styles.iohkText}>IOHK Supported Project</p>
+          <div className={styles.logoText}>
+            <img src={iohkLogo} className={styles.iohkLogo} />
+            <p className={styles.iohkText}>IOHK Supported Project</p>
+          </div>
           <div className={styles.socialIcons}>
             <img src={twitterIcon} className={styles.twitterIcon} />
             <img src={facebookIcon} className={styles.facebookIcon} />
@@ -57,59 +59,61 @@ const Footer = (props: IProps) => {
             </p>
           </p>
         </div>
-        <div className={styles.aboutCardanoMenuContainer}>
-          <h5 className={styles.aboutCardanoTitle}>More about Cardano</h5>
-          <ul className={styles.aboutCardanoMenu}>
-            <li>
-              <a href={'#'}>Blockchain Explorer</a>
-            </li>
-            <li>
-              <a href={'#'}>Cardano Foundation</a>
-            </li>
-            <li>
-              <a href={'#'}>Documentation</a>
-            </li>
-            <li>
-              <a href={'#'}>Cardano SL Source</a>
-            </li>
-            <li>
-              <a href={'#'}>Why Cardano</a>
-            </li>
-            <li>
-              <a href={'#'}>Daedalus Platform</a>
-            </li>
-            <li>
-              <a href={''}>Ouroboros algorithm</a>
-            </li>
-          </ul>
-        </div>
-        <div className={styles.joinTheCommunityMenuContainer}>
-          <h5 className={styles.joinTheCommunityTitle}>Join the community</h5>
-          <ul className={styles.joinTheCommunityMenu}>
-            <li>
-              <a href={'#'}>Cardano Community</a>
-            </li>
-            <li>
-              <a href={'#'}>Cardano Chat</a>
-            </li>
-            <li>
-              <a href={'#'}>Cardano Forum</a>
-            </li>
-            <li>
-              <a href={'#'}>Cardano Reddit</a>
-            </li>
-            <li>
-              <a href={'#'}>Cardano Foundation Youtube</a>
-            </li>
-            <li>
-              <a href={'#'}>Cardano Foundation Twitter</a>
-            </li>
-            <li>
-              <a href="mailto:info@cardano.org" className={styles.emailLink}>
-                info@cardano.org
-              </a>
-            </li>
-          </ul>
+        <div className={styles.footerMenusContainer}>
+          <div className={styles.aboutCardanoMenuContainer}>
+            <h5 className={styles.aboutCardanoTitle}>More about Cardano</h5>
+            <ul className={styles.aboutCardanoMenu}>
+              <li>
+                <a href={'#'}>Blockchain Explorer</a>
+              </li>
+              <li>
+                <a href={'#'}>Cardano Foundation</a>
+              </li>
+              <li>
+                <a href={'#'}>Documentation</a>
+              </li>
+              <li>
+                <a href={'#'}>Cardano SL Source</a>
+              </li>
+              <li>
+                <a href={'#'}>Why Cardano</a>
+              </li>
+              <li>
+                <a href={'#'}>Daedalus Platform</a>
+              </li>
+              <li>
+                <a href={''}>Ouroboros algorithm</a>
+              </li>
+            </ul>
+          </div>
+          <div className={styles.joinTheCommunityMenuContainer}>
+            <h5 className={styles.joinTheCommunityTitle}>Join the community</h5>
+            <ul className={styles.joinTheCommunityMenu}>
+              <li>
+                <a href={'#'}>Cardano Community</a>
+              </li>
+              <li>
+                <a href={'#'}>Cardano Chat</a>
+              </li>
+              <li>
+                <a href={'#'}>Cardano Forum</a>
+              </li>
+              <li>
+                <a href={'#'}>Cardano Reddit</a>
+              </li>
+              <li>
+                <a href={'#'}>Cardano Foundation Youtube</a>
+              </li>
+              <li>
+                <a href={'#'}>Cardano Foundation Twitter</a>
+              </li>
+              <li>
+                <a href="mailto:info@cardano.org" className={styles.emailLink}>
+                  info@cardano.org
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>
