@@ -74,7 +74,7 @@
     display: flex;
 
     .cardanoTextContainer {
-      max-width: 75%;
+      max-width: 63.5%;
 
       .cardanoTextTitle {
         color: rgba(255, 255, 255, 0.3);
@@ -103,11 +103,8 @@
         line-height: 1.6;
         letter-spacing: 0.2px;
 
-        span {
-          font-style: italic;
-        }
-
         p {
+          font-style: italic;
           margin: 0;
           padding: 0;
         }
@@ -116,8 +113,8 @@
 
     .aboutCardanoMenuContainer,
     .joinTheCommunityMenuContainer {
-      max-width: 17.5%;
-      padding-left: 40px;
+      max-width: 23.25%;
+      padding-left: 35px;
 
       .aboutCardanoTitle,
       .joinTheCommunityTitle {
