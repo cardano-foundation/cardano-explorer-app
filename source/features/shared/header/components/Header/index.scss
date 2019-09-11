@@ -1,18 +1,106 @@
-.root {
-  height: 415px;
+.headerContainer {
+  background-color: #121326;
+  padding: 0 40px;
+  position: relative;
   width: 100%;
 
-  .imageContainer {
-    height: 100%;
-    position: relative;
+  .backgroundImageContainer {
+    left: 0;
+    position: absolute;
+    top: 0;
     width: 100%;
+    z-index: 100;
+
+    .backgroundImage {
+      height: auto;
+      width: 100%;
+    }
   }
 
-  .titleContainer {
-    bottom: 128px;
+  .contentContainer {
+    align-items: center;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    left: 0;
     position: absolute;
+    top: 0;
     width: 100%;
+    z-index: 200;
+
+    .titleContainer {
+      color: #ffffff;
+      font-family: ProximaNova;
+      font-size: 18px;
+      font-stretch: normal;
+      font-style: normal;
+      letter-spacing: 1.8px;
+      line-height: 1.11;
+      text-align: center;
+
+      .cardanoTitle {
+        font-weight: 300;
+        margin-left: 10px;
+      }
+      .explorerTitle {
+        font-weight: 600;
+      }
+    }
+
+    .enlargedBrandType {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      .logoContainer {
+        margin-top: 105px;
+
+        .logo {
+          height: 112px;
+          width: 122px;
+        }
+      }
+
+      .titleContainer {
+        font-size: 18px;
+        margin-top: 50px;
+      }
+
+      .triangleSign {
+        margin-top: 20px;
+
+        .straightLine {
+        }
+        .triangle {
+        }
+      }
+    }
+
+    .shrinkedBrandType {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      padding: 26.5px 0 23.5px;
+
+      .logoContainer {
+        margin-right: 19.5px;
+
+        .logo {
+          height: 33px;
+          width: 36px;
+        }
+      }
+
+      .titleContainer {
+        font-size: 14px;
+      }
+
+      .triangleSign {
+        display: none;
+      }
+    }
+
+    .searchFormContainer {
+      margin-top: 62px;
+    }
   }
 }

@@ -6,7 +6,7 @@ import { Block } from '../../../../../../generated/typings/graphql-schema';
 
 import styles from './index.scss';
 
-interface IProps {
+export interface ISearchFormProps {
   triggerBlockSearch: (id: string) => void;
   searchResult: Pick<Block, 'id'> | null;
 }
