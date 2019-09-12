@@ -1,16 +1,18 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import SearchForm from '../components/SearchForm';
+import OutdatedBrowser from '../components/OutdatedBrowser';
 import { useBlocks } from '../hooks';
 
-export const SearchFormContainerRaw = () => {
+export const OutdatedBrowserComponentContainerRaw = () => {
   const { actions, store } = useBlocks();
   return (
-    <SearchForm
+    <OutdatedBrowser
       searchResult={store.searchedBlock}
       triggerBlockSearch={id => actions.searchBlockById.trigger({ id })}
     />
   );
 };
 
-export const SearchFormContainer = observer(SearchFormContainerRaw);
+export const OutdatedBrowserComponentContainer = observer(
+  OutdatedBrowserComponentContainerRaw
+);

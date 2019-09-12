@@ -1,14 +1,17 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import SearchForm, {
-  ISearchFormProps,
-} from '../../../search/components/SearchForm';
-import styles from './index.scss';
+import SearchForm, { ISearchFormProps } from '../../search/components';
 
-import backgroundImageUrl from '../../../../../static/assets/images/header/bg-dummy-irl-should-be-animated.png';
-import backgroundImage2Url from '../../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@2x.png';
-import backgroundImage3Url from '../../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@3x.png';
-import CardanoLogo from '../../../../../static/assets/images/header/cardano-logo.svg';
+import styles from './Header.scss';
+
+// @ts-ignore
+import backgroundImageUrl from '../../../../static/assets/images/header/bg-dummy-irl-should-be-animated.png';
+// @ts-ignore
+import backgroundImage2Url from '../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@2x.png';
+// @ts-ignore
+import backgroundImage3Url from '../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@3x.png';
+// @ts-ignore
+import CardanoLogo from '../../../../static/assets/images/header/cardano-logo.svg';
 
 export enum BrandType {
   ENLARGED = 'enlarged',

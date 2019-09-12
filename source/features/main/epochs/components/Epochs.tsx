@@ -2,20 +2,20 @@ import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
 import { Input } from 'react-polymorph/lib/components/Input';
-import { Block } from '../../../../../../generated/typings/graphql-schema';
+import { Block } from '../../../../../generated/typings/graphql-schema';
 
 import styles from './index.scss';
 
-export interface ISearchFormProps {
+interface IProps {
   triggerBlockSearch: (id: string) => void;
   searchResult: Pick<Block, 'id'> | null;
 }
 
-const SearchForm = (props: IProps) => {
+const Epochs = (props: IProps) => {
   const [blockIdValue, setBlockIdValue] = useState('');
   return (
     <div className={styles.root}>
-      <h1>Search</h1>
+      <h1>Block Search</h1>
       <Input
         placeholder="Enter block id …"
         value={blockIdValue}
@@ -38,4 +38,4 @@ const SearchForm = (props: IProps) => {
   );
 };
 
-export default observer(SearchForm);
+export default observer(Epochs);

@@ -1,16 +1,18 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import BlocksSearch from '../components/BlocksSearchForm';
+import Transaction from '../components/Transaction';
 import { useBlocks } from '../hooks';
 
-export const BlocksSearchFormContainerRaw = () => {
+export const TransactionComponentContainerRaw = () => {
   const { actions, store } = useBlocks();
   return (
-    <BlocksSearch
+    <Transaction
       searchResult={store.searchedBlock}
       triggerBlockSearch={id => actions.searchBlockById.trigger({ id })}
     />
   );
 };
 
-export const BlocksSearchFormContainer = observer(BlocksSearchFormContainerRaw);
+export const TransactionComponentContainer = observer(
+  TransactionComponentContainerRaw
+);

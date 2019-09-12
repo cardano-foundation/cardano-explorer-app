@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import SearchForm from '../source/features/shared/search/components/SearchForm';
+import SearchForm from '../source/features/shared/search/components';
 import { ThemeDecorator } from './support/ThemeDecorator';
 
 storiesOf('Search Form', module)

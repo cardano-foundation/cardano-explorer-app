@@ -4,14 +4,14 @@ import { Button } from 'react-polymorph/lib/components/Button';
 import { Input } from 'react-polymorph/lib/components/Input';
 import { Block } from '../../../../../generated/typings/graphql-schema';
 
-import styles from './BlocksSearchForm.scss';
+import styles from './Epoch.scss';
 
 interface IProps {
   triggerBlockSearch: (id: string) => void;
   searchResult: Pick<Block, 'id'> | null;
 }
 
-const BlocksSearchForm = (props: IProps) => {
+const Epoch = (props: IProps) => {
   const [blockIdValue, setBlockIdValue] = useState('');
   return (
     <div className={styles.root}>
@@ -38,4 +38,4 @@ const BlocksSearchForm = (props: IProps) => {
   );
 };
 
-export default observer(BlocksSearchForm);
+export default observer(Epoch);

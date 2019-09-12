@@ -2,12 +2,12 @@ import React from 'react';
 
 import { searchContext } from '../contexts';
 import { blocksContextDefault } from '../index';
-import { BlocksSearchFormContainer } from './BlocksSearchFormContainer';
+import { EpochsComponentContainer } from './EpochsComponentContainer';
 
-const BlocksSearchContainer = () => (
+const EpochsContainer = () => (
   <searchContext.Provider value={blocksContextDefault}>
-    <BlocksSearchFormContainer />
+    <EpochsComponentContainer />
   </searchContext.Provider>
 );
 
-export default BlocksSearchContainer;
+export default EpochsContainer;
