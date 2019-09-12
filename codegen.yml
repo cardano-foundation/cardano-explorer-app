@@ -1,5 +1,5 @@
 overwrite: true
-schema: schema.graphql
+schema: ${SCHEMA_URI}
 documents: "**/*.graphql"
 generates:
   generated/typings/graphql-schema.d.ts:

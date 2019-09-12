@@ -1,25 +1,26 @@
 Cardano Explorer App
 ====================
 
-This is the frontend for the Cardano Explorer.
-
-## Installation
-
-1. **GraphQL Backend:** checkout the `feature/native-schema` 
-branch from [cardano-graphql](https://github.com/input-output-hk/cardano-graphql/)
-and run `npm install`.
-
-2. **Frontend**: checkout `master` of this repo and run `yarn install` (YARN!)
+Frontend web app for the Cardano Explorer. This project depends on the [Cardano GraphQL API Service](https://github.com/input-output-hk/cardano-graphql), as defined in the [docker stack](docker-compose.yml). The schema typings are generated from the running API service, and should be regenerated when changing the version.
 
 ## Development
+### Start
+1. `yarn start-dependencies`
+2. `yarn dev`
 
-**Note: First install backend and frontend (see above)**
+### Stop
+`yarn stop-dependencies`
 
-1. In the [cardano-graphql](https://github.com/input-output-hk/cardano-graphql/) 
-repo: Start GraphQL backend with `npm run dc:dev`
-2. In this repo start the frontend with `yarn dev`
+By default the app will be at http://localhost:4000, and an instance of the GraphQL Playground at http://localhost:3100/.
 
-You should now see the …
+The GraphQL API port can be customized with the GRAPHQL_PORT variable in .env.local. This value is respected by `yarn start-dependencies`.
 
-- Frontend at http://localhost:4000
-- GraphQL playground at http://localhost:3000/
+`yarn start-dependencies` will pull the most recent development containers for cardano-graphql and the seed database. It will also regenerate the typings from any schema changes, which may lead to a git diff. This is to be expected and should be committed. 
+
+In the future, container versions will be statically pinned from the docker-compose.yml and only updated when appropriate to do so. For these early stages of development we want to ensure the backend and frontend remain aligned.
+
+## Storybook
+
+All visual components should be developed in Storybook first.
+
+Run `yarn storybook`

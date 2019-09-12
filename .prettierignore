@@ -4,6 +4,7 @@
 # But include the following folders
 !source/
 !features/
+!stories/
 
 # Now we ignore all files
 *.*
