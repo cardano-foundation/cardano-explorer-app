@@ -1,10 +1,10 @@
 .headerContainer {
-  background-color: #121326;
   padding: 0 40px;
   position: relative;
   width: 100%;
 
   .backgroundImageContainer {
+    background-color: #121326;
     left: 0;
     position: absolute;
     top: 0;
@@ -13,6 +13,8 @@
 
     .backgroundImage {
       height: auto;
+      mix-blend-mode: lighten;
+      object-fit: contain;
       width: 100%;
     }
   }
@@ -36,10 +38,11 @@
       letter-spacing: 1.8px;
       line-height: 1.11;
       text-align: center;
+      text-transform: uppercase;
 
       .cardanoTitle {
         font-weight: 300;
-        margin-left: 10px;
+        margin-right: 10px;
       }
       .explorerTitle {
         font-weight: 600;
@@ -66,11 +69,37 @@
       }
 
       .triangleSign {
-        margin-top: 20px;
+        margin-top: 28px;
+        position: relative;
 
         .straightLine {
+          background-color: #709cf0;
+          height: 1px;
+          opacity: 0.5;
+          width: 126px;
         }
+
         .triangle {
+          border-left: 14.5px solid transparent;
+          border-right: 14.5px solid transparent;
+          border-top: 20px solid #709cf0;
+          height: 0;
+          left: 50%;
+          position: absolute;
+          top: 0;
+          transform: translate(-50%, -50%);
+          width: 0;
+
+          .innerTriangle {
+            border-left: 11.5px solid transparent;
+            border-right: 11.5px solid transparent;
+            border-top: 17px solid #121326;
+            height: 0;
+            left: -11.5px;
+            position: relative;
+            top: -19px;
+            width: 0;
+          }
         }
       }
     }
