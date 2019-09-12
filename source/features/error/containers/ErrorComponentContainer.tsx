@@ -1,16 +1,16 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import BlocksSearch from '../components/BlocksSearchForm';
+import Error from '../components/Error';
 import { useBlocks } from '../hooks';
 
-export const BlocksSearchFormContainerRaw = () => {
+export const ErrorComponentContainerRaw = () => {
   const { actions, store } = useBlocks();
   return (
-    <BlocksSearch
+    <Error
       searchResult={store.searchedBlock}
       triggerBlockSearch={id => actions.searchBlockById.trigger({ id })}
     />
   );
 };
 
-export const BlocksSearchFormContainer = observer(BlocksSearchFormContainerRaw);
+export const ErrorComponentContainer = observer(ErrorComponentContainerRaw);

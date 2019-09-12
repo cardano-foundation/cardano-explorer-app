@@ -2,16 +2,16 @@ import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
 import { Input } from 'react-polymorph/lib/components/Input';
-import { Block } from '../../../../../generated/typings/graphql-schema';
+import { Block } from '../../../../generated/typings/graphql-schema';
 
-import styles from './index.scss';
+import styles from './Address.scss';
 
 interface IProps {
   triggerBlockSearch: (id: string) => void;
   searchResult: Pick<Block, 'id'> | null;
 }
 
-const BlocksSearchForm = (props: IProps) => {
+const Address = (props: IProps) => {
   const [blockIdValue, setBlockIdValue] = useState('');
   return (
     <div className={styles.root}>
@@ -38,4 +38,4 @@ const BlocksSearchForm = (props: IProps) => {
   );
 };
 
-export default observer(BlocksSearchForm);
+export default observer(Address);

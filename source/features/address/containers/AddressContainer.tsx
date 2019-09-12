@@ -2,12 +2,12 @@ import React from 'react';
 
 import { searchContext } from '../contexts';
 import { blocksContextDefault } from '../index';
-import { BlocksSearchFormContainer } from './BlocksSearchFormContainer';
+import { AddressComponentContainer } from './AddressComponentContainer';
 
-const BlocksSearchContainer = () => (
+const AddressContainer = () => (
   <searchContext.Provider value={blocksContextDefault}>
-    <BlocksSearchFormContainer />
+    <AddressComponentContainer />
   </searchContext.Provider>
 );
 
-export default BlocksSearchContainer;
+export default AddressContainer;
