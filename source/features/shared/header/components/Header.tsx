@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import SearchForm, { ISearchFormProps } from '../../search/components';
+import Search, { ISearchFormProps } from '../../search/components/Search';
 
 import styles from './Header.scss';
 
@@ -62,7 +62,7 @@ const Header = (props: IHeaderProps) => {
         </div>
         {withSearchForm && (
           <div className={styles.searchFormContainer}>
-            <SearchForm {...searchFormProps} />
+            <Search {...searchFormProps} />
           </div>
         )}
       </div>

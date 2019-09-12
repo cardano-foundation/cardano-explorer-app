@@ -39,7 +39,7 @@ const Footer = (props: IProps) => {
           <h5 className={styles.cardanoTextTitle}>
             Cardano is an <span>Open Source</span> project.
           </h5>
-          <p className={styles.cardanoText}>
+          <div className={styles.cardanoText}>
             Cardano is a software platform ONLY and does not conduct any
             independent diligence on or substantive review of any blockchain
             asset, digital currency, cryptocurrency or associated funds. You are
@@ -57,7 +57,7 @@ const Footer = (props: IProps) => {
               or all of your investment. The value of the blockchain assets you
               exchange is subject to market and other investment risks.
             </p>
-          </p>
+          </div>
         </div>
         <div className={styles.footerMenusContainer}>
           <div className={styles.aboutCardanoMenuContainer}>

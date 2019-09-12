@@ -7,8 +7,8 @@ import { Block } from '../../../../../generated/typings/graphql-schema';
 import styles from './Search.scss';
 
 export interface ISearchFormProps {
-  triggerBlockSearch: (id: string) => void;
-  searchResult: Pick<Block, 'id'> | null;
+  triggerBlockSearch?: (id: string) => void;
+  searchResult?: Pick<Block, 'id'> | null;
 }
 
 const Search = (props: ISearchFormProps) => {
@@ -21,7 +21,7 @@ const Search = (props: ISearchFormProps) => {
         value={blockIdValue}
         onChange={v => setBlockIdValue(v)}
         onKeyPress={e => {
-          if (e.key === 'Enter') {
+          if (e.key === 'Enter' && props.triggerBlockSearch) {
             props.triggerBlockSearch(blockIdValue);
           }
         }}
@@ -29,7 +29,11 @@ const Search = (props: ISearchFormProps) => {
       <Button
         className={styles.searchButton}
         label="search"
-        onClick={() => props.triggerBlockSearch(blockIdValue)}
+        onClick={() => {
+          if (props.triggerBlockSearch) {
+            props.triggerBlockSearch(blockIdValue);
+          }
+        }}
       />
 
       <h2>Result</h2>
