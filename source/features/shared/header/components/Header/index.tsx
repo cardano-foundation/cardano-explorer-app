@@ -1,13 +1,14 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import SVGInline from 'react-svg-inline';
 import SearchForm, {
   ISearchFormProps,
 } from '../../../search/components/SearchForm';
 import styles from './index.scss';
 
-import backgroundImage from '../../../../../static/assets/images/header/bg-dummy-irl-should-be-animated.png';
-import cardanoLogo from '../../../../../static/assets/images/header/cardano-logo.svg';
+import backgroundImageUrl from '../../../../../static/assets/images/header/bg-dummy-irl-should-be-animated.png';
+import backgroundImage2Url from '../../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@2x.png';
+import backgroundImage3Url from '../../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@3x.png';
+import CardanoLogo from '../../../../../static/assets/images/header/cardano-logo.svg';
 
 export enum BrandType {
   ENLARGED = 'enlarged',
@@ -32,13 +33,18 @@ const Header = (props: IHeaderProps) => {
     <header className={styles.headerContainer}>
       {withBackground && (
         <div className={styles.backgroundImageContainer}>
-          <img src={backgroundImage} className={styles.backgroundImage} />
+          <img
+            src={backgroundImageUrl}
+            alt=""
+            srcSet={`${backgroundImage2Url} 2x, ${backgroundImage3Url} 3x`}
+            className={styles.backgroundImage}
+          />
         </div>
       )}
       <div className={styles.contentContainer}>
         <div className={brandTypeStyle}>
           <div className={styles.logoContainer}>
-            <SVGInline svg={cardanoLogo} className={styles.logo} />
+            <CardanoLogo className={styles.logo} />
           </div>
           <div className={styles.titleContainer}>
             <span className={styles.cardanoTitle}>Cardano</span>
@@ -46,7 +52,9 @@ const Header = (props: IHeaderProps) => {
           </div>
           <div className={styles.triangleSign}>
             <div className={styles.straightLine} />
-            <div className={styles.triangle} />
+            <div className={styles.triangle}>
+              <div className={styles.innerTriangle} />
+            </div>
           </div>
         </div>
         {withSearchForm && (
