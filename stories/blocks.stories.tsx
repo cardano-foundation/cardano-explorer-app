@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Footer from '../source/features/shared/footer/components/Footer';
+import Blocks from '../source/features/shared/blocks/components/Blocks';
 import { ThemeDecorator } from './support/ThemeDecorator';
 
-storiesOf('Footer', module)
+storiesOf('Blocks', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Footer', () => <Footer propFirst={''} propSecond={''} />);
+  .add('Blocks', () => <Blocks propFirst={''} propSecond={''} />);

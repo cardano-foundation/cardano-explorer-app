@@ -9,8 +9,8 @@ const youtubeIcon = require('../../../../static/assets/images/youtube-icon.png')
 const newsletterIcon = require('../../../../static/assets/images/newsletter-icon.png');
 
 interface IProps {
-  footerPropFirst: string;
-  footerPropSecond: string;
+  propFirst: string;
+  propSecond: string;
 }
 
 const Footer = (props: IProps) => {

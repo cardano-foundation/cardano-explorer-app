@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Footer from '../source/features/shared/footer/components/Footer';
+import Error from '../source/features/error/components/Error';
 import { ThemeDecorator } from './support/ThemeDecorator';
 
-storiesOf('Footer', module)
+storiesOf('Error', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Footer', () => <Footer propFirst={''} propSecond={''} />);
+  .add('Error', () => <Error propFirst={''} propSecond={''} />);

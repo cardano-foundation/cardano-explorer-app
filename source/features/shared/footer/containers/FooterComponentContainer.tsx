@@ -5,7 +5,7 @@ import { useBlocks } from '../hooks';
 
 export const FooterComponentContainerRaw = () => {
   const { actions, store } = useBlocks();
-  return <Footer footerPropFirst={''} footerPropSecond={''} />;
+  return <Footer propFirst={''} propSecond={''} />;
 };
 
 export const FooterComponentContainer = observer(FooterComponentContainerRaw);

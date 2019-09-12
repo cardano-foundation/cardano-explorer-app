@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Footer from '../source/features/shared/footer/components/Footer';
+import Epochs from '../source/features/shared/epochs/components/Epochs';
 import { ThemeDecorator } from './support/ThemeDecorator';
 
-storiesOf('Footer', module)
+storiesOf('Epochs', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Footer', () => <Footer propFirst={''} propSecond={''} />);
+  .add('Epochs', () => <Epochs propFirst={''} propSecond={''} />);
