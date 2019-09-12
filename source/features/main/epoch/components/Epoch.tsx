@@ -2,9 +2,9 @@ import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
 import { Input } from 'react-polymorph/lib/components/Input';
-import { Block } from '../../../../../../generated/typings/graphql-schema';
+import { Block } from '../../../../../generated/typings/graphql-schema';
 
-import styles from './index.scss';
+import styles from './Epoch.scss';
 
 interface IProps {
   triggerBlockSearch: (id: string) => void;
