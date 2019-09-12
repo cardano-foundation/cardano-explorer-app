@@ -5,12 +5,7 @@ import { useBlocks } from '../hooks';
 
 export const TransactionComponentContainerRaw = () => {
   const { actions, store } = useBlocks();
-  return (
-    <Transaction
-      searchResult={store.searchedBlock}
-      triggerBlockSearch={id => actions.searchBlockById.trigger({ id })}
-    />
-  );
+  return <Transaction propFirst={''} propSecond={''} />;
 };
 
 export const TransactionComponentContainer = observer(

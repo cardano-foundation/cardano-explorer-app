@@ -5,12 +5,7 @@ import { useBlocks } from '../hooks';
 
 export const EpochsComponentContainerRaw = () => {
   const { actions, store } = useBlocks();
-  return (
-    <Epochs
-      searchResult={store.searchedBlock}
-      triggerBlockSearch={id => actions.searchBlockById.trigger({ id })}
-    />
-  );
+  return <Epochs propFirst={''} propSecond={''} />;
 };
 
 export const EpochsComponentContainer = observer(EpochsComponentContainerRaw);

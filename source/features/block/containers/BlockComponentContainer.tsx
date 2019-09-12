@@ -5,12 +5,7 @@ import { useBlocks } from '../hooks';
 
 export const BlockComponentContainerRaw = () => {
   const { actions, store } = useBlocks();
-  return (
-    <Block
-      searchResult={store.searchedBlock}
-      triggerBlockSearch={id => actions.searchBlockById.trigger({ id })}
-    />
-  );
+  return <Block propFirst={''} propSecond={''} />;
 };
 
 export const BlockComponentContainer = observer(BlockComponentContainerRaw);

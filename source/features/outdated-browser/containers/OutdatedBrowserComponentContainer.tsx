@@ -5,12 +5,7 @@ import { useBlocks } from '../hooks';
 
 export const OutdatedBrowserComponentContainerRaw = () => {
   const { actions, store } = useBlocks();
-  return (
-    <OutdatedBrowser
-      searchResult={store.searchedBlock}
-      triggerBlockSearch={id => actions.searchBlockById.trigger({ id })}
-    />
-  );
+  return <OutdatedBrowser propFirst={''} propSecond={''} />;
 };
 
 export const OutdatedBrowserComponentContainer = observer(
