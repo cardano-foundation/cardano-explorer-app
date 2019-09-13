@@ -37,7 +37,7 @@ const Search = (props: ISearchFormProps) => {
       />
 
       <h2>Result</h2>
-      {JSON.stringify(props.searchResult)}
+      {props.searchResult}
     </div>
   );
 };
