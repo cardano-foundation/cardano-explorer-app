@@ -1,3 +1,12 @@
+@mixin footerText($color, $fontFamily, $fontSize, $fontWeight) {
+  color: $color;
+  font-family: $fontFamily, sans-serif;
+  font-size: $fontSize;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: $fontWeight;
+}
+
 .footerContainer {
   background-color: #121326;
   padding: 78px 40px;
@@ -8,12 +17,7 @@
     justify-content: space-between;
 
     .copyright {
-      color: #ffffff;
-      font-family: 'Proxima Nova', sans-serif;
-      font-size: 12px;
-      font-stretch: normal;
-      font-style: normal;
-      font-weight: normal;
+      @include footerText(#ffffff, 'Proxima Nova', 12px, normal);
       line-height: 1.5;
       letter-spacing: 1.2px;
       opacity: 0.3;
@@ -35,12 +39,7 @@
         }
 
         .iohkText {
-          color: #ffffff;
-          font-family: 'Proxima Nova', sans-serif;
-          font-size: 10px;
-          font-stretch: normal;
-          font-style: normal;
-          font-weight: normal;
+          @include footerText(#ffffff, 'Proxima Nova', 10px, normal);
           letter-spacing: 1px;
           line-height: 1.6;
           opacity: 0.3;
@@ -95,12 +94,12 @@
       max-width: 63.5%;
 
       .cardanoTextTitle {
-        color: rgba(255, 255, 255, 0.3);
-        font-family: 'Proxima Nova', sans-serif;
-        font-size: 10px;
-        font-stretch: normal;
-        font-style: normal;
-        font-weight: 300;
+        @include footerText(
+          rgba(255, 255, 255, 0.3),
+          'Proxima Nova',
+          10px,
+          300
+        );
         letter-spacing: 0.2px;
         line-height: 1.6;
 
@@ -112,12 +111,12 @@
       }
 
       .cardanoText {
-        color: rgba(255, 255, 255, 0.3);
-        font-family: 'Proxima Nova', sans-serif;
-        font-size: 10px;
-        font-stretch: normal;
-        font-style: normal;
-        font-weight: 300;
+        @include footerText(
+          rgba(255, 255, 255, 0.3),
+          'Proxima Nova',
+          10px,
+          300
+        );
         letter-spacing: 0.2px;
         line-height: 1.6;
 
@@ -142,12 +141,7 @@
 
         .aboutCardanoTitle,
         .joinTheCommunityTitle {
-          color: #ffffff;
-          font-family: 'Proxima Nova Semibold', sans-serif;
-          font-size: 10px;
-          font-stretch: normal;
-          font-style: normal;
-          font-weight: 600;
+          @include footerText(#ffffff, 'Proxima Nova Semibold', 10px, 600);
           line-height: 1.8;
           letter-spacing: 0.5px;
           opacity: 0.3;
@@ -161,12 +155,7 @@
 
           li {
             a {
-              color: #ffffff;
-              font-family: 'Proxima Nova', sans-serif;
-              font-size: 10px;
-              font-stretch: normal;
-              font-style: normal;
-              font-weight: 300;
+              @include footerText(#ffffff, 'Proxima Nova', 10px, 300);
               opacity: 0.3;
               line-height: 1.8;
               letter-spacing: 0.5px;
