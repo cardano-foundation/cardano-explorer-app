@@ -7,7 +7,6 @@ if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
 }
 
-// Render empty on server
 let EpochPage = () => <NoSSR />;
 
 if (environment.IS_CLIENT) {

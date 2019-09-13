@@ -8,7 +8,6 @@ if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
 }
 
-// Render empty on server
 let IndexPage = () => <NoSSR />;
 
 if (environment.IS_CLIENT) {

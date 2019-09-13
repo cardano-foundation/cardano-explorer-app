@@ -7,7 +7,6 @@ if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
 }
 
-// Render empty on server
 let AddressPage = () => <NoSSR />;
 
 if (environment.IS_CLIENT) {
