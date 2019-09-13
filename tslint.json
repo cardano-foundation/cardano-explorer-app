@@ -8,6 +8,7 @@
     "interface-over-type-literal": false,
     "import-name": false,
     "quotemark": [true, "single", "jsx-double"],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"],
+    "no-var-requires": false
   }
 }
