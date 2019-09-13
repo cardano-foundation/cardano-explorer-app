@@ -1,6 +1,4 @@
 import { observer } from 'mobx-react-lite';
-import { useState } from 'react';
-import styles from './Header.scss';
 
 export interface IHeaderProps {
   title: string;
