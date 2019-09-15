@@ -91,7 +91,7 @@ module.exports = withPlugins(
 
       config.module.rules.push({
         test: /\.svg$/,
-        use: ['@svgr/webpack']
+        loader: 'svg-inline-loader?classPrefix'
       });
       return config;
     },
