@@ -2,6 +2,8 @@ const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 const withSass = require('@zeit/next-sass');
+const withFonts = require('next-fonts');
+const withImages = require('next-images');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
@@ -11,7 +13,7 @@ const ENV_PATH = process.env.ENV_PATH;
 if (!ENV_PATH)
   throw new Error('ENV_PATH must be provided to build the project.');
 
-require('dotenv').config({ path: path.join(__dirname, ENV_PATH) });
+require('dotenv').config({path: path.join(__dirname, ENV_PATH)});
 
 module.exports = withPlugins(
   [
@@ -46,6 +48,18 @@ module.exports = withPlugins(
         },
       },
     ],
+    [
+      withFonts,
+      {
+        enableSvg: true,
+      },
+    ],
+    [
+      withImages,
+      {
+        inlineImageLimit: 16384,
+      },
+    ],
   ],
   {
     // Further customizations of webpack config:
@@ -73,6 +87,11 @@ module.exports = withPlugins(
             loader: 'graphql-tag/loader',
           },
         ],
+      });
+
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ['@svgr/webpack']
       });
       return config;
     },

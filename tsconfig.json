@@ -15,7 +15,10 @@
     "sourceMap": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "target": "esnext"
+    "target": "esnext",
+    "paths": {
+      "*": ["*"]
+    }
   },
   "include": ["source/**/*", "generated/**/*", "stories/**/*"],
   "exclude": ["node_modules", "build"]
