@@ -8,5 +8,5 @@ import { ThemeDecorator } from './support/ThemeDecorator';
 storiesOf('Header', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
   .add('Header', () => (
-    <Header withBackground withSearch brandType={BrandType.ENLARGED} />
+    <Header withBackground brandType={BrandType.ENLARGED} />
   ));
