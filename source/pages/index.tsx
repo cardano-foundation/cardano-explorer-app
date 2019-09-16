@@ -2,25 +2,31 @@ import debug from 'debug';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
+import styles from '../layout/Layout.scss';
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
 }
 
-// Render empty on server
 let IndexPage = () => <NoSSR />;
 
 if (environment.IS_CLIENT) {
-  // tslint:disable-next-line:no-var-requires
   const Layout = require('../layout/Layout').default;
-  // tslint:disable-next-line:no-var-requires
-  const BlocksSearchContainer = require('../features/blocks/containers/BlocksSearchContainer')
+  const HeaderContainer = require('../features/shared/header/containers/HeaderContainer')
+    .default;
+  const SearchContainer = require('../features/shared/search/containers/SearchContainer')
+    .default;
+  const FooterContainer = require('../features/shared/footer/containers/FooterContainer')
     .default;
 
   IndexPage = () => (
     <NoSSR>
       <Layout>
-        <BlocksSearchContainer />
+        <div className={styles.container}>
+          <HeaderContainer />
+          <SearchContainer />
+          <FooterContainer />
+        </div>
       </Layout>
     </NoSSR>
   );

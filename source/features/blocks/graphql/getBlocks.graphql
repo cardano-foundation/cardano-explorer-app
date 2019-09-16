@@ -1,8 +1,0 @@
-query getBlocks($filter: BlockFilter!) {
-  blocks(filter: $filter) {
-    id
-    transactions {
-      id
-    }
-  }
-}
