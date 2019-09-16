@@ -1,18 +1,18 @@
 .headerContainer {
-  padding: 0 40px;
   position: relative;
   width: 100%;
 
   .backgroundImageContainer {
-    background-color: #121326;
-    left: 0;
+    left: 50%;
     position: absolute;
     top: 0;
-    width: 100%;
+    transform: translate(-50%, 0);
+    width: 1099px;
+    height: 415px;
     z-index: 100;
 
     .backgroundImage {
-      height: auto;
+      height: 100%;
       mix-blend-mode: lighten;
       object-fit: contain;
       width: 100%;
@@ -23,9 +23,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    left: 0;
-    position: absolute;
-    top: 0;
+    position: relative;
     width: 100%;
     z-index: 200;
 
@@ -75,8 +73,12 @@
         .straightLine {
           background-color: #709cf0;
           height: 1px;
+          left: -63px;
           opacity: 0.5;
+          position: absolute;
+          top: 0;
           width: 126px;
+          z-index: 400;
         }
 
         .triangle {
@@ -86,9 +88,10 @@
           height: 0;
           left: 50%;
           position: absolute;
-          top: 0;
+          top: 2px;
           transform: translate(-50%, -50%);
           width: 0;
+          z-index: 300;
 
           .innerTriangle {
             border-left: 11.5px solid transparent;
