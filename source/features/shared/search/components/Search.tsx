@@ -6,12 +6,12 @@ import { Block } from '../../../../../generated/typings/graphql-schema';
 
 import styles from './Search.scss';
 
-export interface ISearchFormProps {
+export interface ISearchProps {
   triggerBlockSearch?: (id: string) => void;
   searchResult?: Pick<Block, 'id'> | null;
 }
 
-const Search = (props: ISearchFormProps) => {
+const Search = (props: ISearchProps) => {
   const [blockIdValue, setBlockIdValue] = useState('');
   return (
     <div className={styles.root}>
