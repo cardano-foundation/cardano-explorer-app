@@ -7,8 +7,5 @@ import { ThemeDecorator } from './support/ThemeDecorator';
 storiesOf('Search Form', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
   .add('Search', () => (
-    <Search
-      searchResult={null}
-      triggerBlockSearch={action('triggerBlockSearch')}
-    />
+    <Search triggerBlockSearch={action('triggerBlockSearch')} />
   ));
