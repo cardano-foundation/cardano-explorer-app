@@ -1,12 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import Search, { ISearchProps } from '../../search/components/Search';
-import styles from './Header.scss';
-
 import backgroundImageUrl from '../../../../static/assets/images/header/bg-dummy-irl-should-be-animated.png';
 import backgroundImage2Url from '../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@2x.png';
 import backgroundImage3Url from '../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@3x.png';
 import CardanoLogo from '../../../../static/assets/images/header/cardano-logo.svg';
+import Search, { ISearchProps } from '../../search/components/Search';
+import styles from './Header.scss';
 
 export enum BrandType {
   ENLARGED = 'enlarged',
