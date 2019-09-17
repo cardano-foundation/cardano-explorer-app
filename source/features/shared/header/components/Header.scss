@@ -1,0 +1,138 @@
+.headerContainer {
+  position: relative;
+  width: 100%;
+
+  .backgroundImageContainer {
+    left: 50%;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, 0);
+    width: 1099px;
+    height: 415px;
+    z-index: 100;
+
+    .backgroundImage {
+      height: 100%;
+      mix-blend-mode: lighten;
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+
+  .contentContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    z-index: 200;
+
+    .titleContainer {
+      color: #ffffff;
+      font-family: ProximaNova;
+      font-size: 18px;
+      font-stretch: normal;
+      font-style: normal;
+      letter-spacing: 1.8px;
+      line-height: 1.11;
+      text-align: center;
+      text-transform: uppercase;
+
+      .cardanoTitle {
+        font-weight: 300;
+        margin-right: 10px;
+      }
+      .explorerTitle {
+        font-weight: 600;
+      }
+    }
+
+    .enlargedBrandType {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      .logoContainer {
+        margin-top: 105px;
+
+        .logo {
+          height: 112px;
+          width: 122px;
+        }
+      }
+
+      .titleContainer {
+        font-size: 18px;
+        margin-top: 50px;
+      }
+
+      .triangleSign {
+        margin-top: 28px;
+        position: relative;
+
+        .straightLine {
+          background-color: #709cf0;
+          height: 1px;
+          left: -63px;
+          opacity: 0.5;
+          position: absolute;
+          top: 0;
+          width: 126px;
+          z-index: 400;
+        }
+
+        .triangle {
+          border-left: 14.5px solid transparent;
+          border-right: 14.5px solid transparent;
+          border-top: 20px solid #709cf0;
+          height: 0;
+          left: 50%;
+          position: absolute;
+          top: 2px;
+          transform: translate(-50%, -50%);
+          width: 0;
+          z-index: 300;
+
+          .innerTriangle {
+            border-left: 11.5px solid transparent;
+            border-right: 11.5px solid transparent;
+            border-top: 17px solid #121326;
+            height: 0;
+            left: -11.5px;
+            position: relative;
+            top: -19px;
+            width: 0;
+          }
+        }
+      }
+    }
+
+    .shrinkedBrandType {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      padding: 26.5px 0 23.5px;
+
+      .logoContainer {
+        margin-right: 19.5px;
+
+        .logo {
+          height: 33px;
+          width: 36px;
+        }
+      }
+
+      .titleContainer {
+        font-size: 14px;
+      }
+
+      .triangleSign {
+        display: none;
+      }
+    }
+
+    .searchContainer {
+      margin-top: 62px;
+    }
+  }
+}
