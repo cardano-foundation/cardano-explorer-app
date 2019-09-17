@@ -4,11 +4,10 @@ import React from 'react';
 import Search from '../source/features/shared/search/components/Search';
 import { ThemeDecorator } from './support/ThemeDecorator';
 
-storiesOf('Search Form', module)
+storiesOf('Search', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
   .add('Search', () => (
-    <Search
-      searchResult={null}
-      triggerBlockSearch={action('triggerBlockSearch')}
-    />
+    <div style={{ backgroundColor: '#1c1f30' }}>
+      <Search triggerBlockSearch={action('triggerBlockSearch')} />
+    </div>
   ));
