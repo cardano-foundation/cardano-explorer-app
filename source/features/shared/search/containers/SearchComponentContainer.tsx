@@ -7,7 +7,6 @@ export const SearchComponentContainerRaw = () => {
   const { actions, store } = useBlocks();
   return (
     <Search
-      searchResult={store.searchedBlock}
       triggerBlockSearch={id => actions.searchBlockById.trigger({ id })}
     />
   );
