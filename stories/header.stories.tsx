@@ -10,6 +10,6 @@ storiesOf('Header', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
   .add('Header', () => (
     <div style={{ backgroundColor: '#121326', height: '500px' }}>
-      <Header withBackground brandType={BrandType.ENLARGED} />
+      <Header withBackground withSearch brandType={BrandType.ENLARGED} />
     </div>
   ));

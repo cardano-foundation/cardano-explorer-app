@@ -7,5 +7,7 @@ import { ThemeDecorator } from './support/ThemeDecorator';
 storiesOf('Search', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
   .add('Search', () => (
-    <Search triggerBlockSearch={action('triggerBlockSearch')} />
+    <div style={{ backgroundColor: '#1c1f30' }}>
+      <Search triggerBlockSearch={action('triggerBlockSearch')} />
+    </div>
   ));
