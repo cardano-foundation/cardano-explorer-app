@@ -1,12 +1,12 @@
 import { Given } from 'cucumber';
 
-Given('The the current epoch is {int}', async function(int) {
+Given('The the current epoch is {int}', async function(int: number) {
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
 });
 
 Given('The the latest block in the current epoch is {int}', async function(
-  int
+  int: number
 ) {
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
