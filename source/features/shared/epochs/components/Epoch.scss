@@ -1,9 +1,15 @@
 .epochContainer {
   align-items: center;
+  color: rgba(255, 255, 255, 0.5);
   display: flex;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  line-height: 1.33;
+  text-align: center;
 
   .epoch {
     width: 90px;
+    color: #1fc1c3;
   }
 
   .blocksSlots {
@@ -24,5 +30,6 @@
 
   .output {
     flex: 1;
+    text-align: right;
   }
 }

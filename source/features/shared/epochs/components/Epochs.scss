@@ -1,0 +1,42 @@
+.epochsContainer {
+  .epochsTitle {
+    align-items: center;
+    color: #709cf0;
+    display: flex;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 2;
+    text-align: center;
+    text-transform: uppercase;
+
+    .epoch {
+      width: 90px;
+    }
+
+    .blocksSlots {
+      width: 120px;
+    }
+
+    .startedAt {
+      width: 170px;
+    }
+
+    .endedAt {
+      width: 170px;
+    }
+
+    .transactions {
+      width: 140px;
+    }
+
+    .output {
+      flex: 1;
+      text-align: right;
+    }
+  }
+
+  .epochContainer {
+    border-bottom: 1px dotted #36395d;
+  }
+}
