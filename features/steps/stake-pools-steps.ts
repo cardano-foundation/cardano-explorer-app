@@ -5,11 +5,6 @@ Given('I click {string} tab', async (tabName: string) => {
   return 'pending';
 });
 
-Given('I am on {string} tab', async (tabName: string) => {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
-});
-
 Then(
   'I see warning for unmoderated content instead of list of stake pools',
   async function() {
@@ -18,7 +13,7 @@ Then(
   }
 );
 
-Given('I have accepted to see unmoderated content', async function() {
+When('I accept unmoderated content', async function() {
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
 });
@@ -28,15 +23,7 @@ Then('The warning disappears', async function() {
   return 'pending';
 });
 
-Then(
-  'Label explaining that I have accepted to see unmoderated content appears',
-  async function() {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
-  }
-);
-
-Then('I see the list of stake pools', async function() {
+Then('Unmoderated content banner appears', async function() {
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
 });
