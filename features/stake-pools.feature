@@ -13,7 +13,7 @@ Feature: Stake pools
     on top of user interface which will always visible. This is important because we can
     expect screenshots of inappropriate content.
 
-    Given I am on Cardano Explorer home page
+    Given I am on the "home" page
     And I click "Stake pools" tab
     Then I see warning for unmoderated content instead of list of stake pools
     When I click "Yes, show unmoderated content" button
@@ -26,11 +26,11 @@ Feature: Stake pools
     If user does not accept to se unmoderated content stake pools page is not shown
     and user is taken back to Cardano Explorer homepage.
 
-    Given I am on Cardano Explorer home page
+    Given I am on the "home" page
     And I click "Stake pools" tab
     Then I see warning for unmoderated content instead of list of stake pools
     When I click "Leave this page" button
-    Then Home page is shown
+    Then "home" page is shown
 
   Scenario: List of stake pools ordered by their ranking
 

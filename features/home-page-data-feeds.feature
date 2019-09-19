@@ -1,15 +1,15 @@
 @skip
 Feature: Home page data feeds
 
-  Cardano Explorer home page features a list of latest epochs and a list of latest blocks in the current epoch.
+  The home page features a list of latest epochs and a list of latest blocks in the current epoch. The user can choose to show more, which presents a paginated list with filter controls.
 
-  Scenario: Latest epochs
+  Background:
+    Given I am on the "home" page
 
-    List of recent epochs displays the most important information about last 5 epochs and a "Show more epochs" button
-    which opens a paginated list of all epochs with filtering options.
+  Scenario: Viewing the home page with at least 5 epochs already complete in the blockchain
 
-    Given I am on Cardano Explorer home page
-    Then List of 5 latest epochs is shown
+    Given The the current epoch is 6
+    Then The latest 5 epochs are shown
     And I can see epoch data:
       | epoch number           |
       | number of slots        |
@@ -18,23 +18,18 @@ Feature: Home page data feeds
       | ended date and time    |
       | number of transactions |
       | total output in ada    |
-    And I can see "Show more epochs" button
+    And I can choose to show more epochs
 
-  Scenario: Disabled "Show more epochs" button
+  Scenario: Viewing the home page with 5 or less epochs already complete in the blockchain
 
-    If there is 5 or less epochs in the blockchain "Show more epochs" button is disabled.
+    Given The the current epoch is 4
+    Then The latest 4 epochs are shown
+    And I cannot choose to show more epochs
 
-    Given I am on Cardano Explorer home page
-    And there is 5 or less epochs in the blockchain
-    Then "Show more epochs" button is disabled
+  Scenario: Viewing the home page with at least 10 blocks already created in the current epoch
 
-  Scenario: Latest blocks
-
-    List of recent blocks displays the most important information about last 10 blocks in the current epoch and
-    "Show more blocks" opens a paginated list of all blocks for the current epoch with filtering options.
-
-    Given I am on Cardano Explorer home page
-    Then List of 10 latest blocks is shown
+    Given The the latest block in the current epoch is 11
+    Then The latest 10 blocks in the current epoch are shown
     And I can see block data:
       | epoch number           |
       | slot / block number    |
@@ -43,12 +38,10 @@ Feature: Home page data feeds
       | total output in ada    |
       | size in bytes          |
       | creator                |
-    And I can see "Show more blocks" button
+    And I can choose to show more blocks
 
-  Scenario: Disabled "Show more blocks" button
+  Scenario: Viewing the home page with 10 or less epochs already complete in the current epoch
 
-    If there is 10 or less blocks in the current epoch "Show more blocks" button is disabled.
-
-    Given I am on Cardano Explorer home page
-    And there is 10 or less blocks in the current epoch
-    Then "Show more blocks" button is disabled
+    Given The the latest block in the current epoch is 9
+    Then The latest 9 blocks in the current epoch are shown
+    And I cannot choose to show more blocks

@@ -61,8 +61,3 @@ Then(
     return 'pending';
   }
 );
-
-When('I click {string} button', async (label: string) => {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
-});

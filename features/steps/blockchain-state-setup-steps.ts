@@ -1,11 +1,13 @@
-import { Given, Then } from 'cucumber';
+import { Given } from 'cucumber';
 
-Given('I am on Cardano Explorer home page', async function() {
+Given('The the current epoch is {int}', async function(int) {
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
 });
 
-Then('Home page is shown', async function() {
+Given('The the latest block in the current epoch is {int}', async function(
+  int
+) {
   // Write code here that turns the phrase above into concrete actions
   return 'pending';
 });
