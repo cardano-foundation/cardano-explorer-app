@@ -1,0 +1,28 @@
+.epochContainer {
+  align-items: center;
+  display: flex;
+
+  .epoch {
+    width: 90px;
+  }
+
+  .blocksSlots {
+    width: 120px;
+  }
+
+  .startedAt {
+    width: 170px;
+  }
+
+  .endedAt {
+    width: 170px;
+  }
+
+  .transactions {
+    width: 140px;
+  }
+
+  .output {
+    flex: 1;
+  }
+}
