@@ -1,4 +1,6 @@
 .epochsContainer {
+  width: 872px;
+
   .epochsTitle {
     align-items: center;
     color: #709cf0;
@@ -7,6 +9,7 @@
     font-weight: 600;
     letter-spacing: 1px;
     line-height: 2;
+    padding: 5px 0;
     text-align: center;
     text-transform: uppercase;
 
@@ -37,6 +40,6 @@
   }
 
   .epochContainer {
-    border-bottom: 1px dotted #36395d;
+    border-bottom: 2px dotted #36395d;
   }
 }

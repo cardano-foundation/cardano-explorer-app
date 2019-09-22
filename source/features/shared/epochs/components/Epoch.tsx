@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import styles from './Epoch.scss';
+import Ring from './Ring';
 
 export interface IEpochProps {
   epoch: number;
@@ -8,14 +9,20 @@ export interface IEpochProps {
   slots: number;
   status: string;
   startedAt: number;
-  endedAt: number | string;
+  endedAt: number;
   transactions: number;
   output: number;
 }
 
 const Epoch = (props: IEpochProps) => (
   <div className={styles.epochContainer}>
-    <div className={styles.epoch}>{props.epoch}</div>
+    <div className={styles.epoch}>
+      {props.endedAt ? (
+        props.epoch
+      ) : (
+        <Ring percentage={30} sqSize={36} strokeWidth={2} showText />
+      )}
+    </div>
     <div className={styles.blocksSlots}>
       {props.blocks} / {props.slots}
     </div>

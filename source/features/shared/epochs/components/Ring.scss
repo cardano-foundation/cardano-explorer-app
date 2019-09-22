@@ -1,0 +1,18 @@
+.ringContainer {
+  .circleBackground,
+  .circleProgress {
+    fill: none;
+  }
+
+  .circleBackground {
+    stroke: #404250;
+  }
+
+  .circleProgress {
+    stroke: #1fc1c3;
+  }
+
+  .circleText {
+    fill: #ffffff;
+  }
+}
