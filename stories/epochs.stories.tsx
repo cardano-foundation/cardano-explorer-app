@@ -10,6 +10,7 @@ const epochs = [
     endedAt: null,
     epoch: 138,
     output: 11189.647356,
+    percentage: 40,
     slots: 21600,
     startedAt: 1568366883000,
     status: 'In progress...',

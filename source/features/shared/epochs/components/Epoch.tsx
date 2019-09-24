@@ -1,9 +1,10 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
+import Ring, { RingSize } from '../../ring/components/Ring';
 import styles from './Epoch.scss';
-import Ring from './Ring';
 
 export interface IEpochProps {
+  percentage?: number;
   epoch: number;
   blocks: number;
   slots: number;
@@ -20,7 +21,12 @@ const Epoch = (props: IEpochProps) => (
       {props.endedAt ? (
         props.epoch
       ) : (
-        <Ring percentage={30} sqSize={36} strokeWidth={2} showText />
+        <Ring
+          percentage={props.percentage}
+          size={RingSize.SMALL}
+          showText
+          text={props.epoch}
+        />
       )}
     </div>
     <div className={styles.blocksSlots}>
