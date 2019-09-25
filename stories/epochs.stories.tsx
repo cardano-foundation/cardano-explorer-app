@@ -7,7 +7,6 @@ import { ThemeDecorator } from './support/ThemeDecorator';
 const epochs = [
   {
     blocks: 20051,
-    endedAt: null,
     epoch: 138,
     output: 11189.647356,
     percentage: 40,

@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
-import Ring, { RingSize } from '../../ring/components/Ring';
+import CircularProgress, {
+  CircularProgressSize,
+} from '../../circular-progress/components/CircularProgress';
 import styles from './Epoch.scss';
 
 export interface IEpochProps {
@@ -10,7 +12,7 @@ export interface IEpochProps {
   slots: number;
   status: string;
   startedAt: number;
-  endedAt: number;
+  endedAt?: number;
   transactions: number;
   output: number;
 }
@@ -21,9 +23,9 @@ const Epoch = (props: IEpochProps) => (
       {props.endedAt ? (
         props.epoch
       ) : (
-        <Ring
+        <CircularProgress
           percentage={props.percentage}
-          size={RingSize.SMALL}
+          size={CircularProgressSize.SMALL}
           showText
           text={props.epoch}
         />

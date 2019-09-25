@@ -1,25 +1,25 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import styles from './Ring.scss';
+import styles from './CircularProgress.scss';
 
-const RingPin = require('../../../../static/assets/images/epoch/epoch-filled.svg');
+const CircularProgressPin = require('../../../../static/assets/images/epoch/epoch-filled.svg');
 
-export enum RingSize {
+export enum CircularProgressSize {
   SMALL = 'small',
   BIG = 'big',
 }
 
-export interface IRingProps {
+export interface ICircularProgressProps {
   percentage?: number;
-  size: RingSize;
+  size: CircularProgressSize;
   showText?: boolean;
   text?: any;
 }
 
-const Ring = (props: IRingProps) => {
+const CircularProgress = (props: ICircularProgressProps) => {
   const { percentage = 0, size, showText, text } = props;
-  const sqSize = size === RingSize.SMALL ? 36 : 120;
-  const strokeWidth = size === RingSize.SMALL ? 2 : 4;
+  const sqSize = size === CircularProgressSize.SMALL ? 36 : 120;
+  const strokeWidth = size === CircularProgressSize.SMALL ? 2 : 4;
   const percentageDegree = 3.6 * Math.min(percentage, 100);
   const rotateDegree = percentageDegree + 44.99;
   let percentageCircleStyle = null;
@@ -34,7 +34,7 @@ const Ring = (props: IRingProps) => {
   }
 
   return (
-    <div className={styles.ringContainer}>
+    <div className={styles.circularProgressContainer}>
       <div
         className={styles.outsideCircle}
         style={{ width: sqSize, height: sqSize, ...percentageCircleStyle }}
@@ -52,14 +52,14 @@ const Ring = (props: IRingProps) => {
         >
           {showText && <span>{text}</span>}
         </div>
-        {size === RingSize.SMALL ? (
-          <div className={styles.ringPinCircle} />
+        {size === CircularProgressSize.SMALL ? (
+          <div className={styles.circularProgressPinCircle} />
         ) : (
-          <RingPin className={styles.ringPinImage} />
+          <CircularProgressPin className={styles.circularProgressPinImage} />
         )}
       </div>
     </div>
   );
 };
 
-export default observer(Ring);
+export default observer(CircularProgress);
