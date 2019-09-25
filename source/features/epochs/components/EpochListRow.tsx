@@ -2,10 +2,10 @@ import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import CircularProgress, {
   CircularProgressSize,
-} from '../../circular-progress/components/CircularProgress';
-import styles from './Epoch.scss';
+} from '../../shared/circular-progress/components/CircularProgress';
+import styles from './EpochListRow.scss';
 
-export interface IEpochProps {
+export interface IEpochListRowProps {
   percentage?: number;
   epoch: number;
   blocks: number;
@@ -17,8 +17,8 @@ export interface IEpochProps {
   output: number;
 }
 
-const Epoch = (props: IEpochProps) => (
-  <div className={styles.epochContainer}>
+const EpochListRow = (props: IEpochListRowProps) => (
+  <div className={styles.epochListRowContainer}>
     <div className={styles.epoch}>
       {props.endedAt ? (
         props.epoch
@@ -47,4 +47,4 @@ const Epoch = (props: IEpochProps) => (
   </div>
 );
 
-export default observer(Epoch);
+export default observer(EpochListRow);

@@ -1,7 +1,7 @@
-.epochsContainer {
+.epochListContainer {
   width: 872px;
 
-  .epochsTitle {
+  .epochListTitle {
     align-items: center;
     color: #709cf0;
     display: flex;
@@ -39,7 +39,7 @@
     }
   }
 
-  .epochContainer {
+  .epochListRow {
     border-bottom: 2px dotted #36395d;
   }
 }

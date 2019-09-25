@@ -1,14 +1,14 @@
 import { observer } from 'mobx-react-lite';
-import Epoch, { IEpochProps } from './Epoch';
-import styles from './Epochs.scss';
+import styles from './EpochList.scss';
+import EpochListRow, { IEpochListRowProps } from './EpochListRow';
 
-export interface IEpochsProps {
-  items: Array<IEpochProps>;
+export interface IEpochListProps {
+  items: Array<IEpochListRowProps>;
 }
 
-const Epochs = (props: IEpochsProps) => (
-  <div className={styles.epochsContainer}>
-    <div className={styles.epochsTitle}>
+const EpochList = (props: IEpochListProps) => (
+  <div className={styles.epochListContainer}>
+    <div className={styles.epochListTitle}>
       <div className={styles.epoch}>Epoch</div>
       <div className={styles.blocksSlots}>Blocks / Slots</div>
       <div className={styles.startedAt}>Started At</div>
@@ -17,11 +17,11 @@ const Epochs = (props: IEpochsProps) => (
       <div className={styles.output}>Output (₳)</div>
     </div>
     {props.items.map((item, index) => (
-      <div key={`epoch_${index}`} className={styles.epochContainer}>
-        <Epoch {...item} />
+      <div key={`epoch_${index}`} className={styles.epochListRow}>
+        <EpochListRow {...item} />
       </div>
     ))}
   </div>
 );
 
-export default observer(Epochs);
+export default observer(EpochList);

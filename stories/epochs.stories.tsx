@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Epochs from '../source/features/shared/epochs/components/Epochs';
+import EpochList from '../source/features/epochs/components/EpochList';
 
 import { ThemeDecorator } from './support/ThemeDecorator';
 
@@ -59,8 +59,8 @@ const epochs = [
 
 storiesOf('Epochs', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Epochs', () => (
+  .add('Epoch List', () => (
     <div style={{ backgroundColor: '#121326' }}>
-      <Epochs items={epochs} />
+      <EpochList items={epochs} />
     </div>
   ));
