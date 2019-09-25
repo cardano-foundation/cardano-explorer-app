@@ -50,7 +50,7 @@ const CircularProgress = (props: ICircularProgressProps) => {
             width: sqSize - 2 * strokeWidth,
           }}
         >
-          {showText && <span>{text}</span>}
+          {showText && <div>{text}</div>}
         </div>
         {size === CircularProgressSize.SMALL ? (
           <div className={styles.circularProgressPinCircle} />
