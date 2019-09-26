@@ -19,7 +19,7 @@ export interface ICircularProgressProps {
 const CircularProgress = (props: ICircularProgressProps) => {
   const { percentage = 0, size, showText, text } = props;
   const sqSize = size === CircularProgressSize.SMALL ? 36 : 120;
-  const strokeWidth = size === CircularProgressSize.SMALL ? 2 : 4;
+  const strokeWidth = size === CircularProgressSize.SMALL ? 2 : 3;
   const percentageDegree = 3.6 * Math.min(percentage, 100);
   const rotateDegree = percentageDegree + 57.99;
   let percentageCircleStyle = null;
