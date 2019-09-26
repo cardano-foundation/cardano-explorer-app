@@ -16,20 +16,20 @@
       justify-content: center;
 
       .progressTextLabel {
-        opacity: 0.7;
+        color: #ffffff;
         font-size: 10px;
         font-weight: 300;
-        line-height: 1.4;
         letter-spacing: 0.5px;
+        line-height: 1.4;
         margin-bottom: 5px;
-        color: #ffffff;
+        opacity: 0.7;
       }
 
       .progressTextValue {
+        color: #ffffff;
         font-size: 46px;
         font-weight: 300;
         letter-spacing: 2.3px;
-        color: #ffffff;
       }
     }
 
