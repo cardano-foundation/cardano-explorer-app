@@ -2,7 +2,6 @@ import debug from 'debug';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
-console.log('environment index', environment);
 import '../features/styles';
 import styles from '../layout/Layout.scss';
 
