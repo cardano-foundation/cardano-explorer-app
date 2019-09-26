@@ -6,7 +6,6 @@ const {
   GRAPHQL_API_HOST,
   GRAPHQL_PORT
 } = process.env
-console.log('process.env', process.env);
 
 const proc = spawn('sh', ['utils/start_dependencies.sh'], {
   env: {
