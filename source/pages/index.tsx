@@ -2,8 +2,8 @@ import debug from 'debug';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
-import '../features/styles';
 import styles from '../layout/Layout.scss';
+import '../styles';
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);

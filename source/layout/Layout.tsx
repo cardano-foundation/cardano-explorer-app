@@ -1,5 +1,5 @@
 import React from 'react';
-import PolymorphThemeProvider from '../features/theme/PolymorphThemeProvider';
+import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import GraphQLProvider from '../utils/graphql/GraphQLProvider';
 import styles from './Layout.scss';
 
