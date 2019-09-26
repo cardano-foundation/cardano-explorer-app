@@ -21,15 +21,15 @@ const CircularProgress = (props: ICircularProgressProps) => {
   const sqSize = size === CircularProgressSize.SMALL ? 36 : 120;
   const strokeWidth = size === CircularProgressSize.SMALL ? 2 : 4;
   const percentageDegree = 3.6 * Math.min(percentage, 100);
-  const rotateDegree = percentageDegree + 44.99;
+  const rotateDegree = percentageDegree + 57.99;
   let percentageCircleStyle = null;
   if (percentage <= 50) {
     percentageCircleStyle = {
-      backgroundImage: `linear-gradient(225deg, transparent 50%, #404250 50%), linear-gradient(${rotateDegree}deg, #1fc1c3 50%, #404250 50%)`,
+      backgroundImage: `linear-gradient(238deg, transparent 50%, #404250 50%), linear-gradient(${rotateDegree}deg, #1fc1c3 50%, #404250 50%)`,
     };
   } else {
     percentageCircleStyle = {
-      backgroundImage: `linear-gradient(225deg, #1fc1c3 50%, transparent 50%), linear-gradient(${rotateDegree}deg, #1fc1c3 50%, #404250 50%)`,
+      backgroundImage: `linear-gradient(238deg, #1fc1c3 50%, transparent 50%), linear-gradient(${rotateDegree}deg, #1fc1c3 50%, #404250 50%)`,
     };
   }
 
