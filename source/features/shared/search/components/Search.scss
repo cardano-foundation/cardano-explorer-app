@@ -3,12 +3,16 @@
   width: 872px;
 
   .searchTitle {
-    color: #ffffff;
+    width: 62px;
+    height: 20px;
+    font-family: ProximaNova;
     font-size: 14px;
-    letter-spacing: 1.4px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
     line-height: 1.43;
-    margin-bottom: 8px;
-    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: #ffffff;
   }
 
   .searchContent {
