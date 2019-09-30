@@ -1,0 +1,24 @@
+.dividerContainer {
+  position: relative;
+
+  .line {
+    background-color: #709cf0;
+    height: 1px;
+    opacity: 0.5;
+    width: 100%;
+  }
+  .title {
+    background-color: #121326;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    left: 50%;
+    letter-spacing: 1.2px;
+    line-height: 1.67;
+    padding: 1.5px 12px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 500;
+  }
+}
