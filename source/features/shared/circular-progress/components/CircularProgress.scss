@@ -9,7 +9,7 @@
       background-image: conic-gradient(
         rgba(31, 193, 195, 0),
         rgba(31, 193, 195, 0.2) 21%,
-        #1fc1c3 52%,
+        $primary-highlight-color 52%,
         rgba(31, 193, 195, 0.3) 57%,
         rgba(31, 193, 195, 0),
         rgba(31, 193, 195, 0)
@@ -24,7 +24,7 @@
 
     .insideCircle {
       align-items: center;
-      background-color: #121326;
+      background-color: $primary-bg;
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -35,7 +35,7 @@
     }
 
     .circularProgressPinCircle {
-      background-color: #1fc1c3;
+      background-color: $primary-highlight-color;
       border-radius: 50%;
       height: 6px;
       left: 3px;

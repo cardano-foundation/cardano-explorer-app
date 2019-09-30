@@ -8,7 +8,7 @@
 }
 
 .footerContainer {
-  background-color: #121326;
+  background-color: $primary-bg;
   padding: 78px 40px;
 
   .footerTopContainer {
@@ -17,7 +17,7 @@
     justify-content: space-between;
 
     .copyright {
-      @include footerText(#ffffff, ProximaNova, 12px, normal);
+      @include footerText($solid-text, ProximaNova, 12px, normal);
       line-height: 1.5;
       letter-spacing: 1.2px;
       opacity: 0.3;
@@ -39,7 +39,7 @@
         }
 
         .iohkText {
-          @include footerText(#ffffff, ProximaNova, 10px, normal);
+          @include footerText($solid-text, ProximaNova, 10px, normal);
           letter-spacing: 1px;
           line-height: 1.6;
           opacity: 0.3;
@@ -80,7 +80,7 @@
 
   .footerMiddleContainer {
     .footerSeparator {
-      background-color: #ffffff;
+      background-color: $solid-text;
       height: 2px;
       margin: 9px 0;
       opacity: 0.1;
@@ -94,7 +94,7 @@
       max-width: 63.5%;
 
       .cardanoTextTitle {
-        @include footerText(rgba(255, 255, 255, 0.3), ProximaNova, 10px, 300);
+        @include footerText($hint-text, ProximaNova, 10px, 300);
         letter-spacing: 0.2px;
         line-height: 1.6;
 
@@ -106,7 +106,7 @@
       }
 
       .cardanoText {
-        @include footerText(rgba(255, 255, 255, 0.3), ProximaNova, 10px, 300);
+        @include footerText($hint-text, ProximaNova, 10px, 300);
         letter-spacing: 0.2px;
         line-height: 1.6;
 
@@ -131,7 +131,7 @@
 
         .aboutCardanoTitle,
         .joinTheCommunityTitle {
-          @include footerText(#ffffff, ProximaNova, 10px, 600);
+          @include footerText($solid-text, ProximaNova, 10px, 600);
           line-height: 1.8;
           letter-spacing: 0.5px;
           opacity: 0.3;
@@ -145,7 +145,7 @@
 
           li {
             a {
-              @include footerText(#ffffff, ProximaNova, 10px, 300);
+              @include footerText($solid-text, ProximaNova, 10px, 300);
               opacity: 0.3;
               line-height: 1.8;
               letter-spacing: 0.5px;

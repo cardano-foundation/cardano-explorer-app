@@ -12,7 +12,7 @@
     font-stretch: normal;
     line-height: 1.43;
     letter-spacing: 1.4px;
-    color: #ffffff;
+    color: $solid-text;
   }
 
   .searchContent {
@@ -21,14 +21,14 @@
 
     .searchInput {
       border: 0;
-      border-bottom: 1px solid #1fc1c3;
+      border-bottom: 1px solid $primary-highlight-color;
       flex: 1;
       height: 40px;
 
       input {
         background-color: transparent;
         border: 0;
-        color: #ffffff;
+        color: $solid-text;
         font-size: 12px;
         letter-spacing: 0.6px;
         line-height: 1.67;
@@ -42,7 +42,7 @@
 
     .searchButton {
       align-items: center;
-      background-color: #1fc1c3;
+      background-color: $primary-highlight-color;
       border-radius: 2px;
       display: flex;
       height: 40px;
@@ -52,7 +52,7 @@
 
       .searchButtonIcon {
         border-bottom: 7px solid transparent;
-        border-left: 9px solid #121326;
+        border-left: 9px solid $primary-bg;
         border-top: 7px solid transparent;
         height: 0;
         width: 0;

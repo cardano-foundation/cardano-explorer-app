@@ -7,12 +7,16 @@ const withImages = require('next-images');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
-const resourcesDirectory = path.join(__dirname, './source/styles/variables.scss');
+// TODO: get these variables
+let themeResource = 'testnet';
+const resourcesDir = path.join(__dirname, 'source/styles/resources');
+const resources = [
+  `${resourcesDir}/common/**/*.scss`,
+  `${resourcesDir}/themes/variables-theme-${themeResource}.scss`,
+];
 const resourcesLoader = {
   loader: 'sass-resources-loader',
-  options: {
-    resources: [resourcesDirectory]
-  }
+  options: { resources },
 };
 
 const DEBUG = process.env.DEBUG;
@@ -37,22 +41,6 @@ module.exports = withPlugins(
           localIdentName: '[name]_[local]',
           importLoaders: true,
         },
-        webpack(config, options) {
-          config.module.rules.map(rule => {
-            if (
-              rule.test.source.includes("scss") ||
-              rule.test.source.includes("sass")
-            ) {
-              const notAdded = rule.use.reduce((added, u) => {
-                if (!added || (u && u.loader === 'sass-resources-loader')) return false;
-                return true
-              }, true);
-              if (notAdded)
-                rule.use.push(resourcesLoader);
-            }
-          });
-          return config;
-        }
       },
     ],
     [
@@ -119,6 +107,15 @@ module.exports = withPlugins(
         test: /\.svg$/,
         use: ['@svgr/webpack']
       });
+
+      // Includes the global SCSS variables
+      config.module.rules.forEach(rule => {
+        if (rule.test.source.includes("scss")) {
+          rule.use.push(resourcesLoader);
+        }
+      });
+      return config;
+
       return config;
     },
   }
