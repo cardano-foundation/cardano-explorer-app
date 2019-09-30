@@ -38,16 +38,18 @@
       background-color: $primary-highlight-color;
       border-radius: 50%;
       height: 6px;
-      left: 3px;
+      left: 5px;
       position: absolute;
-      top: 3px;
+      top: 1px;
       width: 6px;
     }
 
     .circularProgressPinImage {
       height: 21.4px;
+      left: 18px;
       object-fit: contain;
       position: absolute;
+      top: 0.5px;
       width: 21.4px;
     }
   }
