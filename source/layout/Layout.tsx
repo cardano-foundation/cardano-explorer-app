@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
 import classnames from 'classnames';
+import React, { Fragment } from 'react';
 import Head from './Head';
+import styles from './Layout.scss';
+
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import GraphQLProvider from '../utils/graphql/GraphQLProvider';
-import styles from './Layout.scss';
 
 interface IProps {
   children: React.ReactNode;
