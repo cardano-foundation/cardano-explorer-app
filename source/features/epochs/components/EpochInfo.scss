@@ -1,0 +1,60 @@
+.epochInfoContainer {
+  margin: 61.5px 0;
+
+  .header {
+    margin-bottom: 41px;
+  }
+
+  .content {
+    align-items: center;
+    display: flex;
+
+    .progressTextContent {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .progressTextLabel {
+        color: #ffffff;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+        line-height: 1.4;
+        margin-bottom: 5px;
+        opacity: 0.7;
+      }
+
+      .progressTextValue {
+        color: #ffffff;
+        font-size: 46px;
+        font-weight: 300;
+        letter-spacing: 2.3px;
+      }
+    }
+
+    .infoPanel {
+      color: #ffffff;
+      margin-left: 60px;
+      opacity: 0.7;
+
+      .infoRow {
+        align-items: center;
+        display: flex;
+        font-size: 12px;
+        letter-spacing: 0.6px;
+        line-height: 1.33;
+        margin-bottom: 10px;
+
+        .infoLabel {
+          font-weight: 600;
+          width: 130px;
+        }
+
+        .infoValue {
+          font-weight: 300;
+        }
+      }
+    }
+  }
+}
