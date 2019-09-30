@@ -11,8 +11,9 @@ const Dotenv = require('dotenv-webpack');
 let themeResource = 'testnet';
 const resourcesDir = path.join(__dirname, 'source/styles/resources');
 const resources = [
-  `${resourcesDir}/common/**/*.scss`,
-  `${resourcesDir}/themes/variables-theme-${themeResource}.scss`,
+  `${resourcesDir}/mixins/**/*.scss`,
+  `${resourcesDir}/variables-common/**/*.scss`,
+  `${resourcesDir}/variables-themes/variables-theme-${themeResource}.scss`,
 ];
 const resourcesLoader = {
   loader: 'sass-resources-loader',
