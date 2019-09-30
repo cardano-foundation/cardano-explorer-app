@@ -7,6 +7,14 @@ const withImages = require('next-images');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
+const resourcesDirectory = path.join(__dirname, './source/styles/variables.scss');
+const resourcesLoader = {
+  loader: 'sass-resources-loader',
+  options: {
+    resources: [resourcesDirectory]
+  }
+};
+
 const DEBUG = process.env.DEBUG;
 const ENV_PATH = process.env.ENV_PATH;
 
@@ -14,6 +22,8 @@ if (!ENV_PATH)
   throw new Error('ENV_PATH must be provided to build the project.');
 
 require('dotenv').config({path: path.join(__dirname, ENV_PATH)});
+
+const added = {};
 
 module.exports = withPlugins(
   [
@@ -27,6 +37,22 @@ module.exports = withPlugins(
           localIdentName: '[name]_[local]',
           importLoaders: true,
         },
+        webpack(config, options) {
+          config.module.rules.map(rule => {
+            if (
+              rule.test.source.includes("scss") ||
+              rule.test.source.includes("sass")
+            ) {
+              const notAdded = rule.use.reduce((added, u) => {
+                if (!added || (u && u.loader === 'sass-resources-loader')) return false;
+                return true
+              }, true);
+              if (notAdded)
+                rule.use.push(resourcesLoader);
+            }
+          });
+          return config;
+        }
       },
     ],
     [

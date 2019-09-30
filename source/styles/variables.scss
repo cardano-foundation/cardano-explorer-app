@@ -1,0 +1,5 @@
+$color: pink;
+
+@mixin primary-bg {
+  background-color: $color;
+}
