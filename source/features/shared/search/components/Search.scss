@@ -4,6 +4,7 @@
 
   .searchTitle {
     color: #ffffff;
+    font-family: 'Proxima Nova', sans-serif;
     font-size: 14px;
     letter-spacing: 1.4px;
     line-height: 1.43;
@@ -19,20 +20,17 @@
       border: 0;
       border-bottom: 1px solid #1fc1c3;
       flex: 1;
+      font-family: 'Proxima Nova', sans-serif;
       height: 40px;
 
       input {
         background-color: transparent;
         border: 0;
         color: #ffffff;
-        font-size: 12px;
+        font-size: 12px !important;
         letter-spacing: 0.6px;
         line-height: 1.67;
         padding: 11px 0;
-      }
-
-      input::placeholder {
-        opacity: 0.3;
       }
     }
 

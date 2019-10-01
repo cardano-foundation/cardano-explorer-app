@@ -14,8 +14,6 @@ if (environment.IS_CLIENT) {
   const Layout = require('../layout/Layout').default;
   const HeaderContainer = require('../features/shared/header/containers/HeaderContainer')
     .default;
-  const SearchContainer = require('../features/shared/search/containers/SearchContainer')
-    .default;
   const FooterContainer = require('../features/shared/footer/containers/FooterContainer')
     .default;
 
@@ -24,7 +22,6 @@ if (environment.IS_CLIENT) {
       <Layout>
         <div className={styles.container}>
           <HeaderContainer />
-          <SearchContainer />
           <FooterContainer />
         </div>
       </Layout>
