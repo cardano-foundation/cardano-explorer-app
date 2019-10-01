@@ -28,7 +28,7 @@
     z-index: 200;
 
     .titleContainer {
-      color: #ffffff;
+      color: $solid-text;
       font-family: ProximaNova;
       font-size: 18px;
       font-stretch: normal;
@@ -71,7 +71,7 @@
         position: relative;
 
         .straightLine {
-          background-color: #709cf0;
+          background-color: $secondary-highlight-color;
           height: 1px;
           left: -63px;
           opacity: 0.5;
@@ -84,7 +84,7 @@
         .triangle {
           border-left: 14.5px solid transparent;
           border-right: 14.5px solid transparent;
-          border-top: 20px solid #709cf0;
+          border-top: 20px solid $secondary-highlight-color;
           height: 0;
           left: 50%;
           position: absolute;
@@ -96,7 +96,7 @@
           .innerTriangle {
             border-left: 11.5px solid transparent;
             border-right: 11.5px solid transparent;
-            border-top: 17px solid #121326;
+            border-top: 17px solid $primary-bg;
             height: 0;
             left: -11.5px;
             position: relative;
@@ -133,7 +133,7 @@
 
     .searchContainer {
       margin-top: 62px;
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: $search-area-bg;
     }
   }
 }

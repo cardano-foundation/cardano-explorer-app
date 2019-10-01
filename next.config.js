@@ -7,6 +7,19 @@ const withImages = require('next-images');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
+// TODO: get these variables
+let themeResource = 'testnet';
+const resourcesDir = path.join(__dirname, 'source/styles/resources');
+const resources = [
+  `${resourcesDir}/mixins/**/*.scss`,
+  `${resourcesDir}/variables-common/**/*.scss`,
+  `${resourcesDir}/variables-themes/variables-theme-${themeResource}.scss`,
+];
+const resourcesLoader = {
+  loader: 'sass-resources-loader',
+  options: { resources },
+};
+
 const DEBUG = process.env.DEBUG;
 const ENV_PATH = process.env.ENV_PATH;
 
@@ -14,6 +27,8 @@ if (!ENV_PATH)
   throw new Error('ENV_PATH must be provided to build the project.');
 
 require('dotenv').config({path: path.join(__dirname, ENV_PATH)});
+
+const added = {};
 
 module.exports = withPlugins(
   [
@@ -93,6 +108,15 @@ module.exports = withPlugins(
         test: /\.svg$/,
         use: ['@svgr/webpack']
       });
+
+      // Includes the global SCSS variables
+      config.module.rules.forEach(rule => {
+        if (rule.test.source.includes("scss")) {
+          rule.use.push(resourcesLoader);
+        }
+      });
+      return config;
+
       return config;
     },
   }

@@ -1,6 +1,6 @@
 .epochListRowContainer {
   align-items: center;
-  color: rgba(255, 255, 255, 0.5);
+  color: $table-text;
   display: flex;
   font-size: 12px;
   letter-spacing: 0.4px;
@@ -9,7 +9,7 @@
   text-align: center;
 
   .epoch {
-    color: #1fc1c3;
+    color: $primary-highlight-color;
     width: 90px;
   }
 
