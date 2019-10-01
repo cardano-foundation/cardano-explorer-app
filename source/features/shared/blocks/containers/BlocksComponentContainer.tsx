@@ -5,7 +5,7 @@ import { useBlocks } from '../hooks';
 
 export const BlocksComponentContainerRaw = () => {
   const { actions, store } = useBlocks();
-  return <Blocks propFirst={''} propSecond={''} />;
+  return <Blocks items={[]} />;
 };
 
 export const BlocksComponentContainer = observer(BlocksComponentContainerRaw);
