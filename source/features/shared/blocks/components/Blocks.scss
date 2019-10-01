@@ -1,7 +1,52 @@
-.root {
-  padding: 20px;
-}
+.blocksListContainer {
+  width: 872px;
 
-.searchButton {
-  margin-top: 1em;
+  .blocksListTitle {
+    align-items: center;
+    color: #709cf0;
+    display: flex;
+    font-family: 'Proxima Nova Semibold', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 2;
+    padding: 5px 0;
+    text-align: center;
+    text-transform: uppercase;
+
+    .epoch {
+      width: 90px;
+    }
+
+    .blocksSlots {
+      width: 100px;
+    }
+
+    .createdAt {
+      width: 160px;
+    }
+
+    .createdBy {
+      text-align: right;
+      width: 120px;
+    }
+
+    .transactions {
+      width: 120px;
+    }
+
+    .size {
+      text-align: right;
+      width: 120px;
+    }
+
+    .output {
+      text-align: right;
+      width: 162px;
+    }
+  }
+
+  .blocksListRow {
+    border-bottom: 2px dotted #36395d;
+  }
 }
