@@ -2,7 +2,6 @@ import debug from 'debug';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
-import styles from '../layout/Layout.scss';
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
@@ -19,7 +18,7 @@ if (environment.IS_CLIENT) {
 
   IndexPage = () => (
     <NoSSR>
-      <Layout>
+      <Layout hasContainer>
         <div className={styles.container}>
           <HeaderContainer />
           <FooterContainer />

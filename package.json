@@ -106,6 +106,7 @@
     "prettier": "1.18.2",
     "pretty-quick": "1.11.1",
     "sanitize.css": "8.0.0",
+    "sass-resources-loader": "^2.0.1",
     "serve": "11.1.0",
     "ts-loader": "6.0.4",
     "ts-node": "7.0.1",

@@ -2,14 +2,14 @@
   position: relative;
 
   .line {
-    background-color: #709cf0;
+    background-color: $secondary-highlight-color;
     height: 1px;
     opacity: 0.5;
     width: 100%;
   }
   .title {
-    background-color: #121326;
-    color: #ffffff;
+    background-color: $primary-bg;
+    color: $solid-text;
     font-size: 12px;
     font-weight: 600;
     left: 50%;
