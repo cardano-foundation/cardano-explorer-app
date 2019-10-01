@@ -1,5 +1,7 @@
 import React from 'react';
 import PolymorphThemeProvider from '../../source/styles/theme/PolymorphThemeProvider';
+import '../../source/styles/global/_fonts.scss';
+import '../../source/styles/global/_reset.scss';
 
 interface IProps {
   children: React.ReactNode;

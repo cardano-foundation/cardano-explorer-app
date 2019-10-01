@@ -14,3 +14,7 @@ Changelog
 ### Fixes
 
 - Upgraded **lodash** to version 4.17.13 ([PR 16](https://github.com/input-output-hk/cardano-explorer-app/pull/16))
+
+### Chores
+
+- Organized the CSS structure, global rules, and global variables ([PR 14](https://github.com/input-output-hk/cardano-explorer-app/pull/14), [PR 18](https://github.com/input-output-hk/cardano-explorer-app/pull/18))

@@ -3,7 +3,7 @@
 
   .blocksListTitle {
     align-items: center;
-    color: #709cf0;
+    color: $secondary-highlight-color;
     display: flex;
     font-family: 'Proxima Nova Semibold', sans-serif;
     font-size: 10px;
@@ -47,6 +47,6 @@
   }
 
   .blocksListRow {
-    border-bottom: 2px dotted #36395d;
+    border-bottom: 2px dotted $dotted-separator-color;
   }
 }

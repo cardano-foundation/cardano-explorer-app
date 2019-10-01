@@ -1,6 +1,6 @@
 .blocksListRowContainer {
   align-items: center;
-  color: rgba(255, 255, 255, 0.5);
+  color: $table-text;
   display: flex;
   font-family: 'Proxima Nova', sans-serif;
   font-size: 12px;
@@ -10,12 +10,12 @@
   text-align: center;
 
   .epoch {
-    color: #1fc1c3;
+    color: $primary-highlight-color;
     width: 90px;
   }
 
   .blocksSlots {
-    color: #1fc1c3;
+    color: $primary-highlight-color;
     width: 100px;
   }
 
