@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../source/styles/theme/index.global.scss';
 import PolymorphThemeProvider from '../../source/styles/theme/PolymorphThemeProvider';
 
 interface IProps {
