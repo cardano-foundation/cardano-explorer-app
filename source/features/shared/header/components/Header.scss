@@ -107,6 +107,26 @@
       }
     }
 
+    .tabs {
+      padding: 30px;
+      a {
+        color: $primary-highlight-color;
+        font-family: ProximaNova;
+        font-size: 12px;
+        font-weight: 600;
+        height: 20px;
+        letter-spacing: 1.2px;
+        line-height: 1.67;
+        margin-left: 10px;
+        text-decoration: none;
+        text-transform: uppercase;
+        width: 125px;
+      }
+      .activeTab {
+        color: $solid-text;
+      }
+    }
+
     .shrinkedBrandType {
       align-items: center;
       display: flex;

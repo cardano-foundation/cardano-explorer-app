@@ -8,7 +8,7 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 // TODO: get these variables
-let themeResource = 'testnet';
+let themeResource = 'incentivized-testnet';
 const resourcesDir = path.join(__dirname, 'source/styles/resources');
 const resources = [
   `${resourcesDir}/mixins/**/*.scss`,
