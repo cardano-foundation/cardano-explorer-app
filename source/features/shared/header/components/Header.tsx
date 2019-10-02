@@ -1,6 +1,5 @@
 import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
-import Router from 'next/router';
 import React from 'react';
 import Search, { ISearchProps } from '../../search/components/Search';
 import styles from './Header.scss';
@@ -30,10 +29,10 @@ const Header = (props: IHeaderProps) => {
       ? styles.enlargedBrandType
       : styles.shrinkedBrandType;
 
-  const indexClassName = !Router.pathname.includes('stake-pools')
+  const indexClassName = !location.pathname.includes('stake-pools')
     ? styles.activeTab
     : '';
-  const stakePoolsClassName = Router.pathname.includes('stake-pools')
+  const stakePoolsClassName = location.pathname.includes('stake-pools')
     ? styles.activeTab
     : '';
 
