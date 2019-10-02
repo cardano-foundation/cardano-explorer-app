@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Header, {
   BrandType,
-} from '../source/features/shared/header/components/Header';
+} from '../source/features/widgets/header/components/Header';
 
 import { ThemeDecorator } from './support/ThemeDecorator';
 

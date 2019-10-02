@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Blocks from '../source/features/shared/blocks/components/Blocks';
+import Blocks from '../source/features/blocks/components/Blocks';
 import { ThemeDecorator } from './support/ThemeDecorator';
 
 const blocks = [

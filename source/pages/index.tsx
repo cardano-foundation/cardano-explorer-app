@@ -12,9 +12,9 @@ let IndexPage = () => <NoSSR />;
 
 if (environment.IS_CLIENT) {
   const Layout = require('../layout/Layout').default;
-  const HeaderContainer = require('../features/shared/header/containers/HeaderContainer')
+  const HeaderContainer = require('../features/widgets/header/containers/HeaderContainer')
     .default;
-  const FooterContainer = require('../features/shared/footer/containers/FooterContainer')
+  const FooterContainer = require('../features/widgets/footer/containers/FooterContainer')
     .default;
 
   IndexPage = () => (
