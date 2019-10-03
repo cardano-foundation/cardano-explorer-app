@@ -3,6 +3,7 @@ import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
 import EpochInfo from '../features/epochs/components/EpochInfo';
+import StakePoolsContainer from '../features/stake-pools/containers/StakePoolsContainer';
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
@@ -31,6 +32,7 @@ if (environment.IS_CLIENT) {
           status="In progress..."
           transactions={12}
         />
+        <StakePoolsContainer />
         <FooterContainer />
       </Layout>
     </NoSSR>
