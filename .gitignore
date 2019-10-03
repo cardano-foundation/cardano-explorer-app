@@ -1,4 +1,5 @@
 node_modules/
 build/
 yarn-error.log
-.idea/
+/.idea
+.DS_Store
