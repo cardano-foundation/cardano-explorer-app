@@ -2,6 +2,7 @@ import debug from 'debug';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
+import styles from '../layout/Layout.scss';
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
@@ -11,19 +12,18 @@ let IndexPage = () => <NoSSR />;
 
 if (environment.IS_CLIENT) {
   const Layout = require('../layout/Layout').default;
-  const HeaderContainer = require('../features/shared/header/containers/HeaderContainer')
+  const HeaderContainer = require('../features/widgets/header/containers/HeaderContainer')
     .default;
-  const SearchContainer = require('../features/shared/search/containers/SearchContainer')
-    .default;
-  const FooterContainer = require('../features/shared/footer/containers/FooterContainer')
+  const FooterContainer = require('../features/widgets/footer/containers/FooterContainer')
     .default;
 
   IndexPage = () => (
     <NoSSR>
       <Layout hasContainer>
-        <HeaderContainer />
-        <SearchContainer />
-        <FooterContainer />
+        <div className={styles.container}>
+          <HeaderContainer />
+          <FooterContainer />
+        </div>
       </Layout>
     </NoSSR>
   );
