@@ -1,8 +1,8 @@
 query getBlocks(
   $limit: Int,
-  $order_by: [blocks_order_by!],
+  $order_by: [Block_order_by!],
   $offset: Int,
-  $where: blocks_filter
+  $where: Block_bool_exp
 ) {
   blocks(
     limit: $limit,
