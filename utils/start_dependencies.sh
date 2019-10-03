@@ -15,8 +15,11 @@ until $(curl --output /dev/null --silent --get ${API_PROTOCOL}://${API_HOST}:${A
 done
 
 echo "API now accepting connections"
-echo "Generating most up to date typings from GraphQL"
-SCHEMA_URI="${API_PROTOCOL}://${API_HOST}:${API_PORT}" npm run generate:graphql-typings
+echo "Generating TypeScript definition from GraphQL server"
+SCHEMA_URI="${API_PROTOCOL}://${API_HOST}:${API_PORT}" yarn generate:graphql-typings
+
+echo "Generating local copy of GraphQL schema for development tooling"
+SCHEMA_URI="${API_PROTOCOL}://${API_HOST}:${API_PORT}" yarn generate:graphql-schema-reference
 
 echo "GraphQL playground available: ${API_PROTOCOL}://${API_HOST}:${API_PORT}"
 echo "Ready 🚀"
