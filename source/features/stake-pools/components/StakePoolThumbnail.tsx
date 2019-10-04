@@ -14,7 +14,6 @@ const StakePoolThumbnail = ({
 }: IStakePoolThumbnailProps) => {
   const { ranking, slug, retiring, id } = stakePool;
   const color = getColorFromRange(ranking);
-
   const containerStyles = classnames([
     styles.stakePoolThumbnailContainer,
     isSelected ? styles.isHighlighted : null,

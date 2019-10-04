@@ -9,10 +9,6 @@ const componentStyle = {
   top: 0,
 };
 
-const colorBandStyle = {
-  background: 'orange',
-};
-
 export const StakePoolTooltip = ({
   stakePool,
   onClose,
@@ -37,6 +33,11 @@ export const StakePoolTooltip = ({
   const alpha = 0.3;
   const reverse = true;
   const retirementFromNow = retiring ? moment(retiring).fromNow(true) : '';
+  const colorBand = getColorFromRange(ranking);
+
+  const colorBandStyle = {
+    backgroundColor: colorBand,
+  };
 
   return (
     <div className={styles.stakePoolTooltipContainer} style={componentStyle}>
