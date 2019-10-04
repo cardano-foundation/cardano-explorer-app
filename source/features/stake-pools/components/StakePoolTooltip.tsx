@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback, useRef, RefObject } from 'react';
 import { observer } from 'mobx-react-lite';
 import classnames from 'classnames';
+import { MouseEvent } from 'react';
 import moment from 'moment';
 import styles from './StakePoolTooltip.scss';
 import { IStakePoolTooltipProps } from '../types';
@@ -40,8 +41,22 @@ export const StakePoolTooltip = ({
     styles[position.horizontal],
   ]);
 
+  const handleOuterClick = useCallback((event: Event) => {
+    const target = event.target as HTMLElement;
+    if (tooltipNode.current && !tooltipNode.current.contains(target)) onClose();
+  }, []);
+
+  useEffect(() => {
+    document.body.addEventListener('click', handleOuterClick);
+    return () => {
+      document.body.removeEventListener('click', handleOuterClick);
+    };
+  }, [handleOuterClick]);
+
+  const tooltipNode = useRef<HTMLDivElement>(null);
+
   return (
-    <div className={stakePoolTooltipStyles}>
+    <div className={stakePoolTooltipStyles} ref={tooltipNode}>
       <div className={styles.colorBand} style={colorBandStyle} />
       <div className={styles.container}>
         <h3 className={styles.name}>{name}</h3>
