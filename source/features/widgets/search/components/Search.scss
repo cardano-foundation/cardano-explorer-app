@@ -3,16 +3,16 @@
   width: 872px;
 
   .searchTitle {
-    width: 62px;
-    height: 20px;
-    font-family: ProximaNova;
+    color: $solid-text;
+    font-family: 'Proxima Nova', sans-serif;
     font-size: 14px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.43;
     letter-spacing: 1.4px;
-    color: $solid-text;
+    width: 62px;
+    height: 20px;
   }
 
   .searchContent {
@@ -23,20 +23,17 @@
       border: 0;
       border-bottom: 1px solid $primary-highlight-color;
       flex: 1;
+      font-family: 'Proxima Nova', sans-serif;
       height: 40px;
 
       input {
         background-color: transparent;
         border: 0;
         color: $solid-text;
-        font-size: 12px;
+        font-size: 12px !important;
         letter-spacing: 0.6px;
         line-height: 1.67;
         padding: 11px 0;
-      }
-
-      input::placeholder {
-        opacity: 0.3;
       }
     }
 
