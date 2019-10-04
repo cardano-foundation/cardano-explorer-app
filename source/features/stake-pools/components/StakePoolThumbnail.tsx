@@ -1,10 +1,15 @@
+import { useState, MouseEvent } from 'react';
 import { observer } from 'mobx-react-lite';
 import classnames from 'classnames';
-import { IStakePoolThumbnailProps } from '../types';
+import {
+  IStakePoolThumbnailProps,
+  IStakePoolTooltipPositionProps,
+} from '../types';
 
 import styles from './StakePoolThumbnail.scss';
 import { getColorFromRange } from '../../../utils/colors';
 import { StakePoolTooltip } from './StakePoolTooltip';
+import { getTooltipPosition } from '../helpers';
 
 const StakePoolThumbnail = ({
   stakePool,
@@ -18,9 +23,21 @@ const StakePoolThumbnail = ({
     styles.stakePoolThumbnailContainer,
     isSelected ? styles.isHighlighted : null,
   ]);
+  const [position, setPosition] = useState<IStakePoolTooltipPositionProps>({
+    top: 'auto',
+    right: 'auto',
+    bottom: 'auto',
+    left: 'auto',
+  });
+  const handleSelect = (event: MouseEvent<HTMLElement>) => {
+    const newPosition = getTooltipPosition(event);
+    setPosition(newPosition);
+    onSelect(id);
+  };
+
   return (
     <div className={containerStyles}>
-      <button onClick={() => onSelect(id)} />
+      <button onClick={handleSelect} />
       <div className={styles.content}>
         <div className={styles.slug}>{slug}</div>
         <div className={styles.ranking} style={{ color }}>
@@ -37,11 +54,10 @@ const StakePoolThumbnail = ({
       {isSelected && (
         <StakePoolTooltip
           stakePool={stakePool}
-          top={0}
-          left={0}
           color={color}
           containerClassName=""
           onClose={onClose}
+          position={position}
         />
       )}
     </div>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import classnames from 'classnames';
 import moment from 'moment';
@@ -5,15 +6,10 @@ import styles from './StakePoolTooltip.scss';
 import { IStakePoolTooltipProps } from '../types';
 import { getColorFromRange } from '../../../utils/colors';
 
-const componentStyle = {
-  top: 0,
-};
-
 export const StakePoolTooltip = ({
   stakePool,
   onClose,
-  top,
-  left,
+  position,
   color,
   containerClassName,
 }: IStakePoolTooltipProps) => {
@@ -40,7 +36,7 @@ export const StakePoolTooltip = ({
   };
 
   return (
-    <div className={styles.stakePoolTooltipContainer} style={componentStyle}>
+    <div className={styles.stakePoolTooltipContainer} style={position}>
       <div className={styles.colorBand} style={colorBandStyle} />
       {/*<div className={arrowClassnames} style={arrowStyle} />*/}
       <div className={styles.container}>

@@ -26,7 +26,7 @@ export interface IStakePoolProps {
   performance: number;
   profitMargin: number;
   ranking: number;
-  retiring: Date | null | undefined;
+  retiring: string | null;
   created_at: string;
   isCharity: boolean;
   url: string;
@@ -42,10 +42,13 @@ export interface IStakePoolThumbnailProps {
 export interface IStakePoolTooltipProps {
   stakePool: IStakePoolProps;
   onClose: Function;
-  top?: number;
-  left?: number;
   color: string;
   containerClassName: string;
+  position: IStakePoolTooltipPositionProps;
+}
+
+export interface IStakePoolTooltipPositionProps {
+  [key: string]: 'auto' | number;
 }
 
 export interface IStakePoolsContext {
