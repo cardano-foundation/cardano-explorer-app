@@ -1,8 +1,8 @@
 import { observer } from 'mobx-react-lite';
-import styles from './StakePoolsList.scss';
-import { IStakePoolsListProps, IStakePoolProps } from '../types';
-import StakePoolThumbnail from './StakePoolThumbnail';
 import { getColorFromRange } from '../../../utils/colors';
+import { IStakePoolProps, IStakePoolsListProps } from '../types';
+import styles from './StakePoolsList.scss';
+import StakePoolThumbnail from './StakePoolThumbnail';
 
 const StakePoolsList = ({
   stakePoolsList,
@@ -24,5 +24,4 @@ const StakePoolsList = ({
     </div>
   );
 };
-
 export default observer(StakePoolsList);

@@ -1,15 +1,14 @@
-import { useState, MouseEvent } from 'react';
-import { observer } from 'mobx-react-lite';
 import classnames from 'classnames';
+import { observer } from 'mobx-react-lite';
+import { MouseEvent, useState } from 'react';
+import { getColorFromRange } from '../../../utils/colors';
+import { getTooltipPosition } from '../helpers';
 import {
   IStakePoolThumbnailProps,
   IStakePoolTooltipPositionProps,
 } from '../types';
-
 import styles from './StakePoolThumbnail.scss';
-import { getColorFromRange } from '../../../utils/colors';
 import { StakePoolTooltip } from './StakePoolTooltip';
-import { getTooltipPosition } from '../helpers';
 
 const StakePoolThumbnail = ({
   stakePool,
@@ -32,7 +31,6 @@ const StakePoolThumbnail = ({
     setPosition(newPosition);
     onSelect(id);
   };
-
   return (
     <div className={containerStyles}>
       <button onClick={handleSelect} />
@@ -60,5 +58,4 @@ const StakePoolThumbnail = ({
     </div>
   );
 };
-
 export default observer(StakePoolThumbnail);

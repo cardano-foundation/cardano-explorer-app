@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { Input } from 'react-polymorph/lib/components/Input';
-import styles from './StakePools.scss';
 import { IStakePoolsSearchProps } from '../types';
+import styles from './StakePools.scss';
 
 const StakePoolsSearch = ({ search, onSearch }: IStakePoolsSearchProps) => {
   return (
@@ -12,5 +12,4 @@ const StakePoolsSearch = ({ search, onSearch }: IStakePoolsSearchProps) => {
     />
   );
 };
-
 export default observer(StakePoolsSearch);

@@ -7,14 +7,14 @@ export interface IStakePoolsProps {
 
 export interface IStakePoolsSearchProps {
   search: string;
-  onSearch: Function;
+  onSearch: () => void;
 }
 
 export interface IStakePoolsListProps {
   stakePoolsList: Array<IStakePoolProps>;
   selectedPoolId: string | null | undefined;
-  onSelect: Function;
-  onClose: Function;
+  onSelect: () => void;
+  onClose: () => void;
 }
 
 export interface IStakePoolProps {
@@ -35,13 +35,13 @@ export interface IStakePoolProps {
 export interface IStakePoolThumbnailProps {
   stakePool: IStakePoolProps;
   isSelected: boolean;
-  onSelect: Function;
-  onClose: Function;
+  onSelect: () => void;
+  onClose: () => void;
 }
 
 export interface IStakePoolTooltipProps {
   stakePool: IStakePoolProps;
-  onClose: Function;
+  onClose: () => void;
   color: string;
   position: IStakePoolTooltipPositionProps;
 }

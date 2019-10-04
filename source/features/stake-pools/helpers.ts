@@ -1,8 +1,7 @@
-import { IStakePoolProps, IStakePoolTooltipPositionProps } from './types';
 import { MouseEvent } from 'react';
+import { IStakePoolProps, IStakePoolTooltipPositionProps } from './types';
 
 const SEARCH_FIELDS = ['slug', 'name'];
-
 const stakePoolsListSearch = (
   stakePool: IStakePoolProps,
   rawSearch: string
@@ -10,11 +9,12 @@ const stakePoolsListSearch = (
   const search = rawSearch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').trim();
   let pass = !search;
   SEARCH_FIELDS.forEach((field: string) => {
-    if (!pass) pass = RegExp(search, 'i').test((window as any)[field]);
+    if (!pass) {
+      pass = RegExp(search, 'i').test((window as any)[field]);
+    }
   });
   return pass;
 };
-
 export const getFilteredStakePoolsList = (
   stakePoolsList: Array<IStakePoolProps>,
   search: string
@@ -22,7 +22,6 @@ export const getFilteredStakePoolsList = (
   stakePoolsList.filter((stakePool: IStakePoolProps) =>
     stakePoolsListSearch(stakePool, search)
   );
-
 export const getTooltipPosition = (
   event: MouseEvent<HTMLElement>
 ): IStakePoolTooltipPositionProps => {

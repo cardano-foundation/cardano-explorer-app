@@ -1,11 +1,11 @@
-import { useEffect, useCallback, useRef, RefObject } from 'react';
-import { observer } from 'mobx-react-lite';
 import classnames from 'classnames';
-import { MouseEvent } from 'react';
+import { observer } from 'mobx-react-lite';
 import moment from 'moment';
-import styles from './StakePoolTooltip.scss';
-import { IStakePoolTooltipProps } from '../types';
+import { useCallback, useEffect, useRef } from 'react';
+import { MouseEvent } from 'react';
 import { getColorFromRange } from '../../../utils/colors';
+import { IStakePoolTooltipProps } from '../types';
+import styles from './StakePoolTooltip.scss';
 
 export const StakePoolTooltip = ({
   stakePool,
@@ -43,7 +43,9 @@ export const StakePoolTooltip = ({
 
   const handleOuterClick = useCallback((event: Event) => {
     const target = event.target as HTMLElement;
-    if (tooltipNode.current && !tooltipNode.current.contains(target)) onClose();
+    if (tooltipNode.current && !tooltipNode.current.contains(target)) {
+      onClose();
+    }
   }, []);
 
   useEffect(() => {
@@ -91,8 +93,8 @@ export const StakePoolTooltip = ({
             <span
               style={{
                 background: getColorFromRange(controlledStake, {
-                  darken,
                   alpha,
+                  darken,
                 }),
               }}
             >
@@ -104,8 +106,8 @@ export const StakePoolTooltip = ({
             <span
               style={{
                 background: getColorFromRange(profitMargin, {
-                  darken,
                   alpha,
+                  darken,
                   reverse,
                 }),
               }}
@@ -118,8 +120,8 @@ export const StakePoolTooltip = ({
             <span
               style={{
                 background: getColorFromRange(performance, {
-                  darken,
                   alpha,
+                  darken,
                   reverse,
                 }),
               }}
