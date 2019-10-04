@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import QRCode from 'qrcode.react';
-import DividerWithTitle from '../../shared/divider-with-title/components/DividerWithTitle';
+import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
 import styles from './AddressInfo.scss';
 
 export interface IAddressInfoProps {

@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import DividerWithTitle from '../../divider-with-title/components/DividerWithTitle';
+import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
 import styles from './TransactionList.scss';
 import TransactionListRow, {
   ITransactionListRowProps,
