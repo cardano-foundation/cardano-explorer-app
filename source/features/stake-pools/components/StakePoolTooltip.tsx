@@ -11,7 +11,6 @@ export const StakePoolTooltip = ({
   onClose,
   position,
   color,
-  containerClassName,
 }: IStakePoolTooltipProps) => {
   const {
     name,
@@ -35,10 +34,15 @@ export const StakePoolTooltip = ({
     backgroundColor: colorBand,
   };
 
+  const stakePoolTooltipStyles = classnames([
+    styles.stakePoolTooltipContainer,
+    styles[position.vertical],
+    styles[position.horizontal],
+  ]);
+
   return (
-    <div className={styles.stakePoolTooltipContainer} style={position}>
+    <div className={stakePoolTooltipStyles}>
       <div className={styles.colorBand} style={colorBandStyle} />
-      {/*<div className={arrowClassnames} style={arrowStyle} />*/}
       <div className={styles.container}>
         <h3 className={styles.name}>{name}</h3>
         <button className={styles.closeButton} onClick={() => onClose()}>

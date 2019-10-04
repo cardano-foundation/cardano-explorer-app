@@ -1,3 +1,6 @@
+$vertical: -38px;
+$horizontal: 77px;
+
 .stakePoolTooltipContainer {
   background: $popup-bg;
   border-radius: 5px;
@@ -7,6 +10,45 @@
   user-select: text;
   width: 240px;
   z-index: 2;
+
+  &:before {
+    border-color: transparent;
+    border-style: solid;
+    content: '';
+    display: block;
+    height: 0;
+    position: absolute;
+    width: 0;
+  }
+
+  &.top {
+    top: $vertical;
+    &:before {
+      top: 61px;
+    }
+  }
+  &.right {
+    right: $horizontal;
+    &:before {
+      border-left-color: $popup-bg;
+      border-width: 10px 0px 10px 10px;
+      right: -10px;
+    }
+  }
+  &.bottom {
+    bottom: $vertical;
+    &:before {
+      bottom: 61px;
+    }
+  }
+  &.left {
+    left: $horizontal;
+    &:before {
+      border-right-color: $popup-bg;
+      border-width: 10px 10px 10px 0px;
+      left: -10px;
+    }
+  }
 }
 
 .container {
@@ -21,71 +63,6 @@
   position: absolute;
   top: 0;
   width: 100%;
-}
-
-.arrow {
-  border-color: transparent;
-  border-style: solid;
-  height: 0px;
-  position: absolute;
-  width: 0px;
-
-  &:before {
-    border-color: transparent;
-    border-style: solid;
-    content: '';
-    display: block;
-    height: 0;
-    position: absolute;
-    width: 0;
-  }
-
-  &.tooltipPositionTop {
-    // border-top-color: var(--theme-staking-stake-pool-tooltip-border-color);
-    border-width: 11px 11px 0 11px;
-    &:before {
-      // border-top-color: var(
-      //   --theme-staking-stake-pool-tooltip-background-color
-      // );
-      border-width: 10px 10px 0px 10px;
-      left: -10px;
-      top: -11px;
-    }
-  }
-  &.tooltipPositionRight {
-    // border-right-color: var(--theme-staking-stake-pool-tooltip-border-color);
-    border-width: 11px 11px 11px 0;
-    &:before {
-      // border-right-color: var(
-      //   --theme-staking-stake-pool-tooltip-background-color
-      // );
-      border-width: 10px 10px 10px 0px;
-      right: -11px;
-      top: -10px;
-    }
-  }
-  &.tooltipPositionBottom {
-    // border-bottom-color: var(--theme-staking-stake-pool-tooltip-border-color);
-    border-width: 0 11px 11px 11px;
-    &:before {
-      border-bottom-color: transparent;
-      border-width: 0px 10px 10px 10px;
-      left: -10px;
-      top: -11px;
-    }
-  }
-  &.tooltipPositionLeft {
-    // border-left-color: var(--theme-staking-stake-pool-tooltip-border-color);
-    border-width: 11px 0 11px 11px;
-    &:before {
-      // border-left-color: var(
-      //   --theme-staking-stake-pool-tooltip-background-color
-      // );
-      border-width: 10px 0px 10px 10px;
-      left: -11px;
-      top: -10px;
-    }
-  }
 }
 
 .name {

@@ -24,10 +24,8 @@ const StakePoolThumbnail = ({
     isSelected ? styles.isHighlighted : null,
   ]);
   const [position, setPosition] = useState<IStakePoolTooltipPositionProps>({
-    top: 'auto',
-    right: 'auto',
-    bottom: 'auto',
-    left: 'auto',
+    horizontal: 'left',
+    vertical: 'top',
   });
   const handleSelect = (event: MouseEvent<HTMLElement>) => {
     const newPosition = getTooltipPosition(event);
@@ -55,7 +53,6 @@ const StakePoolThumbnail = ({
         <StakePoolTooltip
           stakePool={stakePool}
           color={color}
-          containerClassName=""
           onClose={onClose}
           position={position}
         />

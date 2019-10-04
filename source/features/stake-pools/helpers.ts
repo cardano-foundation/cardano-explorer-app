@@ -1,8 +1,6 @@
 import { IStakePoolProps, IStakePoolTooltipPositionProps } from './types';
 import { MouseEvent } from 'react';
 
-const THUMBNAIL_VERTICAL_POSITION = -38;
-const THUMBNAIL_HORIZONTAL_POSITION = 77;
 const SEARCH_FIELDS = ['slug', 'name'];
 
 const stakePoolsListSearch = (
@@ -25,21 +23,13 @@ export const getFilteredStakePoolsList = (
     stakePoolsListSearch(stakePool, search)
   );
 
-export const getTooltipPosition = (event: MouseEvent<HTMLElement>) => {
+export const getTooltipPosition = (
+  event: MouseEvent<HTMLElement>
+): IStakePoolTooltipPositionProps => {
   const button = event.target as HTMLButtonElement;
   const target = button.parentNode as HTMLElement;
-  const position: IStakePoolTooltipPositionProps = {
-    top: 'auto',
-    right: 'auto',
-    bottom: 'auto',
-    left: 'auto',
-  };
   const { top: thumbTop, left: thumbLeft } = target.getBoundingClientRect();
-  const thumnailVerticalPosition =
-    thumbTop > window.innerHeight / 2 ? 'bottom' : 'top';
-  const thumnailHorizontalPosition =
-    thumbLeft > window.innerWidth / 2 ? 'right' : 'left';
-  position[thumnailVerticalPosition] = THUMBNAIL_VERTICAL_POSITION;
-  position[thumnailHorizontalPosition] = THUMBNAIL_HORIZONTAL_POSITION;
-  return position;
+  const vertical = thumbTop > window.innerHeight / 2 ? 'bottom' : 'top';
+  const horizontal = thumbLeft > window.innerWidth / 2 ? 'right' : 'left';
+  return { vertical, horizontal };
 };

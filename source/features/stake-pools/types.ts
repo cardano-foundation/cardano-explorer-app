@@ -43,12 +43,12 @@ export interface IStakePoolTooltipProps {
   stakePool: IStakePoolProps;
   onClose: Function;
   color: string;
-  containerClassName: string;
   position: IStakePoolTooltipPositionProps;
 }
 
 export interface IStakePoolTooltipPositionProps {
-  [key: string]: 'auto' | number;
+  horizontal: 'left' | 'right';
+  vertical: 'top' | 'bottom';
 }
 
 export interface IStakePoolsContext {
