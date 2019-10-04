@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import AddressInfo from '../source/features/address/components/AddressInfo';
-import TransactionList from '../source/features/shared/transactions/components/TransactionList';
+import TransactionList from '../source/features/transactions/components/TransactionList';
 
 import { ThemeDecorator } from './support/ThemeDecorator';
 

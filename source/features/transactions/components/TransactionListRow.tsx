@@ -3,7 +3,7 @@ import moment from 'moment';
 import React from 'react';
 import styles from './TransactionListRow.scss';
 
-const ArrowNext = require('../../../../static/assets/images/arrow-next.svg');
+const ArrowNext = require('../../../static/assets/images/arrow-next.svg');
 const SEVEN_DAYS = 7 * 24 * 3600000;
 
 const shrinkAddress = (address: string) => {
