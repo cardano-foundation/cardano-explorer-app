@@ -17,12 +17,12 @@ const ArrowNext = require('../../../static/assets/images/arrow-next.svg');
 const SEVEN_DAYS = 7 * 24 * 3600000;
 
 const shrinkAddress = (address: string) => {
-  const N = address.length;
-  if (N <= 34) {
+  if (address.length <= 34) {
     return address;
   }
-
-  return `${address.substring(0, 17)}...${address.substring(N - 17)}`;
+  return `${address.substring(0, 17)}...${address.substring(
+    address.length - 17
+  )}`;
 };
 
 const TransactionInfo = (props: ITransactionInfoProps) => {
@@ -38,14 +38,14 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
   return (
     <div className={styles.transactionInfoContainer}>
       <div className={styles.header}>
-        <DividerWithTitle title="Transaction"/>
+        <DividerWithTitle title="Transaction" />
       </div>
       <div className={styles.transactionInfoRow}>
         <div className={styles.transactionInfoRowContainer}>
           <div className={styles.addresses}>
             <div className={styles.infoRow}>
               <div className={styles.id}>{props.id}</div>
-              <div className={styles.transferredAt}>{transferredAt}</div>
+              <div className={styles.transferredAt}>> {transferredAt}</div>
             </div>
             <div className={styles.infoRow}>
               <div className={styles.senders}>
@@ -63,7 +63,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
                 ))}
               </div>
               <div className={styles.nextIcon}>
-                <ArrowNext/>
+                <ArrowNext />
               </div>
               <div className={styles.receivers}>
                 {props.receivers.map(receiver => (
