@@ -1,6 +1,7 @@
 .transactionInfoContainer {
-  margin: 61.5px 0;
-  width: 872px;
+  background-color: $primary-bg;
+  margin: 0;
+  padding: 32px 247px;
 
   .header {
     margin-bottom: 41px;
@@ -121,5 +122,13 @@
         }
       }
     }
+  }
+
+  @media (max-width: 1400px) {
+    padding: 32px 80px;
+  }
+
+  @media (max-width: 992px) {
+    padding: 32px;
   }
 }

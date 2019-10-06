@@ -32,28 +32,8 @@ const transaction = {
 storiesOf('Transaction', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
   .add('Transaction Info', () => (
-    <div
-      style={{
-        backgroundColor: '#121326',
-        paddingBottom: 10,
-        paddingLeft: 247,
-        paddingRight: 247,
-        paddingTop: 10,
-      }}
-    >
-      <TransactionInfo {...transaction} />
-    </div>
+    <TransactionInfo {...transaction} />
   ))
   .add('Transaction Summary', () => (
-    <div
-      style={{
-        backgroundColor: '#121326',
-        paddingBottom: 10,
-        paddingLeft: 247,
-        paddingRight: 247,
-        paddingTop: 10,
-      }}
-    >
-      <TransactionSummary {...transactionSummary} />
-    </div>
+    <TransactionSummary {...transactionSummary} />
   ));
