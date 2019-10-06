@@ -7,15 +7,15 @@ import DividerWithTitle from '../../widgets/divider-with-title/components/Divide
 import styles from './EpochInfo.scss';
 
 export interface IEpochInfoProps {
-  percentage?: number;
-  epoch: number;
   blocks: number;
-  slots: number;
-  status: string;
-  startedAt: number;
   endedAt?: number;
-  transactions: number;
+  epoch: number;
   output: number;
+  percentage?: number;
+  slots: number;
+  startedAt: number;
+  status: string;
+  transactions: number;
 }
 
 const EpochInfo = (props: IEpochInfoProps) => (
