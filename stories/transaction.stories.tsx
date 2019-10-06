@@ -1,9 +1,9 @@
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 import TransactionInfo from '../source/features/transactions/components/TransactionInfo';
 import TransactionSummary from '../source/features/transactions/components/TransactionSummary';
 
-import {ThemeDecorator} from './support/ThemeDecorator';
+import { ThemeDecorator } from './support/ThemeDecorator';
 
 const transactionSummary = {
   address:
@@ -13,7 +13,7 @@ const transactionSummary = {
   fee: 0.171246,
   receivedTime: 1470006392000,
   slot: 11044,
-  totalOutput: 224909.277897
+  totalOutput: 224909.277897,
 };
 
 const transaction = {
@@ -25,10 +25,8 @@ const transaction = {
     'Ae2tdPwUPEZ9PxJFs8BbheDEkj4R626Bq6Ci7x3w1esZHPfhoUttUPz4oPE',
     'DdzFFzCqrht8NiQRTwp364FjCMZCbGHJpWHoNWdCPYauG62fn3MirWdRyoChgURCLU2Vv8GqadRVkpu7e932ZtLKHCaE4rpy65R2PYuq',
   ],
-  senders: [
-    'b0bfe281b8e60a67142497c83a3ba8d6cd46781001ed26ce8a2ca907b4059111',
-  ],
-  transferredAt: 1470006392000,
+  senders: ['b0bfe281b8e60a67142497c83a3ba8d6cd46781001ed26ce8a2ca907b4059111'],
+  transferredAt: 1460006352000,
 };
 
 storiesOf('Transaction', module)
@@ -43,7 +41,7 @@ storiesOf('Transaction', module)
         paddingTop: 10,
       }}
     >
-      <TransactionInfo {...transaction}/>
+      <TransactionInfo {...transaction} />
     </div>
   ))
   .add('Transaction Summary', () => (
