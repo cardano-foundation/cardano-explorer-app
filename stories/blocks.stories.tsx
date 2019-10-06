@@ -1,6 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Blocks from '../source/features/blocks/components/Blocks';
+import BlockSummary from '../source/features/blocks/components/BlockSummary';
+
 import { ThemeDecorator } from './support/ThemeDecorator';
 
 const blocks = [
@@ -56,9 +58,24 @@ const blocks = [
   },
 ];
 
+const blockSummary = {
+  block: 11044,
+  confirmations: 0,
+  createdBy: '[BLSH] pool',
+  epoch: 47,
+  id: '502017e88ff3b7389a0c7e6f4a6c808d171938467c9adbdc059250ab4a8fee72',
+  merkleRoot:
+    '0e5751c026e543b2e8ab2eb06099daa1d1e5df47778f7787faab45cdf12fe3a8',
+  nextBlock: '2111edea30970af11172bd8e2f05c7406cba8f20d9bb78c4fa62ba06881372e7',
+  prevBlock: '1b6532a66b067f7b81691924f00c4abc1cfbe8496dcb150dba1704ac080c2dc0',
+  size: 634,
+  time: 1470006392000,
+  transactions: 0,
+};
+
 storiesOf('Blocks', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Blocks', () => (
+  .add('Blocks List', () => (
     <div
       style={{
         backgroundColor: '#121326',
@@ -70,4 +87,5 @@ storiesOf('Blocks', module)
     >
       <Blocks items={blocks} />
     </div>
-  ));
+  ))
+  .add('Block Summary', () => <BlockSummary {...blockSummary} />);

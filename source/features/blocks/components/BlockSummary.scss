@@ -1,4 +1,4 @@
-.transactionSummaryContainer {
+.blockSummaryContainer {
   background-color: $primary-bg;
   margin: 0;
   padding: 32px 247px;
@@ -34,7 +34,17 @@
 
           span {
             color: $primary-highlight-color;
+            cursor: pointer;
           }
+
+          @media (max-width: 768px) {
+            word-break: break-all;
+          }
+        }
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          margin-bottom: 20px;
         }
       }
     }
