@@ -3,9 +3,18 @@
  * Variables for the `incentivized-testnet` theme.
  *
  */
+$transparent-color: transparent;
 $primary-highlight-color: #eb2256;
 $primary-highlight-color-hover: #d41345;
 $primary-highlight-color-press: #c81241;
 $secondary-highlight-color: #f69ab2;
 $dotted-separator-color: rgba(246, 154, 178, 0.3);
 $footer-text-color: rgba(31, 193, 195, 0.3);
+$spinner-circle-background-color: conic-gradient(
+    rgba(31, 193, 195, 0),
+    rgba(31, 193, 195, 0.2) 21%,
+    #eb2256 52%,
+    rgba(31, 193, 195, 0.3) 57%,
+    rgba(31, 193, 195, 0),
+    rgba(31, 193, 195, 0)
+);
