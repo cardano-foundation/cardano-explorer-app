@@ -1,7 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Blocks from '../source/features/blocks/components/Blocks';
-import BlockSummary from '../source/features/blocks/components/BlockSummary';
 
 import { ThemeDecorator } from './support/ThemeDecorator';
 
@@ -87,5 +86,4 @@ storiesOf('Blocks', module)
     >
       <Blocks items={blocks} />
     </div>
-  ))
-  .add('Block Summary', () => <BlockSummary {...blockSummary} />);
+  ));
