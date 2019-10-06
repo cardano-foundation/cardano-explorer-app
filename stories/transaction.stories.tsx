@@ -1,11 +1,11 @@
-import { storiesOf } from '@storybook/react';
+import {storiesOf} from '@storybook/react';
 import React from 'react';
 import TransactionInfo from '../source/features/transactions/components/TransactionInfo';
-// import TransactionList from '../source/features/transactions/components/TransactionList';
+import TransactionSummary from '../source/features/transactions/components/TransactionSummary';
 
-import { ThemeDecorator } from './support/ThemeDecorator';
+import {ThemeDecorator} from './support/ThemeDecorator';
 
-const transactionInfo = {
+const transactionSummary = {
   address:
     'DdzFFzCqrhshP3eXMp6T6yBAurVd1cJsD8WHg7BbBwNy3AVN2k5jqDPENM9U4zHX5mqdZWxbELWtQnc8dzsM9f8k1dEiuMW9aDU1AGes',
   block: 11044,
@@ -16,38 +16,22 @@ const transactionInfo = {
   totalOutput: 224909.277897
 };
 
-/*const transactions = [
-  {
-    amounts: [661765.123, 4523.1163],
-    currentAddress:
-      'DdzFFzCqrhshP3eXMp6T6yBAurVd1cJsD8WHg7BbBwNy3AVN2k5jqDPENM9U4zHX5mqdZWxbELWtQnc8dzsM9f8k1dEiuMW9aDU1AGes',
-    id: 'Ae2tdPwUPEZ9PxJFs8BbheDEkj4R626Bq6Ci7x3w1esZHPfhoUttUPz4oPE',
-    receivers: [
-      'Ae2tdPwUPEZ9PxJFs8BbheDEkj4R626Bq6Ci7x3w1esZHPfhoUttUPz4oPE',
-      'DdzFFzCqrht8NiQRTwp364FjCMZCbGHJpWHoNWdCPYauG62fn3MirWdRyoChgURCLU2Vv8GqadRVkpu7e932ZtLKHCaE4rpy65R2PYuq',
-    ],
-    senders: [
-      'b0bfe281b8e60a67142497c83a3ba8d6cd46781001ed26ce8a2ca907b4059111',
-    ],
-    transferredAt: 1470006392000,
-  },
-  {
-    amounts: [345.0, 332402.896790],
-    currentAddress:
-      'DdzFFzCqrhshP3eXMp6T6yBAurVd1cJsD8WHg7BbBwNy3AVN2k5jqDPENM9U4zHX5mqdZWxbELWtQnc8dzsM9f8k1dEiuMW9aDU1AGes',
-    id: 'Ae2tdPwUPEZ9PxJFs8BbheDEkj4R626Bq6Ci7x3w1esZHPfhoUttUPz4oPE',
-    receivers: [
-      'Ae2tdPwUPEZ9PxJFs8BbheDEkj4R626Bq6Ci7x3w1esZHPfhoUttUPz4oPE',
-      'DdzFFzCqrht8NiQRTwp364FjCMZCbGHJpWHoNWdCPYauG62fn3MirWdRyoChgURCLU2Vv8GqadRVkpu7e932ZtLKHCaE4rpy65R2PYuq',
-    ],
-    senders: [
-      'b0bfe281b8e60a67142497c83a3ba8d6cd46781001ed26ce8a2ca907b4059111',
-    ],
-    transferredAt: 1447094392000,
-  },
-];*/
+const transaction = {
+  amounts: [661765.123, 4523.1163],
+  currentAddress:
+    'DdzFFzCqrhshP3eXMp6T6yBAurVd1cJsD8WHg7BbBwNy3AVN2k5jqDPENM9U4zHX5mqdZWxbELWtQnc8dzsM9f8k1dEiuMW9aDU1AGes',
+  id: 'Ae2tdPwUPEZ9PxJFs8BbheDEkj4R626Bq6Ci7x3w1esZHPfhoUttUPz4oPE',
+  receivers: [
+    'Ae2tdPwUPEZ9PxJFs8BbheDEkj4R626Bq6Ci7x3w1esZHPfhoUttUPz4oPE',
+    'DdzFFzCqrht8NiQRTwp364FjCMZCbGHJpWHoNWdCPYauG62fn3MirWdRyoChgURCLU2Vv8GqadRVkpu7e932ZtLKHCaE4rpy65R2PYuq',
+  ],
+  senders: [
+    'b0bfe281b8e60a67142497c83a3ba8d6cd46781001ed26ce8a2ca907b4059111',
+  ],
+  transferredAt: 1470006392000,
+};
 
-storiesOf('Transaction Info', module)
+storiesOf('Transaction', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
   .add('Transaction Info', () => (
     <div
@@ -59,10 +43,10 @@ storiesOf('Transaction Info', module)
         paddingTop: 10,
       }}
     >
-      <TransactionInfo {...transactionInfo} />
+      <TransactionInfo {...transaction}/>
     </div>
   ))
-  /*.add('Transactions list', () => (
+  .add('Transaction Summary', () => (
     <div
       style={{
         backgroundColor: '#121326',
@@ -72,6 +56,6 @@ storiesOf('Transaction Info', module)
         paddingTop: 10,
       }}
     >
-      <TransactionList items={transactions} />
+      <TransactionSummary {...transactionSummary} />
     </div>
-  ));*/
+  ));
