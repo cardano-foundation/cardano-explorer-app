@@ -31,9 +31,7 @@ const transaction = {
 
 storiesOf('Transaction', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Transaction Info', () => (
-    <TransactionInfo {...transaction} />
-  ))
+  .add('Transaction Info', () => <TransactionInfo {...transaction} />)
   .add('Transaction Summary', () => (
     <TransactionSummary {...transactionSummary} />
   ));
