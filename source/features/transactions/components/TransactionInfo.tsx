@@ -38,9 +38,9 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
   return (
     <div className={styles.transactionInfoContainer}>
       <div className={styles.header}>
-        <DividerWithTitle title="Transactions"/>
+        <DividerWithTitle title="Transaction"/>
       </div>
-      <div key={`transaction_${props.id}`} className={styles.transactionInfoRow}>
+      <div className={styles.transactionInfoRow}>
         <div className={styles.transactionInfoRowContainer}>
           <div className={styles.addresses}>
             <div className={styles.infoRow}>
