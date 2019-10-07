@@ -71,7 +71,7 @@ $horizontal: 77px;
   font-size: 16px;
   letter-spacing: 0.5px;
   line-height: 1.38;
-  margin-bottom: 3px;
+  margin: 0 0 3px;
   max-height: 44px;
   overflow: hidden;
   padding-right: 25px;
@@ -79,16 +79,23 @@ $horizontal: 77px;
 }
 
 .closeButton {
+  background: none;
+  border: none;
   cursor: pointer;
+  padding: 0;
   position: absolute;
   right: 20px;
   top: 25px;
+
+  &:focus {
+    outline: 0;
+  }
 
   svg {
     height: 8px;
     width: 8px;
 
-    polygon {
+    path {
       fill: $solid-text;
     }
   }
@@ -105,7 +112,7 @@ $horizontal: 77px;
 }
 
 .retirement {
-  background: $secondary-highlight-color;
+  background: $secondary-half-color;
   border-radius: 3px;
   color: $solid-text;
   display: inline-block;
@@ -128,9 +135,10 @@ $horizontal: 77px;
 
 .url {
   color: $secondary-highlight-color;
-  font-size: 14px;
+  border-bottom: 1px solid $secondary-highlight-color;
+  font-family: ProximaNova;
+  font-size: 12px;
   line-height: 1.36;
-  margin-bottom: 18px;
   max-width: 100%;
 
   .urlContent {
@@ -138,12 +146,17 @@ $horizontal: 77px;
     max-width: calc(100% - 14px);
     overflow: hidden;
     text-overflow: ellipsis;
+    vertical-align: middle;
   }
 
-  & > span {
-    vertical-align: text-top;
-    svg {
-      vertical-align: baseline;
+  .urlIcon {
+    height: 13px;
+    width: 13px;
+    margin-left: 2px;
+    vertical-align: middle;
+
+    path {
+      stroke: $secondary-highlight-color;
     }
   }
 }
@@ -174,6 +187,7 @@ $horizontal: 77px;
 
   dd {
     line-height: 0;
+    margin: 0;
     padding-top: 1px;
     text-align: right;
     width: 40%;

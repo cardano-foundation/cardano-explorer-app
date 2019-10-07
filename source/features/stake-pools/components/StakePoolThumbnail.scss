@@ -31,7 +31,7 @@
 }
 
 .isHighlighted {
-  background-color: #3f404f;
+  background-color: $popup-bg;
 }
 
 .slug {
@@ -51,25 +51,19 @@
 }
 
 .clock {
-  background: $secondary-highlight-color;
   border-radius: 0 2px 0 4px;
   height: 18px;
+  margin: 1px 0 0;
   position: absolute;
   right: 0;
   top: 0;
   width: 18px;
-}
-
-.clockIcon {
-  display: block;
-  line-height: 0;
-  margin: 1px 0 0;
-  padding: 0;
-  text-align: center;
-
   svg {
-    height: 15px;
-    width: 15px;
+    height: 18px;
+    width: 18px;
+    > g > path {
+      fill: $secondary-half-color;
+    }
   }
 }
 

@@ -1,11 +1,14 @@
 import classnames from 'classnames';
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
-import { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { MouseEvent } from 'react';
 import { getColorFromRange } from '../../../utils/colors';
 import { IStakePoolTooltipProps } from '../types';
 import styles from './StakePoolTooltip.scss';
+
+const CloseCrossIcon = require('../../../static/assets/images/stake-pools/close-cross.svg');
+const ExternalLinkIcon = require('../../../static/assets/images/stake-pools/link-ic.svg');
 
 export const StakePoolTooltip = ({
   stakePool,
@@ -63,8 +66,7 @@ export const StakePoolTooltip = ({
       <div className={styles.container}>
         <h3 className={styles.name}>{name}</h3>
         <button className={styles.closeButton} onClick={() => onClose()}>
-          {/*<SVGInline svg={closeCross} />*/}
-          𝑿
+          <CloseCrossIcon />
         </button>
         <div className={styles.slug}>{slug}</div>
         {retiring && (
@@ -73,10 +75,10 @@ export const StakePoolTooltip = ({
           </div>
         )}
         <div className={styles.description}>{description}</div>
-        {/*<button className={styles.url} onClick={() => onOpenExternalLink(url)}>
+        <a className={styles.url} href={url} target="_blank">
           <span className={styles.urlContent}>{url}</span>
-          <SVGInline svg={externalLinkIcon} />
-        </button>*/}
+          <ExternalLinkIcon className={styles.urlIcon} />
+        </a>
         <dl className={styles.table}>
           <dt>Ranking</dt>
           <dd className={styles.ranking}>

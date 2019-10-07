@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { observer } from 'mobx-react-lite';
-import { MouseEvent, useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import { getColorFromRange } from '../../../utils/colors';
 import { getTooltipPosition } from '../helpers';
 import {
@@ -10,11 +10,13 @@ import {
 import styles from './StakePoolThumbnail.scss';
 import { StakePoolTooltip } from './StakePoolTooltip';
 
+const ClockIcon = require('../../../static/assets/images/stake-pools/clock-icon.svg');
+
 const StakePoolThumbnail = ({
-  stakePool,
   isSelected,
-  onSelect,
   onClose,
+  onSelect,
+  stakePool,
 }: IStakePoolThumbnailProps) => {
   const { ranking, slug, retiring, id } = stakePool;
   const color = getColorFromRange(ranking);
@@ -39,7 +41,11 @@ const StakePoolThumbnail = ({
         <div className={styles.ranking} style={{ color }}>
           {ranking}
         </div>
-        {retiring && <div className={styles.clock}>⏰</div>}
+        {retiring && (
+          <div className={styles.clock}>
+            <ClockIcon className={styles.clockIcon} />
+          </div>
+        )}
         <div
           className={styles.colorBand}
           style={{
