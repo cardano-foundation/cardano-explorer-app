@@ -8,13 +8,18 @@
 }
 
 .footerContainer {
-  background-color: $primary-bg;
-  padding: 78px 40px;
+  width: 100%;
+
+  .footerContent {
+    width: 872px;
+    margin: 0 auto;
+  }
 
   .footerTopContainer {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    width: 872px;
 
     .copyright {
       @include footerText($solid-text, ProximaNova, 12px, normal);

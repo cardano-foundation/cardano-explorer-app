@@ -1,4 +1,4 @@
-.epochListContainer {
+.blockListContainer {
   width: 872px;
   margin: 0 auto;
 
@@ -10,6 +10,7 @@
     align-items: center;
     color: $secondary-highlight-color;
     display: flex;
+    font-family: 'Proxima Nova Semibold', sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -23,28 +24,34 @@
     }
 
     .blocksSlots {
+      width: 100px;
+    }
+
+    .createdAt {
+      width: 160px;
+    }
+
+    .createdBy {
+      text-align: right;
       width: 120px;
     }
 
-    .startedAt {
-      width: 170px;
-    }
-
-    .endedAt {
-      width: 170px;
-    }
-
     .transactions {
-      width: 140px;
+      width: 120px;
+    }
+
+    .size {
+      text-align: right;
+      width: 120px;
     }
 
     .output {
-      flex: 1;
       text-align: right;
+      width: 162px;
     }
   }
 
-  .epochListRow {
+  .blockListRow {
     border-bottom: 2px dotted $dotted-separator-color;
   }
 

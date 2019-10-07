@@ -70,7 +70,7 @@ storiesOf('Epochs', module)
         paddingTop: 10,
       }}
     >
-      <EpochList items={epochs} />
+      <EpochList title="Epochs" items={epochs} />
     </div>
   ))
   .add('Epoch Info', () => (

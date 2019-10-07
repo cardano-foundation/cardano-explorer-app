@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Blocks from '../source/features/blocks/components/Blocks';
+import BlockList from '../source/features/blocks/components/BlockList';
 import { ThemeDecorator } from './support/ThemeDecorator';
 
 const blocks = [
@@ -68,6 +68,6 @@ storiesOf('Blocks', module)
         paddingTop: 10,
       }}
     >
-      <Blocks items={blocks} />
+      <BlockList items={blocks} />
     </div>
   ));

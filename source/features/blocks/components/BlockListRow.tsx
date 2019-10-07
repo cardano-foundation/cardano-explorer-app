@@ -1,8 +1,8 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
-import styles from './BlocksListRow.scss';
+import styles from './BlockListRow.scss';
 
-export interface IBlocksListRowProps {
+export interface IBlockListRowProps {
   epoch: number;
   block: number;
   slots: number;
@@ -13,8 +13,8 @@ export interface IBlocksListRowProps {
   createdBy: string;
 }
 
-const BlocksListRow = (props: IBlocksListRowProps) => (
-  <div className={styles.blocksListRowContainer}>
+const BlockListRow = (props: IBlockListRowProps) => (
+  <div className={styles.blockListRowContainer}>
     <div className={styles.epoch}>{props.epoch}</div>
     <div className={styles.blocksSlots}>{props.block}</div>
     <div className={styles.createdAt}>
@@ -27,4 +27,4 @@ const BlocksListRow = (props: IBlocksListRowProps) => (
   </div>
 );
 
-export default observer(BlocksListRow);
+export default observer(BlockListRow);
