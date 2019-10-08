@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import moment from 'moment';
-import React, { useCallback, useEffect, useRef, FC } from 'react';
+import React, { FC, useCallback, useEffect, useRef } from 'react';
 import { MouseEvent } from 'react';
 import { getColorFromRange } from '../../../utils/colors';
 import { IStakePoolTooltipProps } from '../types';

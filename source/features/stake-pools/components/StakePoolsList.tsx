@@ -1,16 +1,16 @@
 import classnames from 'classnames';
 import { observer } from 'mobx-react-lite';
-import React, { MouseEvent, useState, FC } from 'react';
-import { getTooltipPosition } from '../helpers';
+import React, { FC, MouseEvent, useState } from 'react';
 import { getColorFromRange } from '../../../utils/colors';
+import { getTooltipPosition } from '../helpers';
+import {
+  IStakePoolProps,
+  IStakePoolsListProps,
+  IStakePoolTooltipPositionProps,
+} from '../types';
 import styles from './StakePoolsList.scss';
 import StakePoolThumbnail from './StakePoolThumbnail';
 import StakePoolTooltip from './StakePoolTooltip';
-import {
-  IStakePoolsListProps,
-  IStakePoolProps,
-  IStakePoolTooltipPositionProps,
-} from '../types';
 
 const StakePoolsList: FC<IStakePoolsListProps> = ({
   stakePoolsList,
@@ -32,13 +32,12 @@ const StakePoolsList: FC<IStakePoolsListProps> = ({
         const { id, ranking } = stakePool;
         const color = getColorFromRange(stakePool.ranking, colorOptions);
         const isSelected = id === selectedPoolId;
-        const onSelect = handleSelect.bind(null, stakePool.id);
         return (
           <StakePoolThumbnail
             color={color}
             isSelected={isSelected}
             key={id}
-            onSelect={onSelect}
+            onSelect={handleSelect.bind(null, stakePool.id)}
             stakePool={stakePool}
           >
             {isSelected && (

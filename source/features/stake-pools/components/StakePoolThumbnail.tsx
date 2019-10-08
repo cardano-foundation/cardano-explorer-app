@@ -1,6 +1,6 @@
-import React from 'react';
 import classnames from 'classnames';
 import { observer } from 'mobx-react-lite';
+import React from 'react';
 import { IStakePoolThumbnailProps } from '../types';
 import styles from './StakePoolThumbnail.scss';
 
