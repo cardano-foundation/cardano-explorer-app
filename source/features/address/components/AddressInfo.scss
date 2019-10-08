@@ -1,0 +1,40 @@
+.addressInfoContainer {
+  margin: 61.5px 0;
+
+  .header {
+    margin-bottom: 41px;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .infoPanel {
+      color: $solid-text;
+      font-family: 'Proxima Nova', sans-serif;
+      opacity: 0.7;
+
+      .infoRow {
+        display: flex;
+        font-size: 12px;
+        letter-spacing: 0.6px;
+        line-height: 1.33;
+        margin-bottom: 10px;
+
+        .infoLabel {
+          font-weight: 600;
+          width: 130px;
+        }
+
+        .infoValue {
+          font-weight: 300;
+        }
+      }
+    }
+
+    .qrcode {
+      background-color: #ffffff;
+      padding: 7px 7px 3px;
+    }
+  }
+}
