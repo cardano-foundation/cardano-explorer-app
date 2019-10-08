@@ -6,8 +6,8 @@ import TransactionListRow, {
 } from './TransactionListRow';
 
 export interface ITransactionListProps {
-  title: string;
   items: Array<ITransactionListRowProps>;
+  title: string;
 }
 
 const TransactionList = (props: ITransactionListProps) => (
