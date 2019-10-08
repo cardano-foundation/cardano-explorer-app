@@ -1,5 +1,6 @@
 import { StakePoolsApi } from './api';
 import { StakePoolsStore } from './store';
+import { MouseEvent, FC } from 'react';
 
 export interface IStakePoolsProps {
   stakePoolsList: Array<IStakePoolProps>;
@@ -32,26 +33,26 @@ export interface IStakePoolProps {
   url: string;
 }
 
-export interface IStakePoolThumbnailProps {
-  stakePool: IStakePoolProps;
-  isSelected: boolean;
-  onSelect: Function;
-  onClose: Function;
-}
-
-export interface IStakePoolTooltipProps {
-  stakePool: IStakePoolProps;
-  onClose: Function;
-  color: string;
-  position: IStakePoolTooltipPositionProps;
-}
-
 export interface IStakePoolTooltipPositionProps {
   horizontal: 'left' | 'right';
   vertical: 'top' | 'bottom';
 }
 
+export interface IStakePoolTooltipProps {
+  position: IStakePoolTooltipPositionProps;
+  color: string;
+  stakePool: IStakePoolProps;
+  onClose: Function;
+}
+
 export interface IStakePoolsContext {
   api: StakePoolsApi;
   store: StakePoolsStore;
+}
+
+export interface IStakePoolThumbnailProps {
+  stakePool: IStakePoolProps;
+  isSelected: boolean;
+  onSelect(event: MouseEvent<HTMLElement>): void;
+  color: string;
 }

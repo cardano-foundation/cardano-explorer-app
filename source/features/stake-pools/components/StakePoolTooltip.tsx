@@ -1,7 +1,6 @@
 import classnames from 'classnames';
-import { observer } from 'mobx-react-lite';
 import moment from 'moment';
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, FC } from 'react';
 import { MouseEvent } from 'react';
 import { getColorFromRange } from '../../../utils/colors';
 import { IStakePoolTooltipProps } from '../types';
@@ -10,12 +9,12 @@ import styles from './StakePoolTooltip.scss';
 const CloseCrossIcon = require('../../../static/assets/images/stake-pools/close-cross.svg');
 const ExternalLinkIcon = require('../../../static/assets/images/stake-pools/link-ic.svg');
 
-export const StakePoolTooltip = ({
+const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
   stakePool,
   onClose,
   position,
   color,
-}: IStakePoolTooltipProps) => {
+}) => {
   const {
     name,
     description,
@@ -136,3 +135,4 @@ export const StakePoolTooltip = ({
     </div>
   );
 };
+export default StakePoolTooltip;
