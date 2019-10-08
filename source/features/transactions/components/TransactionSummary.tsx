@@ -27,7 +27,7 @@ const TransactionSummary = (props: ITransactionSummaryProps) => (
           <div className={styles.infoLabel}>Included In</div>
           <div className={styles.infoValue}>
             Epoch <span>{props.epoch}</span>, Slot / block
-            <span>{props.slot / props.block}</span>
+            <span> {props.slot / props.block}</span>
           </div>
         </div>
         <div className={styles.infoRow}>
