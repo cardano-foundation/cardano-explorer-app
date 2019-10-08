@@ -45,7 +45,7 @@ export interface IStakePoolsContext {
 }
 export interface IStakePoolThumbnailProps {
   stakePool: IStakePoolProps;
-  children: any;
+  children?: any;
   color: string;
   isSelected: boolean;
   onSelect(event: MouseEvent<HTMLElement>): void;
