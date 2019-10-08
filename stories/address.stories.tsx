@@ -6,6 +6,7 @@ import TransactionList from '../source/features/transactions/components/Transact
 import { ThemeDecorator } from './support/ThemeDecorator';
 
 const addressInfo = {
+  title: 'Address',
   address:
     'DdzFFzCqrht7PVrPU8FAnks5Ys6BxLxKjy7sFdNnkDFLoMaK8FoEiun6eMBowpnkS8h69w3VxTrJ6pTiwYSgF1mC22ifAqQhAPY4ty4j',
   finalBalance: 0.897277,
@@ -67,6 +68,6 @@ storiesOf('Address', module)
         paddingTop: 10,
       }}
     >
-      <TransactionList items={transactions} />
+      <TransactionList title="Transactions" items={transactions} />
     </div>
   ));

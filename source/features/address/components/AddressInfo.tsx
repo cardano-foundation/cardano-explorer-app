@@ -4,6 +4,7 @@ import DividerWithTitle from '../../widgets/divider-with-title/components/Divide
 import styles from './AddressInfo.scss';
 
 export interface IAddressInfoProps {
+  title: string;
   address: string;
   transactions: number;
   finalBalance: number;
@@ -12,7 +13,7 @@ export interface IAddressInfoProps {
 const AddressInfo = (props: IAddressInfoProps) => (
   <div className={styles.addressInfoContainer}>
     <div className={styles.header}>
-      <DividerWithTitle title="Address" />
+      <DividerWithTitle title={props.title} />
     </div>
     <div className={styles.content}>
       <div className={styles.infoPanel}>

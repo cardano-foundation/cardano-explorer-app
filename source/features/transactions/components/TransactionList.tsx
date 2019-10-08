@@ -6,13 +6,14 @@ import TransactionListRow, {
 } from './TransactionListRow';
 
 export interface ITransactionListProps {
+  title: string;
   items: Array<ITransactionListRowProps>;
 }
 
 const TransactionList = (props: ITransactionListProps) => (
   <div className={styles.transactionListContainer}>
     <div className={styles.header}>
-      <DividerWithTitle title="Transactions" />
+      <DividerWithTitle title={props.title} />
     </div>
     {props.items.map((item, index) => (
       <div key={`transaction_${index}`} className={styles.transactionListRow}>
