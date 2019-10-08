@@ -7,21 +7,23 @@ const ArrowNext = require('../../../static/assets/images/arrow-next.svg');
 const SEVEN_DAYS = 7 * 24 * 3600000;
 
 const shrinkAddress = (address: string) => {
-  const N = address.length;
-  if (N <= 34) {
+  const addressLength = address.length;
+  if (addressLength <= 34) {
     return address;
   }
 
-  return `${address.substring(0, 17)}...${address.substring(N - 17)}`;
+  return `${address.substring(0, 17)}...${address.substring(
+    addressLength - 17
+  )}`;
 };
 
 export interface ITransactionListRowProps {
-  id: string;
-  currentAddress: string;
-  transferredAt: number;
-  senders: Array<string>;
-  receivers: Array<string>;
   amounts: Array<number>;
+  currentAddress: string;
+  id: string;
+  receivers: Array<string>;
+  senders: Array<string>;
+  transferredAt: number;
 }
 
 const TransactionListRow = (props: ITransactionListRowProps) => {
