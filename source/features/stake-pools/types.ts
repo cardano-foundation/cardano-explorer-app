@@ -21,7 +21,7 @@ export interface IStakePoolProps {
   id: string;
   controlledStake: number;
   description: string;
-  slug: string;
+  ticker: string;
   name: string;
   performance: number;
   profitMargin: number;

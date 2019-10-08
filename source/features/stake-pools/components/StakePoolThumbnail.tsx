@@ -18,7 +18,7 @@ const StakePoolThumbnail = ({
   onSelect,
   stakePool,
 }: IStakePoolThumbnailProps) => {
-  const { ranking, slug, retiring, id } = stakePool;
+  const { ranking, ticker, retiring, id } = stakePool;
   const color = getColorFromRange(ranking);
   const containerStyles = classnames([
     styles.stakePoolThumbnailContainer,
@@ -37,7 +37,7 @@ const StakePoolThumbnail = ({
     <div className={containerStyles}>
       <button onClick={handleSelect} />
       <div className={styles.content}>
-        <div className={styles.slug}>{slug}</div>
+        <div className={styles.ticker}>{ticker}</div>
         <div className={styles.ranking} style={{ color }}>
           {ranking}
         </div>

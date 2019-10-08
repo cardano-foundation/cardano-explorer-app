@@ -19,7 +19,7 @@ export const StakePoolTooltip = ({
   const {
     name,
     description,
-    slug,
+    ticker,
     url,
     ranking,
     controlledStake,
@@ -68,7 +68,7 @@ export const StakePoolTooltip = ({
         <button className={styles.closeButton} onClick={() => onClose()}>
           <CloseCrossIcon />
         </button>
-        <div className={styles.slug}>{slug}</div>
+        <div className={styles.ticker}>{ticker}</div>
         {retiring && (
           <div className={styles.retirement}>
             Retiring in {retirementFromNow}
