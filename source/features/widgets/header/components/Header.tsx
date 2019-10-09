@@ -1,4 +1,5 @@
 import { observer } from 'mobx-react-lite';
+import Link from 'next/link';
 import React from 'react';
 import Search, { ISearchProps } from '../../search/components/Search';
 import styles from './Header.scss';
@@ -16,6 +17,7 @@ export enum BrandType {
 export interface IHeaderProps {
   brandType?: BrandType;
   searchProps?: ISearchProps;
+  router?: object;
   withBackground?: boolean;
   withSearch?: boolean;
 }
@@ -26,6 +28,13 @@ const Header = (props: IHeaderProps) => {
     brandType === BrandType.ENLARGED
       ? styles.enlargedBrandType
       : styles.shrinkedBrandType;
+
+  const indexClassName = !location.pathname.includes('stake-pools')
+    ? styles.activeTab
+    : '';
+  const stakePoolsClassName = location.pathname.includes('stake-pools')
+    ? styles.activeTab
+    : '';
 
   return (
     <header className={styles.headerContainer}>
@@ -47,6 +56,14 @@ const Header = (props: IHeaderProps) => {
           <div className={styles.titleContainer}>
             <span className={styles.cardanoTitle}>Cardano</span>
             <span className={styles.explorerTitle}>Blockchain Explorer</span>
+          </div>
+          <div className={styles.tabs}>
+            <Link href="/">
+              <a className={indexClassName}>Epochs & Blocks</a>
+            </Link>
+            <Link href="/stake-pools">
+              <a className={stakePoolsClassName}>Stake Pools</a>
+            </Link>
           </div>
           <div className={styles.triangleSign}>
             <div className={styles.straightLine} />
