@@ -2,18 +2,22 @@ import { FC, MouseEvent } from 'react';
 import { StakePoolsApi } from './api';
 import { StakePoolsStore } from './store';
 
+type GenericArgFn = (arg: string) => void;
+type GenericFn = () => void;
+
 export interface IStakePoolsProps {
   stakePoolsList: Array<IStakePoolProps>;
 }
 export interface IStakePoolsSearchProps {
   search: string;
-  onSearch: Function;
+  onSearch: GenericArgFn;
 }
+
 export interface IStakePoolsListProps {
   stakePoolsList: Array<IStakePoolProps>;
   selectedPoolId: string | null | undefined;
-  onSelect: Function;
-  onClose: Function;
+  onSelect: GenericArgFn;
+  onClose: GenericFn;
 }
 export interface IStakePoolProps {
   controlledStake: number;
@@ -37,7 +41,7 @@ export interface IStakePoolTooltipProps {
   position: IStakePoolTooltipPositionProps;
   stakePool: IStakePoolProps;
   color: string;
-  onClose: Function;
+  onClose: GenericFn;
 }
 export interface IStakePoolsContext {
   api: StakePoolsApi;

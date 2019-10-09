@@ -9,7 +9,7 @@ const StakePoolsSearch = ({ search, onSearch }: IStakePoolsSearchProps) => {
       <Input
         placeholder="Search for a specific stake pool"
         value={search}
-        onChange={v => onSearch(v)}
+        onChange={(v: string) => onSearch(v)}
       />
     </div>
   );
