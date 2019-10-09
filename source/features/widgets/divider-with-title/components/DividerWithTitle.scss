@@ -22,5 +22,9 @@
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 500;
+
+    @media (max-width: 340px) {
+      padding: 1.5px 8px;
+    }
   }
 }

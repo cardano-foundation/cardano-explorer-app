@@ -1,0 +1,60 @@
+.blockSummaryContainer {
+  background-color: $primary-bg;
+  margin: 0;
+  padding: 32px 247px;
+
+  .header {
+    margin-bottom: 41px;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .infoPanel {
+      color: $solid-text;
+      opacity: 0.7;
+
+      .infoRow {
+        display: flex;
+        font-size: 12px;
+        letter-spacing: 0.6px;
+        line-height: 1.33;
+        margin-bottom: 10px;
+
+        .infoLabel {
+          font-family: 'Proxima Nova Semibold', sans-serif;
+          font-weight: 600;
+          width: 130px;
+        }
+
+        .infoValue {
+          font-family: 'Proxima Nova L', sans-serif;
+          font-weight: 300;
+
+          span {
+            color: $primary-highlight-color;
+            cursor: pointer;
+          }
+
+          @media (max-width: 768px) {
+            word-break: break-all;
+          }
+        }
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    padding: 32px 200px;
+  }
+
+  @media (max-width: 992px) {
+    padding: 32px;
+  }
+}
