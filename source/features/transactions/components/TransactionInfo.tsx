@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import React from 'react';
+import { shrinkAddress } from '../../../common/helpers';
 import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
 import styles from './TransactionInfo.scss';
 
@@ -15,15 +16,6 @@ export interface ITransactionInfoProps {
 
 const ArrowNext = require('../../../static/assets/images/arrow-next.svg');
 const SEVEN_DAYS = 7 * 24 * 3600000;
-
-const shrinkAddress = (address: string) => {
-  if (address.length <= 34) {
-    return address;
-  }
-  return `${address.substring(0, 17)}...${address.substring(
-    address.length - 17
-  )}`;
-};
 
 const TransactionInfo = (props: ITransactionInfoProps) => {
   const totalAmount = props.amounts.reduce((acc, value) => acc + value, 0);
