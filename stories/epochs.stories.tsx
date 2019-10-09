@@ -3,8 +3,6 @@ import React from 'react';
 import EpochInfo from '../source/features/epochs/components/EpochInfo';
 import EpochList from '../source/features/epochs/components/EpochList';
 
-import { ThemeDecorator } from './support/ThemeDecorator';
-
 const epochs = [
   {
     blocks: 20051,
@@ -59,7 +57,6 @@ const epochs = [
 ];
 
 storiesOf('Epochs', module)
-  .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
   .add('Epoch List', () => (
     <div
       style={{
