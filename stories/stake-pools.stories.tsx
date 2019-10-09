@@ -1,16 +1,11 @@
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
-import { storiesOf, addDecorator, Fragment } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import React, { Children, cloneElement, useState } from 'react';
 import StakePoolsList from '../source/features/stake-pools/components/StakePoolsList';
 import StakePoolThumbnail from '../source/features/stake-pools/components/StakePoolThumbnail';
 import StakePoolTooltip from '../source/features/stake-pools/components/StakePoolTooltip';
 import DUMMY_DATA from '../source/features/stake-pools/stakingStakePools.dummy.json';
-import { ThemeDecorator } from './support/ThemeDecorator';
 import { getColorFromRange } from '../source/utils/colors';
-
-// addDecorator(withKnobs);
-// console.log('withKnobs', withKnobs);
 
 const ListWrapper = (story: any) =>
   React.createElement(() => {
@@ -18,15 +13,12 @@ const ListWrapper = (story: any) =>
     const onClose = () => onSelect('');
     return (
       <div style={{ backgroundColor: '#1c1f30' }}>
-        {Children.map(story(), child => (
-          <ThemeDecorator>
-            {cloneElement(child, { selectedPoolId, onSelect, onClose })}
-          </ThemeDecorator>
-        ))}
+        {Children.map(story(), child =>
+          cloneElement(child, { selectedPoolId, onSelect, onClose })
+        )}
       </div>
     );
   });
-
 storiesOf('Stake Pools|List', module)
   .addDecorator(ListWrapper)
   .add('List - With pools', () => (
@@ -47,20 +39,18 @@ storiesOf('Stake Pools|List', module)
       />
     </div>
   ));
-
 const ComponentsWrapper = story => (
   <div
     style={{
       backgroundColor: '#1c1f30',
-      position: 'relative',
       height: '100vh',
       padding: 50,
+      position: 'relative',
     }}
   >
     {story()}
   </div>
 );
-
 storiesOf('Stake Pools|Components', module)
   .addDecorator(ComponentsWrapper)
   .add('Thumbnail', () => {
