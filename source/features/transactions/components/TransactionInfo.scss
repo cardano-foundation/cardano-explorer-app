@@ -1,0 +1,183 @@
+.transactionInfoContainer {
+  background-color: $primary-bg;
+  margin: 0;
+  padding: 32px 247px;
+
+  .header {
+    margin-bottom: 41px;
+  }
+
+  .transactionInfoRow {
+    margin-bottom: 35px;
+
+    .transactionInfoRowContainer {
+      display: flex;
+      font-size: 12px;
+      justify-content: space-between;
+      letter-spacing: 0.4px;
+      line-height: 1.33;
+
+      .addresses {
+        max-width: 606px;
+
+        .infoRow {
+          align-items: center;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+
+          @media (max-width: 768px) {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .currentAddress {
+            color: $solid-text;
+            opacity: 0.7;
+          }
+
+          .senders,
+          .receivers {
+            display: flex;
+            flex-direction: column;
+            width: calc(50% - 27px);
+
+            @media (max-width: 768px) {
+              margin-bottom: 10px;
+              width: 100%;
+            }
+          }
+
+          .senders {
+            align-items: flex-start;
+          }
+
+          .receivers {
+            align-items: flex-end;
+
+            @media (max-width: 992px) {
+              align-items: flex-start;
+            }
+          }
+
+          .id {
+            color: $info-text;
+            font-family: 'Proxima Nova Semibold', sans-serif;
+
+            @media (max-width: 768px) {
+              margin-bottom: 10px;
+              word-break: break-word;
+            }
+          }
+
+          .sender,
+          .receiver {
+            color: $primary-highlight-color;
+            font-family: 'Proxima Nova', sans-serif;
+            margin-bottom: 5px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+
+          .transferredAt {
+            color: $info-text;
+            font-family: 'Proxima Nova L', sans-serif;
+            opacity: 0.7;
+          }
+
+          .nextIcon {
+            display: flex;
+            justify-content: center;
+
+            svg {
+              height: 10px;
+              width: 14px;
+              object-fit: contain;
+            }
+
+            @media (max-width: 768px) {
+              margin-bottom: 10px;
+            }
+          }
+        }
+
+        @media (max-width: 768px) {
+          max-width: 300px;
+          width: 100%;
+        }
+      }
+
+      .amounts {
+        flex: 1;
+        margin-top: -5px;
+
+        .infoRow {
+          align-items: flex-end;
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 5px;
+
+          &:last-child {
+            margin-bottom: 0;
+
+            @media (min-width: 490px) and (max-width: 768px) {
+              margin-top: 85px;
+            }
+          }
+
+          .totalAmount {
+            background-color: $highlighted-dark-area-bg;
+            border-radius: 1px;
+            color: $solid-text;
+            font-family: 'Proxima Nova L', sans-serif;
+            opacity: 0.7;
+            padding: 5px 10px;
+          }
+
+          .amount {
+            color: $solid-text;
+            font-family: 'Proxima Nova L', sans-serif;
+            margin-bottom: 5px;
+            opacity: 0.7;
+            padding: 0 10px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+
+          @media (max-width: 768px) {
+            align-items: flex-end;
+            flex-direction: column;
+          }
+        }
+
+        @media (max-width: 768px) {
+          align-items: flex-end;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 490px) {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  }
+
+  @media (max-width: 1400px) {
+    padding: 32px 80px;
+  }
+
+  @media (max-width: 992px) {
+    padding: 32px;
+  }
+}
