@@ -1,21 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import React from 'react';
+import { shrinkAddress } from '../../../common/helpers';
 import styles from './TransactionListRow.scss';
 
 const ArrowNext = require('../../../static/assets/images/arrow-next.svg');
 const SEVEN_DAYS = 7 * 24 * 3600000;
-
-const shrinkAddress = (address: string) => {
-  const addressLength = address.length;
-  if (addressLength <= 34) {
-    return address;
-  }
-
-  return `${address.substring(0, 17)}...${address.substring(
-    addressLength - 17
-  )}`;
-};
 
 export interface ITransactionListRowProps {
   amounts: Array<number>;
