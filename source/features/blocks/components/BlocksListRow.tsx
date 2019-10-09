@@ -3,14 +3,14 @@ import moment from 'moment';
 import styles from './BlocksListRow.scss';
 
 export interface IBlocksListRowProps {
-  epoch: number;
   block: number;
-  slots: number;
   createdAt: number;
-  transactions: number;
+  createdBy: string;
+  epoch: number;
   output: number;
   size: number;
-  createdBy: string;
+  slots: number;
+  transactions: number;
 }
 
 const BlocksListRow = (props: IBlocksListRowProps) => (
