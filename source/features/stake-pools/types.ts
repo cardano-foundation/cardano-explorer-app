@@ -8,6 +8,7 @@ type GenericFn = () => void;
 export interface IStakePoolsProps {
   stakePoolsList: Array<IStakePoolProps>;
 }
+
 export interface IStakePoolsSearchProps {
   search: string;
   onSearch: GenericArgFn;
