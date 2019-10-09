@@ -4,9 +4,9 @@ import React from 'react';
 import Search, { ISearchProps } from '../../search/components/Search';
 import styles from './Header.scss';
 
-const backgroundImageUrl = require('../../../../static/assets/images/header/bg-dummy-irl-should-be-animated.png');
-const backgroundImage2Url = require('../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@2x.png');
-const backgroundImage3Url = require('../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@3x.png');
+const backgroundImageUrl = require('../../../../static/assets/images/header/header-background.png');
+const backgroundImage2Url = require('../../../../static/assets/images/header/header-background@2x.png');
+const backgroundImage3Url = require('../../../../static/assets/images/header/header-background@3x.png');
 const CardanoLogo = require('../../../../static/assets/images/header/cardano-logo.svg');
 
 export enum BrandType {
@@ -15,11 +15,11 @@ export enum BrandType {
 }
 
 export interface IHeaderProps {
-  withBackground?: boolean;
   brandType?: BrandType;
-  withSearch?: boolean;
   searchProps?: ISearchProps;
   router?: object;
+  withBackground?: boolean;
+  withSearch?: boolean;
 }
 
 const Header = (props: IHeaderProps) => {

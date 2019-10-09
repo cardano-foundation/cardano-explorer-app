@@ -1,0 +1,59 @@
+.noSearchResultContainer {
+  background-color: $primary-bg;
+  margin: 0;
+  padding: 32px 247px;
+
+  .header {
+    margin-bottom: 30px;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .errorPanel {
+      color: $solid-text;
+      opacity: 0.7;
+
+      .errorRow {
+        align-items: center;
+        display: flex;
+        font-size: 12px;
+        letter-spacing: 0.6px;
+        line-height: 1.33;
+        margin-bottom: 10px;
+
+        .errorIcon {
+          align-items: center;
+          background-color: $error-background-color;
+          border-radius: 50%;
+          display: flex;
+          height: 24px;
+          justify-content: center;
+          width: 24px;
+
+          .errorInnerIcon {
+            color: $primary-bg;
+            font-family: 'Proxima Nova', sans-serif;
+            font-size: 12px;
+          }
+        }
+
+        .errorMessage {
+          color: $error-background-color;
+          font-family: 'Proxima Nova Semibold', sans-serif;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.6px;
+          padding-left: 7px;
+          text-align: left;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    padding: 32px;
+  }
+}

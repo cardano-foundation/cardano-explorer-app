@@ -2,20 +2,20 @@ import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import CircularProgress, {
   CircularProgressSize,
-} from '../../shared/circular-progress/components/CircularProgress';
-import DividerWithTitle from '../../shared/divider-with-title/components/DividerWithTitle';
+} from '../../widgets/circular-progress/components/CircularProgress';
+import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
 import styles from './EpochInfo.scss';
 
 export interface IEpochInfoProps {
-  percentage?: number;
-  epoch: number;
   blocks: number;
-  slots: number;
-  status: string;
-  startedAt: number;
   endedAt?: number;
-  transactions: number;
+  epoch: number;
   output: number;
+  percentage?: number;
+  slots: number;
+  startedAt: number;
+  status: string;
+  transactions: number;
 }
 
 const EpochInfo = (props: IEpochInfoProps) => (

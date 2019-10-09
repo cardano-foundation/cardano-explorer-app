@@ -99,8 +99,8 @@
         line-height: 1.6;
 
         span {
-          color: rgba(235, 34, 86, 0.5);
-          font-family: ProximaNova, sans-serif;
+          color: $footer-text-color;
+          font-family: 'Proxima Nova Semibold', sans-serif;
           font-weight: 600;
         }
       }
@@ -152,7 +152,7 @@
               text-decoration: none;
 
               &.emailLink {
-                color: rgba(235, 34, 86, 0.5);
+                color: $footer-text-color;
                 font-weight: 600;
                 opacity: 1;
               }
