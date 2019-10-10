@@ -14,8 +14,8 @@
     line-height: 1.33;
 
     .addresses {
-      min-width: 656px;
       max-width: 706px;
+      min-width: 656px;
 
       .infoRow {
         align-items: center;
@@ -94,8 +94,8 @@
 
           svg {
             height: 10px;
-            width: 14px;
             object-fit: contain;
+            width: 14px;
           }
 
           @media (max-width: 768px) {

@@ -11,8 +11,8 @@
   width: 100%;
 
   .footerContent {
-    width: 872px;
     margin: 0 auto;
+    width: 872px;
   }
 
   .footerTopContainer {
@@ -23,8 +23,8 @@
 
     .copyright {
       @include footerText($solid-text, ProximaNova, 12px, normal);
-      line-height: 1.5;
       letter-spacing: 1.2px;
+      line-height: 1.5;
       opacity: 0.3;
       text-transform: uppercase;
     }
@@ -137,8 +137,8 @@
         .aboutCardanoTitle,
         .joinTheCommunityTitle {
           @include footerText($solid-text, ProximaNova, 10px, 600);
-          line-height: 1.8;
           letter-spacing: 0.5px;
+          line-height: 1.8;
           opacity: 0.3;
         }
 
@@ -152,8 +152,8 @@
             a {
               @include footerText($solid-text, ProximaNova, 10px, 300);
               opacity: 0.3;
-              line-height: 1.8;
               letter-spacing: 0.5px;
+              line-height: 1.8;
               text-decoration: none;
 
               &.emailLink {

@@ -92,6 +92,7 @@
 
     .tabs {
       padding: 30px;
+
       a {
         color: $primary-highlight-color;
         font-family: ProximaNova;
@@ -105,6 +106,7 @@
         text-transform: uppercase;
         width: 125px;
       }
+
       .activeTab {
         color: $solid-text;
       }
@@ -135,8 +137,8 @@
     }
 
     .searchContainer {
-      margin-top: 62px;
       margin-bottom: 71px;
+      margin-top: 62px;
     }
   }
 }

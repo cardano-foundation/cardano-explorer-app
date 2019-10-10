@@ -134,8 +134,8 @@ $horizontal: 77px;
 }
 
 .url {
-  color: $secondary-highlight-color;
   border-bottom: 1px solid $secondary-highlight-color;
+  color: $secondary-highlight-color;
   font-family: ProximaNova;
   font-size: 12px;
   line-height: 1.36;
@@ -151,9 +151,9 @@ $horizontal: 77px;
 
   .urlIcon {
     height: 13px;
-    width: 13px;
     margin-left: 2px;
     vertical-align: middle;
+    width: 13px;
 
     path {
       stroke: $secondary-highlight-color;
