@@ -1,0 +1,37 @@
+.headerBackgroundImageContainer {
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  .headerBackgroundImage {
+    height: 415px;
+    object-fit: contain;
+    width: 1099px;
+  }
+}
+
+.sideBackgroundImageContainer {
+  align-items: flex-end;
+  bottom: 0;
+  display: flex;
+  position: absolute;
+  right: 0;
+
+  .sideBackgroundImage {
+    height: auto;
+    object-fit: contain;
+    opacity: 0.3;
+    width: 596.5px;
+  }
+}
+
+.epochList {
+  margin-bottom: 21px;
+}
+
+.blockList {
+  margin-bottom: 139.5px;
+}

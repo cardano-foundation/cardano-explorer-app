@@ -1,11 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import BlockList from '../source/features/blocks/components/BlockList';
-import EpochList from '../source/features/epochs/components/EpochList';
-import Footer from '../source/features/widgets/footer/components/Footer';
-import Header, {
-  BrandType,
-} from '../source/features/widgets/header/components/Header';
+import IndexPage from '../source/pages';
 
 import { ThemeDecorator } from './support/ThemeDecorator';
 
@@ -117,20 +112,4 @@ const epochs = [
 
 storiesOf('Pages', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Main Page', () => (
-    <div
-      style={{
-        backgroundColor: '#121326',
-        paddingBottom: 92,
-      }}
-    >
-      <Header withBackground withSearch brandType={BrandType.ENLARGED} />
-      <div style={{ marginTop: 71 }}>
-        <EpochList title="Latest Epochs" items={epochs} />
-      </div>
-      <div style={{ marginTop: 21, marginBottom: 141 }}>
-        <BlockList title="Latest Blocks" items={blocks} />
-      </div>
-      <Footer propFirst="" propSecond="" />
-    </div>
-  ));
+  .add('Main Page', () => <IndexPage epochs={epochs} blocks={blocks} />);
