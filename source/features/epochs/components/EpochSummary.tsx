@@ -15,13 +15,14 @@ export interface IEpochSummaryProps {
   slots: number;
   startedAt: number;
   status: string;
+  title: string;
   transactions: number;
 }
 
 const EpochSummary = (props: IEpochSummaryProps) => (
   <div className={styles.epochSummaryContainer}>
     <div className={styles.header}>
-      <DividerWithTitle title="Epoch" />
+      <DividerWithTitle title={props.title} />
     </div>
     <div className={styles.content}>
       <CircularProgress

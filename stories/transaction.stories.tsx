@@ -3,7 +3,6 @@ import React from 'react';
 import TransactionInfo from '../source/features/transactions/components/TransactionInfo';
 import TransactionList from '../source/features/transactions/components/TransactionList';
 import TransactionSummary from '../source/features/transactions/components/TransactionSummary';
-import { ThemeDecorator } from './support/ThemeDecorator';
 
 const transactionSummary = {
   address:
@@ -48,23 +47,12 @@ const transactions = [
 ];
 
 storiesOf('Transactions', module)
-  .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
   .add('Transaction Info', () => (
     <TransactionInfo title="Transaction" {...transactions[0]} />
   ))
   .add('Transaction Summary', () => (
-    <TransactionSummary {...transactionSummary} />
+    <TransactionSummary title="Transaction Summary" {...transactionSummary} />
   ))
   .add('Transaction List', () => (
-    <div
-      style={{
-        backgroundColor: '#121326',
-        paddingBottom: 10,
-        paddingLeft: 247,
-        paddingRight: 247,
-        paddingTop: 10,
-      }}
-    >
-      <TransactionList title="Transactions" items={transactions} />
-    </div>
+    <TransactionList title="Transactions" items={transactions} />
   ));

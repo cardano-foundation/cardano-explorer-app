@@ -57,29 +57,5 @@ const epochs = [
 ];
 
 storiesOf('Epochs', module)
-  .add('Epoch List', () => (
-    <div
-      style={{
-        backgroundColor: '#121326',
-        paddingBottom: 10,
-        paddingLeft: 247,
-        paddingRight: 247,
-        paddingTop: 10,
-      }}
-    >
-      <EpochList title="Epochs" items={epochs} />
-    </div>
-  ))
-  .add('Epoch Summary', () => (
-    <div
-      style={{
-        backgroundColor: '#121326',
-        paddingBottom: 10,
-        paddingLeft: 247,
-        paddingRight: 247,
-        paddingTop: 10,
-      }}
-    >
-      <EpochSummary {...epochs[0]} />
-    </div>
-  ));
+  .add('Epoch List', () => <EpochList title="Epochs" items={epochs} />)
+  .add('Epoch Summary', () => <EpochSummary title="Epoch" {...epochs[0]} />);

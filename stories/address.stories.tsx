@@ -1,7 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import AddressSummary from '../source/features/address/components/AddressSummary';
-import { ThemeDecorator } from './support/ThemeDecorator';
 
 const addressSummary = {
   address:
@@ -11,16 +10,6 @@ const addressSummary = {
   transactions: 2,
 };
 
-storiesOf('Address', module)
-  .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Address Summary', () => (
-    <div
-      style={{
-        backgroundColor: '#121326',
-        paddingTop: 71,
-        paddingBottom: 71,
-      }}
-    >
-      <AddressSummary {...addressSummary} />
-    </div>
-  ));
+storiesOf('Address', module).add('Address Summary', () => (
+  <AddressSummary {...addressSummary} />
+));

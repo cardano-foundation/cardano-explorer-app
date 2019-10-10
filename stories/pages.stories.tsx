@@ -2,8 +2,6 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import IndexPage from '../source/pages';
 
-import { ThemeDecorator } from './support/ThemeDecorator';
-
 const blocks = [
   {
     block: 20051,
@@ -110,6 +108,6 @@ const epochs = [
   },
 ];
 
-storiesOf('Pages', module)
-  .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Main Page', () => <IndexPage epochs={epochs} blocks={blocks} />);
+storiesOf('Pages', module).add('Main Page', () => (
+  <IndexPage epochs={epochs} blocks={blocks} />
+));

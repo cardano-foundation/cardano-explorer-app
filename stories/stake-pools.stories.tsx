@@ -12,11 +12,11 @@ const ListWrapper = (story: any) =>
     const [selectedPoolId, onSelect] = useState('');
     const onClose = () => onSelect('');
     return (
-      <div style={{ backgroundColor: '#1c1f30' }}>
+      <>
         {Children.map(story(), child =>
           cloneElement(child, { selectedPoolId, onSelect, onClose })
         )}
-      </div>
+      </>
     );
   });
 storiesOf('Stake Pools|List', module)
@@ -30,19 +30,16 @@ storiesOf('Stake Pools|List', module)
     />
   ))
   .add('List - Empty', () => (
-    <div style={{ backgroundColor: '#1c1f30' }}>
-      <StakePoolsList
-        stakePoolsList={[]}
-        selectedPoolId=""
-        onSelect={action('onSelect')}
-        onClose={action('onClose')}
-      />
-    </div>
+    <StakePoolsList
+      stakePoolsList={[]}
+      selectedPoolId=""
+      onSelect={action('onSelect')}
+      onClose={action('onClose')}
+    />
   ));
 const ComponentsWrapper = story => (
   <div
     style={{
-      backgroundColor: '#1c1f30',
       height: '100vh',
       padding: 50,
       position: 'relative',
@@ -55,7 +52,7 @@ storiesOf('Stake Pools|Components', module)
   .addDecorator(ComponentsWrapper)
   .add('Thumbnail', () => {
     return (
-      <div>
+      <>
         <StakePoolThumbnail
           key="0"
           stakePool={DUMMY_DATA[0]}
@@ -77,7 +74,7 @@ storiesOf('Stake Pools|Components', module)
           isSelected={false}
           onSelect={action('onSelect')}
         />
-      </div>
+      </>
     );
   })
   .add('Tooltip', () => (

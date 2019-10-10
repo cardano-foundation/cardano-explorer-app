@@ -1,6 +1,5 @@
-$url: '../../source/static/assets/fonts/Proxima-Nova-';
-@import '../../source/styles/resources/mixins/font-face';
-@include font-face('ProximaNova', '#{$url}Bold', 800);
-@include font-face('ProximaNova', '#{$url}Semibold', 600);
-@include font-face('ProximaNova', '#{$url}Regular', normal);
-@include font-face('ProximaNova', '#{$url}Thin', 100);
+.storyContainer {
+  background-color: $primary-bg;
+  padding-top: 71px;
+  padding-bottom: 71px;
+}
