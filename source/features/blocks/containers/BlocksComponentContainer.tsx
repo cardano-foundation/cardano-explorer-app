@@ -3,7 +3,7 @@ import React from 'react';
 import BlockList from '../components/BlockList';
 
 export const BlocksComponentContainerRaw = () => {
-  return <BlockList items={[]} />;
+  return <BlockList title="Blocks" items={[]} />;
 };
 
 export const BlocksComponentContainer = observer(BlocksComponentContainerRaw);
