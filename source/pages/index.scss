@@ -1,4 +1,4 @@
-.headerBackgroundImageContainer {
+.headerBackgroundAnimationContainer {
   display: flex;
   justify-content: center;
   left: 0;
@@ -6,10 +6,15 @@
   top: 0;
   width: 100%;
 
-  .headerBackgroundImage {
+  .headerBackgroundAnimation {
     height: 415px;
-    object-fit: contain;
     width: 1099px;
+
+    .animationIframe {
+      border: 0;
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 

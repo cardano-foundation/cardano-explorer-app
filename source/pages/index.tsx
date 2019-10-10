@@ -18,9 +18,6 @@ export interface IMainPageProps {
 }
 
 const Layout = require('../layout/Layout').default;
-const headerBackgroundImageUrl = require('../static/assets/images/main-header-background.png');
-const headerBackgroundImage2Url = require('../static/assets/images/main-header-background@2x.png');
-const headerBackgroundImage3Url = require('../static/assets/images/main-header-background@3x.png');
 const SideBackgroundImage = require('../static/assets/images/main-side-background.svg');
 
 if (environment.DEBUG) {
@@ -33,13 +30,13 @@ if (environment.IS_CLIENT) {
   IndexPage = (props: IMainPageProps) => (
     <NoSSR>
       <Layout hasContainer>
-        <div className={styles.headerBackgroundImageContainer}>
-          <img
-            src={headerBackgroundImageUrl}
-            alt=""
-            srcSet={`${headerBackgroundImage2Url} 2x, ${headerBackgroundImage3Url} 3x`}
-            className={styles.headerBackgroundImage}
-          />
+        <div className={styles.headerBackgroundAnimationContainer}>
+          <div className={styles.headerBackgroundAnimation}>
+            <iframe
+              className={styles.animationIframe}
+              src="//webdevm.iohk.io/?repo=cardano-sl&lang=en&content=Cryptographic%20currency%20implementing%20Ouroboros%20PoS%20protocol"
+            />
+          </div>
         </div>
         <div className={styles.sideBackgroundImageContainer}>
           <SideBackgroundImage className={styles.sideBackgroundImage} />
