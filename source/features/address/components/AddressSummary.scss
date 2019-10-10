@@ -15,11 +15,10 @@
     }
 
     .infoPanel {
-      color: $solid-text;
+      color: $info-text;
       flex: 1;
       font-family: 'Proxima Nova', sans-serif;
       max-width: calc(100% - 124px);
-      opacity: 0.7;
 
       @media (max-width: 575px) {
         max-width: 100%;
