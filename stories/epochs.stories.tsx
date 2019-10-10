@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import EpochInfo from '../source/features/epochs/components/EpochInfo';
 import EpochList from '../source/features/epochs/components/EpochList';
+import EpochSummary from '../source/features/epochs/components/EpochSummary';
 
 const epochs = [
   {
@@ -70,7 +70,7 @@ storiesOf('Epochs', module)
       <EpochList title="Epochs" items={epochs} />
     </div>
   ))
-  .add('Epoch Info', () => (
+  .add('Epoch Summary', () => (
     <div
       style={{
         backgroundColor: '#121326',
@@ -80,6 +80,6 @@ storiesOf('Epochs', module)
         paddingTop: 10,
       }}
     >
-      <EpochInfo {...epochs[0]} />
+      <EpochSummary {...epochs[0]} />
     </div>
   ));

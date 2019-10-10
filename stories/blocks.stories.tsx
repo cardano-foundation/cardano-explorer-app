@@ -74,7 +74,7 @@ const blockSummary = {
 
 storiesOf('Blocks', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Blocks List', () => (
+  .add('Block List', () => (
     <div
       style={{
         backgroundColor: '#121326',

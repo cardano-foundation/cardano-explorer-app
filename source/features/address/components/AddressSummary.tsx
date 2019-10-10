@@ -1,17 +1,17 @@
 import { observer } from 'mobx-react-lite';
 import QRCode from 'qrcode.react';
 import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
-import styles from './AddressInfo.scss';
+import styles from './AddressSummary.scss';
 
-export interface IAddressInfoProps {
+export interface IAddressSummaryProps {
   address: string;
   finalBalance: number;
   title: string;
   transactions: number;
 }
 
-const AddressInfo = (props: IAddressInfoProps) => (
-  <div className={styles.addressInfoContainer}>
+const AddressSummary = (props: IAddressSummaryProps) => (
+  <div className={styles.addressSummaryContainer}>
     <div className={styles.header}>
       <DividerWithTitle title={props.title} />
     </div>
@@ -42,4 +42,4 @@ const AddressInfo = (props: IAddressInfoProps) => (
   </div>
 );
 
-export default observer(AddressInfo);
+export default observer(AddressSummary);

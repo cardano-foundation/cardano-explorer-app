@@ -4,9 +4,9 @@ import CircularProgress, {
   CircularProgressSize,
 } from '../../widgets/circular-progress/components/CircularProgress';
 import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
-import styles from './EpochInfo.scss';
+import styles from './EpochSummary.scss';
 
-export interface IEpochInfoProps {
+export interface IEpochSummaryProps {
   blocks: number;
   endedAt?: number;
   epoch: number;
@@ -18,8 +18,8 @@ export interface IEpochInfoProps {
   transactions: number;
 }
 
-const EpochInfo = (props: IEpochInfoProps) => (
-  <div className={styles.epochInfoContainer}>
+const EpochSummary = (props: IEpochSummaryProps) => (
+  <div className={styles.epochSummaryContainer}>
     <div className={styles.header}>
       <DividerWithTitle title="Epoch" />
     </div>
@@ -69,4 +69,4 @@ const EpochInfo = (props: IEpochInfoProps) => (
   </div>
 );
 
-export default observer(EpochInfo);
+export default observer(EpochSummary);

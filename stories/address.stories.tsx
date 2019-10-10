@@ -1,11 +1,11 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import AddressInfo from '../source/features/address/components/AddressInfo';
+import AddressSummary from '../source/features/address/components/AddressSummary';
 import TransactionList from '../source/features/transactions/components/TransactionList';
 
 import { ThemeDecorator } from './support/ThemeDecorator';
 
-const addressInfo = {
+const addressSummary = {
   address:
     'DdzFFzCqrht7PVrPU8FAnks5Ys6BxLxKjy7sFdNnkDFLoMaK8FoEiun6eMBowpnkS8h69w3VxTrJ6pTiwYSgF1mC22ifAqQhAPY4ty4j',
   finalBalance: 0.897277,
@@ -45,7 +45,7 @@ const transactions = [
 
 storiesOf('Address', module)
   .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Address Info', () => (
+  .add('Address Summary', () => (
     <div
       style={{
         backgroundColor: '#121326',
@@ -55,7 +55,7 @@ storiesOf('Address', module)
         paddingTop: 10,
       }}
     >
-      <AddressInfo {...addressInfo} />
+      <AddressSummary {...addressSummary} />
     </div>
   ))
   .add('Transactions', () => (
