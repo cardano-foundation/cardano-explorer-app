@@ -2,23 +2,6 @@
   position: relative;
   width: 100%;
 
-  .backgroundImageContainer {
-    left: 50%;
-    position: absolute;
-    top: 0;
-    transform: translate(-50%, 0);
-    width: 1099px;
-    height: 415px;
-    z-index: 100;
-
-    .backgroundImage {
-      height: 100%;
-      mix-blend-mode: lighten;
-      object-fit: contain;
-      width: 100%;
-    }
-  }
-
   .contentContainer {
     align-items: center;
     display: flex;

@@ -17,10 +17,8 @@ storiesOf('Address', module)
     <div
       style={{
         backgroundColor: '#121326',
-        paddingBottom: 10,
-        paddingLeft: 247,
-        paddingRight: 247,
-        paddingTop: 10,
+        paddingTop: 71,
+        paddingBottom: 71,
       }}
     >
       <AddressSummary {...addressSummary} />
