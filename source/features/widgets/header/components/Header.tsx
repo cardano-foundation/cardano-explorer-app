@@ -1,11 +1,12 @@
 import { observer } from 'mobx-react-lite';
+import Link from 'next/link';
 import React from 'react';
 import Search, { ISearchProps } from '../../search/components/Search';
 import styles from './Header.scss';
 
-const backgroundImageUrl = require('../../../../static/assets/images/header/bg-dummy-irl-should-be-animated.png');
-const backgroundImage2Url = require('../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@2x.png');
-const backgroundImage3Url = require('../../../../static/assets/images/header/bg-dummy-irl-should-be-animated@3x.png');
+const backgroundImageUrl = require('../../../../static/assets/images/header/header-background.png');
+const backgroundImage2Url = require('../../../../static/assets/images/header/header-background@2x.png');
+const backgroundImage3Url = require('../../../../static/assets/images/header/header-background@3x.png');
 const CardanoLogo = require('../../../../static/assets/images/header/cardano-logo.svg');
 
 export enum BrandType {
@@ -14,10 +15,11 @@ export enum BrandType {
 }
 
 export interface IHeaderProps {
-  withBackground?: boolean;
   brandType?: BrandType;
-  withSearch?: boolean;
   searchProps?: ISearchProps;
+  router?: object;
+  withBackground?: boolean;
+  withSearch?: boolean;
 }
 
 const Header = (props: IHeaderProps) => {
@@ -26,6 +28,13 @@ const Header = (props: IHeaderProps) => {
     brandType === BrandType.ENLARGED
       ? styles.enlargedBrandType
       : styles.shrinkedBrandType;
+
+  const indexClassName = !location.pathname.includes('stake-pools')
+    ? styles.activeTab
+    : '';
+  const stakePoolsClassName = location.pathname.includes('stake-pools')
+    ? styles.activeTab
+    : '';
 
   return (
     <header className={styles.headerContainer}>
@@ -47,6 +56,14 @@ const Header = (props: IHeaderProps) => {
           <div className={styles.titleContainer}>
             <span className={styles.cardanoTitle}>Cardano</span>
             <span className={styles.explorerTitle}>Blockchain Explorer</span>
+          </div>
+          <div className={styles.tabs}>
+            <Link href="/">
+              <a className={indexClassName}>Epochs & Blocks</a>
+            </Link>
+            <Link href="/stake-pools">
+              <a className={stakePoolsClassName}>Stake Pools</a>
+            </Link>
           </div>
           <div className={styles.triangleSign}>
             <div className={styles.straightLine} />

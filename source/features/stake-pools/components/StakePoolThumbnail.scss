@@ -1,0 +1,78 @@
+.stakePoolThumbnailContainer {
+  background-color: #2a2b3c;
+  border-radius: 4px;
+  height: 71px;
+  position: relative;
+  width: 80px;
+
+  &:hover {
+    @extend .isHighlighted;
+  }
+
+  > button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.content {
+  cursor: pointer;
+  height: 100%;
+  padding: 12px 0 0;
+  width: 100%;
+}
+
+.isHighlighted {
+  background-color: $popup-bg;
+}
+
+.ticker {
+  color: $solid-text;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin: 0 0 4px;
+  text-align: center;
+}
+
+.ranking {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.clock {
+  border-radius: 0 2px 0 4px;
+  height: 18px;
+  margin: 1px 0 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 18px;
+  svg {
+    height: 18px;
+    width: 18px;
+    > g > path {
+      fill: $secondary-half-color;
+    }
+  }
+}
+
+.colorBand {
+  border-radius: 0 0 4px 4px;
+  bottom: 0;
+  display: block;
+  height: 5px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}

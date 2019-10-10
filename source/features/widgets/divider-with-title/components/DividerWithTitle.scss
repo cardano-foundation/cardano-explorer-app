@@ -7,9 +7,11 @@
     opacity: 0.5;
     width: 100%;
   }
+
   .title {
     background-color: $primary-bg;
     color: $solid-text;
+    font-family: 'Proxima Nova Semibold', sans-serif;
     font-size: 12px;
     font-weight: 600;
     left: 50%;
@@ -20,5 +22,9 @@
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 500;
+
+    @media (max-width: 340px) {
+      padding: 1.5px 8px;
+    }
   }
 }

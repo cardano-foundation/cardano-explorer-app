@@ -6,14 +6,7 @@
 
     .spinnerCircle {
       animation: rotate 1s linear infinite;
-      background-image: conic-gradient(
-        rgba(31, 193, 195, 0),
-        rgba(31, 193, 195, 0.2) 21%,
-        $primary-highlight-color 52%,
-        rgba(31, 193, 195, 0.3) 57%,
-        rgba(31, 193, 195, 0),
-        rgba(31, 193, 195, 0)
-      );
+      background-image: $spinner-circle-background-color;
       border-radius: 50%;
       left: 0;
       object-fit: contain;

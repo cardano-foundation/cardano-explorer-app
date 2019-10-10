@@ -3,9 +3,19 @@
  * Variables for the `testnet` theme.
  *
  */
+$transparent-color: transparent;
 $primary-highlight-color: #1fc1c3;
 $primary-highlight-color-hover: #1db0b3;
 $primary-highlight-color-press: #1aa1a3;
 $secondary-highlight-color: #709cf0;
+$secondary-half-color: rgba(112, 156, 240, 0.5);
 $dotted-separator-color: #36395d;
 $footer-text-color: rgba(31, 193, 195, 0.3);
+$spinner-circle-background-color: conic-gradient(
+  rgba(31, 193, 195, 0),
+  rgba(31, 193, 195, 0.2) 21%,
+  #1fc1c3 52%,
+  rgba(31, 193, 195, 0.3) 57%,
+  rgba(31, 193, 195, 0),
+  rgba(31, 193, 195, 0)
+);
