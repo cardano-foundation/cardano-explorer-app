@@ -3,15 +3,8 @@ import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
 import BlockList from '../features/blocks/components/BlockList';
-import { IBlockListRowProps } from '../features/blocks/components/BlockListRow';
 import EpochList from '../features/epochs/components/EpochList';
-import { IEpochListRowProps } from '../features/epochs/components/EpochListRow';
 import styles from './index.scss';
-
-export interface IMainPageProps {
-  epochs: Array<IEpochListRowProps>;
-  blocks: Array<IBlockListRowProps>;
-}
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
@@ -123,7 +116,7 @@ const epochs = [
   },
 ];
 
-let IndexPage = (props: IMainPageProps) => <NoSSR />;
+let IndexPage = () => <NoSSR />;
 
 if (environment.IS_CLIENT) {
   const Layout = require('../layout/Layout').default;
@@ -133,7 +126,7 @@ if (environment.IS_CLIENT) {
   const FooterContainer = require('../features/widgets/footer/containers/FooterContainer')
     .default;
 
-  IndexPage = (props: IMainPageProps) => (
+  IndexPage = () => (
     <NoSSR>
       <Layout hasContainer>
         <div className={styles.headerBackgroundAnimationContainer}>
@@ -149,10 +142,10 @@ if (environment.IS_CLIENT) {
         </div>
         <HeaderContainer />
         <div className={styles.epochList}>
-          <EpochList title="Latest Epochs" items={props.epochs || epochs} />
+          <EpochList title="Latest Epochs" items={epochs} />
         </div>
         <div className={styles.blockList}>
-          <BlockList title="Latest Blocks" items={props.blocks || blocks} />
+          <BlockList title="Latest Blocks" items={blocks} />
         </div>
         <FooterContainer />
       </Layout>
