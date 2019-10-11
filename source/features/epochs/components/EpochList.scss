@@ -45,6 +45,21 @@
       text-align: right;
     }
 
+    @media (max-width: 991px) and (min-width: 768px) {
+      .transactions {
+        display: none;
+      }
+    }
+
+    @media (max-width: 767px) and (min-width: 576px) {
+      .endedAt {
+        display: none;
+      }
+      .transactions {
+        display: none;
+      }
+    }
+
     @media (max-width: 575px) {
       .epoch {
         width: 70px;
