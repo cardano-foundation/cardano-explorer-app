@@ -34,4 +34,23 @@
     flex: 1;
     text-align: right;
   }
+
+  @media (max-width: 575px) {
+    .epoch {
+      width: 70px;
+    }
+    .startedAt {
+      flex: 1;
+      width: auto;
+    }
+    .endedAt {
+      display: none;
+    }
+    .transactions {
+      display: none;
+    }
+    .output {
+      display: none;
+    }
+  }
 }

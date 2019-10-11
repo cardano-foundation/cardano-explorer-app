@@ -1,6 +1,7 @@
 .epochListContainer {
   margin: 0 auto;
-  width: 872px;
+  max-width: 872px;
+  width: 100%;
 
   .header {
     margin-bottom: 41px;
@@ -43,6 +44,25 @@
       flex: 1;
       text-align: right;
     }
+
+    @media (max-width: 575px) {
+      .epoch {
+        width: 70px;
+      }
+      .startedAt {
+        flex: 1;
+        width: auto;
+      }
+      .endedAt {
+        display: none;
+      }
+      .transactions {
+        display: none;
+      }
+      .output {
+        display: none;
+      }
+    }
   }
 
   .epochListRow {
@@ -53,6 +73,10 @@
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
+
+    @media (max-width: 575px) {
+      justify-content: flex-start;
+    }
 
     .showMoreButton {
       align-items: center;

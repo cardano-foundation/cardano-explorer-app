@@ -24,8 +24,8 @@
   }
 
   .createdBy {
+    flex: 1;
     text-align: right;
-    width: 120px;
   }
 
   .transactions {
@@ -40,5 +40,30 @@
   .output {
     text-align: right;
     width: 162px;
+  }
+
+  @media (max-width: 575px) {
+    .epoch {
+      width: 70px;
+    }
+    .blocksSlots {
+      width: 90px;
+    }
+    .createdAt {
+      flex: 1;
+      width: auto;
+    }
+    .createdBy {
+      display: none;
+    }
+    .transactions {
+      display: none;
+    }
+    .size {
+      display: none;
+    }
+    .output {
+      display: none;
+    }
   }
 }

@@ -1,6 +1,7 @@
 import debug from 'debug';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
+import { isMobileScreen } from '../common/helpers';
 import { environment } from '../environment';
 import BlockList from '../features/blocks/components/BlockList';
 import EpochList from '../features/epochs/components/EpochList';
@@ -129,17 +130,21 @@ if (environment.IS_CLIENT) {
   IndexPage = () => (
     <NoSSR>
       <Layout hasContainer>
-        <div className={styles.headerBackgroundAnimationContainer}>
-          <div className={styles.headerBackgroundAnimation}>
-            <iframe
-              className={styles.animationIframe}
-              src="//webdevm.iohk.io/?repo=cardano-sl&lang=en&content=Cryptographic%20currency%20implementing%20Ouroboros%20PoS%20protocol"
-            />
+        {!isMobileScreen() && (
+          <div className={styles.headerBackgroundAnimationContainer}>
+            <div className={styles.headerBackgroundAnimation}>
+              <iframe
+                className={styles.animationIframe}
+                src="//webdevm.iohk.io/?repo=cardano-sl&lang=en&content=Cryptographic%20currency%20implementing%20Ouroboros%20PoS%20protocol"
+              />
+            </div>
           </div>
-        </div>
-        <div className={styles.sideBackgroundImageContainer}>
-          <SideBackgroundImage className={styles.sideBackgroundImage} />
-        </div>
+        )}
+        {!isMobileScreen() && (
+          <div className={styles.sideBackgroundImageContainer}>
+            <SideBackgroundImage className={styles.sideBackgroundImage} />
+          </div>
+        )}
         <HeaderContainer />
         <div className={styles.epochList}>
           <EpochList title="Latest Epochs" items={epochs} />

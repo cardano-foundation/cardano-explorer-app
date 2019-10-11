@@ -17,7 +17,7 @@
       font-stretch: normal;
       font-style: normal;
       letter-spacing: 1.8px;
-      line-height: 1.11;
+      line-height: 1.39;
       text-align: center;
       text-transform: uppercase;
 
@@ -139,6 +139,37 @@
     .searchContainer {
       margin-bottom: 71px;
       margin-top: 62px;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .headerContainer {
+    .contentContainer {
+      .enlargedBrandType {
+        .logoContainer {
+          margin-top: 24px;
+
+          .logo {
+            height: 56px;
+            width: 61px;
+          }
+        }
+        .titleContainer {
+          margin-top: 15.5px;
+
+          .cardanoTitle {
+            display: block;
+          }
+        }
+      }
+
+      .searchContainer {
+        margin-bottom: 51px;
+        margin-top: 40px;
+        width: calc(100% + 32px);
+      }
     }
   }
 }

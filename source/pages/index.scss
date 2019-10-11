@@ -39,4 +39,8 @@
 
 .blockList {
   margin-bottom: 139.5px;
+
+  @media (max-width: 575px) {
+    margin-bottom: 83px;
+  }
 }
