@@ -6,11 +6,15 @@ import { Store } from '../../utils/Store';
 import { StakePoolsApi } from './api';
 import { StakePoolsActions } from './actions';
 import DUMMY_DATA from './stakingStakePools.dummy.json';
-import { UNMODERATED_WARNING } from './constants';
+import {
+  UNMODERATED_WARNING_STORAGE_KEY,
+  UNMODERATED_WARNING_PERIOD,
+} from './constants';
 
 export class StakePoolsStore extends Store {
   private readonly stakePoolsApi: StakePoolsApi;
   private readonly stakePoolsActions: StakePoolsActions;
+  private showUnmoderatedDataStorage: number;
 
   constructor(
     stakePoolsActions: StakePoolsActions,
@@ -19,6 +23,9 @@ export class StakePoolsStore extends Store {
     super();
     this.stakePoolsApi = stakePoolsApi;
     this.stakePoolsActions = stakePoolsActions;
+    this.showUnmoderatedDataStorage = storage.get(
+      UNMODERATED_WARNING_STORAGE_KEY
+    );
 
     this.registerActions(
       createActionBindings([
@@ -30,15 +37,22 @@ export class StakePoolsStore extends Store {
     );
   }
 
-  @observable showUnmoderatedData: boolean =
-    storage.get(UNMODERATED_WARNING) || false;
+  @computed get showUnmoderatedData() {
+    const { showUnmoderatedDataStorage } = this;
+    if (!showUnmoderatedDataStorage) return false;
+    const now: number = new Date().getTime();
+    if (showUnmoderatedDataStorage - now > UNMODERATED_WARNING_PERIOD)
+      return false;
+    return true;
+  }
 
   @computed get stakePoolsList() {
     return DUMMY_DATA;
   }
 
   private handleAcceptUnmoderatedData = () => {
-    storage.set(UNMODERATED_WARNING, true);
-    this.showUnmoderatedData = true;
+    const now: number = new Date().getTime();
+    storage.set(UNMODERATED_WARNING_STORAGE_KEY, now);
+    this.showUnmoderatedDataStorage = now;
   };
 }
