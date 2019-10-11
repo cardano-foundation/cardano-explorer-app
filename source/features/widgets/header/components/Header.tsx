@@ -44,12 +44,17 @@ const Header = (props: IHeaderProps) => {
             <span className={styles.explorerTitle}>Blockchain Explorer</span>
           </div>
           <div className={styles.tabs}>
+            <div className={styles.tabLeftLine} />
+            <div className={styles.tabCircle} />
             <Link href="/">
               <a className={indexClassName}>Epochs & Blocks</a>
             </Link>
+            <div className={styles.tabCircle} />
             <Link href="/stake-pools">
               <a className={stakePoolsClassName}>Stake Pools</a>
             </Link>
+            <div className={styles.tabCircle} />
+            <div className={styles.tabRightLine} />
           </div>
           <div className={styles.triangleSign}>
             <div className={styles.straightLine} />

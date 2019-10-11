@@ -34,6 +34,7 @@
       align-items: center;
       display: flex;
       flex-direction: column;
+      width: 100%;
 
       .logoContainer {
         margin-top: 105px;
@@ -50,11 +51,10 @@
       }
 
       .triangleSign {
-        margin-top: 28px;
         position: relative;
 
         .straightLine {
-          background-color: $secondary-highlight-color;
+          background-color: $primary-highlight-color;
           height: 1px;
           left: -63px;
           opacity: 0.5;
@@ -67,7 +67,7 @@
         .triangle {
           border-left: 14.5px solid transparent;
           border-right: 14.5px solid transparent;
-          border-top: 20px solid $secondary-highlight-color;
+          border-top: 20px solid $primary-highlight-color;
           height: 0;
           left: 50%;
           position: absolute;
@@ -91,7 +91,13 @@
     }
 
     .tabs {
-      padding: 30px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 60px;
+      margin-top: 40px;
+      max-width: 872px;
+      width: 100%;
 
       a {
         color: $primary-highlight-color;
@@ -101,14 +107,32 @@
         height: 20px;
         letter-spacing: 1.2px;
         line-height: 1.67;
-        margin-left: 10px;
+        margin: 0 13px;
         text-decoration: none;
         text-transform: uppercase;
-        width: 125px;
       }
 
       .activeTab {
         color: $solid-text;
+      }
+
+      .tabLeftLine {
+        background-image: linear-gradient(to left, $solid-text, $primary-bg);
+        flex: 1;
+        height: 2px;
+        opacity: 0.5;
+      }
+      .tabCircle {
+        background-color: $solid-text;
+        border-radius: 50%;
+        height: 6px;
+        width: 6px;
+      }
+      .tabRightLine {
+        background-image: linear-gradient(to right, $solid-text, $primary-bg);
+        flex: 1;
+        height: 2px;
+        opacity: 0.5;
       }
     }
 
@@ -138,7 +162,7 @@
 
     .searchContainer {
       margin-bottom: 71px;
-      margin-top: 62px;
+      margin-top: 0;
       width: 100%;
     }
   }
@@ -167,7 +191,7 @@
 
       .searchContainer {
         margin-bottom: 51px;
-        margin-top: 40px;
+        margin-top: 0;
         width: calc(100% + 32px);
       }
     }
