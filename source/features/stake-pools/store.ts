@@ -1,27 +1,44 @@
-import { computed } from 'mobx';
+import { computed, observable } from 'mobx';
+import storage from 'store';
 import { GetBlocksQuery } from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../utils/ActionBinding';
 import { Store } from '../../utils/Store';
 import { StakePoolsApi } from './api';
+import { StakePoolsActions } from './actions';
 import DUMMY_DATA from './stakingStakePools.dummy.json';
+import { UNMODERATED_WARNING } from './constants';
 
 export class StakePoolsStore extends Store {
   private readonly stakePoolsApi: StakePoolsApi;
+  private readonly stakePoolsActions: StakePoolsActions;
 
-  constructor(stakePoolsApi: StakePoolsApi) {
+  constructor(
+    stakePoolsActions: StakePoolsActions,
+    stakePoolsApi: StakePoolsApi
+  ) {
     super();
     this.stakePoolsApi = stakePoolsApi;
+    this.stakePoolsActions = stakePoolsActions;
+
+    this.registerActions(
+      createActionBindings([
+        [
+          this.stakePoolsActions.handleAcceptUnmoderatedData,
+          this.handleAcceptUnmoderatedData,
+        ],
+      ])
+    );
   }
+
+  @observable showUnmoderatedData: boolean =
+    storage.get(UNMODERATED_WARNING) || false;
 
   @computed get stakePoolsList() {
     return DUMMY_DATA;
   }
 
-  // @computed.struct get stakePoolsedBlock(): GetBlocksQuery['blocks'][0] | null {
-  //   const { result } = this.stakePoolsApi.getBlocksByIdsQuery;
-  //   if (result) {
-  //     return result.data.blocks[0];
-  //   }
-  //   return null;
-  // }
+  private handleAcceptUnmoderatedData = () => {
+    storage.set(UNMODERATED_WARNING, true);
+    this.showUnmoderatedData = true;
+  };
 }

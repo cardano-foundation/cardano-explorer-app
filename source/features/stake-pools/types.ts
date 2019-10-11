@@ -1,4 +1,5 @@
 import { FC, MouseEvent } from 'react';
+import { StakePoolsActions } from './actions';
 import { StakePoolsApi } from './api';
 import { StakePoolsStore } from './store';
 
@@ -45,6 +46,7 @@ export interface IStakePoolTooltipProps {
   onClose: GenericFn;
 }
 export interface IStakePoolsContext {
+  actions: StakePoolsActions;
   api: StakePoolsApi;
   store: StakePoolsStore;
 }
@@ -54,4 +56,7 @@ export interface IStakePoolThumbnailProps {
   color: string;
   isSelected: boolean;
   onSelect(event: MouseEvent<HTMLElement>): void;
+}
+export interface IUnmoderatedDataWarning {
+  onAcceptUnmoderatedData: (arg0: any) => void;
 }
