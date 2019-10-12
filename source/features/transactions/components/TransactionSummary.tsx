@@ -9,13 +9,14 @@ export interface ITransactionSummaryProps {
   fee: number;
   receivedTime: number;
   slot: number;
+  title: string;
   totalOutput: number;
 }
 
 const TransactionSummary = (props: ITransactionSummaryProps) => (
   <div className={styles.transactionSummaryContainer}>
     <div className={styles.header}>
-      <DividerWithTitle title="Summary" />
+      <DividerWithTitle title={props.title} />
     </div>
     <div className={styles.content}>
       <div className={styles.infoPanel}>

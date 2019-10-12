@@ -1,6 +1,7 @@
-.epochInfoContainer {
-  margin: 61.5px 0;
-  font-family: ProximaNova;
+.epochSummaryContainer {
+  margin: 0 auto;
+  max-width: 872px;
+  width: 100%;
 
   .header {
     margin-bottom: 41px;
@@ -17,17 +18,18 @@
       justify-content: center;
 
       .progressTextLabel {
-        color: $solid-text;
+        color: $info-text;
+        font-family: 'Proxima Nova', sans-serif;
         font-size: 10px;
         font-weight: 300;
         letter-spacing: 0.5px;
         line-height: 1.4;
         margin-bottom: 5px;
-        opacity: 0.7;
       }
 
       .progressTextValue {
         color: $solid-text;
+        font-family: 'Proxima Nova', sans-serif;
         font-size: 46px;
         font-weight: 300;
         letter-spacing: 2.3px;
@@ -35,9 +37,8 @@
     }
 
     .infoPanel {
-      color: $solid-text;
+      color: $info-text;
       margin-left: 60px;
-      opacity: 0.7;
 
       .infoRow {
         align-items: center;
@@ -48,11 +49,13 @@
         margin-bottom: 10px;
 
         .infoLabel {
+          font-family: 'Proxima Nova', sans-serif;
           font-weight: 600;
           width: 130px;
         }
 
         .infoValue {
+          font-family: 'Proxima Nova', sans-serif;
           font-weight: 300;
         }
       }

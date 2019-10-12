@@ -1,3 +1,5 @@
+import { SCREEN_BREAKPOINTS } from './constants';
+
 export const shrinkAddress = (address: string) => {
   if (address.length <= 34) {
     return address;
@@ -6,3 +8,5 @@ export const shrinkAddress = (address: string) => {
     address.length - 17
   )}`;
 };
+
+export const isMobileScreen = () => screen.width < SCREEN_BREAKPOINTS.XS;

@@ -4,9 +4,6 @@ import React from 'react';
 import Search, { ISearchProps } from '../../search/components/Search';
 import styles from './Header.scss';
 
-const backgroundImageUrl = require('../../../../static/assets/images/header/header-background.png');
-const backgroundImage2Url = require('../../../../static/assets/images/header/header-background@2x.png');
-const backgroundImage3Url = require('../../../../static/assets/images/header/header-background@3x.png');
 const CardanoLogo = require('../../../../static/assets/images/header/cardano-logo.svg');
 
 export enum BrandType {
@@ -18,12 +15,11 @@ export interface IHeaderProps {
   brandType?: BrandType;
   searchProps?: ISearchProps;
   router?: object;
-  withBackground?: boolean;
   withSearch?: boolean;
 }
 
 const Header = (props: IHeaderProps) => {
-  const { withBackground, brandType, withSearch, searchProps } = props;
+  const { brandType, withSearch, searchProps } = props;
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
       ? styles.enlargedBrandType
@@ -38,16 +34,6 @@ const Header = (props: IHeaderProps) => {
 
   return (
     <header className={styles.headerContainer}>
-      {withBackground && (
-        <div className={styles.backgroundImageContainer}>
-          <img
-            src={backgroundImageUrl}
-            alt=""
-            srcSet={`${backgroundImage2Url} 2x, ${backgroundImage3Url} 3x`}
-            className={styles.backgroundImage}
-          />
-        </div>
-      )}
       <div className={styles.contentContainer}>
         <div className={brandTypeStyle}>
           <div className={styles.logoContainer}>
@@ -58,12 +44,17 @@ const Header = (props: IHeaderProps) => {
             <span className={styles.explorerTitle}>Blockchain Explorer</span>
           </div>
           <div className={styles.tabs}>
+            <div className={styles.tabLeftLine} />
+            <div className={styles.tabCircle} />
             <Link href="/">
               <a className={indexClassName}>Epochs & Blocks</a>
             </Link>
+            <div className={styles.tabCircle} />
             <Link href="/stake-pools">
               <a className={stakePoolsClassName}>Stake Pools</a>
             </Link>
+            <div className={styles.tabCircle} />
+            <div className={styles.tabRightLine} />
           </div>
           <div className={styles.triangleSign}>
             <div className={styles.straightLine} />

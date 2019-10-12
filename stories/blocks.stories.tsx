@@ -1,9 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Blocks from '../source/features/blocks/components/Blocks';
+import BlockList from '../source/features/blocks/components/BlockList';
 import BlockSummary from '../source/features/blocks/components/BlockSummary';
-
-import { ThemeDecorator } from './support/ThemeDecorator';
 
 const blocks = [
   {
@@ -70,22 +68,10 @@ const blockSummary = {
   prevBlock: '1b6532a66b067f7b81691924f00c4abc1cfbe8496dcb150dba1704ac080c2dc0',
   size: 634,
   time: 1470006392000,
+  title: 'Block Summary',
   transactions: 0,
 };
 
 storiesOf('Blocks', module)
-  .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Blocks List', () => (
-    <div
-      style={{
-        backgroundColor: '#121326',
-        paddingBottom: 10,
-        paddingLeft: 247,
-        paddingRight: 247,
-        paddingTop: 10,
-      }}
-    >
-      <Blocks items={blocks} />
-    </div>
-  ))
+  .add('Block List', () => <BlockList title="Blocks" items={blocks} />)
   .add('Block Summary', () => <BlockSummary {...blockSummary} />);
