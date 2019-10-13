@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import moment from 'moment';
 import React, { FC, useCallback, useEffect, useRef } from 'react';
-import { MouseEvent } from 'react';
 import { getColorFromRange } from '../../../utils/colors';
 import { IStakePoolTooltipProps } from '../types';
 import styles from './StakePoolTooltip.scss';
@@ -13,7 +12,6 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
   stakePool,
   onClose,
   position,
-  color,
 }) => {
   const {
     name,
