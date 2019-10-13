@@ -20,7 +20,7 @@ if (environment.IS_CLIENT) {
 
   ErrorPage = () => (
     <NoSSR>
-      <Layout>
+      <Layout hasContainer>
         <HeaderContainer />
         <NoSearchResult />
         <FooterContainer />
