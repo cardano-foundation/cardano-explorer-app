@@ -1,8 +1,8 @@
 import classnames from 'classnames';
+import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
 import Head from './Head';
 import styles from './Layout.scss';
-import { useRouter } from 'next/router';
 
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import GraphQLProvider from '../utils/graphql/GraphQLProvider';
