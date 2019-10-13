@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import React, { Fragment } from 'react';
 import Head from './Head';
 import styles from './Layout.scss';
+import { useRouter } from 'next/router';
 
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import GraphQLProvider from '../utils/graphql/GraphQLProvider';
@@ -14,6 +15,7 @@ interface IProps {
 }
 
 const Layout = ({ children, hasContainer }: IProps) => {
+  const router = useRouter();
   const containerStyles = classnames([hasContainer ? styles.container : null]);
 
   browserUpdate({
@@ -31,6 +33,10 @@ const Layout = ({ children, hasContainer }: IProps) => {
 
     reminderClosed: 150,
     // if the user explicitly closes message it reappears after x hours
+
+    onshow: (infos: any) => {
+      router.push('/outdated-browser');
+    },
 
     l: false,
     // set a fixed language for the message, e.g. "en". This overrides the default detection.
@@ -57,7 +63,7 @@ const Layout = ({ children, hasContainer }: IProps) => {
     noclose: false,
     // Do not show the "ignore" button to close the notification
 
-    nomessage: false,
+    nomessage: true,
     // Do not show a message if the browser is out of date, just call the onshow callback function
 
     jsshowurl: '//browser-update.org/update.show.min.js',
