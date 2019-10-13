@@ -14,13 +14,14 @@ export interface IBlockSummaryProps {
   prevBlock: string;
   size: number;
   time: number;
+  title: string;
   transactions: number;
 }
 
 const BlockSummary = (props: IBlockSummaryProps) => (
   <div className={styles.blockSummaryContainer}>
     <div className={styles.header}>
-      <DividerWithTitle title="Block Summary" />
+      <DividerWithTitle title={props.title} />
     </div>
     <div className={styles.content}>
       <div className={styles.infoPanel}>

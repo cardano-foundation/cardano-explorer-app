@@ -6,8 +6,6 @@ import Search from '../source/features/widgets/search/components/Search';
 
 storiesOf('Search', module)
   .add('Search', () => (
-    <div style={{ backgroundColor: '#1c1f30' }}>
-      <Search triggerBlockSearch={action('triggerBlockSearch')} />
-    </div>
+    <Search triggerBlockSearch={action('triggerBlockSearch')} />
   ))
-  .add('No Search Results', () => <NoSearchResult />);
+  .add('No Search Result', () => <NoSearchResult />);
