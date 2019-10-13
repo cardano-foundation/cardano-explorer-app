@@ -13,6 +13,8 @@ if (environment.IS_CLIENT) {
   const Layout = require('../layout/Layout').default;
   const HeaderContainer = require('../features/widgets/header/containers/HeaderContainer')
     .default;
+  const NoSearchResult = require('../features/widgets/search/components/NoSearchResult')
+    .default;
   const FooterContainer = require('../features/widgets/footer/containers/FooterContainer')
     .default;
 
@@ -20,6 +22,7 @@ if (environment.IS_CLIENT) {
     <NoSSR>
       <Layout>
         <HeaderContainer />
+        <NoSearchResult />
         <FooterContainer />
       </Layout>
     </NoSSR>

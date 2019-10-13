@@ -35,8 +35,8 @@
         font-family: ProximaNova, sans-serif;
         font-size: 18px;
         font-weight: 600;
-        line-height: 1.11;
         letter-spacing: 1.8px;
+        line-height: 1.11;
         padding-top: 5px;
         text-align: center;
       }
@@ -183,6 +183,10 @@
 @media (max-width: 575px) {
   .headerContainer {
     .contentContainer {
+      .tabs {
+        padding: 0 16px;
+      }
+
       .enlargedBrandType {
         .logoContainer {
           margin-top: 24px;
@@ -192,6 +196,7 @@
             width: 61px;
           }
         }
+
         .titleContainer {
           margin-top: 15.5px;
 
@@ -203,8 +208,9 @@
 
       .searchContainer {
         margin-bottom: 51px;
-        margin-top: 0;
-        width: calc(100% + 32px);
+        margin-top: 40px;
+        padding: 0 16px;
+        width: 100%;
       }
     }
   }
