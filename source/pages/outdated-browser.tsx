@@ -19,7 +19,10 @@ if (environment.IS_CLIENT) {
   OutdatedBrowserPage = () => (
     <NoSSR>
       <Layout hasContainer>
-        <OutdatedBrowser text={'Your web browser is out of date'} />
+        <OutdatedBrowser
+          text="Your web browser is out of date"
+          updateBrowserUrl="http://browser-update.org/update.html?force_outdated=true"
+        />
         <FooterContainer />
       </Layout>
     </NoSSR>

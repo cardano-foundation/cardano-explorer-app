@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import styles from './OutdatedBrowser.scss';
 
 const CardanoLogo = require('../../../../static/assets/images/header/cardano-logo.svg');
+const ContainerBackground = require('../../../../static/assets/images/outdated-browser/hub-tripple-background.svg');
+const FirefoxLogo = require('../../../../static/assets/images/outdated-browser/firefox-icon.svg');
+const OperaLogo = require('../../../../static/assets/images/outdated-browser/opera-icon.svg');
+const ChromeLogo = require('../../../../static/assets/images/outdated-browser/chrome-icon.svg');
+const EdgeLogo = require('../../../../static/assets/images/outdated-browser/edge-icon.svg');
+const SafariLogo = require('../../../../static/assets/images/outdated-browser/safari-icon.svg');
 
 export interface IOutdatedBrowserProps {
   text: string;
+  updateBrowserUrl: string;
 }
 
 export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
@@ -66,12 +73,15 @@ export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
   };
 
   public render() {
-    const { text } = this.props;
+    const { text, updateBrowserUrl } = this.props;
 
     const userBrowser = this.detectUserBrowser();
 
     return (
       <div className={styles.outdatedBrowserContainer}>
+        <ContainerBackground
+          className={styles.outdatedBrowserContainerBackground}
+        />
         <div className={styles.topHeaderContainer}>
           <div className={styles.contentContainer}>
             <div className={styles.brandType}>
@@ -88,6 +98,63 @@ export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className={styles.mainContainer}>
+          <div className={styles.browserColumn}>
+            <a className={styles.browserLink} href={updateBrowserUrl}>
+              <FirefoxLogo className={styles.browserIcon} />
+            </a>
+            <div className={styles.browserName}>
+              <a className={styles.browserLink} href={updateBrowserUrl}>
+                Firefox
+              </a>
+            </div>
+            <div className={styles.browserCompany}>Mozila Foundation</div>
+          </div>
+          <div className={styles.browserColumn}>
+            <a className={styles.browserLink} href={updateBrowserUrl}>
+              <OperaLogo className={styles.browserIcon} />
+            </a>
+            <div className={styles.browserName}>
+              <a className={styles.browserLink} href={updateBrowserUrl}>
+                Opera
+              </a>
+            </div>
+            <div className={styles.browserCompany}>Opera Software</div>
+          </div>
+          <div className={styles.browserColumn}>
+            <a className={styles.browserLink} href={updateBrowserUrl}>
+              <ChromeLogo className={styles.browserIcon} />
+            </a>
+            <div className={styles.browserName}>
+              <a className={styles.browserLink} href={updateBrowserUrl}>
+                Chrome
+              </a>
+            </div>
+            <div className={styles.browserCompany}>Google</div>
+          </div>
+          <div className={styles.browserColumn}>
+            <a className={styles.browserLink} href={updateBrowserUrl}>
+              <EdgeLogo className={styles.browserIcon} />
+            </a>
+            <div className={styles.browserName}>
+              <a className={styles.browserLink} href={updateBrowserUrl}>
+                Edge
+              </a>
+            </div>
+            <div className={styles.browserCompany}>Microsoft</div>
+          </div>
+          <div className={styles.browserColumn}>
+            <a className={styles.browserLink} href={updateBrowserUrl}>
+              <SafariLogo className={styles.browserIcon} />
+            </a>
+            <div className={styles.browserName}>
+              <a className={styles.browserLink} href={updateBrowserUrl}>
+                Safari
+              </a>
+            </div>
+            <div className={styles.browserCompany}>Apple</div>
           </div>
         </div>
         <div className={styles.bottomContainer}>
