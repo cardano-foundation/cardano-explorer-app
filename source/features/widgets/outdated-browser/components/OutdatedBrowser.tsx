@@ -9,23 +9,26 @@ export interface IOutdatedBrowserProps {
 
 export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
   public detectUserBrowser = () => {
-    // @ts-ignore
     const isOpera =
+      // @ts-ignore
       (!!window.opr && !!opr.addons) ||
+      // @ts-ignore
       !!window.opera ||
       navigator.userAgent.indexOf(' OPR/') >= 0;
 
     // @ts-ignore
     const isFirefox = typeof InstallTrigger !== 'undefined';
 
-    // @ts-ignore
     const isSafari =
+      // @ts-ignore
       /constructor/i.test(window.HTMLElement) ||
       (p => {
         return p.toString() === '[object SafariRemoteNotification]';
         // @ts-ignore
       })(
+        // @ts-ignore
         !window.safari ||
+          // @ts-ignore
           (typeof safari !== 'undefined' && safari.pushNotification)
       );
 
@@ -35,8 +38,8 @@ export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
     // @ts-ignore
     const isEdge = !isIE && !!window.StyleMedia;
 
-    // @ts-ignore
     const isChrome =
+      // @ts-ignore
       !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
 
     // @ts-ignore
