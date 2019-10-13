@@ -13,6 +13,8 @@ if (environment.IS_CLIENT) {
   const Layout = require('../layout/Layout').default;
   const HeaderContainer = require('../features/widgets/header/containers/HeaderContainer')
     .default;
+  const OutdatedBrowser = require('../features/widgets/outdated-browser/components/OutdatedBrowser')
+    .default;
   const FooterContainer = require('../features/widgets/footer/containers/FooterContainer')
     .default;
 
@@ -20,6 +22,7 @@ if (environment.IS_CLIENT) {
     <NoSSR>
       <Layout>
         <HeaderContainer />
+        <OutdatedBrowser />
         <FooterContainer />
       </Layout>
     </NoSSR>
