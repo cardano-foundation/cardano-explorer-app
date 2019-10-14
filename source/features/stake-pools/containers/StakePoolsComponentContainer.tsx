@@ -3,6 +3,7 @@ import React from 'react';
 import StakePools from '../components/StakePools';
 import UnmoderatedDataWarning from '../components/UnmoderatedDataWarning';
 import { useStakePools } from '../hooks';
+import Container from '../../widgets/container/components/Container';
 
 export const StakePoolsComponentContainerRaw = () => {
   const { store, actions } = useStakePools();
@@ -16,7 +17,11 @@ export const StakePoolsComponentContainerRaw = () => {
       />
     );
 
-  return <StakePools stakePoolsList={stakePoolsList} />;
+  return (
+    <Container>
+      <StakePools stakePoolsList={stakePoolsList} />
+    </Container>
+  );
 };
 export const StakePoolsComponentContainer = observer(
   StakePoolsComponentContainerRaw

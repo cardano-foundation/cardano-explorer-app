@@ -11,6 +11,12 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+  body {
+    background-color: $primary-bg;
+  }
+  * {
+    font-family: ProximaNova;
+  }
 
   @media screen and (-webkit-min-device-pixel-ratio: 0) {
     select,

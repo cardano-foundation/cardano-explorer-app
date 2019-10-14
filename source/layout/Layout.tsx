@@ -1,10 +1,11 @@
 import classnames from 'classnames';
-import React, { Fragment } from 'react';
+import React, { Fragment, FC } from 'react';
 import Head from './Head';
 import styles from './Layout.scss';
 
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import GraphQLProvider from '../utils/graphql/GraphQLProvider';
+import ContainerComponent from '../features/widgets/container/components/Container';
 
 interface IProps {
   children: React.ReactNode;
@@ -12,7 +13,7 @@ interface IProps {
 }
 
 const Layout = ({ children, hasContainer }: IProps) => {
-  const containerStyles = classnames([hasContainer ? styles.container : null]);
+  const Container: any = hasContainer ? ContainerComponent : Fragment;
 
   return (
     <Fragment>
@@ -20,7 +21,7 @@ const Layout = ({ children, hasContainer }: IProps) => {
       <GraphQLProvider>
         <PolymorphThemeProvider>
           <div className={styles.content}>
-            <div className={containerStyles}>{children}</div>
+            <Container>{children}</Container>
           </div>
         </PolymorphThemeProvider>
       </GraphQLProvider>
