@@ -1,20 +1,18 @@
 import classnames from 'classnames';
-import React, { Fragment, FC } from 'react';
+import React, { FC, Fragment } from 'react';
 import Head from './Head';
 import styles from './Layout.scss';
 
+import ContainerComponent from '../features/widgets/container/components/Container';
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import GraphQLProvider from '../utils/graphql/GraphQLProvider';
-import ContainerComponent from '../features/widgets/container/components/Container';
 
 interface IProps {
   children: React.ReactNode;
   hasContainer?: boolean;
 }
-
 const Layout = ({ children, hasContainer }: IProps) => {
   const Container: any = hasContainer ? ContainerComponent : Fragment;
-
   return (
     <Fragment>
       <Head />
@@ -28,5 +26,4 @@ const Layout = ({ children, hasContainer }: IProps) => {
     </Fragment>
   );
 };
-
 export default Layout;
