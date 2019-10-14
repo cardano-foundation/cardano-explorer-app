@@ -108,14 +108,32 @@
 
   .mainContainer {
     display: flex;
-    padding: 40px 0;
+    padding: 50px 0;
     z-index: 2;
 
     .browserColumn {
       margin: 0 33px;
       z-index: 3;
 
-      .browserIcon {
+      .browserLink {
+        .browserIconHover {
+          display: none;
+        }
+
+        &:hover {
+          .browserIcon {
+            display: none;
+          }
+
+          .browserIconHover {
+            display: block;
+            margin-bottom: 4px;
+          }
+        }
+      }
+
+      .browserIcon,
+      .browserIconHover {
         height: 96px;
         width: 96px;
       }

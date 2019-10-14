@@ -3,11 +3,16 @@ import styles from './OutdatedBrowser.scss';
 
 const CardanoLogo = require('../../../../static/assets/images/header/cardano-logo.svg');
 const ContainerBackground = require('../../../../static/assets/images/outdated-browser/hub-tripple-background.svg');
-const FirefoxLogo = require('../../../../static/assets/images/outdated-browser/firefox-icon.svg');
-const OperaLogo = require('../../../../static/assets/images/outdated-browser/opera-icon.svg');
-const ChromeLogo = require('../../../../static/assets/images/outdated-browser/chrome-icon.svg');
-const EdgeLogo = require('../../../../static/assets/images/outdated-browser/edge-icon.svg');
-const SafariLogo = require('../../../../static/assets/images/outdated-browser/safari-icon.svg');
+const FirefoxGrayLogo = require('../../../../static/assets/images/outdated-browser/firefox-gray.svg');
+const OperaGrayLogo = require('../../../../static/assets/images/outdated-browser/opera-gray.svg');
+const ChromeGrayLogo = require('../../../../static/assets/images/outdated-browser/chrome-gray.svg');
+const EdgeGrayLogo = require('../../../../static/assets/images/outdated-browser/edge-gray.svg');
+const SafariGrayLogo = require('../../../../static/assets/images/outdated-browser/safari-gray.svg');
+const FirefoxLogo = require('../../../../static/assets/images/outdated-browser/firefox.svg');
+const OperaLogo = require('../../../../static/assets/images/outdated-browser/opera.svg');
+const ChromeLogo = require('../../../../static/assets/images/outdated-browser/chrome.svg');
+const EdgeLogo = require('../../../../static/assets/images/outdated-browser/edge.svg');
+const SafariLogo = require('../../../../static/assets/images/outdated-browser/safari.svg');
 
 export interface IOutdatedBrowserProps {
   text: string;
@@ -103,7 +108,8 @@ export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
         <div className={styles.mainContainer}>
           <div className={styles.browserColumn}>
             <a className={styles.browserLink} href={updateBrowserUrl}>
-              <FirefoxLogo className={styles.browserIcon} />
+              <FirefoxGrayLogo className={styles.browserIcon} />
+              <FirefoxLogo className={styles.browserIconHover} />
             </a>
             <div className={styles.browserName}>
               <a className={styles.browserLink} href={updateBrowserUrl}>
@@ -114,7 +120,8 @@ export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
           </div>
           <div className={styles.browserColumn}>
             <a className={styles.browserLink} href={updateBrowserUrl}>
-              <OperaLogo className={styles.browserIcon} />
+              <OperaGrayLogo className={styles.browserIcon} />
+              <OperaLogo className={styles.browserIconHover} />
             </a>
             <div className={styles.browserName}>
               <a className={styles.browserLink} href={updateBrowserUrl}>
@@ -125,7 +132,8 @@ export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
           </div>
           <div className={styles.browserColumn}>
             <a className={styles.browserLink} href={updateBrowserUrl}>
-              <ChromeLogo className={styles.browserIcon} />
+              <ChromeGrayLogo className={styles.browserIcon} />
+              <ChromeLogo className={styles.browserIconHover} />
             </a>
             <div className={styles.browserName}>
               <a className={styles.browserLink} href={updateBrowserUrl}>
@@ -136,7 +144,8 @@ export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
           </div>
           <div className={styles.browserColumn}>
             <a className={styles.browserLink} href={updateBrowserUrl}>
-              <EdgeLogo className={styles.browserIcon} />
+              <EdgeGrayLogo className={styles.browserIcon} />
+              <EdgeLogo className={styles.browserIconHover} />
             </a>
             <div className={styles.browserName}>
               <a className={styles.browserLink} href={updateBrowserUrl}>
@@ -147,7 +156,8 @@ export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
           </div>
           <div className={styles.browserColumn}>
             <a className={styles.browserLink} href={updateBrowserUrl}>
-              <SafariLogo className={styles.browserIcon} />
+              <SafariGrayLogo className={styles.browserIcon} />
+              <SafariLogo className={styles.browserIconHover} />
             </a>
             <div className={styles.browserName}>
               <a className={styles.browserLink} href={updateBrowserUrl}>
