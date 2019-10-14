@@ -1,4 +1,4 @@
-.epochListRowContainer {
+.blockListRowContainer {
   align-items: center;
   color: $table-text;
   display: flex;
@@ -19,37 +19,50 @@
   }
 
   .blocksSlots {
-    width: 120px;
+    color: $primary-highlight-color;
+    width: 100px;
   }
 
-  .startedAt {
-    width: 170px;
+  .createdAt {
+    width: 160px;
   }
 
-  .endedAt {
-    width: 170px;
-  }
-
-  .transactions {
-    width: 140px;
-  }
-
-  .output {
+  .createdBy {
     flex: 1;
     text-align: right;
   }
 
+  .transactions {
+    width: 120px;
+  }
+
+  .size {
+    text-align: right;
+    width: 120px;
+  }
+
+  .output {
+    text-align: right;
+    width: 122px;
+  }
+
   @media (max-width: 991px) and (min-width: 768px) {
+    .createdAt {
+      width: 120px;
+    }
     .transactions {
       display: none;
     }
   }
 
   @media (max-width: 767px) and (min-width: 576px) {
-    .endedAt {
+    .transactions {
       display: none;
     }
-    .transactions {
+    .size {
+      display: none;
+    }
+    .output {
       display: none;
     }
   }
@@ -59,16 +72,19 @@
       width: 50px;
     }
     .blocksSlots {
-      width: 110px;
+      width: 90px;
     }
-    .startedAt {
+    .createdAt {
       flex: 1;
       width: auto;
     }
-    .endedAt {
+    .createdBy {
       display: none;
     }
     .transactions {
+      display: none;
+    }
+    .size {
       display: none;
     }
     .output {

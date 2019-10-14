@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import Blocks from '../components/Blocks';
+import BlockList from '../components/BlockList';
 
 export const BlocksComponentContainerRaw = () => {
-  return <Blocks items={[]} />;
+  return <BlockList title="Blocks" items={[]} />;
 };
 
 export const BlocksComponentContainer = observer(BlocksComponentContainerRaw);

@@ -1,40 +1,41 @@
 import { observer } from 'mobx-react-lite';
 import { Button } from 'react-polymorph/lib/components/Button';
 import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
-import styles from './EpochList.scss';
-import EpochListRow, { IEpochListRowProps } from './EpochListRow';
+import styles from './BlockList.scss';
+import BlockListRow, { IBlockListRowProps } from './BlockListRow';
 
-export interface IEpochListProps {
+export interface IBlockListProps {
   title: string;
-  items: Array<IEpochListRowProps>;
+  items: Array<IBlockListRowProps>;
 }
 
-const EpochList = (props: IEpochListProps) => (
-  <div className={styles.epochListContainer}>
+const BlockList = (props: IBlockListProps) => (
+  <div className={styles.blockListContainer}>
     <div className={styles.header}>
       <DividerWithTitle title={props.title} />
     </div>
     <div className={styles.listHeader}>
       <div className={styles.epoch}>Epoch</div>
-      <div className={styles.blocksSlots}>Blocks / Slots</div>
-      <div className={styles.startedAt}>Started At</div>
-      <div className={styles.endedAt}>Ended At</div>
+      <div className={styles.blocksSlots}>Block / Slot</div>
+      <div className={styles.createdAt}>Created At</div>
       <div className={styles.transactions}>Transactions</div>
       <div className={styles.output}>Output (₳)</div>
+      <div className={styles.size}>Size (Bytes)</div>
+      <div className={styles.createdBy}>Created By</div>
     </div>
     {props.items.map((item, index) => (
-      <div key={`epoch_${index}`} className={styles.epochListRow}>
-        <EpochListRow {...item} />
+      <div key={`epoch_${index}`} className={styles.blockListRow}>
+        <BlockListRow {...item} />
       </div>
     ))}
     <div className={styles.showMore}>
       <Button
         className={styles.showMoreButton}
-        label="Show more epochs"
+        label="Show more blocks"
         onClick={() => null}
       />
     </div>
   </div>
 );
 
-export default observer(EpochList);
+export default observer(BlockList);

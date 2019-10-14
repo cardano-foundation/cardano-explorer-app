@@ -2,7 +2,7 @@ import debug from 'debug';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
-import EpochInfo from '../features/epochs/components/EpochInfo';
+import EpochSummary from '../features/epochs/components/EpochSummary';
 import StakePoolsContainer from '../features/stake-pools/containers/StakePoolsContainer';
 
 if (environment.DEBUG) {
@@ -22,7 +22,7 @@ if (environment.IS_CLIENT) {
     <NoSSR>
       <Layout hasContainer>
         <HeaderContainer />
-        <EpochInfo
+        <EpochSummary
           blocks={21073}
           endedAt={1569144483000}
           epoch={135}
@@ -30,6 +30,7 @@ if (environment.IS_CLIENT) {
           slots={21600}
           startedAt={1568366883000}
           status="In progress..."
+          title="Epoch"
           transactions={12}
         />
         <StakePoolsContainer />

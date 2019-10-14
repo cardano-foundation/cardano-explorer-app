@@ -5,9 +5,11 @@ Changelog
 
 ### Features
 
+- Implement main page design story ([PR 26](https://github.com/input-output-hk/cardano-explorer-app/pull/26))
+- Implement no search results component ([PR 25](https://github.com/input-output-hk/cardano-explorer-app/pull/25))
 - Implement block details component ([PR 24](https://github.com/input-output-hk/cardano-explorer-app/pull/24))
 - Implement transaction details component ([PR 23](https://github.com/input-output-hk/cardano-explorer-app/pull/23))
-- Implement no search results component ([PR 25](https://github.com/input-output-hk/cardano-explorer-app/pull/25))
+- Implement address info and transaction list components ([PR 22](https://github.com/input-output-hk/cardano-explorer-app/pull/22))
 - Implement blocks component ([PR 17](https://github.com/input-output-hk/cardano-explorer-app/pull/17/))
 - Implement epoch info component for epoch details page ([PR 15](https://github.com/input-output-hk/cardano-explorer-app/pull/15))
 - Implement epoch list component for main page ([PR 13](https://github.com/input-output-hk/cardano-explorer-app/pull/13))

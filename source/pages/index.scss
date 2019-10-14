@@ -1,0 +1,47 @@
+.headerBackgroundAnimationContainer {
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  .headerBackgroundAnimation {
+    height: 415px;
+    width: 1099px;
+
+    .animationIframe {
+      border: 0;
+      height: 100%;
+      opacity: 0.3;
+      width: 100%;
+    }
+  }
+}
+
+.sideBackgroundImageContainer {
+  align-items: flex-end;
+  bottom: 0;
+  display: flex;
+  position: absolute;
+  right: 0;
+
+  .sideBackgroundImage {
+    height: auto;
+    object-fit: contain;
+    opacity: 0.3;
+    width: 596.5px;
+  }
+}
+
+.epochList {
+  margin-bottom: 21px;
+}
+
+.blockList {
+  margin-bottom: 139.5px;
+
+  @media (max-width: 575px) {
+    margin-bottom: 83px;
+  }
+}
