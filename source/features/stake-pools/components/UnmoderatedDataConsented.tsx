@@ -5,7 +5,7 @@ import styles from './UnmoderatedDataConsented.scss';
 
 export default ({ onHideUnmoderatedData }: IUnmoderatedDataConcent) => (
   <div className={styles.unmoderatedDataConsentedContainer}>
-    You have consented to view unmoderated stake pool data.{' '}
+    You have consented to view unmoderated stake pool data.&nbsp;
     <button onClick={onHideUnmoderatedData}>Hide the unmoderated data</button>.
   </div>
 );

@@ -1,9 +1,12 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import React, { Children, cloneElement, useState } from 'react';
+import React, { Children, cloneElement, useState, Fragment } from 'react';
 import StakePoolsList from '../source/features/stake-pools/components/StakePoolsList';
 import StakePoolThumbnail from '../source/features/stake-pools/components/StakePoolThumbnail';
 import StakePoolTooltip from '../source/features/stake-pools/components/StakePoolTooltip';
+import UnmoderatedDataConsented from '../source/features/stake-pools/components/UnmoderatedDataConsented';
+import UnmoderatedDataWarning from '../source/features/stake-pools/components/UnmoderatedDataWarning';
+
 import DUMMY_DATA from '../source/features/stake-pools/stakingStakePools.dummy.json';
 import { getColorFromRange } from '../source/utils/colors';
 
@@ -12,13 +15,14 @@ const ListWrapper = (story: any) =>
     const [selectedPoolId, onSelect] = useState('');
     const onClose = () => onSelect('');
     return (
-      <>
+      <Fragment>
         {Children.map(story(), child =>
           cloneElement(child, { selectedPoolId, onSelect, onClose })
         )}
-      </>
+      </Fragment>
     );
   });
+
 storiesOf('Stake Pools|List', module)
   .addDecorator(ListWrapper)
   .add('List - With pools', () => (
@@ -37,6 +41,7 @@ storiesOf('Stake Pools|List', module)
       onClose={action('onClose')}
     />
   ));
+
 const ComponentsWrapper = (story: any) => (
   <div
     style={{
@@ -48,35 +53,32 @@ const ComponentsWrapper = (story: any) => (
     {story()}
   </div>
 );
+
 storiesOf('Stake Pools|Components', module)
   .addDecorator(ComponentsWrapper)
-  .add('Thumbnail', () => {
-    return (
-      <>
-        <StakePoolThumbnail
-          key="0"
-          stakePool={DUMMY_DATA[0]}
-          color={getColorFromRange(DUMMY_DATA[0].ranking)}
-          isSelected={false}
-          onSelect={action('onSelect')}
-        />
-        <StakePoolThumbnail
-          key="1"
-          stakePool={DUMMY_DATA[50]}
-          color={getColorFromRange(DUMMY_DATA[50].ranking)}
-          isSelected={false}
-          onSelect={action('onSelect')}
-        />
-        <StakePoolThumbnail
-          key="2"
-          stakePool={DUMMY_DATA[90]}
-          color={getColorFromRange(DUMMY_DATA[90].ranking)}
-          isSelected={false}
-          onSelect={action('onSelect')}
-        />
-      </>
-    );
-  })
+  .add('Thumbnail', () => [
+    <StakePoolThumbnail
+      key="0"
+      stakePool={DUMMY_DATA[0]}
+      color={getColorFromRange(DUMMY_DATA[0].ranking)}
+      isSelected={false}
+      onSelect={action('onSelect')}
+    />,
+    <StakePoolThumbnail
+      key="1"
+      stakePool={DUMMY_DATA[50]}
+      color={getColorFromRange(DUMMY_DATA[50].ranking)}
+      isSelected={false}
+      onSelect={action('onSelect')}
+    />,
+    <StakePoolThumbnail
+      key="2"
+      stakePool={DUMMY_DATA[90]}
+      color={getColorFromRange(DUMMY_DATA[90].ranking)}
+      isSelected={false}
+      onSelect={action('onSelect')}
+    />,
+  ])
   .add('Tooltip', () => (
     <div style={{ position: 'relative', top: 50 }}>
       <StakePoolTooltip
@@ -86,4 +88,14 @@ storiesOf('Stake Pools|Components', module)
         onClose={action('onClose')}
       />
     </div>
+  ))
+  .add('UnmoderatedDataWarning', () => (
+    <UnmoderatedDataWarning
+      onAcceptUnmoderatedData={action('onAcceptUnmoderatedData')}
+    />
+  ))
+  .add('UnmoderatedDataConsented', () => (
+    <UnmoderatedDataConsented
+      onHideUnmoderatedData={action('onHideUnmoderatedData')}
+    />
   ));

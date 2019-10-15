@@ -6,8 +6,11 @@
   letter-spacing: 0.8px;
   line-height: 1.33;
   padding: 10px 0;
+  position: fixed;
   text-align: center;
   text-transform: uppercase;
+  width: 100%;
+  z-index: 9999;
 
   button {
     color: $primary-bg;
