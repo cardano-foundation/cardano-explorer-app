@@ -4,6 +4,7 @@ import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
 import EpochSummary from '../features/epochs/components/EpochSummary';
 import StakePoolsContainer from '../features/stake-pools/containers/StakePoolsContainer';
+import UnmoderatedDataConsentedContainer from '../features/stake-pools/containers/UnmoderatedDataConsentedContainer';
 import Container from '../features/widgets/container/components/Container';
 
 if (environment.DEBUG) {
@@ -22,6 +23,7 @@ if (environment.IS_CLIENT) {
   EpochPage = () => (
     <NoSSR>
       <Layout>
+        <UnmoderatedDataConsentedContainer />
         <Container>
           <HeaderContainer />
           <EpochSummary

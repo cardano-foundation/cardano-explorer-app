@@ -1,0 +1,22 @@
+.unmoderatedDataConsentedContainer {
+  background: $secondary-highlight-color;
+  color: $primary-bg;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  line-height: 1.33;
+  padding: 10px 0;
+  text-align: center;
+  text-transform: uppercase;
+
+  button {
+    color: $primary-bg;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    line-height: 1.33;
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+}
