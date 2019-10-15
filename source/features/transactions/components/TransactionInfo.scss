@@ -14,9 +14,20 @@
     letter-spacing: 0.4px;
     line-height: 1.33;
 
+    @media (max-width: 575px) {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
     .addresses {
       max-width: 706px;
       min-width: 656px;
+
+      @media (max-width: 768px) {
+        max-width: auto;
+        min-width: auto;
+        width: 100%;
+      }
 
       .infoRow {
         align-items: center;
@@ -85,6 +96,11 @@
           &:last-child {
             margin-bottom: 0;
           }
+
+          @media (max-width: 768px) {
+            margin-bottom: 10px;
+            word-break: break-word;
+          }
         }
 
         .transferredAt {
@@ -110,16 +126,16 @@
           }
         }
       }
-
-      @media (max-width: 768px) {
-        max-width: 300px;
-        width: 100%;
-      }
     }
 
     .amounts {
       flex: 1;
       margin-top: -5px;
+
+      @media (max-width: 768px) {
+        margin-top: 0;
+        width: 100%;
+      }
 
       .infoRow {
         align-items: flex-end;
@@ -129,10 +145,6 @@
 
         &:last-child {
           margin-bottom: 0;
-
-          @media (min-width: 490px) and (max-width: 768px) {
-            margin-top: 85px;
-          }
         }
 
         .totalAmount {
@@ -158,33 +170,12 @@
           &:last-child {
             margin-bottom: 0;
           }
-        }
 
-        @media (max-width: 768px) {
-          align-items: flex-end;
-          flex-direction: column;
+          @media (max-width: 575px) {
+            display: none;
+          }
         }
       }
-
-      @media (max-width: 768px) {
-        align-items: flex-end;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
     }
-
-    @media (max-width: 490px) {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
-
-  @media (max-width: 1400px) {
-    padding: 32px 80px;
-  }
-
-  @media (max-width: 992px) {
-    padding: 32px;
   }
 }

@@ -1,12 +1,28 @@
 .searchContainer {
-  background-color: $search-area-bg;
-  margin: 0 auto;
-  max-width: 872px;
-  padding: 30px 50px 40px;
-  width: 100%;
+  &.enlargedSearchContainer {
+    .searchTitle {
+      margin: 0 0 8px;
+    }
 
-  @media (max-width: 575px) {
-    padding: 20px 16px;
+    .searchInput {
+      input {
+        font-size: 12px !important;
+        padding: 10px 0;
+      }
+    }
+  }
+
+  &.shrinkedSearchContainer {
+    .searchTitle {
+      margin: 0;
+    }
+
+    .searchInput {
+      input {
+        font-size: 14px !important;
+        padding: 9px 0 8px;
+      }
+    }
   }
 
   .searchTitle {
@@ -50,10 +66,8 @@
         background-color: $transparent-color;
         border: 0;
         color: $solid-text;
-        font-size: 12px !important;
         letter-spacing: 0.6px;
         line-height: 1.67;
-        padding: 11px 0;
 
         @media (max-width: 575px) {
           font-size: 10px !important;

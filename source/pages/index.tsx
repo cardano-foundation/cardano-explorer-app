@@ -5,7 +5,14 @@ import { isMobileScreen } from '../common/helpers';
 import { environment } from '../environment';
 import BlockList from '../features/blocks/components/BlockList';
 import EpochList from '../features/epochs/components/EpochList';
+import FooterContainer from '../features/widgets/footer/containers/FooterContainer';
+import HeaderContainer from '../features/widgets/header/containers/HeaderContainer';
+import Layout from '../layout/Layout';
 import styles from './index.scss';
+
+export { default as AddressPage } from './address';
+
+const SideBackgroundImage = require('../static/assets/images/main-side-background.svg');
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
@@ -120,13 +127,6 @@ const epochs = [
 let IndexPage = () => <NoSSR />;
 
 if (environment.IS_CLIENT) {
-  const Layout = require('../layout/Layout').default;
-  const SideBackgroundImage = require('../static/assets/images/main-side-background.svg');
-  const HeaderContainer = require('../features/widgets/header/containers/HeaderContainer')
-    .default;
-  const FooterContainer = require('../features/widgets/footer/containers/FooterContainer')
-    .default;
-
   IndexPage = () => (
     <NoSSR>
       <Layout hasContainer>
