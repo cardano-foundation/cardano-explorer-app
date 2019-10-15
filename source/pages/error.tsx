@@ -13,13 +13,16 @@ if (environment.IS_CLIENT) {
   const Layout = require('../layout/Layout').default;
   const HeaderContainer = require('../features/widgets/header/containers/HeaderContainer')
     .default;
+  const NoSearchResult = require('../features/widgets/search/components/NoSearchResult')
+    .default;
   const FooterContainer = require('../features/widgets/footer/containers/FooterContainer')
     .default;
 
   ErrorPage = () => (
     <NoSSR>
-      <Layout>
+      <Layout hasContainer>
         <HeaderContainer />
+        <NoSearchResult />
         <FooterContainer />
       </Layout>
     </NoSSR>

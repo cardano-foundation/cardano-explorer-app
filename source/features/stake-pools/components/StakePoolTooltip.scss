@@ -67,7 +67,7 @@ $horizontal: 77px;
 
 .name {
   color: $solid-text;
-  font-family: ProximaNova;
+  font-family: ProximaNova, sans-serif;
   font-size: 16px;
   letter-spacing: 0.5px;
   line-height: 1.38;
@@ -136,7 +136,7 @@ $horizontal: 77px;
 .url {
   border-bottom: 1px solid $secondary-highlight-color;
   color: $secondary-highlight-color;
-  font-family: ProximaNova;
+  font-family: ProximaNova, sans-serif;
   font-size: 12px;
   line-height: 1.36;
   max-width: 100%;

@@ -11,7 +11,7 @@
 
   .searchTitle {
     color: $solid-text;
-    font-family: 'Proxima Nova', sans-serif;
+    font-family: ProximaNova, sans-serif;
     font-size: 14px;
     font-stretch: normal;
     font-style: normal;
@@ -39,7 +39,7 @@
       border: 0;
       border-bottom: 1px solid $primary-highlight-color;
       flex: 1;
-      font-family: 'Proxima Nova', sans-serif;
+      font-family: ProximaNova, sans-serif;
       height: 40px;
 
       @media (max-width: 575px) {
