@@ -19,7 +19,7 @@
 
       .progressTextLabel {
         color: $info-text;
-        font-family: 'Proxima Nova', sans-serif;
+        font-family: ProximaNova, sans-serif;
         font-size: 10px;
         font-weight: 300;
         letter-spacing: 0.5px;
@@ -29,7 +29,7 @@
 
       .progressTextValue {
         color: $solid-text;
-        font-family: 'Proxima Nova', sans-serif;
+        font-family: ProximaNova, sans-serif;
         font-size: 46px;
         font-weight: 300;
         letter-spacing: 2.3px;
@@ -49,16 +49,25 @@
         margin-bottom: 10px;
 
         .infoLabel {
-          font-family: 'Proxima Nova', sans-serif;
+          font-family: ProximaNova, sans-serif;
           font-weight: 600;
           width: 130px;
         }
 
         .infoValue {
-          font-family: 'Proxima Nova', sans-serif;
+          font-family: ProximaNova, sans-serif;
           font-weight: 300;
         }
       }
+
+      @media (max-width: 768px) {
+        margin-left: 0;
+        padding-top: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
     }
   }
 }

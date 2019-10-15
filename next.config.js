@@ -116,8 +116,6 @@ module.exports = withPlugins(
         }
       });
       return config;
-
-      return config;
     },
   }
 );

@@ -42,6 +42,7 @@ const Header = (props: IHeaderProps) => {
           <div className={styles.titleContainer}>
             <span className={styles.cardanoTitle}>Cardano</span>
             <span className={styles.explorerTitle}>Blockchain Explorer</span>
+            <div className={styles.networkTitle}>Incentivized Testnet</div>
           </div>
           <div className={styles.tabs}>
             <div className={styles.tabLeftLine} />

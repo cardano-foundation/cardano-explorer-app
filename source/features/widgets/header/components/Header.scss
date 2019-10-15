@@ -12,7 +12,7 @@
 
     .titleContainer {
       color: $solid-text;
-      font-family: 'Proxima Nova', sans-serif;
+      font-family: ProximaNova, sans-serif;
       font-size: 18px;
       font-stretch: normal;
       font-style: normal;
@@ -25,8 +25,20 @@
         font-weight: 300;
         margin-right: 10px;
       }
+
       .explorerTitle {
         font-weight: 600;
+      }
+
+      .networkTitle {
+        color: $secondary-highlight-color;
+        font-family: ProximaNova, sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1.8px;
+        line-height: 1.11;
+        padding-top: 5px;
+        text-align: center;
       }
     }
 
@@ -101,7 +113,7 @@
 
       a {
         color: $primary-highlight-color;
-        font-family: ProximaNova;
+        font-family: ProximaNova, sans-serif;
         font-size: 12px;
         font-weight: 600;
         height: 20px;
@@ -180,6 +192,7 @@
             width: 61px;
           }
         }
+
         .titleContainer {
           margin-top: 15.5px;
 
@@ -191,8 +204,8 @@
 
       .searchContainer {
         margin-bottom: 51px;
-        margin-top: 0;
-        width: calc(100% + 32px);
+        margin-top: 40px;
+        width: 100%;
       }
     }
   }
