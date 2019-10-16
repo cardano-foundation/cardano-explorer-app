@@ -3325,6 +3325,11 @@ brorand@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
 
+browser-update@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/browser-update/-/browser-update-3.3.1.tgz#140c046d38ec1d91aaf4679b585a9741bd06e47e"
+  integrity sha512-Wk8/puLUA6p2UGB6kRK1scJ4VcMyl0Ye+5XW7v6j2K3sJAQ1t9jjEFJcWjg2GNqaw3HFTcuFjIeL23NJV6gs2g==
+
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/browserify-aes/-/browserify-aes-1.2.0.tgz#326734642f403dabc3003209853bb70ad428ef48"

@@ -106,10 +106,14 @@
         letter-spacing: 0.2px;
         line-height: 1.6;
 
-        span {
-          color: $footer-text-color;
-          font-family: 'Proxima Nova Semibold', sans-serif;
-          font-weight: 600;
+        a {
+          text-decoration: none;
+
+          span {
+            color: $footer-text-color;
+            font-family: ProximaNova, sans-serif;
+            font-weight: 600;
+          }
         }
       }
 

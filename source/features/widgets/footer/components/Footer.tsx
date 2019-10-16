@@ -21,14 +21,24 @@ const Footer = (props: IProps) => {
           <p className={styles.copyright}>Cardano {new Date().getFullYear()}</p>
           <div className={styles.logos}>
             <div className={styles.logoText}>
-              <img src={iohkLogo} className={styles.iohkLogo} />
+              <a href="#">
+                <img src={iohkLogo} className={styles.iohkLogo} />
+              </a>
               <p className={styles.iohkText}>IOHK Supported Project</p>
             </div>
             <div className={styles.socialIcons}>
-              <img src={twitterIcon} className={styles.twitterIcon} />
-              <img src={facebookIcon} className={styles.facebookIcon} />
-              <img src={youtubeIcon} className={styles.youtubeIcon} />
-              <img src={newsletterIcon} className={styles.newsletterIcon} />
+              <a href="#">
+                <img src={twitterIcon} className={styles.twitterIcon} />
+              </a>
+              <a href="#">
+                <img src={facebookIcon} className={styles.facebookIcon} />
+              </a>
+              <a href="#">
+                <img src={youtubeIcon} className={styles.youtubeIcon} />
+              </a>
+              <a href="#">
+                <img src={newsletterIcon} className={styles.newsletterIcon} />
+              </a>
             </div>
           </div>
         </div>
@@ -38,7 +48,11 @@ const Footer = (props: IProps) => {
         <div className={styles.footerBottomContainer}>
           <div className={styles.cardanoTextContainer}>
             <h5 className={styles.cardanoTextTitle}>
-              Cardano is an <span>Open Source</span> project.
+              Cardano is an{' '}
+              <a href="">
+                <span>Open Source</span>
+              </a>{' '}
+              project.
             </h5>
             <div className={styles.cardanoText}>
               Cardano is a software platform ONLY and does not conduct any

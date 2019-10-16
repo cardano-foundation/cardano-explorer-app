@@ -146,7 +146,7 @@
 
       a {
         color: $primary-highlight-color;
-        font-family: ProximaNova;
+        font-family: ProximaNova, sans-serif;
         font-size: 12px;
         font-weight: 600;
         height: 20px;
@@ -231,6 +231,7 @@
             width: 61px;
           }
         }
+
         .titleContainer {
           margin-top: 15.5px;
 

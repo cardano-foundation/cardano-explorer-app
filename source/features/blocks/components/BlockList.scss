@@ -11,7 +11,7 @@
     align-items: center;
     color: $secondary-highlight-color;
     display: flex;
-    font-family: 'Proxima Nova', sans-serif;
+    font-family: ProximaNova, sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -121,7 +121,7 @@
       border-radius: 2px;
       color: $primary-bg;
       display: flex;
-      font-family: ProximaNova;
+      font-family: ProximaNova, sans-serif;
       font-size: 12px;
       font-weight: 600;
       height: 25px;

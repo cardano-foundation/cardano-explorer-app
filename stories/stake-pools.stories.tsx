@@ -37,7 +37,7 @@ storiesOf('Stake Pools|List', module)
       onClose={action('onClose')}
     />
   ));
-const ComponentsWrapper = story => (
+const ComponentsWrapper = (story: any) => (
   <div
     style={{
       height: '100vh',
