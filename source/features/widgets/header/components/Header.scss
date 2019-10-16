@@ -133,6 +133,14 @@
       .explorerTitle {
         font-weight: 600;
       }
+      .networkTitle {
+        color: $secondary-highlight-color;
+        font-weight: 600;
+        letter-spacing: 1.8px;
+        line-height: 1.11;
+        padding-top: 5px;
+        text-align: center;
+      }
     }
 
     .tabs {
