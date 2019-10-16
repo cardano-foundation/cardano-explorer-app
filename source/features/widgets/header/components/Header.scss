@@ -92,6 +92,12 @@
 
       .titleContainer {
         font-size: 14px;
+
+        @media (min-width: 1049px) {
+          .networkTitle {
+            text-align: left;
+          }
+        }
       }
 
       .triangleSign {

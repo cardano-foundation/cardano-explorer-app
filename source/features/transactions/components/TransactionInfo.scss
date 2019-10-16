@@ -67,6 +67,10 @@
 
         .receivers {
           align-items: flex-end;
+
+          @media (max-width: 992px) {
+            align-items: flex-start;
+          }
         }
 
         .id {
@@ -145,6 +149,10 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 5px;
+
+        @media (max-width: 992px) {
+          align-items: flex-start;
+        }
 
         &:last-child {
           margin-bottom: 0;
