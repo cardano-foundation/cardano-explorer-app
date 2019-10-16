@@ -5,6 +5,7 @@ Changelog
 
 ### Features
 
+- Implement address details page design story ([PR 30](https://github.com/input-output-hk/cardano-explorer-app/pull/30))
 - Implement main page design story ([PR 26](https://github.com/input-output-hk/cardano-explorer-app/pull/26))
 - Implement no search results component ([PR 25](https://github.com/input-output-hk/cardano-explorer-app/pull/25))
 - Implement block details component ([PR 24](https://github.com/input-output-hk/cardano-explorer-app/pull/24))
