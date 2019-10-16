@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import React, { Children, cloneElement, useState, Fragment } from 'react';
+import React, { Children, cloneElement, Fragment, useState } from 'react';
 import StakePoolsList from '../source/features/stake-pools/components/StakePoolsList';
 import StakePoolThumbnail from '../source/features/stake-pools/components/StakePoolThumbnail';
 import StakePoolTooltip from '../source/features/stake-pools/components/StakePoolTooltip';
@@ -94,8 +94,4 @@ storiesOf('Stake Pools|Components', module)
       onAcceptUnmoderatedData={action('onAcceptUnmoderatedData')}
     />
   ))
-  .add('UnmoderatedDataConsented', () => (
-    <UnmoderatedDataConsented
-      onHideUnmoderatedData={action('onHideUnmoderatedData')}
-    />
-  ));
+  .add('UnmoderatedDataConsented', () => <UnmoderatedDataConsented />);

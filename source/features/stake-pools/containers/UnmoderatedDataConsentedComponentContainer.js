@@ -6,14 +6,11 @@ import UnmoderatedDataConsented from '../components/UnmoderatedDataConsented';
 import { useStakePools } from '../hooks';
 
 export const UnmoderatedDataConsentedComponentContainerRaw = () => {
-  const { store, actions } = useStakePools();
+  const { store } = useStakePools();
   const { showUnmoderatedData } = store;
-  const { handleHideUnmoderatedData } = actions;
   if (showUnmoderatedData) {
     return (
-      <UnmoderatedDataConsented
-        onHideUnmoderatedData={handleHideUnmoderatedData.trigger}
-      />
+      <UnmoderatedDataConsented />
     );
   }
   return null;

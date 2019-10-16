@@ -29,10 +29,6 @@ export class StakePoolsStore extends Store {
           stakePoolsActions.handleAcceptUnmoderatedData,
           this.handleAcceptUnmoderatedData,
         ],
-        [
-          stakePoolsActions.handleHideUnmoderatedData,
-          this.handleHideUnmoderatedData,
-        ],
       ])
     );
   }
@@ -54,10 +50,5 @@ export class StakePoolsStore extends Store {
     const now: number = new Date().getTime();
     this.showUnmoderatedDataStorage = now;
     storage.set(UNMODERATED_WARNING_STORAGE_KEY, now);
-  };
-  @action private handleHideUnmoderatedData = () => {
-    const now: number = new Date().getTime();
-    this.showUnmoderatedDataStorage = null;
-    storage.remove(UNMODERATED_WARNING_STORAGE_KEY);
   };
 }
