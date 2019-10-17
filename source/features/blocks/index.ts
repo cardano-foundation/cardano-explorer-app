@@ -1,4 +1,4 @@
-import { apolloClient } from '../../../utils/graphql/GraphQLProvider';
+import { apolloClient } from '../../utils/graphql/GraphQLProvider';
 import { SearchActions } from './actions';
 import { SearchApi } from './api';
 import { SearchStore } from './store';
