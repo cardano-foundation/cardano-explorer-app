@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
+import ContainerComponent from '../features/widgets/container/components/Container';
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import GraphQLProvider from '../utils/graphql/GraphQLProvider';
 import Head from './Head';
@@ -18,8 +19,8 @@ if (typeof window !== 'undefined') {
 }
 
 const Layout = ({ children, hasContainer }: IProps) => {
+  const Container: any = hasContainer ? ContainerComponent : Fragment;
   const router = useRouter();
-  const containerStyles = classnames([hasContainer ? styles.container : null]);
 
   if (browserUpdate) {
     browserUpdate({
@@ -90,12 +91,11 @@ const Layout = ({ children, hasContainer }: IProps) => {
       <GraphQLProvider>
         <PolymorphThemeProvider>
           <div className={styles.content}>
-            <div className={containerStyles}>{children}</div>
+            <Container>{children}</Container>
           </div>
         </PolymorphThemeProvider>
       </GraphQLProvider>
     </Fragment>
   );
 };
-
 export default Layout;

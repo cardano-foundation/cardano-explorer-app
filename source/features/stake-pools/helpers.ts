@@ -1,7 +1,7 @@
 import { MouseEvent } from 'react';
+import { SEARCH_FIELDS } from './constants';
 import { IStakePoolProps, IStakePoolTooltipPositionProps } from './types';
 
-const SEARCH_FIELDS = ['ticker', 'name'];
 const stakePoolsListSearch = (
   stakePool: IStakePoolProps,
   rawSearch: string
