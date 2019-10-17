@@ -3,6 +3,7 @@ import React from 'react';
 import TransactionInfo from '../source/features/transactions/components/TransactionInfo';
 import TransactionList from '../source/features/transactions/components/TransactionList';
 import TransactionSummary from '../source/features/transactions/components/TransactionSummary';
+import { PaddingDecorator } from './support/PaddingDecorator';
 
 const transactionSummary = {
   address:
@@ -47,6 +48,7 @@ const transactions = [
 ];
 
 storiesOf('Transactions', module)
+  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Transaction Info', () => (
     <TransactionInfo title="Transaction" {...transactions[0]} />
   ))

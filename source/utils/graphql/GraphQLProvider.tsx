@@ -6,8 +6,10 @@ import { createHttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 import createDebug from 'debug';
+import fetch from 'node-fetch';
 import React from 'react';
 import { ApolloProvider } from 'react-apollo-hooks';
+import * as ws from 'ws';
 import { environment } from '../../environment';
 
 const debug = createDebug('Explorer:GraphQLProvider');
@@ -22,6 +24,7 @@ if (!environment.GRAPHQL_HTTP_URL) {
 
 // Queries are made over HTTP
 const httpLink = createHttpLink({
+  fetch: fetch as any,
   uri: environment.GRAPHQL_HTTP_URL,
 });
 
@@ -32,6 +35,7 @@ const wsLink = new WebSocketLink({
     reconnect: true,
   },
   uri: environment.GRAPHQL_WEBSOCKET_URL,
+  webSocketImpl: ws,
 });
 
 export const apolloClient = new ApolloClient({
