@@ -1,4 +1,4 @@
-import noop from 'lodash';
+import { noop } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { BrandType } from '../../../../common/constants';

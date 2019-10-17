@@ -1,5 +1,5 @@
 import debug from 'debug';
-import noop from 'lodash';
+import { noop } from 'lodash';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../common/constants';
