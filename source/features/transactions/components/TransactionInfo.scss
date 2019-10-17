@@ -20,12 +20,14 @@
     }
 
     .addresses {
-      max-width: 706px;
+      max-width: 698px;
       min-width: 656px;
+      padding-right: 66.5px;
 
       @media (max-width: 992px) {
         max-width: initial;
         min-width: initial;
+        padding-right: 0;
         width: 100%;
       }
 
@@ -45,8 +47,11 @@
         }
 
         .currentAddress {
+          align-items: center;
           color: $info-text;
+          display: flex;
           font-family: ProximaNova, sans-serif;
+          width: 100%;
         }
 
         .senders,
@@ -58,6 +63,11 @@
           @media (max-width: 992px) {
             margin-bottom: 10px;
             width: 100%;
+          }
+
+          .startCharacters {
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
         }
 
@@ -89,12 +99,15 @@
 
         .sender,
         .receiver {
+          align-items: center;
           color: $primary-highlight-color;
           cursor: pointer;
+          display: flex;
           font-family: ProximaNova, sans-serif;
           letter-spacing: 0.4px;
           line-height: 1.33;
           margin-bottom: 5px;
+          width: 100%;
 
           &:last-child {
             margin-bottom: 0;
@@ -102,7 +115,6 @@
 
           @media (max-width: 992px) {
             margin-bottom: 10px;
-            word-break: break-word;
           }
         }
 
