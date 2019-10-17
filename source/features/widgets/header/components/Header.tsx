@@ -61,7 +61,7 @@ const Header = (props: IHeaderProps) => {
             </div>
           </div>
         </div>
-        {withSearch && (
+        {withSearch && searchProps && (
           <div className={styles.searchContainer}>
             <Search brandType={brandType} {...searchProps} />
           </div>
@@ -73,6 +73,7 @@ const Header = (props: IHeaderProps) => {
 
 Header.defaultProps = {
   brandType: BrandType.ENLARGED,
+  withSearch: true,
 };
 
 export default observer(Header);

@@ -1,4 +1,5 @@
 import debug from 'debug';
+import { noop } from 'lodash';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../common/constants';
@@ -59,7 +60,11 @@ if (environment.IS_CLIENT) {
   AddressPage = () => (
     <NoSSR>
       <Layout>
-        <Header withSearch brandType={BrandType.SHRINKED} />
+        <Header
+          withSearch
+          brandType={BrandType.SHRINKED}
+          searchProps={{ onSearch: noop }}
+        />
         <div className={styles.container}>
           <div className={styles.addressSummary}>
             <AddressSummary {...addressSummary} />
