@@ -25,11 +25,11 @@ const CircularProgress = (props: ICircularProgressProps) => {
   let percentageCircleStyle = null;
   if (percentage <= 50) {
     percentageCircleStyle = {
-      backgroundImage: `linear-gradient(238deg, transparent 50%, #404250 50%), linear-gradient(${rotateDegree}deg, #1fc1c3 50%, #404250 50%)`,
+      backgroundImage: `linear-gradient(238deg, transparent 50%, #404250 50%), linear-gradient(${rotateDegree}deg, #eb2256 50%, #404250 50%)`,
     };
   } else {
     percentageCircleStyle = {
-      backgroundImage: `linear-gradient(238deg, #1fc1c3 50%, transparent 50%), linear-gradient(${rotateDegree}deg, #1fc1c3 50%, #404250 50%)`,
+      backgroundImage: `linear-gradient(238deg, #1fc1c3 50%, transparent 50%), linear-gradient(${rotateDegree}deg, #eb2256 50%, #404250 50%)`,
     };
   }
 
