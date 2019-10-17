@@ -1,7 +1,7 @@
 const path = require('path');
 const isCi = process.env.CI && process.env.CI !== '';
 
-let themeResource = 'testnet';
+let themeResource = 'incentivized-testnet';
 const resourcesDir = path.join(__dirname, '..','source/styles/resources');
 const resources = [
   `${resourcesDir}/mixins/**/*.scss`,
