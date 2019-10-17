@@ -1,22 +1,24 @@
 import debug from 'debug';
+import { noop } from 'lodash';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
+import { BrandType } from '../common/constants';
 import { isMobileScreen } from '../common/helpers';
 import { environment } from '../environment';
 import BlockList from '../features/blocks/components/BlockList';
 import EpochList from '../features/epochs/components/EpochList';
 import FooterContainer from '../features/widgets/footer/containers/FooterContainer';
-import HeaderContainer from '../features/widgets/header/containers/HeaderContainer';
+import Header from '../features/widgets/header/components/Header';
 import Layout from '../layout/Layout';
 import styles from './index.scss';
 
 export { default as AddressPage } from './address';
 
-const SideBackgroundImage = require('../static/assets/images/main-side-background.svg');
-
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
 }
+
+const SideBackgroundImage = require('../static/assets/images/main-side-background.svg');
 
 const blocks = [
   {
@@ -145,7 +147,11 @@ if (environment.IS_CLIENT) {
             <SideBackgroundImage className={styles.sideBackgroundImage} />
           </div>
         )}
-        <HeaderContainer />
+        <Header
+          withSearch
+          brandType={BrandType.ENLARGED}
+          searchProps={{ onSearch: noop }}
+        />
         <div className={styles.epochList}>
           <EpochList title="Latest Epochs" items={epochs} />
         </div>
