@@ -1,5 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import IndexPage from '../source/pages';
+import IndexPage, { AddressPage } from '../source/pages';
 
-storiesOf('Pages', module).add('Main Page', () => <IndexPage />);
+storiesOf('Pages', module)
+  .add('Main Page', () => <IndexPage />)
+  .add('Address Page', () => <AddressPage />);

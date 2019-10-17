@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import BlockList from '../source/features/blocks/components/BlockList';
 import BlockSummary from '../source/features/blocks/components/BlockSummary';
+import { PaddingDecorator } from './support/PaddingDecorator';
 
 const blocks = [
   {
@@ -73,5 +74,6 @@ const blockSummary = {
 };
 
 storiesOf('Blocks', module)
+  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Block List', () => <BlockList title="Blocks" items={blocks} />)
   .add('Block Summary', () => <BlockSummary {...blockSummary} />);

@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import EpochList from '../source/features/epochs/components/EpochList';
 import EpochSummary from '../source/features/epochs/components/EpochSummary';
+import { PaddingDecorator } from './support/PaddingDecorator';
 
 const epochs = [
   {
@@ -57,5 +58,6 @@ const epochs = [
 ];
 
 storiesOf('Epochs', module)
+  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Epoch List', () => <EpochList title="Epochs" items={epochs} />)
   .add('Epoch Summary', () => <EpochSummary title="Epoch" {...epochs[0]} />);

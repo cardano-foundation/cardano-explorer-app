@@ -1,15 +1,12 @@
+import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import React from 'react';
+import { BrandType } from '../../../../common/constants';
 import Search, { ISearchProps } from '../../search/components/Search';
 import styles from './Header.scss';
 
 const CardanoLogo = require('../../../../static/assets/images/header/cardano-logo.svg');
-
-export enum BrandType {
-  ENLARGED = 'enlarged',
-  SHRINKED = 'shrinked',
-}
 
 export interface IHeaderProps {
   brandType?: BrandType;
@@ -22,9 +19,9 @@ const Header = (props: IHeaderProps) => {
   const { brandType, withSearch, searchProps } = props;
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
-      ? styles.enlargedBrandType
-      : styles.shrinkedBrandType;
-
+      ? styles.enlargedHeaderContainer
+      : styles.shrinkedHeaderContainer;
+  const headerContainerStyles = cx([styles.headerContainer, brandTypeStyle]);
   const indexClassName = !location.pathname.includes('stake-pools')
     ? styles.activeTab
     : '';
@@ -33,9 +30,9 @@ const Header = (props: IHeaderProps) => {
     : '';
 
   return (
-    <header className={styles.headerContainer}>
+    <header className={headerContainerStyles}>
       <div className={styles.contentContainer}>
-        <div className={brandTypeStyle}>
+        <div className={styles.brandType}>
           <div className={styles.logoContainer}>
             <CardanoLogo className={styles.logo} />
           </div>
@@ -66,12 +63,16 @@ const Header = (props: IHeaderProps) => {
         </div>
         {withSearch && (
           <div className={styles.searchContainer}>
-            <Search {...searchProps} />
+            <Search brandType={brandType} {...searchProps} />
           </div>
         )}
       </div>
     </header>
   );
+};
+
+Header.defaultProps = {
+  brandType: BrandType.ENLARGED,
 };
 
 export default observer(Header);

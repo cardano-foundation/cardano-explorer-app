@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import React from 'react';
-import { shrinkAddress } from '../../../common/helpers';
 import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
 import styles from './TransactionInfo.scss';
 
@@ -52,7 +51,16 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
                       : styles.sender
                   }
                 >
-                  {shrinkAddress(sender)}
+                  {sender.length <= 34 ? (
+                    <span>{sender}</span>
+                  ) : (
+                    <>
+                      <span className={styles.startCharacters}>
+                        {sender.substring(0, sender.length - 17)}
+                      </span>
+                      <span>{sender.substring(sender.length - 17)}</span>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
@@ -69,7 +77,16 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
                       : styles.receiver
                   }
                 >
-                  {shrinkAddress(receiver)}
+                  {receiver.length <= 34 ? (
+                    <span>{receiver}</span>
+                  ) : (
+                    <>
+                      <span className={styles.startCharacters}>
+                        {receiver.substring(0, receiver.length - 17)}
+                      </span>
+                      <span>{receiver.substring(receiver.length - 17)}</span>
+                    </>
+                  )}
                 </div>
               ))}
             </div>

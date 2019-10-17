@@ -14,9 +14,22 @@
     letter-spacing: 0.4px;
     line-height: 1.33;
 
+    @media (max-width: 992px) {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
     .addresses {
-      max-width: 706px;
+      max-width: 698px;
       min-width: 656px;
+      padding-right: 66.5px;
+
+      @media (max-width: 992px) {
+        max-width: initial;
+        min-width: initial;
+        padding-right: 0;
+        width: 100%;
+      }
 
       .infoRow {
         align-items: center;
@@ -24,7 +37,7 @@
         justify-content: space-between;
         margin-bottom: 10px;
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
           align-items: flex-start;
           flex-direction: column;
         }
@@ -34,8 +47,11 @@
         }
 
         .currentAddress {
+          align-items: center;
           color: $info-text;
+          display: flex;
           font-family: ProximaNova, sans-serif;
+          width: 100%;
         }
 
         .senders,
@@ -44,9 +60,14 @@
           flex-direction: column;
           width: calc(50% - 27px);
 
-          @media (max-width: 768px) {
+          @media (max-width: 992px) {
             margin-bottom: 10px;
             width: 100%;
+          }
+
+          .startCharacters {
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
         }
 
@@ -70,7 +91,7 @@
           letter-spacing: 0.6px;
           line-height: 1.33;
 
-          @media (max-width: 768px) {
+          @media (max-width: 992px) {
             margin-bottom: 10px;
             word-break: break-word;
           }
@@ -78,15 +99,22 @@
 
         .sender,
         .receiver {
+          align-items: center;
           color: $primary-highlight-color;
           cursor: pointer;
+          display: flex;
           font-family: ProximaNova, sans-serif;
           letter-spacing: 0.4px;
           line-height: 1.33;
           margin-bottom: 5px;
+          width: 100%;
 
           &:last-child {
             margin-bottom: 0;
+          }
+
+          @media (max-width: 992px) {
+            margin-bottom: 10px;
           }
         }
 
@@ -96,6 +124,10 @@
           font-weight: 300;
           letter-spacing: 0.4px;
           line-height: 1.33;
+
+          @media (max-width: 992px) {
+            display: none;
+          }
         }
 
         .nextIcon {
@@ -108,21 +140,21 @@
             width: 14px;
           }
 
-          @media (max-width: 768px) {
+          @media (max-width: 992px) {
             margin-bottom: 10px;
           }
         }
-      }
-
-      @media (max-width: 768px) {
-        max-width: 300px;
-        width: 100%;
       }
     }
 
     .amounts {
       flex: 1;
       margin-top: -5px;
+
+      @media (max-width: 992px) {
+        margin-top: 0;
+        width: 100%;
+      }
 
       .infoRow {
         align-items: flex-end;
@@ -132,10 +164,6 @@
 
         &:last-child {
           margin-bottom: 0;
-
-          @media (min-width: 490px) and (max-width: 768px) {
-            margin-top: 85px;
-          }
         }
 
         .totalAmount {
@@ -161,33 +189,12 @@
           &:last-child {
             margin-bottom: 0;
           }
-        }
 
-        @media (max-width: 768px) {
-          align-items: flex-end;
-          flex-direction: column;
+          @media (max-width: 992px) {
+            display: none;
+          }
         }
       }
-
-      @media (max-width: 768px) {
-        align-items: flex-end;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
     }
-
-    @media (max-width: 490px) {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
-
-  @media (max-width: 1400px) {
-    padding: 32px 80px;
-  }
-
-  @media (max-width: 992px) {
-    padding: 32px;
   }
 }
