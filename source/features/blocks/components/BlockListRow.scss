@@ -19,8 +19,21 @@
   }
 
   .blocksSlots {
+    align-items: center;
     color: $primary-highlight-color;
+    display: flex;
+    justify-content: center;
     width: 100px;
+
+    .blocksSlotsIcon {
+      background-color: $secondary-color;
+      border: solid 1px $primary-highlight-color;
+      border-radius: 2px;
+      display: block;
+      height: 10px;
+      margin-left: 5px;
+      width: 16px;
+    }
   }
 
   .createdAt {
