@@ -13,6 +13,7 @@ import Layout from '../layout/Layout';
 import styles from './index.scss';
 
 export { default as AddressPage } from './address';
+export { default as StakePoolsPage } from './stake-pools';
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
