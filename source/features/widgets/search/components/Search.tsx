@@ -8,12 +8,13 @@ import styles from './Search.scss';
 
 export interface ISearchProps {
   placeholder?: string;
+  title?: string | boolean;
   brandType?: BrandType;
   onSearch: (value: string) => void;
 }
 
 const Search = (props: ISearchProps) => {
-  const { placeholder, brandType, onSearch } = props;
+  const { placeholder, brandType, onSearch, title } = props;
   const [searchValue, setSearchValue] = useState('');
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
@@ -23,7 +24,7 @@ const Search = (props: ISearchProps) => {
 
   return (
     <div className={searchContainerStyles}>
-      <h2 className={styles.searchTitle}>Search</h2>
+      {title && <h2 className={styles.searchTitle}>{title}</h2>}
       <div className={styles.searchContent}>
         <Input
           className={styles.searchInput}
@@ -49,6 +50,7 @@ const Search = (props: ISearchProps) => {
 Search.defaultProps = {
   brandType: BrandType.ENLARGED,
   placeholder: 'Search for epochs, blocks, addresses and transactions',
+  title: 'Search',
 };
 
 export default observer(Search);
