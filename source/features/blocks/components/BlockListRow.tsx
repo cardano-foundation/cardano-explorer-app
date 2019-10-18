@@ -16,7 +16,10 @@ export interface IBlockListRowProps {
 const BlockListRow = (props: IBlockListRowProps) => (
   <div className={styles.blockListRowContainer}>
     <div className={styles.epoch}>{props.epoch}</div>
-    <div className={styles.blocksSlots}>{props.block}</div>
+    <div className={styles.blocksSlots}>
+      {props.block}
+      <span className={styles.blocksSlotsIcon} />
+    </div>
     <div className={styles.createdAt}>
       {moment(props.createdAt).format('YYYY/MM/DD HH:mm:ss')}
     </div>
