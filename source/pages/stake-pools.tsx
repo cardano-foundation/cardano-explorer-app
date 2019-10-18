@@ -24,7 +24,7 @@ if (environment.IS_CLIENT) {
     <NoSSR>
       <Layout>
         <UnmoderatedDataConsentedContainer />
-        <Container>
+        <Container hasTopMargin>
           <HeaderContainer />
           <EpochSummary
             blocks={21073}

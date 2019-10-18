@@ -116,18 +116,17 @@
       z-index: 3;
 
       .browserLink {
+        display: block;
+        height: 97px;
         .browserIconHover {
           display: none;
         }
-
         &:hover {
           .browserIcon {
             display: none;
           }
-
           .browserIconHover {
             display: block;
-            margin-bottom: 4px;
           }
         }
       }
