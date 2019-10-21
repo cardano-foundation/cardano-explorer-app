@@ -6,14 +6,9 @@
   :global {
     .SimpleButton_root:not(.SimpleButton_disabled):hover {
       background-color: transparent;
-    }
-
-    .SimpleButton_disabled {
-      &.Pagination_leftArrow,
-      &.Pagination_rightArrow {
-        border-left-color: $secondary-highlight-color;
-        border-right-color: $secondary-highlight-color;
-      }
+      border-left-color: $primary-highlight-color;
+      border-right-color: $primary-highlight-color;
+      opacity: 1;
     }
   }
 
@@ -30,13 +25,15 @@
   }
 
   .leftArrow {
-    border-right: 9px solid $primary-highlight-color;
+    border-right: 9px solid $secondary-highlight-color;
     margin-right: 12px;
+    opacity: 0.3;
   }
 
   .rightArrow {
-    border-left: 9px solid $primary-highlight-color;
+    border-left: 9px solid $secondary-highlight-color;
     margin-left: 12px;
+    opacity: 0.3;
   }
 
   .pageInfo {
