@@ -1,34 +1,62 @@
 .paginationContainer {
   align-items: center;
   display: flex;
+  justify-content: center;
 
-  .rowsPerPageContainer {
-    align-items: center;
-    display: flex;
-
-    .rowsPerPageLabel {
-      font-family: ProximaNova, sans-serif;
+  :global {
+    .SimpleButton_root:not(.SimpleButton_disabled):hover {
+      background-color: transparent;
     }
 
-    .rowsPerPageSelectContainer {
-      .rowsPerPageSelect {
-        font-family: ProximaNova, sans-serif;
+    .SimpleButton_disabled {
+      &.Pagination_leftArrow,
+      &.Pagination_rightArrow {
+        border-left-color: $secondary-highlight-color;
+        border-right-color: $secondary-highlight-color;
       }
     }
   }
 
-  .rowsRangeContainer {
-    align-items: center;
-    display: flex;
+  .leftArrow,
+  .rightArrow {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 7px solid transparent;
+    border-radius: 0;
+    border-top: 7px solid transparent;
+    height: 0;
+    padding: 0;
+    width: 0;
+  }
 
-    .rowsRange {
-      font-family: ProximaNova, sans-serif;
+  .leftArrow {
+    border-right: 9px solid $primary-highlight-color;
+    margin-right: 12px;
+  }
+
+  .rightArrow {
+    border-left: 9px solid $primary-highlight-color;
+    margin-left: 12px;
+  }
+
+  .pageInfo {
+    font-family: ProximaNova, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    line-height: 1.67;
+
+    .pageNumber {
+      color: $solid-text;
+      margin-right: 10px;
     }
-    .leftArrow {
-      font-family: ProximaNova, sans-serif;
+
+    .pageOf {
+      color: $hint-text;
+      margin-right: 10px;
     }
-    .rightArrow {
-      font-family: ProximaNova, sans-serif;
+
+    .totalPagesNumber {
+      color: $hint-text;
     }
   }
 }

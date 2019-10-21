@@ -12,19 +12,19 @@ export interface ITransactionListProps {
 
 const TransactionList = (props: ITransactionListProps) => {
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
   const handleChangePage = (newPage: number) => setPage(newPage);
-  const handleChangeRowsPerPage = (rows: number) => {
-    setRowsPerPage(rows);
-    setPage(0);
-  };
+  const rowsPerPage = 2;
+  const renderedItems = props.items.slice(
+    rowsPerPage * page,
+    rowsPerPage * (page + 1)
+  );
 
   return (
     <div className={styles.transactionListContainer}>
       <div className={styles.header}>
         <DividerWithTitle title={props.title} />
       </div>
-      {props.items.map((item, index) => (
+      {renderedItems.map((item, index) => (
         <div key={`transaction_${index}`} className={styles.transactionListRow}>
           <TransactionInfo {...item} />
         </div>
@@ -32,7 +32,6 @@ const TransactionList = (props: ITransactionListProps) => {
       <Pagination
         count={props.items.length}
         onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
         page={page}
         rowsPerPage={rowsPerPage}
       />
