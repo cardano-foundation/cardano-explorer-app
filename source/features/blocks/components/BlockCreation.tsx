@@ -1,5 +1,4 @@
 import { observer } from 'mobx-react-lite';
-import { Button } from 'react-polymorph/lib/components/Button';
 import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
 import styles from './BlockCreation.scss';
 import BlockCreationRow, { IBlockCreationRowProps } from './BlockCreationRow';
