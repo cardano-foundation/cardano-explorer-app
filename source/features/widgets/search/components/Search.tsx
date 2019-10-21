@@ -7,13 +7,15 @@ import { BrandType } from '../../../../common/constants';
 import styles from './Search.scss';
 
 export interface ISearchProps {
-  triggerBlockSearch?: (id: string) => void;
+  placeholder?: string;
+  title?: string | boolean;
   brandType?: BrandType;
+  onSearch: (value: string) => void;
 }
 
 const Search = (props: ISearchProps) => {
-  const { brandType, triggerBlockSearch } = props;
-  const [blockIdValue, setBlockIdValue] = useState('');
+  const { placeholder, brandType, onSearch, title } = props;
+  const [searchValue, setSearchValue] = useState('');
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
       ? styles.enlargedSearchContainer
@@ -22,27 +24,23 @@ const Search = (props: ISearchProps) => {
 
   return (
     <div className={searchContainerStyles}>
-      <h2 className={styles.searchTitle}>Search</h2>
+      {title && <h2 className={styles.searchTitle}>{title}</h2>}
       <div className={styles.searchContent}>
         <Input
           className={styles.searchInput}
-          placeholder="Search for epochs, blocks, addresses and transactions"
-          value={blockIdValue}
-          onChange={v => setBlockIdValue(v)}
+          placeholder={placeholder}
+          value={searchValue}
+          onChange={v => setSearchValue(v)}
           onKeyPress={e => {
-            if (e.key === 'Enter' && triggerBlockSearch) {
-              triggerBlockSearch(blockIdValue);
+            if (e.key === 'Enter') {
+              onSearch(searchValue);
             }
           }}
         />
         <Button
           className={styles.searchButton}
           label={<div className={styles.searchButtonIcon} />}
-          onClick={() => {
-            if (triggerBlockSearch) {
-              triggerBlockSearch(blockIdValue);
-            }
-          }}
+          onClick={() => onSearch(searchValue)}
         />
       </div>
     </div>
@@ -51,6 +49,8 @@ const Search = (props: ISearchProps) => {
 
 Search.defaultProps = {
   brandType: BrandType.ENLARGED,
+  placeholder: 'Search for epochs, blocks, addresses and transactions',
+  title: 'Search',
 };
 
 export default observer(Search);
