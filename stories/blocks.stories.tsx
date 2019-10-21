@@ -136,5 +136,5 @@ storiesOf('Blocks', module)
   .add('Block List', () => <BlockList title="Blocks" items={blocks} />)
   .add('Block Summary', () => <BlockSummary {...blockSummary} />)
   .add('Block Creation', () => (
-    <BlockCreation title="Block Creation" items={...blockCreation} />
+    <BlockCreation title="Block Creation" items={blockCreation} />
   ));
