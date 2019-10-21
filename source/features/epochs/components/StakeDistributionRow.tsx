@@ -14,7 +14,7 @@ export default class StakeDistributionRow extends Component<
     const { slotsElectedPercentage, stakePool, stakePoolName } = this.props;
 
     return (
-      <div className={styles.blockCreationRowContainer}>
+      <div className={styles.stakeDistributionRowContainer}>
         <div className={styles.stakePool}>
           <span className={styles.stakePoolName}>[{stakePoolName}]</span>{' '}
           {stakePool}

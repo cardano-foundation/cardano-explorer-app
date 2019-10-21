@@ -16,12 +16,14 @@
 
   .slotsElectedPercentage {
     color: $solid-text;
+    text-align: left;
+    width: 436px;
   }
 
   .stakePool {
     color: $table-text;
     text-align: left;
-    width: 218px;
+    width: 436px;
   }
 
   .stakePoolName {
@@ -29,7 +31,7 @@
   }
 
   @media (max-width: 575px) {
-    .slotsElected {
+    .slotsElectedPercentage {
       text-align: center;
     }
   }
