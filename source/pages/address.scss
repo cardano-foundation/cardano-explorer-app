@@ -1,23 +1,15 @@
-.container {
-  margin: 0 auto;
-  max-width: 1366px;
-  padding: 0 32px;
-  position: relative;
-  width: 100%;
+.addressSummary {
+  margin: 71px 0;
 
-  .addressSummary {
-    margin: 71px 0;
-
-    @media (max-width: 575px) {
-      margin: 51px 0;
-    }
+  @media (max-width: 575px) {
+    margin: 51px 0;
   }
+}
 
-  .transactionList {
-    margin-bottom: 139.5px;
+.transactionList {
+  margin-bottom: 139.5px;
 
-    @media (max-width: 575px) {
-      margin-bottom: 83px;
-    }
+  @media (max-width: 575px) {
+    margin-bottom: 83px;
   }
 }
