@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import BlockCreation from '../source/features/blocks/components/BlockCreation';
 import BlockList from '../source/features/blocks/components/BlockList';
 import BlockSummary from '../source/features/blocks/components/BlockSummary';
 import { PaddingDecorator } from './support/PaddingDecorator';
@@ -73,7 +74,67 @@ const blockSummary = {
   transactions: 0,
 };
 
+const blockCreation = [
+  {
+    performance: 216,
+    performancePercentage: 100,
+    sharedRewards: 194,
+    slotsElected: 216,
+    slotsElectedPercentage: 1,
+    stakePool: 'Help the USA Cats',
+    stakePoolName: 'CATS',
+  },
+  {
+    performance: 193,
+    performancePercentage: 100,
+    sharedRewards: 193,
+    slotsElected: 193,
+    slotsElectedPercentage: 0.9,
+    stakePool: 'Cardano Foundation 1',
+    stakePoolName: 'CF1',
+  },
+  {
+    performance: 158,
+    performancePercentage: 98,
+    sharedRewards: 79,
+    slotsElected: 160,
+    slotsElectedPercentage: 0.78,
+    stakePool: 'Blush Pool 1',
+    stakePoolName: 'BLS1',
+  },
+  {
+    performance: 101,
+    performancePercentage: 100,
+    sharedRewards: 65,
+    slotsElected: 101,
+    slotsElectedPercentage: 0.5,
+    stakePool: 'Blush Pool 2',
+    stakePoolName: 'BLS1',
+  },
+  {
+    performance: 2,
+    performancePercentage: 8,
+    sharedRewards: 0,
+    slotsElected: 25,
+    slotsElectedPercentage: 0.17,
+    stakePool: 'Micro Mining',
+    stakePoolName: 'MNG',
+  },
+  {
+    performance: 8,
+    performancePercentage: 72,
+    sharedRewards: 1,
+    slotsElected: 11,
+    slotsElectedPercentage: 0.08,
+    stakePool: 'Saint-Petersburg Acade',
+    stakePoolName: 'SPBA',
+  },
+];
+
 storiesOf('Blocks', module)
   .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Block List', () => <BlockList title="Blocks" items={blocks} />)
-  .add('Block Summary', () => <BlockSummary {...blockSummary} />);
+  .add('Block Summary', () => <BlockSummary {...blockSummary} />)
+  .add('Block Creation', () => (
+    <BlockCreation title="Block Creation" items={...blockCreation} />
+  ));

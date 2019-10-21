@@ -54,5 +54,17 @@
         margin-bottom: 83px;
       }
     }
+
+    .blockCreation {
+      margin-bottom: 139.5px;
+
+      button {
+        display: none;
+      }
+
+      @media (max-width: 575px) {
+        margin-bottom: 83px;
+      }
+    }
   }
 }
