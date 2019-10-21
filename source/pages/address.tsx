@@ -6,6 +6,7 @@ import { BrandType } from '../common/constants';
 import { environment } from '../environment';
 import AddressSummary from '../features/address/components/AddressSummary';
 import TransactionList from '../features/transactions/components/TransactionList';
+import Container from '../features/widgets/container/components/Container';
 import FooterContainer from '../features/widgets/footer/containers/FooterContainer';
 import Header from '../features/widgets/header/components/Header';
 import Layout from '../layout/Layout';
@@ -80,14 +81,14 @@ if (environment.IS_CLIENT) {
           brandType={BrandType.SHRINKED}
           searchProps={{ onSearch: noop }}
         />
-        <div className={styles.container}>
+        <Container>
           <div className={styles.addressSummary}>
             <AddressSummary {...addressSummary} />
           </div>
           <div className={styles.transactionList}>
             <TransactionList title="Transactions" items={transactions} />
           </div>
-        </div>
+        </Container>
         <FooterContainer />
       </Layout>
     </NoSSR>

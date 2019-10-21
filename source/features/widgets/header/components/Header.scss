@@ -76,11 +76,11 @@
       align-items: center;
       display: flex;
       flex-direction: row;
-      max-width: 983px;
       padding: 26.5px 0 23.5px;
       width: 100%;
 
       .logoContainer {
+        margin-left: -55.5px;
         margin-right: 19.5px;
 
         .logo {
@@ -209,8 +209,7 @@
         flex-direction: column;
 
         .logoContainer {
-          margin-top: 24px;
-          margin-right: 0;
+          margin: 24px 0 0;
 
           .logo {
             height: 56px;
