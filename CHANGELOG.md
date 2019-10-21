@@ -5,6 +5,7 @@ Changelog
 
 ### Features
 
+- Implemented Stake Pools page ([PR 19](https://github.com/input-output-hk/cardano-explorer-app/pull/19), [PR 28](https://github.com/input-output-hk/cardano-explorer-app/pull/28), [PR 33](https://github.com/input-output-hk/cardano-explorer-app/pull/33))
 - Implement address details page design story ([PR 30](https://github.com/input-output-hk/cardano-explorer-app/pull/30))
 - Implement main page design story ([PR 26](https://github.com/input-output-hk/cardano-explorer-app/pull/26))
 - Implement no search results component ([PR 25](https://github.com/input-output-hk/cardano-explorer-app/pull/25))
@@ -21,6 +22,7 @@ Changelog
 
 - Upgraded **lodash** to version 4.17.13 ([PR 16](https://github.com/input-output-hk/cardano-explorer-app/pull/16))
 - Fixed dependencies vulnerabilities ([PR 31](https://github.com/input-output-hk/cardano-explorer-app/issues/31))
+- Fixed minor styling inconsistencies ([PR 34](https://github.com/input-output-hk/cardano-explorer-app/issues/34))
 
 ### Chores
 
