@@ -188,7 +188,7 @@ if (environment.IS_CLIENT) {
             <div className={styles.blockList}>
               <BlockList title="Blocks" items={blocks} />
             </div>
-            <div className={styles.blockList}>
+            <div className={styles.blockCreation}>
               <BlockCreation title="Block Creation" items={blockCreation} />
             </div>
             <div className={styles.stakeDistribution}>
