@@ -1,0 +1,65 @@
+.blockCreationContainer {
+  margin: 0 auto;
+  max-width: 872px;
+  width: 100%;
+
+  .header {
+    margin-bottom: 41px;
+  }
+
+  .listHeader {
+    align-items: center;
+    color: $secondary-highlight-color;
+    display: flex;
+    font-family: ProximaNova, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 2;
+    padding: 5px 25.5px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (max-width: 991px) {
+      padding: 5px 12px;
+    }
+
+    .performance {
+      text-align: left;
+      width: 218px;
+    }
+
+    .sharedRewards {
+      text-align: left;
+      width: 218px;
+    }
+
+    .slotsElected {
+      text-align: left;
+      width: 218px;
+    }
+
+    .stakePool {
+      text-align: left;
+      width: 218px;
+    }
+
+    @media (max-width: 575px) {
+      .performance {
+        display: none;
+      }
+
+      .sharedRewards {
+        display: none;
+      }
+
+      .slotsElected {
+        text-align: center;
+      }
+    }
+  }
+
+  .blockCreationRow {
+    border-bottom: 2px dotted $dotted-separator-color;
+  }
+}
