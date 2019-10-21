@@ -1,0 +1,36 @@
+.stakeDistributionRowContainer {
+  align-items: center;
+  border-bottom: 2px dotted $dotted-separator-color;
+  color: $table-text;
+  display: flex;
+  font-family: ProximaNova, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  line-height: 1.33;
+  padding: 5px 25.5px;
+  text-align: center;
+
+  @media (max-width: 991px) {
+    padding: 5px 12px;
+  }
+
+  .slotsElectedPercentage {
+    color: $solid-text;
+  }
+
+  .stakePool {
+    color: $table-text;
+    text-align: left;
+    width: 218px;
+  }
+
+  .stakePoolName {
+    color: $primary-highlight-color;
+  }
+
+  @media (max-width: 575px) {
+    .slotsElected {
+      text-align: center;
+    }
+  }
+}
