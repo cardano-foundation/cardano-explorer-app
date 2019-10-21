@@ -1,5 +1,6 @@
 .blockCreationRowContainer {
   align-items: center;
+  border-bottom: 2px dotted $dotted-separator-color;
   color: $table-text;
   display: flex;
   font-family: ProximaNova, sans-serif;
