@@ -1,0 +1,59 @@
+.paginationContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  :global {
+    .SimpleButton_root:not(.SimpleButton_disabled):hover {
+      background-color: transparent;
+      border-left-color: $primary-highlight-color;
+      border-right-color: $primary-highlight-color;
+      opacity: 1;
+    }
+  }
+
+  .leftArrow,
+  .rightArrow {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 7px solid transparent;
+    border-radius: 0;
+    border-top: 7px solid transparent;
+    height: 0;
+    padding: 0;
+    width: 0;
+  }
+
+  .leftArrow {
+    border-right: 9px solid $secondary-highlight-color;
+    margin-right: 12px;
+    opacity: 0.3;
+  }
+
+  .rightArrow {
+    border-left: 9px solid $secondary-highlight-color;
+    margin-left: 12px;
+    opacity: 0.3;
+  }
+
+  .pageInfo {
+    font-family: ProximaNova, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    line-height: 1.67;
+
+    .pageNumber {
+      color: $solid-text;
+      margin-right: 10px;
+    }
+
+    .pageOf {
+      color: $hint-text;
+      margin-right: 10px;
+    }
+
+    .totalPagesNumber {
+      color: $hint-text;
+    }
+  }
+}
