@@ -91,6 +91,10 @@
       padding: 0;
       width: 40px;
 
+      &:hover {
+        background-color: $primary-highlight-color-hover;
+      }
+
       @media (max-width: 575px) {
         height: 30px;
         width: 30px;

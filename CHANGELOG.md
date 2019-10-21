@@ -23,6 +23,7 @@ Changelog
 
 - Upgraded **lodash** to version 4.17.13 ([PR 16](https://github.com/input-output-hk/cardano-explorer-app/pull/16))
 - Fixed dependencies vulnerabilities ([PR 31](https://github.com/input-output-hk/cardano-explorer-app/issues/31))
+- Fixed minor styling inconsistencies ([PR 34](https://github.com/input-output-hk/cardano-explorer-app/issues/34))
 
 ### Chores
 
