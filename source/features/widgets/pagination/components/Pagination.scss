@@ -1,0 +1,34 @@
+.paginationContainer {
+  align-items: center;
+  display: flex;
+
+  .rowsPerPageContainer {
+    align-items: center;
+    display: flex;
+
+    .rowsPerPageLabel {
+      font-family: ProximaNova, sans-serif;
+    }
+
+    .rowsPerPageSelectContainer {
+      .rowsPerPageSelect {
+        font-family: ProximaNova, sans-serif;
+      }
+    }
+  }
+
+  .rowsRangeContainer {
+    align-items: center;
+    display: flex;
+
+    .rowsRange {
+      font-family: ProximaNova, sans-serif;
+    }
+    .leftArrow {
+      font-family: ProximaNova, sans-serif;
+    }
+    .rightArrow {
+      font-family: ProximaNova, sans-serif;
+    }
+  }
+}
