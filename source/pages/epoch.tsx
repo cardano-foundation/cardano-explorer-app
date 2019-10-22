@@ -1,4 +1,5 @@
 import debug from 'debug';
+import { Container } from 'next/app';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../common/constants';
@@ -146,7 +147,7 @@ if (environment.IS_CLIENT) {
       <Layout>
         <div className={styles.epochLayout}>
           <Header withSearch brandType={BrandType.SHRINKED} />
-          <div className={styles.container}>
+          <Container>
             <div className={styles.epochSummary}>
               <EpochSummary {...epochSummary} />
             </div>
@@ -156,7 +157,7 @@ if (environment.IS_CLIENT) {
             <div className={styles.blockCreation}>
               <BlockCreation title="Block Creation" items={blockCreation} />
             </div>
-          </div>
+          </Container>
           <FooterContainer />
         </div>
       </Layout>
