@@ -6,6 +6,7 @@ import { environment } from '../environment';
 import BlockList from '../features/blocks/components/BlockList';
 import EpochSummary from '../features/epochs/components/EpochSummary';
 import StakeDistribution from '../features/epochs/components/StakeDistribution';
+import Container from '../features/widgets/container/components/Container';
 import FooterContainer from '../features/widgets/footer/containers/FooterContainer';
 import Header from '../features/widgets/header/components/Header';
 import Layout from '../layout/Layout';
@@ -122,7 +123,7 @@ if (environment.IS_CLIENT) {
       <Layout>
         <div className={styles.epochLayout}>
           <Header withSearch brandType={BrandType.SHRINKED} />
-          <div className={styles.container}>
+          <Container>
             <div className={styles.epochSummary}>
               <EpochSummary {...epochSummary} />
             </div>
@@ -135,7 +136,7 @@ if (environment.IS_CLIENT) {
                 items={stakeDistribution}
               />
             </div>
-          </div>
+          </Container>
           <FooterContainer />
         </div>
       </Layout>
