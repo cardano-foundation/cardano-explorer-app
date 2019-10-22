@@ -20,7 +20,7 @@
   }
 
   .performancePercentage {
-    color: $solid-text;
+    color: $info-text;
   }
 
   .sharedRewards {
@@ -29,7 +29,7 @@
   }
 
   .sharedRewardsValue {
-    color: $solid-text;
+    color: $info-text;
   }
 
   .slotsElected {
@@ -38,17 +38,21 @@
   }
 
   .slotsElectedPercentage {
-    color: $solid-text;
+    color: $info-text;
   }
 
   .stakePool {
     color: $table-text;
+    overflow: hidden;
+    padding: 0 20px 0 0 !important;
     text-align: left;
+    text-overflow: ellipsis;
     width: 218px;
+    white-space: nowrap;
   }
 
   .stakePoolName {
-    color: $primary-highlight-color;
+    color: $info-text;
   }
 
   @media (max-width: 575px) {
