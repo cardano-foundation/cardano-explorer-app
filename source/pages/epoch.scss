@@ -10,13 +10,6 @@
     }
   }
 
-  .container {
-    margin: 0 auto;
-    max-width: 1366px;
-    padding: 0 32px;
-    position: relative;
-    width: 100%;
-
   .epochSummary {
     margin: 71px 0;
 
@@ -46,25 +39,18 @@
 
     @media (max-width: 575px) {
       margin-bottom: 83px;
-      button {
-        display: none;
-      }
+    }
+  }
 
-      @media (max-width: 575px) {
-        margin-bottom: 83px;
-      }
+  .blockCreation {
+    margin-bottom: 139.5px;
+
+    button {
+      display: none;
     }
 
-    .blockCreation {
-      margin-bottom: 139.5px;
-
-      button {
-        display: none;
-      }
-
-      @media (max-width: 575px) {
-        margin-bottom: 83px;
-      }
+    @media (max-width: 575px) {
+      margin-bottom: 83px;
     }
   }
 }
