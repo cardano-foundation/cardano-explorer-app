@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import { observer } from 'mobx-react-lite';
+import React from 'react';
 import styles from './BlockCreationRow.scss';
 
 export interface IBlockCreationRowProps {
@@ -11,45 +12,33 @@ export interface IBlockCreationRowProps {
   stakePoolName: string;
 }
 
-export default class BlockCreationRow extends Component<
-  IBlockCreationRowProps
-> {
-  public render() {
-    const {
-      performance,
-      performancePercentage,
-      sharedRewards,
-      slotsElected,
-      slotsElectedPercentage,
-      stakePool,
-      stakePoolName,
-    } = this.props;
+const BlockCreationRow = (props: IBlockCreationRowProps) => (
+  <div className={styles.blockCreationRowContainer}>
+    <div className={styles.stakePool}>
+      <span className={styles.stakePoolName}>[{props.stakePoolName}]</span>{' '}
+      {props.stakePool}
+    </div>
+    <div className={styles.slotsElected}>
+      <span className={styles.slotsElectedPercentage}>
+        {props.slotsElected}
+      </span>{' '}
+      slots -{' '}
+      <span className={styles.slotsElectedPercentage}>
+        {props.slotsElectedPercentage}%
+      </span>
+    </div>
+    <div className={styles.performance}>
+      {props.performance} of {props.slotsElected} -{' '}
+      <span className={styles.performancePercentage}>
+        {props.performancePercentage}%
+      </span>
+    </div>
+    <div className={styles.sharedRewards}>
+      <span className={styles.sharedRewardsValue}>{props.sharedRewards}</span>{' '}
+      ADA of{' '}
+      <span className={styles.sharedRewardsValue}>{props.performance}</span> ADA
+    </div>
+  </div>
+);
 
-    return (
-      <div className={styles.blockCreationRowContainer}>
-        <div className={styles.stakePool}>
-          <span className={styles.stakePoolName}>[{stakePoolName}]</span>{' '}
-          {stakePool}
-        </div>
-        <div className={styles.slotsElected}>
-          <span className={styles.slotsElectedPercentage}>{slotsElected}</span>{' '}
-          slots -{' '}
-          <span className={styles.slotsElectedPercentage}>
-            {slotsElectedPercentage}%
-          </span>
-        </div>
-        <div className={styles.performance}>
-          {performance} of {slotsElected} -{' '}
-          <span className={styles.performancePercentage}>
-            {performancePercentage}%
-          </span>
-        </div>
-        <div className={styles.sharedRewards}>
-          <span className={styles.sharedRewardsValue}>{sharedRewards}</span> ADA
-          of <span className={styles.sharedRewardsValue}>{performance}</span>{' '}
-          ADA
-        </div>
-      </div>
-    );
-  }
-}
+export default observer(BlockCreationRow);
