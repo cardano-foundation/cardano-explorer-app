@@ -4,11 +4,11 @@ import { environment } from '../environment';
 
 let Page = () => <NoSSR />;
 if (environment.IS_CLIENT) {
-  if (environment.IS_RUST_CLIENT) {
-    Page = require('../apps/rust/index').IndexPage;
+  if (environment.CARDANO_ERA === 'shelley') {
+    Page = require('../apps/shelley/index').IndexPage;
   } else {
-    // Haskell Client
-    Page = require('../apps/haskell/index').IndexPage;
+    // Default to Byron
+    Page = require('../apps/byron/index').IndexPage;
   }
 }
 

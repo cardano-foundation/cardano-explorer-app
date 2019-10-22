@@ -128,7 +128,7 @@ const epochs = [
 export const IndexPage = () => (
   <NoSSR>
     <Head>
-      <title>Rust | Index</title>
+      <title>Shelley | Index</title>
     </Head>
     <Layout hasContainer>
       {!isMobileScreen() && (

@@ -5,8 +5,8 @@ import { environment } from '../environment';
 
 let Page = () => <NoSSR />;
 if (environment.IS_CLIENT) {
-  if (environment.IS_RUST_CLIENT) {
-    Page = require('../apps/rust/stake-pools').StakePoolsPage;
+  if (environment.CARDANO_ERA === 'shelley') {
+    Page = require('../apps/shelley/stake-pools').StakePoolsPage;
   } else {
     Page = () => <NextDefaultErrorPage statusCode={404} />;
   }

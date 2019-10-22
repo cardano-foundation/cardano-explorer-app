@@ -1,5 +1,5 @@
 {
-  "name": "Cardano Explorer GraphQL Schema",
+  "name": "Cardano GraphQL Schema",
   "schemaPath": "schema.graphql",
   "extensions": {
     "endpoints": {

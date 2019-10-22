@@ -81,7 +81,7 @@ module.exports = withPlugins(
     distDir: '../build/.next',
     env: {
       DEBUG,
-      IS_RUST_CLIENT: !!process.env.IS_RUST_CLIENT
+      CARDANO_ERA: process.env.CARDANO_ERA
     },
     webpack(config) {
       config.plugins.push(new LodashModuleReplacementPlugin());

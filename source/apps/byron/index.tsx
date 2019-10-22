@@ -128,7 +128,7 @@ const epochs = [
 export const IndexPage = () => (
   <NoSSR>
     <Head>
-      <title>Haskell | Index</title>
+      <title>Byron | Index</title>
     </Head>
     <Layout hasContainer>
       {!isMobileScreen() && (

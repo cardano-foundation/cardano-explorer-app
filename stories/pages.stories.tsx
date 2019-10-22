@@ -1,18 +1,18 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { IndexPage as HaskellIndexPage } from '../source/apps/haskell/index';
-import { IndexPage as RustIndexPage } from '../source/apps/rust/index';
-import { StakePoolsPage } from '../source/apps/rust/stake-pools';
+import { IndexPage as ByronIndexPage } from '../source/apps/byron/index';
 import { AddressPage } from '../source/apps/shared/address';
 import { NoSearchResultsPage } from '../source/apps/shared/no-search-results';
 import { OutdatedBrowserPage } from '../source/apps/shared/outdated-browser';
+import { IndexPage as ShelleyIndexPage } from '../source/apps/shelley/index';
+import { StakePoolsPage } from '../source/apps/shelley/stake-pools';
 
-storiesOf('Pages|Rust Client', module)
-  .add('Index', () => <RustIndexPage />)
+storiesOf('Pages|Shelley Client', module)
+  .add('Index', () => <ShelleyIndexPage />)
   .add('Stake Pools', () => <StakePoolsPage />);
 
-storiesOf('Pages|Haskell Client', module).add('Index', () => (
-  <HaskellIndexPage />
+storiesOf('Pages|Byron Client', module).add('Index', () => (
+  <ByronIndexPage />
 ));
 
 storiesOf('Pages|Shared', module)
