@@ -81,6 +81,7 @@ module.exports = withPlugins(
     distDir: '../build/.next',
     env: {
       DEBUG,
+      IS_RUST_CLIENT: !!process.env.IS_RUST_CLIENT
     },
     webpack(config) {
       config.plugins.push(new LodashModuleReplacementPlugin());

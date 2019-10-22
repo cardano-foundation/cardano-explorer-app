@@ -4,12 +4,7 @@ import { environment } from '../environment';
 
 let Page = () => <NoSSR />;
 if (environment.IS_CLIENT) {
-  if (environment.IS_RUST_CLIENT) {
-    Page = require('../apps/rust/index').IndexPage;
-  } else {
-    // Haskell Client
-    Page = require('../apps/haskell/index').IndexPage;
-  }
+  Page = require('../apps/shared/no-search-results').NoSearchResultsPage;
 }
 
 export default Page;

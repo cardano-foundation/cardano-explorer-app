@@ -1,29 +1,10 @@
-import debug from 'debug';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
 
-if (environment.DEBUG) {
-  debug.enable(environment.DEBUG);
-}
-
-let EpochPage = () => <NoSSR />;
-
+let Page = () => <NoSSR />;
 if (environment.IS_CLIENT) {
-  const Layout = require('../layout/Layout').default;
-  const HeaderContainer = require('../features/widgets/header/containers/HeaderContainer')
-    .default;
-  const FooterContainer = require('../features/widgets/footer/containers/FooterContainer')
-    .default;
-
-  EpochPage = () => (
-    <NoSSR>
-      <Layout>
-        <HeaderContainer />
-        <FooterContainer />
-      </Layout>
-    </NoSSR>
-  );
+  Page = require('../apps/shared/epoch').EpochPage;
 }
 
-export default EpochPage;
+export default Page;
