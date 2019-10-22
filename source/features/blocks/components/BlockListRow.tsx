@@ -17,7 +17,7 @@ interface IState {
   showBlocksSlotsIcon: boolean;
 }
 const initialState = {
-  showBlocksSlotsIcon: true,
+  showBlocksSlotsIcon: false,
 };
 
 export default class BlockListRow extends Component<

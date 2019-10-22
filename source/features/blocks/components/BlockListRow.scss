@@ -41,8 +41,8 @@
   }
 
   .createdBy {
-    flex: 1;
     text-align: right;
+    width: 120px;
   }
 
   .transactions {
@@ -63,19 +63,10 @@
     .createdAt {
       width: 120px;
     }
-    .transactions {
-      display: none;
-    }
   }
 
   @media (max-width: 767px) and (min-width: 576px) {
-    .transactions {
-      display: none;
-    }
     .size {
-      display: none;
-    }
-    .output {
       display: none;
     }
   }
@@ -84,22 +75,28 @@
     .epoch {
       width: 50px;
     }
+
     .blocksSlots {
       width: 90px;
     }
+
     .createdAt {
       flex: 1;
       width: auto;
     }
+
     .createdBy {
       display: none;
     }
+
     .transactions {
       display: none;
     }
+
     .size {
       display: none;
     }
+
     .output {
       display: none;
     }
