@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import { observer } from 'mobx-react-lite';
+import React from 'react';
 import styles from './StakeDistributionRow.scss';
 
 export interface IStakeDistributionRowProps {
@@ -7,22 +8,16 @@ export interface IStakeDistributionRowProps {
   stakePoolName: string;
 }
 
-export default class StakeDistributionRow extends Component<
-  IStakeDistributionRowProps
-> {
-  public render() {
-    const { slotsElectedPercentage, stakePool, stakePoolName } = this.props;
+const StakeDistributionRow = (props: IStakeDistributionRowProps) => (
+  <div className={styles.stakeDistributionRowContainer}>
+    <div className={styles.stakePool}>
+      <span className={styles.stakePoolName}>[{props.stakePoolName}]</span>{' '}
+      {props.stakePool}
+    </div>
+    <div className={styles.slotsElectedPercentage}>
+      {props.slotsElectedPercentage}%
+    </div>
+  </div>
+);
 
-    return (
-      <div className={styles.stakeDistributionRowContainer}>
-        <div className={styles.stakePool}>
-          <span className={styles.stakePoolName}>[{stakePoolName}]</span>{' '}
-          {stakePool}
-        </div>
-        <div className={styles.slotsElectedPercentage}>
-          {slotsElectedPercentage}%
-        </div>
-      </div>
-    );
-  }
-}
+export default observer(StakeDistributionRow);
