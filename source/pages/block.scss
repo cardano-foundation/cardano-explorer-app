@@ -1,0 +1,15 @@
+.blockSummary {
+  margin: 71px 0;
+
+  @media (max-width: 575px) {
+    margin: 51px 0;
+  }
+}
+
+.blockList {
+  margin-bottom: 61px;
+
+  @media (max-width: 575px) {
+    margin-bottom: 83px;
+  }
+}
