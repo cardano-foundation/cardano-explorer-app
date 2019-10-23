@@ -1,0 +1,44 @@
+.epochLayout {
+  header {
+    button {
+      background: transparent !important;
+      border: 1px solid #eb2256;
+
+      > div {
+        border-left: 9px solid #eb2256 !important;
+      }
+    }
+  }
+
+  .epochSummary {
+    margin: 71px 0;
+
+    @media (max-width: 575px) {
+      margin: 51px 0;
+    }
+  }
+
+  .blockList {
+    margin-bottom: 139.5px;
+
+    button {
+      display: none;
+    }
+
+    @media (max-width: 575px) {
+      margin-bottom: 83px;
+    }
+  }
+
+  .stakeDistribution {
+    margin-bottom: 139.5px;
+
+    button {
+      display: none;
+    }
+
+    @media (max-width: 575px) {
+      margin-bottom: 83px;
+    }
+  }
+}
