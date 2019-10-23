@@ -76,14 +76,6 @@
       width: 50px;
     }
 
-    .blocksSlots {
-      width: 90px;
-    }
-
-    .createdBy {
-      display: none;
-    }
-
     .transactions {
       display: none;
     }
@@ -93,6 +85,12 @@
     }
 
     .output {
+      display: none;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .createdBy {
       display: none;
     }
   }
