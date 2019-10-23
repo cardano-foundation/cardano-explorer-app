@@ -69,11 +69,19 @@
     .size {
       display: none;
     }
+
+    .createdBy {
+      display: none;
+    }
   }
 
   @media (max-width: 575px) {
     .epoch {
       width: 50px;
+    }
+
+    .createdBy {
+      text-align: right;
     }
 
     .transactions {
