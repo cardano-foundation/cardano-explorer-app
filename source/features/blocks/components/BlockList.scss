@@ -65,6 +65,10 @@
       .size {
         display: none;
       }
+
+      .createdBy {
+        display: none;
+      }
     }
 
     @media (max-width: 575px) {
@@ -74,7 +78,12 @@
       }
 
       .blocksSlots {
-        width: 80px;
+        width: 110px;
+      }
+
+      .createdAt {
+        text-align: center;
+        width: 160px;
       }
 
       .transactions {
