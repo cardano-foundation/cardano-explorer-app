@@ -195,7 +195,7 @@ if (environment.IS_CLIENT) {
               <StakeDistribution
                 title="Stake Distribution"
                 items={stakeDistribution}
-              ></StakeDistribution>
+              />
             </div>
           </Container>
           <FooterContainer />
