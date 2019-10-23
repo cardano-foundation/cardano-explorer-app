@@ -4,12 +4,13 @@
   width: 100%;
 
   .header {
-    margin-bottom: 30px;
+    padding-bottom: 50px;
   }
 
   .content {
     display: flex;
     justify-content: space-between;
+    padding-bottom: 50px;
 
     .errorPanel {
       color: $solid-text;
