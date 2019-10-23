@@ -41,4 +41,16 @@
       margin-bottom: 83px;
     }
   }
+
+  .stakeDistribution {
+    margin-bottom: 61px;
+
+    button {
+      display: none;
+    }
+
+    @media (max-width: 575px) {
+      margin-bottom: 83px;
+    }
+  }
 }
