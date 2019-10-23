@@ -69,15 +69,12 @@
 
     @media (max-width: 575px) {
       .epoch {
-        width: 50px;
+        text-align: center;
+        width: 60px;
       }
 
       .blocksSlots {
-        width: 90px;
-      }
-
-      .createdBy {
-        display: none;
+        width: 80px;
       }
 
       .transactions {
@@ -89,6 +86,12 @@
       }
 
       .output {
+        display: none;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .createdBy {
         display: none;
       }
     }
