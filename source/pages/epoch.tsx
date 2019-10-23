@@ -1,5 +1,4 @@
 import debug from 'debug';
-import { Container } from 'next/app';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../common/constants';
@@ -7,6 +6,8 @@ import { environment } from '../environment';
 import BlockCreation from '../features/blocks/components/BlockCreation';
 import BlockList from '../features/blocks/components/BlockList';
 import EpochSummary from '../features/epochs/components/EpochSummary';
+import StakeDistribution from '../features/epochs/components/StakeDistribution';
+import Container from '../features/widgets/container/components/Container';
 import FooterContainer from '../features/widgets/footer/containers/FooterContainer';
 import Header from '../features/widgets/header/components/Header';
 import Layout from '../layout/Layout';
@@ -139,6 +140,39 @@ const blockCreation = [
   },
 ];
 
+const stakeDistribution = [
+  {
+    slotsElectedPercentage: 1,
+    stakePool: 'Help the USA Cats',
+    stakePoolName: 'CATS',
+  },
+  {
+    slotsElectedPercentage: 0.9,
+    stakePool: 'Cardano Foundation 1',
+    stakePoolName: 'CF1',
+  },
+  {
+    slotsElectedPercentage: 0.78,
+    stakePool: 'Blush Pool 1',
+    stakePoolName: 'BLS1',
+  },
+  {
+    slotsElectedPercentage: 0.5,
+    stakePool: 'Blush Pool 2',
+    stakePoolName: 'BLS1',
+  },
+  {
+    slotsElectedPercentage: 0.17,
+    stakePool: 'Micro Mining',
+    stakePoolName: 'MNG',
+  },
+  {
+    slotsElectedPercentage: 0.08,
+    stakePool: 'Saint-Petersburg Acade',
+    stakePoolName: 'SPBA',
+  },
+];
+
 let EpochPage = () => <NoSSR />;
 
 if (environment.IS_CLIENT) {
@@ -156,6 +190,12 @@ if (environment.IS_CLIENT) {
             </div>
             <div className={styles.blockCreation}>
               <BlockCreation title="Block Creation" items={blockCreation} />
+            </div>
+            <div className={styles.stakeDistribution}>
+              <StakeDistribution
+                title="Stake Distribution"
+                items={stakeDistribution}
+              ></StakeDistribution>
             </div>
           </Container>
           <FooterContainer />
