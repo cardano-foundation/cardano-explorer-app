@@ -37,8 +37,8 @@
     }
 
     .createdBy {
-      flex: 1;
       text-align: right;
+      width: 120px;
     }
 
     .transactions {
@@ -59,44 +59,48 @@
       .createdAt {
         width: 120px;
       }
-      .transactions {
-        display: none;
-      }
     }
 
     @media (max-width: 767px) and (min-width: 576px) {
-      .transactions {
-        display: none;
-      }
       .size {
         display: none;
       }
-      .output {
+
+      .createdBy {
         display: none;
       }
     }
 
     @media (max-width: 575px) {
       .epoch {
-        width: 50px;
+        text-align: center;
+        width: 60px;
       }
+
       .blocksSlots {
-        width: 90px;
+        width: 110px;
       }
+
       .createdAt {
-        flex: 1;
-        width: auto;
+        text-align: center;
+        width: 160px;
       }
-      .createdBy {
-        display: none;
-      }
+
       .transactions {
         display: none;
       }
+
       .size {
         display: none;
       }
+
       .output {
+        display: none;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .createdBy {
         display: none;
       }
     }
@@ -112,7 +116,7 @@
     margin-top: 20px;
 
     @media (max-width: 575px) {
-      justify-content: flex-start;
+      justify-content: flex-end;
     }
 
     .showMoreButton {
@@ -134,6 +138,7 @@
       &:hover {
         background-color: $primary-highlight-color-hover;
       }
+
       &:active {
         background-color: $primary-highlight-color-press;
       }

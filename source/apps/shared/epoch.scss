@@ -19,7 +19,7 @@
   }
 
   .blockList {
-    margin-bottom: 139.5px;
+    margin-bottom: 61px;
 
     button {
       display: none;
@@ -31,7 +31,19 @@
   }
 
   .stakeDistribution {
-    margin-bottom: 139.5px;
+    margin-bottom: 61px;
+
+    button {
+      display: none;
+    }
+
+    @media (max-width: 575px) {
+      margin-bottom: 83px;
+    }
+  }
+
+  .blockCreation {
+    margin-bottom: 61px;
 
     button {
       display: none;

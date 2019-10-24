@@ -1,4 +1,4 @@
-.stakeDistributionRowContainer {
+.blockCreationRowContainer {
   align-items: center;
   border-bottom: 2px dotted $dotted-separator-color;
   color: $table-text;
@@ -14,10 +14,31 @@
     padding: 5px 12px;
   }
 
+  .performance {
+    text-align: left;
+    width: 218px;
+  }
+
+  .performancePercentage {
+    color: $info-text;
+  }
+
+  .sharedRewards {
+    text-align: left;
+    width: 218px;
+  }
+
+  .sharedRewardsValue {
+    color: $info-text;
+  }
+
+  .slotsElected {
+    text-align: left;
+    width: 218px;
+  }
+
   .slotsElectedPercentage {
     color: $info-text;
-    text-align: left;
-    width: 50%;
   }
 
   .stakePool {
@@ -26,7 +47,7 @@
     padding: 0 20px 0 0 !important;
     text-align: left;
     text-overflow: ellipsis;
-    width: 50%;
+    width: 218px;
     white-space: nowrap;
   }
 
@@ -35,7 +56,15 @@
   }
 
   @media (max-width: 575px) {
-    .slotsElectedPercentage {
+    .performance {
+      display: none;
+    }
+
+    .sharedRewards {
+      display: none;
+    }
+
+    .slotsElected {
       text-align: center;
     }
   }
