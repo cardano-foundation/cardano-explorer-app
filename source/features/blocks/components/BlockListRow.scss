@@ -19,8 +19,21 @@
   }
 
   .blocksSlots {
+    align-items: center;
     color: $primary-highlight-color;
+    display: flex;
+    justify-content: center;
     width: 100px;
+
+    .blocksSlotsIcon {
+      background-color: $secondary-color;
+      border: solid 1px $primary-highlight-color;
+      border-radius: 2px;
+      display: block;
+      height: 10px;
+      margin-left: 5px;
+      width: 16px;
+    }
   }
 
   .createdAt {
@@ -28,8 +41,8 @@
   }
 
   .createdBy {
-    flex: 1;
     text-align: right;
+    width: 120px;
   }
 
   .transactions {
@@ -50,19 +63,14 @@
     .createdAt {
       width: 120px;
     }
-    .transactions {
-      display: none;
-    }
   }
 
   @media (max-width: 767px) and (min-width: 576px) {
-    .transactions {
-      display: none;
-    }
     .size {
       display: none;
     }
-    .output {
+
+    .createdBy {
       display: none;
     }
   }
@@ -71,23 +79,26 @@
     .epoch {
       width: 50px;
     }
-    .blocksSlots {
-      width: 90px;
-    }
-    .createdAt {
-      flex: 1;
-      width: auto;
-    }
+
     .createdBy {
-      display: none;
+      text-align: right;
     }
+
     .transactions {
       display: none;
     }
+
     .size {
       display: none;
     }
+
     .output {
+      display: none;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .createdBy {
       display: none;
     }
   }
