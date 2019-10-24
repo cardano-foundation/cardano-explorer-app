@@ -11,7 +11,7 @@
     "test:watch": "nodemon --watch source --watch features -e js,ts,feature --exec yarn test --tags @watch",
     "generate:graphql-typings": "SCHEMA_URI=${SCHEMA_URI:-http://localhost:3100} graphql-codegen",
     "generate:graphql-schema-reference": "get-graphql-schema ${SCHEMA_URI:-http://localhost:3100} > schema.graphql",
-    "export": "next export source --outdir build/static",
+    "export": "ENV_PATH=./.env.prod next export source --outdir build/static",
     "static:build": "NODE_ENV=production yarn build && yarn export",
     "static:serve": "serve -p 4001",
     "static:preview": "yarn static:build && yarn static:serve",

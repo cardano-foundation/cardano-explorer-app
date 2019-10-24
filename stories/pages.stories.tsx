@@ -1,18 +1,21 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import IndexPage, { AddressPage, StakePoolsPage } from '../source/pages';
-import BlockPage from '../source/pages/block';
-import EpochPage from '../source/pages/epoch';
-import ErrorPage from '../source/pages/error';
-import OutdatedBrowserPage from '../source/pages/outdated-browser';
-import TransactionPage from '../source/pages/transaction';
+import { IndexPage as ByronIndexPage } from '../source/apps/byron/index';
+import { AddressPage } from '../source/apps/shared/address';
+import { EpochPage } from '../source/apps/shared/epoch';
+import { NoSearchResultsPage } from '../source/apps/shared/no-search-results';
+import { OutdatedBrowserPage } from '../source/apps/shared/outdated-browser';
+import { IndexPage as ShelleyIndexPage } from '../source/apps/shelley/index';
+import { StakePoolsPage } from '../source/apps/shelley/stake-pools';
 
-storiesOf('Pages', module)
-  .add('Address Page', () => <AddressPage />)
-  .add('Block Page', () => <BlockPage />)
-  .add('Epoch Page', () => <EpochPage />)
-  .add('Error Page', () => <ErrorPage />)
-  .add('Main Page', () => <IndexPage />)
-  .add('Outdated Browser Page', () => <OutdatedBrowserPage />)
-  .add('Stake Pools Page', () => <StakePoolsPage />)
-  .add('Transaction Page', () => <TransactionPage />);
+storiesOf('Pages|Shelley Client', module)
+  .add('Index', () => <ShelleyIndexPage />)
+  .add('Stake Pools', () => <StakePoolsPage />);
+
+storiesOf('Pages|Byron Client', module).add('Index', () => <ByronIndexPage />);
+
+storiesOf('Pages|Shared', module)
+  .add('Address', () => <AddressPage />)
+  .add('No Search Results', () => <NoSearchResultsPage />)
+  .add('Outdated Browser', () => <OutdatedBrowserPage />)
+  .add('Epoch', () => <EpochPage />);
