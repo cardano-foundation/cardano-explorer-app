@@ -15,7 +15,7 @@ if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
 }
 
-const SideBackgroundImage = require('../../static/assets/images/main-side-background.svg');
+const SideBackgroundImage = require('../../public/assets/images/main-side-background.svg');
 
 const blocks = [
   {

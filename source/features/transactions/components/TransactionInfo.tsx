@@ -4,7 +4,7 @@ import React from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import styles from './TransactionInfo.scss';
 
-const ArrowNext = require('../../../static/assets/images/arrow-next.svg');
+const ArrowNext = require('../../../public/assets/images/arrow-next.svg');
 const SEVEN_DAYS = 7 * 24 * 3600000;
 
 export interface ITransactionInfoProps {

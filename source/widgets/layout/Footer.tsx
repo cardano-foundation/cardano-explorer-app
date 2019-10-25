@@ -2,11 +2,11 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styles from './Footer.scss';
 
-const iohkLogo = require('../../static/assets/images/iohk-logo.png');
-const twitterIcon = require('../../static/assets/images/twitter-icon.png');
-const facebookIcon = require('../../static/assets/images/facebook-icon.png');
-const youtubeIcon = require('../../static/assets/images/youtube-icon.png');
-const newsletterIcon = require('../../static/assets/images/newsletter-icon.png');
+const iohkLogo = require('../../public/assets/images/iohk-logo.png');
+const twitterIcon = require('../../public/assets/images/twitter-icon.png');
+const facebookIcon = require('../../public/assets/images/facebook-icon.png');
+const youtubeIcon = require('../../public/assets/images/youtube-icon.png');
+const newsletterIcon = require('../../public/assets/images/newsletter-icon.png');
 
 export const Footer = observer(() => {
   return (
