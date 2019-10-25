@@ -4,7 +4,7 @@ import React from 'react';
 import { IStakePoolThumbnailProps } from '../types';
 import styles from './StakePoolThumbnail.scss';
 
-const ClockIcon = require('../../../static/assets/images/stake-pools/clock-icon.svg');
+const ClockIcon = require('../../../public/assets/images/stake-pools/clock-icon.svg');
 
 const StakePoolThumbnail = ({
   isSelected,

@@ -6,7 +6,7 @@ import { BrandType } from '../../constants';
 import Search, { ISearchProps } from '../../features/search/Search';
 import styles from './Header.scss';
 
-const CardanoLogo = require('../../static/assets/images/header/cardano-logo.svg');
+const CardanoLogo = require('../../public/assets/images/header/cardano-logo.svg');
 
 export interface IHeaderProps {
   brandType?: BrandType;
