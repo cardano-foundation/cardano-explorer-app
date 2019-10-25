@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
+import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import styles from './BlockCreation.scss';
 import BlockCreationRow, { IBlockCreationRowProps } from './BlockCreationRow';
 

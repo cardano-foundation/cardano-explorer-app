@@ -11,6 +11,6 @@ const addressSummary = {
   transactions: 2,
 };
 
-storiesOf('Address', module)
+storiesOf('Address Summary', module)
   .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Address Summary', () => <AddressSummary {...addressSummary} />);

@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
-import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
+import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import styles from './BlockSummary.scss';
 
 export interface IBlockSummaryProps {

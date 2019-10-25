@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Container from '../../widgets/container/components/Container';
+import Container from '../../../widgets/container/Container';
 import { IUnmoderatedDataWarning } from '../types';
 import styles from './UnmoderatedDataWarning.scss';
 

@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styles from './CircularProgress.scss';
 
-const CircularProgressPin = require('../../../../static/assets/images/epoch/epoch-filled.svg');
+const CircularProgressPin = require('../../static/assets/images/epoch/epoch-filled.svg');
 
 export enum CircularProgressSize {
   SMALL = 'small',

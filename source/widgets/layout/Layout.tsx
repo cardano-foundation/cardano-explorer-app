@@ -1,9 +1,8 @@
-import classnames from 'classnames';
 import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
-import ContainerComponent from '../features/widgets/container/components/Container';
-import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
-import GraphQLProvider from '../utils/graphql/GraphQLProvider';
+import GraphQLProvider from '../../lib/graphql/GraphQLProvider';
+import PolymorphThemeProvider from '../../styles/theme/PolymorphThemeProvider';
+import ContainerComponent from '../container/Container';
 import Head from './Head';
 import styles from './Layout.scss';
 
@@ -18,7 +17,7 @@ if (typeof window !== 'undefined') {
   browserUpdate = require('browser-update/update.npm.js');
 }
 
-const Layout = ({ children, hasContainer }: IProps) => {
+export const Layout = ({ children, hasContainer }: IProps) => {
   const Container: any = hasContainer ? ContainerComponent : Fragment;
   const router = useRouter();
 
@@ -98,4 +97,3 @@ const Layout = ({ children, hasContainer }: IProps) => {
     </Fragment>
   );
 };
-export default Layout;

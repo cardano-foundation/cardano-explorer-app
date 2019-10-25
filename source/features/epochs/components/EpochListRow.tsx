@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import CircularProgress, {
   CircularProgressSize,
-} from '../../widgets/circular-progress/components/CircularProgress';
+} from '../../../widgets/circular-progress/CircularProgress';
 import styles from './EpochListRow.scss';
 
 export interface IEpochListRowProps {

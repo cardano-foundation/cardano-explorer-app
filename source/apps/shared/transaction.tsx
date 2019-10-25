@@ -2,22 +2,17 @@ import debug from 'debug';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../../environment';
+import { Footer, Header, Layout } from '../../widgets/layout';
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
 }
 
-const Layout = require('../../layout/Layout').default;
-const HeaderContainer = require('../../features/widgets/header/containers/HeaderContainer')
-  .default;
-const FooterContainer = require('../../features/widgets/footer/containers/FooterContainer')
-  .default;
-
 export const TransactionPage = () => (
   <NoSSR>
     <Layout>
-      <HeaderContainer />
-      <FooterContainer />
+      <Header />
+      <Footer />
     </Layout>
   </NoSSR>
 );

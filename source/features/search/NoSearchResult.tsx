@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import DividerWithTitle from '../../divider-with-title/components/DividerWithTitle';
+import DividerWithTitle from '../../widgets/divider-with-title/DividerWithTitle';
 import styles from './NoSearchResult.scss';
 
 const error = 'Address';

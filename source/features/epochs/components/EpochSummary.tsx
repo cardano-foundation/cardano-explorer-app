@@ -2,8 +2,8 @@ import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import CircularProgress, {
   CircularProgressSize,
-} from '../../widgets/circular-progress/components/CircularProgress';
-import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
+} from '../../../widgets/circular-progress/CircularProgress';
+import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import styles from './EpochSummary.scss';
 
 export interface IEpochSummaryProps {

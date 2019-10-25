@@ -2,18 +2,13 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styles from './Footer.scss';
 
-const iohkLogo = require('../../../../static/assets/images/iohk-logo.png');
-const twitterIcon = require('../../../../static/assets/images/twitter-icon.png');
-const facebookIcon = require('../../../../static/assets/images/facebook-icon.png');
-const youtubeIcon = require('../../../../static/assets/images/youtube-icon.png');
-const newsletterIcon = require('../../../../static/assets/images/newsletter-icon.png');
+const iohkLogo = require('../../static/assets/images/iohk-logo.png');
+const twitterIcon = require('../../static/assets/images/twitter-icon.png');
+const facebookIcon = require('../../static/assets/images/facebook-icon.png');
+const youtubeIcon = require('../../static/assets/images/youtube-icon.png');
+const newsletterIcon = require('../../static/assets/images/newsletter-icon.png');
 
-interface IProps {
-  propFirst: string;
-  propSecond: string;
-}
-
-const Footer = (props: IProps) => {
+export const Footer = observer(() => {
   return (
     <footer className={styles.footerContainer}>
       <div className={styles.footerContent}>
@@ -140,6 +135,4 @@ const Footer = (props: IProps) => {
       </div>
     </footer>
   );
-};
-
-export default observer(Footer);
+});

@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import { Button } from 'react-polymorph/lib/components/Button';
-import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
+import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import styles from './BlockList.scss';
 import BlockListRow, { IBlockListRowProps } from './BlockListRow';
 

@@ -8,7 +8,7 @@ import UnmoderatedDataConsented from '../source/features/stake-pools/components/
 import UnmoderatedDataWarning from '../source/features/stake-pools/components/UnmoderatedDataWarning';
 
 import DUMMY_DATA from '../source/features/stake-pools/stakingStakePools.dummy.json';
-import { getColorFromRange } from '../source/utils/colors';
+import { getColorFromRange } from '../source/lib/colors';
 
 const ListWrapper = (story: any) =>
   React.createElement(() => {

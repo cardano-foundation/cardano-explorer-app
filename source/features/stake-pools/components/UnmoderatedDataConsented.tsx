@@ -1,5 +1,3 @@
-import Link from 'next/link';
-import Container from '../../widgets/container/components/Container';
 import styles from './UnmoderatedDataConsented.scss';
 
 export default () => (

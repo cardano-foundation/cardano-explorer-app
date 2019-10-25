@@ -4,7 +4,7 @@ import {
   GetBlocksQuery,
   GetBlocksQueryVariables,
 } from '../../../generated/typings/graphql-schema';
-import { GraphQLRequest } from '../../utils/graphql/GraphQLRequest';
+import { GraphQLRequest } from '../../lib/graphql/GraphQLRequest';
 import getBlocksQuery from './graphql/getBlocks.graphql';
 
 export class SearchApi {
