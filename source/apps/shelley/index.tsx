@@ -8,9 +8,7 @@ import { isMobileScreen } from '../../common/helpers';
 import { environment } from '../../environment';
 import BlockList from '../../features/blocks/components/BlockList';
 import EpochList from '../../features/epochs/components/EpochList';
-import FooterContainer from '../../features/widgets/footer/containers/FooterContainer';
-import Header from '../../features/widgets/header/components/Header';
-import Layout from '../../layout/Layout';
+import { Footer, Header, Layout } from '../../layout';
 import styles from './index.scss';
 
 if (environment.DEBUG) {
@@ -157,7 +155,7 @@ export const IndexPage = () => (
       <div className={styles.blockList}>
         <BlockList title="Latest Blocks" items={blocks} />
       </div>
-      <FooterContainer />
+      <Footer />
     </Layout>
   </NoSSR>
 );

@@ -1,5 +1,4 @@
 import { observer } from 'mobx-react-lite';
-import { Input } from 'react-polymorph/lib/components/Input';
 import Search from '../../widgets/search/components/Search';
 import { IStakePoolsSearchProps } from '../types';
 import styles from './StakePoolsSearch.scss';

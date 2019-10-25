@@ -5,9 +5,7 @@ import BlockList from '../../features/blocks/components/BlockList';
 import EpochSummary from '../../features/epochs/components/EpochSummary';
 import StakeDistribution from '../../features/epochs/components/StakeDistribution';
 import Container from '../../features/widgets/container/components/Container';
-import FooterContainer from '../../features/widgets/footer/containers/FooterContainer';
-import Header from '../../features/widgets/header/components/Header';
-import Layout from '../../layout/Layout';
+import { Footer, Header, Layout } from '../../layout';
 import styles from './epoch.scss';
 
 const epochSummary = {
@@ -113,7 +111,10 @@ export const EpochPage = () => (
   <NoSSR>
     <Layout>
       <div className={styles.epochLayout}>
-        <Header withSearch brandType={BrandType.SHRINKED} />
+        <Header
+          withSearch
+          brandType={BrandType.SHRINKED}
+        />
         <Container>
           <div className={styles.epochSummary}>
             <EpochSummary {...epochSummary} />
@@ -128,7 +129,7 @@ export const EpochPage = () => (
             />
           </div>
         </Container>
-        <FooterContainer />
+        <Footer />
       </div>
     </Layout>
   </NoSSR>

@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
 import ContainerComponent from '../features/widgets/container/components/Container';
@@ -18,7 +17,7 @@ if (typeof window !== 'undefined') {
   browserUpdate = require('browser-update/update.npm.js');
 }
 
-const Layout = ({ children, hasContainer }: IProps) => {
+export const Layout = ({ children, hasContainer }: IProps) => {
   const Container: any = hasContainer ? ContainerComponent : Fragment;
   const router = useRouter();
 
@@ -98,4 +97,3 @@ const Layout = ({ children, hasContainer }: IProps) => {
     </Fragment>
   );
 };
-export default Layout;

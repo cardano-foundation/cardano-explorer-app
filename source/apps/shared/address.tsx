@@ -7,9 +7,7 @@ import { environment } from '../../environment';
 import AddressSummary from '../../features/address/components/AddressSummary';
 import TransactionList from '../../features/transactions/components/TransactionList';
 import Container from '../../features/widgets/container/components/Container';
-import FooterContainer from '../../features/widgets/footer/containers/FooterContainer';
-import Header from '../../features/widgets/header/components/Header';
-import Layout from '../../layout/Layout';
+import { Footer, Header, Layout } from '../../layout'
 import styles from './address.scss';
 
 if (environment.DEBUG) {
@@ -86,7 +84,7 @@ export const AddressPage = () => (
           <TransactionList title="Transactions" items={transactions} />
         </div>
       </Container>
-      <FooterContainer />
+      <Footer />
     </Layout>
   </NoSSR>
 );

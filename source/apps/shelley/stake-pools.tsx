@@ -6,23 +6,18 @@ import EpochSummary from '../../features/epochs/components/EpochSummary';
 import StakePoolsContainer from '../../features/stake-pools/containers/StakePoolsContainer';
 import UnmoderatedDataConsentedContainer from '../../features/stake-pools/containers/UnmoderatedDataConsentedContainer';
 import Container from '../../features/widgets/container/components/Container';
+import { Footer, Header, Layout } from '../../layout';
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);
 }
-
-const Layout = require('../../layout/Layout').default;
-const HeaderContainer = require('../../features/widgets/header/containers/HeaderContainer')
-  .default;
-const FooterContainer = require('../../features/widgets/footer/containers/FooterContainer')
-  .default;
 
 export const StakePoolsPage = () => (
   <NoSSR>
     <Layout>
       <UnmoderatedDataConsentedContainer />
       <Container hasTopMargin>
-        <HeaderContainer />
+        <Header />
         <EpochSummary
           blocks={21073}
           endedAt={1569144483000}
@@ -37,7 +32,7 @@ export const StakePoolsPage = () => (
       </Container>
       <StakePoolsContainer />
       <Container>
-        <FooterContainer />
+        <Footer />
       </Container>
     </Layout>
   </NoSSR>
