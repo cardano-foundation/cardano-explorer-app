@@ -2,8 +2,8 @@ import debug from 'debug';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../../environment';
-import OutdatedBrowser from '../../features/widgets/outdated-browser/components/OutdatedBrowser';
-import { Footer, Layout } from '../../layout';
+import OutdatedBrowser from '../../features/outdated-browser/OutdatedBrowser';
+import { Footer, Layout } from '../../widgets/layout';
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);

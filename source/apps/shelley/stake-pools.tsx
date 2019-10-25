@@ -5,8 +5,8 @@ import { environment } from '../../environment';
 import EpochSummary from '../../features/epochs/components/EpochSummary';
 import StakePoolsContainer from '../../features/stake-pools/containers/StakePoolsContainer';
 import UnmoderatedDataConsentedContainer from '../../features/stake-pools/containers/UnmoderatedDataConsentedContainer';
-import Container from '../../features/widgets/container/components/Container';
-import { Footer, Header, Layout } from '../../layout';
+import Container from '../../widgets/container/Container';
+import { Footer, Header, Layout } from '../../widgets/layout';
 
 if (environment.DEBUG) {
   debug.enable(environment.DEBUG);

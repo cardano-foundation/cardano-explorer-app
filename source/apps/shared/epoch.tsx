@@ -1,11 +1,11 @@
 import React from 'react';
 import NoSSR from 'react-no-ssr';
-import { BrandType } from '../../common/constants';
+import { BrandType } from '../../constants';
 import BlockList from '../../features/blocks/components/BlockList';
 import EpochSummary from '../../features/epochs/components/EpochSummary';
 import StakeDistribution from '../../features/epochs/components/StakeDistribution';
-import Container from '../../features/widgets/container/components/Container';
-import { Footer, Header, Layout } from '../../layout';
+import Container from '../../widgets/container/Container';
+import { Footer, Header, Layout } from '../../widgets/layout';
 import styles from './epoch.scss';
 
 const epochSummary = {
@@ -111,10 +111,7 @@ export const EpochPage = () => (
   <NoSSR>
     <Layout>
       <div className={styles.epochLayout}>
-        <Header
-          withSearch
-          brandType={BrandType.SHRINKED}
-        />
+        <Header withSearch brandType={BrandType.SHRINKED} />
         <Container>
           <div className={styles.epochSummary}>
             <EpochSummary {...epochSummary} />

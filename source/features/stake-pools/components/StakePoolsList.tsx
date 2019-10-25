@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC, MouseEvent, useState } from 'react';
-import { getColorFromRange } from '../../../utils/colors';
+import { getColorFromRange } from '../../../lib/colors';
 import { getTooltipPosition } from '../helpers';
 import {
   IStakePoolProps,

@@ -2,12 +2,12 @@ import debug from 'debug';
 import { noop } from 'lodash';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
-import { BrandType } from '../../common/constants';
+import { BrandType } from '../../constants';
 import { environment } from '../../environment';
 import AddressSummary from '../../features/address/components/AddressSummary';
 import TransactionList from '../../features/transactions/components/TransactionList';
-import Container from '../../features/widgets/container/components/Container';
-import { Footer, Header, Layout } from '../../layout'
+import Container from '../../widgets/container/Container';
+import { Footer, Header, Layout } from '../../widgets/layout';
 import styles from './address.scss';
 
 if (environment.DEBUG) {

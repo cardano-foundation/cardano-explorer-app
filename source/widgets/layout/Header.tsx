@@ -2,11 +2,11 @@ import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import React from 'react';
-import { BrandType } from '../common/constants';
-import Search, { ISearchProps } from '../features/widgets/search/components/Search';
+import { BrandType } from '../../constants';
+import Search, { ISearchProps } from '../../features/search/Search';
 import styles from './Header.scss';
 
-const CardanoLogo = require('../static/assets/images/header/cardano-logo.svg');
+const CardanoLogo = require('../../static/assets/images/header/cardano-logo.svg');
 
 export interface IHeaderProps {
   brandType?: BrandType;
@@ -75,4 +75,3 @@ Header.defaultProps = {
   brandType: BrandType.ENLARGED,
   withSearch: true,
 };
-

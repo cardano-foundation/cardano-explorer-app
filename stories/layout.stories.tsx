@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import { noop } from 'lodash';
 import React from 'react';
-import { BrandType } from '../source/common/constants';
-import { Footer, Header } from '../source/layout';
+import { BrandType } from '../source/constants';
+import { Footer, Header } from '../source/widgets/layout';
 import { PaddingDecorator } from './support/PaddingDecorator';
 
 storiesOf('Layout|Header', module)
