@@ -1,0 +1,17 @@
+.headContainer {
+  align-items: center;
+  color: $secondary-highlight-color;
+  display: flex;
+  font-family: ProximaNova, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 2;
+  padding: 5px 25.5px;
+  text-align: center;
+  text-transform: uppercase;
+
+  @media (max-width: 991px) {
+    padding: 5px 12px;
+  }
+}
