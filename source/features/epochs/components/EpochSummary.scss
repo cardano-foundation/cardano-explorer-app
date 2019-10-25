@@ -1,0 +1,73 @@
+.epochSummaryContainer {
+  margin: 0 auto;
+  max-width: 872px;
+  width: 100%;
+
+  .header {
+    margin-bottom: 41px;
+  }
+
+  .content {
+    align-items: center;
+    display: flex;
+
+    .progressTextContent {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .progressTextLabel {
+        color: $info-text;
+        font-family: ProximaNova, sans-serif;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+        line-height: 1.4;
+        margin-bottom: 5px;
+      }
+
+      .progressTextValue {
+        color: $solid-text;
+        font-family: ProximaNova, sans-serif;
+        font-size: 46px;
+        font-weight: 300;
+        letter-spacing: 2.3px;
+      }
+    }
+
+    .infoPanel {
+      color: $info-text;
+      margin-left: 60px;
+
+      .infoRow {
+        align-items: center;
+        display: flex;
+        font-size: 12px;
+        letter-spacing: 0.6px;
+        line-height: 1.33;
+        margin-bottom: 10px;
+
+        .infoLabel {
+          font-family: ProximaNova, sans-serif;
+          font-weight: 600;
+          width: 130px;
+        }
+
+        .infoValue {
+          font-family: ProximaNova, sans-serif;
+          font-weight: 300;
+        }
+      }
+
+      @media (max-width: 768px) {
+        margin-left: 0;
+        padding-top: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+}

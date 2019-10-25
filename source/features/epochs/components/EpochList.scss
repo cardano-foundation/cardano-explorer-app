@@ -1,0 +1,127 @@
+.epochListContainer {
+  margin: 0 auto;
+  max-width: 872px;
+  width: 100%;
+
+  .header {
+    margin-bottom: 41px;
+  }
+
+  .listHeader {
+    align-items: center;
+    color: $secondary-highlight-color;
+    display: flex;
+    font-family: ProximaNova, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 2;
+    padding: 5px 25.5px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (max-width: 991px) {
+      padding: 5px 12px;
+    }
+
+    .epoch {
+      width: 90px;
+    }
+
+    .blocksSlots {
+      width: 120px;
+    }
+
+    .startedAt {
+      width: 170px;
+    }
+
+    .endedAt {
+      width: 170px;
+    }
+
+    .transactions {
+      width: 140px;
+    }
+
+    .output {
+      flex: 1;
+      text-align: right;
+    }
+
+    @media (max-width: 991px) and (min-width: 768px) {
+      .transactions {
+        display: none;
+      }
+    }
+
+    @media (max-width: 767px) and (min-width: 576px) {
+      .endedAt {
+        display: none;
+      }
+      .transactions {
+        display: none;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .epoch {
+        width: 50px;
+      }
+      .blocksSlots {
+        width: 110px;
+      }
+      .startedAt {
+        flex: 1;
+        width: auto;
+      }
+      .endedAt {
+        display: none;
+      }
+      .transactions {
+        display: none;
+      }
+      .output {
+        display: none;
+      }
+    }
+  }
+
+  .epochListRow {
+    border-bottom: 2px dotted $dotted-separator-color;
+  }
+
+  .showMore {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+    @media (max-width: 575px) {
+      justify-content: flex-start;
+    }
+
+    .showMoreButton {
+      align-items: center;
+      background-color: $primary-highlight-color;
+      border-radius: 2px;
+      color: $primary-bg;
+      display: flex;
+      font-family: ProximaNova, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      height: 25px;
+      justify-content: center;
+      letter-spacing: 0.4px;
+      line-height: 1.33;
+      padding: 0;
+      width: 133.5px;
+
+      &:hover {
+        background-color: $primary-highlight-color-hover;
+      }
+      &:active {
+        background-color: $primary-highlight-color-press;
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+.transactionSummaryContainer {
+  margin: 0 auto;
+  max-width: 872px;
+  width: 100%;
+
+  .header {
+    margin-bottom: 41px;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .infoPanel {
+      color: $info-text;
+
+      .infoRow {
+        display: flex;
+        font-size: 12px;
+        letter-spacing: 0.6px;
+        line-height: 1.33;
+        margin-bottom: 10px;
+
+        .infoLabel {
+          font-family: ProximaNova, sans-serif;
+          font-weight: 600;
+          width: 130px;
+        }
+
+        .infoValue {
+          font-family: ProximaNova, sans-serif;
+          font-weight: 300;
+
+          span {
+            color: $primary-highlight-color;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    padding: 32px;
+  }
+}

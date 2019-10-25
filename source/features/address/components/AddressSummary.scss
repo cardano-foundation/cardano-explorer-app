@@ -1,0 +1,56 @@
+.addressSummaryContainer {
+  margin: 0 auto;
+  max-width: 872px;
+  width: 100%;
+
+  .header {
+    margin-bottom: 41px;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 575px) {
+      flex-direction: column;
+    }
+
+    .infoPanel {
+      color: $info-text;
+      flex: 1;
+      font-family: ProximaNova, sans-serif;
+      max-width: calc(100% - 124px);
+
+      @media (max-width: 575px) {
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .infoRow {
+        display: flex;
+        font-size: 12px;
+        letter-spacing: 0.6px;
+        line-height: 1.33;
+        margin-bottom: 10px;
+
+        .infoLabel {
+          flex: 0 0 130px;
+          font-weight: 600;
+        }
+
+        .infoValue {
+          flex: 1;
+          font-weight: 300;
+          word-break: break-all;
+        }
+      }
+    }
+
+    .qrcode {
+      background-color: #ffffff;
+      height: 84px;
+      padding: 7px 7px 3px;
+      width: 84px;
+    }
+  }
+}

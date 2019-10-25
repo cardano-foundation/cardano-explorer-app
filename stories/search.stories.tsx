@@ -1,13 +1,11 @@
-import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
+import { noop } from 'lodash';
 import React from 'react';
-import Search from '../source/features/shared/search/components/Search';
-import { ThemeDecorator } from './support/ThemeDecorator';
+import NoSearchResult from '../source/features/search/NoSearchResult';
+import Search from '../source/features/search/Search';
+import { PaddingDecorator } from './support/PaddingDecorator';
 
 storiesOf('Search', module)
-  .addDecorator(story => <ThemeDecorator>{story()}</ThemeDecorator>)
-  .add('Search', () => (
-    <div style={{ backgroundColor: '#1c1f30' }}>
-      <Search triggerBlockSearch={action('triggerBlockSearch')} />
-    </div>
-  ));
+  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
+  .add('Search', () => <Search onSearch={noop} />)
+  .add('No Search Result', () => <NoSearchResult />);

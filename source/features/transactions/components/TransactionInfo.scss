@@ -1,0 +1,200 @@
+.transactionInfoContainer {
+  margin: 0 auto;
+  max-width: 872px;
+  width: 100%;
+
+  .header {
+    margin-bottom: 41px;
+  }
+
+  .transactionInfoRowContainer {
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
+    letter-spacing: 0.4px;
+    line-height: 1.33;
+
+    @media (max-width: 992px) {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .addresses {
+      max-width: 698px;
+      min-width: 656px;
+      padding-right: 66.5px;
+
+      @media (max-width: 992px) {
+        max-width: initial;
+        min-width: initial;
+        padding-right: 0;
+        width: 100%;
+      }
+
+      .infoRow {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        @media (max-width: 992px) {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .currentAddress {
+          align-items: center;
+          color: $info-text;
+          display: flex;
+          font-family: ProximaNova, sans-serif;
+          width: 100%;
+        }
+
+        .senders,
+        .receivers {
+          display: flex;
+          flex-direction: column;
+          width: calc(50% - 27px);
+
+          @media (max-width: 992px) {
+            margin-bottom: 10px;
+            width: 100%;
+          }
+
+          .startCharacters {
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .senders {
+          align-items: flex-start;
+        }
+
+        .receivers {
+          align-items: flex-end;
+
+          @media (max-width: 992px) {
+            align-items: flex-start;
+          }
+        }
+
+        .id {
+          color: $primary-highlight-color;
+          cursor: pointer;
+          font-family: ProximaNova, sans-serif;
+          font-weight: 600;
+          letter-spacing: 0.6px;
+          line-height: 1.33;
+
+          @media (max-width: 992px) {
+            margin-bottom: 10px;
+            word-break: break-word;
+          }
+        }
+
+        .sender,
+        .receiver {
+          align-items: center;
+          color: $primary-highlight-color;
+          cursor: pointer;
+          display: flex;
+          font-family: ProximaNova, sans-serif;
+          letter-spacing: 0.4px;
+          line-height: 1.33;
+          margin-bottom: 5px;
+          width: 100%;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          @media (max-width: 992px) {
+            margin-bottom: 10px;
+          }
+        }
+
+        .transferredAt {
+          color: $info-text;
+          font-family: ProximaNova, sans-serif;
+          font-weight: 300;
+          letter-spacing: 0.4px;
+          line-height: 1.33;
+
+          @media (max-width: 992px) {
+            display: none;
+          }
+        }
+
+        .nextIcon {
+          display: flex;
+          justify-content: center;
+
+          svg {
+            height: 10px;
+            object-fit: contain;
+            width: 14px;
+          }
+
+          @media (max-width: 992px) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+
+    .amounts {
+      flex: 1;
+      margin-top: -5px;
+
+      @media (max-width: 992px) {
+        margin-top: 0;
+        width: 100%;
+      }
+
+      .infoRow {
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .totalAmount {
+          background-color: $highlighted-dark-area-bg;
+          border-radius: 1px;
+          color: $solid-text;
+          font-family: ProximaNova, sans-serif;
+          font-weight: 300;
+          letter-spacing: 0.4px;
+          line-height: 1.33;
+          padding: 5px 10px;
+        }
+
+        .amount {
+          color: $info-text;
+          font-family: ProximaNova, sans-serif;
+          font-weight: 300;
+          letter-spacing: 0.4px;
+          line-height: 1.33;
+          margin-bottom: 5px;
+          padding: 0 10px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          @media (max-width: 992px) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,201 @@
+@mixin footerText($color, $fontFamily, $fontSize, $fontWeight) {
+  color: $color;
+  font-family: $fontFamily, sans-serif;
+  font-size: $fontSize;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: $fontWeight;
+}
+
+.footerContainer {
+  padding: 0 32px 92px;
+  width: 100%;
+
+  .footerContent {
+    margin: 0 auto;
+    max-width: 872px;
+    width: 100%;
+  }
+
+  .footerTopContainer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    max-width: 872px;
+    width: 100%;
+
+    .copyright {
+      @include footerText($solid-text, ProximaNova, 12px, normal);
+      letter-spacing: 1.2px;
+      line-height: 1.5;
+      opacity: 0.3;
+      text-transform: uppercase;
+    }
+
+    .logos {
+      align-items: center;
+      display: flex;
+      justify-content: space-evenly;
+
+      .logoText {
+        align-items: center;
+        display: flex;
+
+        .iohkLogo {
+          height: 22px;
+          width: 29px;
+        }
+
+        .iohkText {
+          @include footerText($solid-text, ProximaNova, 10px, normal);
+          letter-spacing: 1px;
+          line-height: 1.6;
+          opacity: 0.3;
+          padding-left: 10px;
+          text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+          padding-bottom: 15px;
+        }
+      }
+
+      .socialIcons {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        .twitterIcon,
+        .facebookIcon,
+        .youtubeIcon,
+        .newsletterIcon {
+          height: 12px;
+          margin-left: 10px;
+          object-fit: contain;
+          width: 14px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .footerMiddleContainer {
+    .footerSeparator {
+      background-color: $solid-text;
+      height: 2px;
+      margin: 9px 0;
+      opacity: 0.1;
+    }
+  }
+
+  .footerBottomContainer {
+    display: flex;
+
+    .cardanoTextContainer {
+      max-width: 63.5%;
+
+      .cardanoTextTitle {
+        @include footerText($hint-text, ProximaNova, 10px, 300);
+        letter-spacing: 0.2px;
+        line-height: 1.6;
+
+        a {
+          text-decoration: none;
+
+          span {
+            color: $footer-text-color;
+            font-family: ProximaNova, sans-serif;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .cardanoText {
+        @include footerText($hint-text, ProximaNova, 10px, 300);
+        letter-spacing: 0.2px;
+        line-height: 1.6;
+
+        p {
+          font-style: italic;
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        max-width: 100%;
+      }
+    }
+
+    .footerMenusContainer {
+      display: flex;
+
+      .aboutCardanoMenuContainer,
+      .joinTheCommunityMenuContainer {
+        padding-left: 35px;
+
+        .aboutCardanoTitle,
+        .joinTheCommunityTitle {
+          @include footerText($solid-text, ProximaNova, 10px, 600);
+          letter-spacing: 0.5px;
+          line-height: 1.8;
+          opacity: 0.3;
+        }
+
+        .aboutCardanoMenu,
+        .joinTheCommunityMenu {
+          list-style: none;
+          padding: 0;
+          text-align: left;
+
+          li {
+            a {
+              @include footerText($solid-text, ProximaNova, 10px, 300);
+              opacity: 0.3;
+              letter-spacing: 0.5px;
+              line-height: 1.8;
+              text-decoration: none;
+
+              &.emailLink {
+                color: $footer-text-color;
+                font-weight: 600;
+                opacity: 1;
+              }
+            }
+          }
+        }
+
+        @media (max-width: 992px) {
+          min-width: 27.25%;
+        }
+
+        @media (max-width: 768px) {
+          max-width: initial;
+          min-width: initial;
+          padding-left: 0;
+        }
+      }
+
+      @media (max-width: 992px) {
+        justify-content: space-between;
+        min-width: 47%;
+      }
+
+      @media (max-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+}

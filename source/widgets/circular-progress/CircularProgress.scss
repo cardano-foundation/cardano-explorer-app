@@ -1,0 +1,58 @@
+.circularProgressContainer {
+  .outsideCircle {
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+
+    .spinnerCircle {
+      animation: rotate 1s linear infinite;
+      background-image: $spinner-circle-background-color;
+      border-radius: 50%;
+      left: 0;
+      object-fit: contain;
+      opacity: 0.4;
+      position: absolute;
+      top: 0;
+    }
+
+    .insideCircle {
+      align-items: center;
+      background-color: $primary-bg;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .circularProgressPinCircle {
+      background-color: $primary-highlight-color;
+      border-radius: 50%;
+      height: 6px;
+      left: 5px;
+      position: absolute;
+      top: 1px;
+      width: 6px;
+    }
+
+    .circularProgressPinImage {
+      height: 21.4px;
+      left: 18px;
+      object-fit: contain;
+      position: absolute;
+      top: 0.5px;
+      width: 21.4px;
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

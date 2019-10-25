@@ -1,0 +1,8 @@
+.stakePoolsListContainer {
+  display: grid;
+  font-family: ProximaNova, sans-serif;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, 78px);
+  justify-content: space-between;
+  margin-bottom: 70px;
+}

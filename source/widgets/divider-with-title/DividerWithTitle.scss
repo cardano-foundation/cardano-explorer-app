@@ -1,0 +1,30 @@
+.dividerContainer {
+  position: relative;
+
+  .line {
+    background-color: $secondary-highlight-color;
+    height: 1px;
+    opacity: 0.5;
+    width: 100%;
+  }
+
+  .title {
+    background-color: $primary-bg;
+    color: $solid-text;
+    font-family: ProximaNova, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    left: 50%;
+    letter-spacing: 1.2px;
+    line-height: 1.67;
+    padding: 1.5px 12px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 500;
+
+    @media (max-width: 340px) {
+      padding: 1.5px 8px;
+    }
+  }
+}

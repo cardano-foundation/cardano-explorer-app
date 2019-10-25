@@ -1,0 +1,19 @@
+@import '../../styles/global/reset';
+@import '../../styles/global/fonts';
+
+.content {
+  background-color: $primary-bg;
+  min-height: 100vh;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1366px;
+  padding: 0 32px;
+  position: relative;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+}

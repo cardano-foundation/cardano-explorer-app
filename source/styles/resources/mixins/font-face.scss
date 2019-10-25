@@ -1,0 +1,10 @@
+@mixin font-face($name, $src, $weight) {
+  @font-face {
+    font-family: quote($name);
+    font-weight: $weight;
+    src: url('#{$src}.eot');
+    src: url('#{$src}.eot?#iefix') format('embedded-opentype'),
+      url('#{$src}.woff') format('woff'), url('#{$src}.ttf') format('truetype'),
+      url('#{$src}.svg#webfont') format('svg');
+  }
+}

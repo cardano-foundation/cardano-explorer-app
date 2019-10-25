@@ -1,0 +1,13 @@
+.containerComponent {
+  margin: 0 auto;
+  max-width: 936px;
+  padding: 0 32px;
+  position: relative;
+  width: 100%;
+
+  &.topMargin {
+    @media (max-width: 575px) {
+      margin-top: 40px;
+    }
+  }
+}

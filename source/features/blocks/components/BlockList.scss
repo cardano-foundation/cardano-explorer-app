@@ -1,0 +1,147 @@
+.blockListContainer {
+  margin: 0 auto;
+  max-width: 872px;
+  width: 100%;
+
+  .header {
+    margin-bottom: 41px;
+  }
+
+  .listHeader {
+    align-items: center;
+    color: $secondary-highlight-color;
+    display: flex;
+    font-family: ProximaNova, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 2;
+    padding: 5px 25.5px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (max-width: 991px) {
+      padding: 5px 12px;
+    }
+
+    .epoch {
+      width: 90px;
+    }
+
+    .blocksSlots {
+      width: 100px;
+    }
+
+    .createdAt {
+      width: 160px;
+    }
+
+    .createdBy {
+      text-align: right;
+      width: 120px;
+    }
+
+    .transactions {
+      width: 120px;
+    }
+
+    .size {
+      text-align: right;
+      width: 120px;
+    }
+
+    .output {
+      text-align: right;
+      width: 122px;
+    }
+
+    @media (max-width: 991px) and (min-width: 768px) {
+      .createdAt {
+        width: 120px;
+      }
+    }
+
+    @media (max-width: 767px) and (min-width: 576px) {
+      .size {
+        display: none;
+      }
+
+      .createdBy {
+        display: none;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .epoch {
+        text-align: center;
+        width: 60px;
+      }
+
+      .blocksSlots {
+        width: 110px;
+      }
+
+      .createdAt {
+        text-align: center;
+        width: 160px;
+      }
+
+      .transactions {
+        display: none;
+      }
+
+      .size {
+        display: none;
+      }
+
+      .output {
+        display: none;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .createdBy {
+        display: none;
+      }
+    }
+  }
+
+  .blockListRow {
+    border-bottom: 2px dotted $dotted-separator-color;
+  }
+
+  .showMore {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+    @media (max-width: 575px) {
+      justify-content: flex-end;
+    }
+
+    .showMoreButton {
+      align-items: center;
+      background-color: $primary-highlight-color;
+      border-radius: 2px;
+      color: $primary-bg;
+      display: flex;
+      font-family: ProximaNova, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      height: 25px;
+      justify-content: center;
+      letter-spacing: 0.4px;
+      line-height: 1.33;
+      padding: 0;
+      width: 133.5px;
+
+      &:hover {
+        background-color: $primary-highlight-color-hover;
+      }
+
+      &:active {
+        background-color: $primary-highlight-color-press;
+      }
+    }
+  }
+}
