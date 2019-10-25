@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import { noop } from 'lodash';
 import React from 'react';
-import NoSearchResult from '../source/features/search/NoSearchResult';
-import Search from '../source/features/search/Search';
+import NoSearchResult from '../source/features/search/components/NoSearchResult';
+import Search from '../source/features/search/components/Search';
 import { PaddingDecorator } from './support/PaddingDecorator';
 
 storiesOf('Search', module)

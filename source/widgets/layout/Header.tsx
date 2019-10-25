@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import React from 'react';
 import { BrandType } from '../../constants';
-import Search, { ISearchProps } from '../../features/search/Search';
+import Search, { ISearchProps } from '../../features/search/components/Search';
 import styles from './Header.scss';
 
 const CardanoLogo = require('../../static/assets/images/header/cardano-logo.svg');

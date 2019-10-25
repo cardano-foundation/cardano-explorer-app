@@ -29,9 +29,14 @@ export class SearchStore extends Store {
     return null;
   }
 
-  private searchBlockById = ({ id }: { id: string }) => {
-    this.searchApi.getBlocksByIdsQuery.execute({
-      where: { id: { _in: [id] } },
-    });
+  private searchBlockById = async ({ id }: { id: string }) => {
+    try {
+      await this.searchApi.getBlocksByIdsQuery.execute({
+        where: { id: { _eq: id } },
+      });
+    } catch (error) {
+      // TODO: handle network errors here
+      throw error;
+    }
   };
 }
