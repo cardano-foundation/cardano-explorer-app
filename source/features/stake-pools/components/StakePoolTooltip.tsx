@@ -5,8 +5,8 @@ import { getColorFromRange } from '../../../lib/colors';
 import { IStakePoolTooltipProps } from '../types';
 import styles from './StakePoolTooltip.scss';
 
-const CloseCrossIcon = require('../../../static/assets/images/stake-pools/close-cross.svg');
-const ExternalLinkIcon = require('../../../static/assets/images/stake-pools/link-ic.svg');
+const CloseCrossIcon = require('../../../public/assets/images/stake-pools/close-cross.svg');
+const ExternalLinkIcon = require('../../../public/assets/images/stake-pools/link-ic.svg');
 
 const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
   stakePool,
