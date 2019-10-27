@@ -1,5 +1,5 @@
 // @import '../resources/mixins/font-face';
-$url: '/static/assets/fonts/Proxima-Nova-';
+$url: '/assets/fonts/Proxima-Nova-';
 @include font-face('ProximaNova', '#{$url}Bold', 800);
 @include font-face('ProximaNova', '#{$url}Semibold', 600);
 @include font-face('ProximaNova', '#{$url}Regular', normal);

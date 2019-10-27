@@ -17,17 +17,21 @@
   .slotsElectedPercentage {
     color: $info-text;
     text-align: left;
-    width: 436px;
+    width: 50%;
   }
 
   .stakePool {
     color: $table-text;
+    overflow: hidden;
+    padding: 0 20px 0 0 !important;
     text-align: left;
-    width: 436px;
+    text-overflow: ellipsis;
+    width: 50%;
+    white-space: nowrap;
   }
 
   .stakePoolName {
-    color: $primary-highlight-color;
+    color: $info-text;
   }
 
   @media (max-width: 575px) {

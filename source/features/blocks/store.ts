@@ -1,7 +1,7 @@
 import { computed } from 'mobx';
 import { GetBlocksQuery } from '../../../generated/typings/graphql-schema';
-import { createActionBindings } from '../../utils/ActionBinding';
-import { Store } from '../../utils/Store';
+import { createActionBindings } from '../../lib/ActionBinding';
+import { Store } from '../../lib/Store';
 import { SearchActions } from './actions';
 import { SearchApi } from './api';
 

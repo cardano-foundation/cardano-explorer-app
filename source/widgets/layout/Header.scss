@@ -1,0 +1,261 @@
+.headerContainer {
+  position: relative;
+  width: 100%;
+
+  &.enlargedHeaderContainer {
+    .brandType {
+      flex-direction: column;
+
+      .logoContainer {
+        margin-top: 105px;
+
+        .logo {
+          height: 112px;
+          width: 122px;
+        }
+      }
+
+      .titleContainer {
+        font-size: 18px;
+        margin-top: 50px;
+      }
+
+      .triangleSign {
+        position: relative;
+
+        .straightLine {
+          background-color: $primary-highlight-color;
+          height: 1px;
+          left: -63px;
+          opacity: 0.5;
+          position: absolute;
+          top: 0;
+          width: 126px;
+          z-index: 400;
+        }
+
+        .triangle {
+          border-left: 14.5px solid transparent;
+          border-right: 14.5px solid transparent;
+          border-top: 20px solid $primary-highlight-color;
+          height: 0;
+          left: 50%;
+          position: absolute;
+          top: 2px;
+          transform: translate(-50%, -50%);
+          width: 0;
+          z-index: 300;
+
+          .innerTriangle {
+            border-left: 11.5px solid transparent;
+            border-right: 11.5px solid transparent;
+            border-top: 17px solid $primary-bg;
+            height: 0;
+            left: -11.5px;
+            position: relative;
+            top: -19px;
+            width: 0;
+          }
+        }
+      }
+    }
+
+    .searchContainer {
+      background-color: $search-area-bg;
+      padding: 30px 50px 40px;
+    }
+  }
+
+  &.shrinkedHeaderContainer {
+    background-color: $search-area-bg;
+
+    .brandType {
+      flex-direction: row;
+      padding: 26.5px 32px 23.5px;
+
+      .logoContainer {
+        margin-left: -55.5px;
+        margin-right: 19.5px;
+
+        .logo {
+          height: 33px;
+          width: 36px;
+        }
+      }
+
+      .titleContainer {
+        font-size: 14px;
+
+        @media (min-width: 1049px) {
+          .networkTitle {
+            text-align: left;
+          }
+        }
+      }
+
+      .triangleSign {
+        display: none;
+      }
+
+      .tabs {
+        display: none;
+      }
+    }
+
+    .searchContainer {
+      padding: 0 32px 30px;
+    }
+  }
+
+  .contentContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    z-index: 200;
+
+    .brandType {
+      align-items: center;
+      display: flex;
+      max-width: 936px;
+      width: 100%;
+    }
+
+    .titleContainer {
+      color: $solid-text;
+      font-family: ProximaNova, sans-serif;
+      letter-spacing: 1.8px;
+      line-height: 1.39;
+      text-align: center;
+      text-transform: uppercase;
+
+      .cardanoTitle {
+        font-weight: 300;
+        margin-right: 10px;
+      }
+      .explorerTitle {
+        font-weight: 600;
+      }
+      .networkTitle {
+        color: $secondary-highlight-color;
+        font-weight: 600;
+        letter-spacing: 1.8px;
+        line-height: 1.11;
+        padding-top: 5px;
+        text-align: center;
+      }
+    }
+
+    .tabs {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 60px;
+      margin-top: 40px;
+      max-width: 872px;
+      width: 100%;
+
+      a {
+        color: $primary-highlight-color;
+        font-family: ProximaNova, sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        height: 20px;
+        letter-spacing: 1.2px;
+        line-height: 1.67;
+        margin: 0 13px;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .activeTab {
+        color: $solid-text;
+      }
+
+      .tabLeftLine {
+        background-image: linear-gradient(to left, $solid-text, $primary-bg);
+        flex: 1;
+        height: 2px;
+        opacity: 0.5;
+      }
+      .tabCircle {
+        background-color: $solid-text;
+        border-radius: 50%;
+        height: 6px;
+        width: 6px;
+      }
+      .tabRightLine {
+        background-image: linear-gradient(to right, $solid-text, $primary-bg);
+        flex: 1;
+        height: 2px;
+        opacity: 0.5;
+      }
+    }
+
+    .searchContainer {
+      margin: 0 auto;
+      max-width: 936px;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1048px) {
+  .headerContainer {
+    &.shrinkedHeaderContainer {
+      .brandType {
+        flex-direction: column;
+
+        .logoContainer {
+          margin: 24px 0 0;
+
+          .logo {
+            height: 56px;
+            width: 61px;
+          }
+        }
+        .titleContainer {
+          margin-top: 15.5px;
+
+          .cardanoTitle {
+            display: inline-block;
+          }
+          .explorerTitle {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .headerContainer {
+    &.enlargedHeaderContainer {
+      .brandType {
+        .logoContainer {
+          margin-top: 24px;
+
+          .logo {
+            height: 56px;
+            width: 61px;
+          }
+        }
+
+        .titleContainer {
+          margin-top: 15.5px;
+
+          .cardanoTitle {
+            display: block;
+          }
+        }
+      }
+      .searchContainer {
+        margin-left: -16px;
+        padding: 20px 16px;
+        width: calc(100% + 32px);
+      }
+    }
+  }
+}

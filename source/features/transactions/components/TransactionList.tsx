@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
-import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
-import Pagination from '../../widgets/pagination/components/Pagination';
+import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import Pagination from '../../../widgets/pagination/Pagination';
 import TransactionInfo, { ITransactionInfoProps } from './TransactionInfo';
 import styles from './TransactionList.scss';
 

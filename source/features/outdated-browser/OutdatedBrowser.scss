@@ -1,0 +1,227 @@
+.outdatedBrowserContainer {
+  margin: 0 auto;
+  max-width: 872px;
+  width: 100%;
+
+  .outdatedBrowserContainerBackground {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    opacity: 0.15;
+    top: -10px;
+    width: 100%;
+    z-index: 0;
+  }
+
+  .topHeaderContainer {
+    position: relative;
+    width: 100%;
+    z-index: 2;
+
+    .contentContainer {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 100%;
+      z-index: 200;
+
+      .titleContainer {
+        color: $solid-text;
+        font-family: ProximaNova, sans-serif;
+        font-size: 18px;
+        letter-spacing: 1.8px;
+        line-height: 1.39;
+        text-align: center;
+        text-transform: uppercase;
+
+        .outdatedTitle {
+          font-weight: 600;
+        }
+      }
+
+      .brandType {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .logoContainer {
+          margin-bottom: 95px;
+          margin-top: 105px;
+
+          .logo {
+            height: 112px;
+            width: 122px;
+          }
+        }
+
+        .titleContainer {
+          font-size: 18px;
+          margin-bottom: 50px;
+          margin-top: 50px;
+        }
+
+        .triangleSign {
+          position: relative;
+
+          .straightLine {
+            background-color: $primary-highlight-color;
+            height: 1px;
+            left: -63px;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            width: 126px;
+            z-index: 400;
+          }
+
+          .triangle {
+            border-left: 14.5px solid transparent;
+            border-right: 14.5px solid transparent;
+            border-top: 20px solid $primary-highlight-color;
+            height: 0;
+            left: 50%;
+            position: absolute;
+            top: 2px;
+            transform: translate(-50%, -50%);
+            width: 0;
+            z-index: 300;
+
+            .innerTriangle {
+              border-left: 11.5px solid transparent;
+              border-right: 11.5px solid transparent;
+              border-top: 17px solid $primary-bg;
+              height: 0;
+              left: -11.5px;
+              position: relative;
+              top: -19px;
+              width: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mainContainer {
+    display: flex;
+    padding: 50px 0;
+    z-index: 2;
+
+    .browserColumn {
+      margin: 0 33px;
+      z-index: 3;
+
+      .browserLink {
+        display: block;
+        height: 97px;
+        .browserIconHover {
+          display: none;
+        }
+        &:hover {
+          .browserIcon {
+            display: none;
+          }
+          .browserIconHover {
+            display: block;
+          }
+        }
+      }
+
+      .browserIcon,
+      .browserIconHover {
+        height: 96px;
+        width: 96px;
+      }
+
+      .browserName {
+        font-family: ProximaNova, sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.2px;
+        line-height: 1.67;
+        padding-top: 20px;
+        text-align: center;
+        text-transform: uppercase;
+
+        .browserLink {
+          color: $primary-highlight-color;
+          text-decoration: none;
+        }
+      }
+
+      &:first-child {
+        margin-left: 62px;
+
+        .browserName {
+          padding-left: 22px;
+          text-align: left;
+        }
+      }
+
+      .browserCompany {
+        color: $info-text;
+        font-family: ProximaNova, sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 0.3px;
+        line-height: 1.33;
+        text-align: center;
+      }
+
+      @media (max-width: 992px) {
+        margin: 20px 10px 33px !important;
+      }
+    }
+
+    @media (max-width: 992px) {
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .bottomContainer {
+    display: table;
+    margin: 0 auto;
+    max-width: 390px;
+    padding-bottom: 135px;
+    z-index: 2;
+
+    .bottomContainerText {
+      color: $info-text;
+      font-family: ProximaNova, sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.7px;
+      line-height: 1.43;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .headerContainer {
+    .contentContainer {
+      .brandType {
+        .logoContainer {
+          margin-top: 24px;
+
+          .logo {
+            height: 56px;
+            width: 61px;
+          }
+        }
+
+        .titleContainer {
+          margin-top: 15.5px;
+
+          .cardanoTitle {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

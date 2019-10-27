@@ -7,8 +7,10 @@ Changelog
 
 - Implemented table component ([PR 43](https://github.com/input-output-hk/cardano-explorer-app/pull/43))
 - Implemented stake distribution table on the current epoch page ([PR 37](https://github.com/input-output-hk/cardano-explorer-app/pull/37))
+- Implemented block creation table to for previous epoch page ([PR 36](https://github.com/input-output-hk/cardano-explorer-app/pull/36))
 - Implement pagination component ([PR 35](https://github.com/input-output-hk/cardano-explorer-app/pull/35))
-- Implemented Stake Pools page ([PR 19](https://github.com/input-output-hk/cardano-explorer-app/pull/19), [PR 28](https://github.com/input-output-hk/cardano-explorer-app/pull/28), [PR 33](https://github.com/input-output-hk/cardano-explorer-app/pull/33))
+- Implemented unsupported browser component ([PR 29](https://github.com/input-output-hk/cardano-explorer-app/pull/29))
+- Implemented stake pools page ([PR 19](https://github.com/input-output-hk/cardano-explorer-app/pull/19), [PR 28](https://github.com/input-output-hk/cardano-explorer-app/pull/28), [PR 33](https://github.com/input-output-hk/cardano-explorer-app/pull/33))
 - Implement address details page design story ([PR 30](https://github.com/input-output-hk/cardano-explorer-app/pull/30))
 - Implement main page design story ([PR 26](https://github.com/input-output-hk/cardano-explorer-app/pull/26))
 - Implement no search results component ([PR 25](https://github.com/input-output-hk/cardano-explorer-app/pull/25))

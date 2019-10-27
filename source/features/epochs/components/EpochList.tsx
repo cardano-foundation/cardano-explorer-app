@@ -3,9 +3,8 @@ import moment from 'moment';
 import React, { FC } from 'react';
 import CircularProgress, {
   CircularProgressSize,
-} from '../../widgets/circular-progress/components/CircularProgress';
-import Table from '../../widgets/table/components/Table';
-import { IColumnDefinition } from '../../widgets/table/types/Table';
+} from '../../../widgets/circular-progress/CircularProgress';
+import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import styles from './EpochList.scss';
 
 export interface IEpochListRowProps {

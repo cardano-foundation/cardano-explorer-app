@@ -1,8 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import React, { FC } from 'react';
-import Table from '../../widgets/table/components/Table';
-import { IColumnDefinition } from '../../widgets/table/types/Table';
+import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import styles from './BlockList.scss';
 
 export interface IBlockListRowProps {

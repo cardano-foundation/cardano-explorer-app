@@ -1,13 +1,8 @@
 import { debounce } from 'lodash';
-import { observer } from 'mobx-react-lite';
 import React, { Component } from 'react';
-import DividerWithTitle from '../../widgets/divider-with-title/components/DividerWithTitle';
+import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { getFilteredStakePoolsList } from '../helpers';
-import {
-  IStakePoolProps,
-  IStakePoolsListProps,
-  IStakePoolsProps,
-} from '../types';
+import { IStakePoolProps, IStakePoolsProps } from '../types';
 import styles from './StakePools.scss';
 import StakePoolsList from './StakePoolsList';
 import StakePoolsSearch from './StakePoolsSearch';
