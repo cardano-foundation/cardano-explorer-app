@@ -7,8 +7,9 @@
   "scripts": {
     "dev": "next dev source -p 4000",
     "build": "next build source",
-    "test": "cucumber-js --require-module ts-node/register --require 'features/steps/**/*.ts' -f node_modules/cucumber-pretty --format-options '{\"snippetInterface\": \"async-await\"}'",
-    "test:watch": "nodemon --watch source --watch features -e js,ts,feature --exec yarn test --tags @watch",
+    "test": "jest",
+    "e2e": "cucumber-js --require-module ts-node/register --require 'features/steps/**/*.ts' -f node_modules/cucumber-pretty --format-options '{\"snippetInterface\": \"async-await\"}'",
+    "e2e:watch": "nodemon --watch source --watch features -e js,ts,feature --exec yarn test --tags @watch",
     "generate:graphql-typings": "SCHEMA_URI=${SCHEMA_URI:-http://localhost:3100} graphql-codegen",
     "generate:graphql-schema-reference": "get-graphql-schema ${SCHEMA_URI:-http://localhost:3100} > schema.graphql",
     "export": "next export source --outdir build/static",
