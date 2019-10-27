@@ -13,14 +13,14 @@ const StakePoolThumbnail = ({
   color,
   children,
 }: IStakePoolThumbnailProps) => {
-  const { ranking, ticker, retiring, id } = stakePool;
+  const { ranking, ticker, retiring } = stakePool;
   const containerStyles = classnames([
     styles.stakePoolThumbnailContainer,
     isSelected ? styles.isHighlighted : null,
   ]);
   return (
     <div className={containerStyles}>
-      <button onClick={onSelect} />
+      <button onClick={onSelect as any} />
       <div className={styles.content}>
         <div className={styles.ticker}>{ticker}</div>
         <div className={styles.ranking} style={{ color }}>
