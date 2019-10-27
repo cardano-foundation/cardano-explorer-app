@@ -9,18 +9,10 @@ import { environment } from '../../environment';
 
 const debug = createDebug('Explorer:apolloClient');
 
-if (!environment.GRAPHQL_WEBSOCKET_URL) {
-  throw new Error('GRAPHQL_WEBSOCKET_URL env var is required.');
-}
-
-if (!environment.GRAPHQL_HTTP_URL) {
-  throw new Error('GRAPHQL_HTTP_URL env var is required.');
-}
-
 // Queries are made over HTTP
 const httpLink = createHttpLink({
   fetch: fetch as any,
-  uri: environment.GRAPHQL_HTTP_URL,
+  uri: environment.CARDANO.GRAPHQL.HTTP_URL,
 });
 
 export const apolloClient = new ApolloClient({
@@ -41,7 +33,7 @@ export const apolloClient = new ApolloClient({
       }
       if (networkError) {
         debug(
-          `[GraphQL network error]: could not connect to ${environment.GRAPHQL_HTTP_URL}.`
+          `[GraphQL network error]: could not connect to ${environment.CARDANO.GRAPHQL.HTTP_URL}.`
         );
       }
     }),
