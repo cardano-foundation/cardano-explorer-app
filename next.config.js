@@ -21,14 +21,8 @@ const resourcesLoader = {
 };
 
 const DEBUG = process.env.DEBUG;
-const ENV_PATH = process.env.ENV_PATH;
 
-if (!ENV_PATH)
-  throw new Error('ENV_PATH must be provided to build the project.');
-
-require('dotenv').config({path: path.join(__dirname, ENV_PATH)});
-
-const added = {};
+require('dotenv').config();
 
 module.exports = withPlugins(
   [
@@ -89,7 +83,6 @@ module.exports = withPlugins(
       // Push DotEnv vars into client code
       config.plugins.push(
         new Dotenv({
-          path: path.join(__dirname, ENV_PATH),
           systemvars: true,
         })
       );

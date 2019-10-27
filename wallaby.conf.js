@@ -1,7 +1,5 @@
-const path = require('path');
-
 module.exports = function (wallaby) {
-  require('dotenv').config({path: path.join(__dirname, '.env.local')});
+  require('dotenv').config();
   return {
     files: [
       'tsconfig.json',
