@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react';
+import { MouseEvent } from 'react';
 import { StakePoolsActions } from './actions';
 import { StakePoolsApi } from './api';
 import { StakePoolsStore } from './store';
