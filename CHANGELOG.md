@@ -5,6 +5,7 @@ Changelog
 
 ### Features
 
+- Implemented table component ([PR 43](https://github.com/input-output-hk/cardano-explorer-app/pull/43))
 - Implemented stake distribution table on the current epoch page ([PR 37](https://github.com/input-output-hk/cardano-explorer-app/pull/37))
 - Implement pagination component ([PR 35](https://github.com/input-output-hk/cardano-explorer-app/pull/35))
 - Implemented Stake Pools page ([PR 19](https://github.com/input-output-hk/cardano-explorer-app/pull/19), [PR 28](https://github.com/input-output-hk/cardano-explorer-app/pull/28), [PR 33](https://github.com/input-output-hk/cardano-explorer-app/pull/33))
