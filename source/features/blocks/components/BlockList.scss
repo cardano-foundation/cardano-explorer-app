@@ -1,35 +1,20 @@
 .blockListContainer {
-  margin: 0 auto;
-  max-width: 872px;
-  width: 100%;
-
-  .header {
-    margin-bottom: 41px;
-  }
-
-  .listHeader {
-    align-items: center;
-    color: $secondary-highlight-color;
-    display: flex;
-    font-family: ProximaNova, sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    line-height: 2;
-    padding: 5px 25.5px;
-    text-align: center;
-    text-transform: uppercase;
-
-    @media (max-width: 991px) {
-      padding: 5px 12px;
-    }
-
+  :global {
     .epoch {
       width: 90px;
     }
 
     .blocksSlots {
       width: 100px;
+    }
+
+    .TableBodyRow_row {
+      .epoch {
+        color: $primary-highlight-color;
+      }
+      .blocksSlots {
+        color: $primary-highlight-color;
+      }
     }
 
     .createdAt {
@@ -98,44 +83,6 @@
       }
       .output {
         display: none;
-      }
-    }
-  }
-
-  .blockListRow {
-    border-bottom: 2px dotted $dotted-separator-color;
-  }
-
-  .showMore {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-
-    @media (max-width: 575px) {
-      justify-content: flex-start;
-    }
-
-    .showMoreButton {
-      align-items: center;
-      background-color: $primary-highlight-color;
-      border-radius: 2px;
-      color: $primary-bg;
-      display: flex;
-      font-family: ProximaNova, sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      height: 25px;
-      justify-content: center;
-      letter-spacing: 0.4px;
-      line-height: 1.33;
-      padding: 0;
-      width: 133.5px;
-
-      &:hover {
-        background-color: $primary-highlight-color-hover;
-      }
-      &:active {
-        background-color: $primary-highlight-color-press;
       }
     }
   }
