@@ -1,10 +1,20 @@
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
+import NoSearchResult from '../features/search/components/NoSearchResult';
+import { Footer, Header, Layout } from '../widgets/layout';
 
-let Page = () => <NoSSR />;
+let NoSearchResultsPage = () => <NoSSR />;
 if (environment.IS_CLIENT) {
-  Page = require('../apps/shared/no-search-results').NoSearchResultsPage;
+  NoSearchResultsPage = () => (
+    <NoSSR>
+      <Layout hasContainer>
+        <Header />
+        <NoSearchResult />
+        <Footer />
+      </Layout>
+    </NoSSR>
+  );
 }
 
-export default Page;
+export default NoSearchResultsPage;

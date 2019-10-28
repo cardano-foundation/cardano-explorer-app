@@ -1,10 +1,18 @@
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
+import { Footer, Header, Layout } from '../widgets/layout';
 
-let Page = () => <NoSSR />;
+let TransactionPage = () => <NoSSR />;
 if (environment.IS_CLIENT) {
-  Page = require('../apps/shared/transaction').TransactionPage;
+  TransactionPage = () => (
+    <NoSSR>
+      <Layout>
+        <Header />
+        <Footer />
+      </Layout>
+    </NoSSR>
+  );
 }
 
-export default Page;
+export default TransactionPage;
