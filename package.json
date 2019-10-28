@@ -24,7 +24,7 @@
     "prettier:fix-staged": "pretty-quick --staged",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook -o build/storybook",
-    "start-dependencies": "node utils/start_dependencies_env_wrapper.js",
+    "start-dependencies": "docker-compose up",
     "stop-dependencies": "docker-compose down"
   },
   "husky": {
