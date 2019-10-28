@@ -1,7 +1,7 @@
 import { searchActions, searchApi, searchStore } from '../index';
 
 describe('Searching for a transaction', () => {
-  describe('with a complete and valid ID', () => {
+  describe('by a complete and valid ID', () => {
     it('retrieves the transaction with expected data', async () => {
       const searchedTxId =
         '927edb96f3386ab91b5f5d85d84cb4253c65b1c2f65fa7df25f81fab1d62987a';

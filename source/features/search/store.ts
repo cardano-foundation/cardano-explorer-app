@@ -1,7 +1,8 @@
 import { computed } from 'mobx';
 import {
-  GetTransactionsQuery,
-  SearchBlockByIdQuery,
+  SearchForBlockByIdQuery,
+  SearchForEpochByNumberQuery,
+  SearchForTransactionByIdQuery,
 } from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
@@ -21,6 +22,10 @@ export class SearchStore extends Store {
       createActionBindings([
         [this.searchActions.searchForBlockById, this.searchForBlockById],
         [
+          this.searchActions.searchForEpochByNumber,
+          this.searchForEpochByNumber,
+        ],
+        [
           this.searchActions.searchForTransactionById,
           this.searchForTransactionById,
         ],
@@ -31,7 +36,7 @@ export class SearchStore extends Store {
   // ========= PUBLIC GETTERS ==========
 
   @computed.struct get searchedBlock():
-    | SearchBlockByIdQuery['blocks'][0]
+    | SearchForBlockByIdQuery['blocks'][0]
     | null {
     const { result } = this.searchApi.searchForBlockByIdQuery;
     if (result) {
@@ -40,8 +45,18 @@ export class SearchStore extends Store {
     return null;
   }
 
+  @computed.struct get searchedEpoch():
+    | SearchForEpochByNumberQuery['epochs'][0]
+    | null {
+    const { result } = this.searchApi.searchForEpochByNumberQuery;
+    if (result) {
+      return result.data.epochs[0];
+    }
+    return null;
+  }
+
   @computed.struct get searchedTransaction():
-    | GetTransactionsQuery['transactions'][0]
+    | SearchForTransactionByIdQuery['transactions'][0]
     | null {
     const { result } = this.searchApi.searchForTransactionByIdQuery;
     if (result) {
@@ -53,22 +68,14 @@ export class SearchStore extends Store {
   // ========= PRIVATE ACTION HANDLERS ==========
 
   private searchForBlockById = async ({ id }: { id: string }) => {
-    try {
-      await this.searchApi.searchForBlockByIdQuery.execute({ id });
-    } catch (error) {
-      // TODO: handle network errors here
-      throw error;
-    }
+    await this.searchApi.searchForBlockByIdQuery.execute({ id });
+  };
+
+  private searchForEpochByNumber = async (params: { number: number }) => {
+    await this.searchApi.searchForEpochByNumberQuery.execute(params);
   };
 
   private searchForTransactionById = async ({ id }: { id: string }) => {
-    try {
-      await this.searchApi.searchForTransactionByIdQuery.execute({
-        where: { id: { _eq: id } },
-      });
-    } catch (error) {
-      // TODO: handle network errors here
-      throw error;
-    }
+    await this.searchApi.searchForTransactionByIdQuery.execute({ id });
   };
 }

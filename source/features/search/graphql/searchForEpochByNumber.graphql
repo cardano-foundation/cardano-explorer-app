@@ -1,0 +1,22 @@
+query searchForEpochByNumber (
+  $number: Int!
+) {
+  epochs (
+    where: {
+      number: {
+        _eq: $number
+      }
+    }
+  ) {
+    endedAt
+    startedAt
+    output
+    transactionsCount
+    slots {
+      number
+    }
+    blocks {
+      id
+    }
+  }
+}

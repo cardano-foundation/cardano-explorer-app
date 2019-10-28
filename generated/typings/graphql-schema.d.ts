@@ -297,12 +297,19 @@ export type Utxo_Bool_Exp = {
 export type Utxo_Order_By = {
   address?: Maybe<Order_By>,
 };
-export type SearchBlockByIdQueryVariables = {
+export type SearchForBlockByIdQueryVariables = {
   id: Scalars['Hash32HexString']
 };
 
 
-export type SearchBlockByIdQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & Pick<Block, 'id' | 'merkelRootHash' | 'number' | 'size'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, previousBlock: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>, slot: Maybe<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> })>> });
+export type SearchForBlockByIdQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & Pick<Block, 'id' | 'merkelRootHash' | 'number' | 'size'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, previousBlock: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>, slot: Maybe<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> })>> });
+
+export type SearchForEpochByNumberQueryVariables = {
+  number: Scalars['Int']
+};
+
+
+export type SearchForEpochByNumberQuery = ({ __typename?: 'Query' } & { epochs: Array<Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'endedAt' | 'startedAt' | 'output' | 'transactionsCount'> & { blocks: Maybe<Array<Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>>>, slots: Array<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)> })>> });
 
 export type SearchForTransactionByIdQueryVariables = {
   id?: Maybe<Scalars['Hash32HexString']>

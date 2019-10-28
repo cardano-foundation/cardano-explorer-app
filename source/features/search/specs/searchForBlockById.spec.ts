@@ -1,7 +1,7 @@
 import { searchActions, searchApi, searchStore } from '../index';
 
 describe('Searching for a block', () => {
-  describe('with complete and valid ID', () => {
+  describe('by complete and valid ID', () => {
     it('retrieves the block with expected data', async () => {
       const searchedBlockId =
         '84e9de7924aba73f58b81e142f4bce7f1d00cf4630f94f631e6ca3594b2d1634';

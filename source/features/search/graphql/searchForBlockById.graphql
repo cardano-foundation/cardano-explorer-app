@@ -1,4 +1,4 @@
-query searchBlockById(
+query searchForBlockById(
   $id: Hash32HexString!
 ) {
   blocks(

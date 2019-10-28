@@ -1,35 +1,48 @@
 import ApolloClient from 'apollo-client';
 
 import {
-  GetTransactionsQuery,
-  GetTransactionsQueryVariables,
-  SearchBlockByIdQuery,
-  SearchBlockByIdQueryVariables,
+  SearchForBlockByIdQuery,
+  SearchForBlockByIdQueryVariables,
+  SearchForEpochByNumberQuery,
+  SearchForEpochByNumberQueryVariables,
+  SearchForTransactionByIdQuery,
+  SearchForTransactionByIdQueryVariables,
 } from '../../../generated/typings/graphql-schema';
 import { GraphQLRequest } from '../../lib/graphql/GraphQLRequest';
-import searchBlockByIdQuery from './graphql/searchForBlockById.graphql';
+import searchForBlockByIdQuery from './graphql/searchForBlockById.graphql';
+import searchForEpochByNumberQuery from './graphql/searchForEpochByNumber.graphql';
 import searchForTransactionByIdQuery from './graphql/searchForTransactionById.graphql';
 
 export class SearchApi {
   public searchForBlockByIdQuery: GraphQLRequest<
-    SearchBlockByIdQuery,
-    SearchBlockByIdQueryVariables
+    SearchForBlockByIdQuery,
+    SearchForBlockByIdQueryVariables
+  >;
+
+  public searchForEpochByNumberQuery: GraphQLRequest<
+    SearchForEpochByNumberQuery,
+    SearchForEpochByNumberQueryVariables
   >;
 
   public searchForTransactionByIdQuery: GraphQLRequest<
-    GetTransactionsQuery,
-    GetTransactionsQueryVariables
+    SearchForTransactionByIdQuery,
+    SearchForTransactionByIdQueryVariables
   >;
 
   constructor(client: ApolloClient<any>) {
     this.searchForBlockByIdQuery = new GraphQLRequest<
-      SearchBlockByIdQuery,
-      SearchBlockByIdQueryVariables
-    >(client, searchBlockByIdQuery);
+      SearchForBlockByIdQuery,
+      SearchForBlockByIdQueryVariables
+    >(client, searchForBlockByIdQuery);
+
+    this.searchForEpochByNumberQuery = new GraphQLRequest<
+      SearchForEpochByNumberQuery,
+      SearchForEpochByNumberQueryVariables
+    >(client, searchForEpochByNumberQuery);
 
     this.searchForTransactionByIdQuery = new GraphQLRequest<
-      GetTransactionsQuery,
-      GetTransactionsQueryVariables
+      SearchForTransactionByIdQuery,
+      SearchForTransactionByIdQueryVariables
     >(client, searchForTransactionByIdQuery);
   }
 }
