@@ -306,3 +306,13 @@ export type GetBlocksQueryVariables = {
 
 
 export type GetBlocksQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>> });
+
+export type GetTransactionsQueryVariables = {
+  limit?: Maybe<Scalars['Int']>,
+  order_by?: Maybe<Array<Transaction_Order_By>>,
+  offset?: Maybe<Scalars['Int']>,
+  where?: Maybe<Transaction_Bool_Exp>
+};
+
+
+export type GetTransactionsQuery = ({ __typename?: 'Query' } & { transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> });

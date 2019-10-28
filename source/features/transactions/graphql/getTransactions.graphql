@@ -1,0 +1,15 @@
+query getTransactions(
+  $limit: Int,
+  $order_by: [Transaction_order_by!],
+  $offset: Int,
+  $where: Transaction_bool_exp
+) {
+  transactions(
+    limit: $limit,
+    order_by: $order_by,
+    offset: $offset,
+    where: $where
+  ) {
+    id
+  }
+}

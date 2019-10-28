@@ -3,20 +3,33 @@ import ApolloClient from 'apollo-client';
 import {
   GetBlocksQuery,
   GetBlocksQueryVariables,
+  GetTransactionsQuery,
+  GetTransactionsQueryVariables,
 } from '../../../generated/typings/graphql-schema';
 import { GraphQLRequest } from '../../lib/graphql/GraphQLRequest';
-import getBlocksQuery from './graphql/getBlocks.graphql';
+import getBlocksQuery from '../blocks/graphql/getBlocks.graphql';
+import getTransactionsQuery from '../transactions/graphql/getTransactions.graphql';
 
 export class SearchApi {
-  public getBlocksByIdsQuery: GraphQLRequest<
+  public getBlockByIdQuery: GraphQLRequest<
     GetBlocksQuery,
     GetBlocksQueryVariables
   >;
 
+  public getTransactionByIdQuery: GraphQLRequest<
+    GetTransactionsQuery,
+    GetTransactionsQueryVariables
+  >;
+
   constructor(client: ApolloClient<any>) {
-    this.getBlocksByIdsQuery = new GraphQLRequest<
+    this.getBlockByIdQuery = new GraphQLRequest<
       GetBlocksQuery,
       GetBlocksQueryVariables
     >(client, getBlocksQuery);
+
+    this.getTransactionByIdQuery = new GraphQLRequest<
+      GetTransactionsQuery,
+      GetTransactionsQueryVariables
+    >(client, getTransactionsQuery);
   }
 }
