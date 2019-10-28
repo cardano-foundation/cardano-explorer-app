@@ -10,6 +10,22 @@ query getTransactions(
     offset: $offset,
     where: $where
   ) {
-    id
+    block {
+      id
+    }
+    fee,
+    id,
+    inputs {
+      sourceTxIndex,
+      address,
+      value,
+    },
+    outputs {
+      address,
+      index,
+      txId,
+      value
+    },
+    totalOutput
   }
 }
