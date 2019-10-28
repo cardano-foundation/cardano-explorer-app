@@ -2,7 +2,7 @@ import React from 'react';
 
 import { searchContext } from '../contexts';
 import { searchContextDefault } from '../index';
-import { SearchComponentContainer } from './SearchComponentContainer';
+import { SearchComponentContainer } from './SearchComponentContainerRaw';
 
 const SearchContainer = () => (
   <searchContext.Provider value={searchContextDefault}>
