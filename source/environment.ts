@@ -1,6 +1,6 @@
 import { CardanoEra, CardanoNetwork } from './constants';
 
-const isNavigatorDefind = typeof navigator !== 'undefined';
+const isNavigatorDefined = typeof navigator !== 'undefined';
 
 export const environment = {
   CARDANO: {
@@ -18,6 +18,6 @@ export const environment = {
       CardanoNetwork.INCENTIVIZED_TESTNET,
   },
   DEBUG: process.env.DEBUG || 'false',
-  IS_CLIENT: isNavigatorDefind,
-  IS_SERVER: !isNavigatorDefind,
+  IS_CLIENT: isNavigatorDefined,
+  IS_SERVER: !isNavigatorDefined,
 };
