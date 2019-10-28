@@ -2,8 +2,9 @@ import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
 import React from 'react';
-import { BrandType } from '../../constants';
-import Search, { ISearchProps } from '../../features/search/Search';
+import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
+import { environment } from '../../environment';
+import Search, { ISearchProps } from '../../features/search/components/Search';
 import styles from './Header.scss';
 
 const CardanoLogo = require('../../public/assets/images/header/cardano-logo.svg');
@@ -28,7 +29,18 @@ export const Header = observer((props: IHeaderProps) => {
   const stakePoolsClassName = location.pathname.includes('stake-pools')
     ? styles.activeTab
     : '';
-
+  const testnetSubtitle =
+    environment.CARDANO.NETWORK !== CardanoNetwork.MAINNET ? (
+      <div className={styles.networkTitle}>
+        {environment.CARDANO.NETWORK.replace(/-/g, ' ')}
+      </div>
+    ) : null;
+  const stakePoolLink =
+    environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
+      <Link href="/stake-pools">
+        <a className={stakePoolsClassName}>Stake Pools</a>
+      </Link>
+    ) : null;
   return (
     <header className={headerContainerStyles}>
       <div className={styles.contentContainer}>
@@ -39,7 +51,7 @@ export const Header = observer((props: IHeaderProps) => {
           <div className={styles.titleContainer}>
             <span className={styles.cardanoTitle}>Cardano</span>
             <span className={styles.explorerTitle}>Blockchain Explorer</span>
-            <div className={styles.networkTitle}>Incentivized Testnet</div>
+            {testnetSubtitle}
           </div>
           <div className={styles.tabs}>
             <div className={styles.tabLeftLine} />
@@ -48,9 +60,7 @@ export const Header = observer((props: IHeaderProps) => {
               <a className={indexClassName}>Epochs & Blocks</a>
             </Link>
             <div className={styles.tabCircle} />
-            <Link href="/stake-pools">
-              <a className={stakePoolsClassName}>Stake Pools</a>
-            </Link>
+            {stakePoolLink}
             <div className={styles.tabCircle} />
             <div className={styles.tabRightLine} />
           </div>

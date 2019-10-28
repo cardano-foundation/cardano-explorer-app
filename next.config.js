@@ -6,14 +6,13 @@ const withFonts = require('next-fonts');
 const withImages = require('next-images');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+require('dotenv').config();
 
-// TODO: get these variables
-let themeResource = 'incentivized-testnet';
 const resourcesDir = path.join(__dirname, 'source/styles/resources');
 const resources = [
   `${resourcesDir}/mixins/**/*.scss`,
   `${resourcesDir}/variables-common/**/*.scss`,
-  `${resourcesDir}/variables-themes/variables-theme-${themeResource}.scss`,
+  `${resourcesDir}/variables-themes/variables-theme-${process.env.CARDANO_NETWORK || 'incentivized-testnet'}.scss`,
 ];
 const resourcesLoader = {
   loader: 'sass-resources-loader',
@@ -21,14 +20,6 @@ const resourcesLoader = {
 };
 
 const DEBUG = process.env.DEBUG;
-const ENV_PATH = process.env.ENV_PATH;
-
-if (!ENV_PATH)
-  throw new Error('ENV_PATH must be provided to build the project.');
-
-require('dotenv').config({path: path.join(__dirname, ENV_PATH)});
-
-const added = {};
 
 module.exports = withPlugins(
   [
@@ -80,8 +71,7 @@ module.exports = withPlugins(
     // Further customizations of webpack config:
     distDir: '../build/.next',
     env: {
-      DEBUG,
-      CARDANO_ERA: process.env.CARDANO_ERA
+      DEBUG
     },
     webpack(config) {
       config.plugins.push(new LodashModuleReplacementPlugin());
@@ -89,7 +79,6 @@ module.exports = withPlugins(
       // Push DotEnv vars into client code
       config.plugins.push(
         new Dotenv({
-          path: path.join(__dirname, ENV_PATH),
           systemvars: true,
         })
       );

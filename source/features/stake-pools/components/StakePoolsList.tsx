@@ -29,7 +29,7 @@ const StakePoolsList: FC<IStakePoolsListProps> = ({
     <div className={styles.stakePoolsListContainer}>
       {stakePoolsList.map((stakePool: IStakePoolProps) => {
         const { id, ranking } = stakePool;
-        const color = getColorFromRange(stakePool.ranking, colorOptions);
+        const color = getColorFromRange(ranking, colorOptions);
         const isSelected = id === selectedPoolId;
         return (
           <StakePoolThumbnail

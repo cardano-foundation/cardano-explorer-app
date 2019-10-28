@@ -11,8 +11,5 @@ query getBlocks(
     where: $where
   ) {
     id
-    transactions {
-      id
-    }
   }
 }

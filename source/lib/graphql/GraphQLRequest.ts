@@ -1,10 +1,14 @@
-import { ApolloClient, ApolloQueryResult } from 'apollo-client';
+import { ApolloClient, ApolloError, ApolloQueryResult } from 'apollo-client';
 import { DocumentNode } from 'graphql';
 import { observable } from 'mobx';
 
 export class GraphQLRequest<TResult, TVariables> {
   @observable public result: ApolloQueryResult<TResult> | null = null;
-  @observable public error: Error | null = null;
+  @observable public isExecuting: boolean = false;
+  @observable public error: ApolloError | null = null;
+  @observable public execution: Promise<
+    ApolloQueryResult<TResult>
+  > | null = null;
 
   private client: ApolloClient<any>;
   private query: DocumentNode;
@@ -16,17 +20,22 @@ export class GraphQLRequest<TResult, TVariables> {
 
   public async execute(
     variables: TVariables
-  ): Promise<ApolloQueryResult<TResult> | null> {
+  ): Promise<ApolloQueryResult<TResult>> {
     try {
-      this.result = await this.client.query<TResult, TVariables>({
+      this.isExecuting = true;
+      this.execution = this.client.query<TResult, TVariables>({
         query: this.query,
         variables,
       });
+      this.result = await this.execution;
+      this.error = null;
       return this.result;
     } catch (error) {
       this.result = null;
       this.error = error;
-      return null;
+      throw error;
+    } finally {
+      this.isExecuting = false;
     }
   }
 }
