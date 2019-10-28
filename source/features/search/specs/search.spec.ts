@@ -57,7 +57,22 @@ describe('Searching', () => {
           expect(blocks).toHaveLength(1);
           const foundBlock = blocks[0];
           expect(foundBlock).toMatchObject({
+            epoch: {
+              number: 1,
+            },
             id: searchedBlockId,
+            merkelRootHash:
+              '0e5751c026e543b2e8ab2eb06099daa1d1e5df47778f7787faab45cdf12fe3a8',
+            number: 31070,
+            previousBlock: {
+              id:
+                '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
+            },
+            size: 666,
+            slot: {
+              number: 31086,
+            },
+            transactions: [],
           });
           expect(searchStore.searchedBlock).toEqual(foundBlock);
         } else {

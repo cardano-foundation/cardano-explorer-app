@@ -10,6 +10,21 @@ query getBlocks(
     offset: $offset,
     where: $where
   ) {
-    id
+    id,
+    merkelRootHash,
+    number,
+    size,
+    epoch {
+      number
+    },
+    previousBlock {
+      id
+    }
+    slot {
+      number
+    },
+    transactions {
+      id
+    }
   }
 }
