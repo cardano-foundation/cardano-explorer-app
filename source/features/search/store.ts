@@ -1,7 +1,7 @@
 import { computed } from 'mobx';
 import {
-  GetBlocksQuery,
   GetTransactionsQuery,
+  SearchBlockByIdQuery,
 } from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
@@ -19,16 +19,21 @@ export class SearchStore extends Store {
 
     this.registerActions(
       createActionBindings([
-        [this.searchActions.searchBlockById, this.searchBlockById],
-        [this.searchActions.searchTransactionById, this.searchTransactionById],
+        [this.searchActions.searchForBlockById, this.searchForBlockById],
+        [
+          this.searchActions.searchForTransactionById,
+          this.searchForTransactionById,
+        ],
       ])
     );
   }
 
   // ========= PUBLIC GETTERS ==========
 
-  @computed.struct get searchedBlock(): GetBlocksQuery['blocks'][0] | null {
-    const { result } = this.searchApi.getBlockByIdQuery;
+  @computed.struct get searchedBlock():
+    | SearchBlockByIdQuery['blocks'][0]
+    | null {
+    const { result } = this.searchApi.searchForBlockByIdQuery;
     if (result) {
       return result.data.blocks[0];
     }
@@ -38,7 +43,7 @@ export class SearchStore extends Store {
   @computed.struct get searchedTransaction():
     | GetTransactionsQuery['transactions'][0]
     | null {
-    const { result } = this.searchApi.getTransactionByIdQuery;
+    const { result } = this.searchApi.searchForTransactionByIdQuery;
     if (result) {
       return result.data.transactions[0];
     }
@@ -47,20 +52,18 @@ export class SearchStore extends Store {
 
   // ========= PRIVATE ACTION HANDLERS ==========
 
-  private searchBlockById = async ({ id }: { id: string }) => {
+  private searchForBlockById = async ({ id }: { id: string }) => {
     try {
-      await this.searchApi.getBlockByIdQuery.execute({
-        where: { id: { _eq: id } },
-      });
+      await this.searchApi.searchForBlockByIdQuery.execute({ id });
     } catch (error) {
       // TODO: handle network errors here
       throw error;
     }
   };
 
-  private searchTransactionById = async ({ id }: { id: string }) => {
+  private searchForTransactionById = async ({ id }: { id: string }) => {
     try {
-      await this.searchApi.getTransactionByIdQuery.execute({
+      await this.searchApi.searchForTransactionByIdQuery.execute({
         where: { id: { _eq: id } },
       });
     } catch (error) {

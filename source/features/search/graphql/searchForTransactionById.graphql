@@ -1,14 +1,13 @@
-query getTransactions(
-  $limit: Int,
-  $order_by: [Transaction_order_by!],
-  $offset: Int,
-  $where: Transaction_bool_exp
+query searchForTransactionById(
+  $id: Hash32HexString
 ) {
   transactions(
-    limit: $limit,
-    order_by: $order_by,
-    offset: $offset,
-    where: $where
+    limit: 1,
+    where: {
+      id: {
+        _eq: $id
+      }
+    }
   ) {
     block {
       id

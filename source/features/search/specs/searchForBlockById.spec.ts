@@ -1,15 +1,15 @@
 import { searchActions, searchApi, searchStore } from '../index';
 
-describe('searchBlockById', () => {
-  describe('searching an existing block by complete valid ID', () => {
+describe('Searching for a block', () => {
+  describe('with complete and valid ID', () => {
     it('retrieves the block with expected data', async () => {
       const searchedBlockId =
         '84e9de7924aba73f58b81e142f4bce7f1d00cf4630f94f631e6ca3594b2d1634';
-      searchActions.searchBlockById.trigger({
+      searchActions.searchForBlockById.trigger({
         id: searchedBlockId,
       });
-      expect(searchApi.getBlockByIdQuery.isExecuting).toBe(true);
-      const searchResult = await searchApi.getBlockByIdQuery.execution;
+      expect(searchApi.searchForBlockByIdQuery.isExecuting).toBe(true);
+      const searchResult = await searchApi.searchForBlockByIdQuery.execution;
       if (searchResult) {
         const { blocks } = searchResult.data;
         expect(blocks).toHaveLength(1);

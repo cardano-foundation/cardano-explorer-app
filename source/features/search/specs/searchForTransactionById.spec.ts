@@ -1,15 +1,16 @@
 import { searchActions, searchApi, searchStore } from '../index';
 
-describe('searchTransactionById', () => {
-  describe('searching an existing transaction by complete valid ID', () => {
+describe('Searching for a transaction', () => {
+  describe('with a complete and valid ID', () => {
     it('retrieves the transaction with expected data', async () => {
       const searchedTxId =
         '927edb96f3386ab91b5f5d85d84cb4253c65b1c2f65fa7df25f81fab1d62987a';
-      searchActions.searchTransactionById.trigger({
+      searchActions.searchForTransactionById.trigger({
         id: searchedTxId,
       });
-      expect(searchApi.getTransactionByIdQuery.isExecuting).toBe(true);
-      const searchResult = await searchApi.getTransactionByIdQuery.execution;
+      expect(searchApi.searchForTransactionByIdQuery.isExecuting).toBe(true);
+      const searchResult = await searchApi.searchForTransactionByIdQuery
+        .execution;
       if (searchResult) {
         const { transactions } = searchResult.data;
         const foundTx = transactions[0];

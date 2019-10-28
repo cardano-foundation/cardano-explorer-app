@@ -5,7 +5,7 @@ import { useSearch } from '../hooks';
 
 export const SearchBlockComponentContainerRaw = () => {
   const { actions } = useSearch();
-  return <Search onSearch={id => actions.searchBlockById.trigger({ id })} />;
+  return <Search onSearch={id => actions.searchForBlockById.trigger({ id })} />;
 };
 
 export const SearchBlockComponentContainer = observer(

@@ -297,22 +297,16 @@ export type Utxo_Bool_Exp = {
 export type Utxo_Order_By = {
   address?: Maybe<Order_By>,
 };
-export type GetBlocksQueryVariables = {
-  limit?: Maybe<Scalars['Int']>,
-  order_by?: Maybe<Array<Block_Order_By>>,
-  offset?: Maybe<Scalars['Int']>,
-  where?: Maybe<Block_Bool_Exp>
+export type SearchBlockByIdQueryVariables = {
+  id: Scalars['Hash32HexString']
 };
 
 
-export type GetBlocksQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>> });
+export type SearchBlockByIdQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & Pick<Block, 'id' | 'merkelRootHash' | 'number' | 'size'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, previousBlock: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>, slot: Maybe<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> })>> });
 
-export type GetTransactionsQueryVariables = {
-  limit?: Maybe<Scalars['Int']>,
-  order_by?: Maybe<Array<Transaction_Order_By>>,
-  offset?: Maybe<Scalars['Int']>,
-  where?: Maybe<Transaction_Bool_Exp>
+export type SearchForTransactionByIdQueryVariables = {
+  id?: Maybe<Scalars['Hash32HexString']>
 };
 
 
-export type GetTransactionsQuery = ({ __typename?: 'Query' } & { transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> });
+export type SearchForTransactionByIdQuery = ({ __typename?: 'Query' } & { transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'fee' | 'id' | 'totalOutput'> & { block: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>, inputs: Array<({ __typename?: 'TransactionInput' } & Pick<TransactionInput, 'sourceTxIndex' | 'address' | 'value'>)>, outputs: Array<({ __typename?: 'TransactionOutput' } & Pick<TransactionOutput, 'address' | 'index' | 'txId' | 'value'>)> })>> });
