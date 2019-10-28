@@ -1,39 +1,97 @@
 import { observer } from 'mobx-react-lite';
-import { Button } from 'react-polymorph/lib/components/Button';
-import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import moment from 'moment';
+import React, { FC } from 'react';
+import CircularProgress, {
+  CircularProgressSize,
+} from '../../../widgets/circular-progress/CircularProgress';
+import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import styles from './EpochList.scss';
-import EpochListRow, { IEpochListRowProps } from './EpochListRow';
+
+export interface IEpochListRowProps {
+  blocks: number;
+  endedAt?: number;
+  epoch: number;
+  output: number;
+  percentage?: number;
+  slots: number;
+  startedAt: number;
+  status: string;
+  transactions: number;
+}
 
 export interface IEpochListProps {
   title: string;
   items: Array<IEpochListRowProps>;
 }
 
-const EpochList = (props: IEpochListProps) => (
+const columns: Array<IColumnDefinition<IEpochListRowProps>> = [
+  {
+    cellRender: (value: any) => {
+      if (value.endedAt) {
+        return value.epoch;
+      }
+
+      return (
+        <CircularProgress
+          percentage={value.percentage}
+          size={CircularProgressSize.SMALL}
+          showText
+          text={value.epoch}
+        />
+      );
+    },
+    cellValue: (row: IEpochListRowProps) => ({
+      endedAt: row.endedAt,
+      epoch: row.epoch,
+      percentage: row.percentage,
+    }),
+    cssClass: 'epoch',
+    head: 'Epoch',
+    key: 'epoch',
+  },
+  {
+    cellValue: (row: IEpochListRowProps) => `${row.blocks} / ${row.slots}`,
+    cssClass: 'blocksSlots',
+    head: 'Blocks / Slots',
+    key: 'blocksSlots',
+  },
+  {
+    cellValue: (row: IEpochListRowProps) =>
+      moment(row.startedAt).format('YYYY/MM/DD HH:mm:ss'),
+    cssClass: 'startedAt',
+    head: 'Started At',
+    key: 'startedAt',
+  },
+  {
+    cellRender: (value: any) => {
+      if (value.endedAt) {
+        return moment(value.endedAt).format('YYYY/MM/DD HH:mm:ss');
+      }
+      return value.status;
+    },
+    cellValue: (row: IEpochListRowProps) => ({
+      endedAt: row.endedAt,
+      status: row.status,
+    }),
+    cssClass: 'endedAt',
+    head: 'Ended At',
+    key: 'endedAt',
+  },
+  {
+    cssClass: 'transactions',
+    head: 'Transactions',
+    key: 'transactions',
+  },
+  {
+    cssClass: 'output',
+    head: 'Output (₳)',
+    key: 'output',
+  },
+];
+
+const EpochList: FC<IEpochListProps> = ({ title, items }) => (
   <div className={styles.epochListContainer}>
-    <div className={styles.header}>
-      <DividerWithTitle title={props.title} />
-    </div>
-    <div className={styles.listHeader}>
-      <div className={styles.epoch}>Epoch</div>
-      <div className={styles.blocksSlots}>Blocks / Slots</div>
-      <div className={styles.startedAt}>Started At</div>
-      <div className={styles.endedAt}>Ended At</div>
-      <div className={styles.transactions}>Transactions</div>
-      <div className={styles.output}>Output (₳)</div>
-    </div>
-    {props.items.map((item, index) => (
-      <div key={`epoch_${index}`} className={styles.epochListRow}>
-        <EpochListRow {...item} />
-      </div>
-    ))}
-    <div className={styles.showMore}>
-      <Button
-        className={styles.showMoreButton}
-        label="Show more epochs"
-        onClick={() => null}
-      />
-    </div>
+    <Table title={title} columns={columns} rows={items} withShowMore />
   </div>
 );
 

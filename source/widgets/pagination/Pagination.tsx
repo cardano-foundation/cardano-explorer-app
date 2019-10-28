@@ -7,11 +7,11 @@ export interface IPaginationProps {
   count: number;
   onChangePage: (page: number) => void;
   page: number;
-  rowsPerPage: number;
+  rowsPerPage?: number;
 }
 
 const Pagination = (props: IPaginationProps) => {
-  const { count, onChangePage, page, rowsPerPage } = props;
+  const { count, onChangePage, page, rowsPerPage = 5 } = props;
   const totalPages = Math.ceil(count / rowsPerPage);
 
   return (
@@ -35,6 +35,10 @@ const Pagination = (props: IPaginationProps) => {
       />
     </div>
   );
+};
+
+Pagination.defaultProps = {
+  rowsPerPage: 5,
 };
 
 export default observer(Pagination);
