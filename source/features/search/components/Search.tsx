@@ -10,7 +10,7 @@ export interface ISearchProps {
   placeholder?: string;
   title?: string | boolean;
   brandType?: BrandType;
-  onSearch: (value: string) => void;
+  onSearch: (value: string) => any;
 }
 
 const Search = (props: ISearchProps) => {

@@ -1,4 +1,3 @@
-import { noop } from 'lodash';
 import Head from 'next/head';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
@@ -6,6 +5,7 @@ import { BrandType } from '../constants';
 import { environment } from '../environment';
 import BlockList from '../features/blocks/components/BlockList';
 import EpochList from '../features/epochs/components/EpochList';
+import { searchActions, searchApi } from '../features/search';
 import { isMobileScreen } from '../helpers';
 import { Footer, Header, Layout } from '../widgets/layout';
 import styles from './index.scss';
@@ -117,6 +117,17 @@ const epochs = [
     transactions: 5,
   },
 ];
+
+const onSearchValues = async (id: string) => {
+  searchActions.searchBlockById.trigger({ id });
+  const searchResult = await searchApi.getBlocksByIdsQuery.execution;
+  if (searchResult) {
+    // const { blocks } = searchResult.data;
+  } else {
+    throw new Error('Expected a search result!');
+  }
+};
+
 let Index = () => <NoSSR />;
 if (environment.IS_CLIENT) {
   Index = () => (
@@ -143,7 +154,7 @@ if (environment.IS_CLIENT) {
         <Header
           withSearch
           brandType={BrandType.ENLARGED}
-          searchProps={{ onSearch: noop }}
+          searchProps={{ onSearch: id => onSearchValues(id) }}
         />
         <div className={styles.epochList}>
           <EpochList title="Latest Epochs" items={epochs} />
