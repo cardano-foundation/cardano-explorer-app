@@ -1,3 +1,4 @@
+import { noop } from 'lodash';
 import Head from 'next/head';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
