@@ -22,13 +22,14 @@ export interface IBlockListProps {
 
 const columns: Array<IColumnDefinition<IBlockListRowProps>> = [
   {
+    cellValue: (row: IBlockListRowProps) => `${row.epoch} / ${row.slots}`,
     cssClass: 'epoch',
-    head: 'Epoch',
-    key: 'epoch',
+    head: 'Epoch / Slot',
+    key: 'epochsSlots',
   },
   {
     cssClass: 'blocksSlots',
-    head: 'Block / Slot',
+    head: 'Block',
     key: 'block',
   },
   {
