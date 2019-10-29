@@ -1,0 +1,14 @@
+fragment BlockOverview on Block {
+  id,
+  number,
+  size,
+  epoch {
+    number
+  },
+  slot {
+    number
+  }
+  transactions {
+    id
+  }
+}

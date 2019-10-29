@@ -1,0 +1,14 @@
+#import "./fragments/blockOverview.graphql"
+
+query getLatestBlocks(
+  $limit: Int = 5,
+) {
+  blocks(
+    limit: $limit,
+    order_by: {
+      number: desc
+    }
+  ) {
+    ...BlockOverview
+  }
+}
