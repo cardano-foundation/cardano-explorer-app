@@ -120,8 +120,8 @@ const epochs = [
 ];
 
 const onSearchValues = async (id: string) => {
-  searchActions.searchBlockById.trigger({ id });
-  const searchResult = await searchApi.getBlocksByIdsQuery.execution;
+  searchActions.searchForBlockById.trigger({ id });
+  const searchResult = await searchApi.searchForBlockByIdQuery.execution;
   if (searchResult) {
     // @todo
   } else {
