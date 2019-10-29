@@ -122,7 +122,7 @@ const onSearchValues = async (id: string) => {
   searchActions.searchBlockById.trigger({ id });
   const searchResult = await searchApi.getBlocksByIdsQuery.execution;
   if (searchResult) {
-    // const { blocks } = searchResult.data;
+    // @todo
   } else {
     throw new Error('Expected a search result!');
   }
