@@ -25,7 +25,9 @@ export class BlocksStore extends Store {
   }
 
   @action private fetchLatestBlocks = async () => {
-    const result = await this.blocksApi.getLatestBlocksQuery.execute({});
+    const result = await this.blocksApi.getLatestBlocksQuery.execute({
+      limit: 5,
+    });
     if (result) {
       const isBlock = (b: any): b is BlockOverviewFragment => b != null;
       // Prepare API data for UI

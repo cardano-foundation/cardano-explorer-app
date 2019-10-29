@@ -1,7 +1,7 @@
 #import "./fragments/blockOverview.graphql"
 
 query getLatestBlocks(
-  $limit: Int = 5,
+  $limit: Int,
 ) {
   blocks(
     limit: $limit,
