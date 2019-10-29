@@ -1,8 +1,7 @@
-import { action, computed, observable } from 'mobx';
+import { action, observable } from 'mobx';
 import {
   BlockDetailsFragment,
   EpochDetailsFragment,
-  SearchForTransactionByIdQuery,
   TransactionDetailsFragment,
 } from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
