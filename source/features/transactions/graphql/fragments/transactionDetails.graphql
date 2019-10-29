@@ -1,0 +1,19 @@
+fragment TransactionDetails on Transaction {
+  block {
+    id
+  }
+  fee,
+  id,
+  inputs {
+    sourceTxIndex,
+    address,
+    value,
+  },
+  outputs {
+    address,
+    index,
+    txId,
+    value
+  },
+  totalOutput
+}

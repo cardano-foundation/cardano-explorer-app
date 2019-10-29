@@ -5,15 +5,15 @@ import { exampleBlockData } from './helpers/exampleBlockData';
 const search = searchContextDefault;
 
 describe('Searching for a block', () => {
-  describe('by complete and valid ID', () => {
+  describe('by its number', () => {
     it('retrieves the block with expected data', async () => {
-      // 1. Trigger action to search for a block by id
-      search.actions.searchForBlockById.trigger({
-        id: exampleBlockData.id,
+      // 1. Trigger action to search for a block by number
+      search.actions.searchForBlockByNumber.trigger({
+        number: exampleBlockData.number,
       });
 
       // 2. Check the API query status (e.g for showing loading spinners)
-      expect(search.api.searchForBlockByIdQuery.isExecuting).toBe(true);
+      expect(search.api.searchForBlockByNumberQuery.isExecuting).toBe(true);
 
       // 3. Access the observable search result provided by the store
       await waitForExpect(() => {

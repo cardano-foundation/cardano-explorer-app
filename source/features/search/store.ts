@@ -1,8 +1,9 @@
-import { computed } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import {
-  SearchForBlockByIdQuery,
-  SearchForEpochByNumberQuery,
+  BlockDetailsFragment,
+  EpochDetailsFragment,
   SearchForTransactionByIdQuery,
+  TransactionDetailsFragment,
 } from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
@@ -10,6 +11,11 @@ import { SearchActions } from './actions';
 import { SearchApi } from './api';
 
 export class SearchStore extends Store {
+  @observable public blockSearchResult: BlockDetailsFragment | null = null;
+  @observable public epochSearchResult: EpochDetailsFragment | null = null;
+  @observable
+  public transactionSearchResult: TransactionDetailsFragment | null = null;
+
   private readonly searchApi: SearchApi;
   private readonly searchActions: SearchActions;
 
@@ -22,6 +28,10 @@ export class SearchStore extends Store {
       createActionBindings([
         [this.searchActions.searchForBlockById, this.searchForBlockById],
         [
+          this.searchActions.searchForBlockByNumber,
+          this.searchForBlockByNumber,
+        ],
+        [
           this.searchActions.searchForEpochByNumber,
           this.searchForEpochByNumber,
         ],
@@ -33,49 +43,47 @@ export class SearchStore extends Store {
     );
   }
 
-  // ========= PUBLIC GETTERS ==========
-
-  @computed.struct get searchedBlock():
-    | SearchForBlockByIdQuery['blocks'][0]
-    | null {
-    const { result } = this.searchApi.searchForBlockByIdQuery;
-    if (result) {
-      return result.data.blocks[0];
-    }
-    return null;
-  }
-
-  @computed.struct get searchedEpoch():
-    | SearchForEpochByNumberQuery['epochs'][0]
-    | null {
-    const { result } = this.searchApi.searchForEpochByNumberQuery;
-    if (result) {
-      return result.data.epochs[0];
-    }
-    return null;
-  }
-
-  @computed.struct get searchedTransaction():
-    | SearchForTransactionByIdQuery['transactions'][0]
-    | null {
-    const { result } = this.searchApi.searchForTransactionByIdQuery;
-    if (result) {
-      return result.data.transactions[0];
-    }
-    return null;
-  }
-
   // ========= PRIVATE ACTION HANDLERS ==========
 
-  private searchForBlockById = async ({ id }: { id: string }) => {
-    await this.searchApi.searchForBlockByIdQuery.execute({ id });
+  @action private searchForBlockById = async ({ id }: { id: string }) => {
+    this.blockSearchResult = null;
+    const result = await this.searchApi.searchForBlockByIdQuery.execute({ id });
+    if (result) {
+      this.blockSearchResult = result.data.blocks[0];
+    }
   };
 
-  private searchForEpochByNumber = async (params: { number: number }) => {
-    await this.searchApi.searchForEpochByNumberQuery.execute(params);
+  @action private searchForBlockByNumber = async (params: {
+    number: number;
+  }) => {
+    this.blockSearchResult = null;
+    const result = await this.searchApi.searchForBlockByNumberQuery.execute(
+      params
+    );
+    if (result) {
+      this.blockSearchResult = result.data.blocks[0];
+    }
+  };
+
+  @action private searchForEpochByNumber = async (params: {
+    number: number;
+  }) => {
+    this.epochSearchResult = null;
+    const result = await this.searchApi.searchForEpochByNumberQuery.execute(
+      params
+    );
+    if (result) {
+      this.epochSearchResult = result.data.epochs[0];
+    }
   };
 
   private searchForTransactionById = async ({ id }: { id: string }) => {
-    await this.searchApi.searchForTransactionByIdQuery.execute({ id });
+    this.transactionSearchResult = null;
+    const result = await this.searchApi.searchForTransactionByIdQuery.execute({
+      id,
+    });
+    if (result) {
+      this.transactionSearchResult = result.data.transactions[0];
+    }
   };
 }

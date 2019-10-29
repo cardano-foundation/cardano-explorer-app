@@ -1,13 +1,13 @@
 #import "../../blocks/graphql/fragments/blockDetails.graphql"
 
-query searchForBlockById(
-  $id: Hash32HexString!
+query searchForBlockByNumber(
+  $number: Int!
 ) {
   blocks(
     limit: 1,
     where: {
-     id: {
-       _eq: $id
+     number: {
+       _eq: $number
      }
     }
   ) {
