@@ -120,9 +120,10 @@ const epochs = [
 ];
 
 const onSearchValues = async (id: string) => {
-  searchActions.searchForBlockById.trigger({ id });
-  const searchResult = await searchApi.searchForBlockByIdQuery.execution;
+  searchActions.searchForTransactionById.trigger({ id });
+  const searchResult = await searchApi.searchForTransactionByIdQuery.execution;
   if (searchResult) {
+    debugger;
     // @todo
   } else {
     throw new Error('Expected a search result!');
