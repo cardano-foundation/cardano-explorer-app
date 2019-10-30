@@ -38,24 +38,21 @@ export class SearchApi {
   >;
 
   constructor(client: ApolloClient<any>) {
-    this.searchForBlockByIdQuery = new GraphQLRequest<
-      SearchForBlockByIdQuery,
-      SearchForBlockByIdQueryVariables
-    >(client, searchForBlockByIdQuery);
-
-    this.searchForBlockByNumberQuery = new GraphQLRequest<
-      SearchForBlockByNumberQuery,
-      SearchForBlockByNumberQueryVariables
-    >(client, searchForBlockByNumberQuery);
-
-    this.searchForEpochByNumberQuery = new GraphQLRequest<
-      SearchForEpochByNumberQuery,
-      SearchForEpochByNumberQueryVariables
-    >(client, searchForEpochByNumberQuery);
-
-    this.searchForTransactionByIdQuery = new GraphQLRequest<
-      SearchForTransactionByIdQuery,
-      SearchForTransactionByIdQueryVariables
-    >(client, searchForTransactionByIdQuery);
+    this.searchForBlockByIdQuery = new GraphQLRequest(
+      client,
+      searchForBlockByIdQuery
+    );
+    this.searchForBlockByNumberQuery = new GraphQLRequest(
+      client,
+      searchForBlockByNumberQuery
+    );
+    this.searchForEpochByNumberQuery = new GraphQLRequest(
+      client,
+      searchForEpochByNumberQuery
+    );
+    this.searchForTransactionByIdQuery = new GraphQLRequest(
+      client,
+      searchForTransactionByIdQuery
+    );
   }
 }
