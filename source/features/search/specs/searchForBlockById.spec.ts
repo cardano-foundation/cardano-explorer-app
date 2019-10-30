@@ -1,11 +1,12 @@
 import waitForExpect from 'wait-for-expect';
+import { apolloClient } from '../../../lib/graphql/apolloClient';
 import { createSearchFeature, ISearchFeature } from '../index';
 import { exampleBlockData } from './helpers/exampleBlockData';
 
 describe('Searching for a block', () => {
   let search: ISearchFeature;
   beforeEach(() => {
-    search = createSearchFeature();
+    search = createSearchFeature(apolloClient);
     search.start();
   });
   afterEach(() => {
