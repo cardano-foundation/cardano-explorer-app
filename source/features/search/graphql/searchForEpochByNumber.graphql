@@ -1,4 +1,4 @@
-#import "../../epochs/api/EpochDetails.graphql"
+#import "../../epochs/graphql/fragments/epochDetails.graphql"
 
 query searchForEpochByNumber (
   $number: Int!
