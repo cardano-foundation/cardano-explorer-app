@@ -4,7 +4,8 @@ import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../constants';
 import { environment } from '../environment';
-import { LatestBlocks } from '../features/blocks/containers/LatestBlocks';
+import { BlocksFeatureProvider } from '../features/blocks/ui/BlocksFeatureProvider';
+import { LatestBlocks } from '../features/blocks/ui/LatestBlocks';
 import EpochList from '../features/epochs/components/EpochList';
 import { isMobileScreen } from '../helpers';
 import { Footer, Header, Layout } from '../widgets/layout';
@@ -96,7 +97,9 @@ if (environment.IS_CLIENT) {
           <EpochList title="Latest Epochs" items={epochs} />
         </div>
         <div className={styles.blockList}>
-          <LatestBlocks />
+          <BlocksFeatureProvider>
+            <LatestBlocks />
+          </BlocksFeatureProvider>
         </div>
         <Footer />
       </Layout>
