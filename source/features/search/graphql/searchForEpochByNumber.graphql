@@ -1,0 +1,15 @@
+#import "../../epochs/graphql/fragments/epochDetails.graphql"
+
+query searchForEpochByNumber (
+  $number: Int!
+) {
+  epochs (
+    where: {
+      number: {
+        _eq: $number
+      }
+    }
+  ) {
+    ...EpochDetails
+  }
+}
