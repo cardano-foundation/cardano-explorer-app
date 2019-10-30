@@ -24,19 +24,6 @@ describe('Searching for an epoch', () => {
       await waitForExpect(() => {
         const { epochSearchResult } = search.store;
         expect(epochSearchResult).toMatchObject(exampleEpochData);
-        if (epochSearchResult) {
-          expect(epochSearchResult.slots).toHaveLength(9484);
-          expect(epochSearchResult.slots[0]).toMatchObject({
-            number: 21600,
-          });
-          expect(epochSearchResult.blocks).toHaveLength(9485);
-          if (epochSearchResult.blocks) {
-            expect(epochSearchResult.blocks[0]).toMatchObject({
-              id:
-                '1941d944df546dea699791c318aeb9cc63b94e4cdb133d79856cda35bf7ecbb1',
-            });
-          }
-        }
       }, 3000);
     });
   });

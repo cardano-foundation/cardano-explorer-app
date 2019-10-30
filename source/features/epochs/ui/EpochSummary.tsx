@@ -7,16 +7,16 @@ import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTit
 import styles from './EpochSummary.scss';
 
 export interface IEpochSummaryProps {
-  blocks: number;
-  endedAt?: number;
-  epoch: number;
+  blocksCount: number;
+  endedAt?: Date;
+  number: number;
   output: number;
   percentage?: number;
-  slots: number;
-  startedAt: number;
+  slotsCount: number;
+  startedAt: Date;
   status: string;
   title: string;
-  transactions: number;
+  transactionsCount: number;
 }
 
 const EpochSummary = (props: IEpochSummaryProps) => (
@@ -32,7 +32,7 @@ const EpochSummary = (props: IEpochSummaryProps) => (
         text={
           <div className={styles.progressTextContent}>
             <div className={styles.progressTextLabel}>Epoch</div>
-            <div className={styles.progressTextValue}>{props.epoch}</div>
+            <div className={styles.progressTextValue}>{props.number}</div>
           </div>
         }
       />
@@ -40,7 +40,7 @@ const EpochSummary = (props: IEpochSummaryProps) => (
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}># of blocks</div>
           <div className={styles.infoValue}>
-            {props.blocks} / {props.slots}
+            {props.blocksCount} / {props.slotsCount}
           </div>
         </div>
         <div className={styles.infoRow}>
@@ -59,7 +59,7 @@ const EpochSummary = (props: IEpochSummaryProps) => (
         </div>
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Transactions</div>
-          <div className={styles.infoValue}>{props.transactions}</div>
+          <div className={styles.infoValue}>{props.transactionsCount}</div>
         </div>
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Total output</div>

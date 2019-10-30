@@ -1,0 +1,19 @@
+#import "./BlockOverview.graphql"
+
+query getLatestBlocks(
+  $limit: Int,
+) {
+  blocks(
+    limit: $limit,
+    order_by: {
+      number: desc
+    },
+    where: {
+      number: {
+        _is_null: false
+      }
+    }
+  ) {
+    ...BlockOverview
+  }
+}

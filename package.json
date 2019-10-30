@@ -30,7 +30,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn prettier:fix-staged",
-      "pre-push": "yarn prettier:check && yarn lint"
+      "pre-push": "yarn prettier:check && yarn lint && yarn test && yarn build"
     }
   },
   "dependencies": {

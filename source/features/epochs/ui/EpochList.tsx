@@ -8,15 +8,15 @@ import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import styles from './EpochList.scss';
 
 export interface IEpochListRowProps {
-  blocks: number;
-  endedAt?: number;
-  epoch: number;
+  blocksCount: number;
+  endedAt?: Date;
+  number: number;
   output: number;
   percentage?: number;
-  slots: number;
-  startedAt: number;
+  slotsCount: number;
+  startedAt: Date;
   status: string;
-  transactions: number;
+  transactionsCount: number;
 }
 
 export interface IEpochListProps {
@@ -42,15 +42,16 @@ const columns: Array<IColumnDefinition<IEpochListRowProps>> = [
     },
     cellValue: (row: IEpochListRowProps) => ({
       endedAt: row.endedAt,
-      epoch: row.epoch,
+      epoch: row.number,
       percentage: row.percentage,
     }),
     cssClass: 'epoch',
     head: 'Epoch',
-    key: 'epoch',
+    key: 'number',
   },
   {
-    cellValue: (row: IEpochListRowProps) => `${row.blocks} / ${row.slots}`,
+    cellValue: (row: IEpochListRowProps) =>
+      `${row.blocksCount} / ${row.slotsCount}`,
     cssClass: 'blocksSlots',
     head: 'Blocks / Slots',
     key: 'blocksSlots',
@@ -80,7 +81,7 @@ const columns: Array<IColumnDefinition<IEpochListRowProps>> = [
   {
     cssClass: 'transactions',
     head: 'Transactions',
-    key: 'transactions',
+    key: 'transactionsCount',
   },
   {
     cssClass: 'output',

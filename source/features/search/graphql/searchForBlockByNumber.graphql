@@ -1,4 +1,4 @@
-#import "../../blocks/graphql/fragments/blockDetails.graphql"
+#import "../../blocks/api/BlockDetails.graphql"
 
 query searchForBlockByNumber(
   $number: Int!

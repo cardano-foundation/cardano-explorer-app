@@ -299,6 +299,26 @@ export type Utxo_Order_By = {
 };
 export type BlockDetailsFragment = ({ __typename?: 'Block' } & Pick<Block, 'id' | 'merkelRootHash' | 'number' | 'size'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, previousBlock: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>, slot: Maybe<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> });
 
+export type BlockOverviewFragment = ({ __typename?: 'Block' } & Pick<Block, 'id' | 'number' | 'size'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, slot: Maybe<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> });
+
+export type GetLatestBlocksQueryVariables = {
+  limit?: Maybe<Scalars['Int']>
+};
+
+
+export type GetLatestBlocksQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & BlockOverviewFragment)>> });
+
+export type BlockDetailsFragment = ({ __typename?: 'Block' } & Pick<Block, 'id' | 'merkelRootHash' | 'number' | 'size'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, previousBlock: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>, slot: Maybe<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> });
+
+export type EpochDetailsFragment = ({ __typename?: 'Epoch' } & Pick<Epoch, 'endedAt' | 'number' | 'startedAt' | 'output' | 'transactionsCount'>);
+
+export type GetLatestEpochsQueryVariables = {
+  limit?: Maybe<Scalars['Int']>
+};
+
+
+export type GetLatestEpochsQuery = ({ __typename?: 'Query' } & { epochs: Array<Maybe<({ __typename?: 'Epoch' } & EpochDetailsFragment)>> });
+
 export type EpochDetailsFragment = ({ __typename?: 'Epoch' } & Pick<Epoch, 'endedAt' | 'number' | 'startedAt' | 'output' | 'transactionsCount'> & { slots: Array<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, blocks: Maybe<Array<Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>>> });
 
 export type SearchForBlockByIdQueryVariables = {
@@ -328,5 +348,7 @@ export type SearchForTransactionByIdQueryVariables = {
 
 
 export type SearchForTransactionByIdQuery = ({ __typename?: 'Query' } & { transactions: Array<Maybe<({ __typename?: 'Transaction' } & TransactionDetailsFragment)>> });
+
+export type TransactionDetailsFragment = ({ __typename?: 'Transaction' } & Pick<Transaction, 'fee' | 'id' | 'totalOutput'> & { block: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>, inputs: Array<({ __typename?: 'TransactionInput' } & Pick<TransactionInput, 'sourceTxIndex' | 'address' | 'value'>)>, outputs: Array<({ __typename?: 'TransactionOutput' } & Pick<TransactionOutput, 'address' | 'index' | 'txId' | 'value'>)> });
 
 export type TransactionDetailsFragment = ({ __typename?: 'Transaction' } & Pick<Transaction, 'fee' | 'id' | 'totalOutput'> & { block: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>, inputs: Array<({ __typename?: 'TransactionInput' } & Pick<TransactionInput, 'sourceTxIndex' | 'address' | 'value'>)>, outputs: Array<({ __typename?: 'TransactionOutput' } & Pick<TransactionOutput, 'address' | 'index' | 'txId' | 'value'>)> });

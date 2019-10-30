@@ -2,72 +2,72 @@ import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../constants';
 import { environment } from '../environment';
-import BlockList from '../features/blocks/components/BlockList';
-import EpochSummary from '../features/epochs/components/EpochSummary';
-import StakeDistribution from '../features/epochs/components/StakeDistribution';
+import BlockList from '../features/blocks/ui/BlockList';
+import EpochSummary from '../features/epochs/ui/EpochSummary';
+import StakeDistribution from '../features/epochs/ui/StakeDistribution';
 import Container from '../widgets/container/Container';
 import { Footer, Header, Layout } from '../widgets/layout';
 import styles from './epoch.scss';
 
 const epochSummary = {
-  blocks: 21490,
-  endedAt: 1579366885000,
-  epoch: 48,
+  blocksCount: 21490,
+  endedAt: new Date(1579366885000),
+  number: 48,
   output: 0.0,
   percentage: 40,
-  slots: 21600,
-  startedAt: 1568366883000,
+  slotsCount: 21600,
+  startedAt: new Date(1568366883000),
   status: 'In progress...',
   title: 'Epoch',
-  transactions: 0,
+  transactionsCount: 0,
 };
 
 const blocks = [
   {
-    block: 21490,
     createdAt: 1568366883000,
     createdBy: 'af2800c',
     epoch: 48,
+    number: 21490,
     output: 11189.647356,
     size: 1024,
     slots: 21600,
     transactions: 1,
   },
   {
-    block: 21490,
     createdAt: 1568366883000,
     createdBy: '6c9e149',
     epoch: 48,
+    number: 21490,
     output: 11189.647356,
     size: 1024,
     slots: 21600,
     transactions: 2,
   },
   {
-    block: 21490,
     createdAt: 1568366883000,
     createdBy: 'af2800c',
     epoch: 48,
+    number: 21490,
     output: 11189.647356,
     size: 1024,
     slots: 21600,
     transactions: 3,
   },
   {
-    block: 21490,
     createdAt: 1568366883000,
     createdBy: '6c9e149',
     epoch: 48,
+    number: 21490,
     output: 11189.647356,
     size: 1024,
     slots: 21600,
     transactions: 4,
   },
   {
-    block: 21490,
     createdAt: 1568366883000,
     createdBy: 'e1496c9',
     epoch: 48,
+    number: 21490,
     output: 11189.647356,
     size: 1024,
     slots: 21600,

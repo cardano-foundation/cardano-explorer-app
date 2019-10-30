@@ -5,13 +5,12 @@ import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import styles from './BlockList.scss';
 
 export interface IBlockListRowProps {
-  block: number;
+  number: number;
   createdAt: number;
   createdBy: string;
   epoch: number;
   output: number;
   size: number;
-  slots: number;
   transactions: number;
 }
 
@@ -29,7 +28,7 @@ const columns: Array<IColumnDefinition<IBlockListRowProps>> = [
   {
     cssClass: 'blocksSlots',
     head: 'Block / Slot',
-    key: 'block',
+    key: 'number',
   },
   {
     cellValue: (row: IBlockListRowProps) =>

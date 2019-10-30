@@ -1,4 +1,4 @@
-#import "../../transactions/graphql/fragments/transactionDetails.graphql"
+#import "../../transactions/api/TransactionDetails.graphql"
 
 query searchForTransactionById(
   $id: Hash32HexString
