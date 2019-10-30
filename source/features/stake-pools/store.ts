@@ -1,6 +1,5 @@
 import { action, computed, observable } from 'mobx';
 import storage from 'store';
-import { GetBlocksQuery } from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { StakePoolsActions } from './actions';

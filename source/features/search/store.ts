@@ -1,11 +1,20 @@
-import { computed } from 'mobx';
-import { GetBlocksQuery } from '../../../generated/typings/graphql-schema';
+import { action, observable } from 'mobx';
+import {
+  BlockDetailsFragment,
+  EpochDetailsFragment,
+  TransactionDetailsFragment,
+} from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
-import { SearchActions } from './actions';
 import { SearchApi } from './api';
+import { SearchActions } from './index';
 
 export class SearchStore extends Store {
+  @observable public blockSearchResult: BlockDetailsFragment | null = null;
+  @observable public epochSearchResult: EpochDetailsFragment | null = null;
+  @observable
+  public transactionSearchResult: TransactionDetailsFragment | null = null;
+
   private readonly searchApi: SearchApi;
   private readonly searchActions: SearchActions;
 
@@ -16,27 +25,64 @@ export class SearchStore extends Store {
 
     this.registerActions(
       createActionBindings([
-        [this.searchActions.searchBlockById, this.searchBlockById],
+        [this.searchActions.searchForBlockById, this.searchForBlockById],
+        [
+          this.searchActions.searchForBlockByNumber,
+          this.searchForBlockByNumber,
+        ],
+        [
+          this.searchActions.searchForEpochByNumber,
+          this.searchForEpochByNumber,
+        ],
+        [
+          this.searchActions.searchForTransactionById,
+          this.searchForTransactionById,
+        ],
       ])
     );
   }
 
-  @computed.struct get searchedBlock(): GetBlocksQuery['blocks'][0] | null {
-    const { result } = this.searchApi.getBlocksByIdsQuery;
-    if (result) {
-      return result.data.blocks[0];
-    }
-    return null;
-  }
+  // ========= PRIVATE ACTION HANDLERS ==========
 
-  private searchBlockById = async ({ id }: { id: string }) => {
-    try {
-      await this.searchApi.getBlocksByIdsQuery.execute({
-        where: { id: { _eq: id } },
-      });
-    } catch (error) {
-      // TODO: handle network errors here
-      throw error;
+  @action private searchForBlockById = async ({ id }: { id: string }) => {
+    this.blockSearchResult = null;
+    const result = await this.searchApi.searchForBlockByIdQuery.execute({ id });
+    if (result) {
+      this.blockSearchResult = result.data.blocks[0];
+    }
+  };
+
+  @action private searchForBlockByNumber = async (params: {
+    number: number;
+  }) => {
+    this.blockSearchResult = null;
+    const result = await this.searchApi.searchForBlockByNumberQuery.execute(
+      params
+    );
+    if (result) {
+      this.blockSearchResult = result.data.blocks[0];
+    }
+  };
+
+  @action private searchForEpochByNumber = async (params: {
+    number: number;
+  }) => {
+    this.epochSearchResult = null;
+    const result = await this.searchApi.searchForEpochByNumberQuery.execute(
+      params
+    );
+    if (result) {
+      this.epochSearchResult = result.data.epochs[0];
+    }
+  };
+
+  private searchForTransactionById = async ({ id }: { id: string }) => {
+    this.transactionSearchResult = null;
+    const result = await this.searchApi.searchForTransactionByIdQuery.execute({
+      id,
+    });
+    if (result) {
+      this.transactionSearchResult = result.data.transactions[0];
     }
   };
 }

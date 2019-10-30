@@ -1,7 +1,7 @@
 import React from 'react';
 import Action from '../../lib/Action';
 import { apolloClient } from '../../lib/graphql/apolloClient';
-import { ensureContextExists } from '../search/hooks';
+import { ensureContextExists } from '../../lib/react/hooks';
 import { EpochsApi } from './api';
 import { EpochsStore } from './store';
 

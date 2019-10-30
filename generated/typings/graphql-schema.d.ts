@@ -306,6 +306,8 @@ export type GetLatestBlocksQueryVariables = {
 
 export type GetLatestBlocksQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & BlockOverviewFragment)>> });
 
+export type BlockDetailsFragment = ({ __typename?: 'Block' } & Pick<Block, 'id' | 'merkelRootHash' | 'number' | 'size'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, previousBlock: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>, slot: Maybe<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> });
+
 export type EpochDetailsFragment = ({ __typename?: 'Epoch' } & Pick<Epoch, 'endedAt' | 'number' | 'startedAt' | 'output' | 'transactionsCount'>);
 
 export type GetLatestEpochsQueryVariables = {
@@ -315,12 +317,34 @@ export type GetLatestEpochsQueryVariables = {
 
 export type GetLatestEpochsQuery = ({ __typename?: 'Query' } & { epochs: Array<Maybe<({ __typename?: 'Epoch' } & EpochDetailsFragment)>> });
 
-export type GetBlocksQueryVariables = {
-  limit?: Maybe<Scalars['Int']>,
-  order_by?: Maybe<Array<Block_Order_By>>,
-  offset?: Maybe<Scalars['Int']>,
-  where?: Maybe<Block_Bool_Exp>
+export type EpochDetailsFragment = ({ __typename?: 'Epoch' } & Pick<Epoch, 'endedAt' | 'number' | 'startedAt' | 'output' | 'transactionsCount'> & { slots: Array<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, blocks: Maybe<Array<Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>>> });
+
+export type SearchForBlockByIdQueryVariables = {
+  id: Scalars['Hash32HexString']
 };
 
 
-export type GetBlocksQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>> });
+export type SearchForBlockByIdQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & BlockDetailsFragment)>> });
+
+export type SearchForBlockByNumberQueryVariables = {
+  number: Scalars['Int']
+};
+
+
+export type SearchForBlockByNumberQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & BlockDetailsFragment)>> });
+
+export type SearchForEpochByNumberQueryVariables = {
+  number: Scalars['Int']
+};
+
+
+export type SearchForEpochByNumberQuery = ({ __typename?: 'Query' } & { epochs: Array<Maybe<({ __typename?: 'Epoch' } & EpochDetailsFragment)>> });
+
+export type SearchForTransactionByIdQueryVariables = {
+  id?: Maybe<Scalars['Hash32HexString']>
+};
+
+
+export type SearchForTransactionByIdQuery = ({ __typename?: 'Query' } & { transactions: Array<Maybe<({ __typename?: 'Transaction' } & TransactionDetailsFragment)>> });
+
+export type TransactionDetailsFragment = ({ __typename?: 'Transaction' } & Pick<Transaction, 'fee' | 'id' | 'totalOutput'> & { block: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>, inputs: Array<({ __typename?: 'TransactionInput' } & Pick<TransactionInput, 'sourceTxIndex' | 'address' | 'value'>)>, outputs: Array<({ __typename?: 'TransactionOutput' } & Pick<TransactionOutput, 'address' | 'index' | 'txId' | 'value'>)> });

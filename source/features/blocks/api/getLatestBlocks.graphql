@@ -1,4 +1,4 @@
-#import "./blockOverview.graphql"
+#import "./BlockOverview.graphql"
 
 query getLatestBlocks(
   $limit: Int,
