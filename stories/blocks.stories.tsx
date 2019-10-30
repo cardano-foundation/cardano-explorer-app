@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import BlockCreation from '../source/features/blocks/components/BlockCreation';
-import BlockList from '../source/features/blocks/components/BlockList';
-import BlockSummary from '../source/features/blocks/components/BlockSummary';
+import BlockCreation from '../source/features/blocks/ui/BlockCreation';
+import BlockList from '../source/features/blocks/ui/BlockList';
+import BlockSummary from '../source/features/blocks/ui/BlockSummary';
 import { PaddingDecorator } from './support/PaddingDecorator';
 
 const blocks = [

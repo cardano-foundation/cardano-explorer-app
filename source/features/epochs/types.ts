@@ -3,6 +3,7 @@ export interface IEpochDetails {
   number: number;
   endedAt: Date;
   output: number;
+  percentage?: number;
   slotsCount: number;
   startedAt: Date;
   status: string;
