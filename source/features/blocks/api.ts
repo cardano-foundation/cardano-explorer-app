@@ -13,9 +13,9 @@ export class BlocksApi {
   >;
 
   constructor(client: ApolloClient<any>) {
-    this.getLatestBlocksQuery = new GraphQLRequest<
-      GetLatestBlocksQuery,
-      GetLatestBlocksQueryVariables
-    >(client, getLatestBlocksQuery);
+    this.getLatestBlocksQuery = new GraphQLRequest(
+      client,
+      getLatestBlocksQuery
+    );
   }
 }

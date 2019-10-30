@@ -7,6 +7,11 @@ query getLatestBlocks(
     limit: $limit,
     order_by: {
       number: desc
+    },
+    where: {
+      number: {
+        _is_null: false
+      }
     }
   ) {
     ...BlockOverview

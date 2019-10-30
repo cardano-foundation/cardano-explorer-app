@@ -1,12 +1,12 @@
 import { Observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useFeature } from '../../../lib/react/hooks';
 import BlockList from '../components/BlockList';
-import { blocksContext } from '../contexts';
-import { useBlocks } from '../hooks';
-import { blocksContextDefault } from '../index';
+import { blocksContext, createBlocksFeature, useBlocksFeature } from '../index';
+import { IBlocksFeature } from '../index';
 
 const LatestBlocksContainer = () => {
-  const { actions, store } = useBlocks();
+  const { actions, store } = useBlocksFeature();
   useEffect(() => {
     actions.fetchLatestBlocks.trigger();
   });
@@ -17,8 +17,12 @@ const LatestBlocksContainer = () => {
   );
 };
 
-export const LatestBlocks = () => (
-  <blocksContext.Provider value={blocksContextDefault}>
-    <LatestBlocksContainer />
-  </blocksContext.Provider>
-);
+export const LatestBlocks = () => {
+  const [blocksFeature] = useState<IBlocksFeature>(createBlocksFeature());
+  useFeature(blocksFeature);
+  return (
+    <blocksContext.Provider value={blocksFeature}>
+      <LatestBlocksContainer />
+    </blocksContext.Provider>
+  );
+};
