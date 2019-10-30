@@ -25,7 +25,7 @@ describe('Searching for an epoch', () => {
       await waitForExpect(() => {
         const { epochSearchResult } = search.store;
         expect(epochSearchResult).toMatchObject(exampleEpochData);
-      }, 3000);
+      });
     });
   });
 });

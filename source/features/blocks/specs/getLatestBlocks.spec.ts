@@ -28,6 +28,6 @@ describe('Fetching the latest blocks', () => {
           latestBlocksExample.map(blockOverviewTransformer)
         )
       );
-    }, 8000);
-  }, 10000);
+    });
+  });
 });
