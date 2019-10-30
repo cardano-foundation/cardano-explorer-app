@@ -1,4 +1,5 @@
 import waitForExpect from 'wait-for-expect';
+import { apolloClient } from '../../../lib/graphql/apolloClient';
 import { blockOverviewTransformer } from '../api/transformers';
 import { createBlocksFeature, IBlocksFeature } from '../index';
 import { latestBlocksExample } from './helpers/latestBlocksExample';
@@ -6,7 +7,7 @@ import { latestBlocksExample } from './helpers/latestBlocksExample';
 describe('Fetching the latest blocks', () => {
   let blocks: IBlocksFeature;
   beforeEach(() => {
-    blocks = createBlocksFeature();
+    blocks = createBlocksFeature(apolloClient);
     blocks.start();
   });
   afterEach(() => {

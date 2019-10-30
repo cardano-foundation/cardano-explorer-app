@@ -1,6 +1,7 @@
+import { NormalizedCacheObject } from 'apollo-cache-inmemory';
+import { ApolloClient } from 'apollo-client';
 import React from 'react';
 import Action from '../../lib/Action';
-import { apolloClient } from '../../lib/graphql/apolloClient';
 import { ensureContextExists } from '../../lib/react/hooks';
 import { BlocksApi } from './api';
 import { BlocksStore } from './store';
@@ -29,7 +30,9 @@ export interface IBlocksFeature {
  * This can be useful for testing, features that need to be
  * configured and / or displayed multiple times on the same page.
  */
-export const createBlocksFeature = (): IBlocksFeature => {
+export const createBlocksFeature = (
+  apolloClient: ApolloClient<object>
+): IBlocksFeature => {
   const blocksActions = new BlocksActions();
   const blocksApi = new BlocksApi(apolloClient);
   const blocksStore = new BlocksStore(blocksActions, blocksApi);
