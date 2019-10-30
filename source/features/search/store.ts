@@ -6,8 +6,8 @@ import {
 } from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
-import { SearchActions } from './actions';
 import { SearchApi } from './api';
+import { SearchActions } from './index';
 
 export class SearchStore extends Store {
   @observable public blockSearchResult: BlockDetailsFragment | null = null;

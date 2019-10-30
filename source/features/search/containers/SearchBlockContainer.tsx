@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { searchContext } from '../contexts';
-import { searchContextDefault } from '../index';
+import { searchContext, searchContextDefault } from '../index';
 import { SearchBlockComponentContainer } from './SearchBlockComponentContainer';
 
 const SearchBlockContainer = () => (

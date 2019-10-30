@@ -1,10 +1,16 @@
 import waitForExpect from 'wait-for-expect';
-import { searchContextDefault } from '../index';
+import { createSearchFeature, ISearchFeature } from '../index';
 import { exampleTransactionData } from './helpers/exampleTransactionData';
 
-const search = searchContextDefault;
-
 describe('Searching for a transaction', () => {
+  let search: ISearchFeature;
+  beforeEach(() => {
+    search = createSearchFeature();
+    search.start();
+  });
+  afterEach(() => {
+    search.stop();
+  });
   describe('by a complete and valid ID', () => {
     it('retrieves the transaction with expected data', async () => {
       // 1. Trigger action to search for a transaction by id

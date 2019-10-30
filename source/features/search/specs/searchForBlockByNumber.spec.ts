@@ -1,10 +1,16 @@
 import waitForExpect from 'wait-for-expect';
-import { searchContextDefault } from '../index';
+import { createSearchFeature, ISearchFeature } from '../index';
 import { exampleBlockData } from './helpers/exampleBlockData';
 
-const search = searchContextDefault;
-
 describe('Searching for a block', () => {
+  let search: ISearchFeature;
+  beforeEach(() => {
+    search = createSearchFeature();
+    search.start();
+  });
+  afterEach(() => {
+    search.stop();
+  });
   describe('by its number', () => {
     it('retrieves the block with expected data', async () => {
       // 1. Trigger action to search for a block by number

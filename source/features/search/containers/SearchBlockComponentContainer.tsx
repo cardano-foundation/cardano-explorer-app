@@ -1,10 +1,10 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import Search from '../components/Search';
-import { useSearch } from '../hooks';
+import { useSearchFeature } from '../index';
 
 export const SearchBlockComponentContainerRaw = () => {
-  const { actions } = useSearch();
+  const { actions } = useSearchFeature();
   return <Search onSearch={id => actions.searchForBlockById.trigger({ id })} />;
 };
 

@@ -1,10 +1,16 @@
 import waitForExpect from 'wait-for-expect';
-import { searchContextDefault } from '../index';
+import { createSearchFeature, ISearchFeature } from '../index';
 import { exampleEpochData } from './helpers/exampleEpochData';
 
-const search = searchContextDefault;
-
 describe('Searching for an epoch', () => {
+  let search: ISearchFeature;
+  beforeEach(() => {
+    search = createSearchFeature();
+    search.start();
+  });
+  afterEach(() => {
+    search.stop();
+  });
   describe('by number', () => {
     it('retrieves the epoch with expected data', async () => {
       // 1. Trigger action to search for a block by number
