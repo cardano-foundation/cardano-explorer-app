@@ -1,9 +1,9 @@
-#import "./fragments/blockOverview.graphql"
+#import "./EpochDetails.graphql"
 
-query getLatestBlocks(
+query getLatestEpochs(
   $limit: Int,
 ) {
-  blocks(
+  epochs(
     limit: $limit,
     order_by: {
       number: desc
@@ -14,6 +14,6 @@ query getLatestBlocks(
       }
     }
   ) {
-    ...BlockOverview
+    ...EpochDetails
   }
 }

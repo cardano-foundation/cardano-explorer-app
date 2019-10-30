@@ -1,4 +1,4 @@
-import { BlockOverviewFragment } from '../../../../../generated/typings/graphql-schema';
+import { BlockOverviewFragment } from '../../../../generated/typings/graphql-schema';
 
 export const blockOverviewTransformer = (b: BlockOverviewFragment) => ({
   createdAt: 1568366883000, // TODO: missing API data

@@ -1,5 +1,5 @@
 import waitForExpect from 'wait-for-expect';
-import { blockOverviewTransformer } from '../graphql/transformers/blockOverviewTransformer';
+import { blockOverviewTransformer } from '../api/transformers';
 import { createBlocksFeature, IBlocksFeature } from '../index';
 import { latestBlocksExample } from './helpers/latestBlocksExample';
 

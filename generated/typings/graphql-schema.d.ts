@@ -300,11 +300,20 @@ export type Utxo_Order_By = {
 export type BlockOverviewFragment = ({ __typename?: 'Block' } & Pick<Block, 'id' | 'number' | 'size'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, slot: Maybe<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> });
 
 export type GetLatestBlocksQueryVariables = {
-  limit: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
 };
 
 
 export type GetLatestBlocksQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & BlockOverviewFragment)>> });
+
+export type EpochDetailsFragment = ({ __typename?: 'Epoch' } & Pick<Epoch, 'endedAt' | 'number' | 'startedAt' | 'output' | 'transactionsCount'>);
+
+export type GetLatestEpochsQueryVariables = {
+  limit?: Maybe<Scalars['Int']>
+};
+
+
+export type GetLatestEpochsQuery = ({ __typename?: 'Query' } & { epochs: Array<Maybe<({ __typename?: 'Epoch' } & EpochDetailsFragment)>> });
 
 export type GetBlocksQueryVariables = {
   limit?: Maybe<Scalars['Int']>,

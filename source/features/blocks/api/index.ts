@@ -2,9 +2,9 @@ import ApolloClient from 'apollo-client';
 import {
   GetLatestBlocksQuery,
   GetLatestBlocksQueryVariables,
-} from '../../../generated/typings/graphql-schema';
-import { GraphQLRequest } from '../../lib/graphql/GraphQLRequest';
-import getLatestBlocksQuery from './graphql/getLatestBlocks.graphql';
+} from '../../../../generated/typings/graphql-schema';
+import { GraphQLRequest } from '../../../lib/graphql/GraphQLRequest';
+import getLatestBlocksQuery from './getLatestBlocks.graphql';
 
 export class BlocksApi {
   public getLatestBlocksQuery: GraphQLRequest<

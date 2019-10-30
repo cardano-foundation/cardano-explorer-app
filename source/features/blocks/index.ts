@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Action from '../../lib/Action';
 import { apolloClient } from '../../lib/graphql/apolloClient';
+import { ensureContextExists } from '../search/hooks';
 import { BlocksApi } from './api';
 import { BlocksStore } from './store';
 
@@ -28,7 +29,7 @@ export interface IBlocksFeature {
  * This can be useful for testing, features that need to be
  * configured and / or displayed multiple times on the same page.
  */
-export const createBlocksFeature = () => {
+export const createBlocksFeature = (): IBlocksFeature => {
   const blocksActions = new BlocksActions();
   const blocksApi = new BlocksApi(apolloClient);
   const blocksStore = new BlocksStore(blocksActions, blocksApi);
@@ -45,15 +46,14 @@ export const createBlocksFeature = () => {
   };
 };
 
+/**
+ * React context used for this feature
+ */
 export const blocksContext = React.createContext<IBlocksFeature | null>(null);
+
 /**
  * Custom react hook that is used in container components to
  * access the configured feature of the context provider.
  */
-export const useBlocksFeature = () => {
-  const inbox = useContext(blocksContext);
-  if (!inbox) {
-    throw new Error('You need to setup the context before using it.');
-  }
-  return inbox;
-};
+export const useBlocksFeature = (): IBlocksFeature =>
+  ensureContextExists<IBlocksFeature>(blocksContext);

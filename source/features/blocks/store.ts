@@ -3,7 +3,7 @@ import { BlockOverviewFragment } from '../../../generated/typings/graphql-schema
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { BlocksApi } from './api';
-import { blockOverviewTransformer } from './graphql/transformers/blockOverviewTransformer';
+import { blockOverviewTransformer } from './api/transformers';
 import { BlocksActions } from './index';
 import { IBlockOverview } from './types';
 
@@ -31,7 +31,6 @@ export class BlocksStore extends Store {
     });
     if (result) {
       const isBlock = (b: any): b is BlockOverviewFragment => b != null;
-      // Prepare API data for UI
       this.latestBlocks = result.data.blocks
         .filter(isBlock)
         .map(blockOverviewTransformer);
