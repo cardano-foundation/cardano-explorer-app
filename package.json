@@ -101,6 +101,7 @@
     "@zeit/next-css": "1.0.2-canary.2",
     "@zeit/next-sass": "1.0.1",
     "autoprefixer": "9.7.0",
+    "aws-sdk": "^2.560.0",
     "babel-loader": "8.0.6",
     "babel-plugin-inline-react-svg": "1.1.0",
     "babel-plugin-lodash": "3.3.4",
