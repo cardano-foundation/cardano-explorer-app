@@ -12,9 +12,9 @@ export const SearchBar = (props: ISearchBarProps) => {
 
   const openSearchedPage = async (id: string) => {
     let url;
-    if (id) {
+    if (id && id.length > 15) {
       url = 'block?id';
-    } else if (id) {
+    } else if (id && id.length < 15) {
       url = 'block?number';
     } else if (id) {
       url = 'epoch?number';
