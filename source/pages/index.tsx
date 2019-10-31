@@ -1,4 +1,3 @@
-import { noop } from 'lodash';
 import Head from 'next/head';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
@@ -120,10 +119,9 @@ const epochs = [
 ];
 
 const onSearchValues = async (id: string) => {
-  searchActions.searchForTransactionById.trigger({ id });
-  const searchResult = await searchApi.searchForTransactionByIdQuery.execution;
+  searchActions.searchForBlockById.trigger({ id });
+  const searchResult = await searchApi.searchForBlockByIdQuery.execution;
   if (searchResult) {
-    debugger;
     // @todo
   } else {
     throw new Error('Expected a search result!');
