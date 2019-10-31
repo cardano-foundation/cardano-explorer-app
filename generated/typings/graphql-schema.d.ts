@@ -13,8 +13,8 @@ export type Scalars = {
   /** PublicKeyHash string */
   PublicKeyHash: any,
   /** The `BigInt` scalar type represents non-fractional signed whole numeric values.
-   * BigInt can represent values between -(2^53) + 1 and 2^53 - 1.
-   */
+   * BigInt can represent values between -(2^53) + 1 and 2^53 - 1. 
+ */
   BigInt: any,
   /** LoveLaces, the atomic unit of ADA */
   LoveLaces: any,
@@ -297,7 +297,7 @@ export type Utxo_Bool_Exp = {
 export type Utxo_Order_By = {
   address?: Maybe<Order_By>,
 };
-export type BlockDetailsFragment = ({ __typename?: 'Block' } & Pick<Block, 'id' | 'merkelRootHash' | 'number' | 'size'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, previousBlock: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id'>)>, slot: Maybe<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> });
+export type BlockDetailsFragment = ({ __typename?: 'Block' } & Pick<Block, 'id' | 'merkelRootHash' | 'number' | 'size'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, previousBlock: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id' | 'number'>)>, slot: Maybe<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> });
 
 export type BlockOverviewFragment = ({ __typename?: 'Block' } & Pick<Block, 'id' | 'number' | 'size'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, slot: Maybe<({ __typename?: 'Slot' } & Pick<Slot, 'number'>)>, transactions: Array<Maybe<({ __typename?: 'Transaction' } & Pick<Transaction, 'id'>)>> });
 
