@@ -1,8 +1,5 @@
 import { action, observable } from 'mobx';
-import {
-  BlockOverviewFragment,
-  EpochDetailsFragment,
-} from '../../../generated/typings/graphql-schema';
+import { EpochDetailsFragment } from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { EpochsApi } from './api';

@@ -1,4 +1,5 @@
 import waitForExpect from 'wait-for-expect';
+import { apolloClient } from '../../../lib/graphql/apolloClient';
 import { epochDetailsTransformer } from '../api/transformers';
 import { createEpochsFeature, IEpochsFeature } from '../index';
 import { latestEpochsExample } from './helpers/latestEpochsExample';
@@ -6,7 +7,7 @@ import { latestEpochsExample } from './helpers/latestEpochsExample';
 describe('Fetching the latest epochs', () => {
   let epochs: IEpochsFeature;
   beforeEach(() => {
-    epochs = createEpochsFeature();
+    epochs = createEpochsFeature(apolloClient);
     epochs.start();
   });
   afterEach(() => {

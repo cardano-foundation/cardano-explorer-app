@@ -1,6 +1,6 @@
+import ApolloClient from 'apollo-client';
 import React, { useContext } from 'react';
 import Action from '../../lib/Action';
-import { apolloClient } from '../../lib/graphql/apolloClient';
 import { SearchApi } from './api';
 import { SearchStore } from './store';
 
@@ -31,7 +31,9 @@ export interface ISearchFeature {
  * This can be useful for testing, features that need to be
  * configured and / or displayed multiple times on the same page.
  */
-export const createSearchFeature = (): ISearchFeature => {
+export const createSearchFeature = (
+  apolloClient: ApolloClient<object>
+): ISearchFeature => {
   const searchActions = new SearchActions();
   const searchApi = new SearchApi(apolloClient);
   const searchStore = new SearchStore(searchActions, searchApi);
