@@ -14,7 +14,7 @@ export type Scalars = {
   PublicKeyHash: any,
   /** The `BigInt` scalar type represents non-fractional signed whole numeric values.
    * BigInt can represent values between -(2^53) + 1 and 2^53 - 1.
- */
+   */
   BigInt: any,
   /** LoveLaces, the atomic unit of ADA */
   LoveLaces: any,
