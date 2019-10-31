@@ -1,11 +1,12 @@
 import waitForExpect from 'wait-for-expect';
+import { apolloClient } from '../../../lib/graphql/apolloClient';
 import { createSearchFeature, ISearchFeature } from '../index';
 import { exampleEpochData } from './helpers/exampleEpochData';
 
 describe('Searching for an epoch', () => {
   let search: ISearchFeature;
   beforeEach(() => {
-    search = createSearchFeature();
+    search = createSearchFeature(apolloClient);
     search.start();
   });
   afterEach(() => {
@@ -24,7 +25,7 @@ describe('Searching for an epoch', () => {
       await waitForExpect(() => {
         const { epochSearchResult } = search.store;
         expect(epochSearchResult).toMatchObject(exampleEpochData);
-      }, 3000);
+      });
     });
   });
 });

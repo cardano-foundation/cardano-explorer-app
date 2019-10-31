@@ -1,6 +1,6 @@
+import ApolloClient from 'apollo-client';
 import React from 'react';
 import Action from '../../lib/Action';
-import { apolloClient } from '../../lib/graphql/apolloClient';
 import { ensureContextExists } from '../../lib/react/hooks';
 import { EpochsApi } from './api';
 import { EpochsStore } from './store';
@@ -29,7 +29,9 @@ export interface IEpochsFeature {
  * This can be useful for testing, features that need to be
  * configured and / or displayed multiple times on the same page.
  */
-export const createEpochsFeature = (): IEpochsFeature => {
+export const createEpochsFeature = (
+  apolloClient: ApolloClient<object>
+): IEpochsFeature => {
   const epochsActions = new EpochsActions();
   const epochsApi = new EpochsApi(apolloClient);
   const epochsStore = new EpochsStore(epochsActions, epochsApi);

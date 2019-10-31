@@ -5,6 +5,7 @@ module.exports = {
   ],
   preset: 'ts-jest',
   setupFiles: ['dotenv/config'],
+  setupFilesAfterEnv: ['./source/config/jest.config.ts'],
   transform: {
     '\\.graphql$': 'jest-transform-graphql',
     '\\.spec.ts?$': 'ts-jest'
