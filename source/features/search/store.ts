@@ -8,12 +8,14 @@ import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { blockDetailsTransformer } from '../blocks/api/transformers';
 import { IBlockDetailed } from '../blocks/types';
+import { epochDetailsTransformer } from '../epochs/api/transformers';
+import { IEpochDetails } from '../epochs/types';
 import { SearchApi } from './api';
 import { SearchActions } from './index';
 
 export class SearchStore extends Store {
   @observable public blockSearchResult: IBlockDetailed | null = null;
-  @observable public epochSearchResult: EpochDetailsFragment | null = null;
+  @observable public epochSearchResult: IEpochDetails | null = null;
   @observable
   public transactionSearchResult: TransactionDetailsFragment | null = null;
 
@@ -91,7 +93,11 @@ export class SearchStore extends Store {
       params
     );
     if (result) {
-      this.epochSearchResult = result.data.epochs[0];
+      const isEpoch = (b: any): b is EpochDetailsFragment => b != null;
+      const epochData = result.data.epochs[0];
+      if (isEpoch(epochData)) {
+        this.epochSearchResult = epochDetailsTransformer(epochData);
+      }
     }
   };
 

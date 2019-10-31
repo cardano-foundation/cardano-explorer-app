@@ -1,7 +1,12 @@
+#import "./EpochOverview.graphql"
+#import "../../blocks/api/BlockInfo.graphql"
+
 fragment EpochDetails on Epoch {
-  endedAt
-  number
-  startedAt
-  output
-  transactionsCount
+  ...EpochOverview
+  slots {
+    number
+  }
+  blocks {
+    ...BlockInfo
+  }
 }
