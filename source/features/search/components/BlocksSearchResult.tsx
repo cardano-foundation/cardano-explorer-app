@@ -1,8 +1,8 @@
 import { Observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { useSearchFeature } from '../../search';
-import BlockSummary from './BlockSummary';
+import BlockSummary from '../../blocks/ui/BlockSummary';
+import { useSearchFeature } from '../index';
 
 export const BlocksSearchResult = () => {
   const { actions, store } = useSearchFeature();
@@ -11,6 +11,9 @@ export const BlocksSearchResult = () => {
   if (query && query.id) {
     const id = query.id as string;
     actions.searchForBlockById.trigger({ id });
+  } else if (query && query.number) {
+    const num = parseInt(query.number as string, 10);
+    actions.searchForBlockByNumber.trigger({ number: num });
   }
   return (
     <Observer>

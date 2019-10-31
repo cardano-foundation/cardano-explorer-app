@@ -1,7 +1,7 @@
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { environment } from '../environment';
-import { BlocksSearchResult } from '../features/blocks/ui/BlocksSearchResult';
+import { BlocksSearchResult } from '../features/search/components/BlocksSearchResult';
 import { SearchFeatureProvider } from '../features/search/components/SearchFeatureProvider';
 import { Footer, Header, Layout } from '../widgets/layout';
 
