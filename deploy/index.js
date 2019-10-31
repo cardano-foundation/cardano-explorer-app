@@ -1,4 +1,5 @@
 const { spawn } = require('child_process')
+const upload = require('./upload')
 
 module.exports = async function deploy() {
   const requiredEnvs = [
@@ -38,17 +39,5 @@ module.exports = async function deploy() {
     })
   })
 
-  const BUILD_PATH = 'build/static'
-
-  const awsEnv = ['AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'BUCKET']
-  if (!process.env['AWS_ACCESS_KEY_ID'] || !process.env['AWS_SECRET_ACCESS_KEY']) {
-    throw new Error('AWS creds missing')
-  }
-
-  const targetBucket = process.env['BUCKET']
-  if (!targetBucket) {
-    throw new Error('Bucket to upload not set')
-  }
-
-  console.log(`Uploading to S3 bucket: ${targetBucket}`)
+  await upload()
 }
