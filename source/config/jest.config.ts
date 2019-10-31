@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../lib/graphql/apolloClient';
 
 beforeAll(async () => {
-  jest.setTimeout(30000);
+  jest.setTimeout(60000);
   waitForExpect.defaults.timeout = 9000;
   await RetryPromise.retryPromise(
     'Checking Cardano GraphQL server is available',
