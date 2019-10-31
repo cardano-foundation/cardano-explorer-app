@@ -1,3 +1,5 @@
+#import "../../epochs/graphql/fragments/epochDetails.graphql"
+
 query searchForEpochByNumber (
   $number: Int!
 ) {
@@ -8,15 +10,6 @@ query searchForEpochByNumber (
       }
     }
   ) {
-    endedAt
-    startedAt
-    output
-    transactionsCount
-    slots {
-      number
-    }
-    blocks {
-      id
-    }
+    ...EpochDetails
   }
 }

@@ -30,7 +30,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn prettier:fix-staged",
-      "pre-push": "yarn prettier:check && yarn lint"
+      "pre-push": "yarn prettier:check && yarn lint && yarn test && yarn build"
     }
   },
   "dependencies": {
@@ -130,6 +130,7 @@
     "tslint": "5.12.0",
     "tslint-config-prettier": "1.17.0",
     "typescript": "3.2.2",
+    "wait-for-expect": "3.0.1",
     "webpack": "4.27.1"
   },
   "engines": {

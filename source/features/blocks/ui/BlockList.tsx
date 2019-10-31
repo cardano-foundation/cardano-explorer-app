@@ -5,13 +5,12 @@ import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import styles from './BlockList.scss';
 
 export interface IBlockListRowProps {
-  block: number;
+  number: number;
   createdAt: number;
   createdBy: string;
   epoch: number;
   output: number;
   size: number;
-  slots: number;
   transactions: number;
 }
 
@@ -22,7 +21,7 @@ export interface IBlockListProps {
 
 const columns: Array<IColumnDefinition<IBlockListRowProps>> = [
   {
-    cellValue: (row: IBlockListRowProps) => `${row.epoch} / ${row.slots}`,
+    cellValue: (row: IBlockListRowProps) => `${row.epoch} / ${row.size}`,
     cssClass: 'epoch',
     head: 'Epoch / Slot',
     key: 'epochsSlots',
@@ -30,7 +29,7 @@ const columns: Array<IColumnDefinition<IBlockListRowProps>> = [
   {
     cssClass: 'blocksSlots',
     head: 'Block',
-    key: 'block',
+    key: 'number',
   },
   {
     cellValue: (row: IBlockListRowProps) =>

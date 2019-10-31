@@ -1,3 +1,5 @@
+#import "../../transactions/api/TransactionDetails.graphql"
+
 query searchForTransactionById(
   $id: Hash32HexString
 ) {
@@ -9,22 +11,6 @@ query searchForTransactionById(
       }
     }
   ) {
-    block {
-      id
-    }
-    fee,
-    id,
-    inputs {
-      sourceTxIndex,
-      address,
-      value,
-    },
-    outputs {
-      address,
-      index,
-      txId,
-      value
-    },
-    totalOutput
+    ...TransactionDetails
   }
 }

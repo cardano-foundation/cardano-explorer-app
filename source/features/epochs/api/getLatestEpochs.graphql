@@ -1,0 +1,19 @@
+#import "./EpochDetails.graphql"
+
+query getLatestEpochs(
+  $limit: Int,
+) {
+  epochs(
+    limit: $limit,
+    order_by: {
+      number: desc
+    },
+    where: {
+      number: {
+        _is_null: false
+      }
+    }
+  ) {
+    ...EpochDetails
+  }
+}

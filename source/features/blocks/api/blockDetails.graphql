@@ -1,0 +1,18 @@
+fragment BlockDetails on Block {
+  id,
+  merkelRootHash,
+  number,
+  size,
+  epoch {
+    number
+  },
+  previousBlock {
+    id
+  }
+  slot {
+    number
+  },
+  transactions {
+    id
+  }
+}

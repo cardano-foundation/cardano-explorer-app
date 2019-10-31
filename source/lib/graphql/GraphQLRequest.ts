@@ -5,6 +5,7 @@ import { observable } from 'mobx';
 export class GraphQLRequest<TResult, TVariables> {
   @observable public result: ApolloQueryResult<TResult> | null = null;
   @observable public isExecuting: boolean = false;
+  @observable public hasBeenExecutedAtLeastOnce: boolean = false;
   @observable public error: ApolloError | null = null;
   @observable public execution: Promise<
     ApolloQueryResult<TResult>
@@ -36,6 +37,7 @@ export class GraphQLRequest<TResult, TVariables> {
       throw error;
     } finally {
       this.isExecuting = false;
+      this.hasBeenExecutedAtLeastOnce = true;
     }
   }
 }

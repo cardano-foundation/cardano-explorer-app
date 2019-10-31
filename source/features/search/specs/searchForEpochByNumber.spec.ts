@@ -1,40 +1,30 @@
-import { searchActions, searchApi, searchStore } from '../index';
+import waitForExpect from 'wait-for-expect';
+import { createSearchFeature, ISearchFeature } from '../index';
+import { exampleEpochData } from './helpers/exampleEpochData';
 
 describe('Searching for an epoch', () => {
+  let search: ISearchFeature;
+  beforeEach(() => {
+    search = createSearchFeature();
+    search.start();
+  });
+  afterEach(() => {
+    search.stop();
+  });
   describe('by number', () => {
     it('retrieves the epoch with expected data', async () => {
-      const searchedEpochNumber = 1;
-      searchActions.searchForEpochByNumber.trigger({
-        number: searchedEpochNumber,
+      // 1. Trigger action to search for a block by number
+      search.actions.searchForEpochByNumber.trigger({
+        number: exampleEpochData.number,
       });
-      expect(searchApi.searchForEpochByNumberQuery.isExecuting).toBe(true);
-      const searchResult = await searchApi.searchForEpochByNumberQuery
-        .execution;
-      if (searchResult) {
-        const { epochs } = searchResult.data;
-        expect(epochs).toHaveLength(1);
-        const foundEpoch = epochs[0];
-        expect(foundEpoch).toMatchObject({
-          endedAt: '2017-10-01T02:25:51+00:00',
-          output: '17282903106017760',
-          startedAt: '2017-09-28T21:45:51+00:00',
-          transactionsCount: '5344',
-        });
-        if (foundEpoch) {
-          expect(foundEpoch.slots).toHaveLength(9484);
-          expect(foundEpoch.slots[0]).toMatchObject({ number: 21600 });
-          expect(foundEpoch.blocks).toHaveLength(9485);
-          if (foundEpoch.blocks) {
-            expect(foundEpoch.blocks[0]).toMatchObject({
-              id:
-                '1941d944df546dea699791c318aeb9cc63b94e4cdb133d79856cda35bf7ecbb1',
-            });
-          }
-        }
-        expect(searchStore.searchedEpoch).toEqual(foundEpoch);
-      } else {
-        throw new Error('Expected a search result!');
-      }
+      // 2. Check the API query status (e.g for showing loading spinners)
+      expect(search.api.searchForEpochByNumberQuery.isExecuting).toBe(true);
+
+      // 3. Expect the observable search result to be provided by the store
+      await waitForExpect(() => {
+        const { epochSearchResult } = search.store;
+        expect(epochSearchResult).toMatchObject(exampleEpochData);
+      }, 3000);
     });
   });
 });

@@ -1,0 +1,7 @@
+fragment EpochDetails on Epoch {
+  endedAt
+  number
+  startedAt
+  output
+  transactionsCount
+}

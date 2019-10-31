@@ -1,0 +1,16 @@
+#import "../../blocks/api/BlockDetails.graphql"
+
+query searchForBlockByNumber(
+  $number: Int!
+) {
+  blocks(
+    limit: 1,
+    where: {
+     number: {
+       _eq: $number
+     }
+    }
+  ) {
+    ...BlockDetails
+  }
+}
