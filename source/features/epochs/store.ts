@@ -1,14 +1,14 @@
 import { action, observable } from 'mobx';
-import { EpochDetailsFragment } from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
+import { isNotNull } from '../../lib/types';
 import { EpochsApi } from './api';
-import { epochDetailsTransformer } from './api/transformers';
+import { epochOverviewTransformer } from './api/transformers';
 import { EpochsActions } from './index';
-import { IEpochDetails } from './types';
+import { IEpochOverview } from './types';
 
 export class EpochsStore extends Store {
-  @observable public latestEpochs: IEpochDetails[] = [];
+  @observable public latestEpochs: IEpochOverview[] = [];
 
   private readonly epochsActions: EpochsActions;
   private readonly epochsApi: EpochsApi;
@@ -29,10 +29,9 @@ export class EpochsStore extends Store {
       limit: 5,
     });
     if (result) {
-      const isEpoch = (e: any): e is EpochDetailsFragment => e != null;
       this.latestEpochs = result.data.epochs
-        .filter(isEpoch)
-        .map(epochDetailsTransformer);
+        .filter(isNotNull)
+        .map(epochOverviewTransformer);
     }
   };
 }
