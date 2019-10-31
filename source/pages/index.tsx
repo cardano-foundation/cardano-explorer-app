@@ -13,15 +13,6 @@ import styles from './index.scss';
 
 const SideBackgroundImage = require('../public/assets/images/main-side-background.svg');
 
-const onSearchValues = async (id: string) => {
-  /* searchActions.searchForBlockById.trigger({ id });
-  const searchResult = await searchApi.searchForBlockByIdQuery.execution;
-  if (searchResult) {
-  } else {
-    throw new Error('Expected a search result!');
-  } */
-};
-
 let Index = () => <NoSSR />;
 if (environment.IS_CLIENT) {
   Index = () => (
@@ -45,11 +36,7 @@ if (environment.IS_CLIENT) {
             <SideBackgroundImage className={styles.sideBackgroundImage} />
           </div>
         )}
-        <Header
-          withSearch
-          brandType={BrandType.ENLARGED}
-          searchProps={{ onSearch: id => onSearchValues(id) }}
-        />
+        <Header withSearch brandType={BrandType.ENLARGED} />
         <div className={styles.epochList}>
           <EpochsFeatureProvider>
             <LatestEpochs />

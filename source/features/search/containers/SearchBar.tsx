@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
-
+import React from 'react';
+import { BrandType } from '../../../constants';
 import Search from '../components/Search';
 import { useSearchFeature } from '../index';
 
-export const SearchBar = () => {
-  const { actions } = useSearchFeature();
-  return <Search onSearch={id => actions.searchForBlockById.trigger({ id })} />;
+export interface ISearchBarProps {
+  brandType?: BrandType;
+}
+
+export const SearchBar = (props: ISearchBarProps) => {
+  const { actions, api, store } = useSearchFeature();
+
+  const executeSearch = async (id: string) => {
+    // actions.searchForBlockById.trigger({id});
+    const isExecuting = api.searchForBlockByIdQuery.isExecuting;
+    const blockSearchResult = await api.searchForBlockByIdQuery.execute({ id });
+    if (blockSearchResult) {
+      // @todo
+    } else {
+      // @todo
+    }
+  };
+
+  return (
+    <Search brandType={props.brandType} onSearch={id => executeSearch(id)} />
+  );
 };
