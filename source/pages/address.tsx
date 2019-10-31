@@ -68,11 +68,7 @@ if (environment.IS_CLIENT) {
   AddressPage = () => (
     <NoSSR>
       <Layout>
-        <Header
-          withSearch
-          brandType={BrandType.SHRINKED}
-          searchProps={{ onSearch: noop }}
-        />
+        <Header withSearch brandType={BrandType.SHRINKED} />
         <Container>
           <div className={styles.addressSummary}>
             <AddressSummary {...addressSummary} />
