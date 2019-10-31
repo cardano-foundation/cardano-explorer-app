@@ -27,11 +27,9 @@ describe('Searching for an epoch', () => {
       // 3. Expect the observable search result to be provided by the store
       await waitForExpect(() => {
         const { epochSearchResult } = search.store;
-        if (epochSearchResult) {
-          expect(omit(epochSearchResult, 'blocks')).toMatchObject(
-            omit(epochDetailsTransformer(exampleEpochData), 'blocks')
-          );
-        }
+        expect(omit(epochSearchResult, 'blocks')).toMatchObject(
+          omit(epochDetailsTransformer(exampleEpochData), 'blocks')
+        );
       });
     });
   });
