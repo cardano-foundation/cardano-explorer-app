@@ -18,7 +18,7 @@ export const blockDetailsTransformer = (
   b: BlockDetailsFragment
 ): IBlockDetailed => ({
   ...blockOverviewTransformer(b),
-  confirmations: Math.random(), // TODO: not sure how confirmations are calculated
+  confirmations: 1, // TODO: not sure how confirmations are calculated
   id: b.id ? b.id : 0,
   merkleRoot: b.merkelRootHash ? b.merkelRootHash : 0,
   nextBlock: '', // TODO: missing API data
