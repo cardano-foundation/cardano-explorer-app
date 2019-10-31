@@ -16,15 +16,18 @@ if (environment.IS_CLIENT) {
         <Container hasTopMargin>
           <Header />
           <EpochSummary
-            blocksCount={21073}
-            endedAt={new Date(1569144483000)}
-            number={135}
-            output={8397621.461829}
-            slotsCount={21600}
-            startedAt={new Date(1568366883000)}
-            status="In progress..."
+            epoch={{
+              blocks: [],
+              blocksCount: 21073,
+              endedAt: new Date(1569144483000),
+              number: 135,
+              output: 8397621.461829,
+              slotsCount: 21600,
+              startedAt: new Date(1568366883000),
+              status: 'In progress...',
+              transactionsCount: 12,
+            }}
             title="Epoch"
-            transactionsCount={12}
           />
         </Container>
         <StakePoolsContainer />
