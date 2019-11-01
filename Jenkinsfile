@@ -47,7 +47,7 @@ pipeline {
     stage('S3 Deployment') {
       steps {
         script {
-          if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'feature/continuous-delivery-s3') {
+          if (env.BRANCH_NAME == 'develop') {
             sh "yarn deploy:byron:staging"
             sh "yarn deploy:byron:incentivized-testnet"
           }

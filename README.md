@@ -24,3 +24,14 @@ The GraphQL API port can be customized with the GRAPHQL_PORT variable in .env.lo
 All visual components should be developed in Storybook first.
 
 Run `yarn storybook`
+
+## Continuous Delivery
+
+When code is merged into `develop`, Jenkins pushes builds to S3 buckets for immediate access & testing. This strategy can be extended once release processes are defined.
+
+| Era | Network | Implementation | URL | Notes |
+| --- | --- | --- | --- | --- |
+| Bryon | Mainnet (staging deployment for testing) | cardano-node-explorer | http://byron-staging-develop-explorer.s3-website-ap-southeast-2.amazonaws.com | *Backend offline* |
+| Byron | Incentivized testnet | Jormungandr | http://byron-incentivized-testnet-develop-explorer.s3-website-ap-southeast-2.amazonaws.com | *Backend not yet deployed* |
+
+As we are serving straight out of S3, HTTPS is not enabled. If we proceed with this configuration as we approach production, we can put cloudfront in front of the buckets, allocate proper domains and enable HTTPS.
