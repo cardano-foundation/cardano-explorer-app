@@ -1,4 +1,6 @@
-export interface IEpochDetails {
+import { IBlockInfo } from '../blocks/types';
+
+export interface IEpochOverview {
   blocksCount: number;
   number: number;
   endedAt: Date;
@@ -8,4 +10,8 @@ export interface IEpochDetails {
   startedAt: Date;
   status: string;
   transactionsCount: number;
+}
+
+export interface IEpochDetails extends IEpochOverview {
+  blocks: IBlockInfo[];
 }

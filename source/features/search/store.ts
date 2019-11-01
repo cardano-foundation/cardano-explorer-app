@@ -1,17 +1,21 @@
-import { action, observable } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import {
-  BlockDetailsFragment,
+  BlockOverviewFragment,
   EpochDetailsFragment,
   TransactionDetailsFragment,
 } from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
+import { blockDetailsTransformer } from '../blocks/api/transformers';
+import { IBlockDetailed } from '../blocks/types';
+import { epochDetailsTransformer } from '../epochs/api/transformers';
+import { IEpochDetails } from '../epochs/types';
 import { SearchApi } from './api';
 import { SearchActions } from './index';
 
 export class SearchStore extends Store {
-  @observable public blockSearchResult: BlockDetailsFragment | null = null;
-  @observable public epochSearchResult: EpochDetailsFragment | null = null;
+  @observable public blockSearchResult: IBlockDetailed | null = null;
+  @observable public epochSearchResult: IEpochDetails | null = null;
   @observable
   public transactionSearchResult: TransactionDetailsFragment | null = null;
 
@@ -42,13 +46,26 @@ export class SearchStore extends Store {
     );
   }
 
+  @computed get isSearching() {
+    return (
+      this.searchApi.searchForBlockByIdQuery.isExecuting ||
+      this.searchApi.searchForBlockByNumberQuery.isExecuting ||
+      this.searchApi.searchForEpochByNumberQuery.isExecuting ||
+      this.searchApi.searchForTransactionByIdQuery.isExecuting
+    );
+  }
+
   // ========= PRIVATE ACTION HANDLERS ==========
 
   @action private searchForBlockById = async ({ id }: { id: string }) => {
     this.blockSearchResult = null;
     const result = await this.searchApi.searchForBlockByIdQuery.execute({ id });
     if (result) {
-      this.blockSearchResult = result.data.blocks[0];
+      const isBlock = (b: any): b is BlockOverviewFragment => b != null;
+      const blockData = result.data.blocks[0];
+      if (isBlock(blockData)) {
+        this.blockSearchResult = blockDetailsTransformer(blockData);
+      }
     }
   };
 
@@ -60,7 +77,11 @@ export class SearchStore extends Store {
       params
     );
     if (result) {
-      this.blockSearchResult = result.data.blocks[0];
+      const isBlock = (b: any): b is BlockOverviewFragment => b != null;
+      const blockData = result.data.blocks[0];
+      if (isBlock(blockData)) {
+        this.blockSearchResult = blockDetailsTransformer(blockData);
+      }
     }
   };
 
@@ -72,7 +93,11 @@ export class SearchStore extends Store {
       params
     );
     if (result) {
-      this.epochSearchResult = result.data.epochs[0];
+      const isEpoch = (b: any): b is EpochDetailsFragment => b != null;
+      const epochData = result.data.epochs[0];
+      if (isEpoch(epochData)) {
+        this.epochSearchResult = epochDetailsTransformer(epochData);
+      }
     }
   };
 
