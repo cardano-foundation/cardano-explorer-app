@@ -2,11 +2,16 @@ pipeline {
   agent any
   tools {nodejs "Node 10"}
 
+  environment {
+    AWS_ACCESS_KEY_ID = credentials('jenkins-aws-secret-key-id')
+    AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+  }
+
   // Lock concurrent builds due to the docker dependency
-    options {
-      lock resource: 'DockerJob'
-      disableConcurrentBuilds()
-    }
+  options {
+    lock resource: 'DockerJob'
+    disableConcurrentBuilds()
+  }
 
   stages {
     stage('Install') {
@@ -36,6 +41,16 @@ pipeline {
       post {
         always {
           sh 'npm run stop-dependencies'
+        }
+      }
+    }
+    stage('S3 Deployment') {
+      steps {
+        script {
+          if (env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'feature/continuous-delivery-s3') {
+            sh "yarn deploy:byron:staging"
+            sh "yarn deploy:byron:incentivized-testnet"
+          }
         }
       }
     }
