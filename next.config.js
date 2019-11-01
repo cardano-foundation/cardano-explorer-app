@@ -9,10 +9,11 @@ const Dotenv = require('dotenv-webpack');
 require('dotenv').config();
 
 const resourcesDir = path.join(__dirname, 'source/styles/resources');
+const theme = process.env.CARDANO_NETWORK || 'incentivized-testnet';
 const resources = [
   `${resourcesDir}/mixins/**/*.scss`,
   `${resourcesDir}/variables-common/**/*.scss`,
-  `${resourcesDir}/variables-themes/variables-theme-${process.env.CARDANO_NETWORK || 'incentivized-testnet'}.scss`,
+  `${resourcesDir}/variables-themes/variables-theme-${theme}.scss`,
 ];
 const resourcesLoader = {
   loader: 'sass-resources-loader',
