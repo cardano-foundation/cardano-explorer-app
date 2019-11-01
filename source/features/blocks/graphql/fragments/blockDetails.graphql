@@ -9,9 +9,7 @@ fragment BlockDetails on Block {
   previousBlock {
     id
   }
-  slot {
-    number
-  },
+  slotNo,
   transactions {
     id
   }

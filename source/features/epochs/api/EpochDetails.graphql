@@ -1,5 +1,5 @@
 fragment EpochDetails on Epoch {
-  endedAt
+  lastBlockTime
   number
   startedAt
   output

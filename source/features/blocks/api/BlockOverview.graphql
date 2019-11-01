@@ -5,9 +5,7 @@ fragment BlockOverview on Block {
   epoch {
     number
   },
-  slot {
-    number
-  }
+  slotNo,
   transactions {
     id
   }
