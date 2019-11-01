@@ -4,7 +4,6 @@ import Link from 'next/link';
 import React from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
-import { SearchFeatureProvider } from '../../features/search/components/SearchFeatureProvider';
 import { SearchBar } from '../../features/search/containers/SearchBar';
 import styles from './Header.scss';
 
@@ -72,9 +71,7 @@ export const Header = observer((props: IHeaderProps) => {
         </div>
         {brandType === BrandType.SHRINKED && (
           <div className={styles.searchContainer}>
-            <SearchFeatureProvider>
-              <SearchBar brandType={BrandType.SHRINKED} />
-            </SearchFeatureProvider>
+            <SearchBar brandType={BrandType.SHRINKED} />
           </div>
         )}
       </div>
