@@ -59,7 +59,7 @@ export const Header = observer((props: IHeaderProps) => {
             <Link href="/">
               <a className={indexClassName}>Epochs & Blocks</a>
             </Link>
-            <div className={styles.tabCircle} />
+            {stakePoolLink && <div className={styles.tabCircle} />}
             {stakePoolLink}
             <div className={styles.tabCircle} />
             <div className={styles.tabRightLine} />
