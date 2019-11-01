@@ -4,6 +4,8 @@ import Link from 'next/link';
 import React from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
+import { SearchFeatureProvider } from '../../features/search/components/SearchFeatureProvider';
+import { SearchBar } from '../../features/search/containers/SearchBar';
 import styles from './Header.scss';
 
 const CardanoLogo = require('../../public/assets/images/header/cardano-logo.svg');
@@ -68,6 +70,13 @@ export const Header = observer((props: IHeaderProps) => {
             </div>
           </div>
         </div>
+        {brandType === BrandType.SHRINKED && (
+          <div className={styles.searchContainer}>
+            <SearchFeatureProvider>
+              <SearchBar brandType={BrandType.SHRINKED} />
+            </SearchFeatureProvider>
+          </div>
+        )}
       </div>
     </header>
   );
