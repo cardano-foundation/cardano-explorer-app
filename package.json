@@ -25,7 +25,9 @@
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook -o build/storybook",
     "start-dependencies": "docker-compose up",
-    "stop-dependencies": "docker-compose down"
+    "stop-dependencies": "docker-compose down",
+    "deploy:byron:staging": "node deploy/byron_staging",
+    "deploy:byron:incentivized-testnet": "node deploy/byron_incentivized_testnet"
   },
   "husky": {
     "hooks": {
@@ -101,6 +103,7 @@
     "@zeit/next-css": "1.0.2-canary.2",
     "@zeit/next-sass": "1.0.1",
     "autoprefixer": "9.7.0",
+    "aws-sdk": "^2.560.0",
     "babel-loader": "8.0.6",
     "babel-plugin-inline-react-svg": "1.1.0",
     "babel-plugin-lodash": "3.3.4",
@@ -116,12 +119,14 @@
     "jest": "24.9.0",
     "jest-transform-graphql": "2.1.0",
     "lodash-webpack-plugin": "0.11.5",
+    "mime-types": "^2.1.24",
     "next-compose-plugins": "2.1.1",
     "node-sass": "4.10.0",
     "nodemon": "1.19.0",
     "prettier": "1.18.2",
     "pretty-quick": "1.11.1",
     "promise-exponential-retry": "^1.0.3",
+    "recursive-readdir": "^2.2.2",
     "sanitize.css": "8.0.0",
     "sass-resources-loader": "2.0.1",
     "serve": "11.1.0",
