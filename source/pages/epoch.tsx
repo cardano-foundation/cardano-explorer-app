@@ -4,7 +4,7 @@ import { BrandType } from '../constants';
 import { environment } from '../environment';
 import { EpochsSearchResult } from '../features/search/components/EpochsSearchResult';
 import { SearchFeatureProvider } from '../features/search/components/SearchFeatureProvider';
-import { SearchBar } from '../features/search/containers/SearchBar';
+import Container from '../widgets/container/Container';
 import { Footer, Header, Layout } from '../widgets/layout';
 import styles from './epoch.scss';
 
@@ -15,14 +15,11 @@ if (environment.IS_CLIENT) {
       <Layout>
         <div className={styles.epochLayout}>
           <Header brandType={BrandType.SHRINKED} />
-          <div className={styles.searchContainer}>
+          <Container>
             <SearchFeatureProvider>
-              <SearchBar brandType={BrandType.SHRINKED} />
+              <EpochsSearchResult />
             </SearchFeatureProvider>
-          </div>
-          <SearchFeatureProvider>
-            <EpochsSearchResult />
-          </SearchFeatureProvider>
+          </Container>
           <Footer />
         </div>
       </Layout>

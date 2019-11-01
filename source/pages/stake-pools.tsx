@@ -3,8 +3,6 @@ import NoSSR from 'react-no-ssr';
 import { BrandType } from '../constants';
 import { environment } from '../environment';
 import EpochSummary from '../features/epochs/ui/EpochSummary';
-import { SearchFeatureProvider } from '../features/search/components/SearchFeatureProvider';
-import { SearchBar } from '../features/search/containers/SearchBar';
 import StakePoolsContainer from '../features/stake-pools/containers/StakePoolsContainer';
 import UnmoderatedDataConsentedContainer from '../features/stake-pools/containers/UnmoderatedDataConsentedContainer';
 import Container from '../widgets/container/Container';
@@ -16,13 +14,8 @@ if (environment.IS_CLIENT) {
     <NoSSR>
       <Layout>
         <UnmoderatedDataConsentedContainer />
+        <Header brandType={BrandType.SHRINKED} />
         <Container hasTopMargin>
-          <Header />
-          <div>
-            <SearchFeatureProvider>
-              <SearchBar brandType={BrandType.ENLARGED} />
-            </SearchFeatureProvider>
-          </div>
           <EpochSummary
             epoch={{
               blocks: [],

@@ -1,5 +1,6 @@
 import React from 'react';
 import NoSSR from 'react-no-ssr';
+import { BrandType } from '../constants';
 import { environment } from '../environment';
 import { BlocksSearchResult } from '../features/search/components/BlocksSearchResult';
 import { SearchFeatureProvider } from '../features/search/components/SearchFeatureProvider';
@@ -11,7 +12,7 @@ if (environment.IS_CLIENT) {
   BlockPage = () => (
     <NoSSR>
       <Layout>
-        <Header />
+        <Header brandType={BrandType.SHRINKED} />
         <Container>
           <SearchFeatureProvider>
             <BlocksSearchResult />
