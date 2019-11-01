@@ -1,6 +1,6 @@
 import { Observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from '../../../widgets/container/Container';
 import BlockList from '../../blocks/ui/BlockList';
 import EpochSummary from '../../epochs/ui/EpochSummary';
@@ -44,11 +44,15 @@ const stakeDistribution = [
 export const EpochsSearchResult = () => {
   const { actions, store } = useSearchFeature();
   const router = useRouter();
-  const { query } = router;
-  if (query && query.number) {
-    const num = parseInt(query.number as string, 10);
-    actions.searchForEpochByNumber.trigger({ number: num });
-  }
+
+  // Trigger search after component did render
+  useEffect(() => {
+    const { query } = router;
+    if (query && query.number) {
+      const num = parseInt(query.number as string, 10);
+      actions.searchForEpochByNumber.trigger({ number: num });
+    }
+  });
   return (
     <Observer>
       {() => {
