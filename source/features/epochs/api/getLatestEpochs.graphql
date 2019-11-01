@@ -1,4 +1,4 @@
-#import "./EpochDetails.graphql"
+#import "./EpochOverview.graphql"
 
 query getLatestEpochs(
   $limit: Int,
@@ -14,6 +14,6 @@ query getLatestEpochs(
       }
     }
   ) {
-    ...EpochDetails
+    ...EpochOverview
   }
 }

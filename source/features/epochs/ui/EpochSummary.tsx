@@ -4,35 +4,28 @@ import CircularProgress, {
   CircularProgressSize,
 } from '../../../widgets/circular-progress/CircularProgress';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import { IEpochDetails } from '../types';
 import styles from './EpochSummary.scss';
 
 export interface IEpochSummaryProps {
-  blocksCount: number;
-  endedAt?: Date;
-  number: number;
-  output: number;
-  percentage?: number;
-  slotsCount: number;
-  startedAt: Date;
-  status: string;
   title: string;
-  transactionsCount: number;
+  epoch: IEpochDetails;
 }
 
-const EpochSummary = (props: IEpochSummaryProps) => (
+const EpochSummary = ({ title, epoch }: IEpochSummaryProps) => (
   <div className={styles.epochSummaryContainer}>
     <div className={styles.header}>
-      <DividerWithTitle title={props.title} />
+      <DividerWithTitle title={title} />
     </div>
     <div className={styles.content}>
       <CircularProgress
-        percentage={props.percentage}
+        percentage={epoch.percentage}
         size={CircularProgressSize.BIG}
         showText
         text={
           <div className={styles.progressTextContent}>
             <div className={styles.progressTextLabel}>Epoch</div>
-            <div className={styles.progressTextValue}>{props.number}</div>
+            <div className={styles.progressTextValue}>{epoch.number}</div>
           </div>
         }
       />
@@ -40,30 +33,30 @@ const EpochSummary = (props: IEpochSummaryProps) => (
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}># of blocks</div>
           <div className={styles.infoValue}>
-            {props.blocksCount} / {props.slotsCount}
+            {epoch.blocksCount} / {epoch.slotsCount}
           </div>
         </div>
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Started at</div>
           <div className={styles.infoValue}>
-            {moment(props.startedAt).format('YYYY/MM/DD HH:mm:ss')}
+            {moment(epoch.startedAt).format('YYYY/MM/DD HH:mm:ss')}
           </div>
         </div>
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Ended at</div>
           <div className={styles.infoValue}>
-            {props.endedAt
-              ? moment(props.endedAt).format('YYYY/MM/DD HH:mm:ss')
-              : props.status}
+            {epoch.endedAt
+              ? moment(epoch.endedAt).format('YYYY/MM/DD HH:mm:ss')
+              : epoch.status}
           </div>
         </div>
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Transactions</div>
-          <div className={styles.infoValue}>{props.transactionsCount}</div>
+          <div className={styles.infoValue}>{epoch.transactionsCount}</div>
         </div>
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Total output</div>
-          <div className={styles.infoValue}>{props.output} ADA</div>
+          <div className={styles.infoValue}>{epoch.output} ADA</div>
         </div>
       </div>
     </div>

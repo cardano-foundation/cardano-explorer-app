@@ -59,11 +59,6 @@
         }
       }
     }
-
-    .searchContainer {
-      background-color: $search-area-bg;
-      padding: 30px 50px 40px;
-    }
   }
 
   &.shrinkedHeaderContainer {
@@ -251,6 +246,7 @@
           }
         }
       }
+
       .searchContainer {
         margin-left: -16px;
         padding: 20px 16px;

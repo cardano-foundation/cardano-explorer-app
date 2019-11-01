@@ -31,4 +31,5 @@ Changelog
 
 ### Chores
 
+- Added missing search component states ([PR 52](https://github.com/input-output-hk/cardano-explorer-app/pull/52))
 - Organized the CSS structure, global rules, and global variables ([PR 14](https://github.com/input-output-hk/cardano-explorer-app/pull/14), [PR 18](https://github.com/input-output-hk/cardano-explorer-app/pull/18))

@@ -7,7 +7,8 @@ fragment BlockDetails on Block {
     number
   },
   previousBlock {
-    id
+    id,
+    number
   }
   slot {
     number

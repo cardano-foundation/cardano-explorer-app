@@ -30,7 +30,7 @@ const NoSearchResult = () => (
             e70e8bb1b7a1a9eddb52e1f7923600611189ea70f69de15588f4947925ee5831
           </div>
           <div className={styles.errorDescriptionContainer}>
-            <div className={styles.errorDescriptionIcon}></div>
+            <div className={styles.errorDescriptionIcon} />
             <p className={styles.errorDescriptionText}>
               Please enter a valid epoch id, block id, transaction id, address
               or epoch number and retry your search.
@@ -48,7 +48,7 @@ const NoSearchResult = () => (
         <div className={styles.errorRowDescription}>
           <div className={styles.errorValue}>e70e8bb1</div>
           <div className={styles.errorDescriptionContainer}>
-            <div className={styles.errorDescriptionIcon}></div>
+            <div className={styles.errorDescriptionIcon} />
             <p className={styles.errorDescriptionText}>
               You may have entered partial Id or partial address so the search
               is not able to match only one result. Please enter a valid epoch
