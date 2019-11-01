@@ -39,7 +39,7 @@ if (environment.IS_CLIENT) {
           </div>
         )}
         <Header brandType={BrandType.ENLARGED} />
-        <div className={styles.searchContainer}>
+        <div>
           <SearchFeatureProvider>
             <SearchBar brandType={BrandType.ENLARGED} />
           </SearchFeatureProvider>

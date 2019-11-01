@@ -32,9 +32,7 @@ if (environment.IS_CLIENT) {
           />
         </Container>
         <StakePoolsContainer />
-        <Container>
-          <Footer />
-        </Container>
+        <Footer />
       </Layout>
     </NoSSR>
   );
