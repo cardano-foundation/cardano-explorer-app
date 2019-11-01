@@ -1,9 +1,10 @@
-import { noop } from 'lodash';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../constants';
 import { environment } from '../environment';
 import AddressSummary from '../features/address/components/AddressSummary';
+import { SearchFeatureProvider } from '../features/search/components/SearchFeatureProvider';
+import { SearchBar } from '../features/search/containers/SearchBar';
 import TransactionList from '../features/transactions/components/TransactionList';
 import Container from '../widgets/container/Container';
 import { Footer, Header, Layout } from '../widgets/layout';
@@ -68,7 +69,12 @@ if (environment.IS_CLIENT) {
   AddressPage = () => (
     <NoSSR>
       <Layout>
-        <Header withSearch brandType={BrandType.SHRINKED} />
+        <Header brandType={BrandType.SHRINKED} />
+        <div className={styles.searchContainer}>
+          <SearchFeatureProvider>
+            <SearchBar brandType={BrandType.SHRINKED} />
+          </SearchFeatureProvider>
+        </div>
         <Container>
           <div className={styles.addressSummary}>
             <AddressSummary {...addressSummary} />

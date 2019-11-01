@@ -60,7 +60,4 @@ storiesOf('Search', module)
       onSearch={noop}
     />
   ))
-  .add('Search with suggested values', () => <Search onSearch={noop} />)
-  .add('Search with epoch and block', () => <Search onSearch={noop} />)
-  .add('Search with epoch', () => <Search onSearch={noop} />)
   .add('No Search Result', () => <NoSearchResult />);

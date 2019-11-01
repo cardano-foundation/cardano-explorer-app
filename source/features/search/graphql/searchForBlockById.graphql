@@ -1,5 +1,3 @@
-#import "../../blocks/api/BlockDetails.graphql"
-
 query searchForBlockById(
   $id: Hash32HexString!
 ) {

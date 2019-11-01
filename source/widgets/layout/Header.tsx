@@ -4,8 +4,6 @@ import Link from 'next/link';
 import React from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
-import { SearchFeatureProvider } from '../../features/search/components/SearchFeatureProvider';
-import { SearchBar } from '../../features/search/containers/SearchBar';
 import styles from './Header.scss';
 
 const CardanoLogo = require('../../public/assets/images/header/cardano-logo.svg');
@@ -13,11 +11,10 @@ const CardanoLogo = require('../../public/assets/images/header/cardano-logo.svg'
 export interface IHeaderProps {
   brandType?: BrandType;
   router?: object;
-  withSearch?: boolean;
 }
 
 export const Header = observer((props: IHeaderProps) => {
-  const { brandType, withSearch } = props;
+  const { brandType } = props;
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
       ? styles.enlargedHeaderContainer
@@ -71,13 +68,6 @@ export const Header = observer((props: IHeaderProps) => {
             </div>
           </div>
         </div>
-        {withSearch && (
-          <div className={styles.searchContainer}>
-            <SearchFeatureProvider>
-              <SearchBar brandType={brandType} />
-            </SearchFeatureProvider>
-          </div>
-        )}
       </div>
     </header>
   );
@@ -85,5 +75,4 @@ export const Header = observer((props: IHeaderProps) => {
 
 Header.defaultProps = {
   brandType: BrandType.ENLARGED,
-  withSearch: true,
 };
