@@ -5,7 +5,7 @@ Changelog
 
 ### Features
 
-- Included the mainnet theme variables and made it the default network ([PR 53](https://github.com/input-output-hk/cardano-explorer-app/pull/53))
+- Included the mainnet theme variables and made it the default network ([PR 53](https://github.com/input-output-hk/cardano-explorer-app/pull/53), [PR 54](https://github.com/input-output-hk/cardano-explorer-app/pull/54))
 - Implemented table component ([PR 43](https://github.com/input-output-hk/cardano-explorer-app/pull/43))
 - Implemented stake distribution table on the current epoch page ([PR 37](https://github.com/input-output-hk/cardano-explorer-app/pull/37))
 - Implemented block creation table to for previous epoch page ([PR 36](https://github.com/input-output-hk/cardano-explorer-app/pull/36))

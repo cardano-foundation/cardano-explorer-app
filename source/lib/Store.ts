@@ -2,17 +2,20 @@ import ActionBinding from './ActionBinding';
 import Reaction from './mobx/Reaction';
 
 export class Store {
+  public isRunning: boolean = false;
   private actionBindings: ActionBinding[] = [];
   private reactions: Reaction[] = [];
 
   public start() {
     this.startActions();
     this.startReactions();
+    this.isRunning = true;
   }
 
   public stop() {
     this.stopActions();
     this.stopReactions();
+    this.isRunning = false;
   }
 
   // ACTIONS
