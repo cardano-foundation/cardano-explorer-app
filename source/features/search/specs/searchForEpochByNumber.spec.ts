@@ -26,10 +26,10 @@ describe('Searching for an epoch', () => {
         const { epochSearchResult } = search.store;
         expect(epochSearchResult && epochSearchResult.blocksCount).toBe(9485);
         expect(epochSearchResult && epochSearchResult.output).toBe(
-          17282903106017760
+          '17282903106017760'
         );
         expect(epochSearchResult && epochSearchResult.transactionsCount).toBe(
-          5344
+          '5344'
         );
       });
     });
