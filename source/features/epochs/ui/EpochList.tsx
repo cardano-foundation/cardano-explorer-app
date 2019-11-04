@@ -11,12 +11,12 @@ export interface IEpochListRowProps {
   blocksCount: number;
   endedAt?: Date;
   number: number;
-  output: number;
+  output: string;
   percentage?: number;
   slotsCount: number;
   startedAt: Date;
   status: string;
-  transactionsCount: number;
+  transactionsCount: string;
 }
 
 export interface IEpochListProps {

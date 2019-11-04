@@ -13,21 +13,29 @@ export const blockInfoTransformer = (b: BlockInfoFragment): IBlockInfo => ({
 
 export const blockOverviewTransformer = (
   b: BlockOverviewFragment
-): IBlockOverview => ({
-  ...blockInfoTransformer(b),
-  createdAt: 1568366883000, // TODO: missing API data
-  createdBy: 'af2800c', // TODO: missing API data
-  epoch: b.epoch ? b.epoch.number : 0,
-  output: 11189.647356, // TODO: missing API data
-  transactions: b.transactions ? b.transactions.length : 0,
-});
+): IBlockOverview => {
+  const transactions =
+    b.transactions_aggregate &&
+    b.transactions_aggregate.aggregate &&
+    b.transactions_aggregate.aggregate.count
+      ? b.transactions_aggregate.aggregate.count
+      : 0;
+  return {
+    ...blockInfoTransformer(b),
+    createdAt: b.createdAt,
+    createdBy: 'af2800c', // TODO: missing API data
+    epoch: b.epoch ? b.epoch.number : 0,
+    output: 11189.647356, // TODO: missing API data
+    transactions,
+  };
+};
 
 export const blockDetailsTransformer = (
   b: BlockDetailsFragment
 ): IBlockDetailed => ({
   ...blockOverviewTransformer(b),
-  confirmations: 1, // TODO: not sure how confirmations are calculated
+  confirmations: 1, // TODO: Calculate confirmations using Cardano.blockHeight
   merkleRoot: b.merkelRootHash ? b.merkelRootHash : 0,
   nextBlock: '', // TODO: missing API data
-  prevBlock: b.previousBlock ? b.previousBlock.id : 0,
+  prevBlock: b.previousBlock ? b.previousBlock.id : '',
 });

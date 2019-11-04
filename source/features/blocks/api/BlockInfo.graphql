@@ -1,5 +1,5 @@
 fragment BlockInfo on Block {
-  id,
-  number,
+  id
+  number
   size
 }

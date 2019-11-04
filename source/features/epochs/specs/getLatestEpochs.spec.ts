@@ -1,8 +1,6 @@
 import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../../../lib/graphql/apolloClient';
-import { epochOverviewTransformer } from '../api/transformers';
 import { createEpochsFeature, IEpochsFeature } from '../index';
-import { latestEpochsExample } from './helpers/latestEpochsExample';
 
 describe('Fetching the latest epochs', () => {
   let epochs: IEpochsFeature;
@@ -23,11 +21,8 @@ describe('Fetching the latest epochs', () => {
 
     // 3. Access the observable search result provided by the store
     await waitForExpect(() => {
-      expect(epochs.store.latestEpochs).toEqual(
-        expect.arrayContaining(
-          latestEpochsExample.map(epochOverviewTransformer)
-        )
-      );
+      expect(epochs.store.latestEpochs.length).toBe(2);
+      expect(epochs.store.latestEpochs[0].blocksCount).toBe(9485);
     });
   });
 });

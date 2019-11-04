@@ -1,6 +1,5 @@
 import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../../../lib/graphql/apolloClient';
-import { blockDetailsTransformer } from '../../blocks/api/transformers';
 import { createSearchFeature, ISearchFeature } from '../index';
 import { exampleBlockData } from './helpers/exampleBlockData';
 
@@ -25,9 +24,18 @@ describe('Searching for a block', () => {
 
       // 3. Access the observable search result provided by the store
       await waitForExpect(() => {
-        expect(search.store.blockSearchResult).toMatchObject(
-          blockDetailsTransformer(exampleBlockData)
-        );
+        expect(
+          search &&
+            search.store &&
+            search.store.blockSearchResult &&
+            search.store.blockSearchResult.createdAt
+        ).toBe('2017-10-01T02:26:51');
+        expect(
+          search &&
+            search.store &&
+            search.store.blockSearchResult &&
+            search.store.blockSearchResult.transactions
+        ).toBe(0);
       });
     });
   });

@@ -1,13 +1,12 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { epochDetailsTransformer } from '../source/features/epochs/api/transformers';
 import { latestEpochsExample } from '../source/features/epochs/specs/helpers/latestEpochsExample';
 import EpochList from '../source/features/epochs/ui/EpochList';
 import EpochSummary from '../source/features/epochs/ui/EpochSummary';
 import StakeDistribution from '../source/features/epochs/ui/StakeDistribution';
 import { PaddingDecorator } from './support/PaddingDecorator';
 
-const epochs = latestEpochsExample.map(epochDetailsTransformer);
+const epochs = latestEpochsExample;
 
 Object.assign(epochs[0], {
   percentage: 40,
