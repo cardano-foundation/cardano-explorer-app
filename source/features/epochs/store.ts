@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { isNotNull } from '../../lib/types';
@@ -22,6 +22,10 @@ export class EpochsStore extends Store {
         [this.epochsActions.fetchLatestEpochs, this.fetchLatestEpochs],
       ])
     );
+  }
+
+  @computed get isSearching() {
+    return this.epochsApi.getLatestEpochsQuery.isExecuting;
   }
 
   @action private fetchLatestEpochs = async () => {

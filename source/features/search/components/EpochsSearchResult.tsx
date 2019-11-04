@@ -2,6 +2,7 @@ import { Observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import Container from '../../../widgets/container/Container';
+import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockList from '../../blocks/ui/BlockList';
 import EpochSummary from '../../epochs/ui/EpochSummary';
 import StakeDistribution from '../../epochs/ui/StakeDistribution';
@@ -58,7 +59,7 @@ export const EpochsSearchResult = () => {
       {() => {
         const { epochSearchResult } = store;
         if (store.isSearching) {
-          return <div>Is searching</div>;
+          return <LoadingSpinner />;
         } else if (epochSearchResult) {
           return (
             <Container>

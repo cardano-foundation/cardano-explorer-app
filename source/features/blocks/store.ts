@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import { BlockOverviewFragment } from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
@@ -23,6 +23,10 @@ export class BlocksStore extends Store {
         [this.blocksActions.fetchLatestBlocks, this.fetchLatestBlocks],
       ])
     );
+  }
+
+  @computed get isSearching() {
+    return this.blocksApi.getLatestBlocksQuery.isExecuting;
   }
 
   @action private fetchLatestBlocks = async () => {

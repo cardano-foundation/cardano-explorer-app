@@ -1,6 +1,7 @@
 import { Observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
+import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockSummary from '../../blocks/ui/BlockSummary';
 import { useSearchFeature } from '../index';
 
@@ -24,7 +25,7 @@ export const BlocksSearchResult = () => {
       {() => {
         const { blockSearchResult } = store;
         return store.isSearching ? (
-          <div>Is searching</div>
+          <LoadingSpinner />
         ) : (
           <BlockSummary title="Block Summary" {...blockSearchResult} />
         );
