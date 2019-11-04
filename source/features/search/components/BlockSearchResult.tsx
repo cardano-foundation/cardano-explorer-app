@@ -5,7 +5,7 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockSummary from '../../blocks/ui/BlockSummary';
 import { useSearchFeature } from '../index';
 
-export const BlocksSearchResult = () => {
+export const BlockSearchResult = () => {
   const { actions, store } = useSearchFeature();
   const router = useRouter();
 

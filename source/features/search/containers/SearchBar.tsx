@@ -1,37 +1,26 @@
-import { introspectAddress } from 'cardano-js/js/Address';
-import { useRouter } from 'next/router';
+import { isInteger } from 'lodash';
 import React from 'react';
 import { BrandType } from '../../../constants';
 import Search from '../components/Search';
+import { useSearchFeature } from '../index';
 
 export interface ISearchBarProps {
   brandType?: BrandType;
 }
 
 export const SearchBar = (props: ISearchBarProps) => {
-  const router = useRouter();
-
-  const openSearchedPage = async (id: string) => {
-    let url = '';
-    try {
-      const { network } = introspectAddress(id);
-      if (network) {
-        url = 'transaction?id';
-      }
-    } catch (error) {
-      if (error.name !== 'InvalidAddress') {
-        if (id && id.length > 15) {
-          url = 'block?id';
-        } else if (id && id.length < 15) {
-          url = 'block?number';
-        } else if (id) {
-          url = 'epoch?number';
-        } else if (id) {
-          url = 'transaction?id';
-        }
-        router.push('/' + (url ? url + '=' + id : 'no-search-results'));
-      }
+  const search = useSearchFeature();
+  const openSearchedPage = (query: string) => {
+    if (query && query.length > 15) {
+      search.actions.idSearchRequested.trigger({ id: query });
+    } else if (isInteger(parseInt(query, 10))) {
+      search.actions.numberSearchRequested.trigger({
+        number: parseInt(query, 10),
+      });
+    } else {
+      search.actions.unknownSearchRequested.trigger({ query });
     }
+    // router.push('/' + (url ? url + '=' + id : 'no-search-results'));
   };
 
   return (

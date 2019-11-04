@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApolloClient } from 'react-apollo-hooks';
 import { useFeature } from '../../../lib/react/hooks';
+import { useNavigationFeature } from '../../navigation';
 import { createSearchFeature, ISearchFeature, searchContext } from '../index';
 
 interface IProps {
@@ -8,9 +9,10 @@ interface IProps {
 }
 
 export const SearchFeatureProvider = (props: IProps) => {
-  const apolloClient = useApolloClient();
+  const apollo = useApolloClient();
+  const navigation = useNavigationFeature();
   const [searchFeature] = useState<ISearchFeature>(
-    createSearchFeature(apolloClient)
+    createSearchFeature(navigation.actions, apollo)
   );
   useFeature(searchFeature);
   return (

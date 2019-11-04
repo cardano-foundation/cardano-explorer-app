@@ -1,15 +1,14 @@
 import { action, computed, observable } from 'mobx';
-import {
-  BlockOverviewFragment,
-  EpochDetailsFragment,
-  TransactionDetailsFragment,
-} from '../../../generated/typings/graphql-schema';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
+import { isNotNull } from '../../lib/types';
 import { blockDetailsTransformer } from '../blocks/api/transformers';
 import { IBlockDetailed } from '../blocks/types';
 import { epochDetailsTransformer } from '../epochs/api/transformers';
 import { IEpochDetails } from '../epochs/types';
+import { NavigationActions } from '../navigation';
+import { transactionDetailsTransformer } from '../transactions/api/transformers';
+import { ITransactionDetails } from '../transactions/types';
 import { SearchApi } from './api';
 import { SearchActions } from './index';
 
@@ -17,18 +16,31 @@ export class SearchStore extends Store {
   @observable public blockSearchResult: IBlockDetailed | null = null;
   @observable public epochSearchResult: IEpochDetails | null = null;
   @observable
-  public transactionSearchResult: TransactionDetailsFragment | null = null;
+  public transactionSearchResult: ITransactionDetails | null = null;
+
+  @observable private isRunningBackgroundSearch = false;
 
   private readonly searchApi: SearchApi;
   private readonly searchActions: SearchActions;
+  private readonly navigation: NavigationActions;
 
-  constructor(searchActions: SearchActions, searchApi: SearchApi) {
+  constructor(
+    searchActions: SearchActions,
+    searchApi: SearchApi,
+    navigation: NavigationActions
+  ) {
     super();
     this.searchApi = searchApi;
     this.searchActions = searchActions;
+    this.navigation = navigation;
 
     this.registerActions(
       createActionBindings([
+        [this.searchActions.idSearchRequested, this.onIdSearchRequested],
+        [
+          this.searchActions.numberSearchRequested,
+          this.onNumberSearchRequested,
+        ],
         [this.searchActions.searchForBlockById, this.searchForBlockById],
         [
           this.searchActions.searchForBlockByNumber,
@@ -48,22 +60,105 @@ export class SearchStore extends Store {
 
   @computed get isSearching() {
     return (
-      this.searchApi.searchForBlockByIdQuery.isExecuting ||
-      this.searchApi.searchForBlockByNumberQuery.isExecuting ||
-      this.searchApi.searchForEpochByNumberQuery.isExecuting ||
-      this.searchApi.searchForTransactionByIdQuery.isExecuting
+      !this.isRunningBackgroundSearch &&
+      (this.searchApi.searchForBlockByIdQuery.isExecuting ||
+        this.searchApi.searchForBlockByNumberQuery.isExecuting ||
+        this.searchApi.searchForEpochByNumberQuery.isExecuting ||
+        this.searchApi.searchForTransactionByIdQuery.isExecuting)
     );
   }
 
   // ========= PRIVATE ACTION HANDLERS ==========
 
+  /**
+   * Executes queries for block and transaction by id to see
+   * what the user actually wanted to do.
+   *
+   * Redirects to the corresponding search result or "no result" page.
+   *
+   * @param id
+   */
+  @action private onIdSearchRequested = async ({ id }: { id: string }) => {
+    try {
+      this.isRunningBackgroundSearch = true;
+      const blocksResult = await this.searchApi.searchForBlockByIdQuery.execute(
+        {
+          id,
+        }
+      );
+      const txResult = await this.searchApi.searchForTransactionByIdQuery.execute(
+        { id }
+      );
+      let path = '';
+      if (blocksResult && blocksResult.data.blocks.length > 0) {
+        path = `/block?id=${id}`;
+      } else if (txResult && txResult.data.transactions.length > 0) {
+        path = `/transaction?id=${id}`;
+      } else {
+        path = '/no-search-results';
+      }
+      if (path !== '') {
+        this.navigation.redirectTo.trigger({ path });
+      }
+    } finally {
+      this.isRunningBackgroundSearch = false;
+    }
+  };
+
+  /**
+   * Executes queries for block and epoch by number to see
+   * what the user actually wanted to find. If there are results
+   * for both types we need to ask the user what he wants.
+   *
+   * TODO: Ask user what he wants when block and epoch have been found
+   *
+   * Redirects to the corresponding search result or "no result" page.
+   *
+   * @param params
+   */
+  @action private onNumberSearchRequested = async (params: {
+    number: number;
+  }) => {
+    try {
+      this.isRunningBackgroundSearch = true;
+      const blocksResult = await this.searchApi.searchForBlockByNumberQuery.execute(
+        params
+      );
+      const epochsResult = await this.searchApi.searchForEpochByNumberQuery.execute(
+        params
+      );
+      let path = '';
+      const hasFoundBlock = blocksResult && blocksResult.data.blocks.length > 0;
+      const hasFoundEpoch = epochsResult && epochsResult.data.epochs.length > 0;
+      if (hasFoundBlock && !hasFoundEpoch) {
+        path = `/block?number=${params.number}`;
+      } else if (hasFoundEpoch && !hasFoundBlock) {
+        path = `/epoch?number=${params.number}`;
+      } else if (hasFoundEpoch && hasFoundBlock) {
+        // TODO: Handle this case in the UI (e.g: ask user what he wants)
+        // tslint:disable-next-line:no-console
+        console.error(
+          `Found both block and epoch with number ${params.number}`
+        );
+        // For now we just default to epoch:
+        path = `/epoch?number=${params.number}`;
+      } else {
+        path = '/no-search-results';
+      }
+      if (path !== '') {
+        this.navigation.redirectTo.trigger({ path });
+      }
+    } finally {
+      this.isRunningBackgroundSearch = false;
+    }
+  };
+
   @action private searchForBlockById = async ({ id }: { id: string }) => {
     this.blockSearchResult = null;
     const result = await this.searchApi.searchForBlockByIdQuery.execute({ id });
     if (result) {
-      const isBlock = (b: any): b is BlockOverviewFragment => b != null;
       const blockData = result.data.blocks[0];
-      if (isBlock(blockData)) {
+      if (isNotNull(blockData)) {
         this.blockSearchResult = blockDetailsTransformer(blockData);
       }
     }
@@ -77,9 +172,8 @@ export class SearchStore extends Store {
       params
     );
     if (result) {
-      const isBlock = (b: any): b is BlockOverviewFragment => b != null;
       const blockData = result.data.blocks[0];
-      if (isBlock(blockData)) {
+      if (isNotNull(blockData)) {
         this.blockSearchResult = blockDetailsTransformer(blockData);
       }
     }
@@ -93,9 +187,8 @@ export class SearchStore extends Store {
       params
     );
     if (result) {
-      const isEpoch = (b: any): b is EpochDetailsFragment => b != null;
       const epochData = result.data.epochs[0];
-      if (isEpoch(epochData)) {
+      if (isNotNull(epochData)) {
         this.epochSearchResult = epochDetailsTransformer(epochData);
       }
     }
@@ -107,7 +200,12 @@ export class SearchStore extends Store {
       id,
     });
     if (result) {
-      this.transactionSearchResult = result.data.transactions[0];
+      const txSearchResult = result.data.transactions[0];
+      if (isNotNull(txSearchResult)) {
+        this.transactionSearchResult = transactionDetailsTransformer(
+          txSearchResult
+        );
+      }
     }
   };
 }

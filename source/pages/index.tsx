@@ -40,9 +40,7 @@ if (environment.IS_CLIENT) {
         )}
         <Header brandType={BrandType.ENLARGED} />
         <div>
-          <SearchFeatureProvider>
-            <SearchBar brandType={BrandType.ENLARGED} />
-          </SearchFeatureProvider>
+          <SearchBar brandType={BrandType.ENLARGED} />
         </div>
         <div className={styles.epochList}>
           <EpochsFeatureProvider>

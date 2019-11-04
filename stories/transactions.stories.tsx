@@ -68,7 +68,10 @@ storiesOf('Transactions', module)
     <TransactionInfo title="Transaction" {...transactions[0]} />
   ))
   .add('Transaction Summary', () => (
-    <TransactionSummary title="Transaction Summary" {...transactionSummary} />
+    <TransactionSummary
+      title="Transaction Summary"
+      transaction={transactionSummary}
+    />
   ))
   .add('Transaction List', () => (
     <TransactionList title="Transactions" items={transactions} />

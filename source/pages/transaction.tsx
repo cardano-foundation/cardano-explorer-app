@@ -2,6 +2,7 @@ import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../constants';
 import { environment } from '../environment';
+import { TransactionSearchResult } from '../features/search/components/TransactionSearchResult';
 import { Footer, Header, Layout } from '../widgets/layout';
 
 let TransactionPage = () => <NoSSR />;
@@ -10,6 +11,7 @@ if (environment.IS_CLIENT) {
     <NoSSR>
       <Layout>
         <Header brandType={BrandType.SHRINKED} />
+        <TransactionSearchResult />
         <Footer />
       </Layout>
     </NoSSR>
