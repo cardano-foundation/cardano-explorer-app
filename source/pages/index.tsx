@@ -7,7 +7,6 @@ import { BlocksFeatureProvider } from '../features/blocks/ui/BlocksFeatureProvid
 import { LatestBlocks } from '../features/blocks/ui/LatestBlocks';
 import { EpochsFeatureProvider } from '../features/epochs/ui/EpochsFeatureProvider';
 import { LatestEpochs } from '../features/epochs/ui/LatestEpochs';
-import { SearchFeatureProvider } from '../features/search/components/SearchFeatureProvider';
 import { SearchBar } from '../features/search/containers/SearchBar';
 import { isMobileScreen } from '../helpers';
 import { Footer, Header, Layout } from '../widgets/layout';
