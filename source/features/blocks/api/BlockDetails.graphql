@@ -1,19 +1,20 @@
 fragment BlockDetails on Block {
-  id,
-  merkelRootHash,
-  number,
-  size,
+  createdAt
+  id
+  merkelRootHash
+  number
+  size
   epoch {
     number
   },
   previousBlock {
-    id,
+    id
     number
   }
-  slot {
-    number
-  },
-  transactions {
-    id
+  slotNo
+  transactions_aggregate {
+    aggregate {
+      count
+    }
   }
 }

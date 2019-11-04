@@ -1,8 +1,6 @@
 import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../../../lib/graphql/apolloClient';
-import { blockOverviewTransformer } from '../api/transformers';
 import { createBlocksFeature, IBlocksFeature } from '../index';
-import { latestBlocksExample } from './helpers/latestBlocksExample';
 
 describe('Fetching the latest blocks', () => {
   let blocks: IBlocksFeature;
@@ -23,10 +21,9 @@ describe('Fetching the latest blocks', () => {
 
     // 3. Access the observable search result provided by the store
     await waitForExpect(() => {
-      expect(blocks.store.latestBlocks).toEqual(
-        expect.arrayContaining(
-          latestBlocksExample.map(blockOverviewTransformer)
-        )
+      expect(blocks.store.latestBlocks.length).toBe(10);
+      expect(blocks.store.latestBlocks[0].id).toBe(
+        '84e9de7924aba73f58b81e142f4bce7f1d00cf4630f94f631e6ca3594b2d1634'
       );
     });
   });

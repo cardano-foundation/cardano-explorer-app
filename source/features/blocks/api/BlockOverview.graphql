@@ -1,14 +1,15 @@
 fragment BlockOverview on Block {
-  id,
-  number,
-  size,
+  createdAt
+  id
+  number
+  size
   epoch {
     number
   },
-  slot {
-    number
-  }
-  transactions {
-    id
+  slotNo
+  transactions_aggregate {
+    aggregate {
+      count
+    }
   }
 }

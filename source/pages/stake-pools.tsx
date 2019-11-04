@@ -22,11 +22,11 @@ if (environment.IS_CLIENT) {
               blocksCount: 21073,
               endedAt: new Date(1569144483000),
               number: 135,
-              output: 8397621.461829,
+              output: '8397621',
               slotsCount: 21600,
               startedAt: new Date(1568366883000),
               status: 'In progress...',
-              transactionsCount: 12,
+              transactionsCount: '12',
             }}
             title="Epoch"
           />

@@ -4,12 +4,12 @@ export interface IEpochOverview {
   blocksCount: number;
   number: number;
   endedAt: Date;
-  output: number;
+  output: string;
   percentage?: number;
   slotsCount: number;
   startedAt: Date;
   status: string;
-  transactionsCount: number;
+  transactionsCount: string;
 }
 
 export interface IEpochDetails extends IEpochOverview {

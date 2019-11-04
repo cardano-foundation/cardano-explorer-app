@@ -1,5 +1,10 @@
 fragment EpochOverview on Epoch {
-  endedAt
+  blocks_aggregate {
+    aggregate {
+      count
+    }
+  }
+  lastBlockTime
   number
   startedAt
   output
