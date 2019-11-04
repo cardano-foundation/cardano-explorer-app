@@ -4,20 +4,18 @@ import Link from 'next/link';
 import React from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
-import Search, { ISearchProps } from '../../features/search/components/Search';
+import { SearchBar } from '../../features/search/containers/SearchBar';
 import styles from './Header.scss';
 
 const CardanoLogo = require('../../public/assets/images/header/cardano-logo.svg');
 
 export interface IHeaderProps {
   brandType?: BrandType;
-  searchProps?: ISearchProps;
   router?: object;
-  withSearch?: boolean;
 }
 
 export const Header = observer((props: IHeaderProps) => {
-  const { brandType, withSearch, searchProps } = props;
+  const { brandType } = props;
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
       ? styles.enlargedHeaderContainer
@@ -59,7 +57,7 @@ export const Header = observer((props: IHeaderProps) => {
             <Link href="/">
               <a className={indexClassName}>Epochs & Blocks</a>
             </Link>
-            <div className={styles.tabCircle} />
+            {stakePoolLink && <div className={styles.tabCircle} />}
             {stakePoolLink}
             <div className={styles.tabCircle} />
             <div className={styles.tabRightLine} />
@@ -71,9 +69,9 @@ export const Header = observer((props: IHeaderProps) => {
             </div>
           </div>
         </div>
-        {withSearch && searchProps && (
+        {brandType === BrandType.SHRINKED && (
           <div className={styles.searchContainer}>
-            <Search brandType={brandType} {...searchProps} />
+            <SearchBar brandType={BrandType.SHRINKED} />
           </div>
         )}
       </div>
@@ -83,5 +81,4 @@ export const Header = observer((props: IHeaderProps) => {
 
 Header.defaultProps = {
   brandType: BrandType.ENLARGED,
-  withSearch: true,
 };

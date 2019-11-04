@@ -1,15 +1,32 @@
-import { EpochDetailsFragment } from '../../../../generated/typings/graphql-schema';
-import { IEpochDetails } from '../types';
+import {
+  EpochDetailsFragment,
+  EpochOverviewFragment,
+} from '../../../../generated/typings/graphql-schema';
+import { isNotNull } from '../../../lib/types';
+import { blockInfoTransformer } from '../../blocks/api/transformers';
+import { IEpochDetails, IEpochOverview } from '../types';
+
+export const epochOverviewTransformer = (
+  e: EpochOverviewFragment
+): IEpochOverview => {
+  const {
+    blocks_aggregate: { aggregate },
+  } = e;
+  return {
+    blocksCount: aggregate && aggregate.count ? aggregate.count : 0,
+    endedAt: new Date(e.lastBlockTime), // TODO: Refactor to lastBlockAt (or change the logic here to determine if it has ended
+    number: e.number,
+    output: parseInt(e.output, 10),
+    slotsCount: 21600, // TODO: Move this to global store, as it's determined by the blockchain configuration
+    startedAt: new Date(e.startedAt),
+    status: '',
+    transactionsCount: parseInt(e.transactionsCount || '0', 10),
+  };
+};
 
 export const epochDetailsTransformer = (
   e: EpochDetailsFragment
 ): IEpochDetails => ({
-  blocksCount: 0, // TODO: aggregate missing in API
-  endedAt: new Date(e.lastBlockTime), // TODO: If lastBlockTime is within slotDuration from now, we can assume the epoch is still in progress
-  number: e.number,
-  output: parseInt(e.output, 10),
-  slotsCount: 0, // TODO: aggregate missing in API
-  startedAt: new Date(e.startedAt),
-  status: '',
-  transactionsCount: parseInt(e.transactionsCount || '0', 10),
+  ...epochOverviewTransformer(e),
+  blocks: e.blocks ? e.blocks.filter(isNotNull).map(blockInfoTransformer) : [],
 });

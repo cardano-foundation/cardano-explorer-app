@@ -1,7 +1,5 @@
 export const exampleBlockData = {
-  epoch: {
-    number: 1,
-  },
+  epoch: 1,
   id: '84e9de7924aba73f58b81e142f4bce7f1d00cf4630f94f631e6ca3594b2d1634',
   merkelRootHash:
     '0e5751c026e543b2e8ab2eb06099daa1d1e5df47778f7787faab45cdf12fe3a8',
@@ -11,5 +9,5 @@ export const exampleBlockData = {
   },
   size: 666,
   slotNo: 31086,
-  transactions: [],
+  transactions: 0,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import NoSSR from 'react-no-ssr';
+import { BrandType } from '../constants';
 import { environment } from '../environment';
 import EpochSummary from '../features/epochs/ui/EpochSummary';
 import StakePoolsContainer from '../features/stake-pools/containers/StakePoolsContainer';
@@ -13,24 +14,25 @@ if (environment.IS_CLIENT) {
     <NoSSR>
       <Layout>
         <UnmoderatedDataConsentedContainer />
+        <Header brandType={BrandType.SHRINKED} />
         <Container hasTopMargin>
-          <Header />
           <EpochSummary
-            blocksCount={21073}
-            endedAt={new Date(1569144483000)}
-            number={135}
-            output={8397621.461829}
-            slotsCount={21600}
-            startedAt={new Date(1568366883000)}
-            status="In progress..."
+            epoch={{
+              blocks: [],
+              blocksCount: 21073,
+              endedAt: new Date(1569144483000),
+              number: 135,
+              output: 8397621.461829,
+              slotsCount: 21600,
+              startedAt: new Date(1568366883000),
+              status: 'In progress...',
+              transactionsCount: 12,
+            }}
             title="Epoch"
-            transactionsCount={12}
           />
         </Container>
         <StakePoolsContainer />
-        <Container>
-          <Footer />
-        </Container>
+        <Footer />
       </Layout>
     </NoSSR>
   );

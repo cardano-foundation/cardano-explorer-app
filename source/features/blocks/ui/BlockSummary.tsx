@@ -1,24 +1,14 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import { IBlockDetailed } from '../types';
 import styles from './BlockSummary.scss';
 
-export interface IBlockSummaryProps {
-  block: number;
-  confirmations: number;
-  createdBy: string;
-  epoch: number;
-  id: string;
-  merkleRoot: string;
-  nextBlock: string;
-  prevBlock: string;
-  size: number;
-  time: number;
+export type BlockSummaryProps = {
   title: string;
-  transactions: number;
-}
+} & IBlockDetailed;
 
-const BlockSummary = (props: IBlockSummaryProps) => (
+const BlockSummary = (props: any) => (
   <div className={styles.blockSummaryContainer}>
     <div className={styles.header}>
       <DividerWithTitle title={props.title} />
@@ -37,7 +27,7 @@ const BlockSummary = (props: IBlockSummaryProps) => (
         </div>
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Block</div>
-          <div className={styles.infoValue}>{props.block}</div>
+          <div className={styles.infoValue}>{props.number}</div>
         </div>
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Confirmations</div>
@@ -58,7 +48,7 @@ const BlockSummary = (props: IBlockSummaryProps) => (
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Time</div>
           <div className={styles.infoValue}>
-            {moment(props.time).format('YYYY/MM/DD HH:mm:ss')}
+            {moment(props.createdAt).format('YYYY/MM/DD HH:mm:ss')}
           </div>
         </div>
         <div className={styles.infoRow}>

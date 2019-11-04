@@ -1,0 +1,12 @@
+fragment EpochOverview on Epoch {
+  blocks_aggregate {
+    aggregate {
+      count
+    }
+  }
+  lastBlockTime
+  number
+  startedAt
+  output
+  transactionsCount
+}

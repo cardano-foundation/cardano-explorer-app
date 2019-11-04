@@ -27,7 +27,7 @@
 
         .errorIcon {
           align-items: center;
-          background-color: $error-background-color;
+          background-color: $error-color;
           border-radius: 50%;
           display: flex;
           height: 24px;
@@ -47,7 +47,7 @@
         }
 
         .errorMessage {
-          color: $error-background-color;
+          color: $error-color;
           font-family: ProximaNova, sans-serif;
           font-size: 12px;
           font-weight: 600;

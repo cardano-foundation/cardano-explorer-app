@@ -24,7 +24,13 @@ describe('Searching for an epoch', () => {
       // 3. Expect the observable search result to be provided by the store
       await waitForExpect(() => {
         const { epochSearchResult } = search.store;
-        expect(epochSearchResult).toMatchObject(exampleEpochData);
+        expect(epochSearchResult && epochSearchResult.blocksCount).toBe(9485);
+        expect(epochSearchResult && epochSearchResult.output).toBe(
+          17282903106017760
+        );
+        expect(epochSearchResult && epochSearchResult.transactionsCount).toBe(
+          5344
+        );
       });
     });
   });

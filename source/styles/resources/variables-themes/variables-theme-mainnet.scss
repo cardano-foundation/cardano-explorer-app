@@ -1,17 +1,17 @@
 /**
  *
- * Variables for the `testnet` theme.
+ * Variables for the `mainnet` theme.
  *
  */
-$dotted-separator-color: #36395d;
-$error-color: #eb2256;
-$footer-text-color: rgba(31, 193, 195, 0.3);
+$transparent-color: transparent;
 $primary-highlight-color: #1fc1c3;
 $primary-highlight-color-hover: #1db0b3;
 $primary-highlight-color-press: #1aa1a3;
-$secondary-color: rgba(112, 156, 240, 0.3);
-$secondary-half-color: rgba(112, 156, 240, 0.5);
 $secondary-highlight-color: #709cf0;
+$secondary-half-color: rgba(112, 156, 240, 0.5);
+$secondary-color: rgba(112, 156, 240, 0.3);
+$dotted-separator-color: #36395d;
+$footer-text-color: rgba(31, 193, 195, 0.3);
 $spinner-circle-background-color: conic-gradient(
   rgba(31, 193, 195, 0),
   rgba(31, 193, 195, 0.2) 21%,
@@ -20,4 +20,3 @@ $spinner-circle-background-color: conic-gradient(
   rgba(31, 193, 195, 0),
   rgba(31, 193, 195, 0)
 );
-$transparent-color: transparent;

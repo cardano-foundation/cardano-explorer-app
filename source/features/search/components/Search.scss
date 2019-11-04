@@ -3,6 +3,9 @@
   max-width: 872px;
 
   &.enlargedSearchContainer {
+    background-color: $search-area-bg;
+    padding: 30px 50px 40px;
+
     .searchTitle {
       margin: 0 0 8px;
     }

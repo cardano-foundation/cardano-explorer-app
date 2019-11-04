@@ -1,13 +1,12 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { epochDetailsTransformer } from '../source/features/epochs/api/transformers';
 import { latestEpochsExample } from '../source/features/epochs/specs/helpers/latestEpochsExample';
 import EpochList from '../source/features/epochs/ui/EpochList';
 import EpochSummary from '../source/features/epochs/ui/EpochSummary';
 import StakeDistribution from '../source/features/epochs/ui/StakeDistribution';
 import { PaddingDecorator } from './support/PaddingDecorator';
 
-const epochs = latestEpochsExample.map(epochDetailsTransformer);
+const epochs = latestEpochsExample;
 
 Object.assign(epochs[0], {
   percentage: 40,
@@ -50,7 +49,7 @@ const stakeDistribution = [
 storiesOf('Epochs', module)
   .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Epoch List', () => <EpochList title="Epochs" items={epochs} />)
-  .add('Epoch Summary', () => <EpochSummary title="Epoch" {...epochs[0]} />)
+  .add('Epoch Summary', () => <EpochSummary title="Epoch" epoch={epochs[0]} />)
   .add('Stake Distribution', () => (
     <StakeDistribution title="Stake Distribution" items={stakeDistribution} />
   ));

@@ -10,38 +10,6 @@
     }
   }
 
-  .epochSummary {
-    margin: 71px 0;
-
-    @media (max-width: 575px) {
-      margin: 51px 0;
-    }
-  }
-
-  .blockList {
-    margin-bottom: 61px;
-
-    button {
-      display: none;
-    }
-
-    @media (max-width: 575px) {
-      margin-bottom: 83px;
-    }
-  }
-
-  .stakeDistribution {
-    margin-bottom: 61px;
-
-    button {
-      display: none;
-    }
-
-    @media (max-width: 575px) {
-      margin-bottom: 83px;
-    }
-  }
-
   .blockCreation {
     margin-bottom: 61px;
 
