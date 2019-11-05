@@ -37,25 +37,14 @@ export const createNetworkInfoFeature = (
     networkInfoActions,
     networkInfoApi
   );
-  let pollingInterval: NodeJS.Timeout;
-
   return {
     actions: networkInfoActions,
     api: networkInfoApi,
     store: networkInfoStore,
     start() {
       networkInfoStore.start();
-      // Static information only needs to be fetched once
-      networkInfoActions.fetchStatic.trigger({});
-      // Dynamic information is assumed to be changing with slot duration
-      // Polling frequency is set at double this rate.
-      // (should be dynamic based networkInfoStore.slotDuration)
-      pollingInterval = setInterval(() => {
-        networkInfoActions.fetchDynamic.trigger({});
-      }, 10000);
     },
     stop() {
-      clearInterval(pollingInterval);
       networkInfoStore.stop();
     },
   };

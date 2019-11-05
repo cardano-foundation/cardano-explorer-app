@@ -15,6 +15,7 @@ export class NetworkInfoStore extends Store {
 
   private readonly networkInfoApi: NetworkInfoApi;
   private readonly networkInfoActions: NetworkInfoActions;
+  private pollingInterval: NodeJS.Timeout;
 
   constructor(
     networkInfoActions: NetworkInfoActions,
@@ -29,6 +30,22 @@ export class NetworkInfoStore extends Store {
         [this.networkInfoActions.fetchStatic, this.fetchStaticInfo],
       ])
     );
+  }
+
+  public start() {
+    super.start();
+    // Static information only needs to be fetched once
+    this.networkInfoActions.fetchStatic.trigger({});
+    // Dynamic information is assumed to be changing with slot duration
+    // Polling frequency is set at double this rate.
+    // (should be dynamic based networkInfoStore.slotDuration)
+    this.pollingInterval = setInterval(() => {
+      this.networkInfoActions.fetchDynamic.trigger({});
+    }, 10000);
+  }
+
+  public stop() {
+    clearInterval(this.pollingInterval);
   }
 
   @computed get isFetching() {
