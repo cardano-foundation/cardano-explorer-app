@@ -9,13 +9,9 @@
   .headerBackgroundAnimation {
     height: 415px;
     width: 1099px;
-
-    .animationIframe {
-      border: 0;
-      height: 100%;
-      opacity: 0.3;
-      width: 100%;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
