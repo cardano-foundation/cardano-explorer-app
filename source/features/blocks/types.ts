@@ -2,6 +2,7 @@ export interface IBlockInfo {
   id: string;
   number: number;
   size: number;
+  slotNo: number;
 }
 
 export interface IBlockOverview extends IBlockInfo {
