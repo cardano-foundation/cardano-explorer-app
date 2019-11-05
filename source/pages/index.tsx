@@ -28,10 +28,7 @@ if (environment.IS_CLIENT) {
         {!isMobileScreen() && (
           <div className={styles.headerBackgroundAnimationContainer}>
             <div className={styles.headerBackgroundAnimation}>
-              <iframe
-                className={styles.animationIframe}
-                src="//webdevm.iohk.io/?repo=cardano-sl&lang=en&content=Cryptographic%20currency%20implementing%20Ouroboros%20PoS%20protocol"
-              />
+              <img src="/assets/images/main-header-background.png" />
             </div>
           </div>
         )}
