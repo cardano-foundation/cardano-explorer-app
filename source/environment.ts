@@ -9,9 +9,6 @@ export const environment = {
       HTTP_URL: `${process.env.GRAPHQL_API_PROTOCOL || 'http'}://${process.env
         .GRAPHQL_API_HOST || 'localhost'}:${process.env.GRAPHQL_PORT ||
         '3100'}/`,
-      WEBSOCKET_URL: `${process.env.GRAPHQL_WEBSOCKET_PROTOCOL ||
-        'ws'}://${process.env.GRAPHQL_WEBSOCKET_HOST || 'localhost'}:${process
-        .env.GRAPHQL_PORT || '3100'}/`,
     },
     NETWORK:
       (process.env.CARDANO_NETWORK as CardanoNetwork) ||
