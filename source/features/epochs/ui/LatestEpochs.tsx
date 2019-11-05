@@ -1,7 +1,7 @@
 import { Observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
-import { useEpochsFeature } from '../index';
+import { useEpochsFeature } from '../context';
 import EpochList from './EpochList';
 
 export const LatestEpochs = () => {

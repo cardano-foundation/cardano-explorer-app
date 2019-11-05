@@ -1,7 +1,5 @@
 import ApolloClient from 'apollo-client';
-import React from 'react';
 import Action from '../../lib/Action';
-import { ensureContextExists } from '../../lib/react/hooks';
 import { EpochsApi } from './api';
 import { EpochsStore } from './store';
 
@@ -47,15 +45,3 @@ export const createEpochsFeature = (
     },
   };
 };
-
-/**
- * React context used for this feature
- */
-export const epochsContext = React.createContext<IEpochsFeature | null>(null);
-
-/**
- * Custom react hook that is used in container components to
- * access the configured feature of the context provider.
- */
-export const useEpochsFeature = (): IEpochsFeature =>
-  ensureContextExists<IEpochsFeature>(epochsContext);

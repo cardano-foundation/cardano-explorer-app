@@ -1,8 +1,8 @@
 import { isInteger } from 'lodash';
 import React from 'react';
 import { BrandType } from '../../../constants';
-import Search from '../components/Search';
-import { useSearchFeature } from '../index';
+import { useSearchFeature } from '../context';
+import Search from './Search';
 
 export interface ISearchBarProps {
   brandType?: BrandType;
@@ -20,7 +20,6 @@ export const SearchBar = (props: ISearchBarProps) => {
     } else {
       search.actions.unknownSearchRequested.trigger({ query });
     }
-    // router.push('/' + (url ? url + '=' + id : 'no-search-results'));
   };
 
   return (

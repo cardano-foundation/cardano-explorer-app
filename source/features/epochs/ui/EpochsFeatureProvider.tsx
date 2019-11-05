@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useApolloClient } from 'react-apollo-hooks';
 import { useFeature } from '../../../lib/react/hooks';
-import { createEpochsFeature, epochsContext, IEpochsFeature } from '../index';
+import { epochsContext } from '../context';
+import { createEpochsFeature, IEpochsFeature } from '../index';
 
 interface IProps {
   children: React.ReactNode;

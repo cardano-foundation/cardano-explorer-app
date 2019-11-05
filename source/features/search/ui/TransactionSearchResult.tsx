@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import TransactionSummary from '../../transactions/components/TransactionSummary';
-import { useSearchFeature } from '../index';
+import { useSearchFeature } from '../context';
 import NoSearchResult from './NoSearchResult';
 
 export const TransactionSearchResult = () => {

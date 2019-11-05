@@ -18,6 +18,7 @@
     "static:preview": "yarn static:build && yarn static:serve",
     "analyze": "BUNDLE_ANALYZE=browser yarn build",
     "lint": "tslint -p tsconfig.json -c tslint.json",
+    "pre-push-check": "yarn prettier:check && yarn lint && yarn test && yarn build",
     "prettier": "./node_modules/.bin/prettier \"**/*.*\"",
     "prettier:check": "yarn prettier --check",
     "prettier:format": "yarn prettier --write --loglevel warn",
@@ -32,7 +33,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn prettier:fix-staged",
-      "pre-push": "yarn prettier:check && yarn lint && yarn test && yarn build"
+      "pre-push": "yarn pre-push-check"
     }
   },
   "dependencies": {

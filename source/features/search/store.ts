@@ -6,11 +6,10 @@ import { blockDetailsTransformer } from '../blocks/api/transformers';
 import { IBlockDetailed } from '../blocks/types';
 import { epochDetailsTransformer } from '../epochs/api/transformers';
 import { IEpochDetails } from '../epochs/types';
-import { NavigationActions } from '../navigation';
 import { transactionDetailsTransformer } from '../transactions/api/transformers';
 import { ITransactionDetails } from '../transactions/types';
 import { SearchApi } from './api';
-import { SearchActions } from './index';
+import { INavigationFeatureDependency, SearchActions } from './index';
 
 export class SearchStore extends Store {
   @observable public blockSearchResult: IBlockDetailed | null = null;
@@ -22,12 +21,12 @@ export class SearchStore extends Store {
 
   private readonly searchApi: SearchApi;
   private readonly searchActions: SearchActions;
-  private readonly navigation: NavigationActions;
+  private readonly navigation: INavigationFeatureDependency;
 
   constructor(
     searchActions: SearchActions,
     searchApi: SearchApi,
-    navigation: NavigationActions
+    navigation: INavigationFeatureDependency
   ) {
     super();
     this.searchApi = searchApi;
@@ -98,7 +97,7 @@ export class SearchStore extends Store {
         path = '/no-search-results';
       }
       if (path !== '') {
-        this.navigation.redirectTo.trigger({ path });
+        this.navigation.actions.redirectTo.trigger({ path });
       }
     } finally {
       this.isRunningBackgroundSearch = false;
@@ -146,7 +145,7 @@ export class SearchStore extends Store {
         path = '/no-search-results';
       }
       if (path !== '') {
-        this.navigation.redirectTo.trigger({ path });
+        this.navigation.actions.redirectTo.trigger({ path });
       }
     } finally {
       this.isRunningBackgroundSearch = false;
@@ -154,6 +153,10 @@ export class SearchStore extends Store {
   };
 
   @action private searchForBlockById = async ({ id }: { id: string }) => {
+    // Do not trigger another search if we already have the requested data!
+    if (this.blockSearchResult && this.blockSearchResult.id === id) {
+      return;
+    }
     this.blockSearchResult = null;
     const result = await this.searchApi.searchForBlockByIdQuery.execute({ id });
     if (result) {
@@ -167,6 +170,13 @@ export class SearchStore extends Store {
   @action private searchForBlockByNumber = async (params: {
     number: number;
   }) => {
+    // Do not trigger another search if we already have the requested data!
+    if (
+      this.blockSearchResult &&
+      this.blockSearchResult.number === params.number
+    ) {
+      return;
+    }
     this.blockSearchResult = null;
     const result = await this.searchApi.searchForBlockByNumberQuery.execute(
       params
@@ -182,6 +192,13 @@ export class SearchStore extends Store {
   @action private searchForEpochByNumber = async (params: {
     number: number;
   }) => {
+    // Do not trigger another search if we already have the requested data!
+    if (
+      this.epochSearchResult &&
+      this.epochSearchResult.number === params.number
+    ) {
+      return;
+    }
     this.epochSearchResult = null;
     const result = await this.searchApi.searchForEpochByNumberQuery.execute(
       params
@@ -195,6 +212,13 @@ export class SearchStore extends Store {
   };
 
   private searchForTransactionById = async ({ id }: { id: string }) => {
+    // Do not trigger another search if we already have the requested data!
+    if (
+      this.transactionSearchResult &&
+      this.transactionSearchResult.id === id
+    ) {
+      return;
+    }
     this.transactionSearchResult = null;
     const result = await this.searchApi.searchForTransactionByIdQuery.execute({
       id,

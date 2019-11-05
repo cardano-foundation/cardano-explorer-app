@@ -1,7 +1,7 @@
 import { Observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
-import { useBlocksFeature } from '../index';
+import { useBlocksFeature } from '../context';
 import BlockList from './BlockList';
 
 export const LatestBlocks = () => {

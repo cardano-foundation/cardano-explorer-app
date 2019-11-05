@@ -1,8 +1,5 @@
-import { NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { ApolloClient } from 'apollo-client';
-import React from 'react';
 import Action from '../../lib/Action';
-import { ensureContextExists } from '../../lib/react/hooks';
 import { BlocksApi } from './api';
 import { BlocksStore } from './store';
 
@@ -48,15 +45,3 @@ export const createBlocksFeature = (
     },
   };
 };
-
-/**
- * React context used for this feature
- */
-export const blocksContext = React.createContext<IBlocksFeature | null>(null);
-
-/**
- * Custom react hook that is used in container components to
- * access the configured feature of the context provider.
- */
-export const useBlocksFeature = (): IBlocksFeature =>
-  ensureContextExists<IBlocksFeature>(blocksContext);

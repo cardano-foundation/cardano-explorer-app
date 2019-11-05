@@ -7,7 +7,10 @@ import { exampleEpochData } from './helpers/exampleEpochData';
 describe('Searching for an epoch', () => {
   let search: ISearchFeature;
   beforeEach(() => {
-    search = createSearchFeature(new NavigationActions(), apolloClient);
+    search = createSearchFeature(
+      { actions: new NavigationActions() },
+      apolloClient
+    );
     search.start();
   });
   afterEach(() => {

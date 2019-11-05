@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockSummary from '../../blocks/ui/BlockSummary';
-import { useSearchFeature } from '../index';
+import { useSearchFeature } from '../context';
 
 export const BlockSearchResult = () => {
   const { actions, store } = useSearchFeature();

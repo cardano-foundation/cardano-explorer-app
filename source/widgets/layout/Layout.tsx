@@ -1,10 +1,5 @@
-import { Head } from 'next/document';
 import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
-import { NavigationFeatureProvider } from '../../features/navigation/ui/NavigationFeatureProvider';
-import { SearchFeatureProvider } from '../../features/search/components/SearchFeatureProvider';
-import GraphQLProvider from '../../lib/graphql/GraphQLProvider';
-import PolymorphThemeProvider from '../../styles/theme/PolymorphThemeProvider';
 import ContainerComponent from '../container/Container';
 import styles from './Layout.scss';
 
@@ -88,20 +83,9 @@ export const Layout = ({ children, hasContainer }: IProps) => {
 
   return (
     <Fragment>
-      <Head />
-      <GraphQLProvider>
-        <PolymorphThemeProvider>
-          {/* Provide the navigation feature on any page */}
-          <NavigationFeatureProvider>
-            {/* Provide the search feature on any page */}
-            <SearchFeatureProvider>
-              <div className={styles.content}>
-                <Container>{children}</Container>
-              </div>
-            </SearchFeatureProvider>
-          </NavigationFeatureProvider>
-        </PolymorphThemeProvider>
-      </GraphQLProvider>
+      <div className={styles.content}>
+        <Container>{children}</Container>
+      </div>
     </Fragment>
   );
 };

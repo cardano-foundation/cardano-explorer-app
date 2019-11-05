@@ -6,7 +6,7 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockList from '../../blocks/ui/BlockList';
 import EpochSummary from '../../epochs/ui/EpochSummary';
 import StakeDistribution from '../../epochs/ui/StakeDistribution';
-import { useSearchFeature } from '../index';
+import { useSearchFeature } from '../context';
 import styles from './EpochsSearchResult.scss';
 
 const stakeDistribution = [

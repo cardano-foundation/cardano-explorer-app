@@ -2,7 +2,7 @@ import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../constants';
 import { environment } from '../environment';
-import { BlockSearchResult } from '../features/search/components/BlockSearchResult';
+import { BlockSearchResult } from '../features/search/ui/BlockSearchResult';
 import { Footer, Header, Layout } from '../widgets/layout';
 
 let BlockPage = () => <NoSSR />;

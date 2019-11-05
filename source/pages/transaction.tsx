@@ -2,7 +2,7 @@ import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../constants';
 import { environment } from '../environment';
-import { TransactionSearchResult } from '../features/search/components/TransactionSearchResult';
+import { TransactionSearchResult } from '../features/search/ui/TransactionSearchResult';
 import { Footer, Header, Layout } from '../widgets/layout';
 
 let TransactionPage = () => <NoSSR />;

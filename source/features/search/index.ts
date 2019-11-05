@@ -1,8 +1,6 @@
 import ApolloClient from 'apollo-client';
-import React from 'react';
 import Action from '../../lib/Action';
-import { ensureContextExists } from '../../lib/react/hooks';
-import { INavigationFeature, NavigationActions } from '../navigation';
+import { NavigationActions } from '../navigation';
 import { SearchApi } from './api';
 import { SearchStore } from './store';
 
@@ -31,13 +29,20 @@ export interface ISearchFeature {
 }
 
 /**
+ * Interfaces to dependencies on other features:
+ */
+export interface INavigationFeatureDependency {
+  actions: NavigationActions;
+}
+
+/**
  * Creates a new instance of this feature.
  *
  * This can be useful for testing, features that need to be
  * configured and / or displayed multiple times on the same page.
  */
 export const createSearchFeature = (
-  navigation: NavigationActions,
+  navigation: INavigationFeatureDependency,
   apolloClient: ApolloClient<object>
 ): ISearchFeature => {
   const searchActions = new SearchActions();
@@ -56,15 +61,3 @@ export const createSearchFeature = (
     },
   };
 };
-
-/**
- * The React context that can be reused and configured with instances
- * of the search feature (also multiple times on one page)
- */
-export const searchContext = React.createContext<ISearchFeature | null>(null);
-
-/**
- * Custom react hook that is used in container components to
- * access the configured feature of the context provider.
- */
-export const useSearchFeature = () => ensureContextExists(searchContext);
