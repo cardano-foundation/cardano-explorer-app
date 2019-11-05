@@ -26,6 +26,7 @@ export const blockOverviewTransformer = (
     createdBy: 'af2800c', // TODO: missing API data
     epoch: b.epoch ? b.epoch.number : 0,
     output: 11189.647356, // TODO: missing API data
+    slotNo: b.slotNo ? b.slotNo : 0,
     transactions,
   };
 };
