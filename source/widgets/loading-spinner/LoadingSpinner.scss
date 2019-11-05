@@ -1,0 +1,32 @@
+.component {
+  display: table;
+  margin: 20px auto;
+
+  &.big svg {
+    height: 44px;
+    width: 44px;
+  }
+
+  &.medium svg {
+    height: 24px;
+    margin: 0;
+    width: 24px;
+
+    .icon path {
+      fill: $primary-highlight-color;
+    }
+  }
+
+  &.small svg {
+    height: 30px;
+    width: 30px;
+  }
+
+  .icon path {
+    fill: $primary-highlight-color;
+  }
+
+  svg :global {
+    animation: loading-spin 1.5s linear infinite;
+  }
+}

@@ -1,12 +1,16 @@
 import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../../../lib/graphql/apolloClient';
+import { NavigationActions } from '../../navigation';
 import { createSearchFeature, ISearchFeature } from '../index';
 import { exampleTransactionData } from './helpers/exampleTransactionData';
 
 describe('Searching for a transaction', () => {
   let search: ISearchFeature;
   beforeEach(() => {
-    search = createSearchFeature(apolloClient);
+    search = createSearchFeature(
+      { actions: new NavigationActions() },
+      apolloClient
+    );
     search.start();
   });
   afterEach(() => {
@@ -29,7 +33,7 @@ describe('Searching for a transaction', () => {
             search.store &&
             search.store.transactionSearchResult &&
             search.store.transactionSearchResult.totalOutput
-        ).toEqual('538861000000');
+        ).toEqual(538861000000);
       });
     });
   });

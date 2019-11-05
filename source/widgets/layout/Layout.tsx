@@ -1,9 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
-import GraphQLProvider from '../../lib/graphql/GraphQLProvider';
-import PolymorphThemeProvider from '../../styles/theme/PolymorphThemeProvider';
 import ContainerComponent from '../container/Container';
-import Head from './Head';
 import styles from './Layout.scss';
 
 interface IProps {
@@ -86,14 +83,9 @@ export const Layout = ({ children, hasContainer }: IProps) => {
 
   return (
     <Fragment>
-      <Head />
-      <GraphQLProvider>
-        <PolymorphThemeProvider>
-          <div className={styles.content}>
-            <Container>{children}</Container>
-          </div>
-        </PolymorphThemeProvider>
-      </GraphQLProvider>
+      <div className={styles.content}>
+        <Container>{children}</Container>
+      </div>
     </Fragment>
   );
 };

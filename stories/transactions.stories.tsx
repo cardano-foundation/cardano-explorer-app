@@ -11,6 +11,7 @@ const transactionSummary = {
   block: 11044,
   epoch: 48,
   fee: 0.171246,
+  id: 'b81c5239789f54e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196',
   receivedTime: 1470006392000,
   slot: 11044,
   totalOutput: 224909.277897,
@@ -68,7 +69,10 @@ storiesOf('Transactions', module)
     <TransactionInfo title="Transaction" {...transactions[0]} />
   ))
   .add('Transaction Summary', () => (
-    <TransactionSummary title="Transaction Summary" {...transactionSummary} />
+    <TransactionSummary
+      title="Transaction Summary"
+      transaction={transactionSummary}
+    />
   ))
   .add('Transaction List', () => (
     <TransactionList title="Transactions" items={transactions} />

@@ -6,11 +6,9 @@ import React from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
 import { Input } from 'react-polymorph/lib/components/Input';
 import { BrandType } from '../source/constants';
-import NoSearchResult from '../source/features/search/components/NoSearchResult';
-import Search, {
-  ISearchProps,
-} from '../source/features/search/components/Search';
-import styles from '../source/features/search/components/Search.scss';
+import NoSearchResult from '../source/features/search/ui/NoSearchResult';
+import Search, { ISearchProps } from '../source/features/search/ui/Search';
+import styles from '../source/features/search/ui/Search.scss';
 import { PaddingDecorator } from './support/PaddingDecorator';
 
 const SearchWithValue = (props: ISearchProps) =>

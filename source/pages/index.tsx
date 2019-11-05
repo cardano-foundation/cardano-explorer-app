@@ -7,15 +7,17 @@ import { BlocksFeatureProvider } from '../features/blocks/ui/BlocksFeatureProvid
 import { LatestBlocks } from '../features/blocks/ui/LatestBlocks';
 import { EpochsFeatureProvider } from '../features/epochs/ui/EpochsFeatureProvider';
 import { LatestEpochs } from '../features/epochs/ui/LatestEpochs';
-import { SearchFeatureProvider } from '../features/search/components/SearchFeatureProvider';
-import { SearchBar } from '../features/search/containers/SearchBar';
+import { SearchBar } from '../features/search/ui/SearchBar';
 import { isMobileScreen } from '../helpers';
 import { Footer, Header, Layout } from '../widgets/layout';
 import styles from './index.scss';
 
 const SideBackgroundImage = require('../public/assets/images/main-side-background.svg');
 
+// Empty on server
 let Index = () => <NoSSR />;
+
+// Full components on client
 if (environment.IS_CLIENT) {
   Index = () => (
     <NoSSR>
@@ -40,9 +42,7 @@ if (environment.IS_CLIENT) {
         )}
         <Header brandType={BrandType.ENLARGED} />
         <div>
-          <SearchFeatureProvider>
-            <SearchBar brandType={BrandType.ENLARGED} />
-          </SearchFeatureProvider>
+          <SearchBar brandType={BrandType.ENLARGED} />
         </div>
         <div className={styles.epochList}>
           <EpochsFeatureProvider>

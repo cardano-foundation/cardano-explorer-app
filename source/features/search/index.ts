@@ -1,6 +1,6 @@
 import ApolloClient from 'apollo-client';
-import React, { useContext } from 'react';
 import Action from '../../lib/Action';
+import { NavigationActions } from '../navigation';
 import { SearchApi } from './api';
 import { SearchStore } from './store';
 
@@ -8,6 +8,9 @@ import { SearchStore } from './store';
  * Defines the actions that are supported by this feature
  */
 export class SearchActions {
+  public idSearchRequested: Action<{ id: string }> = new Action();
+  public numberSearchRequested: Action<{ number: number }> = new Action();
+  public unknownSearchRequested: Action<{ query: string }> = new Action();
   public searchForBlockById: Action<{ id: string }> = new Action();
   public searchForBlockByNumber: Action<{ number: number }> = new Action();
   public searchForEpochByNumber: Action<{ number: number }> = new Action();
@@ -26,17 +29,25 @@ export interface ISearchFeature {
 }
 
 /**
+ * Interfaces to dependencies on other features:
+ */
+export interface INavigationFeatureDependency {
+  actions: NavigationActions;
+}
+
+/**
  * Creates a new instance of this feature.
  *
  * This can be useful for testing, features that need to be
  * configured and / or displayed multiple times on the same page.
  */
 export const createSearchFeature = (
+  navigation: INavigationFeatureDependency,
   apolloClient: ApolloClient<object>
 ): ISearchFeature => {
   const searchActions = new SearchActions();
   const searchApi = new SearchApi(apolloClient);
-  const searchStore = new SearchStore(searchActions, searchApi);
+  const searchStore = new SearchStore(searchActions, searchApi, navigation);
 
   return {
     actions: searchActions,
@@ -49,22 +60,4 @@ export const createSearchFeature = (
       searchStore.stop();
     },
   };
-};
-
-/**
- * The React context that can be reused and configured with instances
- * of the search feature (also multiple times on one page)
- */
-export const searchContext = React.createContext<ISearchFeature | null>(null);
-
-/**
- * Custom react hook that is used in container components to
- * access the configured feature of the context provider.
- */
-export const useSearchFeature = () => {
-  const inbox = useContext(searchContext);
-  if (!inbox) {
-    throw new Error('You need to setup the inbox context before using it.');
-  }
-  return inbox;
 };

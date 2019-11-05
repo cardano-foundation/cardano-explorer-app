@@ -1,6 +1,7 @@
 import { Observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
-import { useEpochsFeature } from '../index';
+import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
+import { useEpochsFeature } from '../context';
 import EpochList from './EpochList';
 
 export const LatestEpochs = () => {
@@ -10,7 +11,14 @@ export const LatestEpochs = () => {
   });
   return (
     <Observer>
-      {() => <EpochList title="Latest Epochs" items={store.latestEpochs} />}
+      {() => {
+        const { latestEpochs } = store;
+        return store.isSearching ? (
+          <LoadingSpinner />
+        ) : (
+          <EpochList title="Latest Epochs" items={latestEpochs} />
+        );
+      }}
     </Observer>
   );
 };

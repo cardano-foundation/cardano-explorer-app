@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useApolloClient } from 'react-apollo-hooks';
 import { useFeature } from '../../../lib/react/hooks';
-import { blocksContext, createBlocksFeature, IBlocksFeature } from '../index';
+import { blocksContext } from '../context';
+import { createBlocksFeature, IBlocksFeature } from '../index';
 
 interface IProps {
   children: React.ReactNode;

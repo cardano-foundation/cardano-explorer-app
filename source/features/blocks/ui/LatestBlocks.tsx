@@ -1,6 +1,7 @@
 import { Observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
-import { useBlocksFeature } from '../index';
+import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
+import { useBlocksFeature } from '../context';
 import BlockList from './BlockList';
 
 export const LatestBlocks = () => {
@@ -10,7 +11,14 @@ export const LatestBlocks = () => {
   });
   return (
     <Observer>
-      {() => <BlockList title="Latest Blocks" items={store.latestBlocks} />}
+      {() => {
+        const { latestBlocks } = store;
+        return store.isSearching ? (
+          <LoadingSpinner />
+        ) : (
+          <BlockList title="Latest Blocks" items={latestBlocks} />
+        );
+      }}
     </Observer>
   );
 };

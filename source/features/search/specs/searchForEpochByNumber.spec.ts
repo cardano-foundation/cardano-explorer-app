@@ -1,12 +1,16 @@
 import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../../../lib/graphql/apolloClient';
+import { NavigationActions } from '../../navigation';
 import { createSearchFeature, ISearchFeature } from '../index';
 import { exampleEpochData } from './helpers/exampleEpochData';
 
 describe('Searching for an epoch', () => {
   let search: ISearchFeature;
   beforeEach(() => {
-    search = createSearchFeature(apolloClient);
+    search = createSearchFeature(
+      { actions: new NavigationActions() },
+      apolloClient
+    );
     search.start();
   });
   afterEach(() => {
