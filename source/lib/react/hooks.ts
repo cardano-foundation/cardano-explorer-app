@@ -15,7 +15,9 @@ export const useFeature = (feature: { store: Store }) => {
   }, []);
   useEffect(() => {
     // Stop store on unmount
-    return () => feature.store.stop();
+    return () => {
+      feature.store.stop();
+    };
   }, []);
 };
 

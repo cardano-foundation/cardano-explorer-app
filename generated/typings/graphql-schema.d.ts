@@ -508,6 +508,16 @@ export type GetLatestEpochsQueryVariables = {
 
 export type GetLatestEpochsQuery = ({ __typename?: 'Query' } & { epochs: Array<Maybe<({ __typename?: 'Epoch' } & EpochOverviewFragment)>> });
 
+export type CardanoDynamicQueryVariables = {};
+
+
+export type CardanoDynamicQuery = ({ __typename?: 'Query' } & { cardano: Maybe<({ __typename?: 'Cardano' } & Pick<Cardano, 'blockHeight'> & { currentEpoch: ({ __typename?: 'Epoch' } & Pick<Epoch, 'lastBlockTime' | 'number'>) })> });
+
+export type CardanoStaticQueryVariables = {};
+
+
+export type CardanoStaticQuery = ({ __typename?: 'Query' } & { cardano: Maybe<({ __typename?: 'Cardano' } & Pick<Cardano, 'protocolConst' | 'startTime' | 'slotDuration'>)> });
+
 export type SearchForBlockByIdQueryVariables = {
   id: Scalars['Hash32HexString']
 };
