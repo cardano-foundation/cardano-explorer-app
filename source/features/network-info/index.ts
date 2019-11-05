@@ -18,8 +18,8 @@ export interface INetworkInfoFeature {
   actions: NetworkInfoActions;
   api: NetworkInfoApi;
   store: NetworkInfoStore;
-  start: () => void;
-  stop: () => void;
+  start: () => Promise<void>;
+  stop: () => Promise<void>;
 }
 
 /**
@@ -41,11 +41,11 @@ export const createNetworkInfoFeature = (
     actions: networkInfoActions,
     api: networkInfoApi,
     store: networkInfoStore,
-    start() {
-      networkInfoStore.start();
+    async start() {
+      return networkInfoStore.start();
     },
-    stop() {
-      networkInfoStore.stop();
+    async stop() {
+      return networkInfoStore.stop();
     },
   };
 };

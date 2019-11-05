@@ -32,20 +32,23 @@ export class NetworkInfoStore extends Store {
     );
   }
 
-  public start() {
+  public async start() {
     super.start();
     // Static information only needs to be fetched once
-    this.networkInfoActions.fetchStatic.trigger({});
-    // Dynamic information is assumed to be changing with slot duration
-    // Polling frequency is set at double this rate.
-    // (should be dynamic based networkInfoStore.slotDuration)
-    this.pollingInterval = setInterval(() => {
-      this.networkInfoActions.fetchDynamic.trigger({});
-    }, 10000);
+    await this.fetchStaticInfo();
+    // Fetch dynamic info immediately once
+    await this.fetchDynamicInfo();
+    // Keep polling dynamic info based on slot duration
+    this.pollingInterval = setInterval(
+      this.fetchDynamicInfo,
+      this.slotDuration * 2
+    );
   }
 
-  public stop() {
-    clearInterval(this.pollingInterval);
+  public async stop() {
+    if (this.pollingInterval) {
+      clearInterval(this.pollingInterval);
+    }
   }
 
   @computed get isFetching() {
@@ -57,21 +60,26 @@ export class NetworkInfoStore extends Store {
 
   @action private fetchDynamicInfo = async () => {
     const result = await this.networkInfoApi.fetchDynamic.execute({});
-    if (result && isNotNull(result.data.cardano)) {
-      this.blockHeight = result.data.cardano.blockHeight;
-      this.currentEpoch = result.data.cardano.currentEpoch.number;
-      this.lastBlockTime = new Date(
-        result.data.cardano.currentEpoch.lastBlockTime
-      );
+    if (result) {
+      const { cardano } = result.data;
+      if (isNotNull(cardano)) {
+        const { currentEpoch } = cardano;
+        this.blockHeight = cardano.blockHeight;
+        this.currentEpoch = currentEpoch.number;
+        this.lastBlockTime = new Date(currentEpoch.lastBlockTime);
+      }
     }
   };
 
   @action private fetchStaticInfo = async () => {
     const result = await this.networkInfoApi.fetchStatic.execute({});
-    if (result && isNotNull(result.data.cardano)) {
-      this.protocolConst = result.data.cardano.protocolConst;
-      this.startTime = new Date(result.data.cardano.startTime);
-      this.slotDuration = result.data.cardano.slotDuration;
+    if (result) {
+      const { cardano } = result.data;
+      if (isNotNull(cardano)) {
+        this.protocolConst = cardano.protocolConst;
+        this.startTime = new Date(cardano.startTime);
+        this.slotDuration = cardano.slotDuration;
+      }
     }
   };
 }
