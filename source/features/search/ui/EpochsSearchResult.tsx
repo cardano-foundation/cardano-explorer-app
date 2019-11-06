@@ -76,6 +76,7 @@ export const EpochsSearchResult = () => {
                     output: 0,
                     transactions: 0,
                   }))}
+                  isLoading={false}
                 />
               </div>
               <div className={styles.stakeDistribution}>

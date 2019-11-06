@@ -48,7 +48,9 @@ const stakeDistribution = [
 
 storiesOf('Epochs', module)
   .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
-  .add('Epoch List', () => <EpochList title="Epochs" items={epochs} />)
+  .add('Epoch List', () => (
+    <EpochList title="Epochs" items={epochs} isLoading={false} />
+  ))
   .add('Epoch Summary', () => <EpochSummary title="Epoch" epoch={epochs[0]} />)
   .add('Stake Distribution', () => (
     <StakeDistribution title="Stake Distribution" items={stakeDistribution} />

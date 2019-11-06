@@ -136,7 +136,9 @@ const blockCreation = [
 
 storiesOf('Blocks', module)
   .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
-  .add('Block List', () => <BlockList title="Blocks" items={blocks} />)
+  .add('Block List', () => (
+    <BlockList title="Blocks" items={blocks} isLoading={false} />
+  ))
   .add('Block Summary', () => <BlockSummary {...blockSummary} />)
   .add('Block Creation', () => (
     <BlockCreation title="Block Creation" items={blockCreation} />

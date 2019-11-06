@@ -68,6 +68,7 @@ const BlockList: FC<IBlockListProps> = ({ title, items, isLoading }) => (
       title={title}
       columns={columns}
       rows={items.map(i => Object.assign(i, { key: i.number }))}
+      withoutHeaders={isLoading}
       withShowMore={!isLoading}
     />
   </div>
