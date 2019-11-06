@@ -11,6 +11,7 @@ export interface IBlockListRowProps {
   epoch: number;
   output: number;
   size: number;
+  slotNo: number;
   transactions: number;
 }
 
@@ -21,7 +22,7 @@ export interface IBlockListProps {
 
 const columns: Array<IColumnDefinition<IBlockListRowProps>> = [
   {
-    cellValue: (row: IBlockListRowProps) => `${row.epoch} / ${row.size}`,
+    cellValue: (row: IBlockListRowProps) => `${row.epoch} / ${row.slotNo}`,
     cssClass: 'epoch',
     head: 'Epoch / Slot',
     key: 'epochsSlots',

@@ -13,7 +13,7 @@ const blocks = [
     number: 20051,
     output: 11189.647356,
     size: 1024,
-    slots: 21600,
+    slotNo: 21600,
     transactions: 1,
   },
   {
@@ -23,7 +23,7 @@ const blocks = [
     number: 20051,
     output: 11189.647356,
     size: 1024,
-    slots: 21600,
+    slotNo: 21600,
     transactions: 2,
   },
   {
@@ -33,7 +33,7 @@ const blocks = [
     number: 20051,
     output: 11189.647356,
     size: 1024,
-    slots: 21600,
+    slotNo: 21600,
     transactions: 3,
   },
   {
@@ -43,7 +43,7 @@ const blocks = [
     number: 20051,
     output: 11189.647356,
     size: 1024,
-    slots: 21600,
+    slotNo: 21600,
     transactions: 4,
   },
   {
@@ -53,22 +53,25 @@ const blocks = [
     number: 20051,
     output: 11189.647356,
     size: 1024,
-    slots: 21600,
+    slotNo: 21600,
     transactions: 5,
   },
 ];
 
 const blockSummary = {
-  block: 11044,
   confirmations: 0,
+  createdAt: Date.now(),
   createdBy: '[BLSH] pool',
   epoch: 47,
   id: '502017e88ff3b7389a0c7e6f4a6c808d171938467c9adbdc059250ab4a8fee72',
   merkleRoot:
     '0e5751c026e543b2e8ab2eb06099daa1d1e5df47778f7787faab45cdf12fe3a8',
   nextBlock: '2111edea30970af11172bd8e2f05c7406cba8f20d9bb78c4fa62ba06881372e7',
-  prevBlock: '1b6532a66b067f7b81691924f00c4abc1cfbe8496dcb150dba1704ac080c2dc0',
+  number: 11044,
+  output: 13130,
+  prevBlock: 11043,
   size: 634,
+  slotNo: 11043,
   time: 1470006392000,
   title: 'Block Summary',
   transactions: 0,
