@@ -9,14 +9,24 @@
   .headerBackgroundAnimation {
     height: 415px;
     width: 1099px;
-
-    .animationIframe {
-      border: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
       height: 100%;
-      opacity: 0.3;
-      width: 100%;
+      margin-top: -25px;
+      margin-left: 11px;
     }
   }
+}
+
+.sideBgContainer {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  z-index: -1;
 }
 
 .sideBackgroundImageContainer {
@@ -25,7 +35,6 @@
   display: flex;
   position: absolute;
   right: 0;
-  z-index: -1;
 
   .sideBackgroundImage {
     height: auto;

@@ -24,22 +24,14 @@ if (environment.IS_CLIENT) {
       <Head>
         <title>Byron | Index</title>
       </Head>
+      {!isMobileScreen() && (
+        <div className={styles.headerBackgroundAnimationContainer}>
+          <div className={styles.headerBackgroundAnimation}>
+            <img src="/assets/images/main-header-background.png" />
+          </div>
+        </div>
+      )}
       <Layout hasContainer>
-        {!isMobileScreen() && (
-          <div className={styles.headerBackgroundAnimationContainer}>
-            <div className={styles.headerBackgroundAnimation}>
-              <iframe
-                className={styles.animationIframe}
-                src="//webdevm.iohk.io/?repo=cardano-sl&lang=en&content=Cryptographic%20currency%20implementing%20Ouroboros%20PoS%20protocol"
-              />
-            </div>
-          </div>
-        )}
-        {!isMobileScreen() && (
-          <div className={styles.sideBackgroundImageContainer}>
-            <SideBackgroundImage className={styles.sideBackgroundImage} />
-          </div>
-        )}
         <Header brandType={BrandType.ENLARGED} />
         <div>
           <SearchBar brandType={BrandType.ENLARGED} />
@@ -56,6 +48,13 @@ if (environment.IS_CLIENT) {
         </div>
         <Footer />
       </Layout>
+      {!isMobileScreen() && (
+        <div className={styles.sideBgContainer}>
+          <div className={styles.sideBackgroundImageContainer}>
+            <SideBackgroundImage className={styles.sideBackgroundImage} />
+          </div>
+        </div>
+      )}
     </NoSSR>
   );
 }
