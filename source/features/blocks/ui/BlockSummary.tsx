@@ -8,7 +8,7 @@ export type BlockSummaryProps = {
   title: string;
 } & IBlockDetailed;
 
-const BlockSummary = (props: any) => (
+const BlockSummary = (props: BlockSummaryProps) => (
   <div className={styles.blockSummaryContainer}>
     <div className={styles.header}>
       <DividerWithTitle title={props.title} />
