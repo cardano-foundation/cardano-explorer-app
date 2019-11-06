@@ -1,30 +1,47 @@
 import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../../../lib/graphql/apolloClient';
+import { NetworkInfoActions } from '../../network-info';
+import { NetworkInfoApi } from '../../network-info/api';
+import { NetworkInfoStore } from '../../network-info/store';
 import { createBlocksFeature, IBlocksFeature } from '../index';
 
-describe('Fetching the latest blocks', () => {
+describe('Blocks feature', () => {
   let blocks: IBlocksFeature;
-  beforeEach(() => {
-    blocks = createBlocksFeature(apolloClient);
-    blocks.start();
+  let networkInfoStore: NetworkInfoStore;
+
+  beforeEach(async () => {
+    networkInfoStore = new NetworkInfoStore(
+      new NetworkInfoActions(),
+      new NetworkInfoApi(apolloClient)
+    );
+    await networkInfoStore.start();
+    blocks = createBlocksFeature({ store: networkInfoStore }, apolloClient);
   });
+
   afterEach(() => {
-    blocks.stop();
+    networkInfoStore.stop();
   });
 
-  it('retrieves the latest 10 blocks', async () => {
-    // 1. Trigger action to search for a block by id
-    blocks.actions.fetchLatestBlocks.trigger();
+  describe('start', () => {
+    beforeEach(async () => {
+      await blocks.start();
+    });
 
-    // 2. Check the API query status (e.g for showing loading spinners)
-    expect(blocks.api.getLatestBlocksQuery.isExecuting).toBe(true);
+    it('fetches up to the latest 10 blocks, and provides a status', async () => {
+      // Useful for showing loading spinners
+      expect(blocks.store.isRefreshing).toBe(true);
+      // Access the observable result provided by the store
+      await waitForExpect(() => {
+        expect(blocks.store.latestBlocks.length).toBe(10);
+        expect(blocks.store.latestBlocks[0].number).toBe(31070);
+        expect(blocks.store.latestBlocks[4].transactions).toBe(2);
+        expect(blocks.store.latestBlocks[1].number).toBe(31069);
+      });
+      expect(blocks.store.isRefreshing).toBe(false);
+    });
 
-    // 3. Access the observable search result provided by the store
-    await waitForExpect(() => {
-      expect(blocks.store.latestBlocks.length).toBe(10);
-      expect(blocks.store.latestBlocks[0].id).toBe(
-        '84e9de7924aba73f58b81e142f4bce7f1d00cf4630f94f631e6ca3594b2d1634'
-      );
+    afterEach(() => {
+      blocks.stop();
     });
   });
 });

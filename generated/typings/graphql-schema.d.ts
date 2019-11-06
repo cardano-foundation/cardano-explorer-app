@@ -490,6 +490,14 @@ export type BlockInfoFragment = ({ __typename?: 'Block' } & Pick<Block, 'id' | '
 
 export type BlockOverviewFragment = ({ __typename?: 'Block' } & Pick<Block, 'createdAt' | 'id' | 'number' | 'size' | 'slotNo'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, transactions_aggregate: ({ __typename?: 'Transaction_aggregate' } & { aggregate: Maybe<({ __typename?: 'Transaction_aggregate_fields' } & Pick<Transaction_Aggregate_Fields, 'count'>)> }) });
 
+export type GetBlocksInRangeQueryVariables = {
+  lower: Scalars['Int'],
+  upper: Scalars['Int']
+};
+
+
+export type GetBlocksInRangeQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & BlockOverviewFragment)>> });
+
 export type GetLatestBlocksQueryVariables = {
   limit?: Maybe<Scalars['Int']>
 };

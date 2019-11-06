@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApolloClient } from 'react-apollo-hooks';
 import { useFeature } from '../../../lib/react/hooks';
+import { useNetworkInfoFeature } from '../../network-info/context';
 import { blocksContext } from '../context';
 import { createBlocksFeature, IBlocksFeature } from '../index';
 
@@ -10,8 +11,9 @@ interface IProps {
 
 export const BlocksFeatureProvider = (props: IProps) => {
   const apolloClient = useApolloClient();
+  const networkInfo = useNetworkInfoFeature();
   const [blocksFeature] = useState<IBlocksFeature>(
-    createBlocksFeature(apolloClient)
+    createBlocksFeature(networkInfo, apolloClient)
   );
   useFeature(blocksFeature);
   return (
