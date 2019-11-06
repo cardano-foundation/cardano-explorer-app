@@ -25,7 +25,7 @@ export interface IColumnDefinition<R = any, CE = any, CO = any> {
 export interface ITableProps {
   title?: string;
   columns: Array<IColumnDefinition>;
-  rows: Array<any>;
+  rows: Array<{ key: string | number }>;
   withShowMore?: boolean;
   withPagination?: boolean;
   rowsPerPage?: number;

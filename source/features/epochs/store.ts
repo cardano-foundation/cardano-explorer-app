@@ -64,6 +64,6 @@ export class EpochsStore extends Store {
   };
 
   @computed get isRefreshing() {
-    return this.epochsApi.getEpochsInRangeQuery.isExecuting;
+    return this.epochsApi.getEpochsInRangeQuery.isExecutingTheFirstTime;
   }
 }

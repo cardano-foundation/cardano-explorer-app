@@ -92,7 +92,12 @@ const columns: Array<IColumnDefinition<IEpochListRowProps>> = [
 
 const EpochList: FC<IEpochListProps> = ({ title, items }) => (
   <div className={styles.epochListContainer}>
-    <Table title={title} columns={columns} rows={items} withShowMore />
+    <Table
+      title={title}
+      columns={columns}
+      rows={items.map(i => Object.assign(i, { key: i.number }))}
+      withShowMore
+    />
   </div>
 );
 

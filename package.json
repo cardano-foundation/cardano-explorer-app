@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@svgr/webpack": "4.3.2",
+    "@types/react-addons-css-transition-group": "^15.0.5",
     "apollo-cache-inmemory": "1.5.1",
     "apollo-client": "2.5.1",
     "apollo-link": "1.2.11",
@@ -63,6 +64,7 @@
     "node-fetch": "2.6.0",
     "qrcode.react": "0.9.3",
     "react": "16.8.6",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-apollo-hooks": "0.4.5",
     "react-dom": "16.8.6",
     "react-no-ssr": "1.1.0",

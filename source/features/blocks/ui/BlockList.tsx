@@ -63,7 +63,12 @@ const columns: Array<IColumnDefinition<IBlockListRowProps>> = [
 
 const BlockList: FC<IBlockListProps> = ({ title, items }) => (
   <div className={styles.blockListContainer}>
-    <Table title={title} columns={columns} rows={items} withShowMore />
+    <Table
+      title={title}
+      columns={columns}
+      rows={items.map(i => Object.assign(i, { key: i.number }))}
+      withShowMore
+    />
   </div>
 );
 

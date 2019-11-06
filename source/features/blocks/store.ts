@@ -38,7 +38,7 @@ export class BlocksStore extends Store {
   }
 
   @computed get isRefreshing() {
-    return this.blocksApi.getBlocksInRangeQuery.isExecuting;
+    return this.blocksApi.getBlocksInRangeQuery.isExecutingTheFirstTime;
   }
 
   @computed get latestBlocks(): IBlockOverview[] {

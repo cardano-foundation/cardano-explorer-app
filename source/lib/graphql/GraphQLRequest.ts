@@ -1,6 +1,6 @@
 import { ApolloClient, ApolloError, ApolloQueryResult } from 'apollo-client';
 import { DocumentNode } from 'graphql';
-import { observable, runInAction } from 'mobx';
+import { computed, observable, runInAction } from 'mobx';
 
 export class GraphQLRequest<TResult, TVariables> {
   @observable public result: ApolloQueryResult<TResult> | null = null;
@@ -10,6 +10,10 @@ export class GraphQLRequest<TResult, TVariables> {
   @observable public execution: Promise<
     ApolloQueryResult<TResult>
   > | null = null;
+
+  @computed public get isExecutingTheFirstTime() {
+    return this.isExecuting && !this.hasBeenExecutedAtLeastOnce;
+  }
 
   private client: ApolloClient<any>;
   private query: DocumentNode;
