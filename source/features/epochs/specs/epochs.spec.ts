@@ -37,6 +37,7 @@ describe('Epochs feature', () => {
         expect(epochs.store.latestEpochs[0].blocksCount).toBe(9485);
         expect(epochs.store.latestEpochs[1].number).toBe(0);
       });
+      expect(epochs.store.isRefreshing).toBe(false);
     });
 
     afterEach(() => {

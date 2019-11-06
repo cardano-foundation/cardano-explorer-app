@@ -47,7 +47,7 @@ export class EpochsStore extends Store {
       return;
     }
     const upper = this.networkInfo.store.currentEpoch;
-    const lower = Math.max(0, upper - 5);
+    const lower = Math.max(0, upper - 4);
     const result = await this.epochsApi.getEpochsInRangeQuery.execute({
       lower,
       upper,
