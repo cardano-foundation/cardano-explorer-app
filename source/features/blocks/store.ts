@@ -1,7 +1,7 @@
 import { action, computed, observable } from 'mobx';
 import { BlockOverviewFragment } from '../../../generated/typings/graphql-schema';
 // import { createActionBindings } from '../../lib/ActionBinding';
-import Reaction from '../../lib/mobx/Reaction';
+import Reaction, { createReactions } from '../../lib/mobx/Reaction';
 import { Store } from '../../lib/Store';
 import { BlocksApi } from './api';
 import { blockOverviewTransformer } from './api/transformers';
@@ -12,8 +12,6 @@ import {
 import { IBlockOverview } from './types';
 
 export class BlocksStore extends Store {
-  @observable public latestBlocks: IBlockOverview[] = [];
-
   // private readonly blocksActions: BlocksActions;
   private readonly blocksApi: BlocksApi;
   private readonly networkInfo: INetworkInfoFeatureDependency;
@@ -36,33 +34,40 @@ export class BlocksStore extends Store {
     //     [this.blocksActions.fetchLatestBlocks, this.fetchLatestBlocks],
     //   ])
     // );
-    this.registerReactions([new Reaction(this.fetchLatestBlocks)]);
+    this.registerReactions(createReactions([this.fetchLatestBlocks]));
   }
 
-  private fetchLatestBlocks = async () => {
+  @computed get isRefreshing() {
+    return this.blocksApi.getBlocksInRangeQuery.isExecuting;
+  }
+
+  @computed get latestBlocks(): IBlockOverview[] {
+    const { result } = this.blocksApi.getBlocksInRangeQuery;
+    if (result) {
+      const isBlock = (b: any): b is BlockOverviewFragment => b != null;
+      return result.data.blocks.filter(isBlock).map(blockOverviewTransformer);
+    }
+    return [];
+  }
+
+  // ============ REACTIONS =============
+
+  private fetchLatestBlocks = () => {
     if (
+      this.blocksApi.getBlocksInRangeQuery.isExecuting ||
       this.networkInfo.store.isFetching ||
       !this.networkInfo.store.blockHeight ||
-      (this.latestBlocks[0] &&
+      (this.latestBlocks.length > 0 &&
+        this.latestBlocks[0] &&
         this.latestBlocks[0].number === this.networkInfo.store.blockHeight)
     ) {
       return;
     }
     const upper = this.networkInfo.store.blockHeight;
     const lower = Math.max(0, upper - 9);
-    const result = await this.blocksApi.getBlocksInRangeQuery.execute({
+    this.blocksApi.getBlocksInRangeQuery.execute({
       lower,
       upper,
     });
-    if (result) {
-      const isBlock = (b: any): b is BlockOverviewFragment => b != null;
-      this.latestBlocks = result.data.blocks
-        .filter(isBlock)
-        .map(blockOverviewTransformer);
-    }
   };
-
-  @computed get isRefreshing() {
-    return this.blocksApi.getBlocksInRangeQuery.isExecuting;
-  }
 }

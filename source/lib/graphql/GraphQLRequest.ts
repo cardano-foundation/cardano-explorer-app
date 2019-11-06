@@ -1,6 +1,6 @@
 import { ApolloClient, ApolloError, ApolloQueryResult } from 'apollo-client';
 import { DocumentNode } from 'graphql';
-import { observable } from 'mobx';
+import { observable, runInAction } from 'mobx';
 
 export class GraphQLRequest<TResult, TVariables> {
   @observable public result: ApolloQueryResult<TResult> | null = null;
@@ -22,6 +22,11 @@ export class GraphQLRequest<TResult, TVariables> {
   public async execute(
     variables: TVariables
   ): Promise<ApolloQueryResult<TResult>> {
+    if (this.isExecuting) {
+      throw new Error(
+        `Request is already executing with: ${JSON.stringify(variables)}`
+      );
+    }
     try {
       this.isExecuting = true;
       this.execution = this.client.query<TResult, TVariables>({
@@ -29,15 +34,21 @@ export class GraphQLRequest<TResult, TVariables> {
         variables,
       });
       this.result = await this.execution;
-      this.error = null;
+      runInAction(() => {
+        this.error = null;
+      });
       return this.result;
     } catch (error) {
-      this.result = null;
-      this.error = error;
+      runInAction(() => {
+        this.result = null;
+        this.error = error;
+      });
       throw error;
     } finally {
-      this.isExecuting = false;
-      this.hasBeenExecutedAtLeastOnce = true;
+      runInAction(() => {
+        this.isExecuting = false;
+        this.hasBeenExecutedAtLeastOnce = true;
+      });
     }
   }
 }
