@@ -501,6 +501,14 @@ export type EpochDetailsFragment = ({ __typename?: 'Epoch' } & { blocks: Maybe<A
 
 export type EpochOverviewFragment = ({ __typename?: 'Epoch' } & Pick<Epoch, 'lastBlockTime' | 'number' | 'startedAt' | 'output' | 'transactionsCount'> & { blocks_aggregate: ({ __typename?: 'Block_aggregate' } & { aggregate: Maybe<({ __typename?: 'Block_aggregate_fields' } & Pick<Block_Aggregate_Fields, 'count'>)> }) });
 
+export type GetEpochsInRangeQueryVariables = {
+  lower: Scalars['Int'],
+  upper: Scalars['Int']
+};
+
+
+export type GetEpochsInRangeQuery = ({ __typename?: 'Query' } & { epochs: Array<Maybe<({ __typename?: 'Epoch' } & EpochOverviewFragment)>> });
+
 export type GetLatestEpochsQueryVariables = {
   limit?: Maybe<Scalars['Int']>
 };
