@@ -18,6 +18,7 @@ export interface IBlockListRowProps {
 export interface IBlockListProps {
   title: string;
   items: Array<IBlockListRowProps>;
+  isLoading: boolean;
 }
 
 const columns: Array<IColumnDefinition<IBlockListRowProps>> = [
@@ -61,13 +62,13 @@ const columns: Array<IColumnDefinition<IBlockListRowProps>> = [
   },
 ];
 
-const BlockList: FC<IBlockListProps> = ({ title, items }) => (
+const BlockList: FC<IBlockListProps> = ({ title, items, isLoading }) => (
   <div className={styles.blockListContainer}>
     <Table
       title={title}
       columns={columns}
       rows={items.map(i => Object.assign(i, { key: i.number }))}
-      withShowMore
+      withShowMore={!isLoading}
     />
   </div>
 );

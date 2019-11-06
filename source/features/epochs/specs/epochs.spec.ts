@@ -29,7 +29,7 @@ describe('Epochs feature', () => {
 
     it('fetches up to the latest 5 epochs, and provides a status', async () => {
       // Useful for showing loading spinners
-      expect(epochs.store.isRefreshing).toBe(true);
+      expect(epochs.store.isLoadingFirstTime).toBe(true);
       // Access the observable result provided by the store
       await waitForExpect(() => {
         expect(epochs.store.latestEpochs.length).toBe(2);
@@ -37,7 +37,7 @@ describe('Epochs feature', () => {
         expect(epochs.store.latestEpochs[0].blocksCount).toBe(9485);
         expect(epochs.store.latestEpochs[1].number).toBe(0);
       });
-      expect(epochs.store.isRefreshing).toBe(false);
+      expect(epochs.store.isLoadingFirstTime).toBe(false);
     });
 
     afterEach(() => {

@@ -37,8 +37,12 @@ export class BlocksStore extends Store {
     this.registerReactions(createReactions([this.fetchLatestBlocks]));
   }
 
-  @computed get isRefreshing() {
-    return this.blocksApi.getBlocksInRangeQuery.isExecutingTheFirstTime;
+  @computed get isLoadingFirstTime() {
+    const { getBlocksInRangeQuery } = this.blocksApi;
+    return (
+      !getBlocksInRangeQuery.hasBeenExecutedAtLeastOnce ||
+      getBlocksInRangeQuery.isExecutingTheFirstTime
+    );
   }
 
   @computed get latestBlocks(): IBlockOverview[] {

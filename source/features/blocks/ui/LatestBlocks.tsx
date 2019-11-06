@@ -10,10 +10,15 @@ export const LatestBlocks = () => {
     <Observer>
       {() => {
         const { latestBlocks } = store;
-        return store.isRefreshing ? (
-          <LoadingSpinner />
-        ) : (
-          <BlockList title="Latest Blocks" items={latestBlocks} />
+        return (
+          <>
+            <BlockList
+              title="Latest Blocks"
+              items={latestBlocks}
+              isLoading={store.isLoadingFirstTime}
+            />
+            {store.isLoadingFirstTime && <LoadingSpinner />}
+          </>
         );
       }}
     </Observer>

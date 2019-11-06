@@ -38,6 +38,14 @@ export class EpochsStore extends Store {
     this.registerReactions(createReactions([this.fetchLatestEpochs]));
   }
 
+  @computed get isLoadingFirstTime() {
+    const { getEpochsInRangeQuery } = this.epochsApi;
+    return (
+      !getEpochsInRangeQuery.hasBeenExecutedAtLeastOnce ||
+      getEpochsInRangeQuery.isExecutingTheFirstTime
+    );
+  }
+
   @computed get latestEpochs(): IEpochOverview[] {
     const { result } = this.epochsApi.getEpochsInRangeQuery;
     if (result) {
@@ -62,8 +70,4 @@ export class EpochsStore extends Store {
       upper,
     });
   };
-
-  @computed get isRefreshing() {
-    return this.epochsApi.getEpochsInRangeQuery.isExecutingTheFirstTime;
-  }
 }

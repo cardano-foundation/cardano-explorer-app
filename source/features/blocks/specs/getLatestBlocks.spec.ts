@@ -29,7 +29,7 @@ describe('Blocks feature', () => {
 
     it('fetches up to the latest 10 blocks, and provides a status', async () => {
       // Useful for showing loading spinners
-      expect(blocks.store.isRefreshing).toBe(true);
+      expect(blocks.store.isLoadingFirstTime).toBe(true);
       // Access the observable result provided by the store
       await waitForExpect(() => {
         expect(blocks.store.latestBlocks.length).toBe(10);
@@ -37,7 +37,7 @@ describe('Blocks feature', () => {
         expect(blocks.store.latestBlocks[4].transactions).toBe(2);
         expect(blocks.store.latestBlocks[1].number).toBe(31069);
       });
-      expect(blocks.store.isRefreshing).toBe(false);
+      expect(blocks.store.isLoadingFirstTime).toBe(false);
     });
 
     afterEach(() => {

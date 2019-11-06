@@ -10,10 +10,15 @@ export const LatestEpochs = () => {
     <Observer>
       {() => {
         const { latestEpochs } = store;
-        return store.isRefreshing ? (
-          <LoadingSpinner />
-        ) : (
-          <EpochList title="Latest Epochs" items={latestEpochs} />
+        return (
+          <>
+            <EpochList
+              title="Latest Epochs"
+              items={latestEpochs}
+              isLoading={store.isLoadingFirstTime}
+            />
+            {store.isLoadingFirstTime && <LoadingSpinner />}
+          </>
         );
       }}
     </Observer>

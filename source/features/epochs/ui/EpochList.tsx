@@ -22,6 +22,7 @@ export interface IEpochListRowProps {
 export interface IEpochListProps {
   title: string;
   items: Array<IEpochListRowProps>;
+  isLoading: boolean;
 }
 
 const columns: Array<IColumnDefinition<IEpochListRowProps>> = [
@@ -90,13 +91,13 @@ const columns: Array<IColumnDefinition<IEpochListRowProps>> = [
   },
 ];
 
-const EpochList: FC<IEpochListProps> = ({ title, items }) => (
+const EpochList: FC<IEpochListProps> = ({ title, items, isLoading }) => (
   <div className={styles.epochListContainer}>
     <Table
       title={title}
       columns={columns}
       rows={items.map(i => Object.assign(i, { key: i.number }))}
-      withShowMore
+      withShowMore={!isLoading}
     />
   </div>
 );
