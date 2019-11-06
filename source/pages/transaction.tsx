@@ -9,8 +9,7 @@ let TransactionPage = () => <NoSSR />;
 if (environment.IS_CLIENT) {
   TransactionPage = () => (
     <NoSSR>
-      <Layout>
-        <Header brandType={BrandType.SHRINKED} />
+      <Layout hasContainer header={<Header brandType={BrandType.SHRINKED} />}>
         <TransactionSearchResult />
         <Footer />
       </Layout>
