@@ -6,13 +6,13 @@ export class Store {
   private actionBindings: ActionBinding[] = [];
   private reactions: Reaction[] = [];
 
-  public start() {
+  public async start() {
     this.startActions();
     this.startReactions();
     this.isRunning = true;
   }
 
-  public stop() {
+  public async stop() {
     this.stopActions();
     this.stopReactions();
     this.isRunning = false;

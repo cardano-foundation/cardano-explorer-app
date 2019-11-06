@@ -1,0 +1,8 @@
+
+query cardanoStatic {
+  cardano {
+    protocolConst
+    startTime
+    slotDuration
+  }
+}

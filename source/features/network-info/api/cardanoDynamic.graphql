@@ -1,0 +1,10 @@
+
+query cardanoDynamic {
+  cardano {
+    blockHeight
+    currentEpoch {
+      lastBlockTime
+      number
+    }
+  }
+}
