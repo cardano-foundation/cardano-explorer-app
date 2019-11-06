@@ -44,7 +44,11 @@ export const Header = observer((props: IHeaderProps) => {
       <div className={styles.contentContainer}>
         <div className={styles.brandType}>
           <div className={styles.logoContainer}>
-            <CardanoLogo className={styles.logo} />
+            <Link href="/">
+              <a>
+                <CardanoLogo className={styles.logo} />
+              </a>
+            </Link>
           </div>
           <div className={styles.titleContainer}>
             <span className={styles.cardanoTitle}>Cardano</span>
