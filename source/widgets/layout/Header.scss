@@ -98,7 +98,7 @@
     }
 
     .searchContainer {
-      padding: 0 32px 30px;
+      padding-bottom: 32px;
     }
   }
 
@@ -107,7 +107,9 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 100%;
+    width: calc(100% - 32px * 2);
+    max-width: 872px;
+    margin: 0 auto;
     z-index: 200;
 
     .brandType {

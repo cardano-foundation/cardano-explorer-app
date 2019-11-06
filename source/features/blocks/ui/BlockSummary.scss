@@ -1,5 +1,5 @@
 .blockSummaryContainer {
-  margin: 71px auto 21px;
+  margin: 0 auto;
   max-width: 872px;
   width: 100%;
 
@@ -47,13 +47,5 @@
         }
       }
     }
-  }
-
-  @media (max-width: 1200px) {
-    padding: 32px 200px;
-  }
-
-  @media (max-width: 992px) {
-    padding: 32px;
   }
 }

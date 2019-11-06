@@ -6,6 +6,7 @@ import styles from './Layout.scss';
 interface IProps {
   children: React.ReactNode;
   hasContainer?: boolean;
+  header?: React.ReactNode;
 }
 
 let browserUpdate: any = null;
@@ -14,7 +15,7 @@ if (typeof window !== 'undefined') {
   browserUpdate = require('browser-update/update.npm.js');
 }
 
-export const Layout = ({ children, hasContainer }: IProps) => {
+export const Layout = ({ children, hasContainer, header }: IProps) => {
   const Container: any = hasContainer ? ContainerComponent : Fragment;
   const router = useRouter();
 
@@ -84,7 +85,8 @@ export const Layout = ({ children, hasContainer }: IProps) => {
   return (
     <Fragment>
       <div className={styles.content}>
-        <Container>{children}</Container>
+        {header && header}
+        <Container hasTopMargin>{children}</Container>
       </div>
     </Fragment>
   );

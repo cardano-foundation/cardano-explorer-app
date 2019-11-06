@@ -149,6 +149,7 @@
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    position: relative;
   }
   body {
     background-color: $primary-bg;

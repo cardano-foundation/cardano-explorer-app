@@ -5,6 +5,7 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import TransactionSummary from '../../transactions/components/TransactionSummary';
 import { useSearchFeature } from '../context';
 import NoSearchResult from './NoSearchResult';
+import styles from './TransactionSearchResult.scss';
 
 export const TransactionSearchResult = () => {
   const { actions, store } = useSearchFeature();

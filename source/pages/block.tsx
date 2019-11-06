@@ -9,8 +9,7 @@ let BlockPage = () => <NoSSR />;
 if (environment.IS_CLIENT) {
   BlockPage = () => (
     <NoSSR>
-      <Layout>
-        <Header brandType={BrandType.SHRINKED} />
+      <Layout hasContainer header={<Header brandType={BrandType.SHRINKED} />}>
         <BlockSearchResult />
         <Footer />
       </Layout>
