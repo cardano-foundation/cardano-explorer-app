@@ -21,7 +21,7 @@ SCHEMA_URI="${API_PROTOCOL}://${API_HOST}:${API_PORT}" yarn generate:graphql-sch
 echo "GraphQL playground available: ${API_PROTOCOL}://${API_HOST}:${API_PORT}"
 echo "Ready 🚀"
 
-if [ "$CI" == true ]
+if [[ "$CI" == "true" ]]
 then
   exit
 fi

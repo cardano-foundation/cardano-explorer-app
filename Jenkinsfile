@@ -24,7 +24,7 @@ pipeline {
         sh 'yarn lint'
       }
     }
-    stage('Setup service dependencies') {
+    stage('Setup Service Dependencies') {
       steps {
         sh 'CI=true yarn run start-dependencies'
       }
