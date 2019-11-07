@@ -164,10 +164,17 @@
               line-height: 1.8;
               text-decoration: none;
 
+              &:hover {
+                opacity: 1;
+              }
+
               &.emailLink {
                 color: $footer-text-color;
                 font-weight: 600;
                 opacity: 1;
+                &:hover {
+                  color: $primary-highlight-color-hover;
+                }
               }
             }
           }

@@ -2,5 +2,5 @@ fragment BlockInfo on Block {
   id
   number
   size
-  slotNo
+  slotWithinEpoch
 }

@@ -25,7 +25,7 @@
     "prettier:fix-staged": "pretty-quick --staged",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook -o build/storybook",
-    "start-dependencies": "docker-compose up",
+    "start-dependencies": "node utils/start_dependencies_env_wrapper.js",
     "stop-dependencies": "docker-compose down",
     "deploy:byron:staging": "node deploy/byron_staging",
     "deploy:byron:incentivized-testnet": "node deploy/byron_incentivized_testnet"

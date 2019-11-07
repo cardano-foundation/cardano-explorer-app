@@ -24,14 +24,14 @@ pipeline {
         sh 'yarn lint'
       }
     }
+    stage('Setup Service Dependencies') {
+      steps {
+        sh 'CI=true yarn run start-dependencies'
+      }
+    }
     stage('Build') {
       steps {
         sh 'yarn build'
-      }
-    }
-    stage('Instantiate Test Services') {
-      steps {
-        sh 'npm run start-dependencies -- -d'
       }
     }
     stage('Test') {
@@ -40,7 +40,7 @@ pipeline {
       }
       post {
         always {
-          sh 'npm run stop-dependencies'
+          sh 'yarn stop-dependencies'
         }
       }
     }
