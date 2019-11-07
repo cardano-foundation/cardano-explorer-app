@@ -13,7 +13,7 @@ export const epochOverviewTransformer = (
 ): IEpochOverview => {
   return {
     blocksCount: get(e, 'blocks_aggregate.aggregate.count', 0),
-    endedAt: new Date(e.lastBlockTime), // TODO: Refactor to lastBlockAt (or change the logic here to determine if it has ended
+    lastBlockAt: new Date(e.lastBlockTime), // TODO: Refactor to lastBlockAt (or change the logic here to determine if it has ended
     number: e.number,
     output: lovelacesToAda(parseInt(e.output, 10)).toString() || '',
     slotsCount: 21600, // TODO: Move this to global store, as it's determined by the blockchain configuration
