@@ -1,12 +1,13 @@
 fragment BlockDetails on Block {
   createdAt
+  createdBy
   id
   merkelRootHash
   number
   size
   epoch {
     number
-  },
+  }
   previousBlock {
     id
     number
@@ -15,6 +16,9 @@ fragment BlockDetails on Block {
   transactions_aggregate {
     aggregate {
       count
+      sum {
+        totalOutput
+      }
     }
   }
 }

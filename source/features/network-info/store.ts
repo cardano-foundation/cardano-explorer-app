@@ -42,7 +42,7 @@ export class NetworkInfoStore extends Store {
     // Poll for updates
     this.pollingInterval = setInterval(
       this.fetchDynamicInfo,
-      this.slotDuration / environment.REAL_TIME_FACTOR
+      this.slotDuration / (environment.REAL_TIME_FACTOR || 1.5)
     );
   }
 

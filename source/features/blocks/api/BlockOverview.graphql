@@ -1,5 +1,6 @@
 fragment BlockOverview on Block {
   createdAt
+  createdBy
   id
   number
   size
@@ -10,6 +11,9 @@ fragment BlockOverview on Block {
   transactions_aggregate {
     aggregate {
       count
+      sum {
+        totalOutput
+      }
     }
   }
 }

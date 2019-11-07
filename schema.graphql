@@ -22,20 +22,39 @@ input BigInt_comparison_exp {
 }
 
 type Block {
+  createdAt: DateTime!
+  createdBy: String!
+
+  """
+  Genesis block does not belong to the 0th epoch, therefore it could be null
+  """
   epoch: Epoch
-  fees: String
+  fees: String!
   id: Hash32HexString!
+
+  """
+  Ouroboros Classic Epoch Boundary blocks (EBB) do not have a merkel root
+  """
   merkelRootHash: Hash32HexString
 
-  """Genesis and Epoch Boundary Blocks (EBBs) do not have numbers"""
+  """
+  Ouroboros Classic Epoch Boundary blocks (EBB) do not have a block number
+  """
   number: Int
+
+  """
+  Ouroboros Classic Epoch Boundary blocks (EBB) do not have a slot number
+  """
   slotNo: Int
+
+  """
+  Ouroboros Classic Epoch Boundary blocks (EBB) do not have a slot number
+  """
   slotWithinEpoch: Int
   previousBlock: Block
   size: Int!
-  createdAt: DateTime!
   transactions(limit: Int, order_by: [Transaction_order_by!], offset: Int, where: Transaction_bool_exp): [Transaction]!
-  transactions_aggregate: Transaction_aggregate!
+  transactions_aggregate(limit: Int, order_by: [Transaction_order_by!], offset: Int, where: Transaction_bool_exp): Transaction_aggregate!
 }
 
 type Block_aggregate {
@@ -56,9 +75,20 @@ type Block_avg_fields {
 }
 
 input Block_bool_exp {
-  id: Hash32HexString_comparison_exp
+  _and: [Block_bool_exp]
+  _not: Block_bool_exp
+  _or: [Block_bool_exp]
+  createdAt: Date_comparison_exp
+  createdBy: text_comparison_exp
   epoch: Epoch_bool_exp
+  fees: BigInt_comparison_exp
+  id: Hash32HexString_comparison_exp
   number: Int_comparison_exp
+  previousBlock: Block_bool_exp
+  size: Int_comparison_exp
+  slotNo: Int_comparison_exp
+  slotWithinEpoch: Int_comparison_exp
+  transactions: Transaction_bool_exp
 }
 
 type Block_max_fields {
@@ -72,8 +102,14 @@ type Block_min_fields {
 }
 
 input Block_order_by {
-  number: order_by
+  createdAt: order_by
+  createdBy: order_by
+  epoch: Epoch_order_by
+  fees: order_by
+  number: order_by_with_nulls
   size: order_by
+  slotNo: order_by_with_nulls
+  slotWithinEpoch: order_by_with_nulls
 }
 
 type Block_sum_fields {
@@ -111,6 +147,9 @@ type Coin_avg_fields {
 }
 
 input Coin_bool_exp {
+  _and: [Coin_bool_exp]
+  _not: Coin_bool_exp
+  _or: [Coin_bool_exp]
   address: text_comparison_exp
   value: BigInt_comparison_exp
 }
@@ -153,11 +192,11 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 scalar DateTime
 
 type Epoch {
-  blocks(limit: Int, order_by: [Block_order_by!], offset: Int, where: Block_bool_exp): [Block]
-  blocks_aggregate: Block_aggregate!
+  blocks(limit: Int, order_by: [Block_order_by!], offset: Int, where: Block_bool_exp): [Block!]!
+  blocks_aggregate(limit: Int, order_by: [Block_order_by!], offset: Int, where: Block_bool_exp): Block_aggregate!
   output: String!
   number: Int!
-  transactionsCount: String
+  transactionsCount: String!
   startedAt: DateTime!
   lastBlockTime: DateTime!
 }
@@ -174,7 +213,13 @@ type Epoch_aggregate_fields {
 }
 
 input Epoch_bool_exp {
+  _and: [Epoch_bool_exp]
+  _not: Epoch_bool_exp
+  _or: [Epoch_bool_exp]
+  blocks: Block_bool_exp
   number: Int_comparison_exp
+  output: text_comparison_exp
+  transactionsCount: text_comparison_exp
 }
 
 type Epoch_max_fields {
@@ -189,9 +234,9 @@ type Epoch_min_fields {
 }
 
 input Epoch_order_by {
-  blockCount: order_by
   number: order_by
-  fees: order_by
+  output: order_by
+  transactionsCount: order_by
 }
 
 type Epoch_sum_fields {
@@ -289,11 +334,14 @@ input Percentage_comparison_exp {
 
 type Query {
   blocks(limit: Int, order_by: [Block_order_by!], offset: Int, where: Block_bool_exp): [Block]!
+  blocks_aggregate(limit: Int, order_by: [Block_order_by!], offset: Int, where: Block_bool_exp): Block_aggregate!
   epochs(limit: Int, order_by: [Epoch_order_by!], offset: Int, where: Epoch_bool_exp): [Epoch]!
   epochs_aggregate(limit: Int, order_by: [Epoch_order_by!], offset: Int, where: Epoch_bool_exp): Epoch_aggregate!
   cardano: Cardano
   transactions(limit: Int, order_by: [Transaction_order_by!], offset: Int, where: Transaction_bool_exp): [Transaction]!
-  utxoSet(limit: Int, order_by: [Utxo_order_by!], offset: Int, where: Utxo_bool_exp!): [TransactionOutput]!
+  transactions_aggregate(limit: Int, order_by: [Transaction_order_by!], offset: Int, where: Transaction_bool_exp): Transaction_aggregate!
+  utxos(limit: Int, order_by: [Utxo_order_by!], offset: Int, where: Utxo_bool_exp): [TransactionOutput]!
+  utxos_aggregate(limit: Int, order_by: [Utxo_order_by!], offset: Int, where: Utxo_bool_exp): Utxo_aggregate!
 }
 
 input text_comparison_exp {
@@ -319,9 +367,9 @@ type Transaction {
   fee: String!
   id: Hash32HexString!
   inputs(limit: Int, order_by: [Coin_order_by], offset: Int, where: Coin_bool_exp): [TransactionInput!]!
-  inputs_aggregate: Coin_aggregate
+  inputs_aggregate(limit: Int, order_by: [Coin_order_by], offset: Int, where: Coin_bool_exp): Coin_aggregate
   outputs(limit: Int, order_by: [Coin_order_by], offset: Int, where: Coin_bool_exp): [TransactionOutput!]!
-  outputs_aggregate: Coin_aggregate
+  outputs_aggregate(limit: Int, order_by: [Coin_order_by], offset: Int, where: Coin_bool_exp): Coin_aggregate
   totalOutput: String!
   includedAt: DateTime!
 }
@@ -344,8 +392,16 @@ type Transaction_avg_fields {
 }
 
 input Transaction_bool_exp {
-  id: Hash32HexString_comparison_exp
+  _and: [Transaction_bool_exp]
+  _not: Transaction_bool_exp
+  _or: [Transaction_bool_exp]
   block: Block_bool_exp
+  fee: BigInt_comparison_exp
+  id: Hash32HexString_comparison_exp
+  includedAt: Date_comparison_exp
+  inputs: Coin_bool_exp
+  outputs: Coin_bool_exp
+  totalOutput: text_comparison_exp
 }
 
 type Transaction_max_fields {
@@ -360,8 +416,9 @@ type Transaction_min_fields {
 
 input Transaction_order_by {
   block: order_by
-  includedAt: order_by
   fee: order_by
+  includedAt: order_by
+  totalOutput: order_by
 }
 
 type Transaction_sum_fields {
@@ -386,11 +443,45 @@ type TransactionOutput {
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
 
+type Utxo_aggregate {
+  aggregate: Utxo_aggregate_fields
+}
+
+type Utxo_aggregate_fields {
+  avg: Uxto_avg_fields
+  count: Int
+  max: Uxto_max_fields
+  min: Uxto_min_fields
+  sum: Uxto_sum_fields
+}
+
 input Utxo_bool_exp {
+  _and: [Utxo_bool_exp]
+  _not: Utxo_bool_exp
+  _or: [Utxo_bool_exp]
   address: text_comparison_exp
+  value: text_comparison_exp
 }
 
 input Utxo_order_by {
   address: order_by
+  value: order_by
+  index: order_by
+}
+
+type Uxto_avg_fields {
+  value: String
+}
+
+type Uxto_max_fields {
+  value: String
+}
+
+type Uxto_min_fields {
+  value: String
+}
+
+type Uxto_sum_fields {
+  value: String
 }
 

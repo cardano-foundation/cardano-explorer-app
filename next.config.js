@@ -75,7 +75,9 @@ module.exports = withPlugins(
       DEBUG
     },
     webpack(config) {
-      config.plugins.push(new LodashModuleReplacementPlugin());
+      config.plugins.push(new LodashModuleReplacementPlugin({
+        paths: true
+      }));
 
       // Push DotEnv vars into client code
       config.plugins.push(
