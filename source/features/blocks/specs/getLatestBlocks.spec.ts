@@ -34,6 +34,7 @@ describe('Blocks feature', () => {
       await waitForExpect(() => {
         expect(blocks.store.latestBlocks.length).toBe(10);
         expect(blocks.store.latestBlocks[0].number).toBe(31070);
+        expect(blocks.store.latestBlocks[0].slotWithinEpoch).toBe(9486);
         expect(blocks.store.latestBlocks[4].transactions).toBe(2);
         expect(blocks.store.latestBlocks[1].number).toBe(31069);
       });

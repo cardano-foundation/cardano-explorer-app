@@ -12,7 +12,7 @@ fragment BlockDetails on Block {
     id
     number
   }
-  slotNo
+  slotWithinEpoch
   transactions_aggregate {
     aggregate {
       count
