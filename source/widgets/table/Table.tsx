@@ -47,7 +47,7 @@ const Table: FC<ITableProps> = ({
     withPagination && rowsPerPage
       ? rows.slice(rowsPerPage * page, rowsPerPage * (page + 1))
       : rows;
-
+  const hasMoreRows = rowsPerPage && !(rowsPerPage > renderedRows.length);
   return (
     <div className={styles.tableContainer}>
       {title && (
@@ -59,11 +59,13 @@ const Table: FC<ITableProps> = ({
       <TableBody columns={columns} rows={renderedRows} />
       {withShowMore && (
         <div className={styles.showMore}>
-          <Button
-            className={styles.showMoreButton}
-            label="Show more items"
-            onClick={() => null}
-          />
+          {hasMoreRows && (
+            <Button
+              className={styles.showMoreButton}
+              label="Show more items"
+              onClick={() => null}
+            />
+          )}
         </div>
       )}
       {withPagination && (
