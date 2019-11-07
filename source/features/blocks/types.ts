@@ -2,14 +2,14 @@ export interface IBlockInfo {
   id: string;
   number: number;
   size: number;
-  slotNo: number;
+  slotWithinEpoch: number;
 }
 
 export interface IBlockOverview extends IBlockInfo {
   createdAt: number;
   createdBy: string;
   epoch: number;
-  slotNo: number;
+  slotWithinEpoch: number;
   output: number;
   transactions: number;
 }
