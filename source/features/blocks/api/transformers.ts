@@ -1,4 +1,3 @@
-import { get } from 'lodash';
 import {
   BlockDetailsFragment,
   BlockInfoFragment,
@@ -22,15 +21,23 @@ export const blockOverviewTransformer = (
     blockCreatorPrefix === 'SlotLeader-'
       ? b.createdBy.substring(12, 18)
       : b.createdBy;
+  const { transactions_aggregate } = b;
   return {
     ...blockInfoTransformer(b),
     createdAt: b.createdAt,
     createdBy,
-    epoch: get(b, 'epoch.number', 0),
+    epoch: (b.epoch && b.epoch.number) || 0,
     output: lovelacesToAda(
-      get(b, 'transactions_aggregate.aggregate.sum.totalOutput', 0)
+      (transactions_aggregate.aggregate &&
+        transactions_aggregate.aggregate.sum &&
+        transactions_aggregate.aggregate.sum.totalOutput) ||
+        0
     ),
-    transactions: get(b, 'transactions_aggregate.aggregate.count', 0),
+    transactions:
+      (transactions_aggregate &&
+        transactions_aggregate.aggregate &&
+        transactions_aggregate.aggregate.count) ||
+      0,
   };
 };
 
@@ -39,7 +46,7 @@ export const blockDetailsTransformer = (
 ): IBlockDetailed => ({
   ...blockOverviewTransformer(b),
   confirmations: 1, // TODO: Calculate confirmations using Cardano.blockHeight
-  merkleRoot: get(b, 'merkelRootHash', ''),
+  merkleRoot: b.merkelRootHash || '',
   nextBlock: '', // TODO: missing API data
-  prevBlock: get(b, 'previousBlock.id', ''),
+  prevBlock: (b.previousBlock && b.previousBlock.id) || '',
 });
