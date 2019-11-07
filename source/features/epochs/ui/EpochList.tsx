@@ -9,7 +9,7 @@ import styles from './EpochList.scss';
 
 export interface IEpochListRowProps {
   blocksCount: number;
-  endedAt?: Date;
+  lastBlockAt?: Date;
   number: number;
   output: string;
   percentage?: number;
@@ -28,7 +28,7 @@ export interface IEpochListProps {
 const columns: Array<IColumnDefinition<IEpochListRowProps>> = [
   {
     cellRender: (value: any) => {
-      if (value.endedAt) {
+      if (value.lastBlockAt) {
         return value.epoch;
       }
 
@@ -42,8 +42,8 @@ const columns: Array<IColumnDefinition<IEpochListRowProps>> = [
       );
     },
     cellValue: (row: IEpochListRowProps) => ({
-      endedAt: row.endedAt,
       epoch: row.number,
+      lastBlockAt: row.lastBlockAt,
       percentage: row.percentage,
     }),
     cssClass: 'epoch',
@@ -66,18 +66,18 @@ const columns: Array<IColumnDefinition<IEpochListRowProps>> = [
   },
   {
     cellRender: (value: any) => {
-      if (value.endedAt) {
-        return moment(value.endedAt).format('YYYY/MM/DD HH:mm:ss');
+      if (value.lastBlockAt) {
+        return moment(value.lastBlockAt).format('YYYY/MM/DD HH:mm:ss');
       }
       return value.status;
     },
     cellValue: (row: IEpochListRowProps) => ({
-      endedAt: row.endedAt,
+      lastBlockAt: row.lastBlockAt,
       status: row.status,
     }),
-    cssClass: 'endedAt',
-    head: 'Ended At',
-    key: 'endedAt',
+    cssClass: 'lastBlockAt',
+    head: 'Last Block at',
+    key: 'lastBlockAt',
   },
   {
     cssClass: 'transactions',

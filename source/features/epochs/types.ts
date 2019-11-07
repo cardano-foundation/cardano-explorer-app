@@ -3,7 +3,7 @@ import { IBlockInfo } from '../blocks/types';
 export interface IEpochOverview {
   blocksCount: number;
   number: number;
-  endedAt: Date;
+  lastBlockAt: Date;
   output: string;
   percentage?: number;
   slotsCount: number;
