@@ -1,3 +1,4 @@
+import { get } from 'lodash';
 import {
   BlockDetailsFragment,
   BlockInfoFragment,
@@ -21,23 +22,15 @@ export const blockOverviewTransformer = (
     blockCreatorPrefix === 'SlotLeader-'
       ? b.createdBy.substring(12, 18)
       : b.createdBy;
-  const { transactions_aggregate } = b;
   return {
     ...blockInfoTransformer(b),
     createdAt: b.createdAt,
     createdBy,
     epoch: (b.epoch && b.epoch.number) || 0,
     output: lovelacesToAda(
-      (transactions_aggregate.aggregate &&
-        transactions_aggregate.aggregate.sum &&
-        transactions_aggregate.aggregate.sum.totalOutput) ||
-        0
+      get(b, 'transactions_aggregate.aggregate.sum.totalOutput', 0)
     ),
-    transactions:
-      (transactions_aggregate &&
-        transactions_aggregate.aggregate &&
-        transactions_aggregate.aggregate.count) ||
-      0,
+    transactions: get(b, 'transactions_aggregate.aggregate.count', 0),
   };
 };
 
