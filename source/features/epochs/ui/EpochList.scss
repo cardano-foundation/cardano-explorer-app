@@ -18,7 +18,7 @@
       width: 170px;
     }
 
-    .endedAt {
+    .lastBlockAt {
       width: 170px;
     }
 
@@ -38,7 +38,7 @@
     }
 
     @media (max-width: 767px) and (min-width: 576px) {
-      .endedAt {
+      .lastBlockAt {
         display: none;
       }
       .transactions {
@@ -57,7 +57,7 @@
         flex: 1;
         width: auto;
       }
-      .endedAt {
+      .lastBlockAt {
         display: none;
       }
       .transactions {

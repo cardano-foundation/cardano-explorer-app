@@ -20,7 +20,7 @@ if (environment.IS_CLIENT) {
             epoch={{
               blocks: [],
               blocksCount: 21073,
-              endedAt: new Date(1569144483000),
+              lastBlockAt: new Date(1569144483000),
               number: 135,
               output: '8397621',
               slotsCount: 21600,
