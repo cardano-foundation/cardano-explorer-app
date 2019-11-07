@@ -12,6 +12,6 @@ export const transactionDetailsTransformer = (
   fee: lovelacesToAda(parseInt(get(tx, 'fee'), 10)),
   id: get(tx, 'id'),
   receivedTime: get(tx, 'includedAt'),
-  slot: get(tx, 'block.slotNo'),
+  slot: get(tx, 'block.slotWithinEpoch'),
   totalOutput: lovelacesToAda(parseInt(get(tx, 'totalOutput'), 10)),
 });
