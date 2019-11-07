@@ -33,7 +33,7 @@ describe('Searching for a transaction', () => {
             search.store &&
             search.store.transactionSearchResult &&
             search.store.transactionSearchResult.totalOutput
-        ).toEqual(538861000000);
+        ).toEqual(538861);
       });
     });
   });

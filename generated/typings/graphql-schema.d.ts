@@ -623,11 +623,11 @@ export type Uxto_Sum_Fields = {
   __typename?: 'Uxto_sum_fields',
   value?: Maybe<Scalars['String']>,
 };
-export type BlockDetailsFragment = ({ __typename?: 'Block' } & Pick<Block, 'createdAt' | 'id' | 'merkelRootHash' | 'number' | 'size' | 'slotNo'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, previousBlock: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id' | 'number'>)>, transactions_aggregate: ({ __typename?: 'Transaction_aggregate' } & { aggregate: Maybe<({ __typename?: 'Transaction_aggregate_fields' } & Pick<Transaction_Aggregate_Fields, 'count'>)> }) });
+export type BlockDetailsFragment = ({ __typename?: 'Block' } & Pick<Block, 'createdAt' | 'createdBy' | 'id' | 'merkelRootHash' | 'number' | 'size' | 'slotNo'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, previousBlock: Maybe<({ __typename?: 'Block' } & Pick<Block, 'id' | 'number'>)>, transactions_aggregate: ({ __typename?: 'Transaction_aggregate' } & { aggregate: Maybe<({ __typename?: 'Transaction_aggregate_fields' } & Pick<Transaction_Aggregate_Fields, 'count'> & { sum: Maybe<({ __typename?: 'Transaction_sum_fields' } & Pick<Transaction_Sum_Fields, 'totalOutput'>)> })> }) });
 
 export type BlockInfoFragment = ({ __typename?: 'Block' } & Pick<Block, 'id' | 'number' | 'size' | 'slotNo'>);
 
-export type BlockOverviewFragment = ({ __typename?: 'Block' } & Pick<Block, 'createdAt' | 'id' | 'number' | 'size' | 'slotNo'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, transactions_aggregate: ({ __typename?: 'Transaction_aggregate' } & { aggregate: Maybe<({ __typename?: 'Transaction_aggregate_fields' } & Pick<Transaction_Aggregate_Fields, 'count'>)> }) });
+export type BlockOverviewFragment = ({ __typename?: 'Block' } & Pick<Block, 'createdAt' | 'createdBy' | 'id' | 'number' | 'size' | 'slotNo'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, transactions_aggregate: ({ __typename?: 'Transaction_aggregate' } & { aggregate: Maybe<({ __typename?: 'Transaction_aggregate_fields' } & Pick<Transaction_Aggregate_Fields, 'count'> & { sum: Maybe<({ __typename?: 'Transaction_sum_fields' } & Pick<Transaction_Sum_Fields, 'totalOutput'>)> })> }) });
 
 export type GetBlocksInRangeQueryVariables = {
   lower: Scalars['Int'],
