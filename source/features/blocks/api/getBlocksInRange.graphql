@@ -1,0 +1,18 @@
+#import "./BlockOverview.graphql"
+
+query getBlocksInRange(
+  $lower: Int!
+  $upper: Int!
+) {
+  blocks(
+    order_by: { number: desc }
+    where: {
+      number: {
+        _gte: $lower
+        _lte: $upper
+      }
+    }
+  ) {
+    ...BlockOverview
+  }
+}

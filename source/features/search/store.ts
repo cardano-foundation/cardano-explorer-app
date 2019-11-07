@@ -78,6 +78,9 @@ export class SearchStore extends Store {
    * @param id
    */
   @action private onIdSearchRequested = async ({ id }: { id: string }) => {
+    if (this.isRunningBackgroundSearch) {
+      return;
+    }
     try {
       this.isRunningBackgroundSearch = true;
       const blocksResult = await this.searchApi.searchForBlockByIdQuery.execute(
@@ -118,6 +121,9 @@ export class SearchStore extends Store {
   @action private onNumberSearchRequested = async (params: {
     number: number;
   }) => {
+    if (this.isRunningBackgroundSearch) {
+      return;
+    }
     try {
       this.isRunningBackgroundSearch = true;
       const blocksResult = await this.searchApi.searchForBlockByNumberQuery.execute(
@@ -153,8 +159,11 @@ export class SearchStore extends Store {
   };
 
   @action private searchForBlockById = async ({ id }: { id: string }) => {
-    // Do not trigger another search if we already have the requested data!
-    if (this.blockSearchResult && this.blockSearchResult.id === id) {
+    // Do not execute queries more than necessary!
+    if (
+      this.searchApi.searchForBlockByIdQuery.isExecuting ||
+      (this.blockSearchResult && this.blockSearchResult.id === id)
+    ) {
       return;
     }
     this.blockSearchResult = null;
@@ -172,8 +181,9 @@ export class SearchStore extends Store {
   }) => {
     // Do not trigger another search if we already have the requested data!
     if (
-      this.blockSearchResult &&
-      this.blockSearchResult.number === params.number
+      this.searchApi.searchForBlockByNumberQuery.isExecuting ||
+      (this.blockSearchResult &&
+        this.blockSearchResult.number === params.number)
     ) {
       return;
     }
@@ -194,8 +204,9 @@ export class SearchStore extends Store {
   }) => {
     // Do not trigger another search if we already have the requested data!
     if (
-      this.epochSearchResult &&
-      this.epochSearchResult.number === params.number
+      this.searchApi.searchForEpochByNumberQuery.isExecuting ||
+      (this.epochSearchResult &&
+        this.epochSearchResult.number === params.number)
     ) {
       return;
     }
@@ -214,8 +225,8 @@ export class SearchStore extends Store {
   private searchForTransactionById = async ({ id }: { id: string }) => {
     // Do not trigger another search if we already have the requested data!
     if (
-      this.transactionSearchResult &&
-      this.transactionSearchResult.id === id
+      this.searchApi.searchForTransactionByIdQuery.isExecuting ||
+      (this.transactionSearchResult && this.transactionSearchResult.id === id)
     ) {
       return;
     }

@@ -1,4 +1,5 @@
 import { action, computed, observable } from 'mobx';
+import { environment } from '../../environment';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { isNotNull } from '../../lib/types';
@@ -38,10 +39,10 @@ export class NetworkInfoStore extends Store {
     await this.fetchStaticInfo();
     // Fetch dynamic info immediately once
     await this.fetchDynamicInfo();
-    // Keep polling dynamic info based on slot duration
+    // Poll for updates
     this.pollingInterval = setInterval(
       this.fetchDynamicInfo,
-      this.slotDuration * 2
+      this.slotDuration / environment.REAL_TIME_FACTOR
     );
   }
 

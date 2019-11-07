@@ -1,0 +1,18 @@
+#import "./EpochOverview.graphql"
+
+query getEpochsInRange(
+  $lower: Int!
+  $upper: Int!
+) {
+  epochs(
+    order_by: { number: desc }
+    where: {
+      number: {
+        _gte: $lower
+        _lte: $upper
+      }
+    }
+  ) {
+    ...EpochOverview
+  }
+}

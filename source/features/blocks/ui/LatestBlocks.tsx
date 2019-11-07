@@ -1,22 +1,24 @@
 import { Observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React from 'react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { useBlocksFeature } from '../context';
 import BlockList from './BlockList';
 
 export const LatestBlocks = () => {
-  const { actions, store } = useBlocksFeature();
-  useEffect(() => {
-    actions.fetchLatestBlocks.trigger();
-  });
+  const { store } = useBlocksFeature();
   return (
     <Observer>
       {() => {
         const { latestBlocks } = store;
-        return store.isSearching ? (
-          <LoadingSpinner />
-        ) : (
-          <BlockList title="Latest Blocks" items={latestBlocks} />
+        return (
+          <>
+            <BlockList
+              title="Latest Blocks"
+              items={latestBlocks}
+              isLoading={store.isLoadingFirstTime}
+            />
+            {store.isLoadingFirstTime && <LoadingSpinner />}
+          </>
         );
       }}
     </Observer>

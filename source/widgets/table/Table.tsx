@@ -25,7 +25,8 @@ export interface IColumnDefinition<R = any, CE = any, CO = any> {
 export interface ITableProps {
   title?: string;
   columns: Array<IColumnDefinition>;
-  rows: Array<any>;
+  rows: Array<{ key: string | number }>;
+  withoutHeaders?: boolean;
   withShowMore?: boolean;
   withPagination?: boolean;
   rowsPerPage?: number;
@@ -35,6 +36,7 @@ const Table: FC<ITableProps> = ({
   title,
   columns,
   rows,
+  withoutHeaders,
   withShowMore,
   withPagination,
   rowsPerPage,
@@ -53,7 +55,7 @@ const Table: FC<ITableProps> = ({
           <DividerWithTitle title={title} />
         </div>
       )}
-      <TableHead columns={columns} />
+      {!withoutHeaders && <TableHead columns={columns} />}
       <TableBody columns={columns} rows={renderedRows} />
       {withShowMore && (
         <div className={styles.showMore}>

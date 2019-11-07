@@ -3,10 +3,10 @@ import { apolloClient } from '../../../lib/graphql/apolloClient';
 import { NetworkInfoActions } from '../../network-info';
 import { NetworkInfoApi } from '../../network-info/api';
 import { NetworkInfoStore } from '../../network-info/store';
-import { createBlocksFeature, IBlocksFeature } from '../index';
+import { createEpochsFeature, IEpochsFeature } from '../index';
 
-describe('Blocks feature', () => {
-  let blocks: IBlocksFeature;
+describe('Epochs feature', () => {
+  let epochs: IEpochsFeature;
   let networkInfoStore: NetworkInfoStore;
 
   beforeEach(async () => {
@@ -15,7 +15,7 @@ describe('Blocks feature', () => {
       new NetworkInfoApi(apolloClient)
     );
     await networkInfoStore.start();
-    blocks = createBlocksFeature({ store: networkInfoStore }, apolloClient);
+    epochs = createEpochsFeature({ store: networkInfoStore }, apolloClient);
   });
 
   afterEach(() => {
@@ -24,24 +24,24 @@ describe('Blocks feature', () => {
 
   describe('start', () => {
     beforeEach(async () => {
-      await blocks.start();
+      await epochs.start();
     });
 
-    it('fetches up to the latest 10 blocks, and provides a status', async () => {
+    it('fetches up to the latest 5 epochs, and provides a status', async () => {
       // Useful for showing loading spinners
-      expect(blocks.store.isLoadingFirstTime).toBe(true);
+      expect(epochs.store.isLoadingFirstTime).toBe(true);
       // Access the observable result provided by the store
       await waitForExpect(() => {
-        expect(blocks.store.latestBlocks.length).toBe(10);
-        expect(blocks.store.latestBlocks[0].number).toBe(31070);
-        expect(blocks.store.latestBlocks[4].transactions).toBe(2);
-        expect(blocks.store.latestBlocks[1].number).toBe(31069);
+        expect(epochs.store.latestEpochs.length).toBe(2);
+        expect(epochs.store.latestEpochs[0].number).toBe(1);
+        expect(epochs.store.latestEpochs[0].blocksCount).toBe(9485);
+        expect(epochs.store.latestEpochs[1].number).toBe(0);
       });
-      expect(blocks.store.isLoadingFirstTime).toBe(false);
+      expect(epochs.store.isLoadingFirstTime).toBe(false);
     });
 
     afterEach(() => {
-      blocks.stop();
+      epochs.stop();
     });
   });
 });

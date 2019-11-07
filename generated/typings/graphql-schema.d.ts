@@ -490,6 +490,14 @@ export type BlockInfoFragment = ({ __typename?: 'Block' } & Pick<Block, 'id' | '
 
 export type BlockOverviewFragment = ({ __typename?: 'Block' } & Pick<Block, 'createdAt' | 'id' | 'number' | 'size' | 'slotNo'> & { epoch: Maybe<({ __typename?: 'Epoch' } & Pick<Epoch, 'number'>)>, transactions_aggregate: ({ __typename?: 'Transaction_aggregate' } & { aggregate: Maybe<({ __typename?: 'Transaction_aggregate_fields' } & Pick<Transaction_Aggregate_Fields, 'count'>)> }) });
 
+export type GetBlocksInRangeQueryVariables = {
+  lower: Scalars['Int'],
+  upper: Scalars['Int']
+};
+
+
+export type GetBlocksInRangeQuery = ({ __typename?: 'Query' } & { blocks: Array<Maybe<({ __typename?: 'Block' } & BlockOverviewFragment)>> });
+
 export type GetLatestBlocksQueryVariables = {
   limit?: Maybe<Scalars['Int']>
 };
@@ -500,6 +508,14 @@ export type GetLatestBlocksQuery = ({ __typename?: 'Query' } & { blocks: Array<M
 export type EpochDetailsFragment = ({ __typename?: 'Epoch' } & { blocks: Maybe<Array<Maybe<({ __typename?: 'Block' } & BlockInfoFragment)>>> } & EpochOverviewFragment);
 
 export type EpochOverviewFragment = ({ __typename?: 'Epoch' } & Pick<Epoch, 'lastBlockTime' | 'number' | 'startedAt' | 'output' | 'transactionsCount'> & { blocks_aggregate: ({ __typename?: 'Block_aggregate' } & { aggregate: Maybe<({ __typename?: 'Block_aggregate_fields' } & Pick<Block_Aggregate_Fields, 'count'>)> }) });
+
+export type GetEpochsInRangeQueryVariables = {
+  lower: Scalars['Int'],
+  upper: Scalars['Int']
+};
+
+
+export type GetEpochsInRangeQuery = ({ __typename?: 'Query' } & { epochs: Array<Maybe<({ __typename?: 'Epoch' } & EpochOverviewFragment)>> });
 
 export type GetLatestEpochsQueryVariables = {
   limit?: Maybe<Scalars['Int']>
