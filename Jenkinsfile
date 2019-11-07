@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Instantiate Test Services') {
       steps {
-        sh 'npm run start-dependencies -- -d'
+        sh 'CI=true yarn run start-dependencies'
       }
     }
     stage('Test') {
@@ -40,7 +40,7 @@ pipeline {
       }
       post {
         always {
-          sh 'npm run stop-dependencies'
+          sh 'yarn stop-dependencies'
         }
       }
     }
