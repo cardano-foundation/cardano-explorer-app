@@ -20,7 +20,7 @@ export const blockOverviewTransformer = (
   const blockCreatorPrefix = b.createdBy.substring(0, 11);
   const createdBy =
     blockCreatorPrefix === 'SlotLeader-'
-      ? b.createdBy.substring(12, 18)
+      ? b.createdBy.substring(11, 18)
       : b.createdBy;
   return {
     ...blockInfoTransformer(b),
