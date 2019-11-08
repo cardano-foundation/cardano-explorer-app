@@ -11,7 +11,7 @@ export const blockInfoTransformer = (b: BlockInfoFragment): IBlockInfo => ({
   id: b.id,
   number: b.number || 0,
   size: b.size,
-  slotWithinEpoch: b.slotWithinEpoch ? b.slotWithinEpoch : 0,
+  slotWithinEpoch: b.slotWithinEpoch || null,
 });
 
 export const blockOverviewTransformer = (
@@ -20,7 +20,7 @@ export const blockOverviewTransformer = (
   const blockCreatorPrefix = b.createdBy.substring(0, 11);
   const createdBy =
     blockCreatorPrefix === 'SlotLeader-'
-      ? b.createdBy.substring(12, 18)
+      ? b.createdBy.substring(11, 18)
       : b.createdBy;
   return {
     ...blockInfoTransformer(b),
