@@ -11,7 +11,7 @@ export const blockInfoTransformer = (b: BlockInfoFragment): IBlockInfo => ({
   id: b.id,
   number: b.number || 0,
   size: b.size,
-  slotWithinEpoch: b.slotWithinEpoch,
+  slotWithinEpoch: b.slotWithinEpoch || null,
 });
 
 export const blockOverviewTransformer = (
