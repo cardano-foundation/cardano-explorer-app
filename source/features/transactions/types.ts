@@ -5,6 +5,6 @@ export interface ITransactionDetails {
   id: string;
   fee: number;
   receivedTime: number;
-  slot: number;
+  slot: number | null;
   totalOutput: number;
 }

@@ -5,13 +5,14 @@ import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import styles from './BlockList.scss';
 
 export interface IBlockListRowProps {
-  number: number;
+  number: number | null;
   createdAt: number;
   createdBy: string;
+  id: string;
   epoch: number;
   output: number;
   size: number;
-  slotWithinEpoch: number;
+  slotWithinEpoch: number | null;
   transactions: number;
 }
 
@@ -68,7 +69,7 @@ const BlockList: FC<IBlockListProps> = ({ title, items, isLoading }) => (
     <Table
       title={title}
       columns={columns}
-      rows={items.map(i => Object.assign(i, { key: i.number }))}
+      rows={items.map(i => Object.assign(i, { key: i.id }))}
       withoutHeaders={isLoading}
       withShowMore={!isLoading}
     />
