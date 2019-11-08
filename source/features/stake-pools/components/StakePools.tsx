@@ -43,9 +43,10 @@ export default class StakePools extends Component<IStakePoolsProps, IState> {
   public render() {
     const { selectedPoolId, search } = this.state;
     const { stakePoolsList } = this.props;
-    const filteredStakePoolsList: Array<
-      IStakePoolProps
-    > = getFilteredStakePoolsList(stakePoolsList, search);
+    const filteredStakePoolsList: Array<IStakePoolProps> = getFilteredStakePoolsList(
+      stakePoolsList,
+      search
+    );
     return (
       <div className={styles.stakePoolsContainer}>
         <DividerWithTitle title="Stake pools" />

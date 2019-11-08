@@ -29,20 +29,18 @@ const TableBodyRow: FC<ITableBodyRowProps> = ({ columns, row }) => (
 
       return (
         <div key={`column_${index}`} className={column.cssClass}>
-          {
-            column.cellOnClick ? (
-              <span
-                className={styles.clickableCell}
-                onClick={() => {
-                  column.cellOnClick?.(row);
-                }}
-              >
-                {cellContent}
-              </span>
-            ) : (
-                <span>{cellContent}</span>
-            )
-          }
+          {column.cellOnClick ? (
+            <span
+              className={styles.clickableCell}
+              onClick={() => {
+                column.cellOnClick?.(row);
+              }}
+            >
+              {cellContent}
+            </span>
+          ) : (
+            <span>{cellContent}</span>
+          )}
         </div>
       );
     })}

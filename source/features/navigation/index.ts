@@ -1,5 +1,5 @@
 import { NextRouter } from 'next/router';
-import React from 'react';
+import React, { useContext } from 'react';
 import Action from '../../lib/Action';
 import { ensureContextExists } from '../../lib/react/hooks';
 import { NavigationStore } from './store';
@@ -9,6 +9,9 @@ import { NavigationStore } from './store';
  */
 export class NavigationActions {
   public redirectTo: Action<{ path: string }> = new Action();
+  public goToEpochDetailsPage: Action<{ number: number }> = new Action();
+  public goToBlockDetailsByNumber: Action<{ number: number }> = new Action();
+  public goToBlockDetailsById: Action<{ id: string }> = new Action();
 }
 
 /**
@@ -59,3 +62,6 @@ export const navigationContext = React.createContext<INavigationFeature | null>(
  */
 export const useNavigationFeature = () =>
   ensureContextExists(navigationContext);
+
+export const useNavigationFeatureOptionally = () =>
+  useContext(navigationContext);

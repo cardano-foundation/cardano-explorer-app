@@ -5,6 +5,8 @@ import CircularProgress, {
   CircularProgressSize,
 } from '../../../widgets/circular-progress/CircularProgress';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
+import { IBlockListRowProps } from '../../blocks/ui/BlockList';
+import { useNavigationFeatureOptionally } from '../../navigation';
 import styles from './EpochList.scss';
 
 export interface IEpochListRowProps {
@@ -25,8 +27,16 @@ export interface IEpochListProps {
   isLoading: boolean;
 }
 
-const columns: Array<IColumnDefinition<IEpochListRowProps>> = [
+interface IColumnsProps {
+  onEpochNumberClicked: (epochNo: number) => void;
+}
+
+const columns = (
+  props: IColumnsProps
+): Array<IColumnDefinition<IEpochListRowProps>> => [
   {
+    cellOnClick: (row: IBlockListRowProps) =>
+      props.onEpochNumberClicked?.(row.number),
     cellRender: (value: any) => {
       if (value.lastBlockAt) {
         return value.epoch;
@@ -91,16 +101,24 @@ const columns: Array<IColumnDefinition<IEpochListRowProps>> = [
   },
 ];
 
-const EpochList: FC<IEpochListProps> = ({ title, items, isLoading }) => (
-  <div className={styles.epochListContainer}>
-    <Table
-      title={title}
-      columns={columns}
-      rows={items.map(i => Object.assign(i, { key: i.number }))}
-      withShowMore={!isLoading}
-      withoutHeaders={isLoading}
-    />
-  </div>
-);
+const EpochList: FC<IEpochListProps> = ({ title, items, isLoading }) => {
+  const navigation = useNavigationFeatureOptionally();
+  return (
+    <div className={styles.epochListContainer}>
+      <Table
+        title={title}
+        columns={columns({
+          onEpochNumberClicked: epochNo =>
+            navigation?.actions.goToEpochDetailsPage.trigger({
+              number: epochNo,
+            }),
+        })}
+        rows={items.map(i => Object.assign(i, { key: i.number }))}
+        withShowMore={!isLoading}
+        withoutHeaders={isLoading}
+      />
+    </div>
+  );
+};
 
 export default observer(EpochList);
