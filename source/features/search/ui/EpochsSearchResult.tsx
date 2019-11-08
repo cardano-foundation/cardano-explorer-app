@@ -1,6 +1,8 @@
 import { Observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
+import { CardanoEra } from '../../../constants';
+import { environment } from '../../../environment';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockList from '../../blocks/ui/BlockList';
 import EpochSummary from '../../epochs/ui/EpochSummary';
@@ -79,12 +81,14 @@ export const EpochsSearchResult = () => {
                   isLoading={false}
                 />
               </div>
-              <div className={styles.stakeDistribution}>
-                <StakeDistribution
-                  title="Stake Distribution"
-                  items={stakeDistribution}
-                />
-              </div>
+              {environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
+                <div className={styles.stakeDistribution}>
+                  <StakeDistribution
+                    title="Stake Distribution"
+                    items={stakeDistribution}
+                  />
+                </div>
+              ) : null}
             </div>
           );
         } else {
