@@ -26,7 +26,9 @@ const TransactionSummary = ({
           <div className={styles.infoLabel}>Included In</div>
           <div className={styles.infoValue}>
             Epoch <span>{transaction.epoch}</span>, Slot / block
-            <span> {transaction.slot / transaction.block}</span>
+            <span>
+              {transaction.slot} / {transaction.block}
+            </span>
           </div>
         </div>
         <div className={styles.infoRow}>

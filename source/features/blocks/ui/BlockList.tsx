@@ -6,13 +6,14 @@ import { useNavigationFeatureOptionally } from '../../navigation';
 import styles from './BlockList.scss';
 
 export interface IBlockListRowProps {
-  number: number;
+  number: number | null;
   createdAt: number;
   createdBy: string;
+  id: string;
   epoch: number;
   output: number;
   size: number;
-  slotWithinEpoch: number;
+  slotWithinEpoch: number | null;
   transactions: number;
 }
 
@@ -91,7 +92,7 @@ const BlockList: FC<IBlockListProps> = props => {
               number: epochNo,
             }),
         })}
-        rows={props.items.map(i => Object.assign(i, { key: i.number }))}
+        rows={props.items.map(i => Object.assign(i, { key: i.id }))}
         withoutHeaders={props.isLoading}
         withShowMore={!props.isLoading}
       />
