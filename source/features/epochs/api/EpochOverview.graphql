@@ -1,0 +1,17 @@
+fragment EpochOverview on Epoch {
+  blocks_aggregate (
+    where: {
+      slotNo: {
+        _is_null: false
+      }
+    }) {
+    aggregate {
+      count
+    }
+  }
+  lastBlockTime
+  number
+  startedAt
+  output
+  transactionsCount
+}

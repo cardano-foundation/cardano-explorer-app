@@ -1,15 +1,62 @@
+import Head from 'next/head';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
+import { BrandType } from '../constants';
 import { environment } from '../environment';
+import { BlocksFeatureProvider } from '../features/blocks/ui/BlocksFeatureProvider';
+import { LatestBlocks } from '../features/blocks/ui/LatestBlocks';
+import { EpochsFeatureProvider } from '../features/epochs/ui/EpochsFeatureProvider';
+import { LatestEpochs } from '../features/epochs/ui/LatestEpochs';
+import { SearchBar } from '../features/search/ui/SearchBar';
+import { isMobileScreen } from '../helpers';
+import { Footer, Header, Layout } from '../widgets/layout';
+import styles from './index.scss';
 
-let Page = () => <NoSSR />;
+const SideBackgroundImage = require('../public/assets/images/main-side-background.svg');
+
+// Empty on server
+let Index = () => <NoSSR />;
+
+// Full components on client
 if (environment.IS_CLIENT) {
-  if (environment.CARDANO_ERA === 'shelley') {
-    Page = require('../apps/shelley/index').IndexPage;
-  } else {
-    // Default to Byron
-    Page = require('../apps/byron/index').IndexPage;
-  }
+  Index = () => (
+    <NoSSR>
+      <Head>
+        <title>Byron | Index</title>
+      </Head>
+      {!isMobileScreen() && (
+        <div className={styles.headerBackgroundAnimationContainer}>
+          <div className={styles.headerBackgroundAnimation}>
+            <img src="/assets/images/main-header-background.png" />
+          </div>
+        </div>
+      )}
+      <Layout hasContainer>
+        <Header brandType={BrandType.ENLARGED} />
+        <div>
+          <SearchBar brandType={BrandType.ENLARGED} />
+        </div>
+        <div className={styles.epochList}>
+          <EpochsFeatureProvider>
+            <LatestEpochs />
+          </EpochsFeatureProvider>
+        </div>
+        <div className={styles.blockList}>
+          <BlocksFeatureProvider>
+            <LatestBlocks />
+          </BlocksFeatureProvider>
+        </div>
+        <Footer />
+      </Layout>
+      {!isMobileScreen() && (
+        <div className={styles.sideBgContainer}>
+          <div className={styles.sideBackgroundImageContainer}>
+            <SideBackgroundImage className={styles.sideBackgroundImage} />
+          </div>
+        </div>
+      )}
+    </NoSSR>
+  );
 }
 
-export default Page;
+export default Index;

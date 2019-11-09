@@ -1,10 +1,20 @@
 import React from 'react';
 import NoSSR from 'react-no-ssr';
+import { BrandType } from '../constants';
 import { environment } from '../environment';
+import { BlockSearchResult } from '../features/search/ui/BlockSearchResult';
+import { Footer, Header, Layout } from '../widgets/layout';
 
-let Page = () => <NoSSR />;
+let BlockPage = () => <NoSSR />;
 if (environment.IS_CLIENT) {
-  Page = require('../apps/shared/block').BlockPage;
+  BlockPage = () => (
+    <NoSSR>
+      <Layout hasContainer header={<Header brandType={BrandType.SHRINKED} />}>
+        <BlockSearchResult />
+        <Footer />
+      </Layout>
+    </NoSSR>
+  );
 }
 
-export default Page;
+export default BlockPage;

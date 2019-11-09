@@ -1,0 +1,14 @@
+#import "./EpochOverview.graphql"
+
+query getLatestEpochs(
+  $limit: Int
+) {
+  epochs(
+    limit: $limit,
+    order_by: {
+      number: desc
+    }
+  ) {
+    ...EpochOverview
+  }
+}

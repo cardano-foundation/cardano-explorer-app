@@ -59,11 +59,6 @@
         }
       }
     }
-
-    .searchContainer {
-      background-color: $search-area-bg;
-      padding: 30px 50px 40px;
-    }
   }
 
   &.shrinkedHeaderContainer {
@@ -71,7 +66,7 @@
 
     .brandType {
       flex-direction: row;
-      padding: 26.5px 32px 23.5px;
+      margin: 26.5px 32px 23.5px;
 
       .logoContainer {
         margin-left: -55.5px;
@@ -103,7 +98,7 @@
     }
 
     .searchContainer {
-      padding: 0 32px 30px;
+      padding-bottom: 32px;
     }
   }
 
@@ -112,7 +107,9 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 100%;
+    width: calc(100% - 32px * 2);
+    max-width: 872px;
+    margin: 0 auto;
     z-index: 200;
 
     .brandType {
@@ -251,6 +248,7 @@
           }
         }
       }
+
       .searchContainer {
         margin-left: -16px;
         padding: 20px 16px;

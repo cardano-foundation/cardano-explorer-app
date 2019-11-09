@@ -9,6 +9,7 @@
 
 .footerContainer {
   padding: 0 32px 92px;
+  margin-top: 72px;
   width: 100%;
 
   .footerContent {
@@ -163,10 +164,17 @@
               line-height: 1.8;
               text-decoration: none;
 
+              &:hover {
+                opacity: 1;
+              }
+
               &.emailLink {
                 color: $footer-text-color;
                 font-weight: 600;
                 opacity: 1;
+                &:hover {
+                  color: $primary-highlight-color-hover;
+                }
               }
             }
           }

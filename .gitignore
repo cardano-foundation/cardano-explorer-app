@@ -3,3 +3,6 @@ build/
 yarn-error.log
 /.idea
 .DS_Store
+.env
+generated/
+schema.graphql

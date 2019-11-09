@@ -1,9 +1,21 @@
-import { SearchActions } from './actions';
-import { SearchApi } from './api';
-import { SearchStore } from './store';
+export interface IBlockInfo {
+  id: string;
+  number: number | null;
+  size: number;
+  slotWithinEpoch: number | null;
+}
 
-export interface ISearchContext {
-  actions: SearchActions;
-  api: SearchApi;
-  store: SearchStore;
+export interface IBlockOverview extends IBlockInfo {
+  createdAt: number;
+  createdBy: string;
+  epoch: number;
+  output: number;
+  transactions: number;
+}
+
+export interface IBlockDetailed extends IBlockOverview {
+  confirmations: number;
+  merkleRoot: string;
+  nextBlock: string;
+  prevBlock: number;
 }

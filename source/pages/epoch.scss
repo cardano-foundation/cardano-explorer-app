@@ -1,0 +1,24 @@
+.epochLayout {
+  header {
+    button {
+      background: transparent !important;
+      border: 1px solid #eb2256;
+
+      > div {
+        border-left: 9px solid #eb2256 !important;
+      }
+    }
+  }
+
+  .blockCreation {
+    margin-bottom: 61px;
+
+    button {
+      display: none;
+    }
+
+    @media (max-width: 575px) {
+      margin-bottom: 83px;
+    }
+  }
+}

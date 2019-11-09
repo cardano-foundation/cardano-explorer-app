@@ -1,10 +1,7 @@
 #!/bin/bash
-API_PORT="${API_PORT:-3000}"
-API_HOST="${API_HOST:-'localhost'}"
-API_PROTOCOL="${API_PROTOCOL:-'http'}"
-
-echo "Pulling most recent containers"
-docker-compose pull
+API_PORT="${API_PORT:-3100}"
+API_HOST="${API_HOST:-localhost}"
+API_PROTOCOL="${API_PROTOCOL:-http}"
 
 echo "Starting development containers"
 API_PORT=$API_PORT docker-compose up -d
@@ -23,4 +20,11 @@ SCHEMA_URI="${API_PROTOCOL}://${API_HOST}:${API_PORT}" yarn generate:graphql-sch
 
 echo "GraphQL playground available: ${API_PROTOCOL}://${API_HOST}:${API_PORT}"
 echo "Ready 🚀"
+
+if "$CI" == true;
+then
+  exit
+fi
+docker-compose logs -f
+
 

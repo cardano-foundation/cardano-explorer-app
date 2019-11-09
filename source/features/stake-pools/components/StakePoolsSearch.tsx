@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import Search from '../../search/Search';
+import Search from '../../search/ui/Search';
 import { IStakePoolsSearchProps } from '../types';
 import styles from './StakePoolsSearch.scss';
 

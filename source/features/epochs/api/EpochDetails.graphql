@@ -1,0 +1,9 @@
+#import "./EpochOverview.graphql"
+#import "../../blocks/api/BlockInfo.graphql"
+
+fragment EpochDetails on Epoch {
+  ...EpochOverview
+  blocks {
+    ...BlockInfo
+  }
+}

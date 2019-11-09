@@ -1,0 +1,24 @@
+fragment TransactionDetails on Transaction {
+  block {
+    id,
+    slotWithinEpoch,
+    epoch {
+      number
+    }
+  }
+  fee,
+  id,
+  includedAt,
+  inputs {
+    sourceTxIndex,
+    address,
+    value,
+  },
+  outputs {
+    address,
+    index,
+    txId,
+    value
+  },
+  totalOutput
+}

@@ -1,10 +1,19 @@
-import { ApolloClient, ApolloQueryResult } from 'apollo-client';
+import { ApolloClient, ApolloError, ApolloQueryResult } from 'apollo-client';
 import { DocumentNode } from 'graphql';
-import { observable } from 'mobx';
+import { computed, observable, runInAction } from 'mobx';
 
 export class GraphQLRequest<TResult, TVariables> {
   @observable public result: ApolloQueryResult<TResult> | null = null;
-  @observable public error: Error | null = null;
+  @observable public isExecuting: boolean = false;
+  @observable public hasBeenExecutedAtLeastOnce: boolean = false;
+  @observable public error: ApolloError | null = null;
+  @observable public execution: Promise<
+    ApolloQueryResult<TResult>
+  > | null = null;
+
+  @computed public get isExecutingTheFirstTime() {
+    return this.isExecuting && !this.hasBeenExecutedAtLeastOnce;
+  }
 
   private client: ApolloClient<any>;
   private query: DocumentNode;
@@ -16,17 +25,34 @@ export class GraphQLRequest<TResult, TVariables> {
 
   public async execute(
     variables: TVariables
-  ): Promise<ApolloQueryResult<TResult> | null> {
+  ): Promise<ApolloQueryResult<TResult>> {
+    if (this.isExecuting) {
+      throw new Error(
+        `Request is already executing with: ${JSON.stringify(variables)}`
+      );
+    }
     try {
-      this.result = await this.client.query<TResult, TVariables>({
+      this.isExecuting = true;
+      this.execution = this.client.query<TResult, TVariables>({
         query: this.query,
         variables,
       });
+      this.result = await this.execution;
+      runInAction(() => {
+        this.error = null;
+      });
       return this.result;
     } catch (error) {
-      this.result = null;
-      this.error = error;
-      return null;
+      runInAction(() => {
+        this.result = null;
+        this.error = error;
+      });
+      throw error;
+    } finally {
+      runInAction(() => {
+        this.isExecuting = false;
+        this.hasBeenExecutedAtLeastOnce = true;
+      });
     }
   }
 }

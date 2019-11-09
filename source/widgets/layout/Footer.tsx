@@ -2,11 +2,11 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import styles from './Footer.scss';
 
-const iohkLogo = require('../../static/assets/images/iohk-logo.png');
-const twitterIcon = require('../../static/assets/images/twitter-icon.png');
-const facebookIcon = require('../../static/assets/images/facebook-icon.png');
-const youtubeIcon = require('../../static/assets/images/youtube-icon.png');
-const newsletterIcon = require('../../static/assets/images/newsletter-icon.png');
+const iohkLogo = require('../../public/assets/images/iohk-logo.png');
+const twitterIcon = require('../../public/assets/images/twitter-icon.png');
+const facebookIcon = require('../../public/assets/images/facebook-icon.png');
+const youtubeIcon = require('../../public/assets/images/youtube-icon.png');
+const newsletterIcon = require('../../public/assets/images/newsletter-icon.png');
 
 export const Footer = observer(() => {
   return (
@@ -22,13 +22,13 @@ export const Footer = observer(() => {
               <p className={styles.iohkText}>IOHK Supported Project</p>
             </div>
             <div className={styles.socialIcons}>
-              <a href="#">
+              <a href="https://twitter.com/cardanostiftung">
                 <img src={twitterIcon} className={styles.twitterIcon} />
               </a>
-              <a href="#">
+              <a href="https://www.facebook.com/CardanoFoundation/">
                 <img src={facebookIcon} className={styles.facebookIcon} />
               </a>
-              <a href="#">
+              <a href="https://www.youtube.com/channel/UCbQ9vGfezru1YRI1zDCtTGg">
                 <img src={youtubeIcon} className={styles.youtubeIcon} />
               </a>
               <a href="#">
@@ -78,22 +78,28 @@ export const Footer = observer(() => {
                   <a href={'#'}>Blockchain Explorer</a>
                 </li>
                 <li>
-                  <a href={'#'}>Cardano Foundation</a>
+                  <a href={'https://cardanofoundation.org/'}>
+                    Cardano Foundation
+                  </a>
                 </li>
                 <li>
-                  <a href={'#'}>Documentation</a>
+                  <a href={'https://cardanodocs.com/'}>Documentation</a>
                 </li>
                 <li>
-                  <a href={'#'}>Cardano SL Source</a>
+                  <a href={'https://github.com/input-output-hk/cardano-sl'}>
+                    Cardano SL Source
+                  </a>
                 </li>
                 <li>
-                  <a href={'#'}>Why Cardano</a>
+                  <a href={'https://whycardano.com/'}>Why Cardano</a>
                 </li>
                 <li>
-                  <a href={'#'}>Daedalus Platform</a>
+                  <a href={'https://daedaluswallet.io/'}>Daedalus Platform</a>
                 </li>
                 <li>
-                  <a href={''}>Ouroboros algorithm</a>
+                  <a href={'https://www.cardano.org/en/ouroboros/'}>
+                    Ouroboros algorithm
+                  </a>
                 </li>
               </ul>
             </div>
@@ -103,22 +109,32 @@ export const Footer = observer(() => {
               </h5>
               <ul className={styles.joinTheCommunityMenu}>
                 <li>
-                  <a href={'#'}>Cardano Community</a>
+                  <a href={'https://cardanohub.org/'}>Cardano Community</a>
                 </li>
                 <li>
-                  <a href={'#'}>Cardano Chat</a>
+                  <a href={'https://chat.cardanohub.org/'}>Cardano Chat</a>
                 </li>
                 <li>
-                  <a href={'#'}>Cardano Forum</a>
+                  <a href={'https://forum.cardanohub.org/'}>Cardano Forum</a>
                 </li>
                 <li>
-                  <a href={'#'}>Cardano Reddit</a>
+                  <a href={'https://www.reddit.com/r/cardano/'}>
+                    Cardano Reddit
+                  </a>
                 </li>
                 <li>
-                  <a href={'#'}>Cardano Foundation Youtube</a>
+                  <a
+                    href={
+                      'https://www.youtube.com/channel/UCbQ9vGfezru1YRI1zDCtTGg'
+                    }
+                  >
+                    Cardano Foundation Youtube
+                  </a>
                 </li>
                 <li>
-                  <a href={'#'}>Cardano Foundation Twitter</a>
+                  <a href={'https://twitter.com/CardanoStiftung'}>
+                    Cardano Foundation Twitter
+                  </a>
                 </li>
                 <li>
                   <a

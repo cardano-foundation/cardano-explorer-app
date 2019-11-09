@@ -1,0 +1,6 @@
+fragment BlockInfo on Block {
+  id
+  number
+  size
+  slotWithinEpoch
+}

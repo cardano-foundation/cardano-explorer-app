@@ -1,21 +1,21 @@
 version: '3.7'
 services:
   api:
-    image: samjeston/cardano-graphql-dev:0.1.6
+    image: samjeston/cardano-graphql-dev:0.3.0
     restart: always
     environment:
       - HASURA_URI=http://hasura:8080/v1/graphql
     ports:
       - ${API_PORT:-3100}:3100
   hasura:
-    image: samjeston/cardano-graphql-hasura:0.1.6
+    image: samjeston/cardano-graphql-hasura:0.3.0
     depends_on:
       - "postgres"
     restart: always
     environment:
-      - HASURA_GRAPHQL_DATABASE_URL=postgres://nix:postgres@postgres:5432/cexplorer
+      - HASURA_GRAPHQL_DATABASE_URL=postgres://postgres:postgres@postgres:5432/cexplorer
       - HASURA_GRAPHQL_ENABLE_CONSOLE=false
       - HASURA_GRAPHQL_ENABLED_LOG_TYPES=startup
   postgres:
-    image: samjeston/cardano-graphql-pgseed:0.1.6
+    image: samjeston/cardano-graphql-pgseed:0.3.0
     restart: always

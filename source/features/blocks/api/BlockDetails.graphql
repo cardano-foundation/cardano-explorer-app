@@ -1,0 +1,24 @@
+fragment BlockDetails on Block {
+  createdAt
+  createdBy
+  id
+  merkelRootHash
+  number
+  size
+  epoch {
+    number
+  }
+  previousBlock {
+    id
+    number
+  }
+  slotWithinEpoch
+  transactions_aggregate {
+    aggregate {
+      count
+      sum {
+        totalOutput
+      }
+    }
+  }
+}

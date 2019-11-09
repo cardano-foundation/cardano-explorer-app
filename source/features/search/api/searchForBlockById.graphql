@@ -1,0 +1,16 @@
+#import "../../blocks/api/BlockDetails.graphql"
+
+query searchForBlockById(
+  $id: Hash32HexString!
+) {
+  blocks(
+    limit: 1,
+    where: {
+     id: {
+       _eq: $id
+     }
+    }
+  ) {
+    ...BlockDetails
+  }
+}

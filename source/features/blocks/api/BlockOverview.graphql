@@ -1,0 +1,19 @@
+fragment BlockOverview on Block {
+  createdAt
+  createdBy
+  id
+  number
+  size
+  epoch {
+    number
+  },
+  slotWithinEpoch
+  transactions_aggregate {
+    aggregate {
+      count
+      sum {
+        totalOutput
+      }
+    }
+  }
+}
