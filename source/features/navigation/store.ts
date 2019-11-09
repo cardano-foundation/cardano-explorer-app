@@ -17,14 +17,7 @@ export class NavigationStore extends Store {
       createActionBindings([
         [this.navigationActions.redirectTo, this.redirectTo],
         [this.navigationActions.goToEpochDetailsPage, this.showEpochByNumber],
-        [
-          this.navigationActions.goToBlockDetailsByNumber,
-          this.goToBlockDetailsByNumber,
-        ],
-        [
-          this.navigationActions.goToBlockDetailsById,
-          this.goToBlockDetailsById,
-        ],
+        [this.navigationActions.goToBlockDetailsPage, this.showBlockById],
       ])
     );
   }
@@ -43,16 +36,8 @@ export class NavigationStore extends Store {
     return this.router.push(`/epoch?number=${props.number}`);
   };
 
-  @action private goToBlockDetailsByNumber = async (
-    props: ActionProps<
-      typeof NavigationActions.prototype.goToBlockDetailsByNumber
-    >
-  ) => {
-    return this.router.push(`/block?number=${props.number}`);
-  };
-
-  @action private goToBlockDetailsById = async (
-    props: ActionProps<typeof NavigationActions.prototype.goToBlockDetailsById>
+  @action private showBlockById = async (
+    props: ActionProps<typeof NavigationActions.prototype.goToBlockDetailsPage>
   ) => {
     return this.router.push(`/block?id=${props.id}`);
   };

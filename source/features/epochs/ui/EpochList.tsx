@@ -35,7 +35,7 @@ const columns = (
   props: IColumnsProps
 ): Array<IColumnDefinition<IEpochListRowProps>> => [
   {
-    cellOnClick: (row: IBlockListRowProps) =>
+    cellOnClick: (row: IEpochListRowProps) =>
       props.onEpochNumberClicked?.(row.number),
     cellRender: (value: any) => {
       if (value.lastBlockAt) {

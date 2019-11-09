@@ -16,9 +16,6 @@ export const BlockSearchResult = () => {
     if (query && query.id) {
       const id = query.id as string;
       actions.searchForBlockById.trigger({ id });
-    } else if (query && query.number) {
-      const num = parseInt(query.number as string, 10);
-      actions.searchForBlockByNumber.trigger({ number: num });
     }
   });
   return (

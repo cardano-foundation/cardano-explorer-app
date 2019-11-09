@@ -24,8 +24,8 @@ export interface IBlockListProps {
 }
 
 interface IColumnsProps {
-  onEpochNumberClicked: (epochNo: number) => void;
-  onBlockNumberClicked: (blockNo: number) => void;
+  onEpochNumberClicked: (epochNo: IBlockListRowProps['epoch']) => void;
+  onBlockNumberClicked: (id: IBlockListRowProps['id']) => void;
 }
 
 const columns = (
@@ -42,7 +42,7 @@ const columns = (
   },
   {
     cellOnClick: (row: IBlockListRowProps) =>
-      props.onBlockNumberClicked?.(row.number),
+      props.onBlockNumberClicked?.(row.id),
     cssClass: 'blocksSlots',
     head: 'Block',
     key: 'number',
@@ -83,9 +83,9 @@ const BlockList: FC<IBlockListProps> = props => {
       <Table
         title={props.title}
         columns={columns({
-          onBlockNumberClicked: blockNo =>
-            navigation?.actions.goToBlockDetailsByNumber.trigger({
-              number: blockNo,
+          onBlockNumberClicked: id =>
+            navigation?.actions.goToBlockDetailsPage.trigger({
+              id,
             }),
           onEpochNumberClicked: epochNo =>
             navigation?.actions.goToEpochDetailsPage.trigger({

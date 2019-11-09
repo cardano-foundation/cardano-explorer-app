@@ -10,8 +10,7 @@ import { NavigationStore } from './store';
 export class NavigationActions {
   public redirectTo: Action<{ path: string }> = new Action();
   public goToEpochDetailsPage: Action<{ number: number }> = new Action();
-  public goToBlockDetailsByNumber: Action<{ number: number }> = new Action();
-  public goToBlockDetailsById: Action<{ id: string }> = new Action();
+  public goToBlockDetailsPage: Action<{ id: string }> = new Action();
 }
 
 /**
