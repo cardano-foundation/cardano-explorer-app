@@ -17,6 +17,7 @@ export type CellTemplate<T = any, C = any> =
 export interface IColumnDefinition<R = any, CE = any, CO = any> {
   cellRender?: CellTemplate<CE, CO>;
   cellValue?: Transform<R, CE>;
+  cellOnClick?: (row: CE) => void;
   cssClass?: string;
   head: CellHeaderTemplate;
   key: string;

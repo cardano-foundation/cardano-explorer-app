@@ -13,7 +13,7 @@ const blocks = [
     number: 20051,
     output: 11189.647356,
     size: 1024,
-    slotNo: 21600,
+    slotWithinEpoch: 21600,
     transactions: 1,
   },
   {
@@ -23,7 +23,7 @@ const blocks = [
     number: 20051,
     output: 11189.647356,
     size: 1024,
-    slotNo: 21600,
+    slotWithinEpoch: 21600,
     transactions: 2,
   },
   {
@@ -33,7 +33,7 @@ const blocks = [
     number: 20051,
     output: 11189.647356,
     size: 1024,
-    slotNo: 21600,
+    slotWithinEpoch: 21600,
     transactions: 3,
   },
   {
@@ -43,7 +43,7 @@ const blocks = [
     number: 20051,
     output: 11189.647356,
     size: 1024,
-    slotNo: 21600,
+    slotWithinEpoch: 21600,
     transactions: 4,
   },
   {
@@ -53,7 +53,7 @@ const blocks = [
     number: 20051,
     output: 11189.647356,
     size: 1024,
-    slotNo: 21600,
+    slotWithinEpoch: 21600,
     transactions: 5,
   },
 ];
@@ -71,7 +71,7 @@ const blockSummary = {
   output: 13130,
   prevBlock: 11043,
   size: 634,
-  slotNo: 11043,
+  slotWithinEpoch: 11043,
   time: 1470006392000,
   title: 'Block Summary',
   transactions: 0,

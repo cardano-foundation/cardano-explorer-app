@@ -19,13 +19,9 @@ const TableBodyRow: FC<ITableBodyRowProps> = ({ columns, row }) => (
         cellContent = <span>{column.cellValue(row)}</span>;
       } else {
         if (column.cellRender instanceof Function) {
-          if (column.cellValue) {
-            cellContent = (
-              <span>{column.cellRender(column.cellValue(row))}</span>
-            );
-          } else {
-            cellContent = <span>{column.cellRender(row[column.key])}</span>;
-          }
+          cellContent = column.cellValue
+            ? column.cellRender(column.cellValue(row))
+            : column.cellRender(row[column.key]);
         } else {
           cellContent = column.cellRender;
         }
@@ -33,7 +29,18 @@ const TableBodyRow: FC<ITableBodyRowProps> = ({ columns, row }) => (
 
       return (
         <div key={`column_${index}`} className={column.cssClass}>
-          {cellContent}
+          {column.cellOnClick ? (
+            <span
+              className={styles.clickableCell}
+              onClick={() => {
+                column.cellOnClick?.(row);
+              }}
+            >
+              {cellContent}
+            </span>
+          ) : (
+            <span>{cellContent}</span>
+          )}
         </div>
       );
     })}

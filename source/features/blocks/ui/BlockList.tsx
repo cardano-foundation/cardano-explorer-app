@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import React, { FC } from 'react';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
+import { useNavigationFeatureOptionally } from '../../navigation';
 import styles from './BlockList.scss';
 
 export interface IBlockListRowProps {
@@ -22,8 +23,17 @@ export interface IBlockListProps {
   isLoading: boolean;
 }
 
-const columns: Array<IColumnDefinition<IBlockListRowProps>> = [
+interface IColumnsProps {
+  onEpochNumberClicked: (epochNo: IBlockListRowProps['epoch']) => void;
+  onBlockNumberClicked: (id: IBlockListRowProps['id']) => void;
+}
+
+const columns = (
+  props: IColumnsProps
+): Array<IColumnDefinition<IBlockListRowProps>> => [
   {
+    cellOnClick: (row: IBlockListRowProps) =>
+      props.onEpochNumberClicked?.(row.epoch),
     cellValue: (row: IBlockListRowProps) =>
       `${row.epoch} / ${row.slotWithinEpoch}`,
     cssClass: 'epoch',
@@ -31,6 +41,8 @@ const columns: Array<IColumnDefinition<IBlockListRowProps>> = [
     key: 'epochsSlots',
   },
   {
+    cellOnClick: (row: IBlockListRowProps) =>
+      props.onBlockNumberClicked?.(row.id),
     cssClass: 'blocksSlots',
     head: 'Block',
     key: 'number',
@@ -64,16 +76,28 @@ const columns: Array<IColumnDefinition<IBlockListRowProps>> = [
   },
 ];
 
-const BlockList: FC<IBlockListProps> = ({ title, items, isLoading }) => (
-  <div className={styles.blockListContainer}>
-    <Table
-      title={title}
-      columns={columns}
-      rows={items.map(i => Object.assign(i, { key: i.id }))}
-      withoutHeaders={isLoading}
-      withShowMore={!isLoading}
-    />
-  </div>
-);
+const BlockList: FC<IBlockListProps> = props => {
+  const navigation = useNavigationFeatureOptionally();
+  return (
+    <div className={styles.blockListContainer}>
+      <Table
+        title={props.title}
+        columns={columns({
+          onBlockNumberClicked: id =>
+            navigation?.actions.goToBlockDetailsPage.trigger({
+              id,
+            }),
+          onEpochNumberClicked: epochNo =>
+            navigation?.actions.goToEpochDetailsPage.trigger({
+              number: epochNo,
+            }),
+        })}
+        rows={props.items.map(i => Object.assign(i, { key: i.id }))}
+        withoutHeaders={props.isLoading}
+        withShowMore={!props.isLoading}
+      />
+    </div>
+  );
+};
 
 export default observer(BlockList);

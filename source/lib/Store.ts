@@ -3,7 +3,7 @@ import Reaction from './mobx/Reaction';
 
 export class Store {
   public isRunning: boolean = false;
-  private actionBindings: ActionBinding[] = [];
+  private actionBindings: ActionBinding<any>[] = [];
   private reactions: Reaction[] = [];
 
   public async start() {
@@ -20,7 +20,7 @@ export class Store {
 
   // ACTIONS
 
-  protected registerActions(actions: ActionBinding[]) {
+  protected registerActions(actions: ActionBinding<any>[]) {
     this.actionBindings = actions;
   }
 

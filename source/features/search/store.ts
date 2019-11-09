@@ -136,7 +136,11 @@ export class SearchStore extends Store {
       const hasFoundBlock = blocksResult && blocksResult.data.blocks.length > 0;
       const hasFoundEpoch = epochsResult && epochsResult.data.epochs.length > 0;
       if (hasFoundBlock && !hasFoundEpoch) {
-        path = `/block?number=${params.number}`;
+        // https://github.com/kulshekhar/ts-jest/issues/1283
+        path = `/block?id=${blocksResult.data &&
+          blocksResult.data.blocks &&
+          blocksResult.data.blocks[0] &&
+          blocksResult.data.blocks[0].id}`;
       } else if (hasFoundEpoch && !hasFoundBlock) {
         path = `/epoch?number=${params.number}`;
       } else if (hasFoundEpoch && hasFoundBlock) {
