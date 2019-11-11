@@ -8,7 +8,10 @@ import { PaddingDecorator } from './support/PaddingDecorator';
 const transactionSummary = {
   address:
     'DdzFFzCqrhshP3eXMp6T6yBAurVd1cJsD8WHg7BbBwNy3AVN2k5jqDPENM9U4zHX5mqdZWxbELWtQnc8dzsM9f8k1dEiuMW9aDU1AGes',
-  block: 11044,
+  block: {
+    height: 11044,
+    id: '5f20df933584822601f9e3f8c024eb5eb252fe8cefb24d1317dc3d432e940ebb',
+  },
   epoch: 48,
   fee: 0.171246,
   id: 'b81c5239789f54e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196',
@@ -70,6 +73,7 @@ storiesOf('Transactions', module)
   ))
   .add('Transaction Summary', () => (
     <TransactionSummary
+      networkBlockHeight={11044 + 100}
       title="Transaction Summary"
       transaction={transactionSummary}
     />

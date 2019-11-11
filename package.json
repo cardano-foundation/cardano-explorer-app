@@ -6,6 +6,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "dev": "next dev source -p 4000",
+    "dev:mainnet": "CARDANO_NETWORK=mainnet GRAPHQL_API_PROTOCOL=https GRAPHQL_API_HOST=cardano-graphql-byron.daedalus-operations.com GRAPHQL_PORT=443 yarn dev",
     "build": "next build source",
     "build:check": "yarn prettier:check && yarn lint && yarn test && yarn build",
     "test": "jest",
@@ -74,6 +75,7 @@
     "@babel/core": "7.2.0",
     "@babel/plugin-proposal-class-properties": "7.2.1",
     "@babel/plugin-proposal-decorators": "7.2.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
     "@graphql-codegen/cli": "1.2.0",
     "@graphql-codegen/typescript": "1.2.0",
@@ -105,6 +107,7 @@
     "@zeit/next-sass": "1.0.1",
     "autoprefixer": "9.7.0",
     "aws-sdk": "^2.560.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "8.0.6",
     "babel-plugin-inline-react-svg": "1.1.0",
     "babel-plugin-lodash": "3.3.4",
