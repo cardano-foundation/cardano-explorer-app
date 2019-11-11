@@ -2,6 +2,7 @@ import gql from 'graphql-tag';
 import { RetryPromise } from 'promise-exponential-retry';
 import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../lib/graphql/apolloClient';
+import './mobx.config';
 
 beforeAll(async () => {
   jest.setTimeout(15000);
