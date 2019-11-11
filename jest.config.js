@@ -1,4 +1,9 @@
 module.exports = {
+  globals: {
+    'ts-jest': {
+      babelConfig: '<rootDir>/.babelrc'
+    }
+  },
   moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx', 'node', 'graphql'],
   roots: [
     '<rootDir>/source'
