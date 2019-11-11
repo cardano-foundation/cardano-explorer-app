@@ -1,5 +1,6 @@
 import App from 'next/app';
 import React from 'react';
+import '../config/mobx.config';
 import { environment } from '../environment';
 import { NavigationFeatureProvider } from '../features/navigation/ui/NavigationFeatureProvider';
 import { NetworkInfoFeatureProvider } from '../features/network-info/ui/NetworkInfoFeatureProvider';

@@ -1,6 +1,6 @@
 import { ApolloClient, ApolloError, ApolloQueryResult } from 'apollo-client';
 import { DocumentNode } from 'graphql';
-import { computed, observable, runInAction } from 'mobx';
+import { action, computed, observable, runInAction } from 'mobx';
 
 export class GraphQLRequest<TResult, TVariables> {
   @observable public result: ApolloQueryResult<TResult> | null = null;
@@ -23,7 +23,7 @@ export class GraphQLRequest<TResult, TVariables> {
     this.query = query;
   }
 
-  public async execute(
+  @action public execute(
     variables: TVariables
   ): Promise<ApolloQueryResult<TResult>> {
     if (this.isExecuting) {
@@ -31,28 +31,31 @@ export class GraphQLRequest<TResult, TVariables> {
         `Request is already executing with: ${JSON.stringify(variables)}`
       );
     }
-    try {
-      this.isExecuting = true;
-      this.execution = this.client.query<TResult, TVariables>({
-        query: this.query,
-        variables,
-      });
-      this.result = await this.execution;
-      runInAction(() => {
-        this.error = null;
-      });
-      return this.result;
-    } catch (error) {
-      runInAction(() => {
-        this.result = null;
-        this.error = error;
-      });
-      throw error;
-    } finally {
-      runInAction(() => {
-        this.isExecuting = false;
-        this.hasBeenExecutedAtLeastOnce = true;
-      });
-    }
+    this.isExecuting = true;
+    this.execution = this.client.query<TResult, TVariables>({
+      query: this.query,
+      variables,
+    });
+    return this.execution
+      .then(result => {
+        runInAction(() => {
+          this.result = result;
+          this.error = null;
+        });
+        return result;
+      })
+      .catch(error => {
+        runInAction(() => {
+          this.result = null;
+          this.error = error;
+        });
+        throw error;
+      })
+      .finally(
+        action(() => {
+          this.isExecuting = false;
+          this.hasBeenExecutedAtLeastOnce = true;
+        })
+      );
   }
 }

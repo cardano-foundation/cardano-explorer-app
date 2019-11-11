@@ -1,4 +1,4 @@
-import { action, computed, observable } from 'mobx';
+import { action, computed, observable, runInAction } from 'mobx';
 import { environment } from '../../environment';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
@@ -65,9 +65,11 @@ export class NetworkInfoStore extends Store {
       const { cardano } = result.data;
       if (isNotNull(cardano)) {
         const { currentEpoch } = cardano;
-        this.blockHeight = cardano.blockHeight;
-        this.currentEpoch = currentEpoch.number;
-        this.lastBlockTime = new Date(currentEpoch.lastBlockTime);
+        runInAction(() => {
+          this.blockHeight = cardano.blockHeight;
+          this.currentEpoch = currentEpoch.number;
+          this.lastBlockTime = new Date(currentEpoch.lastBlockTime);
+        });
       }
     }
   };
@@ -77,9 +79,11 @@ export class NetworkInfoStore extends Store {
     if (result) {
       const { cardano } = result.data;
       if (isNotNull(cardano)) {
-        this.protocolConst = cardano.protocolConst;
-        this.startTime = new Date(cardano.startTime);
-        this.slotDuration = cardano.slotDuration;
+        runInAction(() => {
+          this.protocolConst = cardano.protocolConst;
+          this.startTime = new Date(cardano.startTime);
+          this.slotDuration = cardano.slotDuration;
+        });
       }
     }
   };
