@@ -7,7 +7,7 @@ import styles from './BlockList.scss';
 
 export interface IBlockListRowProps {
   number: number | null;
-  createdAt: number;
+  createdAt: Date;
   createdBy: string;
   id: string;
   epoch: number;

@@ -1,0 +1,51 @@
+#import "../../transactions/api/TransactionDetails.graphql"
+
+query searchForAddress(
+  $address: String!
+) {
+    utxos_aggregate (
+        where: {
+            address: {
+                _eq: $address
+            }
+        }
+    ) {
+        aggregate {
+            sum {
+                value
+            }
+        }
+    }
+    transactions_aggregate (
+        where: {
+            outputs: {
+                address: {
+                    _eq: $address
+                }
+            }
+        }
+    ) {
+        aggregate {
+            count
+        }
+    }
+    transactions (
+        where: {
+            _or: [{
+                inputs: {
+                    address: {
+                        _eq: $address
+                    }
+                }
+            }, {
+                outputs: {
+                    address: {
+                        _eq: $address
+                    }
+                }
+            }]
+        }
+    ) {
+        ...TransactionDetails
+    }
+}
