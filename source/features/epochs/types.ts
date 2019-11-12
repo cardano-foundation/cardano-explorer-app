@@ -1,4 +1,4 @@
-import { IBlockInfo } from '../blocks/types';
+import { IBlockOverview } from '../blocks/types';
 
 export interface IEpochOverview {
   blocksCount: number;
@@ -13,5 +13,5 @@ export interface IEpochOverview {
 }
 
 export interface IEpochDetails extends IEpochOverview {
-  blocks: IBlockInfo[];
+  blocks: IBlockOverview[];
 }

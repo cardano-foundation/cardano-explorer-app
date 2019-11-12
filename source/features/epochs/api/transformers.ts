@@ -5,7 +5,7 @@ import {
 } from '../../../../generated/typings/graphql-schema';
 import { isNotNull } from '../../../lib/types';
 import { lovelacesToAda } from '../../../lib/unit-converters';
-import { blockInfoTransformer } from '../../blocks/api/transformers';
+import { blockOverviewTransformer } from '../../blocks/api/transformers';
 import { IEpochDetails, IEpochOverview } from '../types';
 
 export const epochOverviewTransformer = (
@@ -27,6 +27,5 @@ export const epochDetailsTransformer = (
   e: EpochDetailsFragment
 ): IEpochDetails => ({
   ...epochOverviewTransformer(e),
-  blocks:
-    (e.blocks && e.blocks.filter(isNotNull).map(blockInfoTransformer)) || [],
+  blocks: e.blocks?.filter(isNotNull).map(blockOverviewTransformer) || [],
 });
