@@ -1,4 +1,4 @@
-import { action, computed, observable } from 'mobx';
+import { action, computed, flow, observable, runInAction } from 'mobx';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { isNotNull } from '../../lib/types';
@@ -20,8 +20,7 @@ export class SearchStore extends Store {
   @observable
   public transactionSearchResult: ITransactionDetails | null = null;
 
-  @observable private isRunningBackgroundSearch = false;
-
+  private isRunningBackgroundSearch = false;
   private readonly searchApi: SearchApi;
   private readonly searchActions: SearchActions;
   private readonly navigation: INavigationFeatureDependency;
@@ -96,7 +95,7 @@ export class SearchStore extends Store {
    *
    * @param id
    */
-  @action private onIdSearchRequested = async ({ id }: { id: string }) => {
+  private onIdSearchRequested = async ({ id }: { id: string }) => {
     if (this.isRunningBackgroundSearch) {
       return;
     }
@@ -220,7 +219,9 @@ export class SearchStore extends Store {
     if (result) {
       const blockData = result.data.blocks[0];
       if (isNotNull(blockData)) {
-        this.blockSearchResult = blockDetailsTransformer(blockData);
+        runInAction(() => {
+          this.blockSearchResult = blockDetailsTransformer(blockData);
+        });
       }
     }
   };
@@ -243,7 +244,9 @@ export class SearchStore extends Store {
     if (result) {
       const blockData = result.data.blocks[0];
       if (isNotNull(blockData)) {
-        this.blockSearchResult = blockDetailsTransformer(blockData);
+        runInAction(() => {
+          this.blockSearchResult = blockDetailsTransformer(blockData);
+        });
       }
     }
   };
@@ -266,7 +269,9 @@ export class SearchStore extends Store {
     if (result) {
       const epochData = result.data.epochs[0];
       if (isNotNull(epochData)) {
-        this.epochSearchResult = epochDetailsTransformer(epochData);
+        runInAction(() => {
+          this.epochSearchResult = epochDetailsTransformer(epochData);
+        });
       }
     }
   };
@@ -286,9 +291,11 @@ export class SearchStore extends Store {
     if (result) {
       const txSearchResult = result.data.transactions[0];
       if (isNotNull(txSearchResult)) {
-        this.transactionSearchResult = transactionDetailsTransformer(
-          txSearchResult
-        );
+        runInAction(() => {
+          this.transactionSearchResult = transactionDetailsTransformer(
+            txSearchResult
+          );
+        });
       }
     }
   };
