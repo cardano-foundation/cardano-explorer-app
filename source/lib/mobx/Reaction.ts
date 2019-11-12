@@ -26,5 +26,5 @@ export default class Reaction {
   }
 }
 
-export const createReactions = (reactions: [() => void]) =>
+export const createReactions = (reactions: Array<() => void>) =>
   reactions.map(r => new Reaction(r));

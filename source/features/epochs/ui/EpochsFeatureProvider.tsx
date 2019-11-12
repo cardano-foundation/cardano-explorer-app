@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApolloClient } from 'react-apollo-hooks';
 import { useFeature } from '../../../lib/react/hooks';
+import { useBlocksFeature } from '../../blocks/context';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { epochsContext } from '../context';
 import { createEpochsFeature, IEpochsFeature } from '../index';
@@ -12,8 +13,9 @@ interface IProps {
 export const EpochsFeatureProvider = (props: IProps) => {
   const apolloClient = useApolloClient();
   const networkInfo = useNetworkInfoFeature();
+  const blocks = useBlocksFeature();
   const [epochsFeature] = useState<IEpochsFeature>(
-    createEpochsFeature(networkInfo, apolloClient)
+    createEpochsFeature(blocks, networkInfo, apolloClient)
   );
   useFeature(epochsFeature);
   return (
