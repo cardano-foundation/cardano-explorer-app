@@ -6,7 +6,7 @@ export interface IBlockInfo {
 }
 
 export interface IBlockOverview extends IBlockInfo {
-  createdAt: number;
+  createdAt: Date;
   createdBy: string;
   epoch: number;
   output: number;

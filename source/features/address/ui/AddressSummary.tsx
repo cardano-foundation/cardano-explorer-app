@@ -5,7 +5,7 @@ import styles from './AddressSummary.scss';
 
 export interface IAddressSummaryProps {
   address: string;
-  finalBalance: number;
+  finalBalance: string;
   title: string;
   transactions: number;
 }

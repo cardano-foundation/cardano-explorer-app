@@ -8,9 +8,11 @@ import { SearchStore } from './store';
  * Defines the actions that are supported by this feature
  */
 export class SearchActions {
+  public addressSearchRequested: Action<{ address: string }> = new Action();
   public idSearchRequested: Action<{ id: string }> = new Action();
   public numberSearchRequested: Action<{ number: number }> = new Action();
   public unknownSearchRequested: Action<{ query: string }> = new Action();
+  public searchForAddress: Action<{ address: string }> = new Action();
   public searchForBlockById: Action<{ id: string }> = new Action();
   public searchForBlockByNumber: Action<{ number: number }> = new Action();
   public searchForEpochByNumber: Action<{ number: number }> = new Action();

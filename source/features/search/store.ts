@@ -2,6 +2,8 @@ import { action, computed, flow, observable, runInAction } from 'mobx';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { isNotNull } from '../../lib/types';
+import { addressDetailTransformer } from '../address/api/transformers';
+import { IAddressDetail } from '../address/types';
 import { blockDetailsTransformer } from '../blocks/api/transformers';
 import { IBlockDetailed } from '../blocks/types';
 import { epochDetailsTransformer } from '../epochs/api/transformers';
@@ -12,6 +14,7 @@ import { SearchApi } from './api';
 import { INavigationFeatureDependency, SearchActions } from './index';
 
 export class SearchStore extends Store {
+  @observable public addressSearchResult: IAddressDetail | null = null;
   @observable public blockSearchResult: IBlockDetailed | null = null;
   @observable public epochSearchResult: IEpochDetails | null = null;
   @observable
@@ -39,6 +42,11 @@ export class SearchStore extends Store {
           this.searchActions.numberSearchRequested,
           this.onNumberSearchRequested,
         ],
+        [
+          this.searchActions.addressSearchRequested,
+          this.onAddressSearchRequested,
+        ],
+        [this.searchActions.searchForAddress, this.searchForAddress],
         [this.searchActions.searchForBlockById, this.searchForBlockById],
         [
           this.searchActions.searchForBlockByNumber,
@@ -59,7 +67,8 @@ export class SearchStore extends Store {
   @computed get isSearching() {
     return (
       !this.isRunningBackgroundSearch &&
-      (this.searchApi.searchForBlockByIdQuery.isExecuting ||
+      (this.searchApi.searchForAddressQuery.isExecuting ||
+        this.searchApi.searchForBlockByIdQuery.isExecuting ||
         this.searchApi.searchForBlockByNumberQuery.isExecuting ||
         this.searchApi.searchForEpochByNumberQuery.isExecuting ||
         this.searchApi.searchForTransactionByIdQuery.isExecuting)
@@ -67,6 +76,16 @@ export class SearchStore extends Store {
   }
 
   // ========= PRIVATE ACTION HANDLERS ==========
+
+  @action private onAddressSearchRequested = async ({
+    address,
+  }: {
+    address: string;
+  }) => {
+    this.navigation.actions.redirectTo.trigger({
+      path: `/address?address=${address}`,
+    });
+  };
 
   /**
    * Executes queries for block and transaction by id to see
@@ -158,6 +177,32 @@ export class SearchStore extends Store {
       }
     } finally {
       this.isRunningBackgroundSearch = false;
+    }
+  };
+
+  @action private searchForAddress = async ({
+    address,
+  }: {
+    address: string;
+  }) => {
+    // Do not execute queries more than necessary!
+    if (
+      this.searchApi.searchForAddressQuery.isExecuting ||
+      this.addressSearchResult?.address === address
+    ) {
+      return;
+    }
+    this.addressSearchResult = null;
+    const result = await this.searchApi.searchForAddressQuery.execute({
+      address,
+    });
+    if (result) {
+      if (isNotNull(result.data)) {
+        this.addressSearchResult = addressDetailTransformer(
+          address,
+          result.data
+        );
+      }
     }
   };
 

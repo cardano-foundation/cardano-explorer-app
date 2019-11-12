@@ -70,14 +70,7 @@ export const EpochsSearchResult = () => {
               <div className={styles.blockList}>
                 <BlockList
                   title="Blocks"
-                  items={epochSearchResult.blocks.slice(0, 10).map(b => ({
-                    ...b,
-                    createdAt: Date.now(),
-                    createdBy: 'basfss',
-                    epoch: epochSearchResult.number,
-                    output: 0,
-                    transactions: 0,
-                  }))}
+                  items={epochSearchResult.blocks.slice(0, 10)}
                   isLoading={false}
                 />
               </div>
