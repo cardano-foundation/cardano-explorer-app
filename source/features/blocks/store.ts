@@ -45,7 +45,7 @@ export class BlocksStore extends Store {
     );
   }
 
-  @computed get latestBlocks(): IBlockOverview[] {
+  @computed.struct get latestBlocks(): IBlockOverview[] {
     const { result } = this.blocksApi.getBlocksInRangeQuery;
     if (result) {
       const isBlock = (b: any): b is BlockOverviewFragment => b != null;
@@ -57,19 +57,20 @@ export class BlocksStore extends Store {
   // ============ REACTIONS =============
 
   private fetchLatestBlocks = () => {
+    const { getBlocksInRangeQuery } = this.blocksApi;
+    const networkStore = this.networkInfo.store;
+    const { blockHeight } = networkStore;
     if (
-      this.blocksApi.getBlocksInRangeQuery.isExecuting ||
-      this.networkInfo.store.isFetching ||
-      !this.networkInfo.store.blockHeight ||
-      (this.latestBlocks.length > 0 &&
-        this.latestBlocks[0] &&
-        this.latestBlocks[0].number === this.networkInfo.store.blockHeight)
+      !blockHeight ||
+      getBlocksInRangeQuery.isExecuting ||
+      networkStore.isFetching ||
+      this.latestBlocks[0]?.number === blockHeight
     ) {
       return;
     }
-    const upper = this.networkInfo.store.blockHeight;
+    const upper = blockHeight;
     const lower = Math.max(0, upper - 9);
-    this.blocksApi.getBlocksInRangeQuery.execute({
+    getBlocksInRangeQuery.execute({
       lower,
       upper,
     });

@@ -1,4 +1,5 @@
 import ApolloClient from 'apollo-client';
+import { IBlocksFeature } from '../blocks';
 // import Action from '../../lib/Action';
 import { INetworkInfoFeature } from '../network-info';
 import { EpochsApi } from './api';
@@ -25,6 +26,9 @@ export interface IEpochsFeature {
 /**
  * Interfaces to dependencies on other features:
  */
+export interface IBlocksFeatureDependency {
+  store: IBlocksFeature['store'];
+}
 export interface INetworkInfoFeatureDependency {
   store: INetworkInfoFeature['store'];
 }
@@ -36,6 +40,7 @@ export interface INetworkInfoFeatureDependency {
  * configured and / or displayed multiple times on the same page.
  */
 export const createEpochsFeature = (
+  blocks: IBlocksFeatureDependency,
   networkInfo: INetworkInfoFeatureDependency,
   apolloClient: ApolloClient<object>
 ): IEpochsFeature => {
@@ -43,6 +48,7 @@ export const createEpochsFeature = (
   const epochsApi = new EpochsApi(apolloClient);
   const epochsStore = new EpochsStore(
     // epochsActions,
+    blocks,
     epochsApi,
     networkInfo
   );

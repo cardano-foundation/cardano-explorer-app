@@ -36,16 +36,16 @@ if (environment.IS_CLIENT) {
         <div>
           <SearchBar brandType={BrandType.ENLARGED} />
         </div>
-        <div className={styles.epochList}>
-          <EpochsFeatureProvider>
-            <LatestEpochs />
-          </EpochsFeatureProvider>
-        </div>
-        <div className={styles.blockList}>
-          <BlocksFeatureProvider>
+        <BlocksFeatureProvider>
+          <div className={styles.epochList}>
+            <EpochsFeatureProvider>
+              <LatestEpochs />
+            </EpochsFeatureProvider>
+          </div>
+          <div className={styles.blockList}>
             <LatestBlocks />
-          </BlocksFeatureProvider>
-        </div>
+          </div>
+        </BlocksFeatureProvider>
         <Footer />
       </Layout>
       {!isMobileScreen() && (
