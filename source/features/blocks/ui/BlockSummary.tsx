@@ -23,6 +23,10 @@ const BlockSummary = (props: BlockSummaryProps) => {
       props.navigation?.goToBlockDetailsPage.trigger({ id });
     }
   };
+  const confirmations =
+    props.number && props.networkBlockHeight
+      ? props.networkBlockHeight - props.number + 1
+      : 0;
   return (
     <div className={styles.blockSummaryContainer}>
       <div className={styles.header}>
@@ -48,9 +52,7 @@ const BlockSummary = (props: BlockSummaryProps) => {
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Confirmations</div>
-            <div className={styles.infoValue}>
-              {props?.number ? props.networkBlockHeight - props?.number + 1 : 0}
-            </div>
+            <div className={styles.infoValue}>{confirmations}</div>
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Size</div>
