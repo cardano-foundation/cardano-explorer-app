@@ -1,4 +1,3 @@
-import { get } from 'lodash';
 import {
   BlockDetailsFragment,
   BlockInfoFragment,
@@ -26,11 +25,11 @@ export const blockOverviewTransformer = (
     ...blockInfoTransformer(b),
     createdAt: b.createdAt,
     createdBy,
-    epoch: (b.epoch && b.epoch.number) || 0,
+    epoch: b.epoch?.number || 0,
     output: lovelacesToAda(
-      get(b, 'transactions_aggregate.aggregate.sum.totalOutput', 0)
+      b.transactions_aggregate?.aggregate?.sum?.totalOutput
     ),
-    transactions: get(b, 'transactions_aggregate.aggregate.count', 0),
+    transactions: b.transactions_aggregate?.aggregate?.count || 0,
   };
 };
 
@@ -41,5 +40,5 @@ export const blockDetailsTransformer = (
   confirmations: 1, // TODO: Calculate confirmations using Cardano.blockHeight
   merkleRoot: b.merkelRootHash || '',
   nextBlock: '', // TODO: missing API data
-  prevBlock: (b.previousBlock && b.previousBlock.id) || '',
+  prevBlock: b.previousBlock?.id || '',
 });

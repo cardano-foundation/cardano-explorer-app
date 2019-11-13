@@ -50,7 +50,7 @@ export const EpochsSearchResult = () => {
   // Trigger search after component did render
   useEffect(() => {
     const { query } = router;
-    if (query && query.number) {
+    if (query?.number) {
       const num = parseInt(query.number as string, 10);
       actions.searchForEpochByNumber.trigger({ number: num });
     }
