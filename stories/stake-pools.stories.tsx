@@ -6,9 +6,9 @@ import StakePoolThumbnail from '../source/features/stake-pools/components/StakeP
 import StakePoolTooltip from '../source/features/stake-pools/components/StakePoolTooltip';
 import UnmoderatedDataConsented from '../source/features/stake-pools/components/UnmoderatedDataConsented';
 import UnmoderatedDataWarning from '../source/features/stake-pools/components/UnmoderatedDataWarning';
-
-import DUMMY_DATA from '../source/features/stake-pools/stakingStakePools.dummy.json';
 import { getColorFromRange } from '../source/lib/colors';
+
+const DUMMY_DATA = require('../source/features/stake-pools/stakingStakePools.dummy.json');
 
 const ListWrapper = (story: any) =>
   React.createElement(() => {
