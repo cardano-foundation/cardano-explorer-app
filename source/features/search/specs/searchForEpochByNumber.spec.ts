@@ -1,6 +1,9 @@
 import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../../../lib/graphql/apolloClient';
 import { NavigationActions } from '../../navigation';
+import { NetworkInfoActions } from '../../network-info';
+import { NetworkInfoApi } from '../../network-info/api';
+import { NetworkInfoStore } from '../../network-info/store';
 import { createSearchFeature, ISearchFeature } from '../index';
 import { exampleEpochData } from './helpers/exampleEpochData';
 
@@ -8,8 +11,14 @@ describe('Searching for an epoch', () => {
   let search: ISearchFeature;
   beforeEach(() => {
     search = createSearchFeature(
+      apolloClient,
       { actions: new NavigationActions() },
-      apolloClient
+      {
+        store: new NetworkInfoStore(
+          new NetworkInfoActions(),
+          new NetworkInfoApi(apolloClient)
+        ),
+      }
     );
     search.start();
   });
@@ -28,13 +37,9 @@ describe('Searching for an epoch', () => {
       // 3. Expect the observable search result to be provided by the store
       await waitForExpect(() => {
         const { epochSearchResult } = search.store;
-        expect(epochSearchResult && epochSearchResult.blocksCount).toBe(9484);
-        expect(epochSearchResult && epochSearchResult.output).toBe(
-          '17282903106.01776'
-        );
-        expect(epochSearchResult && epochSearchResult.transactionsCount).toBe(
-          '5344'
-        );
+        expect(epochSearchResult?.blocksCount).toBe(9484);
+        expect(epochSearchResult?.output).toBe('17282903106.01776');
+        expect(epochSearchResult?.transactionsCount).toBe('5344');
       });
     });
   });

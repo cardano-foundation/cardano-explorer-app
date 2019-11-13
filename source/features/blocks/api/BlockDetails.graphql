@@ -1,24 +1,12 @@
+#import "./BlockInfo.graphql"
+#import "./BlockOverview.graphql"
+
 fragment BlockDetails on Block {
-  createdAt
-  createdBy
-  id
+  ...BlockInfo
+  ...BlockOverview
   merkelRootHash
-  number
-  size
-  epoch {
-    number
-  }
   previousBlock {
     id
     number
-  }
-  slotWithinEpoch
-  transactions_aggregate {
-    aggregate {
-      count
-      sum {
-        totalOutput
-      }
-    }
   }
 }

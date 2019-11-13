@@ -1,6 +1,9 @@
 import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../../../lib/graphql/apolloClient';
 import { NavigationActions } from '../../navigation';
+import { NetworkInfoActions } from '../../network-info';
+import { NetworkInfoApi } from '../../network-info/api';
+import { NetworkInfoStore } from '../../network-info/store';
 import { createSearchFeature, ISearchFeature } from '../index';
 import { exampleTransactionData } from './helpers/exampleTransactionData';
 
@@ -8,8 +11,14 @@ describe('Searching for a transaction', () => {
   let search: ISearchFeature;
   beforeEach(() => {
     search = createSearchFeature(
+      apolloClient,
       { actions: new NavigationActions() },
-      apolloClient
+      {
+        store: new NetworkInfoStore(
+          new NetworkInfoActions(),
+          new NetworkInfoApi(apolloClient)
+        ),
+      }
     );
     search.start();
   });
@@ -28,12 +37,9 @@ describe('Searching for a transaction', () => {
 
       // 3. Access the observable search result provided by the store
       await waitForExpect(() => {
-        expect(
-          search &&
-            search.store &&
-            search.store.transactionSearchResult &&
-            search.store.transactionSearchResult.totalOutput
-        ).toEqual(538861);
+        expect(search.store?.transactionSearchResult?.totalOutput).toEqual(
+          538861
+        );
       });
     });
   });

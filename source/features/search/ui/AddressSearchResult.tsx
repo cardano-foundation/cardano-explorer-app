@@ -1,24 +1,13 @@
-import { storiesOf } from '@storybook/react';
-import React from 'react';
-import TransactionInfo from '../source/features/transactions/components/TransactionInfo';
-import TransactionList from '../source/features/transactions/components/TransactionList';
-import TransactionSummary from '../source/features/transactions/components/TransactionSummary';
-import { PaddingDecorator } from './support/PaddingDecorator';
-
-const transactionSummary = {
-  address:
-    'DdzFFzCqrhshP3eXMp6T6yBAurVd1cJsD8WHg7BbBwNy3AVN2k5jqDPENM9U4zHX5mqdZWxbELWtQnc8dzsM9f8k1dEiuMW9aDU1AGes',
-  block: {
-    id: '5f20df933584822601f9e3f8c024eb5eb252fe8cefb24d1317dc3d432e940ebb',
-    number: 11044,
-  },
-  epoch: 48,
-  fee: 0.171246,
-  id: 'b81c5239789f54e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196',
-  receivedTime: 1470006392000,
-  slot: 11044,
-  totalOutput: 224909.277897,
-};
+import { Observer } from 'mobx-react-lite';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+import Container from '../../../widgets/container/Container';
+import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
+import AddressSummary from '../../address/ui/AddressSummary';
+import TransactionList from '../../transactions/components/TransactionList';
+import { useSearchFeature } from '../context';
+import styles from './AddressSearchResult.scss';
+import NoSearchResult from './NoSearchResult';
 
 const transactions = [
   {
@@ -66,18 +55,49 @@ const transactions = [
   },
 ];
 
-storiesOf('Transactions', module)
-  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
-  .add('Transaction Info', () => (
-    <TransactionInfo title="Transaction" {...transactions[0]} />
-  ))
-  .add('Transaction Summary', () => (
-    <TransactionSummary
-      networkBlockHeight={11044 + 100}
-      title="Transaction Summary"
-      transaction={transactionSummary}
-    />
-  ))
-  .add('Transaction List', () => (
-    <TransactionList title="Transactions" items={transactions} />
-  ));
+export const AddressSearchResult = () => {
+  const { actions, store } = useSearchFeature();
+  const router = useRouter();
+
+  // Trigger search after component did render
+  useEffect(() => {
+    const { query } = router;
+    if (query?.address) {
+      const address = query.address as string;
+      actions.searchForAddress.trigger({ address });
+    }
+  });
+  return (
+    <Observer>
+      {() => {
+        const { addressSearchResult } = store;
+        if (store.isSearching) {
+          return <LoadingSpinner />;
+        } else if (addressSearchResult) {
+          const {
+            address,
+            finalBalance,
+            transactionsCount,
+          } = addressSearchResult;
+          return (
+            <Container>
+              <div className={styles.addressSummary}>
+                <AddressSummary
+                  title="Address"
+                  address={address}
+                  finalBalance={finalBalance}
+                  transactions={transactionsCount}
+                />
+              </div>
+              <div className={styles.transactionList}>
+                <TransactionList title="Transactions" items={transactions} />
+              </div>
+            </Container>
+          );
+        } else {
+          return <NoSearchResult />;
+        }
+      }}
+    </Observer>
+  );
+};

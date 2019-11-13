@@ -23,9 +23,9 @@ if (environment.IS_CLIENT) {
               lastBlockAt: new Date(1569144483000),
               number: 135,
               output: '8397621',
+              percentage: 97,
               slotsCount: 21600,
               startedAt: new Date(1568366883000),
-              status: 'In progress...',
               transactionsCount: '12',
             }}
             title="Epoch"

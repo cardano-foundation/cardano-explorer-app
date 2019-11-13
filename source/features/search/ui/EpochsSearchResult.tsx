@@ -50,7 +50,7 @@ export const EpochsSearchResult = () => {
   // Trigger search after component did render
   useEffect(() => {
     const { query } = router;
-    if (query && query.number) {
+    if (query?.number) {
       const num = parseInt(query.number as string, 10);
       actions.searchForEpochByNumber.trigger({ number: num });
     }
@@ -70,14 +70,7 @@ export const EpochsSearchResult = () => {
               <div className={styles.blockList}>
                 <BlockList
                   title="Blocks"
-                  items={epochSearchResult.blocks.slice(0, 10).map(b => ({
-                    ...b,
-                    createdAt: Date.now(),
-                    createdBy: 'basfss',
-                    epoch: epochSearchResult.number,
-                    output: 0,
-                    transactions: 0,
-                  }))}
+                  items={epochSearchResult.blocks.slice(0, 10)}
                   isLoading={false}
                 />
               </div>

@@ -2,6 +2,8 @@ import ApolloClient from 'apollo-client';
 
 import { GraphQLRequest } from '../../../lib/graphql/GraphQLRequest';
 import {
+  SearchForAddressQuery,
+  SearchForAddressQueryVariables,
   SearchForBlockByIdQuery,
   SearchForBlockByIdQueryVariables,
   SearchForBlockByNumberQuery,
@@ -11,12 +13,18 @@ import {
   SearchForTransactionByIdQuery,
   SearchForTransactionByIdQueryVariables,
 } from '../../../typings/graphql-schema';
+import searchForAddressQuery from './searchForAddress.graphql';
 import searchForBlockByIdQuery from './searchForBlockById.graphql';
 import searchForBlockByNumberQuery from './searchForBlockByNumber.graphql';
 import searchForEpochByNumberQuery from './searchForEpochByNumber.graphql';
 import searchForTransactionByIdQuery from './searchForTransactionById.graphql';
 
 export class SearchApi {
+  public searchForAddressQuery: GraphQLRequest<
+    SearchForAddressQuery,
+    SearchForAddressQueryVariables
+  >;
+
   public searchForBlockByIdQuery: GraphQLRequest<
     SearchForBlockByIdQuery,
     SearchForBlockByIdQueryVariables
@@ -38,6 +46,10 @@ export class SearchApi {
   >;
 
   constructor(client: ApolloClient<any>) {
+    this.searchForAddressQuery = new GraphQLRequest(
+      client,
+      searchForAddressQuery
+    );
     this.searchForBlockByIdQuery = new GraphQLRequest(
       client,
       searchForBlockByIdQuery

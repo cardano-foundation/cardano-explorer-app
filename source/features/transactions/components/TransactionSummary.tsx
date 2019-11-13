@@ -42,7 +42,7 @@ const TransactionSummary = ({
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Confirmations</div>
             <div className={styles.infoValue}>
-              {txBlock?.height ? networkBlockHeight - txBlock?.height + 1 : 0}
+              {txBlock?.number ? networkBlockHeight - txBlock?.number + 1 : 0}
             </div>
           </div>
           <div className={styles.infoRow}>
@@ -58,7 +58,7 @@ const TransactionSummary = ({
               )}
               , Slot {transaction.slot}, block{' '}
               <span onClick={onBlockIdClick(transaction.block.id)}>
-                {transaction.block.height ?? transaction.block.id}
+                {transaction.block.number ?? transaction.block.id}
               </span>
             </div>
           </div>

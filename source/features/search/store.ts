@@ -2,6 +2,8 @@ import { action, computed, flow, observable, runInAction } from 'mobx';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { isNotNull } from '../../lib/types';
+import { addressDetailTransformer } from '../address/api/transformers';
+import { IAddressDetail } from '../address/types';
 import { blockDetailsTransformer } from '../blocks/api/transformers';
 import { IBlockDetailed } from '../blocks/types';
 import { epochDetailsTransformer } from '../epochs/api/transformers';
@@ -9,9 +11,14 @@ import { IEpochDetails } from '../epochs/types';
 import { transactionDetailsTransformer } from '../transactions/api/transformers';
 import { ITransactionDetails } from '../transactions/types';
 import { SearchApi } from './api';
-import { INavigationFeatureDependency, SearchActions } from './index';
+import {
+  INavigationFeatureDependency,
+  INetworkInfoFeatureDependency,
+  SearchActions,
+} from './index';
 
 export class SearchStore extends Store {
+  @observable public addressSearchResult: IAddressDetail | null = null;
   @observable public blockSearchResult: IBlockDetailed | null = null;
   @observable public epochSearchResult: IEpochDetails | null = null;
   @observable
@@ -21,16 +28,19 @@ export class SearchStore extends Store {
   private readonly searchApi: SearchApi;
   private readonly searchActions: SearchActions;
   private readonly navigation: INavigationFeatureDependency;
+  private readonly networkInfo: INetworkInfoFeatureDependency;
 
   constructor(
     searchActions: SearchActions,
     searchApi: SearchApi,
-    navigation: INavigationFeatureDependency
+    navigation: INavigationFeatureDependency,
+    networkInfo: INetworkInfoFeatureDependency
   ) {
     super();
     this.searchApi = searchApi;
     this.searchActions = searchActions;
     this.navigation = navigation;
+    this.networkInfo = networkInfo;
 
     this.registerActions(
       createActionBindings([
@@ -39,6 +49,11 @@ export class SearchStore extends Store {
           this.searchActions.numberSearchRequested,
           this.onNumberSearchRequested,
         ],
+        [
+          this.searchActions.addressSearchRequested,
+          this.onAddressSearchRequested,
+        ],
+        [this.searchActions.searchForAddress, this.searchForAddress],
         [this.searchActions.searchForBlockById, this.searchForBlockById],
         [
           this.searchActions.searchForBlockByNumber,
@@ -59,7 +74,8 @@ export class SearchStore extends Store {
   @computed get isSearching() {
     return (
       !this.isRunningBackgroundSearch &&
-      (this.searchApi.searchForBlockByIdQuery.isExecuting ||
+      (this.searchApi.searchForAddressQuery.isExecuting ||
+        this.searchApi.searchForBlockByIdQuery.isExecuting ||
         this.searchApi.searchForBlockByNumberQuery.isExecuting ||
         this.searchApi.searchForEpochByNumberQuery.isExecuting ||
         this.searchApi.searchForTransactionByIdQuery.isExecuting)
@@ -67,6 +83,16 @@ export class SearchStore extends Store {
   }
 
   // ========= PRIVATE ACTION HANDLERS ==========
+
+  @action private onAddressSearchRequested = async ({
+    address,
+  }: {
+    address: string;
+  }) => {
+    this.navigation.actions.redirectTo.trigger({
+      path: `/address?address=${address}`,
+    });
+  };
 
   /**
    * Executes queries for block and transaction by id to see
@@ -91,9 +117,9 @@ export class SearchStore extends Store {
         { id }
       );
       let path = '';
-      if (blocksResult && blocksResult.data.blocks.length > 0) {
+      if (blocksResult?.data.blocks.length > 0) {
         path = `/block?id=${id}`;
-      } else if (txResult && txResult.data.transactions.length > 0) {
+      } else if (txResult?.data.transactions.length > 0) {
         path = `/transaction?id=${id}`;
       } else {
         path = '/no-search-results';
@@ -132,14 +158,11 @@ export class SearchStore extends Store {
         params
       );
       let path = '';
-      const hasFoundBlock = blocksResult && blocksResult.data.blocks.length > 0;
-      const hasFoundEpoch = epochsResult && epochsResult.data.epochs.length > 0;
+      const hasFoundBlock = blocksResult?.data.blocks.length > 0;
+      const hasFoundEpoch = epochsResult?.data.epochs.length > 0;
       if (hasFoundBlock && !hasFoundEpoch) {
         // https://github.com/kulshekhar/ts-jest/issues/1283
-        path = `/block?id=${blocksResult.data &&
-          blocksResult.data.blocks &&
-          blocksResult.data.blocks[0] &&
-          blocksResult.data.blocks[0].id}`;
+        path = `/block?id=${blocksResult?.data?.blocks[0]?.id}`;
       } else if (hasFoundEpoch && !hasFoundBlock) {
         path = `/epoch?number=${params.number}`;
       } else if (hasFoundEpoch && hasFoundBlock) {
@@ -161,11 +184,39 @@ export class SearchStore extends Store {
     }
   };
 
+  @action private searchForAddress = async ({
+    address,
+  }: {
+    address: string;
+  }) => {
+    // Do not execute queries more than necessary!
+    if (
+      this.searchApi.searchForAddressQuery.isExecuting ||
+      this.addressSearchResult?.address === address
+    ) {
+      return;
+    }
+    this.addressSearchResult = null;
+    const result = await this.searchApi.searchForAddressQuery.execute({
+      address,
+    });
+    if (result) {
+      if (isNotNull(result.data)) {
+        runInAction(() => {
+          this.addressSearchResult = addressDetailTransformer(
+            address,
+            result.data
+          );
+        });
+      }
+    }
+  };
+
   @action private searchForBlockById = async ({ id }: { id: string }) => {
     // Do not execute queries more than necessary!
     if (
       this.searchApi.searchForBlockByIdQuery.isExecuting ||
-      (this.blockSearchResult && this.blockSearchResult.id === id)
+      this.blockSearchResult?.id === id
     ) {
       return;
     }
@@ -187,8 +238,7 @@ export class SearchStore extends Store {
     // Do not trigger another search if we already have the requested data!
     if (
       this.searchApi.searchForBlockByNumberQuery.isExecuting ||
-      (this.blockSearchResult &&
-        this.blockSearchResult.number === params.number)
+      this.blockSearchResult?.number === params.number
     ) {
       return;
     }
@@ -212,8 +262,7 @@ export class SearchStore extends Store {
     // Do not trigger another search if we already have the requested data!
     if (
       this.searchApi.searchForEpochByNumberQuery.isExecuting ||
-      (this.epochSearchResult &&
-        this.epochSearchResult.number === params.number)
+      this.epochSearchResult?.number === params.number
     ) {
       return;
     }
@@ -225,7 +274,10 @@ export class SearchStore extends Store {
       const epochData = result.data.epochs[0];
       if (isNotNull(epochData)) {
         runInAction(() => {
-          this.epochSearchResult = epochDetailsTransformer(epochData);
+          this.epochSearchResult = epochDetailsTransformer(
+            epochData,
+            this.networkInfo.store
+          );
         });
       }
     }
@@ -235,7 +287,7 @@ export class SearchStore extends Store {
     // Do not trigger another search if we already have the requested data!
     if (
       this.searchApi.searchForTransactionByIdQuery.isExecuting ||
-      (this.transactionSearchResult && this.transactionSearchResult.id === id)
+      this.transactionSearchResult?.id === id
     ) {
       return;
     }

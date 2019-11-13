@@ -5,7 +5,6 @@ import CircularProgress, {
   CircularProgressSize,
 } from '../../../widgets/circular-progress/CircularProgress';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
-import { IBlockListRowProps } from '../../blocks/ui/BlockList';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import styles from './EpochList.scss';
 
@@ -17,7 +16,6 @@ export interface IEpochListRowProps {
   percentage?: number;
   slotsCount: number;
   startedAt: Date;
-  status: string;
   transactionsCount: string;
 }
 
@@ -75,15 +73,10 @@ const columns = (
     key: 'startedAt',
   },
   {
-    cellRender: (value: any) => {
-      if (value.lastBlockAt) {
-        return moment(value.lastBlockAt).format('YYYY/MM/DD HH:mm:ss');
-      }
-      return value.status;
-    },
+    cellRender: (value: any) =>
+      moment(value.lastBlockAt).format('YYYY/MM/DD HH:mm:ss'),
     cellValue: (row: IEpochListRowProps) => ({
       lastBlockAt: row.lastBlockAt,
-      status: row.status,
     }),
     cssClass: 'lastBlockAt',
     head: 'Last Block at',
