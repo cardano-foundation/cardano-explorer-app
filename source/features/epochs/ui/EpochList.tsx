@@ -17,7 +17,6 @@ export interface IEpochListRowProps {
   percentage?: number;
   slotsCount: number;
   startedAt: Date;
-  status: string;
   transactionsCount: string;
 }
 
@@ -83,7 +82,7 @@ const columns = (
     },
     cellValue: (row: IEpochListRowProps) => ({
       lastBlockAt: row.lastBlockAt,
-      status: row.status,
+      status: 'yer',
     }),
     cssClass: 'lastBlockAt',
     head: 'Last Block at',

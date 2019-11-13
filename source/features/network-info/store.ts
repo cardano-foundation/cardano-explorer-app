@@ -9,6 +9,7 @@ import { NetworkInfoActions } from './index';
 export class NetworkInfoStore extends Store {
   @observable public blockHeight: number;
   @observable public currentEpoch: number;
+  @observable public currentSlot: number;
   @observable public lastBlockTime: Date;
   @observable public protocolConst: number;
   @observable public startTime: Date;
@@ -59,6 +60,14 @@ export class NetworkInfoStore extends Store {
     );
   }
 
+  @computed get slotsPerEpoch() {
+    return this.protocolConst * 10;
+  }
+
+  @computed get currentEpochPercentageComplete() {
+    return (this.currentSlot / this.slotsPerEpoch) * 100;
+  }
+
   @action private fetchDynamicInfo = async () => {
     const result = await this.networkInfoApi.fetchDynamic.execute({});
     if (result) {
@@ -68,6 +77,7 @@ export class NetworkInfoStore extends Store {
         runInAction(() => {
           this.blockHeight = cardano.blockHeight;
           this.currentEpoch = currentEpoch.number;
+          this.currentSlot = currentEpoch.blocks[0].slotWithinEpoch || 0;
           this.lastBlockTime = new Date(currentEpoch.lastBlockTime);
         });
       }

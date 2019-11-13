@@ -1,6 +1,9 @@
 import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../../../lib/graphql/apolloClient';
 import { NavigationActions } from '../../navigation';
+import { NetworkInfoActions } from '../../network-info';
+import { NetworkInfoApi } from '../../network-info/api';
+import { NetworkInfoStore } from '../../network-info/store';
 import { createSearchFeature, ISearchFeature } from '../index';
 import { exampleAddressData } from './helpers/exampleAddressData';
 
@@ -8,8 +11,14 @@ describe('Searching for an address summary', () => {
   let search: ISearchFeature;
   beforeEach(() => {
     search = createSearchFeature(
+      apolloClient,
       { actions: new NavigationActions() },
-      apolloClient
+      {
+        store: new NetworkInfoStore(
+          new NetworkInfoActions(),
+          new NetworkInfoApi(apolloClient)
+        ),
+      }
     );
     search.start();
   });
