@@ -13,7 +13,7 @@ export const BlockSearchResult = () => {
   // Trigger search after component did render
   useEffect(() => {
     const { query } = router;
-    if (query && query.id) {
+    if (query?.id) {
       const id = query.id as string;
       actions.searchForBlockById.trigger({ id });
     }

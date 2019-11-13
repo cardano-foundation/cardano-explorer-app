@@ -110,9 +110,9 @@ export class SearchStore extends Store {
         { id }
       );
       let path = '';
-      if (blocksResult && blocksResult.data.blocks.length > 0) {
+      if (blocksResult?.data.blocks.length > 0) {
         path = `/block?id=${id}`;
-      } else if (txResult && txResult.data.transactions.length > 0) {
+      } else if (txResult?.data.transactions.length > 0) {
         path = `/transaction?id=${id}`;
       } else {
         path = '/no-search-results';
@@ -151,14 +151,11 @@ export class SearchStore extends Store {
         params
       );
       let path = '';
-      const hasFoundBlock = blocksResult && blocksResult.data.blocks.length > 0;
-      const hasFoundEpoch = epochsResult && epochsResult.data.epochs.length > 0;
+      const hasFoundBlock = blocksResult?.data.blocks.length > 0;
+      const hasFoundEpoch = epochsResult?.data.epochs.length > 0;
       if (hasFoundBlock && !hasFoundEpoch) {
         // https://github.com/kulshekhar/ts-jest/issues/1283
-        path = `/block?id=${blocksResult.data &&
-          blocksResult.data.blocks &&
-          blocksResult.data.blocks[0] &&
-          blocksResult.data.blocks[0].id}`;
+        path = `/block?id=${blocksResult?.data?.blocks[0]?.id}`;
       } else if (hasFoundEpoch && !hasFoundBlock) {
         path = `/epoch?number=${params.number}`;
       } else if (hasFoundEpoch && hasFoundBlock) {
@@ -210,7 +207,7 @@ export class SearchStore extends Store {
     // Do not execute queries more than necessary!
     if (
       this.searchApi.searchForBlockByIdQuery.isExecuting ||
-      (this.blockSearchResult && this.blockSearchResult.id === id)
+      this.blockSearchResult?.id === id
     ) {
       return;
     }
@@ -232,8 +229,7 @@ export class SearchStore extends Store {
     // Do not trigger another search if we already have the requested data!
     if (
       this.searchApi.searchForBlockByNumberQuery.isExecuting ||
-      (this.blockSearchResult &&
-        this.blockSearchResult.number === params.number)
+      this.blockSearchResult?.number === params.number
     ) {
       return;
     }
@@ -257,8 +253,7 @@ export class SearchStore extends Store {
     // Do not trigger another search if we already have the requested data!
     if (
       this.searchApi.searchForEpochByNumberQuery.isExecuting ||
-      (this.epochSearchResult &&
-        this.epochSearchResult.number === params.number)
+      this.epochSearchResult?.number === params.number
     ) {
       return;
     }
@@ -280,7 +275,7 @@ export class SearchStore extends Store {
     // Do not trigger another search if we already have the requested data!
     if (
       this.searchApi.searchForTransactionByIdQuery.isExecuting ||
-      (this.transactionSearchResult && this.transactionSearchResult.id === id)
+      this.transactionSearchResult?.id === id
     ) {
       return;
     }
