@@ -283,7 +283,7 @@ export class SearchStore extends Store {
     }
   };
 
-  private searchForTransactionById = async ({ id }: { id: string }) => {
+  @action private searchForTransactionById = async ({ id }: { id: string }) => {
     // Do not trigger another search if we already have the requested data!
     if (
       this.searchApi.searchForTransactionByIdQuery.isExecuting ||
