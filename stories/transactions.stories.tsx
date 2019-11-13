@@ -9,8 +9,8 @@ const transactionSummary = {
   address:
     'DdzFFzCqrhshP3eXMp6T6yBAurVd1cJsD8WHg7BbBwNy3AVN2k5jqDPENM9U4zHX5mqdZWxbELWtQnc8dzsM9f8k1dEiuMW9aDU1AGes',
   block: {
-    height: 11044,
     id: '5f20df933584822601f9e3f8c024eb5eb252fe8cefb24d1317dc3d432e940ebb',
+    number: 11044,
   },
   epoch: 48,
   fee: 0.171246,

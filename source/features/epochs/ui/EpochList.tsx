@@ -5,7 +5,6 @@ import CircularProgress, {
   CircularProgressSize,
 } from '../../../widgets/circular-progress/CircularProgress';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
-import { IBlockListRowProps } from '../../blocks/ui/BlockList';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import styles from './EpochList.scss';
 
