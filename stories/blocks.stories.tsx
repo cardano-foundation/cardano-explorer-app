@@ -3,66 +3,11 @@ import React from 'react';
 import BlockCreation from '../source/features/blocks/ui/BlockCreation';
 import BlockList from '../source/features/blocks/ui/BlockList';
 import BlockSummary from '../source/features/blocks/ui/BlockSummary';
+import { generateFakeBlockOverviews } from './support/fake-data-helpers';
 import { PaddingDecorator } from './support/PaddingDecorator';
 import { transactions } from './transactions.stories';
 
-const blocks = [
-  {
-    createdAt: new Date(1568366883000),
-    createdBy: 'af2800c',
-    epoch: 138,
-    id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
-    number: 20051,
-    output: 11189.647356,
-    size: 1024,
-    slotWithinEpoch: 21600,
-    transactionsCount: 1,
-  },
-  {
-    createdAt: new Date(1568366883000),
-    createdBy: '6c9e149',
-    epoch: 139,
-    id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
-    number: 20051,
-    output: 11189.647356,
-    size: 1024,
-    slotWithinEpoch: 21600,
-    transactionsCount: 2,
-  },
-  {
-    createdAt: new Date(1568366883000),
-    createdBy: 'af2800c',
-    epoch: 137,
-    id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
-    number: 20051,
-    output: 11189.647356,
-    size: 1024,
-    slotWithinEpoch: 21600,
-    transactionsCount: 3,
-  },
-  {
-    createdAt: new Date(1568366883000),
-    createdBy: '6c9e149',
-    epoch: 139,
-    id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
-    number: 20051,
-    output: 11189.647356,
-    size: 1024,
-    slotWithinEpoch: 21600,
-    transactionsCount: 4,
-  },
-  {
-    createdAt: new Date(1568366883000),
-    createdBy: 'e1496c9',
-    epoch: 140,
-    id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
-    number: 20051,
-    output: 11189.647356,
-    size: 1024,
-    slotWithinEpoch: 21600,
-    transactionsCount: 5,
-  },
-];
+const blocks = generateFakeBlockOverviews(5);
 
 const blockSummary = {
   confirmations: 0,
