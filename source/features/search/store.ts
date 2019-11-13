@@ -202,10 +202,12 @@ export class SearchStore extends Store {
     });
     if (result) {
       if (isNotNull(result.data)) {
-        this.addressSearchResult = addressDetailTransformer(
-          address,
-          result.data
-        );
+        runInAction(() => {
+          this.addressSearchResult = addressDetailTransformer(
+            address,
+            result.data
+          );
+        });
       }
     }
   };
