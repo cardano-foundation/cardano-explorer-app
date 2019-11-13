@@ -7,8 +7,8 @@ export const transactionDetailsTransformer = (
 ): ITransactionDetails => ({
   address: '[ADDRESS]', // TODO: missing address in API
   block: {
-    height: tx.block?.number,
     id: tx.block?.id,
+    number: tx.block?.number,
   },
   epoch: tx.block?.epoch?.number,
   fee: lovelacesStringToAdaNumber(tx.fee),
