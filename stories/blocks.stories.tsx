@@ -7,7 +7,7 @@ import { PaddingDecorator } from './support/PaddingDecorator';
 
 const blocks = [
   {
-    createdAt: 1568366883000,
+    createdAt: new Date(1568366883000),
     createdBy: 'af2800c',
     epoch: 138,
     id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
@@ -18,7 +18,7 @@ const blocks = [
     transactions: 1,
   },
   {
-    createdAt: 1568366883000,
+    createdAt: new Date(1568366883000),
     createdBy: '6c9e149',
     epoch: 139,
     id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
@@ -29,7 +29,7 @@ const blocks = [
     transactions: 2,
   },
   {
-    createdAt: 1568366883000,
+    createdAt: new Date(1568366883000),
     createdBy: 'af2800c',
     epoch: 137,
     id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
@@ -40,7 +40,7 @@ const blocks = [
     transactions: 3,
   },
   {
-    createdAt: 1568366883000,
+    createdAt: new Date(1568366883000),
     createdBy: '6c9e149',
     epoch: 139,
     id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
@@ -51,7 +51,7 @@ const blocks = [
     transactions: 4,
   },
   {
-    createdAt: 1568366883000,
+    createdAt: new Date(1568366883000),
     createdBy: 'e1496c9',
     epoch: 140,
     id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
@@ -65,7 +65,7 @@ const blocks = [
 
 const blockSummary = {
   confirmations: 0,
-  createdAt: Date.now(),
+  createdAt: new Date(),
   createdBy: '[BLSH] pool',
   epoch: 47,
   id: '502017e88ff3b7389a0c7e6f4a6c808d171938467c9adbdc059250ab4a8fee72',
