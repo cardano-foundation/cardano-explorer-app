@@ -1,3 +1,5 @@
+import { IEpochOverview } from '../epochs/types';
+
 export interface IBlockInfo {
   id: string;
   number: number | null;
@@ -8,13 +10,12 @@ export interface IBlockInfo {
 export interface IBlockOverview extends IBlockInfo {
   createdAt: Date;
   createdBy: string;
-  epoch: number;
+  epoch: IEpochOverview['number'];
   output: number;
   transactions: number;
 }
 
 export interface IBlockDetailed extends IBlockOverview {
-  confirmations: number;
   merkleRoot: string;
   nextBlock: string;
   prevBlock: {

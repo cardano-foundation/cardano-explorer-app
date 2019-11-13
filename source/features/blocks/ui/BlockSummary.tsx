@@ -1,16 +1,28 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
-import { useNavigationFeatureOptionally } from '../../navigation';
+import { NavigationActions } from '../../navigation';
+import { ITransactionDetails } from '../../transactions/types';
 import { IBlockDetailed } from '../types';
 import styles from './BlockSummary.scss';
 
 export type BlockSummaryProps = {
+  navigation?: NavigationActions;
+  networkBlockHeight: number;
   title: string;
 } & IBlockDetailed;
 
 const BlockSummary = (props: BlockSummaryProps) => {
-  const navigation = useNavigationFeatureOptionally();
+  const onEpochNumberClick = (epoch: ITransactionDetails['epoch']) => () => {
+    if (epoch) {
+      props.navigation?.goToEpochDetailsPage.trigger({ number: epoch });
+    }
+  };
+  const onBlockIdClick = (id: ITransactionDetails['block']['id']) => () => {
+    if (id) {
+      props.navigation?.goToBlockDetailsPage.trigger({ id });
+    }
+  };
   return (
     <div className={styles.blockSummaryContainer}>
       <div className={styles.header}>
@@ -22,17 +34,12 @@ const BlockSummary = (props: BlockSummaryProps) => {
             <div className={styles.infoLabel}>ID</div>
             <div className={styles.infoValue}>{props.id}</div>
           </div>
-          <div
-            className={styles.infoRow}
-            onClick={() =>
-              navigation?.actions.goToEpochDetailsPage.trigger({
-                number: props.epoch,
-              })
-            }
-          >
+          <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Epoch</div>
             <div className={styles.infoValue}>
-              <span>{props.epoch}</span>
+              <span onClick={onEpochNumberClick(props.epoch)}>
+                {props.epoch}
+              </span>
             </div>
           </div>
           <div className={styles.infoRow}>
@@ -41,7 +48,9 @@ const BlockSummary = (props: BlockSummaryProps) => {
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Confirmations</div>
-            <div className={styles.infoValue}>{props.confirmations}</div>
+            <div className={styles.infoValue}>
+              {props?.number ? props.networkBlockHeight - props?.number + 1 : 0}
+            </div>
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Size</div>
@@ -61,17 +70,12 @@ const BlockSummary = (props: BlockSummaryProps) => {
               {moment(props.createdAt).format('YYYY/MM/DD HH:mm:ss')}
             </div>
           </div>
-          <div
-            className={styles.infoRow}
-            onClick={() =>
-              navigation?.actions.goToBlockDetailsPage.trigger({
-                id: props.prevBlock.id,
-              })
-            }
-          >
+          <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Previous block</div>
             <div className={styles.infoValue}>
-              <span>{props.prevBlock.number}</span>
+              <span onClick={onBlockIdClick(props.prevBlock.id)}>
+                {props.prevBlock.number}
+              </span>
             </div>
           </div>
           <div className={styles.infoRow}>
