@@ -17,5 +17,8 @@ export interface IBlockDetailed extends IBlockOverview {
   confirmations: number;
   merkleRoot: string;
   nextBlock: string;
-  prevBlock: number;
+  prevBlock: {
+    id: IBlockInfo['id'];
+    number: IBlockInfo['number'];
+  };
 }

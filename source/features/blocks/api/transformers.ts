@@ -40,5 +40,8 @@ export const blockDetailsTransformer = (
   confirmations: 1, // TODO: Calculate confirmations using Cardano.blockHeight
   merkleRoot: b.merkelRootHash || '',
   nextBlock: '', // TODO: missing API data
-  prevBlock: b.previousBlock?.id || '',
+  prevBlock: {
+    id: b.previousBlock?.id || '',
+    number: b.previousBlock?.number || null,
+  },
 });
