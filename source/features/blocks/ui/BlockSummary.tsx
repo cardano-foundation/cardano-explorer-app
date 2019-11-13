@@ -74,7 +74,7 @@ const BlockSummary = (props: BlockSummaryProps) => {
             <div className={styles.infoLabel}>Previous block</div>
             <div className={styles.infoValue}>
               <span onClick={onBlockIdClick(props.prevBlock.id)}>
-                {props.prevBlock.number}
+                {props.prevBlock.number ?? props.prevBlock.id}
               </span>
             </div>
           </div>
