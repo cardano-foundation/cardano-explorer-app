@@ -59,7 +59,9 @@ export class EpochsStore extends Store {
   @computed.struct get latestEpochs(): IEpochOverview[] {
     const { result } = this.epochsApi.getEpochsInRangeQuery;
     if (result) {
-      return result.data.epochs.filter(isNotNull).map(epochOverviewTransformer);
+      return result.data.epochs
+        .filter(isNotNull)
+        .map(e => epochOverviewTransformer(e, this.networkInfo.store));
     }
     return [];
   }

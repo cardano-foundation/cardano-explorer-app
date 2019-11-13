@@ -11,7 +11,11 @@ import { IEpochDetails } from '../epochs/types';
 import { transactionDetailsTransformer } from '../transactions/api/transformers';
 import { ITransactionDetails } from '../transactions/types';
 import { SearchApi } from './api';
-import { INavigationFeatureDependency, SearchActions } from './index';
+import {
+  INavigationFeatureDependency,
+  INetworkInfoFeatureDependency,
+  SearchActions,
+} from './index';
 
 export class SearchStore extends Store {
   @observable public addressSearchResult: IAddressDetail | null = null;
@@ -24,16 +28,19 @@ export class SearchStore extends Store {
   private readonly searchApi: SearchApi;
   private readonly searchActions: SearchActions;
   private readonly navigation: INavigationFeatureDependency;
+  private readonly networkInfo: INetworkInfoFeatureDependency;
 
   constructor(
     searchActions: SearchActions,
     searchApi: SearchApi,
-    navigation: INavigationFeatureDependency
+    navigation: INavigationFeatureDependency,
+    networkInfo: INetworkInfoFeatureDependency
   ) {
     super();
     this.searchApi = searchApi;
     this.searchActions = searchActions;
     this.navigation = navigation;
+    this.networkInfo = networkInfo;
 
     this.registerActions(
       createActionBindings([
@@ -265,7 +272,10 @@ export class SearchStore extends Store {
       const epochData = result.data.epochs[0];
       if (isNotNull(epochData)) {
         runInAction(() => {
-          this.epochSearchResult = epochDetailsTransformer(epochData);
+          this.epochSearchResult = epochDetailsTransformer(
+            epochData,
+            this.networkInfo.store
+          );
         });
       }
     }

@@ -8,11 +8,6 @@ import { PaddingDecorator } from './support/PaddingDecorator';
 
 const epochs = latestEpochsExample;
 
-Object.assign(epochs[0], {
-  percentage: 40,
-  status: 'In progress...',
-});
-
 const stakeDistribution = [
   {
     slotsElectedPercentage: 1,
@@ -51,7 +46,24 @@ storiesOf('Epochs', module)
   .add('Epoch List', () => (
     <EpochList title="Epochs" items={epochs} isLoading={false} />
   ))
-  .add('Epoch Summary', () => <EpochSummary title="Epoch" epoch={epochs[0]} />)
+  .add('Epoch Summary - 40% Complete', () => (
+    <EpochSummary
+      title="Epoch"
+      epoch={{ ...epochs[0], ...{ percentage: 43 } }}
+    />
+  ))
+  .add('Epoch Summary - 88% Complete', () => (
+    <EpochSummary
+      title="Epoch"
+      epoch={{ ...epochs[0], ...{ percentage: 88 } }}
+    />
+  ))
+  .add('Epoch Summary - Complete', () => (
+    <EpochSummary
+      title="Epoch"
+      epoch={{ ...epochs[0], ...{ percentage: 100 } }}
+    />
+  ))
   .add('Stake Distribution', () => (
     <StakeDistribution title="Stake Distribution" items={stakeDistribution} />
   ));

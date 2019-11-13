@@ -45,9 +45,7 @@ const EpochSummary = ({ title, epoch }: IEpochSummaryProps) => (
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Last Block at</div>
           <div className={styles.infoValue}>
-            {epoch.lastBlockAt
-              ? moment(epoch.lastBlockAt).format('YYYY/MM/DD HH:mm:ss')
-              : epoch.status}
+            {moment(epoch.lastBlockAt).format('YYYY/MM/DD HH:mm:ss')}
           </div>
         </div>
         <div className={styles.infoRow}>

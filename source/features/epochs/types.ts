@@ -5,10 +5,9 @@ export interface IEpochOverview {
   number: number;
   lastBlockAt: Date;
   output: string;
-  percentage?: number;
+  percentage: number;
   slotsCount: number;
   startedAt: Date;
-  status: string;
   transactionsCount: string;
 }
 
