@@ -35,7 +35,7 @@ export const TransactionSearchResult = () => {
               navigation={navigation?.actions}
               networkBlockHeight={networkInfo.store.blockHeight}
               title="Transaction Summary"
-              transaction={transactionSearchResult}
+              {...transactionSearchResult}
             />
           );
         } else {

@@ -1,13 +1,29 @@
-export interface ITransactionDetails {
+export interface ICoin {
+  value: string;
+}
+
+export interface ITransactionInput extends ICoin {
   address: string;
+  sourceTxId: ITransactionDetails['id'];
+  sourceTxIndex: number;
+}
+
+export interface ITransactionOutput extends ICoin {
+  address: string;
+  index: number;
+}
+
+export interface ITransactionDetails {
   block: {
-    id?: string;
-    height?: number | null;
+    epoch?: number;
+    id: string;
+    number?: number | null;
+    slot?: number | null;
   };
-  epoch?: number;
+  fee: string;
   id: string;
-  fee: number;
-  receivedTime: number;
-  slot?: number | null;
-  totalOutput: number;
+  includedAt: Date;
+  inputs: ITransactionInput[];
+  outputs: ITransactionOutput[];
+  totalOutput: string;
 }

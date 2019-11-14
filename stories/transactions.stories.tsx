@@ -124,7 +124,7 @@ storiesOf('Transactions', module)
   .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Transaction Info', () => (
     <TransactionInfo
-      currentAddress={currentAddress}
+      highlightAddress={currentAddress}
       title="Transaction"
       {...transactions[0]}
     />

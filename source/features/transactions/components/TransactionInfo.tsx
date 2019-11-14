@@ -2,29 +2,24 @@ import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import React from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import { ITransactionDetails } from '../types';
 import styles from './TransactionInfo.scss';
 
 const ArrowNext = require('../../../public/assets/images/arrow-next.svg');
 const SEVEN_DAYS = 7 * 24 * 3600000;
 
-export interface ITransactionInfoProps {
-  amounts: Array<number>;
-  currentAddress: string;
-  id: string;
-  receivers: Array<string>;
-  senders: Array<string>;
+export interface ITransactionInfoProps extends ITransactionDetails {
+  highlightAddress?: string;
   title?: string;
-  transferredAt: number;
 }
 
 const TransactionInfo = (props: ITransactionInfoProps) => {
-  const totalAmount = props.amounts.reduce((acc, value) => acc + value, 0);
-  const duration = props.transferredAt - new Date().getTime();
-  let transferredAt = null;
+  const duration = moment(props.includedAt).diff(moment());
+  let includedAt = null;
   if (Math.abs(duration) > SEVEN_DAYS) {
-    transferredAt = moment(props.transferredAt).format('YYYY-MM-DD HH:mm');
+    includedAt = moment(props.includedAt).format('YYYY-MM-DD HH:mm');
   } else {
-    transferredAt = moment.duration(duration, 'milliseconds').humanize(true);
+    includedAt = moment.duration(duration, 'milliseconds').humanize(true);
   }
 
   return (
@@ -38,27 +33,29 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
         <div className={styles.addresses}>
           <div className={styles.infoRow}>
             <div className={styles.id}>{props.id}</div>
-            <div className={styles.transferredAt}>{transferredAt}</div>
+            <div className={styles.includedAt}>{includedAt}</div>
           </div>
           <div className={styles.infoRow}>
-            <div className={styles.senders}>
-              {props.senders.map(sender => (
+            <div className={styles.inputs}>
+              {props.inputs.map((input, i) => (
                 <div
-                  key={sender}
+                  key={i}
                   className={
-                    sender === props.currentAddress
-                      ? styles.currentAddress
-                      : styles.sender
+                    input.address === props.highlightAddress
+                      ? styles.highlightAddress
+                      : styles.input
                   }
                 >
-                  {sender.length <= 34 ? (
-                    <span>{sender}</span>
+                  {input.address.length <= 34 ? (
+                    <span>{input.address}</span>
                   ) : (
                     <>
                       <span className={styles.startCharacters}>
-                        {sender.substring(0, sender.length - 17)}
+                        {input.address.substring(0, input.address.length - 17)}
                       </span>
-                      <span>{sender.substring(sender.length - 17)}</span>
+                      <span>
+                        {input.address.substring(input.address.length - 17)}
+                      </span>
                     </>
                   )}
                 </div>
@@ -67,24 +64,29 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
             <div className={styles.nextIcon}>
               <ArrowNext />
             </div>
-            <div className={styles.receivers}>
-              {props.receivers.map(receiver => (
+            <div className={styles.outputs}>
+              {props.outputs.map((output, i) => (
                 <div
-                  key={receiver}
+                  key={i}
                   className={
-                    receiver === props.currentAddress
-                      ? styles.currentAddress
-                      : styles.receiver
+                    output.address === props.highlightAddress
+                      ? styles.highlightAddress
+                      : styles.output
                   }
                 >
-                  {receiver.length <= 34 ? (
-                    <span>{receiver}</span>
+                  {output.address.length <= 34 ? (
+                    <span>{output.address}</span>
                   ) : (
                     <>
                       <span className={styles.startCharacters}>
-                        {receiver.substring(0, receiver.length - 17)}
+                        {output.address.substring(
+                          0,
+                          output.address.length - 17
+                        )}
                       </span>
-                      <span>{receiver.substring(receiver.length - 17)}</span>
+                      <span>
+                        {output.address.substring(output.address.length - 17)}
+                      </span>
                     </>
                   )}
                 </div>
@@ -92,14 +94,14 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
             </div>
           </div>
         </div>
-        <div className={styles.amounts}>
+        <div className={styles.values}>
           <div className={styles.infoRow}>
-            <div className={styles.totalAmount}>{totalAmount} ADA</div>
+            <div className={styles.totalOutput}>{props.totalOutput} ADA</div>
           </div>
           <div className={styles.infoRow}>
-            {props.amounts.map((amount, index) => (
-              <div key={`${index}`} className={styles.amount}>
-                {amount} ADA
+            {props.outputs.map((output, i) => (
+              <div key={i} className={styles.value}>
+                {output.value} ADA
               </div>
             ))}
           </div>
