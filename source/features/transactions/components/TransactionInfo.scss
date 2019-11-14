@@ -46,7 +46,7 @@
           margin-bottom: 0;
         }
 
-        .currentAddress {
+        .highlightAddress {
           align-items: center;
           color: $info-text;
           display: flex;
@@ -54,8 +54,8 @@
           width: 100%;
         }
 
-        .senders,
-        .receivers {
+        .inputs,
+        .outputs {
           display: flex;
           flex-direction: column;
           width: calc(50% - 27px);
@@ -71,11 +71,11 @@
           }
         }
 
-        .senders {
+        .inputs {
           align-items: flex-start;
         }
 
-        .receivers {
+        .outputs {
           align-items: flex-end;
 
           @media (max-width: 992px) {
@@ -97,8 +97,8 @@
           }
         }
 
-        .sender,
-        .receiver {
+        .input,
+        .output {
           align-items: center;
           color: $primary-highlight-color;
           cursor: pointer;
@@ -118,7 +118,7 @@
           }
         }
 
-        .transferredAt {
+        .includedAt {
           color: $info-text;
           font-family: ProximaNova, sans-serif;
           font-weight: 300;
@@ -147,7 +147,7 @@
       }
     }
 
-    .amounts {
+    .values {
       flex: 1;
       margin-top: -5px;
 
@@ -166,7 +166,7 @@
           margin-bottom: 0;
         }
 
-        .totalAmount {
+        .totalOutput {
           background-color: $highlighted-dark-area-bg;
           border-radius: 1px;
           color: $solid-text;
@@ -177,7 +177,7 @@
           padding: 5px 10px;
         }
 
-        .amount {
+        .value {
           color: $info-text;
           font-family: ProximaNova, sans-serif;
           font-weight: 300;

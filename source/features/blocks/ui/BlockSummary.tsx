@@ -13,7 +13,9 @@ export type BlockSummaryProps = {
 } & IBlockDetailed;
 
 const BlockSummary = (props: BlockSummaryProps) => {
-  const onEpochNumberClick = (epoch: ITransactionDetails['epoch']) => () => {
+  const onEpochNumberClick = (
+    epoch: ITransactionDetails['block']['epoch']
+  ) => () => {
     if (epoch) {
       props.navigation?.goToEpochDetailsPage.trigger({ number: epoch });
     }
@@ -75,7 +77,7 @@ const BlockSummary = (props: BlockSummaryProps) => {
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Previous block</div>
             <div className={styles.infoValue}>
-              <span onClick={onBlockIdClick(props.prevBlock.id)}>
+              <span onClick={() => onBlockIdClick(props.prevBlock.id)}>
                 {props.prevBlock.number ?? props.prevBlock.id}
               </span>
             </div>
