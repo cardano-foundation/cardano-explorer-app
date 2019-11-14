@@ -8,8 +8,7 @@ export const transactionDetailsTransformer = (
   block: {
     epoch: tx.block?.epoch?.number,
     id: tx.block?.id,
-    number: tx.block?.number || null,
-    slot: tx.block?.slotWithinEpoch || null,
+    number: tx.block?.number,
   },
   fee: lovelacesToAda(tx.fee),
   id: tx.id,
