@@ -7,7 +7,7 @@ export interface IAddressSummaryProps {
   address: string;
   finalBalance: string;
   title: string;
-  transactions: number;
+  transactionsCount: number;
 }
 
 const AddressSummary = (props: IAddressSummaryProps) => (
@@ -23,7 +23,7 @@ const AddressSummary = (props: IAddressSummaryProps) => (
         </div>
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Transactions</div>
-          <div className={styles.infoValue}>{props.transactions}</div>
+          <div className={styles.infoValue}>{props.transactionsCount}</div>
         </div>
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Final Balance</div>

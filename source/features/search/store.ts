@@ -1,4 +1,4 @@
-import { action, computed, flow, observable, runInAction } from 'mobx';
+import { action, computed, observable, runInAction } from 'mobx';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { isNotNull } from '../../lib/types';

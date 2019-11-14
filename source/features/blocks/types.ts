@@ -12,7 +12,7 @@ export interface IBlockOverview extends IBlockInfo {
   createdBy: string;
   epoch: IEpochOverview['number'];
   output: number;
-  transactions: number;
+  transactionsCount: number;
 }
 
 export interface IBlockDetailed extends IBlockOverview {

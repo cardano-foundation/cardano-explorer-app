@@ -29,7 +29,7 @@ export const blockOverviewTransformer = (
     output: lovelacesToAda(
       b.transactions_aggregate?.aggregate?.sum?.totalOutput
     ),
-    transactions: b.transactions_aggregate?.aggregate?.count || 0,
+    transactionsCount: b.transactions_aggregate?.aggregate?.count || 0,
   };
 };
 

@@ -15,7 +15,7 @@ const blocks = [
     output: 11189.647356,
     size: 1024,
     slotWithinEpoch: 21600,
-    transactions: 1,
+    transactionsCount: 1,
   },
   {
     createdAt: new Date(1568366883000),
@@ -26,7 +26,7 @@ const blocks = [
     output: 11189.647356,
     size: 1024,
     slotWithinEpoch: 21600,
-    transactions: 2,
+    transactionsCount: 2,
   },
   {
     createdAt: new Date(1568366883000),
@@ -37,7 +37,7 @@ const blocks = [
     output: 11189.647356,
     size: 1024,
     slotWithinEpoch: 21600,
-    transactions: 3,
+    transactionsCount: 3,
   },
   {
     createdAt: new Date(1568366883000),
@@ -48,7 +48,7 @@ const blocks = [
     output: 11189.647356,
     size: 1024,
     slotWithinEpoch: 21600,
-    transactions: 4,
+    transactionsCount: 4,
   },
   {
     createdAt: new Date(1568366883000),
@@ -59,7 +59,7 @@ const blocks = [
     output: 11189.647356,
     size: 1024,
     slotWithinEpoch: 21600,
-    transactions: 5,
+    transactionsCount: 5,
   },
 ];
 
@@ -82,7 +82,7 @@ const blockSummary = {
   slotWithinEpoch: 11043,
   time: 1470006392000,
   title: 'Block Summary',
-  transactions: 0,
+  transactionsCount: 0,
 };
 
 const blockCreation = [
