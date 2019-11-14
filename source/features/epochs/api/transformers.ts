@@ -30,5 +30,5 @@ export const epochDetailsTransformer = (
   n: NetworkInfoStore
 ): IEpochDetails => ({
   ...epochOverviewTransformer(e, n),
-  blocks: e.blocks?.filter(isNotNull).map(blockOverviewTransformer) || [],
+  blocks: e.blocks?.filter(isNotNull).map(blockOverviewTransformer),
 });
