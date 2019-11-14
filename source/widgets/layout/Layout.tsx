@@ -86,7 +86,7 @@ export const Layout = ({ children, hasContainer, header }: IProps) => {
     <Fragment>
       <div className={styles.content}>
         {header && header}
-        <Container hasTopMargin>{children}</Container>
+        <Container>{children}</Container>
       </div>
     </Fragment>
   );
