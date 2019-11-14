@@ -5,9 +5,9 @@ query searchForBlockByNumber(
 ) {
   blocks(
     where: {
-     number: {
-       _eq: $number
-     }
+      number: {
+        _eq: $number
+      }
     }
   ) {
     ...BlockDetails
