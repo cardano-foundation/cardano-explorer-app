@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
+import TransactionInfo from '../../transactions/components/TransactionInfo';
 import TransactionSummary from '../../transactions/components/TransactionSummary';
 import { useSearchFeature } from '../context';
 import NoSearchResult from './NoSearchResult';
@@ -31,12 +32,19 @@ export const TransactionSearchResult = () => {
           return <LoadingSpinner />;
         } else if (transactionSearchResult) {
           return (
-            <TransactionSummary
-              navigation={navigation?.actions}
-              networkBlockHeight={networkInfo.store.blockHeight}
-              title="Transaction Summary"
-              transaction={transactionSearchResult}
-            />
+            <>
+              <TransactionSummary
+                navigation={navigation?.actions}
+                networkBlockHeight={networkInfo.store.blockHeight}
+                title="Summary"
+                {...transactionSearchResult}
+              />
+              <TransactionInfo
+                navigation={navigation?.actions}
+                title="Transaction"
+                {...transactionSearchResult}
+              />
+            </>
           );
         } else {
           return <NoSearchResult />;

@@ -4,73 +4,70 @@ import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../types';
 import styles from './TransactionSummary.scss';
 
-export interface ITransactionSummaryProps {
+export interface ITransactionSummaryProps extends ITransactionDetails {
   navigation?: NavigationActions;
   networkBlockHeight: number;
   title: string;
-  transaction: ITransactionDetails;
 }
 
-const TransactionSummary = ({
-  navigation,
-  networkBlockHeight,
-  title,
-  transaction,
-}: ITransactionSummaryProps) => {
-  const onEpochNumberClick = (epoch: ITransactionDetails['epoch']) => () => {
-    if (epoch) {
-      navigation?.goToEpochDetailsPage.trigger({ number: epoch });
+const TransactionSummary = (props: ITransactionSummaryProps) => {
+  const onEpochNumberClick = (epoch: ITransactionDetails['block']['epoch']) => {
+    if (!epoch && epoch !== 0) {
+      return;
     }
+    props.navigation?.goToEpochDetailsPage.trigger({ number: epoch });
   };
-  const onBlockIdClick = (id: ITransactionDetails['block']['id']) => () => {
-    if (id) {
-      navigation?.goToBlockDetailsPage.trigger({ id });
+  const onBlockIdClick = (id: ITransactionDetails['block']['id']) => {
+    if (!id) {
+      return;
     }
+    props.navigation?.goToBlockDetailsPage.trigger({ id });
   };
-  const txBlock = transaction.block;
   return (
     <div className={styles.transactionSummaryContainer}>
       <div className={styles.header}>
-        <DividerWithTitle title={title} />
+        <DividerWithTitle title={props.title} />
       </div>
       <div className={styles.content}>
         <div className={styles.infoPanel}>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Received Time</div>
-            <div className={styles.infoValue}>{transaction.receivedTime}</div>
+            <div className={styles.infoValue}>
+              {props.includedAt.toString()}
+            </div>
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Confirmations</div>
             <div className={styles.infoValue}>
-              {txBlock?.number ? networkBlockHeight - txBlock?.number + 1 : 0}
+              {props.block?.number
+                ? props.networkBlockHeight - props.block?.number + 1
+                : 0}
             </div>
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Included In</div>
             <div className={styles.infoValue}>
               Epoch{' '}
-              {transaction.epoch ? (
-                <span onClick={onEpochNumberClick(transaction.epoch)}>
-                  {transaction.epoch}
+              {props.block.epoch ? (
+                <span onClick={() => onEpochNumberClick(props.block.epoch)}>
+                  {props.block.epoch}
                 </span>
               ) : (
                 '?'
               )}
-              , Slot {transaction.slot}, block{' '}
-              <span onClick={onBlockIdClick(transaction.block.id)}>
-                {transaction.block.number ?? transaction.block.id}
+              , Block{' '}
+              <span onClick={() => onBlockIdClick(props.block.id)}>
+                {props.block.number ?? props.block.id}
               </span>
             </div>
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Total Output</div>
-            <div className={styles.infoValue}>
-              {transaction.totalOutput} ADA
-            </div>
+            <div className={styles.infoValue}>{props.totalOutput} ADA</div>
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Transaction Fee</div>
-            <div className={styles.infoValue}>{transaction.fee} ADA</div>
+            <div className={styles.infoValue}>{props.fee} ADA</div>
           </div>
         </div>
       </div>

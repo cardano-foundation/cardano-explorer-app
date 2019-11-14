@@ -1,24 +1,24 @@
 fragment TransactionDetails on Transaction {
   block {
-    id,
-    number,
-    slotWithinEpoch,
     epoch {
       number
     }
+    id,
+    number,
+    slotWithinEpoch,
   }
   fee,
   id,
   includedAt,
   inputs {
-    sourceTxIndex,
     address,
+    sourceTxId
+    sourceTxIndex
     value,
   },
   outputs {
     address,
     index,
-    txId,
     value
   },
   totalOutput

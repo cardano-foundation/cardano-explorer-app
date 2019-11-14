@@ -38,7 +38,7 @@ describe('Searching for a transaction', () => {
       // 3. Access the observable search result provided by the store
       await waitForExpect(() => {
         expect(search.store?.transactionSearchResult?.totalOutput).toEqual(
-          538861
+          '538861'
         );
       });
     });

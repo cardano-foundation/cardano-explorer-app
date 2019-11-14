@@ -1,19 +1,25 @@
+import { lovelacesToAda } from 'cardano-js/dist/Currency';
 import { TransactionDetailsFragment } from '../../../../generated/typings/graphql-schema';
-import { lovelacesStringToAdaNumber } from '../../../lib/unit-converters';
 import { ITransactionDetails } from '../types';
 
 export const transactionDetailsTransformer = (
   tx: TransactionDetailsFragment
 ): ITransactionDetails => ({
-  address: '[ADDRESS]', // TODO: missing address in API
   block: {
+    epoch: tx.block?.epoch?.number,
     id: tx.block?.id,
     number: tx.block?.number,
   },
-  epoch: tx.block?.epoch?.number,
-  fee: lovelacesStringToAdaNumber(tx.fee),
+  fee: lovelacesToAda(tx.fee),
   id: tx.id,
-  receivedTime: tx.includedAt,
-  slot: tx.block?.slotWithinEpoch,
-  totalOutput: lovelacesStringToAdaNumber(tx.totalOutput),
+  includedAt: new Date(tx.includedAt),
+  inputs: tx.inputs.map(i => ({
+    ...i,
+    value: lovelacesToAda(i.value),
+  })),
+  outputs: tx.outputs.map(i => ({
+    ...i,
+    value: lovelacesToAda(i.value),
+  })),
+  totalOutput: lovelacesToAda(tx.totalOutput),
 });
