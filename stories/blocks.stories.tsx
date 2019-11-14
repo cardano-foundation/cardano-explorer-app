@@ -7,8 +7,6 @@ import { generateFakeBlockOverviews } from './support/fake-data-helpers';
 import { PaddingDecorator } from './support/PaddingDecorator';
 import { transactions } from './transactions.stories';
 
-const blocks = generateFakeBlockOverviews(5);
-
 const blockSummary = {
   confirmations: 0,
   createdAt: new Date(),
@@ -91,12 +89,16 @@ const blockCreation = [
 
 storiesOf('Blocks', module)
   .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
-  .add('Block List', () => (
-    <BlockList title="Blocks" items={blocks} isLoading={false} />
-  ))
-  .add('Block Summary', () => (
+  .add('Summary', () => (
     <BlockSummary networkBlockHeight={11044 + 100} {...blockSummary} />
   ))
-  .add('Block Creation', () => (
+  .add('List', () => (
+    <BlockList
+      title="Blocks"
+      items={generateFakeBlockOverviews(5)}
+      isLoading={false}
+    />
+  ))
+  .add('Creation', () => (
     <BlockCreation title="Block Creation" items={blockCreation} />
   ));
