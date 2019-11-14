@@ -48,9 +48,9 @@ const TransactionSummary = (props: ITransactionSummaryProps) => {
             <div className={styles.infoLabel}>Included In</div>
             <div className={styles.infoValue}>
               Epoch{' '}
-              {transaction.epoch ? (
-                <span onClick={onEpochNumberClick(transaction.epoch)}>
-                  {transaction.epoch}
+              {props.block.epoch ? (
+                <span onClick={() => onEpochNumberClick(props.block.epoch)}>
+                  {props.block.epoch}
                 </span>
               ) : (
                 '?'
