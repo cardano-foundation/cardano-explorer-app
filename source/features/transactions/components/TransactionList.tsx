@@ -31,12 +31,14 @@ const TransactionList = (props: ITransactionListProps) => {
           <TransactionInfo navigation={navigation?.actions} {...item} />
         </div>
       ))}
-      <Pagination
-        count={props.items.length}
-        onChangePage={handleChangePage}
-        page={page}
-        rowsPerPage={rowsPerPage}
-      />
+      {props.items.length > rowsPerPage && (
+        <Pagination
+          count={props.items.length}
+          onChangePage={handleChangePage}
+          page={page}
+          rowsPerPage={rowsPerPage}
+        />
+      )}
     </div>
   );
 };

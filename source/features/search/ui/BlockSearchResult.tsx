@@ -5,6 +5,7 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockSummary from '../../blocks/ui/BlockSummary';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
+import TransactionList from '../../transactions/components/TransactionList';
 import { useSearchFeature } from '../context';
 import NoSearchResult from './NoSearchResult';
 
@@ -30,12 +31,20 @@ export const BlockSearchResult = () => {
           return <LoadingSpinner />;
         } else if (blockSearchResult) {
           return (
-            <BlockSummary
-              navigation={navigation?.actions}
-              networkBlockHeight={networkInfo.store.blockHeight}
-              title="Block Summary"
-              {...blockSearchResult}
-            />
+            <>
+              <BlockSummary
+                navigation={navigation?.actions}
+                networkBlockHeight={networkInfo.store.blockHeight}
+                title="Block Summary"
+                {...blockSearchResult}
+              />
+              {blockSearchResult.transactionsCount > 0 && (
+                <TransactionList
+                  items={blockSearchResult.transactions}
+                  title="Transactions"
+                />
+              )}
+            </>
           );
         } else {
           return <NoSearchResult />;

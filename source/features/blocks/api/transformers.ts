@@ -3,7 +3,9 @@ import {
   BlockInfoFragment,
   BlockOverviewFragment,
 } from '../../../../generated/typings/graphql-schema';
+import { isNotNull } from '../../../lib/types';
 import { lovelacesToAda } from '../../../lib/unit-converters';
+import { transactionDetailsTransformer } from '../../transactions/api/transformers';
 import { IBlockDetailed, IBlockInfo, IBlockOverview } from '../types';
 
 export const blockInfoTransformer = (b: BlockInfoFragment): IBlockInfo => ({
@@ -43,4 +45,7 @@ export const blockDetailsTransformer = (
     id: b.previousBlock?.id || '',
     number: b.previousBlock?.number || null,
   },
+  transactions: b.transactions
+    .filter(isNotNull)
+    .map(transactionDetailsTransformer),
 });

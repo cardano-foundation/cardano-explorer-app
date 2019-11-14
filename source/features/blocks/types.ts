@@ -1,4 +1,5 @@
 import { IEpochOverview } from '../epochs/types';
+import { ITransactionDetails } from '../transactions/types';
 
 export interface IBlockInfo {
   id: string;
@@ -22,4 +23,5 @@ export interface IBlockDetailed extends IBlockOverview {
     id: IBlockInfo['id'];
     number: IBlockInfo['number'];
   };
+  transactions: ITransactionDetails[];
 }
