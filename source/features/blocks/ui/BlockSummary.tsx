@@ -62,7 +62,7 @@ const BlockSummary = (props: BlockSummaryProps) => {
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Transactions</div>
-            <div className={styles.infoValue}>{props.transactions}</div>
+            <div className={styles.infoValue}>{props.transactionsCount}</div>
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Created by</div>
@@ -77,7 +77,7 @@ const BlockSummary = (props: BlockSummaryProps) => {
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Previous block</div>
             <div className={styles.infoValue}>
-              <span onClick={() => onBlockIdClick(props.prevBlock.id)}>
+              <span onClick={onBlockIdClick(props.prevBlock.id)}>
                 {props.prevBlock.number ?? props.prevBlock.id}
               </span>
             </div>

@@ -41,7 +41,7 @@ export const AddressSearchResult = () => {
                   title="Address"
                   address={address}
                   finalBalance={finalBalance}
-                  transactions={transactionsCount}
+                  transactionsCount={transactionsCount}
                 />
               </div>
               {transactions.length > 0 && (

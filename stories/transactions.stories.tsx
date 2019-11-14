@@ -9,7 +9,7 @@ import { PaddingDecorator } from './support/PaddingDecorator';
 const currentAddress =
   'DdzFFzCqrhshP3eXMp6T6yBAurVd1cJsD8WHg7BbBwNy3AVN2k5jqDPENM9U4zHX5mqdZWxbELWtQnc8dzsM9f8k1dEiuMW9aDU1AGes';
 
-const transactions: ITransactionDetails[] = [
+export const transactions: ITransactionDetails[] = [
   {
     block: {
       epoch: 48,
