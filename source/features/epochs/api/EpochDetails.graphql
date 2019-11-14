@@ -3,7 +3,9 @@
 
 fragment EpochDetails on Epoch {
   ...EpochOverview
-  blocks {
+  blocks(
+    limit: 20
+  ) {
     ...BlockOverview
   }
 }
