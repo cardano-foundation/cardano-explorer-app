@@ -4,6 +4,7 @@ import BlockCreation from '../source/features/blocks/ui/BlockCreation';
 import BlockList from '../source/features/blocks/ui/BlockList';
 import BlockSummary from '../source/features/blocks/ui/BlockSummary';
 import { PaddingDecorator } from './support/PaddingDecorator';
+import { transactions } from './transactions.stories';
 
 const blocks = [
   {
@@ -82,6 +83,7 @@ const blockSummary = {
   slotWithinEpoch: 11043,
   time: 1470006392000,
   title: 'Block Summary',
+  transactions,
   transactionsCount: 0,
 };
 

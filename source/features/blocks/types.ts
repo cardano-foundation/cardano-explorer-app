@@ -7,9 +7,9 @@ export interface IBlockOverview {
   epoch: IEpochOverview['number'];
   id: string;
   number: number | null;
+  output: number;
   size: number;
   slotWithinEpoch: number | null;
-  output: number;
   transactionsCount: number;
 }
 

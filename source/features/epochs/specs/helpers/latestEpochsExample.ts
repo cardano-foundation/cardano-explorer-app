@@ -1,3 +1,5 @@
+import { IBlockOverview } from '../../../blocks/types';
+
 export const latestEpochsExample = [
   {
     blocks: [
@@ -10,9 +12,9 @@ export const latestEpochsExample = [
         output: 0,
         size: 666,
         slotWithinEpoch: 9486,
-        transactionCount: 0,
+        transactionsCount: 0,
       },
-    ],
+    ] as IBlockOverview[],
     blocksCount: 9485,
     lastBlockAt: new Date('2017-10-01T02:25:51'),
     number: 1,
@@ -34,7 +36,7 @@ export const latestEpochsExample = [
         slotWithinEpoch: 9486,
         transactionsCount: 0,
       },
-    ],
+    ] as IBlockOverview[],
     blocksCount: 21587,
     lastBlockAt: new Date('2017-09-28T21:26:11+00:00'),
     number: 0,
