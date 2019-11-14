@@ -40,7 +40,7 @@ describe('Searching for a block', () => {
         expect(search.store?.blockSearchResult?.createdAt).toBe(
           '2017-10-01T02:26:51'
         );
-        expect(search.store?.blockSearchResult?.transactions).toBe(0);
+        expect(search.store?.blockSearchResult?.transactionsCount).toBe(0);
       });
     });
   });

@@ -40,7 +40,7 @@ describe('Searching for a block', () => {
         expect(search.store?.blockSearchResult?.prevBlock.id).toBe(
           '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec'
         );
-        expect(search.store?.blockSearchResult?.transactions).toBe(0);
+        expect(search.store?.blockSearchResult?.transactionsCount).toBe(0);
       });
     });
   });

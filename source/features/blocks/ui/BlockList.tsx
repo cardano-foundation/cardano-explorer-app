@@ -14,7 +14,7 @@ export interface IBlockListRowProps {
   output: number;
   size: number;
   slotWithinEpoch: number | null;
-  transactions: number;
+  transactionsCount: number;
 }
 
 export interface IBlockListProps {

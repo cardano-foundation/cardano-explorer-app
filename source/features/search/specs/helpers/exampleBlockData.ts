@@ -9,5 +9,5 @@ export const exampleBlockData = {
   },
   size: 666,
   slotWithinEpoch: 9486,
-  transactions: 0,
+  transactionCount: 0,
 };

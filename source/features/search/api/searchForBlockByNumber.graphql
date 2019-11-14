@@ -4,11 +4,10 @@ query searchForBlockByNumber(
   $number: Int!
 ) {
   blocks(
-    limit: 1,
     where: {
-     number: {
-       _eq: $number
-     }
+      number: {
+        _eq: $number
+      }
     }
   ) {
     ...BlockDetails

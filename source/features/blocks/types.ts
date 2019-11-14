@@ -1,25 +1,24 @@
 import { IEpochOverview } from '../epochs/types';
+import { ITransactionDetails } from '../transactions/types';
 
-export interface IBlockInfo {
-  id: string;
-  number: number | null;
-  size: number;
-  slotWithinEpoch: number | null;
-}
-
-export interface IBlockOverview extends IBlockInfo {
+export interface IBlockOverview {
   createdAt: Date;
   createdBy: string;
   epoch: IEpochOverview['number'];
+  id: string;
+  number: number | null;
   output: number;
-  transactions: number;
+  size: number;
+  slotWithinEpoch: number | null;
+  transactionsCount: number;
 }
 
 export interface IBlockDetailed extends IBlockOverview {
   merkleRoot: string;
   nextBlock: string;
   prevBlock: {
-    id: IBlockInfo['id'];
-    number: IBlockInfo['number'];
+    id: IBlockOverview['id'];
+    number: IBlockOverview['number'];
   };
+  transactions: ITransactionDetails[];
 }
