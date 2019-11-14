@@ -4,7 +4,6 @@ query searchForTransactionById(
   $id: Hash32HexString
 ) {
   transactions(
-    limit: 1,
     where: {
       id: {
         _eq: $id

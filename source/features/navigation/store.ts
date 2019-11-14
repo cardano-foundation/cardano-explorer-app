@@ -16,8 +16,13 @@ export class NavigationStore extends Store {
     this.registerActions(
       createActionBindings([
         [this.navigationActions.redirectTo, this.redirectTo],
-        [this.navigationActions.goToEpochDetailsPage, this.showEpochByNumber],
+        [this.navigationActions.goToAddressDetailsPage, this.showAddress],
         [this.navigationActions.goToBlockDetailsPage, this.showBlockById],
+        [this.navigationActions.goToEpochDetailsPage, this.showEpochByNumber],
+        [
+          this.navigationActions.goToTransactionDetailsPage,
+          this.showTransactionById,
+        ],
       ])
     );
   }
@@ -30,15 +35,31 @@ export class NavigationStore extends Store {
     return this.router.push(props.path);
   };
 
-  @action private showEpochByNumber = async (
-    props: ActionProps<typeof NavigationActions.prototype.goToEpochDetailsPage>
+  @action private showAddress = async (
+    props: ActionProps<
+      typeof NavigationActions.prototype.goToAddressDetailsPage
+    >
   ) => {
-    return this.router.push(`/epoch?number=${props.number}`);
+    return this.router.push(`/address?address=${props.address}`);
   };
 
   @action private showBlockById = async (
     props: ActionProps<typeof NavigationActions.prototype.goToBlockDetailsPage>
   ) => {
     return this.router.push(`/block?id=${props.id}`);
+  };
+
+  @action private showEpochByNumber = async (
+    props: ActionProps<typeof NavigationActions.prototype.goToEpochDetailsPage>
+  ) => {
+    return this.router.push(`/epoch?number=${props.number}`);
+  };
+
+  @action private showTransactionById = async (
+    props: ActionProps<
+      typeof NavigationActions.prototype.goToTransactionDetailsPage
+    >
+  ) => {
+    return this.router.push(`/transaction?id=${props.id}`);
   };
 }

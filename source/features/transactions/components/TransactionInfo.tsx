@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import React from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../types';
 import styles from './TransactionInfo.scss';
 
@@ -10,6 +11,7 @@ const SEVEN_DAYS = 7 * 24 * 3600000;
 
 export interface ITransactionInfoProps extends ITransactionDetails {
   highlightAddress?: string;
+  navigation?: NavigationActions;
   title?: string;
 }
 
@@ -21,7 +23,18 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
   } else {
     includedAt = moment.duration(duration, 'milliseconds').humanize(true);
   }
-
+  const onAddressClick = (address: string) => {
+    if (!address) {
+      return;
+    }
+    props.navigation?.goToAddressDetailsPage.trigger({ address });
+  };
+  const onIdClick = (id: ITransactionDetails['id']) => {
+    if (!id) {
+      return;
+    }
+    props.navigation?.goToTransactionDetailsPage.trigger({ id });
+  };
   return (
     <div className={styles.transactionInfoContainer}>
       {props.title && (
@@ -32,7 +45,9 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
       <div className={styles.transactionInfoRowContainer}>
         <div className={styles.addresses}>
           <div className={styles.infoRow}>
-            <div className={styles.id}>{props.id}</div>
+            <div className={styles.id}>
+              <span onClick={() => onIdClick(props.id)}>{props.id}</span>
+            </div>
             <div className={styles.includedAt}>{includedAt}</div>
           </div>
           <div className={styles.infoRow}>
@@ -73,6 +88,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
                       ? styles.highlightAddress
                       : styles.output
                   }
+                  onClick={() => onAddressClick(output.address)}
                 >
                   {output.address.length <= 34 ? (
                     <span>{output.address}</span>
