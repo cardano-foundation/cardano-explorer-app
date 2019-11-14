@@ -1,19 +1,11 @@
 import {
   BlockDetailsFragment,
-  BlockInfoFragment,
   BlockOverviewFragment,
 } from '../../../../generated/typings/graphql-schema';
 import { isNotNull } from '../../../lib/types';
 import { lovelacesToAda } from '../../../lib/unit-converters';
 import { transactionDetailsTransformer } from '../../transactions/api/transformers';
-import { IBlockDetailed, IBlockInfo, IBlockOverview } from '../types';
-
-export const blockInfoTransformer = (b: BlockInfoFragment): IBlockInfo => ({
-  id: b.id,
-  number: b.number || 0,
-  size: b.size,
-  slotWithinEpoch: b.slotWithinEpoch || null,
-});
+import { IBlockDetailed, IBlockOverview } from '../types';
 
 export const blockOverviewTransformer = (
   b: BlockOverviewFragment
@@ -24,13 +16,16 @@ export const blockOverviewTransformer = (
       ? b.createdBy.substring(11, 18)
       : b.createdBy;
   return {
-    ...blockInfoTransformer(b),
     createdAt: b.createdAt,
     createdBy,
     epoch: b.epoch?.number || 0,
+    id: b.id,
+    number: b.number || 0,
     output: lovelacesToAda(
       b.transactions_aggregate?.aggregate?.sum?.totalOutput
     ),
+    size: b.size,
+    slotWithinEpoch: b.slotWithinEpoch || null,
     transactionsCount: b.transactions_aggregate?.aggregate?.count || 0,
   };
 };

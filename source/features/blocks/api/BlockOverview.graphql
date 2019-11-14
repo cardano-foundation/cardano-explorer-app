@@ -1,12 +1,13 @@
-#import "./BlockInfo.graphql"
-
 fragment BlockOverview on Block {
-  ...BlockInfo
   createdAt
   createdBy
   epoch {
     number
   },
+  id
+  number
+  size
+  slotWithinEpoch
   transactions_aggregate {
     aggregate {
       count

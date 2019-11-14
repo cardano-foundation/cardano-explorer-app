@@ -1,9 +1,7 @@
-#import "./BlockInfo.graphql"
 #import "./BlockOverview.graphql"
 #import "../../transactions/api/TransactionDetails.graphql"
 
 fragment BlockDetails on Block {
-  ...BlockInfo
   ...BlockOverview
   merkelRootHash
   previousBlock {
