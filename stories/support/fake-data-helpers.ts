@@ -3,9 +3,9 @@ import { IBlockOverview } from '../../source/features/blocks/types';
 
 const chance = new Chance();
 
-export const generateFakeBlockOverview: IBlockOverview = (
+export const generateFakeBlockOverview = (
   overrides?: Partial<IBlockOverview>
-) => ({
+): IBlockOverview => ({
   createdAt: chance.date(),
   createdBy: chance.string({ alpha: true, length: 7, casing: 'lower' }),
   epoch: chance.integer({ min: 0, max: 999 }),
@@ -14,7 +14,7 @@ export const generateFakeBlockOverview: IBlockOverview = (
   output: chance.floating({ min: 0, fixed: 6 }),
   size: chance.integer({ min: 100, max: 2000 }),
   slotWithinEpoch: chance.integer({ min: 0, max: 21600 }),
-  transactionCount: chance.integer({ min: 0, max: 1000 }),
+  transactionsCount: chance.integer({ min: 0, max: 1000 }),
   ...overrides,
 });
 
