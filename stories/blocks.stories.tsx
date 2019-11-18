@@ -1,11 +1,16 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import BlockCreation from '../source/features/blocks/ui/BlockCreation';
 import BlockList from '../source/features/blocks/ui/BlockList';
 import BlockSummary from '../source/features/blocks/ui/BlockSummary';
+import ShowMoreButtonDecorator from '../source/widgets/decorators/ShowMoreButtonDecorator';
+import Pagination from '../source/widgets/pagination/Pagination';
 import { generateFakeBlockOverviews } from './support/fake-data-helpers';
 import { PaddingDecorator } from './support/PaddingDecorator';
 import { transactions } from './transactions.stories';
+
+const blocks = generateFakeBlockOverviews(25);
 
 const blockSummary = {
   confirmations: 0,
@@ -87,18 +92,39 @@ const blockCreation = [
   },
 ];
 
-storiesOf('Blocks', module)
+storiesOf('Blocks|List', module)
+  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
+  .add('plain', () => (
+    <BlockList title="Blocks" items={blocks.slice(0, 5)} isLoading={false} />
+  ))
+  .add('with show more button', () => (
+    <ShowMoreButtonDecorator
+      label={'show more'}
+      onClick={action('show more clicked')}
+    >
+      <BlockList title="Blocks" items={blocks.slice(0, 5)} isLoading={false} />
+    </ShowMoreButtonDecorator>
+  ))
+  .add('with pagination', () => (
+    <>
+      <BlockList title="Blocks" items={blocks.slice(0, 5)} isLoading={false} />
+      <Pagination
+        currentPage={1}
+        itemsPerPage={5}
+        onChangePage={action('change page')}
+        totalItems={25}
+      />
+    </>
+  ));
+
+storiesOf('Blocks|Summary', module)
   .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Summary', () => (
     <BlockSummary networkBlockHeight={11044 + 100} {...blockSummary} />
-  ))
-  .add('List', () => (
-    <BlockList
-      title="Blocks"
-      items={generateFakeBlockOverviews(5)}
-      isLoading={false}
-    />
-  ))
+  ));
+
+storiesOf('Blocks|Creation', module)
+  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Creation', () => (
     <BlockCreation title="Block Creation" items={blockCreation} />
   ));

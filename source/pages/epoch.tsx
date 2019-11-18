@@ -10,7 +10,7 @@ let EpochPage = () => <NoSSR />;
 if (environment.IS_CLIENT) {
   EpochPage = () => (
     <NoSSR>
-      <Layout hasContainer header={<Header brandType={BrandType.SHRINKED} />}>
+      <Layout header={<Header brandType={BrandType.SHRINKED} />}>
         <div className={styles.epochLayout}>
           <EpochsSearchResult />
           <Footer />

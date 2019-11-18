@@ -4,41 +4,35 @@ import { Button } from 'react-polymorph/lib/components/Button';
 import styles from './Pagination.scss';
 
 export interface IPaginationProps {
-  count: number;
+  currentPage: number;
   onChangePage: (page: number) => void;
-  page: number;
-  rowsPerPage?: number;
+  totalPages: number;
 }
 
 const Pagination = (props: IPaginationProps) => {
-  const { count, onChangePage, page, rowsPerPage = 5 } = props;
-  const totalPages = Math.ceil(count / rowsPerPage);
+  const { totalPages, onChangePage, currentPage } = props;
 
   return (
     <div className={styles.paginationContainer}>
       <Button
         className={styles.leftArrow}
-        disabled={page <= 0}
+        disabled={currentPage <= 0}
         label=""
-        onClick={() => onChangePage(page - 1)}
+        onClick={() => onChangePage(currentPage - 1)}
       />
       <div className={styles.pageInfo}>
-        <span className={styles.pageNumber}>{page + 1}</span>
+        <span className={styles.pageNumber}>{currentPage}</span>
         <span className={styles.pageOf}>of</span>
         <span className={styles.totalPagesNumber}>{totalPages}</span>
       </div>
       <Button
         className={styles.rightArrow}
-        disabled={page >= totalPages - 1}
+        disabled={currentPage >= totalPages}
         label=""
-        onClick={() => onChangePage(page + 1)}
+        onClick={() => onChangePage(currentPage + 1)}
       />
     </div>
   );
-};
-
-Pagination.defaultProps = {
-  rowsPerPage: 5,
 };
 
 export default observer(Pagination);

@@ -1,5 +1,5 @@
 import { ApolloClient } from 'apollo-client';
-// import Action from '../../lib/Action';
+import Action from '../../lib/Action';
 import { INetworkInfoFeature } from '../network-info';
 import { BlocksApi } from './api';
 import { BlocksStore } from './store';
@@ -7,15 +7,18 @@ import { BlocksStore } from './store';
 /**
  * Defines the actions that are supported by this feature
  */
-// export class BlocksActions {
-//   public fetchLatestBlocks: Action<void> = new Action();
-// }
+export class BlocksActions {
+  public browseBlocks: Action<{ lower: number; upper: number }> = new Action();
+  public fetchLatestBlocks: Action<void> = new Action();
+  public startPollingLatestBlocks: Action<void> = new Action();
+  public stopPollingLatestBlocks: Action<void> = new Action();
+}
 
 /**
  * Defines the interface of this feature
  */
 export interface IBlocksFeature {
-  // actions: BlocksActions;
+  actions: BlocksActions;
   api: BlocksApi;
   store: BlocksStore;
   start: () => void;
@@ -39,15 +42,11 @@ export const createBlocksFeature = (
   networkInfo: INetworkInfoFeatureDependency,
   apolloClient: ApolloClient<object>
 ): IBlocksFeature => {
-  // const blocksActions = new BlocksActions();
+  const blocksActions = new BlocksActions();
   const blocksApi = new BlocksApi(apolloClient);
-  const blocksStore = new BlocksStore(
-    // blocksActions,
-    blocksApi,
-    networkInfo
-  );
+  const blocksStore = new BlocksStore(blocksActions, blocksApi, networkInfo);
   return {
-    // actions: blocksActions,
+    actions: blocksActions,
     api: blocksApi,
     store: blocksStore,
     start() {

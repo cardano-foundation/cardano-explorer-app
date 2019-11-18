@@ -1,3 +1,5 @@
+import pull from 'lodash/pull';
+
 import ActionBinding from './ActionBinding';
 import Reaction from './mobx/Reaction';
 
@@ -21,7 +23,11 @@ export class Store {
   // ACTIONS
 
   protected registerActions(actions: ActionBinding<any>[]) {
-    this.actionBindings = actions;
+    this.actionBindings.push(...actions);
+  }
+
+  protected unregisterActions(actions: ActionBinding<any>[]) {
+    pull(this.actionBindings, ...actions);
   }
 
   protected startActions(actions = this.actionBindings) {
@@ -35,7 +41,11 @@ export class Store {
   // REACTIONS
 
   protected registerReactions(reactions: Reaction[]) {
-    this.reactions = reactions;
+    this.reactions.push(...reactions);
+  }
+
+  protected unregisterReactions(reactions: Reaction[]) {
+    pull(this.reactions, ...reactions);
   }
 
   protected startReactions(reactions = this.reactions) {

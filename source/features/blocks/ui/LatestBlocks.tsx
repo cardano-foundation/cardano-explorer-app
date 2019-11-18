@@ -1,24 +1,39 @@
 import { Observer } from 'mobx-react-lite';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+import ShowMoreButtonDecorator from '../../../widgets/decorators/ShowMoreButtonDecorator';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { useBlocksFeature } from '../context';
 import BlockList from './BlockList';
 
 export const LatestBlocks = () => {
-  const { store } = useBlocksFeature();
+  const { actions, store } = useBlocksFeature();
+  const router = useRouter();
+  useEffect(() => {
+    // Start fetching latest blocks on mount
+    actions.startPollingLatestBlocks.trigger();
+    // Stop fetching latest blocks on unmount
+    return () => {
+      actions.stopPollingLatestBlocks.trigger();
+    };
+  }, []);
   return (
     <Observer>
       {() => {
         const { latestBlocks } = store;
         return (
-          <>
+          <ShowMoreButtonDecorator
+            label={'show more'}
+            isHidden={store.isLoadingLatestBlocksFirstTime}
+            onClick={() => router.push('/browse-blocks')}
+          >
             <BlockList
-              title="Latest Blocks"
+              isLoading={store.isLoadingLatestBlocksFirstTime}
               items={latestBlocks}
-              isLoading={store.isLoadingFirstTime}
+              title="Latest Blocks"
             />
-            {store.isLoadingFirstTime && <LoadingSpinner />}
-          </>
+            {store.isLoadingLatestBlocksFirstTime && <LoadingSpinner />}
+          </ShowMoreButtonDecorator>
         );
       }}
     </Observer>

@@ -31,7 +31,7 @@ if (environment.IS_CLIENT) {
           </div>
         </div>
       )}
-      <Layout hasContainer>
+      <Layout>
         <Header brandType={BrandType.ENLARGED} />
         <div>
           <SearchBar brandType={BrandType.ENLARGED} />

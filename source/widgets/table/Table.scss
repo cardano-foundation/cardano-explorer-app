@@ -1,43 +1,5 @@
 .tableContainer {
-  margin: 0 auto;
-  max-width: 872px;
-  width: 100%;
-
   .title {
     margin-bottom: 41px;
-  }
-
-  .showMore {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-
-    @media (max-width: 575px) {
-      justify-content: flex-start;
-    }
-
-    .showMoreButton {
-      align-items: center;
-      background-color: $primary-highlight-color;
-      border-radius: 2px;
-      color: $primary-bg;
-      display: flex;
-      font-family: ProximaNova, sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      height: 25px;
-      justify-content: center;
-      letter-spacing: 0.4px;
-      line-height: 1.33;
-      padding: 0;
-      width: 133.5px;
-
-      &:hover {
-        background-color: $primary-highlight-color-hover;
-      }
-      &:active {
-        background-color: $primary-highlight-color-press;
-      }
-    }
   }
 }

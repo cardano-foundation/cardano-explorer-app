@@ -107,7 +107,6 @@ const EpochList: FC<IEpochListProps> = ({ title, items, isLoading }) => {
             }),
         })}
         rows={items.map(i => Object.assign(i, { key: i.number }))}
-        withShowMore={!isLoading}
         withoutHeaders={isLoading}
       />
     </div>

@@ -2,7 +2,8 @@ import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../constants';
 import { environment } from '../environment';
-import { BlockSearchResult } from '../features/search/ui/BlockSearchResult';
+import BlocksBrowser from '../features/blocks/ui/BlocksBrowser';
+import { BlocksFeatureProvider } from '../features/blocks/ui/BlocksFeatureProvider';
 import { Footer, Header, Layout } from '../widgets/layout';
 
 let BlockPage = () => <NoSSR />;
@@ -10,7 +11,9 @@ if (environment.IS_CLIENT) {
   BlockPage = () => (
     <NoSSR>
       <Layout header={<Header brandType={BrandType.SHRINKED} />}>
-        <BlockSearchResult />
+        <BlocksFeatureProvider>
+          <BlocksBrowser />
+        </BlocksFeatureProvider>
         <Footer />
       </Layout>
     </NoSSR>
