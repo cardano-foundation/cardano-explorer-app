@@ -93,13 +93,11 @@ export class BlocksStore extends Store {
   };
 
   @action public startPollingLatestBlocks = () => {
-    this.registerReactions(this.latestBlocksReactions);
     this.startReactions(this.latestBlocksReactions);
   };
 
   @action public stopPollingLatestBlocks = () => {
     this.stopReactions(this.latestBlocksReactions);
-    this.unregisterReactions(this.latestBlocksReactions);
   };
 
   @action protected transformBrowsedBlocksResult = ():
