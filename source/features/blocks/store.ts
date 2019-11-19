@@ -1,9 +1,10 @@
 import { action, computed, observable, runInAction } from 'mobx';
-import { BlockOverviewFragment } from '../../../generated/typings/graphql-schema';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
+import { GraphQLRequestVariables } from '../../lib/graphql/GraphQLRequest';
 import Reaction, { createReactions } from '../../lib/mobx/Reaction';
 import { Store } from '../../lib/Store';
-import { BlocksApi, BlocksApiRequestVariables } from './api';
+import { isNotNull } from '../../lib/types';
+import { BlocksApi } from './api';
 import { blockOverviewTransformer } from './api/transformers';
 import { BlocksActions, INetworkInfoFeatureDependency } from './index';
 import { IBlockOverview } from './types';
@@ -87,7 +88,7 @@ export class BlocksStore extends Store {
     const result = await this.fetchBlocksInRange({ lower, upper });
     if (result) {
       runInAction(() => {
-        this.browsedBlocks = result.reverse();
+        this.browsedBlocks = result;
       });
     }
   };
@@ -104,11 +105,10 @@ export class BlocksStore extends Store {
     | IBlockOverview[]
     | null => {
     const { result } = this.blocksApi.getBlocksInRangeQuery;
-    if (result) {
-      const isBlock = (b: any): b is BlockOverviewFragment => b != null;
-      return result.data.blocks.filter(isBlock).map(blockOverviewTransformer);
-    }
-    return null;
+    return (
+      result?.data.blocks.filter(isNotNull).map(blockOverviewTransformer) ??
+      null
+    );
   };
 
   // ============ REACTIONS =============
@@ -124,7 +124,8 @@ export class BlocksStore extends Store {
       !blockHeight ||
       getBlocksInRangeQuery.isExecuting ||
       networkStore.isFetching ||
-      this.latestBlocks?.[0]?.number === blockHeight
+      (this.latestBlocks.length > 0 &&
+        this.latestBlocks[0].number === blockHeight)
     ) {
       return;
     }
@@ -137,7 +138,7 @@ export class BlocksStore extends Store {
    * Fetches blocks in given range and returns the result.
    */
   private fetchBlocksInRange = async (
-    params: BlocksApiRequestVariables<
+    params: GraphQLRequestVariables<
       typeof BlocksApi.prototype.getBlocksInRangeQuery
     >
   ): Promise<IBlockOverview[] | null> => {

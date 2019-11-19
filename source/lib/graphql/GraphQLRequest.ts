@@ -59,3 +59,10 @@ export class GraphQLRequest<TResult, TVariables> {
       );
   }
 }
+
+export type GraphQLRequestVariables<Request> = Request extends GraphQLRequest<
+  any,
+  infer Variables
+>
+  ? Variables
+  : never;

@@ -1,4 +1,5 @@
 import { ApolloClient } from 'apollo-client';
+
 import Action from '../../lib/Action';
 import { INetworkInfoFeature } from '../network-info';
 import { BlocksApi } from './api';

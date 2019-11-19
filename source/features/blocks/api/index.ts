@@ -19,10 +19,3 @@ export class BlocksApi {
     );
   }
 }
-
-export type BlocksApiRequestVariables<Request> = Request extends GraphQLRequest<
-  any,
-  infer Variables
->
-  ? Variables
-  : never;

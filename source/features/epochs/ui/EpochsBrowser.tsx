@@ -10,56 +10,56 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 
 import Pagination from '../../../widgets/browsing/Pagination';
 import { useNetworkInfoFeature } from '../../network-info/context';
-import { useBlocksFeature } from '../context';
-import BlockList from './BlockList';
+import { useEpochsFeature } from '../context';
+import EpochList from './EpochList';
 
-const BLOCKS_PER_PAGE_DEFAULT = 10;
-const BLOCKS_PER_PAGE_MINIMUM = 5;
-const BLOCKS_PER_PAGE_MAXIMUM = 30;
+const EPOCHS_PER_PAGE_DEFAULT = 10;
+const EPOCHS_PER_PAGE_MINIMUM = 5;
+const EPOCHS_PER_PAGE_MAXIMUM = 30;
 
 const createBrowsePath = ({ lower, upper }: IBrowseInRangeBounds) =>
-  `/browse-blocks?lower=${lower}&upper=${upper}`;
+  `/browse-epochs?lower=${lower}&upper=${upper}`;
 
-const BlocksBrowser = () => {
+const EpochsBrowser = () => {
   const router = useRouter();
   // The network block height is required before doing any browsing
   const networkInfo = useNetworkInfoFeature();
-  const { blockHeight } = networkInfo.store;
-  const isBlockHeightAvailable = !!blockHeight;
-  const blocks = useBlocksFeature();
+  const { currentEpoch } = networkInfo.store;
+  const isCurrentEpochAvailable = !!currentEpoch;
+  const epochs = useEpochsFeature();
 
   const [
     browseParams,
     setBrowserParams,
   ] = useState<IBrowseInRangeResult | null>(null);
   const isLoadingFirstTime =
-    blocks.api.getBlocksInRangeQuery.isExecutingTheFirstTime;
+    epochs.api.getEpochsInRangeQuery.isExecutingTheFirstTime;
 
   return (
     <div>
-      {isBlockHeightAvailable ? (
+      {isCurrentEpochAvailable ? (
         <>
           <BrowseInRange
             onReadyToBrowse={params => {
-              blocks.actions.browseBlocks.trigger(params.bounds);
+              epochs.actions.browseEpochs.trigger(params.bounds);
               setBrowserParams(params);
             }}
             onQueryParamsUpdateRequired={bounds => {
               router.push(createBrowsePath(bounds));
             }}
-            perPageDefault={BLOCKS_PER_PAGE_DEFAULT}
-            perPageMinimum={BLOCKS_PER_PAGE_MINIMUM}
-            perPageMaximum={BLOCKS_PER_PAGE_MAXIMUM}
+            perPageDefault={EPOCHS_PER_PAGE_DEFAULT}
+            perPageMinimum={EPOCHS_PER_PAGE_MINIMUM}
+            perPageMaximum={EPOCHS_PER_PAGE_MAXIMUM}
             userParamLower={router.query?.lower as string}
             userParamUpper={router.query?.upper as string}
-            total={blockHeight}
+            total={currentEpoch}
           />
           {browseParams && !isLoadingFirstTime ? (
             <>
-              <BlockList
-                isLoading={blocks.api.getBlocksInRangeQuery.isExecuting}
-                title="Browse Blocks"
-                items={blocks.store.browsedBlocks}
+              <EpochList
+                isLoading={epochs.api.getEpochsInRangeQuery.isExecuting}
+                title="Browse Epochs"
+                items={epochs.store.browsedEpochs}
               />
               <Pagination
                 currentPage={browseParams.currentPage}
@@ -67,7 +67,7 @@ const BlocksBrowser = () => {
                   if (page > 0 && page <= browseParams.totalPages) {
                     const upper = Math.min(
                       page * browseParams.itemsPerPage,
-                      blockHeight
+                      currentEpoch
                     );
                     router.push(
                       createBrowsePath({
@@ -91,4 +91,4 @@ const BlocksBrowser = () => {
   );
 };
 
-export default observer(BlocksBrowser);
+export default observer(EpochsBrowser);
