@@ -17,14 +17,19 @@ import {
   SearchActions,
 } from './index';
 
+export enum SearchType {
+  address = 'Address',
+  id = 'ID',
+  number = 'Number',
+  unknown = 'Unknown',
+}
+
 export class SearchStore extends Store {
   @observable public addressSearchResult: IAddressDetail | null = null;
   @observable public blockSearchResult: IBlockDetailed | null = null;
   @observable public epochSearchResult: IEpochDetails | null = null;
-  @observable
-  public transactionSearchResult: ITransactionDetails | null = null;
+  @observable public transactionSearchResult: ITransactionDetails | null = null;
 
-  private isRunningBackgroundSearch = false;
   private readonly searchApi: SearchApi;
   private readonly searchActions: SearchActions;
   private readonly navigation: INavigationFeatureDependency;
@@ -44,17 +49,21 @@ export class SearchStore extends Store {
 
     this.registerActions(
       createActionBindings([
-        [this.searchActions.idSearchRequested, this.onIdSearchRequested],
-        [
-          this.searchActions.numberSearchRequested,
-          this.onNumberSearchRequested,
-        ],
         [
           this.searchActions.addressSearchRequested,
           this.onAddressSearchRequested,
         ],
+        [
+          this.searchActions.blockNumberSearchRequested,
+          this.onSearchByBlockNumberRequested,
+        ],
+        [this.searchActions.idSearchRequested, this.onIdSearchRequested],
+        [
+          this.searchActions.epochNumberSearchRequested,
+          this.onSearchByEpochNumberRequested,
+        ],
+        [this.searchActions.searchById, this.searchById],
         [this.searchActions.searchForAddress, this.searchForAddress],
-        [this.searchActions.searchForBlockById, this.searchForBlockById],
         [
           this.searchActions.searchForBlockByNumber,
           this.searchForBlockByNumber,
@@ -64,8 +73,8 @@ export class SearchStore extends Store {
           this.searchForEpochByNumber,
         ],
         [
-          this.searchActions.searchForTransactionById,
-          this.searchForTransactionById,
+          this.searchActions.unknownSearchRequested,
+          this.onUnknownSearchRequested,
         ],
       ])
     );
@@ -73,115 +82,85 @@ export class SearchStore extends Store {
 
   @computed get isSearching() {
     return (
-      !this.isRunningBackgroundSearch &&
-      (this.searchApi.searchForAddressQuery.isExecuting ||
-        this.searchApi.searchForBlockByIdQuery.isExecuting ||
-        this.searchApi.searchForBlockByNumberQuery.isExecuting ||
-        this.searchApi.searchForEpochByNumberQuery.isExecuting ||
-        this.searchApi.searchForTransactionByIdQuery.isExecuting)
+      this.searchApi.searchForAddressQuery.isExecuting ||
+      this.searchApi.searchForBlockByNumberQuery.isExecuting ||
+      this.searchApi.searchByIdQuery.isExecuting ||
+      this.searchApi.searchForBlockByNumberQuery.isExecuting ||
+      this.searchApi.searchForEpochByNumberQuery.isExecuting
     );
   }
 
   // ========= PRIVATE ACTION HANDLERS ==========
 
-  @action private onAddressSearchRequested = async ({
+  private onAddressSearchRequested = async ({
     address,
   }: {
     address: string;
   }) => {
-    this.navigation.actions.redirectTo.trigger({
-      path: `/address?address=${address}`,
-    });
+    this.navigation.actions.goToAddressDetailsPage.trigger({ address });
   };
 
   /**
-   * Executes queries for block and transaction by id to see
-   * what the user actually wanted to do.
+   * Executes query for entities by ID, determining the intent from the result
    *
    * Redirects to the corresponding search result or "no result" page.
    *
    * @param id
    */
   private onIdSearchRequested = async ({ id }: { id: string }) => {
-    if (this.isRunningBackgroundSearch) {
-      return;
-    }
-    try {
-      this.isRunningBackgroundSearch = true;
-      const blocksResult = await this.searchApi.searchForBlockByIdQuery.execute(
-        {
-          id,
-        }
-      );
-      const txResult = await this.searchApi.searchForTransactionByIdQuery.execute(
-        { id }
-      );
-      let path = '';
-      if (blocksResult?.data.blocks.length > 0) {
+    const result = await this.searchApi.searchByIdQuery.execute({
+      id,
+    });
+    let path = '';
+    if (result?.data.blocks.length > 0) {
+      const blockData = result.data.blocks[0];
+      if (isNotNull(blockData)) {
+        runInAction(() => {
+          this.blockSearchResult = blockDetailsTransformer(blockData);
+        });
         path = `/block?id=${id}`;
-      } else if (txResult?.data.transactions.length > 0) {
+      }
+    } else if (result?.data.transactions.length > 0) {
+      const txSearchResult = result.data.transactions[0];
+      if (isNotNull(txSearchResult)) {
+        runInAction(() => {
+          this.transactionSearchResult = transactionDetailsTransformer(
+            txSearchResult
+          );
+        });
         path = `/transaction?id=${id}`;
-      } else {
-        path = '/no-search-results';
       }
-      if (path !== '') {
-        this.navigation.actions.redirectTo.trigger({ path });
-      }
-    } finally {
-      this.isRunningBackgroundSearch = false;
+    } else {
+      return this.onUnknownSearchRequested({ query: id });
+    }
+    if (path !== '') {
+      this.navigation.actions.redirectTo.trigger({ path });
     }
   };
 
-  /**
-   * Executes queries for block and epoch by number to see
-   * what the user actually wanted to find. If there are results
-   * for both types we need to ask the user what he wants.
-   *
-   * TODO: Ask user what he wants when block and epoch have been found
-   *
-   * Redirects to the corresponding search result or "no result" page.
-   *
-   * @param params
-   */
-  @action private onNumberSearchRequested = async (params: {
+  @action private onSearchByBlockNumberRequested = async (params: {
     number: number;
   }) => {
-    if (this.isRunningBackgroundSearch) {
-      return;
+    await this.searchForBlockByNumber({ number: params.number });
+    if (this.blockSearchResult?.id) {
+      this.navigation.actions.goToBlockDetailsPage.trigger({
+        id: this.blockSearchResult?.id,
+      });
     }
-    try {
-      this.isRunningBackgroundSearch = true;
-      const blocksResult = await this.searchApi.searchForBlockByNumberQuery.execute(
-        params
-      );
-      const epochsResult = await this.searchApi.searchForEpochByNumberQuery.execute(
-        params
-      );
-      let path = '';
-      const hasFoundBlock = blocksResult?.data.blocks.length > 0;
-      const hasFoundEpoch = epochsResult?.data.epochs.length > 0;
-      if (hasFoundBlock && !hasFoundEpoch) {
-        // https://github.com/kulshekhar/ts-jest/issues/1283
-        path = `/block?id=${blocksResult?.data?.blocks[0]?.id}`;
-      } else if (hasFoundEpoch && !hasFoundBlock) {
-        path = `/epoch?number=${params.number}`;
-      } else if (hasFoundEpoch && hasFoundBlock) {
-        // TODO: Handle this case in the UI (e.g: ask user what he wants)
-        // tslint:disable-next-line:no-console
-        console.error(
-          `Found both block and epoch with number ${params.number}`
-        );
-        // For now we just default to epoch:
-        path = `/epoch?number=${params.number}`;
-      } else {
-        path = '/no-search-results';
-      }
-      if (path !== '') {
-        this.navigation.actions.redirectTo.trigger({ path });
-      }
-    } finally {
-      this.isRunningBackgroundSearch = false;
-    }
+  };
+
+  private onSearchByEpochNumberRequested = async (params: {
+    number: number;
+  }) => {
+    this.navigation.actions.goToEpochDetailsPage.trigger({
+      number: params.number,
+    });
+  };
+
+  private onUnknownSearchRequested = async (params: { query: string }) => {
+    this.navigation.actions.redirectTo.trigger({
+      path: `/no-search-results?query=${params.query}`,
+    });
   };
 
   @action private searchForAddress = async ({
@@ -201,7 +180,12 @@ export class SearchStore extends Store {
       address,
     });
     if (result) {
-      if (isNotNull(result.data)) {
+      const { data } = result;
+      if (
+        isNotNull(result.data) &&
+        (data.transactions_aggregate.aggregate?.count !== 0 ||
+          data.utxos_aggregate.aggregate?.sum?.value !== null)
+      ) {
         runInAction(() => {
           this.addressSearchResult = addressDetailTransformer(
             address,
@@ -212,24 +196,18 @@ export class SearchStore extends Store {
     }
   };
 
-  @action private searchForBlockById = async ({ id }: { id: string }) => {
+  @action private searchById = async ({ id }: { id: string }) => {
     // Do not execute queries more than necessary!
     if (
-      this.searchApi.searchForBlockByIdQuery.isExecuting ||
-      this.blockSearchResult?.id === id
+      this.searchApi.searchByIdQuery.isExecuting ||
+      this.blockSearchResult?.id === id ||
+      this.transactionSearchResult?.id === id
     ) {
       return;
     }
     this.blockSearchResult = null;
-    const result = await this.searchApi.searchForBlockByIdQuery.execute({ id });
-    if (result) {
-      const blockData = result.data.blocks[0];
-      if (isNotNull(blockData)) {
-        runInAction(() => {
-          this.blockSearchResult = blockDetailsTransformer(blockData);
-        });
-      }
-    }
+    this.transactionSearchResult = null;
+    return this.onIdSearchRequested({ id });
   };
 
   @action private searchForBlockByNumber = async (params: {
@@ -246,7 +224,7 @@ export class SearchStore extends Store {
     const result = await this.searchApi.searchForBlockByNumberQuery.execute(
       params
     );
-    if (result) {
+    if (result.data) {
       const blockData = result.data.blocks[0];
       if (isNotNull(blockData)) {
         runInAction(() => {
@@ -270,37 +248,13 @@ export class SearchStore extends Store {
     const result = await this.searchApi.searchForEpochByNumberQuery.execute(
       params
     );
-    if (result) {
+    if (result.data) {
       const epochData = result.data.epochs[0];
       if (isNotNull(epochData)) {
         runInAction(() => {
           this.epochSearchResult = epochDetailsTransformer(
             epochData,
             this.networkInfo.store
-          );
-        });
-      }
-    }
-  };
-
-  @action private searchForTransactionById = async ({ id }: { id: string }) => {
-    // Do not trigger another search if we already have the requested data!
-    if (
-      this.searchApi.searchForTransactionByIdQuery.isExecuting ||
-      this.transactionSearchResult?.id === id
-    ) {
-      return;
-    }
-    this.transactionSearchResult = null;
-    const result = await this.searchApi.searchForTransactionByIdQuery.execute({
-      id,
-    });
-    if (result) {
-      const txSearchResult = result.data.transactions[0];
-      if (isNotNull(txSearchResult)) {
-        runInAction(() => {
-          this.transactionSearchResult = transactionDetailsTransformer(
-            txSearchResult
           );
         });
       }

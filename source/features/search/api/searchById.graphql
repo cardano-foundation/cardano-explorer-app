@@ -1,0 +1,25 @@
+#import "../../blocks/api/BlockDetails.graphql"
+#import "../../transactions/api/TransactionDetails.graphql"
+
+query searchById(
+  $id: Hash32HexString!
+) {
+  blocks(
+    where: {
+     id: {
+       _eq: $id
+     }
+    }
+  ) {
+    ...BlockDetails
+  }
+  transactions(
+    where: {
+      id: {
+        _eq: $id
+      }
+    }
+  ) {
+    ...TransactionDetails
+  }
+}

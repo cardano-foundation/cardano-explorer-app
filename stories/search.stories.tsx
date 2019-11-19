@@ -6,6 +6,7 @@ import React from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
 import { Input } from 'react-polymorph/lib/components/Input';
 import { BrandType } from '../source/constants';
+import { SearchType } from '../source/features/search/store';
 import NoSearchResult from '../source/features/search/ui/NoSearchResult';
 import Search, { ISearchProps } from '../source/features/search/ui/Search';
 import styles from '../source/features/search/ui/Search.scss';
@@ -48,7 +49,7 @@ const SearchWithValue = (props: ISearchProps) =>
     );
   });
 
-storiesOf('Search', module)
+storiesOf('Search|Search Bar', module)
   .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Search without value', () => <Search onSearch={noop} />)
   .add('Search with value', () => (
@@ -57,5 +58,25 @@ storiesOf('Search', module)
       brandType={BrandType.ENLARGED}
       onSearch={noop}
     />
+  ));
+
+storiesOf('Search|No Result', module)
+  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
+  .add('Address', () => (
+    <NoSearchResult
+      searchQuery="Ae2tdPwUPEZBZTsRj7nGdvWQDTkqD9KLpCPpuZvjA1roL7KLDDVgkPU5S8g"
+      searchType={SearchType.address}
+    />
   ))
-  .add('No Search Result', () => <NoSearchResult />);
+  .add('ID', () => (
+    <NoSearchResult
+      searchQuery="5f20df933584822601f9e3f8c02feb5eb252fe8cefb64d1317dc3d432e940ebb"
+      searchType={SearchType.id}
+    />
+  ))
+  .add('Number', () => (
+    <NoSearchResult searchQuery="13231231415" searchType={SearchType.number} />
+  ))
+  .add('Unknown', () => (
+    <NoSearchResult searchQuery="123abc" searchType={SearchType.unknown} />
+  ));
