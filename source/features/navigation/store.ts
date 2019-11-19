@@ -1,14 +1,12 @@
-import { action, observable } from 'mobx';
+import { action } from 'mobx';
 import { NextRouter } from 'next/router';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
-import { createReactions } from '../../lib/mobx/Reaction';
 import { Store } from '../../lib/Store';
 import { NavigationActions } from './index';
 
 export class NavigationStore extends Store {
   private readonly navigationActions: NavigationActions;
   private readonly router: NextRouter;
-  @observable public currentRoute: string;
 
   constructor(navigationActions: NavigationActions, router: NextRouter) {
     super();
@@ -27,7 +25,6 @@ export class NavigationStore extends Store {
         ],
       ])
     );
-    this.registerReactions(createReactions([this.pushRouteChange]));
   }
 
   // ========= PRIVATE ACTION HANDLERS ==========
@@ -35,7 +32,7 @@ export class NavigationStore extends Store {
   @action private redirectTo = async (
     props: ActionProps<typeof NavigationActions.prototype.redirectTo>
   ) => {
-    return (this.currentRoute = props.path);
+    return this.router.push(props.path);
   };
 
   @action private showAddress = async (
@@ -43,19 +40,19 @@ export class NavigationStore extends Store {
       typeof NavigationActions.prototype.goToAddressDetailsPage
     >
   ) => {
-    return (this.currentRoute = `/address?address=${props.address}`);
+    return this.router.push(`/address?address=${props.address}`);
   };
 
   @action private showBlockById = async (
     props: ActionProps<typeof NavigationActions.prototype.goToBlockDetailsPage>
   ) => {
-    return (this.currentRoute = `/block?id=${props.id}`);
+    return this.router.push(`/block?id=${props.id}`);
   };
 
   @action private showEpochByNumber = async (
     props: ActionProps<typeof NavigationActions.prototype.goToEpochDetailsPage>
   ) => {
-    return (this.currentRoute = `/epoch?number=${props.number}`);
+    return this.router.push(`/epoch?number=${props.number}`);
   };
 
   @action private showTransactionById = async (
@@ -63,15 +60,6 @@ export class NavigationStore extends Store {
       typeof NavigationActions.prototype.goToTransactionDetailsPage
     >
   ) => {
-    return (this.currentRoute = `/transaction?id=${props.id}`);
-  };
-
-  // ============ REACTIONS =============
-
-  private pushRouteChange = () => {
-    if (!this.currentRoute) {
-      return;
-    }
-    return this.router.push(this.currentRoute);
+    return this.router.push(`/transaction?id=${props.id}`);
   };
 }
