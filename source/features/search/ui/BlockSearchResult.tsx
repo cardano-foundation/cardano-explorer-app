@@ -7,6 +7,7 @@ import { useNavigationFeatureOptionally } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import TransactionList from '../../transactions/components/TransactionList';
 import { useSearchFeature } from '../context';
+import { SearchType } from '../store';
 import NoSearchResult from './NoSearchResult';
 
 export const BlockSearchResult = () => {
@@ -20,7 +21,7 @@ export const BlockSearchResult = () => {
     const { query } = router;
     if (query?.id) {
       const id = query.id as string;
-      actions.searchForBlockById.trigger({ id });
+      actions.searchById.trigger({ id });
     }
   });
   return (
@@ -47,7 +48,12 @@ export const BlockSearchResult = () => {
             </>
           );
         } else {
-          return <NoSearchResult />;
+          return (
+            <NoSearchResult
+              searchQuery={router.query?.id as string}
+              searchType={SearchType.id}
+            />
+          );
         }
       }}
     </Observer>

@@ -57,7 +57,7 @@ const columns = (
   {
     cssClass: 'transactions',
     head: 'Transactions',
-    key: 'transactions',
+    key: 'transactionsCount',
   },
   {
     cssClass: 'output',

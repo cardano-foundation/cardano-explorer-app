@@ -6,6 +6,7 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import AddressSummary from '../../address/ui/AddressSummary';
 import TransactionList from '../../transactions/components/TransactionList';
 import { useSearchFeature } from '../context';
+import { SearchType } from '../store';
 import styles from './AddressSearchResult.scss';
 import NoSearchResult from './NoSearchResult';
 
@@ -58,7 +59,12 @@ export const AddressSearchResult = () => {
             </Container>
           );
         } else {
-          return <NoSearchResult />;
+          return (
+            <NoSearchResult
+              searchQuery={router.query?.address as string}
+              searchType={SearchType.address}
+            />
+          );
         }
       }}
     </Observer>
