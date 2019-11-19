@@ -10,14 +10,14 @@ import { SearchStore } from './store';
  */
 export class SearchActions {
   public addressSearchRequested: Action<{ address: string }> = new Action();
+  public blockNumberSearchRequested: Action<{ number: number }> = new Action();
+  public epochNumberSearchRequested: Action<{ number: number }> = new Action();
   public idSearchRequested: Action<{ id: string }> = new Action();
-  public numberSearchRequested: Action<{ number: number }> = new Action();
   public unknownSearchRequested: Action<{ query: string }> = new Action();
+  public searchById: Action<{ id: string }> = new Action();
   public searchForAddress: Action<{ address: string }> = new Action();
-  public searchForBlockById: Action<{ id: string }> = new Action();
   public searchForBlockByNumber: Action<{ number: number }> = new Action();
   public searchForEpochByNumber: Action<{ number: number }> = new Action();
-  public searchForTransactionById: Action<{ id: string }> = new Action();
 }
 
 /**

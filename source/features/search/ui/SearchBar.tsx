@@ -1,9 +1,9 @@
 import { Util } from 'cardano-js';
 import { ChainSettings } from 'cardano-js/dist/ChainSettings';
-import { isInteger } from 'lodash';
 import React from 'react';
 import { BrandType, CardanoNetwork } from '../../../constants';
 import { environment } from '../../../environment';
+import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
 import Search from './Search';
 
@@ -13,7 +13,8 @@ export interface ISearchBarProps {
 
 export const SearchBar = (props: ISearchBarProps) => {
   const search = useSearchFeature();
-  const openSearchedPage = (query: string) => {
+  const networkInfo = useNetworkInfoFeature().store;
+  const introspectQuery = (query: string) => {
     const chainSettings =
       environment.CARDANO.NETWORK === CardanoNetwork.MAINNET
         ? ChainSettings.mainnet
@@ -22,18 +23,34 @@ export const SearchBar = (props: ISearchBarProps) => {
       search.actions.addressSearchRequested.trigger({
         address: query,
       });
-    } else if (query?.length > 15) {
+    } else if (query?.length === 64) {
       search.actions.idSearchRequested.trigger({ id: query });
-    } else if (isInteger(parseInt(query, 10))) {
-      search.actions.numberSearchRequested.trigger({
-        number: parseInt(query, 10),
-      });
+    } else if (/^\d+$/.test(query)) {
+      const searchNumber = parseInt(query, 10);
+      if (searchNumber > networkInfo.currentEpoch) {
+        if (searchNumber > networkInfo.blockHeight) {
+          search.actions.unknownSearchRequested.trigger({ query });
+        } else {
+          search.actions.blockNumberSearchRequested.trigger({
+            number: searchNumber,
+          });
+        }
+      } else {
+        // Todo: Ask user if wanting to search for block or epoch
+        // Until then, epoch is favoured
+        search.actions.epochNumberSearchRequested.trigger({
+          number: searchNumber,
+        });
+      }
     } else {
       search.actions.unknownSearchRequested.trigger({ query });
     }
   };
 
   return (
-    <Search brandType={props.brandType} onSearch={id => openSearchedPage(id)} />
+    <Search
+      brandType={props.brandType}
+      onSearch={query => introspectQuery(query)}
+    />
   );
 };
