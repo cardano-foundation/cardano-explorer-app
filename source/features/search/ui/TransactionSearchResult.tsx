@@ -7,6 +7,7 @@ import { useNetworkInfoFeature } from '../../network-info/context';
 import TransactionInfo from '../../transactions/components/TransactionInfo';
 import TransactionSummary from '../../transactions/components/TransactionSummary';
 import { useSearchFeature } from '../context';
+import { SearchType } from '../store';
 import NoSearchResult from './NoSearchResult';
 
 export const TransactionSearchResult = () => {
@@ -20,7 +21,7 @@ export const TransactionSearchResult = () => {
     const { query } = router;
     if (query && query.id) {
       const id = query.id as string;
-      search.actions.searchForTransactionById.trigger({ id });
+      search.actions.searchById.trigger({ id });
     }
   });
 
@@ -47,7 +48,12 @@ export const TransactionSearchResult = () => {
             </>
           );
         } else {
-          return <NoSearchResult />;
+          return (
+            <NoSearchResult
+              searchQuery={router.query?.id as string}
+              searchType={SearchType.id}
+            />
+          );
         }
       }}
     </Observer>

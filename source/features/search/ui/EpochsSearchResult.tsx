@@ -9,7 +9,9 @@ import BlockList from '../../blocks/ui/BlockList';
 import EpochSummary from '../../epochs/ui/EpochSummary';
 import StakeDistribution from '../../epochs/ui/StakeDistribution';
 import { useSearchFeature } from '../context';
+import { SearchType } from '../store';
 import styles from './EpochsSearchResult.scss';
+import NoSearchResult from './NoSearchResult';
 
 const stakeDistribution = [
   {
@@ -94,7 +96,12 @@ export const EpochsSearchResult = () => {
             </div>
           );
         } else {
-          return <div>Nothing found</div>;
+          return (
+            <NoSearchResult
+              searchQuery={router.query?.number as string}
+              searchType={SearchType.number}
+            />
+          );
         }
       }}
     </Observer>

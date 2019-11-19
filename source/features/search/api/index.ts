@@ -2,22 +2,19 @@ import ApolloClient from 'apollo-client';
 
 import { GraphQLRequest } from '../../../lib/graphql/GraphQLRequest';
 import {
+  SearchByIdQuery,
+  SearchByIdQueryVariables,
   SearchForAddressQuery,
   SearchForAddressQueryVariables,
-  SearchForBlockByIdQuery,
-  SearchForBlockByIdQueryVariables,
   SearchForBlockByNumberQuery,
   SearchForBlockByNumberQueryVariables,
   SearchForEpochByNumberQuery,
   SearchForEpochByNumberQueryVariables,
-  SearchForTransactionByIdQuery,
-  SearchForTransactionByIdQueryVariables,
 } from '../../../typings/graphql-schema';
+import searchByIdQuery from './searchById.graphql';
 import searchForAddressQuery from './searchForAddress.graphql';
-import searchForBlockByIdQuery from './searchForBlockById.graphql';
 import searchForBlockByNumberQuery from './searchForBlockByNumber.graphql';
 import searchForEpochByNumberQuery from './searchForEpochByNumber.graphql';
-import searchForTransactionByIdQuery from './searchForTransactionById.graphql';
 
 export class SearchApi {
   public searchForAddressQuery: GraphQLRequest<
@@ -25,9 +22,9 @@ export class SearchApi {
     SearchForAddressQueryVariables
   >;
 
-  public searchForBlockByIdQuery: GraphQLRequest<
-    SearchForBlockByIdQuery,
-    SearchForBlockByIdQueryVariables
+  public searchByIdQuery: GraphQLRequest<
+    SearchByIdQuery,
+    SearchByIdQueryVariables
   >;
 
   public searchForBlockByNumberQuery: GraphQLRequest<
@@ -40,20 +37,12 @@ export class SearchApi {
     SearchForEpochByNumberQueryVariables
   >;
 
-  public searchForTransactionByIdQuery: GraphQLRequest<
-    SearchForTransactionByIdQuery,
-    SearchForTransactionByIdQueryVariables
-  >;
-
   constructor(client: ApolloClient<any>) {
     this.searchForAddressQuery = new GraphQLRequest(
       client,
       searchForAddressQuery
     );
-    this.searchForBlockByIdQuery = new GraphQLRequest(
-      client,
-      searchForBlockByIdQuery
-    );
+    this.searchByIdQuery = new GraphQLRequest(client, searchByIdQuery);
     this.searchForBlockByNumberQuery = new GraphQLRequest(
       client,
       searchForBlockByNumberQuery
@@ -61,10 +50,6 @@ export class SearchApi {
     this.searchForEpochByNumberQuery = new GraphQLRequest(
       client,
       searchForEpochByNumberQuery
-    );
-    this.searchForTransactionByIdQuery = new GraphQLRequest(
-      client,
-      searchForTransactionByIdQuery
     );
   }
 }
