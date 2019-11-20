@@ -9,8 +9,7 @@ let AddressPage = () => <NoSSR />;
 if (environment.IS_CLIENT) {
   AddressPage = () => (
     <NoSSR>
-      <Layout>
-        <Header brandType={BrandType.SHRINKED} />
+      <Layout header={<Header brandType={BrandType.SHRINKED} />}>
         <AddressSearchResult />
         <Footer />
       </Layout>
