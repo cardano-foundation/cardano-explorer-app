@@ -4,8 +4,8 @@ import React from 'react';
 import BlockCreation from '../source/features/blocks/ui/BlockCreation';
 import BlockList from '../source/features/blocks/ui/BlockList';
 import BlockSummary from '../source/features/blocks/ui/BlockSummary';
+import Pagination from '../source/widgets/browsing/Pagination';
 import ShowMoreButtonDecorator from '../source/widgets/decorators/ShowMoreButtonDecorator';
-import Pagination from '../source/widgets/pagination/Pagination';
 import { generateFakeBlockOverviews } from './support/fake-data-helpers';
 import { PaddingDecorator } from './support/PaddingDecorator';
 import { transactions } from './transactions.stories';
@@ -110,9 +110,8 @@ storiesOf('Blocks|List', module)
       <BlockList title="Blocks" items={blocks.slice(0, 5)} isLoading={false} />
       <Pagination
         currentPage={1}
-        itemsPerPage={5}
         onChangePage={action('change page')}
-        totalItems={25}
+        totalPages={25}
       />
     </>
   ));
