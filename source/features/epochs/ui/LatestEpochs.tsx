@@ -28,13 +28,7 @@ export const LatestEpochs = () => {
               store.isLoadingLatestEpochsFirstTime ||
               store.latestEpochs.length < 5
             }
-            onClick={() =>
-              router.push(
-                `/browse-epochs?lower=${
-                  latestEpochs[latestEpochs.length - 1].number
-                }&upper=${latestEpochs[0].number}`
-              )
-            }
+            onClick={() => router.push('/browse-epochs')}
           >
             <EpochList
               title="Latest Epochs"
