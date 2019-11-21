@@ -1,4 +1,5 @@
 .epochListContainer {
+  position: relative;
   :global {
     .epoch {
       width: 90px;
@@ -68,4 +69,13 @@
       }
     }
   }
+}
+
+.loadingOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(1px);
 }

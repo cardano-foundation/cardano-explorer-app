@@ -2,19 +2,22 @@ import React from 'react';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../constants';
 import { environment } from '../environment';
-import { AddressSearchResult } from '../features/search/ui/AddressSearchResult';
+import BlocksBrowser from '../features/blocks/ui/BlocksBrowser';
+import { BlocksFeatureProvider } from '../features/blocks/ui/BlocksFeatureProvider';
 import { Footer, Header, Layout } from '../widgets/layout';
 
-let AddressPage = () => <NoSSR />;
+let BlockPage = () => <NoSSR />;
 if (environment.IS_CLIENT) {
-  AddressPage = () => (
+  BlockPage = () => (
     <NoSSR>
       <Layout header={<Header brandType={BrandType.SHRINKED} />}>
-        <AddressSearchResult />
+        <BlocksFeatureProvider>
+          <BlocksBrowser />
+        </BlocksFeatureProvider>
         <Footer />
       </Layout>
     </NoSSR>
   );
 }
 
-export default AddressPage;
+export default BlockPage;

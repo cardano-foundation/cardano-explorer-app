@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import React, { FC } from 'react';
+import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import styles from './BlockList.scss';
@@ -18,9 +19,9 @@ export interface IBlockListRowProps {
 }
 
 export interface IBlockListProps {
-  title: string;
-  items: Array<IBlockListRowProps>;
   isLoading: boolean;
+  items: Array<IBlockListRowProps>;
+  title: string;
 }
 
 interface IColumnsProps {
@@ -78,8 +79,14 @@ const columns = (
 
 const BlockList: FC<IBlockListProps> = props => {
   const navigation = useNavigationFeatureOptionally();
+  const displaysItems = props.items.length > 0;
   return (
     <div className={styles.blockListContainer}>
+      {displaysItems && props.isLoading && (
+        <div className={styles.loadingOverlay}>
+          <LoadingSpinner />
+        </div>
+      )}
       <Table
         title={props.title}
         columns={columns({
@@ -92,9 +99,8 @@ const BlockList: FC<IBlockListProps> = props => {
               number: epochNo,
             }),
         })}
-        rows={props.items.map(i => Object.assign(i, { key: i.id }))}
-        withoutHeaders={props.isLoading}
-        withShowMore={!props.isLoading}
+        rows={props.items.map(i => Object.assign({}, i, { key: i.id }))}
+        withoutHeaders={!displaysItems && props.isLoading}
       />
     </div>
   );

@@ -1,6 +1,7 @@
 import ApolloClient from 'apollo-client';
+
+import Action from '../../lib/Action';
 import { IBlocksFeature } from '../blocks';
-// import Action from '../../lib/Action';
 import { INetworkInfoFeature } from '../network-info';
 import { EpochsApi } from './api';
 import { EpochsStore } from './store';
@@ -8,15 +9,18 @@ import { EpochsStore } from './store';
 /**
  * Defines the actions that are supported by this feature
  */
-// export class EpochsActions {
-//   public fetchMoreEpochs: Action<void> = new Action();
-// }
+export class EpochsActions {
+  public browseEpochs: Action<{ lower: number; upper: number }> = new Action();
+  public fetchLatestEpochs: Action<void> = new Action();
+  public startPollingLatestEpochs: Action<void> = new Action();
+  public stopPollingLatestEpochs: Action<void> = new Action();
+}
 
 /**
  * Defines the interface of this feature
  */
 export interface IEpochsFeature {
-  // actions: EpochsActions;
+  actions: EpochsActions;
   api: EpochsApi;
   store: EpochsStore;
   start: () => void;
@@ -44,16 +48,16 @@ export const createEpochsFeature = (
   networkInfo: INetworkInfoFeatureDependency,
   apolloClient: ApolloClient<object>
 ): IEpochsFeature => {
-  // const epochsActions = new EpochsActions();
+  const epochsActions = new EpochsActions();
   const epochsApi = new EpochsApi(apolloClient);
   const epochsStore = new EpochsStore(
-    // epochsActions,
+    epochsActions,
     blocks,
     epochsApi,
     networkInfo
   );
   return {
-    // actions: epochsActions,
+    actions: epochsActions,
     api: epochsApi,
     store: epochsStore,
     start() {

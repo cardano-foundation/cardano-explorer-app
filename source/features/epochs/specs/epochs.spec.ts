@@ -1,5 +1,6 @@
 import waitForExpect from 'wait-for-expect';
 import { apolloClient } from '../../../lib/graphql/apolloClient';
+import { BlocksActions } from '../../blocks';
 import { BlocksApi } from '../../blocks/api';
 import { BlocksStore } from '../../blocks/store';
 import { NetworkInfoActions } from '../../network-info';
@@ -17,9 +18,13 @@ describe('Epochs feature', () => {
       new NetworkInfoActions(),
       new NetworkInfoApi(apolloClient)
     );
-    blocksStore = new BlocksStore(new BlocksApi(apolloClient), {
-      store: networkInfoStore,
-    });
+    blocksStore = new BlocksStore(
+      new BlocksActions(),
+      new BlocksApi(apolloClient),
+      {
+        store: networkInfoStore,
+      }
+    );
     await networkInfoStore.start();
     epochs = createEpochsFeature(
       { store: blocksStore },
@@ -35,11 +40,12 @@ describe('Epochs feature', () => {
   describe('start', () => {
     beforeEach(async () => {
       await epochs.start();
+      epochs.actions.startPollingLatestEpochs.trigger();
     });
 
     it('fetches up to the latest 5 epochs, and provides a status', async () => {
       // Useful for showing loading spinners
-      expect(epochs.store.isLoadingFirstTime).toBe(true);
+      expect(epochs.store.isLoadingLatestEpochsFirstTime).toBe(true);
       // Access the observable result provided by the store
       await waitForExpect(() => {
         expect(epochs.store.latestEpochs.length).toBe(2);
@@ -47,7 +53,7 @@ describe('Epochs feature', () => {
         expect(epochs.store.latestEpochs[0].blocksCount).toBe(9484);
         expect(epochs.store.latestEpochs[1].number).toBe(0);
       });
-      expect(epochs.store.isLoadingFirstTime).toBe(false);
+      expect(epochs.store.isLoadingLatestEpochsFirstTime).toBe(false);
     });
 
     afterEach(() => {

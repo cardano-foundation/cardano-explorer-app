@@ -4,6 +4,7 @@ import React, { FC } from 'react';
 import CircularProgress, {
   CircularProgressSize,
 } from '../../../widgets/circular-progress/CircularProgress';
+import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import styles from './EpochList.scss';
@@ -96,8 +97,14 @@ const columns = (
 
 const EpochList: FC<IEpochListProps> = ({ title, items, isLoading }) => {
   const navigation = useNavigationFeatureOptionally();
+  const displaysItems = items.length > 0;
   return (
     <div className={styles.epochListContainer}>
+      {displaysItems && isLoading && (
+        <div className={styles.loadingOverlay}>
+          <LoadingSpinner />
+        </div>
+      )}
       <Table
         title={title}
         columns={columns({
@@ -106,9 +113,8 @@ const EpochList: FC<IEpochListProps> = ({ title, items, isLoading }) => {
               number: epochNo,
             }),
         })}
-        rows={items.map(i => Object.assign(i, { key: i.number }))}
-        withShowMore={!isLoading}
-        withoutHeaders={isLoading}
+        rows={items.map(i => Object.assign({}, i, { key: i.number }))}
+        withoutHeaders={!displaysItems && isLoading}
       />
     </div>
   );
