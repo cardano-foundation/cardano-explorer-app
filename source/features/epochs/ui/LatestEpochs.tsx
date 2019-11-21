@@ -24,7 +24,10 @@ export const LatestEpochs = () => {
         return (
           <ShowMoreButtonDecorator
             label={'show more'}
-            isHidden={store.isLoadingLatestEpochsFirstTime}
+            isHidden={
+              store.isLoadingLatestEpochsFirstTime ||
+              store.latestEpochs.length < 5
+            }
             onClick={() =>
               router.push(
                 `/browse-epochs?lower=${

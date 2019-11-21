@@ -72,7 +72,7 @@ export const EpochsSearchResult = () => {
               </div>
               <ShowMoreButtonDecorator
                 label={'show more'}
-                isHidden={false}
+                isHidden={epochSearchResult.blocks.length < 10}
                 onClick={() =>
                   router.push(
                     `/browse-blocks?lower=${

@@ -24,7 +24,10 @@ export const LatestBlocks = () => {
         return (
           <ShowMoreButtonDecorator
             label={'show more'}
-            isHidden={store.isLoadingLatestBlocksFirstTime}
+            isHidden={
+              store.isLoadingLatestBlocksFirstTime ||
+              store.latestBlocks.length < 10
+            }
             onClick={() =>
               router.push(
                 `/browse-blocks?lower=${
