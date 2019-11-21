@@ -11,7 +11,7 @@ import { SearchType } from '../store';
 import NoSearchResult from './NoSearchResult';
 
 export const BlockSearchResult = () => {
-  const { actions, store } = useSearchFeature();
+  const { actions, api, store } = useSearchFeature();
   const networkInfo = useNetworkInfoFeature();
   const navigation = useNavigationFeatureOptionally();
   const router = useRouter();
@@ -28,7 +28,10 @@ export const BlockSearchResult = () => {
     <Observer>
       {() => {
         const { blockSearchResult } = store;
-        if (store.isSearching) {
+        if (
+          !api.searchByIdQuery.hasBeenExecutedAtLeastOnce ||
+          store.isSearching
+        ) {
           return <LoadingSpinner />;
         } else if (blockSearchResult) {
           return (

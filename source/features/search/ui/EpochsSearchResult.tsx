@@ -47,7 +47,7 @@ const stakeDistribution = [
 ];
 
 export const EpochsSearchResult = () => {
-  const { actions, store } = useSearchFeature();
+  const { actions, api, store } = useSearchFeature();
   const router = useRouter();
 
   // Trigger search after component did render
@@ -62,7 +62,10 @@ export const EpochsSearchResult = () => {
     <Observer>
       {() => {
         const { epochSearchResult } = store;
-        if (store.isSearching) {
+        if (
+          !api.searchForEpochByNumberQuery.hasBeenExecutedAtLeastOnce ||
+          store.isSearching
+        ) {
           return <LoadingSpinner />;
         } else if (epochSearchResult) {
           return (
