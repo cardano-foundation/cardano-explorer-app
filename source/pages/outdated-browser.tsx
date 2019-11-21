@@ -8,7 +8,7 @@ let OutdatedBrowserPage = () => <NoSSR />;
 if (environment.IS_CLIENT) {
   OutdatedBrowserPage = () => (
     <NoSSR>
-      <Layout hasContainer>
+      <Layout>
         <OutdatedBrowser
           text="Your web browser is out of date"
           updateBrowserUrl="http://browser-update.org/update.html?force_outdated=true"

@@ -1,11 +1,10 @@
 import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
-import ContainerComponent from '../container/Container';
+import Container from '../container/Container';
 import styles from './Layout.scss';
 
 interface IProps {
   children: React.ReactNode;
-  hasContainer?: boolean;
   header?: React.ReactNode;
 }
 
@@ -15,8 +14,7 @@ if (typeof window !== 'undefined') {
   browserUpdate = require('browser-update/update.npm.js');
 }
 
-export const Layout = ({ children, hasContainer, header }: IProps) => {
-  const Container: any = hasContainer ? ContainerComponent : Fragment;
+export const Layout = ({ children, header }: IProps) => {
   const router = useRouter();
 
   if (browserUpdate) {
@@ -85,8 +83,8 @@ export const Layout = ({ children, hasContainer, header }: IProps) => {
   return (
     <Fragment>
       <div className={styles.content}>
-        {header && header}
-        <Container hasTopMargin>{children}</Container>
+        {header}
+        <Container>{children}</Container>
       </div>
     </Fragment>
   );

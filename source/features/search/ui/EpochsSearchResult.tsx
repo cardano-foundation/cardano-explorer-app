@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { CardanoEra } from '../../../constants';
 import { environment } from '../../../environment';
+import ShowMoreButtonDecorator from '../../../widgets/decorators/ShowMoreButtonDecorator';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockList from '../../blocks/ui/BlockList';
 import EpochSummary from '../../epochs/ui/EpochSummary';
@@ -69,13 +70,25 @@ export const EpochsSearchResult = () => {
               <div className={styles.epochSummary}>
                 <EpochSummary title="Epoch Summary" epoch={epochSearchResult} />
               </div>
-              <div className={styles.blockList}>
+              <ShowMoreButtonDecorator
+                label={'show more'}
+                isHidden={epochSearchResult.blocks.length < 10}
+                onClick={() =>
+                  router.push(
+                    `/browse-blocks?lower=${
+                      epochSearchResult.blocks[
+                        epochSearchResult.blocks.length - 1
+                      ].number
+                    }&upper=${epochSearchResult.blocks[0].number}`
+                  )
+                }
+              >
                 <BlockList
                   title="Blocks"
                   items={epochSearchResult.blocks.slice(0, 10)}
                   isLoading={false}
                 />
-              </div>
+              </ShowMoreButtonDecorator>
               {environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
                 <div className={styles.stakeDistribution}>
                   <StakeDistribution

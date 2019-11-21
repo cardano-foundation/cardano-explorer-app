@@ -22,14 +22,15 @@ describe('Blocks feature', () => {
     networkInfoStore.stop();
   });
 
-  describe('start', () => {
+  describe('startPollingLatestBlocks', () => {
     beforeEach(async () => {
       await blocks.start();
+      blocks.actions.startPollingLatestBlocks.trigger();
     });
 
     it('fetches up to the latest 10 blocks, and provides a status', async () => {
       // Useful for showing loading spinners
-      expect(blocks.store.isLoadingFirstTime).toBe(true);
+      expect(blocks.store.isLoadingLatestBlocksFirstTime).toBe(true);
       // Access the observable result provided by the store
       await waitForExpect(() => {
         expect(blocks.store.latestBlocks.length).toBe(10);
@@ -38,7 +39,7 @@ describe('Blocks feature', () => {
         expect(blocks.store.latestBlocks[4].transactionsCount).toBe(2);
         expect(blocks.store.latestBlocks[1].number).toBe(31069);
       });
-      expect(blocks.store.isLoadingFirstTime).toBe(false);
+      expect(blocks.store.isLoadingLatestBlocksFirstTime).toBe(false);
     });
 
     afterEach(() => {

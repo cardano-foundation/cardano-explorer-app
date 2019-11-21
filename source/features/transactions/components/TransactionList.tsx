@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
+import Pagination from '../../../widgets/browsing/Pagination';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
-import Pagination from '../../../widgets/pagination/Pagination';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import TransactionInfo, { ITransactionInfoProps } from './TransactionInfo';
 import styles from './TransactionList.scss';
@@ -33,10 +33,9 @@ const TransactionList = (props: ITransactionListProps) => {
       ))}
       {props.items.length > rowsPerPage && (
         <Pagination
-          count={props.items.length}
+          currentPage={page}
+          totalPages={props.items.length}
           onChangePage={handleChangePage}
-          page={page}
-          rowsPerPage={rowsPerPage}
         />
       )}
     </div>

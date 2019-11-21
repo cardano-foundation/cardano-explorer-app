@@ -1,68 +1,16 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import BlockCreation from '../source/features/blocks/ui/BlockCreation';
 import BlockList from '../source/features/blocks/ui/BlockList';
 import BlockSummary from '../source/features/blocks/ui/BlockSummary';
+import Pagination from '../source/widgets/browsing/Pagination';
+import ShowMoreButtonDecorator from '../source/widgets/decorators/ShowMoreButtonDecorator';
+import { generateFakeBlockOverviews } from './support/fake-data-helpers';
 import { PaddingDecorator } from './support/PaddingDecorator';
 import { transactions } from './transactions.stories';
 
-const blocks = [
-  {
-    createdAt: new Date(1568366883000),
-    createdBy: 'af2800c',
-    epoch: 138,
-    id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
-    number: 20051,
-    output: 11189.647356,
-    size: 1024,
-    slotWithinEpoch: 21600,
-    transactionsCount: 1,
-  },
-  {
-    createdAt: new Date(1568366883000),
-    createdBy: '6c9e149',
-    epoch: 139,
-    id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
-    number: 20051,
-    output: 11189.647356,
-    size: 1024,
-    slotWithinEpoch: 21600,
-    transactionsCount: 2,
-  },
-  {
-    createdAt: new Date(1568366883000),
-    createdBy: 'af2800c',
-    epoch: 137,
-    id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
-    number: 20051,
-    output: 11189.647356,
-    size: 1024,
-    slotWithinEpoch: 21600,
-    transactionsCount: 3,
-  },
-  {
-    createdAt: new Date(1568366883000),
-    createdBy: '6c9e149',
-    epoch: 139,
-    id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
-    number: 20051,
-    output: 11189.647356,
-    size: 1024,
-    slotWithinEpoch: 21600,
-    transactionsCount: 4,
-  },
-  {
-    createdAt: new Date(1568366883000),
-    createdBy: 'e1496c9',
-    epoch: 140,
-    id: '687bc1d9ff5b7c8167b25cca5659e80a40583512ba925271bf3005600eb0a0ec',
-    number: 20051,
-    output: 11189.647356,
-    size: 1024,
-    slotWithinEpoch: 21600,
-    transactionsCount: 5,
-  },
-];
+const blocks = generateFakeBlockOverviews(25);
 
 const blockSummary = {
   confirmations: 0,
@@ -144,14 +92,38 @@ const blockCreation = [
   },
 ];
 
-storiesOf('Blocks', module)
+storiesOf('Blocks|List', module)
   .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
-  .add('Block List', () => (
-    <BlockList title="Blocks" items={blocks} isLoading={false} />
+  .add('plain', () => (
+    <BlockList title="Blocks" items={blocks.slice(0, 5)} isLoading={false} />
   ))
-  .add('Block Summary', () => (
+  .add('with show more button', () => (
+    <ShowMoreButtonDecorator
+      label={'show more'}
+      onClick={action('show more clicked')}
+    >
+      <BlockList title="Blocks" items={blocks.slice(0, 5)} isLoading={false} />
+    </ShowMoreButtonDecorator>
+  ))
+  .add('with pagination', () => (
+    <>
+      <BlockList title="Blocks" items={blocks.slice(0, 5)} isLoading={false} />
+      <Pagination
+        currentPage={1}
+        onChangePage={action('change page')}
+        totalPages={25}
+      />
+    </>
+  ));
+
+storiesOf('Blocks|Summary', module)
+  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
+  .add('Summary', () => (
     <BlockSummary networkBlockHeight={11044 + 100} {...blockSummary} />
-  ))
-  .add('Block Creation', () => (
+  ));
+
+storiesOf('Blocks|Creation', module)
+  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
+  .add('Creation', () => (
     <BlockCreation title="Block Creation" items={blockCreation} />
   ));
