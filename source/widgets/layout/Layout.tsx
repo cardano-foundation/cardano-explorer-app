@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { Fragment } from 'react';
 import Container from '../container/Container';
@@ -82,6 +83,15 @@ export const Layout = ({ children, header }: IProps) => {
 
   return (
     <Fragment>
+      <Head>
+        {process.env.NODE_ENV !== 'production' && (
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href={`/_next/static/css/styles.chunk.css?v=${Date.now()}`}
+          />
+        )}
+      </Head>
       <div className={styles.content}>
         {header}
         <Container>{children}</Container>
