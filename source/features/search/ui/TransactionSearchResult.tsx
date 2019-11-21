@@ -29,7 +29,10 @@ export const TransactionSearchResult = () => {
     <Observer>
       {() => {
         const { transactionSearchResult } = search.store;
-        if (search.store.isSearching) {
+        if (
+          !search.api.searchByIdQuery.hasBeenExecutedAtLeastOnce ||
+          search.store.isSearching
+        ) {
           return <LoadingSpinner />;
         } else if (transactionSearchResult) {
           return (

@@ -11,7 +11,7 @@ import styles from './AddressSearchResult.scss';
 import NoSearchResult from './NoSearchResult';
 
 export const AddressSearchResult = () => {
-  const { actions, store } = useSearchFeature();
+  const { actions, api, store } = useSearchFeature();
   const router = useRouter();
 
   // Trigger search after component did render
@@ -26,7 +26,10 @@ export const AddressSearchResult = () => {
     <Observer>
       {() => {
         const { addressSearchResult } = store;
-        if (store.isSearching) {
+        if (
+          !api.searchForAddressQuery.hasBeenExecutedAtLeastOnce ||
+          store.isSearching
+        ) {
           return <LoadingSpinner />;
         } else if (addressSearchResult) {
           const {
