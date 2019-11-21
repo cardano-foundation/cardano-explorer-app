@@ -39,8 +39,8 @@ const TransactionSummary = (props: ITransactionSummaryProps) => {
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Confirmations</div>
             <div className={styles.infoValue}>
-              {props.block?.number
-                ? props.networkBlockHeight - props.block?.number + 1
+              {props.block?.number && props.networkBlockHeight
+                ? props.networkBlockHeight - props.block.number + 1
                 : 0}
             </div>
           </div>
