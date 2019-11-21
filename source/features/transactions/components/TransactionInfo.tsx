@@ -60,6 +60,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
                       ? styles.highlightAddress
                       : styles.input
                   }
+                  onClick={() => onAddressClick(input.address)}
                 >
                   {input.address.length <= 34 ? (
                     <span>{input.address}</span>
