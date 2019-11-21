@@ -25,7 +25,13 @@ export const LatestEpochs = () => {
           <ShowMoreButtonDecorator
             label={'show more'}
             isHidden={store.isLoadingLatestEpochsFirstTime}
-            onClick={() => router.push('/browse-epochs')}
+            onClick={() =>
+              router.push(
+                `/browse-epochs?lower=${
+                  latestEpochs[latestEpochs.length - 1].number
+                }&upper=${latestEpochs[0].number}`
+              )
+            }
           >
             <EpochList
               title="Latest Epochs"

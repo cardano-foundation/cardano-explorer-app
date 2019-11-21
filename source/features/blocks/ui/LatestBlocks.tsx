@@ -25,7 +25,13 @@ export const LatestBlocks = () => {
           <ShowMoreButtonDecorator
             label={'show more'}
             isHidden={store.isLoadingLatestBlocksFirstTime}
-            onClick={() => router.push('/browse-blocks')}
+            onClick={() =>
+              router.push(
+                `/browse-blocks?lower=${
+                  latestBlocks[latestBlocks.length - 1].number
+                }&upper=${latestBlocks[0].number}`
+              )
+            }
           >
             <BlockList
               isLoading={store.isLoadingLatestBlocksFirstTime}

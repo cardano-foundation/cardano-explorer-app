@@ -75,7 +75,11 @@ export const EpochsSearchResult = () => {
                 isHidden={false}
                 onClick={() =>
                   router.push(
-                    `/browse-blocks?upper=${epochSearchResult.blocks[0].number}`
+                    `/browse-blocks?lower=${
+                      epochSearchResult.blocks[
+                        epochSearchResult.blocks.length - 1
+                      ].number
+                    }&upper=${epochSearchResult.blocks[0].number}`
                   )
                 }
               >
