@@ -35,7 +35,10 @@ export const blockDetailsTransformer = (
 ): IBlockDetailed => ({
   ...blockOverviewTransformer(b),
   merkleRoot: b.merkelRootHash || '',
-  nextBlock: '', // TODO: missing API data
+  nextBlock: {
+    id: b.nextBlock?.id || '',
+    number: b.nextBlock?.number || null,
+  },
   prevBlock: {
     id: b.previousBlock?.id || '',
     number: b.previousBlock?.number || null,

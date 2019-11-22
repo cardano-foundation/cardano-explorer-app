@@ -15,7 +15,10 @@ export interface IBlockOverview {
 
 export interface IBlockDetailed extends IBlockOverview {
   merkleRoot: string;
-  nextBlock: string;
+  nextBlock: {
+    id: IBlockOverview['id'];
+    number: IBlockOverview['number'];
+  };
   prevBlock: {
     id: IBlockOverview['id'];
     number: IBlockOverview['number'];
