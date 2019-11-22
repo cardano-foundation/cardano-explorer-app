@@ -88,9 +88,6 @@ export const BrowseInRange = ({
   const itemsPerPage = bounds.upper - bounds.lower;
   const totalPages = Math.floor(total / itemsPerPage);
   const currentPage = Math.floor(bounds.upper / itemsPerPage);
-  const isCorrectPath =
-    bounds.lower.toString() === userParamLower &&
-    bounds.upper.toString() === userParamUpper;
 
   useEffect(() => {
     // If params are correct, trigger search
