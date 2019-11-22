@@ -18,7 +18,7 @@ export const blockOverviewTransformer = (
   return {
     createdAt: b.createdAt,
     createdBy,
-    epoch: b.epoch?.number || 0,
+    epoch: b.epochNo,
     id: b.id,
     number: b.number || 0,
     output: lovelacesToAda(
