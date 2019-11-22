@@ -38,6 +38,8 @@ const calculateBrowseBounds = ({
   }
   if (upper > total) {
     upper = total;
+  } else if (upper < perPageMinimum) {
+    upper = perPageMinimum;
   }
   if (lower < 0) {
     lower = 0;
@@ -58,7 +60,6 @@ export interface IBrowseInRangeResult {
 
 export interface IBrowseInRangeProps {
   total: number;
-  onQueryParamsUpdateRequired: (bounds: IBrowseInRangeBounds) => void;
   onReadyToBrowse: (browseParams: IBrowseInRangeResult) => void;
   perPageDefault: number;
   perPageMinimum: number;
@@ -69,7 +70,6 @@ export interface IBrowseInRangeProps {
 
 export const BrowseInRange = ({
   onReadyToBrowse,
-  onQueryParamsUpdateRequired,
   perPageDefault,
   perPageMinimum,
   perPageMaximum,
@@ -88,17 +88,10 @@ export const BrowseInRange = ({
   const itemsPerPage = bounds.upper - bounds.lower;
   const totalPages = Math.floor(total / itemsPerPage);
   const currentPage = Math.floor(bounds.upper / itemsPerPage);
-  const isCorrectPath =
-    bounds.lower.toString() === userParamLower &&
-    bounds.upper.toString() === userParamUpper;
 
   useEffect(() => {
-    if (!isCorrectPath) {
-      onQueryParamsUpdateRequired(bounds);
-    } else {
-      // If params are correct, trigger search
-      onReadyToBrowse({ bounds, currentPage, itemsPerPage, totalPages });
-    }
+    // If params are correct, trigger search
+    onReadyToBrowse({ bounds, currentPage, itemsPerPage, totalPages });
   }, [userParamLower, userParamUpper]);
 
   return null; // Renderless component

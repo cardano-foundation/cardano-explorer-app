@@ -13,9 +13,9 @@ import { useNetworkInfoFeature } from '../../network-info/context';
 import { useEpochsFeature } from '../context';
 import EpochList from './EpochList';
 
-const EPOCHS_PER_PAGE_DEFAULT = 10;
+const EPOCHS_PER_PAGE_DEFAULT = 20;
 const EPOCHS_PER_PAGE_MINIMUM = 5;
-const EPOCHS_PER_PAGE_MAXIMUM = 30;
+const EPOCHS_PER_PAGE_MAXIMUM = 50;
 
 const createBrowsePath = ({ lower, upper }: IBrowseInRangeBounds) =>
   `/browse-epochs?lower=${lower}&upper=${upper}`;
@@ -43,9 +43,6 @@ const EpochsBrowser = () => {
             onReadyToBrowse={params => {
               epochs.actions.browseEpochs.trigger(params.bounds);
               setBrowserParams(params);
-            }}
-            onQueryParamsUpdateRequired={bounds => {
-              router.push(createBrowsePath(bounds));
             }}
             perPageDefault={EPOCHS_PER_PAGE_DEFAULT}
             perPageMinimum={EPOCHS_PER_PAGE_MINIMUM}
