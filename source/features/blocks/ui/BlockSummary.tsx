@@ -85,7 +85,9 @@ const BlockSummary = (props: BlockSummaryProps) => {
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Next block</div>
             <div className={styles.infoValue}>
-              <span>{props.nextBlock}</span>
+              <span onClick={onBlockIdClick(props.nextBlock.id)}>
+                {props.nextBlock.number ?? props.nextBlock.id}
+              </span>
             </div>
           </div>
           <div className={styles.infoRow}>

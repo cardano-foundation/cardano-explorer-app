@@ -1,9 +1,7 @@
 fragment BlockOverview on Block {
   createdAt
   createdBy
-  epoch {
-    number
-  },
+  epochNo,
   id
   number
   size
