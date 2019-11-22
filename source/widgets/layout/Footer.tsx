@@ -44,8 +44,11 @@ export const Footer = observer(() => {
           <div className={styles.cardanoTextContainer}>
             <h5 className={styles.cardanoTextTitle}>
               Cardano is an{' '}
-              <a href="">
-                <span>Open Source</span>
+              <a
+                className={styles.highlightedLink}
+                href="https://github.com/input-output-hk/cardano-sl"
+              >
+                Open Source
               </a>{' '}
               project.
             </h5>
@@ -139,7 +142,7 @@ export const Footer = observer(() => {
                 <li>
                   <a
                     href="mailto:info@cardano.org"
-                    className={styles.emailLink}
+                    className={styles.highlightedLink}
                   >
                     info@cardano.org
                   </a>
