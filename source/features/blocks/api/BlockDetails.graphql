@@ -4,6 +4,10 @@
 fragment BlockDetails on Block {
   ...BlockOverview
   merkelRootHash
+  nextBlock {
+    id
+    number
+  }
   previousBlock {
     id
     number
