@@ -170,23 +170,23 @@
           margin-bottom: 0;
         }
 
+        .value,
+        .totalOutput {
+          color: $solid-text;
+          white-space: nowrap;
+          letter-spacing: 0.4px;
+          font-family: ProximaNova, sans-serif;
+          line-height: 1.33;
+          font-weight: 300;
+        }
+
         .totalOutput {
           background-color: $highlighted-dark-area-bg;
           border-radius: 1px;
-          color: $solid-text;
-          font-family: ProximaNova, sans-serif;
-          font-weight: 300;
-          letter-spacing: 0.4px;
-          line-height: 1.33;
           padding: 5px 10px;
         }
 
         .value {
-          color: $info-text;
-          font-family: ProximaNova, sans-serif;
-          font-weight: 300;
-          letter-spacing: 0.4px;
-          line-height: 1.33;
           margin-bottom: 5px;
           padding: 0 10px;
 
