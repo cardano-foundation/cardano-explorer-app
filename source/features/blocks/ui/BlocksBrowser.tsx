@@ -13,6 +13,8 @@ import { useNetworkInfoFeature } from '../../network-info/context';
 import { useBlocksFeature } from '../context';
 import BlockList from './BlockList';
 
+// TODO: This actually fetches 1 item more than given
+// because the query includes lower and upper boundaries
 const BLOCKS_PER_PAGE_DEFAULT = 20;
 const BLOCKS_PER_PAGE_MINIMUM = 5;
 const BLOCKS_PER_PAGE_MAXIMUM = 50;
