@@ -84,8 +84,7 @@
         }
 
         .id {
-          color: $primary-highlight-color;
-          cursor: pointer;
+          color: $info-text;
           font-family: ProximaNova, sans-serif;
           font-weight: 600;
           letter-spacing: 0.6px;
@@ -95,6 +94,11 @@
             margin-bottom: 10px;
             word-break: break-word;
           }
+        }
+
+        .linkedId {
+          color: $primary-highlight-color;
+          cursor: pointer;
         }
 
         .input,
