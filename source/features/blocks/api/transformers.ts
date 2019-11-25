@@ -10,14 +10,9 @@ import { IBlockDetailed, IBlockOverview } from '../types';
 export const blockOverviewTransformer = (
   b: BlockOverviewFragment
 ): IBlockOverview => {
-  const blockCreatorPrefix = b.createdBy.substring(0, 11);
-  const createdBy =
-    blockCreatorPrefix === 'SlotLeader-'
-      ? b.createdBy.substring(11, 18)
-      : 'EBB';
   return {
     createdAt: b.createdAt,
-    createdBy,
+    createdBy: formatCreatedBy(b.createdBy),
     epoch: b.epochNo,
     id: b.id,
     number: b.number || 0,
@@ -47,3 +42,16 @@ export const blockDetailsTransformer = (
     .filter(isNotNull)
     .map(transactionDetailsTransformer),
 });
+
+function formatCreatedBy(value: IBlockOverview['createdBy']): string {
+  switch (value.substring(0, 11)) {
+    case 'SlotLeader-':
+      return value.substring(11, 18);
+    case 'Epoch bound':
+      return 'EBB';
+    case 'Genesis slo':
+      return 'Genesis';
+    default:
+      throw new Error('Unexpected IBlockOverview.createdBy value');
+  }
+}
