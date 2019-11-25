@@ -1,4 +1,4 @@
-import { lovelacesToAda } from 'cardano-js/dist/Currency';
+import { Currency } from 'cardano-js';
 import { TransactionDetailsFragment } from '../../../../generated/typings/graphql-schema';
 import { ITransactionDetails } from '../types';
 
@@ -10,16 +10,16 @@ export const transactionDetailsTransformer = (
     id: tx.block?.id,
     number: tx.block?.number,
   },
-  fee: lovelacesToAda(tx.fee),
+  fee: Currency.Util.lovelacesToAda(tx.fee),
   id: tx.id,
   includedAt: new Date(tx.includedAt),
   inputs: tx.inputs.map(i => ({
     ...i,
-    value: lovelacesToAda(i.value),
+    value: Currency.Util.lovelacesToAda(i.value),
   })),
   outputs: tx.outputs.map(i => ({
     ...i,
-    value: lovelacesToAda(i.value),
+    value: Currency.Util.lovelacesToAda(i.value),
   })),
-  totalOutput: lovelacesToAda(tx.totalOutput),
+  totalOutput: Currency.Util.lovelacesToAda(tx.totalOutput),
 });
