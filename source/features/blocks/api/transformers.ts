@@ -15,12 +15,12 @@ export const blockOverviewTransformer = (
     createdBy: formatCreatedBy(b.createdBy),
     epoch: b.epochNo,
     id: b.id,
-    number: b.number || 0,
+    number: b.number || '-',
     output: lovelacesToAda(
       b.transactions_aggregate?.aggregate?.sum?.totalOutput
     ),
     size: b.size,
-    slotWithinEpoch: b.slotWithinEpoch || null,
+    slotWithinEpoch: formatSlotWithinEpoch(b.slotWithinEpoch),
     transactionsCount: b.transactions_aggregate?.aggregate?.count || 0,
   };
 };
@@ -32,11 +32,11 @@ export const blockDetailsTransformer = (
   merkleRoot: b.merkelRootHash || '',
   nextBlock: {
     id: b.nextBlock?.id || '',
-    number: b.nextBlock?.number || null,
+    number: b.nextBlock?.number || '-',
   },
   prevBlock: {
     id: b.previousBlock?.id || '',
-    number: b.previousBlock?.number || null,
+    number: b.previousBlock?.number || '-',
   },
   transactions: b.transactions
     .filter(isNotNull)
@@ -53,5 +53,18 @@ function formatCreatedBy(value: IBlockOverview['createdBy']): string {
       return 'Genesis';
     default:
       throw new Error('Unexpected IBlockOverview.createdBy value');
+  }
+}
+
+function formatSlotWithinEpoch(
+  value: BlockOverviewFragment['slotWithinEpoch']
+): IBlockOverview['slotWithinEpoch'] {
+  switch (value) {
+    case 0:
+      return value;
+    case null || undefined:
+      return '-';
+    default:
+      return value || '-';
   }
 }
