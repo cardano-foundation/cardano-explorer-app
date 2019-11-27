@@ -1,8 +1,8 @@
+import classnames from 'classnames';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
+import CircularProgressPin from '../../public/assets/images/epoch/epoch-filled.svg';
 import styles from './CircularProgress.scss';
-
-const CircularProgressPin = require('../../public/assets/images/epoch/epoch-filled.svg');
 
 export enum CircularProgressSize {
   SMALL = 'small',
@@ -22,21 +22,21 @@ const CircularProgress = (props: ICircularProgressProps) => {
   const strokeWidth = size === CircularProgressSize.SMALL ? 2 : 3;
   const percentageDegree = 3.6 * Math.min(percentage, 100);
   const rotateDegree = percentageDegree + 57.99;
-  let percentageCircleStyle = null;
+  let percentageCircleStyle;
   if (percentage <= 50) {
     percentageCircleStyle = {
-      backgroundImage: `linear-gradient(238deg, transparent 50%, #404250 50%), linear-gradient(${rotateDegree}deg, #eb2256 50%, #404250 50%)`,
+      backgroundImage: `linear-gradient(238deg, transparent 50%, #404250 50%), linear-gradient(${rotateDegree}deg, var(--primary-highlight-color) 50%, #404250 50%)`,
     };
   } else {
     percentageCircleStyle = {
-      backgroundImage: `linear-gradient(238deg, #1fc1c3 50%, transparent 50%), linear-gradient(${rotateDegree}deg, #eb2256 50%, #404250 50%)`,
+      backgroundImage: `linear-gradient(238deg, var(--primary-highlight-color) 50%, transparent 50%), linear-gradient(${rotateDegree}deg, var(--primary-highlight-color) 50%, #404250 50%)`,
     };
   }
 
   return (
     <div className={styles.circularProgressContainer}>
       <div
-        className={styles.outsideCircle}
+        className={classnames([styles.outsideCircle])}
         style={{ width: sqSize, height: sqSize, ...percentageCircleStyle }}
       >
         <div

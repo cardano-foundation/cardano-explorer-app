@@ -2,7 +2,7 @@
   position: relative;
 
   .line {
-    background-color: $secondary-highlight-color;
+    background-color: var(--secondary-highlight-color);
     height: 1px;
     opacity: 0.5;
     width: 100%;
