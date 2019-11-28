@@ -49,7 +49,7 @@ const columns = (
   },
   {
     cssClass: 'output',
-    head: 'Output (₳)',
+    head: 'Output (A)',
     key: 'output',
   },
   {
