@@ -24,13 +24,13 @@ if (environment.IS_CLIENT) {
       <Head>
         <title>Byron | Index</title>
       </Head>
-      {!isMobileScreen() && (
-        <div className={styles.headerBackgroundAnimationContainer}>
-          <div className={styles.headerBackgroundAnimation}>
-            <img src="/assets/images/main-header-background.png" />
-          </div>
-        </div>
-      )}
+      {/*{!isMobileScreen() && (*/}
+      {/*  <div className={styles.headerBgContainer}>*/}
+      {/*    <div className={styles.headerBg}>*/}
+      {/*      <img src="/assets/images/main-header-background.png" />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*)}*/}
       <Layout>
         <Header brandType={BrandType.ENLARGED} />
         <div>

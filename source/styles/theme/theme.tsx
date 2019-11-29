@@ -16,6 +16,7 @@ const isIncentivisedTestnet =
   environment.CARDANO.NETWORK === CardanoNetwork.INCENTIVIZED_TESTNET;
 
 interface IGenerateThemeConfig {
+  primaryBg: string;
   primaryHighlightColor: string;
   secondaryHighlightColor: string;
 }
@@ -30,16 +31,23 @@ export const generateTheme = (config: IGenerateThemeConfig) => ({
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0)
     )`,
+  '--primary-bg': config.primaryBg,
   '--primary-highlight-color': config.primaryHighlightColor,
   '--secondary-highlight-color': config.secondaryHighlightColor,
 });
 
+const commonThemeProps = {
+  primaryBg: '#121326',
+};
+
 export const incentivizedTestnetTheme = generateTheme({
+  ...commonThemeProps,
   primaryHighlightColor: '#eb2256',
   secondaryHighlightColor: '#f69ab2',
 });
 
 export const mainnetTheme = generateTheme({
+  ...commonThemeProps,
   primaryHighlightColor: '#1fc1c3',
   secondaryHighlightColor: '#709cf0',
 });
