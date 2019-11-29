@@ -28,13 +28,7 @@ export const LatestBlocks = () => {
               store.isLoadingLatestBlocksFirstTime ||
               store.latestBlocks.length < 10
             }
-            onClick={() =>
-              router.push(
-                `/browse-blocks?lower=${
-                  latestBlocks[latestBlocks.length - 1].number
-                }&upper=${latestBlocks[0].number}`
-              )
-            }
+            onClick={() => router.push('/browse-blocks')}
           >
             <BlockList
               isLoading={store.isLoadingLatestBlocksFirstTime}

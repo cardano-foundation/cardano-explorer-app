@@ -1,7 +1,8 @@
-import { Util } from 'cardano-js';
+import { Address } from 'cardano-js';
+import { AddressGroup } from 'cardano-js/dist/Address/AddressGroup';
 import { ChainSettings } from 'cardano-js/dist/ChainSettings';
 import React from 'react';
-import { BrandType, CardanoNetwork } from '../../../constants';
+import { BrandType, CardanoEra, CardanoNetwork } from '../../../constants';
 import { environment } from '../../../environment';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
@@ -19,7 +20,13 @@ export const SearchBar = (props: ISearchBarProps) => {
       environment.CARDANO.NETWORK === CardanoNetwork.MAINNET
         ? ChainSettings.mainnet
         : ChainSettings.testnet;
-    if (Util.isAddress(query, chainSettings)) {
+    // Assuming the AddressGroup.jormungandr is the format for Shelley addresses
+    // Will update when final decision is made.
+    const addressGroup =
+      environment.CARDANO.ERA === CardanoEra.BYRON
+        ? AddressGroup.byron
+        : AddressGroup.jormungandr;
+    if (Address.Util.isAddress(query, chainSettings, addressGroup)) {
       search.actions.addressSearchRequested.trigger({
         address: query,
       });

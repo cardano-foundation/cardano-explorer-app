@@ -25,10 +25,8 @@ const BlockSummary = (props: BlockSummaryProps) => {
       props.navigation?.goToBlockDetailsPage.trigger({ id });
     }
   };
-  const confirmations =
-    props.number && props.networkBlockHeight
-      ? props.networkBlockHeight - props.number + 1
-      : 0;
+  const effectiveNumber = props.number !== '-' ? props.number : 0;
+  const confirmations = props.networkBlockHeight - effectiveNumber + 1;
   return (
     <div className={styles.blockSummaryContainer}>
       <div className={styles.header}>

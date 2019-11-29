@@ -4,52 +4,39 @@ import React, { FC } from 'react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import { useNavigationFeatureOptionally } from '../../navigation';
+import { IBlockOverview } from '../types';
 import styles from './BlockList.scss';
-
-export interface IBlockListRowProps {
-  number: number | null;
-  createdAt: Date;
-  createdBy: string;
-  id: string;
-  epoch: number;
-  output: number;
-  size: number;
-  slotWithinEpoch: number | null;
-  transactionsCount: number;
-}
 
 export interface IBlockListProps {
   isLoading: boolean;
-  items: Array<IBlockListRowProps>;
+  items: Array<IBlockOverview>;
   title: string;
 }
 
 interface IColumnsProps {
-  onEpochNumberClicked: (epochNo: IBlockListRowProps['epoch']) => void;
-  onBlockNumberClicked: (id: IBlockListRowProps['id']) => void;
+  onEpochNumberClicked: (epochNo: IBlockOverview['epoch']) => void;
+  onBlockNumberClicked: (id: IBlockOverview['id']) => void;
 }
 
 const columns = (
   props: IColumnsProps
-): Array<IColumnDefinition<IBlockListRowProps>> => [
+): Array<IColumnDefinition<IBlockOverview>> => [
   {
-    cellOnClick: (row: IBlockListRowProps) =>
+    cellOnClick: (row: IBlockOverview) =>
       props.onEpochNumberClicked?.(row.epoch),
-    cellValue: (row: IBlockListRowProps) =>
-      `${row.epoch} / ${row.slotWithinEpoch}`,
+    cellValue: (row: IBlockOverview) => `${row.epoch} / ${row.slotWithinEpoch}`,
     cssClass: 'epoch',
     head: 'Epoch / Slot',
     key: 'epochsSlots',
   },
   {
-    cellOnClick: (row: IBlockListRowProps) =>
-      props.onBlockNumberClicked?.(row.id),
+    cellOnClick: (row: IBlockOverview) => props.onBlockNumberClicked?.(row.id),
     cssClass: 'blocksSlots',
     head: 'Block',
     key: 'number',
   },
   {
-    cellValue: (row: IBlockListRowProps) =>
+    cellValue: (row: IBlockOverview) =>
       moment(row.createdAt).format('YYYY/MM/DD HH:mm:ss'),
     cssClass: 'createdAt',
     head: 'Created At',

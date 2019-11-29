@@ -13,9 +13,11 @@ import { useNetworkInfoFeature } from '../../network-info/context';
 import { useBlocksFeature } from '../context';
 import BlockList from './BlockList';
 
-const BLOCKS_PER_PAGE_DEFAULT = 10;
+// TODO: This actually fetches 1 item more than given
+// because the query includes lower and upper boundaries
+const BLOCKS_PER_PAGE_DEFAULT = 20;
 const BLOCKS_PER_PAGE_MINIMUM = 5;
-const BLOCKS_PER_PAGE_MAXIMUM = 30;
+const BLOCKS_PER_PAGE_MAXIMUM = 50;
 
 const createBrowsePath = ({ lower, upper }: IBrowseInRangeBounds) =>
   `/browse-blocks?lower=${lower}&upper=${upper}`;
@@ -43,9 +45,6 @@ const BlocksBrowser = () => {
             onReadyToBrowse={params => {
               blocks.actions.browseBlocks.trigger(params.bounds);
               setBrowserParams(params);
-            }}
-            onQueryParamsUpdateRequired={bounds => {
-              router.push(createBrowsePath(bounds));
             }}
             perPageDefault={BLOCKS_PER_PAGE_DEFAULT}
             perPageMinimum={BLOCKS_PER_PAGE_MINIMUM}

@@ -6,10 +6,10 @@ export interface IBlockOverview {
   createdBy: string;
   epoch: IEpochOverview['number'];
   id: string;
-  number: number | null;
+  number: number | '-';
   output: number;
   size: number;
-  slotWithinEpoch: number | null;
+  slotWithinEpoch: number | '-';
   transactionsCount: number;
 }
 

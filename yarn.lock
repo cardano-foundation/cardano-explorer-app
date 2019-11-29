@@ -4797,10 +4797,10 @@ capture-stack-trace@^1.0.0:
   resolved "https://registry.yarnpkg.com/capture-stack-trace/-/capture-stack-trace-1.0.1.tgz#a6c0bbe1f38f3aa0b92238ecb6ff42c344d4135d"
   integrity sha512-mYQLZnx5Qt1JgB1WEiMCf2647plpGeQ2NMR/5L0HNZzGQo4fuSPnK+wjfPnKZV0aiJDgzmWqqkV/g7JD+DW0qw==
 
-cardano-js@0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/cardano-js/-/cardano-js-0.2.2.tgz#1e9c0749527a68d797aa211f6daefba0354ef63f"
-  integrity sha512-xmeeHHbZk5uqdygOh03cDBJjjnXhIRtRZ65i3MESVbaGp+8K1AtizGqKK1izjD4ktMK2Tefd1utrzHgXxt9WzA==
+cardano-js@0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/cardano-js/-/cardano-js-0.3.0.tgz#8e3bf5f2a018b1c48719b89ee6540aae2979438f"
+  integrity sha512-XRNZSJBZp3mSIijD/X+BTwI4DcPLia5RAtgbuHfGuurcv5B+Ny6to1FWWQSum6by5i8dTNTNkvPiFZwRsp2V+A==
   dependencies:
     bech32 "^1.1.3"
     bignumber.js "^9.0.0"
