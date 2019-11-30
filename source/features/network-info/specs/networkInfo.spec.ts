@@ -31,7 +31,7 @@ describe('Network information', () => {
       expect(networkInfo.store.blockHeight).toBe(70205);
       expect(networkInfo.store.currentEpoch).toBe(3);
       expect(networkInfo.store.lastBlockTime).toStrictEqual(
-        new Date('2017-10-09T16:54:31.000Z')
+        new Date('2017-10-10T03:54:31')
       );
     });
   });
