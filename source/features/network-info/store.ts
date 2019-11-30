@@ -2,7 +2,6 @@ import { action, computed, observable, runInAction } from 'mobx';
 import { environment } from '../../environment';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
-import { isNotNull } from '../../lib/types';
 import { NetworkInfoApi } from './api';
 import { NetworkInfoActions } from './index';
 
