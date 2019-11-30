@@ -50,7 +50,6 @@ pipeline {
           if (env.BRANCH_NAME == 'develop') {
             sh "yarn deploy:byron:staging"
             sh "yarn deploy:byron:testnet"
-            sh "yarn deploy:byron:incentivized-testnet"
           }
         }
       }
