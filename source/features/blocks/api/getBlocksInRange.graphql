@@ -5,7 +5,7 @@ query getBlocksInRange(
   $upper: Int!
 ) {
   blocks(
-    order_by: { number: desc }
+    order_by: { number: desc_nulls_last }
     where: {
       number: {
         _gte: $lower
