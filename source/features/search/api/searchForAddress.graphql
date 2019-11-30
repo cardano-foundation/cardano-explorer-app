@@ -18,11 +18,19 @@ query searchForAddress(
     }
     transactions_aggregate (
         where: {
-            outputs: {
-                address: {
-                    _eq: $address
+            _or: [{
+                inputs: {
+                    address: {
+                        _eq: $address
+                    }
                 }
-            }
+            }, {
+                outputs: {
+                    address: {
+                        _eq: $address
+                    }
+                }
+            }]
         }
     ) {
         aggregate {
