@@ -6,7 +6,7 @@ query getLatestBlocks(
   blocks(
     limit: $limit,
     order_by: {
-      number: desc
+      number: desc_nulls_last
     },
     where: {
       number: {

@@ -6,7 +6,7 @@ export const transactionDetailsTransformer = (
   tx: TransactionDetailsFragment
 ): ITransactionDetails => ({
   block: {
-    epoch: tx.block?.epoch?.number,
+    epoch: tx.block?.epochNo || '-',
     id: tx.block?.id,
     number: tx.block?.number,
   },

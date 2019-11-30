@@ -5,6 +5,7 @@ fragment EpochDetails on Epoch {
   ...EpochOverview
   blocks(
     limit: 20
+    order_by: { number: desc_nulls_last }
   ) {
     ...BlockOverview
   }

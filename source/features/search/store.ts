@@ -181,16 +181,9 @@ export class SearchStore extends Store {
     });
     if (result) {
       const { data } = result;
-      if (
-        isNotNull(result.data) &&
-        (data.transactions_aggregate.aggregate?.count !== 0 ||
-          data.utxos_aggregate.aggregate?.sum?.value !== null)
-      ) {
+      if (isNotNull(data)) {
         runInAction(() => {
-          this.addressSearchResult = addressDetailTransformer(
-            address,
-            result.data
-          );
+          this.addressSearchResult = addressDetailTransformer(address, data);
         });
       }
     }

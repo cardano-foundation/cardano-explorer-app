@@ -25,7 +25,7 @@ const blockSummary = {
     number: 2,
   },
   number: 11044,
-  output: 13130,
+  output: '13130',
   prevBlock: {
     id: '8b09535f8b6109cbdd6ab4d036ec0a43426be2e4d799c46652f291fa6fa9987f',
     number: 11043,
@@ -35,7 +35,7 @@ const blockSummary = {
   time: 1470006392000,
   title: 'Block Summary',
   transactions,
-  transactionsCount: 0,
+  transactionsCount: '0',
 };
 
 const blockCreation = [

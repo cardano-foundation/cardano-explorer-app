@@ -16,7 +16,7 @@ const BlockSummary = (props: BlockSummaryProps) => {
   const onEpochNumberClick = (
     epoch: ITransactionDetails['block']['epoch']
   ) => () => {
-    if (epoch) {
+    if (epoch && epoch !== '-') {
       props.navigation?.goToEpochDetailsPage.trigger({ number: epoch });
     }
   };
@@ -76,7 +76,9 @@ const BlockSummary = (props: BlockSummaryProps) => {
             <div className={styles.infoLabel}>Previous block</div>
             <div className={styles.infoValue}>
               <span onClick={onBlockIdClick(props.prevBlock.id)}>
-                {props.prevBlock.number ?? props.prevBlock.id}
+                {props.prevBlock.number !== '-'
+                  ? props.prevBlock.number
+                  : props.prevBlock.id}
               </span>
             </div>
           </div>
@@ -84,7 +86,9 @@ const BlockSummary = (props: BlockSummaryProps) => {
             <div className={styles.infoLabel}>Next block</div>
             <div className={styles.infoValue}>
               <span onClick={onBlockIdClick(props.nextBlock.id)}>
-                {props.nextBlock.number ?? props.nextBlock.id}
+                {props.nextBlock.number !== '-'
+                  ? props.nextBlock.number
+                  : props.nextBlock.id}
               </span>
             </div>
           </div>

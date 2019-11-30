@@ -7,7 +7,7 @@ export interface IAddressSummaryProps {
   address: string;
   finalBalance: string;
   title: string;
-  transactionsCount: number;
+  transactionsCount: string;
 }
 
 const AddressSummary = (props: IAddressSummaryProps) => (

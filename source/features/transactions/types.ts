@@ -15,7 +15,7 @@ export interface ITransactionOutput extends ICoin {
 
 export interface ITransactionDetails {
   block: {
-    epoch?: number;
+    epoch?: number | '-';
     id: string;
     number?: number | null;
     slot?: number | null;

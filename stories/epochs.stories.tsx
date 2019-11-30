@@ -6,7 +6,6 @@ import EpochSummary from '../source/features/epochs/ui/EpochSummary';
 import StakeDistribution from '../source/features/epochs/ui/StakeDistribution';
 import { CssVariablesProvider } from '../source/styles/theme/CssVariablesProvider';
 import {
-  cardanoExplorerTheme,
   incentivizedTestnetTheme,
   mainnetTheme,
 } from '../source/styles/theme/theme';

@@ -1,9 +1,9 @@
+import { Currency } from 'cardano-js';
 import {
   EpochDetailsFragment,
   EpochOverviewFragment,
 } from '../../../../generated/typings/graphql-schema';
 import { isNotNull } from '../../../lib/types';
-import { lovelacesToAda } from '../../../lib/unit-converters';
 import { blockOverviewTransformer } from '../../blocks/api/transformers';
 import { NetworkInfoStore } from '../../network-info/store';
 import { IEpochDetails, IEpochOverview } from '../types';
@@ -13,15 +13,14 @@ export const epochOverviewTransformer = (
   n: NetworkInfoStore
 ): IEpochOverview => {
   return {
-    blocksCount: e.blocks_aggregate?.aggregate?.count || 0,
+    ...e,
+    blocksCount: e.blocks_aggregate?.aggregate?.count || '0',
     lastBlockAt: new Date(e.lastBlockTime),
-    number: e.number,
-    output: lovelacesToAda(parseInt(e.output, 10)).toString() || '',
+    output: Currency.Util.lovelacesToAda(e.output),
     percentage:
       e.number === n.currentEpoch ? n.currentEpochPercentageComplete : 100,
     slotsCount: n.slotsPerEpoch,
     startedAt: new Date(e.startedAt),
-    transactionsCount: e.transactionsCount,
   };
 };
 

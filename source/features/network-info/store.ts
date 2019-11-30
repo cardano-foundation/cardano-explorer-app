@@ -2,7 +2,6 @@ import { action, computed, observable, runInAction } from 'mobx';
 import { environment } from '../../environment';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
-import { isNotNull } from '../../lib/types';
 import { NetworkInfoApi } from './api';
 import { NetworkInfoActions } from './index';
 
@@ -72,15 +71,13 @@ export class NetworkInfoStore extends Store {
     const result = await this.networkInfoApi.fetchDynamic.execute({});
     if (result) {
       const { cardano } = result.data;
-      if (isNotNull(cardano)) {
-        const { currentEpoch } = cardano;
-        runInAction(() => {
-          this.blockHeight = cardano.blockHeight;
-          this.currentEpoch = currentEpoch.number;
-          this.currentSlot = currentEpoch.blocks[0].slotWithinEpoch || 0;
-          this.lastBlockTime = new Date(currentEpoch.lastBlockTime);
-        });
-      }
+      const { currentEpoch } = cardano;
+      runInAction(() => {
+        this.blockHeight = cardano.blockHeight;
+        this.currentEpoch = currentEpoch.number;
+        this.currentSlot = currentEpoch.blocks[0].slotWithinEpoch || 0;
+        this.lastBlockTime = new Date(currentEpoch.lastBlockTime);
+      });
     }
   };
 
@@ -88,13 +85,11 @@ export class NetworkInfoStore extends Store {
     const result = await this.networkInfoApi.fetchStatic.execute({});
     if (result) {
       const { cardano } = result.data;
-      if (isNotNull(cardano)) {
-        runInAction(() => {
-          this.protocolConst = cardano.protocolConst;
-          this.startTime = new Date(cardano.startTime);
-          this.slotDuration = cardano.slotDuration;
-        });
-      }
+      runInAction(() => {
+        this.protocolConst = cardano.protocolConst;
+        this.startTime = new Date(cardano.startTime);
+        this.slotDuration = cardano.slotDuration;
+      });
     }
   };
 }

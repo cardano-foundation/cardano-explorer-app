@@ -48,10 +48,10 @@ describe('Epochs feature', () => {
       expect(epochs.store.isLoadingLatestEpochsFirstTime).toBe(true);
       // Access the observable result provided by the store
       await waitForExpect(() => {
-        expect(epochs.store.latestEpochs.length).toBe(2);
-        expect(epochs.store.latestEpochs[0].number).toBe(1);
-        expect(epochs.store.latestEpochs[0].blocksCount).toBe(9484);
-        expect(epochs.store.latestEpochs[1].number).toBe(0);
+        expect(epochs.store.latestEpochs.length).toBe(4);
+        expect(epochs.store.latestEpochs[0].number).toBe(3);
+        expect(epochs.store.latestEpochs[0].blocksCount).toBe('5432');
+        expect(epochs.store.latestEpochs[1].number).toBe(2);
       });
       expect(epochs.store.isLoadingLatestEpochsFirstTime).toBe(false);
     });

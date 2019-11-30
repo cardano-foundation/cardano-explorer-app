@@ -7,22 +7,12 @@ import CircularProgress, {
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import { useNavigationFeatureOptionally } from '../../navigation';
+import { IEpochOverview } from '../types';
 import styles from './EpochList.scss';
-
-export interface IEpochListRowProps {
-  blocksCount: number;
-  lastBlockAt?: Date;
-  number: number;
-  output: string;
-  percentage?: number;
-  slotsCount: number;
-  startedAt: Date;
-  transactionsCount: string;
-}
 
 export interface IEpochListProps {
   title: string;
-  items: Array<IEpochListRowProps>;
+  items: Array<IEpochOverview>;
   isLoading: boolean;
 }
 
@@ -32,9 +22,9 @@ interface IColumnsProps {
 
 const columns = (
   props: IColumnsProps
-): Array<IColumnDefinition<IEpochListRowProps>> => [
+): Array<IColumnDefinition<IEpochOverview>> => [
   {
-    cellOnClick: (row: IEpochListRowProps) =>
+    cellOnClick: (row: IEpochOverview) =>
       props.onEpochNumberClicked?.(row.number),
     cellRender: (value: any) => {
       if (value.lastBlockAt) {
@@ -50,7 +40,7 @@ const columns = (
         />
       );
     },
-    cellValue: (row: IEpochListRowProps) => ({
+    cellValue: (row: IEpochOverview) => ({
       epoch: row.number,
       lastBlockAt: row.lastBlockAt,
       percentage: row.percentage,
@@ -60,14 +50,14 @@ const columns = (
     key: 'number',
   },
   {
-    cellValue: (row: IEpochListRowProps) =>
+    cellValue: (row: IEpochOverview) =>
       `${row.blocksCount} / ${row.slotsCount}`,
     cssClass: 'blocksSlots',
     head: 'Blocks / Slots',
     key: 'blocksSlots',
   },
   {
-    cellValue: (row: IEpochListRowProps) =>
+    cellValue: (row: IEpochOverview) =>
       moment(row.startedAt).format('YYYY/MM/DD HH:mm:ss'),
     cssClass: 'startedAt',
     head: 'Started At',
@@ -76,7 +66,7 @@ const columns = (
   {
     cellRender: (value: any) =>
       moment(value.lastBlockAt).format('YYYY/MM/DD HH:mm:ss'),
-    cellValue: (row: IEpochListRowProps) => ({
+    cellValue: (row: IEpochOverview) => ({
       lastBlockAt: row.lastBlockAt,
     }),
     cssClass: 'lastBlockAt',
