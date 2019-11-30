@@ -9,6 +9,7 @@ import TransactionSummary from '../../transactions/components/TransactionSummary
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
 import NoSearchResult from './NoSearchResult';
+import styles from './TransactionSearchResult.scss';
 
 export const TransactionSearchResult = () => {
   const search = useSearchFeature();
@@ -43,11 +44,14 @@ export const TransactionSearchResult = () => {
                 title="Summary"
                 {...transactionSearchResult}
               />
-              <TransactionInfo
-                navigation={navigation?.actions}
-                title="Transaction"
-                {...transactionSearchResult}
-              />
+              <div className={styles.transaction}>
+                <TransactionInfo
+                  dontLinkToTransaction
+                  navigation={navigation?.actions}
+                  title="Transaction"
+                  {...transactionSearchResult}
+                />
+              </div>
             </>
           );
         } else {

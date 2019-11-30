@@ -95,11 +95,6 @@ module.exports = withPlugins(
         ],
       });
 
-      config.module.rules.push({
-        test: /\.svg$/,
-        use: ['@svgr/webpack']
-      });
-
       // Includes the global SCSS variables
       config.module.rules.forEach(rule => {
         if (rule.test.source.includes("scss")) {

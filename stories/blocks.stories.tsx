@@ -20,7 +20,10 @@ const blockSummary = {
   id: '502017e88ff3b7389a0c7e6f4a6c808d171938467c9adbdc059250ab4a8fee72',
   merkleRoot:
     '0e5751c026e543b2e8ab2eb06099daa1d1e5df47778f7787faab45cdf12fe3a8',
-  nextBlock: '2111edea30970af11172bd8e2f05c7406cba8f20d9bb78c4fa62ba06881372e7',
+  nextBlock: {
+    id: '2111edea30970af11172bd8e2f05c7406cba8f20d9bb78c4fa62ba06881372e7',
+    number: 2,
+  },
   number: 11044,
   output: 13130,
   prevBlock: {

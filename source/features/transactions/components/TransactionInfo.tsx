@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import { observer } from 'mobx-react-lite';
 import moment from 'moment';
 import React from 'react';
@@ -13,6 +14,7 @@ export interface ITransactionInfoProps extends ITransactionDetails {
   highlightAddress?: string;
   navigation?: NavigationActions;
   title?: string;
+  dontLinkToTransaction?: boolean;
 }
 
 const TransactionInfo = (props: ITransactionInfoProps) => {
@@ -45,8 +47,19 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
       <div className={styles.transactionInfoRowContainer}>
         <div className={styles.addresses}>
           <div className={styles.infoRow}>
-            <div className={styles.id}>
-              <span onClick={() => onIdClick(props.id)}>{props.id}</span>
+            <div
+              className={classnames([
+                styles.id,
+                props.dontLinkToTransaction ? null : styles.linkedId,
+              ])}
+            >
+              <span
+                onClick={() =>
+                  !props.dontLinkToTransaction && onIdClick(props.id)
+                }
+              >
+                {props.id}
+              </span>
             </div>
             <div className={styles.includedAt}>{includedAt}</div>
           </div>

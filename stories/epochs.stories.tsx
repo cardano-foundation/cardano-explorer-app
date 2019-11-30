@@ -4,6 +4,12 @@ import { latestEpochsExample } from '../source/features/epochs/specs/helpers/lat
 import EpochList from '../source/features/epochs/ui/EpochList';
 import EpochSummary from '../source/features/epochs/ui/EpochSummary';
 import StakeDistribution from '../source/features/epochs/ui/StakeDistribution';
+import { CssVariablesProvider } from '../source/styles/theme/CssVariablesProvider';
+import {
+  cardanoExplorerTheme,
+  incentivizedTestnetTheme,
+  mainnetTheme,
+} from '../source/styles/theme/theme';
 import { PaddingDecorator } from './support/PaddingDecorator';
 
 const epochs = latestEpochsExample;
@@ -46,24 +52,39 @@ storiesOf('Epochs', module)
   .add('Epoch List', () => (
     <EpochList title="Epochs" items={epochs} isLoading={false} />
   ))
-  .add('Epoch Summary - 40% Complete', () => (
+  .add('Stake Distribution', () => (
+    <StakeDistribution title="Stake Distribution" items={stakeDistribution} />
+  ));
+
+storiesOf('Epochs|Summary', module)
+  .addDecorator(story => (
+    <CssVariablesProvider variables={incentivizedTestnetTheme}>
+      <PaddingDecorator>{story()}</PaddingDecorator>
+    </CssVariablesProvider>
+  ))
+  .add('40% Complete', () => (
     <EpochSummary
       title="Epoch"
-      epoch={{ ...epochs[0], ...{ percentage: 43 } }}
+      epoch={{ ...epochs[0], ...{ percentage: 40 } }}
     />
   ))
-  .add('Epoch Summary - 88% Complete', () => (
+  .add('88% Complete', () => (
     <EpochSummary
       title="Epoch"
       epoch={{ ...epochs[0], ...{ percentage: 88 } }}
     />
   ))
-  .add('Epoch Summary - Complete', () => (
+  .add('Complete', () => (
     <EpochSummary
       title="Epoch"
       epoch={{ ...epochs[0], ...{ percentage: 100 } }}
     />
   ))
-  .add('Stake Distribution', () => (
-    <StakeDistribution title="Stake Distribution" items={stakeDistribution} />
+  .add('Mainnet 40%', () => (
+    <CssVariablesProvider variables={mainnetTheme}>
+      <EpochSummary
+        title="Epoch"
+        epoch={{ ...epochs[0], ...{ percentage: 40 } }}
+      />
+    </CssVariablesProvider>
   ));

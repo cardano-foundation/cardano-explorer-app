@@ -6,7 +6,9 @@ import { NavigationFeatureProvider } from '../features/navigation/ui/NavigationF
 import { NetworkInfoFeatureProvider } from '../features/network-info/ui/NetworkInfoFeatureProvider';
 import { SearchFeatureProvider } from '../features/search/ui/SearchFeatureProvider';
 import GraphQLProvider from '../lib/graphql/GraphQLProvider';
+import { CssVariablesProvider } from '../styles/theme/CssVariablesProvider';
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
+import { cardanoExplorerTheme } from '../styles/theme/theme';
 
 let app = App;
 if (environment.IS_CLIENT) {
@@ -16,15 +18,17 @@ if (environment.IS_CLIENT) {
       // Provide global app features that must survive page navigation:
       return (
         <GraphQLProvider>
-          <PolymorphThemeProvider>
-            <NetworkInfoFeatureProvider>
-              <NavigationFeatureProvider>
-                <SearchFeatureProvider>
-                  <Component {...pageProps} />
-                </SearchFeatureProvider>
-              </NavigationFeatureProvider>
-            </NetworkInfoFeatureProvider>
-          </PolymorphThemeProvider>
+          <CssVariablesProvider variables={cardanoExplorerTheme}>
+            <PolymorphThemeProvider>
+              <NetworkInfoFeatureProvider>
+                <NavigationFeatureProvider>
+                  <SearchFeatureProvider>
+                    <Component {...pageProps} />
+                  </SearchFeatureProvider>
+                </NavigationFeatureProvider>
+              </NetworkInfoFeatureProvider>
+            </PolymorphThemeProvider>
+          </CssVariablesProvider>
         </GraphQLProvider>
       );
     }
