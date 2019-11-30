@@ -22,5 +22,5 @@ export const exampleAddressData = {
       totalOutput: '538861000000',
     },
   ],
-  transactionsCount: '1',
+  transactionsCount: '2',
 };
