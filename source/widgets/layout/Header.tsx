@@ -5,9 +5,8 @@ import React from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
 import { SearchBar } from '../../features/search/ui/SearchBar';
+import CardanoLogo from '../../public/assets/images/header/cardano-logo.svg';
 import styles from './Header.scss';
-
-const CardanoLogo = require('../../public/assets/images/header/cardano-logo.svg');
 
 export interface IHeaderProps {
   brandType?: BrandType;

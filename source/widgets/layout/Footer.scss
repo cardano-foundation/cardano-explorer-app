@@ -109,12 +109,6 @@
 
         a {
           text-decoration: none;
-
-          span {
-            color: $footer-text-color;
-            font-family: ProximaNova, sans-serif;
-            font-weight: 600;
-          }
         }
       }
 
@@ -132,6 +126,27 @@
 
       @media (max-width: 768px) {
         max-width: 100%;
+      }
+    }
+
+    a {
+      @include footerText($solid-text, ProximaNova, 10px, 300);
+      opacity: 0.3;
+      letter-spacing: 0.5px;
+      line-height: 1.8;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &.highlightedLink {
+        color: $footer-text-color;
+        font-weight: 600;
+        opacity: 1;
+        &:hover {
+          color: $primary-highlight-color-hover;
+        }
       }
     }
 
@@ -155,29 +170,6 @@
           list-style: none;
           padding: 0;
           text-align: left;
-
-          li {
-            a {
-              @include footerText($solid-text, ProximaNova, 10px, 300);
-              opacity: 0.3;
-              letter-spacing: 0.5px;
-              line-height: 1.8;
-              text-decoration: none;
-
-              &:hover {
-                opacity: 1;
-              }
-
-              &.emailLink {
-                color: $footer-text-color;
-                font-weight: 600;
-                opacity: 1;
-                &:hover {
-                  color: $primary-highlight-color-hover;
-                }
-              }
-            }
-          }
         }
 
         @media (max-width: 992px) {

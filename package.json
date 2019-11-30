@@ -9,6 +9,7 @@
     "dev:mainnet": "CARDANO_NETWORK=mainnet GRAPHQL_API_PROTOCOL=https GRAPHQL_API_HOST=cardano-graphql-byron.daedalus-operations.com GRAPHQL_PORT=443 yarn dev",
     "build": "next build source",
     "build:check": "yarn prettier:check && yarn lint && yarn test && yarn build",
+    "build:clean": "rm -rf ./build",
     "test": "jest",
     "e2e": "cucumber-js --require-module ts-node/register --require 'features/steps/**/*.ts' -f node_modules/cucumber-pretty --format-options '{\"snippetInterface\": \"async-await\"}'",
     "e2e:watch": "nodemon --watch source --watch features -e js,ts,feature --exec yarn test --tags @watch",
@@ -37,7 +38,6 @@
     }
   },
   "dependencies": {
-    "@svgr/webpack": "4.3.2",
     "@types/react-addons-css-transition-group": "^15.0.5",
     "apollo-cache-inmemory": "1.5.1",
     "apollo-client": "2.5.1",

@@ -6,7 +6,7 @@
 
     .spinnerCircle {
       animation: rotate 1s linear infinite;
-      background-image: $spinner-circle-background-color;
+      background-image: var(--epoch-progress-spinner-color);
       border-radius: 50%;
       left: 0;
       object-fit: contain;
@@ -28,7 +28,7 @@
     }
 
     .circularProgressPinCircle {
-      background-color: $primary-highlight-color;
+      background-color: var(--primary-highlight-color);
       border-radius: 50%;
       height: 6px;
       left: 5px;
@@ -44,6 +44,9 @@
       position: absolute;
       top: 0.5px;
       width: 21.4px;
+      :global(.outer-ring) {
+        fill: var(--primary-highlight-color);
+      }
     }
   }
 }

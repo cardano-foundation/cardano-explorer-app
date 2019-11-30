@@ -8,6 +8,7 @@ import { useNetworkInfoFeature } from '../../network-info/context';
 import TransactionList from '../../transactions/components/TransactionList';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
+import styles from './BlockSearchResult.scss';
 import NoSearchResult from './NoSearchResult';
 
 export const BlockSearchResult = () => {
@@ -42,12 +43,14 @@ export const BlockSearchResult = () => {
                 title="Block Summary"
                 {...blockSearchResult}
               />
-              {blockSearchResult.transactionsCount > 0 && (
-                <TransactionList
-                  items={blockSearchResult.transactions}
-                  title="Transactions"
-                />
-              )}
+              <div className={styles.transactions}>
+                {blockSearchResult.transactionsCount > 0 && (
+                  <TransactionList
+                    items={blockSearchResult.transactions}
+                    title="Transactions"
+                  />
+                )}
+              </div>
             </>
           );
         } else {
