@@ -1,6 +1,6 @@
 export const exampleAddressData = {
   address: 'Ae2tdPwUPEZBZTsRj7nGvvWQDTkqD9KLpCPpuZvjA1roL7KLDDVgkPU5S8j',
-  finalBalance: '385506',
+  finalBalance: '0',
   transactions: [
     {
       block: {
@@ -22,5 +22,5 @@ export const exampleAddressData = {
       totalOutput: '538861000000',
     },
   ],
-  transactionsCount: 1,
+  transactionsCount: '1',
 };

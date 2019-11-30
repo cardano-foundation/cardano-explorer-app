@@ -1,7 +1,7 @@
 import { IBlockOverview } from '../blocks/types';
 
 export interface IEpochOverview {
-  blocksCount: number;
+  blocksCount: string;
   number: number;
   lastBlockAt: Date;
   output: string;

@@ -44,7 +44,7 @@ export const BlockSearchResult = () => {
                 {...blockSearchResult}
               />
               <div className={styles.transactions}>
-                {blockSearchResult.transactionsCount > 0 && (
+                {blockSearchResult.transactionsCount !== '0' && (
                   <TransactionList
                     items={blockSearchResult.transactions}
                     title="Transactions"

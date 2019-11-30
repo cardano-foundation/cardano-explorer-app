@@ -1,16 +1,15 @@
-import { IEpochOverview } from '../epochs/types';
 import { ITransactionDetails } from '../transactions/types';
 
 export interface IBlockOverview {
   createdAt: Date;
   createdBy: string;
-  epoch: IEpochOverview['number'];
+  epoch: number | '-';
   id: string;
   number: number | '-';
-  output: number;
+  output: string;
   size: number;
   slotWithinEpoch: number | '-';
-  transactionsCount: number;
+  transactionsCount: string;
 }
 
 export interface IBlockDetailed extends IBlockOverview {

@@ -81,10 +81,13 @@ const BlockList: FC<IBlockListProps> = props => {
             navigation?.actions.goToBlockDetailsPage.trigger({
               id,
             }),
-          onEpochNumberClicked: epochNo =>
-            navigation?.actions.goToEpochDetailsPage.trigger({
-              number: epochNo,
-            }),
+          onEpochNumberClicked: epochNo => {
+            if (epochNo !== '-') {
+              navigation?.actions.goToEpochDetailsPage.trigger({
+                number: epochNo,
+              });
+            }
+          },
         })}
         rows={props.items.map(i => Object.assign({}, i, { key: i.id }))}
         withoutHeaders={!displaysItems && props.isLoading}

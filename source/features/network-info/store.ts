@@ -72,15 +72,13 @@ export class NetworkInfoStore extends Store {
     const result = await this.networkInfoApi.fetchDynamic.execute({});
     if (result) {
       const { cardano } = result.data;
-      if (isNotNull(cardano)) {
-        const { currentEpoch } = cardano;
-        runInAction(() => {
-          this.blockHeight = cardano.blockHeight;
-          this.currentEpoch = currentEpoch.number;
-          this.currentSlot = currentEpoch.blocks[0].slotWithinEpoch || 0;
-          this.lastBlockTime = new Date(currentEpoch.lastBlockTime);
-        });
-      }
+      const { currentEpoch } = cardano;
+      runInAction(() => {
+        this.blockHeight = cardano.blockHeight;
+        this.currentEpoch = currentEpoch.number;
+        this.currentSlot = currentEpoch.blocks[0].slotWithinEpoch || 0;
+        this.lastBlockTime = new Date(currentEpoch.lastBlockTime);
+      });
     }
   };
 
@@ -88,13 +86,11 @@ export class NetworkInfoStore extends Store {
     const result = await this.networkInfoApi.fetchStatic.execute({});
     if (result) {
       const { cardano } = result.data;
-      if (isNotNull(cardano)) {
-        runInAction(() => {
-          this.protocolConst = cardano.protocolConst;
-          this.startTime = new Date(cardano.startTime);
-          this.slotDuration = cardano.slotDuration;
-        });
-      }
+      runInAction(() => {
+        this.protocolConst = cardano.protocolConst;
+        this.startTime = new Date(cardano.startTime);
+        this.slotDuration = cardano.slotDuration;
+      });
     }
   };
 }

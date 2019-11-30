@@ -12,7 +12,7 @@ export interface ITransactionSummaryProps extends ITransactionDetails {
 
 const TransactionSummary = (props: ITransactionSummaryProps) => {
   const onEpochNumberClick = (epoch: ITransactionDetails['block']['epoch']) => {
-    if (!epoch && epoch !== 0) {
+    if ((!epoch && epoch !== 0) || epoch === '-') {
       return;
     }
     props.navigation?.goToEpochDetailsPage.trigger({ number: epoch });

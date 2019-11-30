@@ -1,27 +1,31 @@
+import { Currency } from 'cardano-js';
 import {
   BlockDetailsFragment,
   BlockOverviewFragment,
 } from '../../../../generated/typings/graphql-schema';
 import { isNotNull } from '../../../lib/types';
-import { lovelacesToAda } from '../../../lib/unit-converters';
 import { transactionDetailsTransformer } from '../../transactions/api/transformers';
 import { IBlockDetailed, IBlockOverview } from '../types';
 
 export const blockOverviewTransformer = (
   b: BlockOverviewFragment
 ): IBlockOverview => {
+  let epoch: number | '-';
+  if (!b.epochNo && b.epochNo !== 0) {
+    epoch = '-';
+  } else {
+    epoch = b.epochNo;
+  }
   return {
-    createdAt: b.createdAt,
+    ...b,
     createdBy: formatCreatedBy(b.createdBy),
-    epoch: b.epochNo,
-    id: b.id,
+    epoch,
     number: b.number || '-',
-    output: lovelacesToAda(
-      b.transactions_aggregate?.aggregate?.sum?.totalOutput
+    output: Currency.Util.lovelacesToAda(
+      b.transactions_aggregate?.aggregate?.sum?.totalOutput || '0'
     ),
-    size: b.size,
     slotWithinEpoch: formatSlotWithinEpoch(b.slotWithinEpoch),
-    transactionsCount: b.transactions_aggregate?.aggregate?.count || 0,
+    transactionsCount: b.transactions_aggregate?.aggregate?.count || '0',
   };
 };
 

@@ -1,8 +1,6 @@
 fragment TransactionDetails on Transaction {
   block {
-    epoch {
-      number
-    }
+    epochNo
     id,
     number,
     slotWithinEpoch,
