@@ -30,8 +30,7 @@
     "start-dependencies": "node utils/start_dependencies_env_wrapper.js",
     "stop-dependencies": "docker-compose down",
     "deploy:byron:staging": "node deploy/byron_staging",
-    "deploy:byron:testnet": "node deploy/byron_testnet",
-    "deploy:byron:incentivized-testnet": "node deploy/byron_incentivized_testnet"
+    "deploy:byron:testnet": "node deploy/byron_testnet"
   },
   "husky": {
     "hooks": {
