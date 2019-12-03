@@ -29,7 +29,7 @@
     "storybook:build": "build-storybook -o build/storybook",
     "start-dependencies": "node utils/start_dependencies_env_wrapper.js",
     "stop-dependencies": "docker-compose down",
-    "deploy:byron:staging": "node deploy/byron_staging",
+    "deploy:byron:mainnet": "node deploy/byron_mainnet",
     "deploy:byron:testnet": "node deploy/byron_testnet"
   },
   "husky": {

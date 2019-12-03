@@ -48,7 +48,7 @@ pipeline {
       steps {
         script {
           if (env.BRANCH_NAME == 'develop') {
-            sh "yarn deploy:byron:staging"
+            sh "yarn deploy:byron:mainnet"
             sh "yarn deploy:byron:testnet"
           }
         }

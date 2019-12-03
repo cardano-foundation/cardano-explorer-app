@@ -33,5 +33,5 @@ When code is merged into `develop`, Jenkins pushes builds to S3 buckets for imme
 
 | Era | Network | Data Provider | URL |
 | --- | --- | --- | --- |
-| Bryon | Mainnet | cardano-node-explorer | http://byron-staging-develop-explorer.s3-website-ap-southeast-2.amazonaws.com |
-| Bryon | Testnet | cardano-node-explorer | http://byron-testnet-develop-explorer.s3-website-ap-southeast-2.amazonaws.com |
+| Byron | Mainnet | cardano-node-explorer | http://byron-mainnet-develop-explorer.s3-website-ap-southeast-2.amazonaws.com |
+| Byron | Testnet | cardano-node-explorer | http://byron-testnet-develop-explorer.s3-website-ap-southeast-2.amazonaws.com |
