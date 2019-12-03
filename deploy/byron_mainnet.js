@@ -7,6 +7,6 @@ process.env.GRAPHQL_API_HOST = 'cardano-networks-mainnet-941840574.ap-southeast-
 process.env.GRAPHQL_PORT = '80';
 
 const branch = process.env.BRANCH || 'develop';
-process.env.BUCKET = `byron-staging-${branch}-explorer`;
+process.env.BUCKET = `byron-mainnet-${branch}-explorer`;
 
 deploy();
