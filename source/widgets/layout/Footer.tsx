@@ -22,16 +22,16 @@ export const Footer = observer(() => {
               <p className={styles.iohkText}>IOHK Supported Project</p>
             </div>
             <div className={styles.socialIcons}>
-              <a href="https://twitter.com/cardanostiftung">
+              <a href="https://twitter.com/inputoutputHK">
                 <img src={twitterIcon} className={styles.twitterIcon} />
               </a>
-              <a href="https://www.facebook.com/CardanoFoundation/">
+              <a href="https://www.facebook.com/iohk.io/">
                 <img src={facebookIcon} className={styles.facebookIcon} />
               </a>
-              <a href="https://www.youtube.com/channel/UCbQ9vGfezru1YRI1zDCtTGg">
+              <a href="https://www.youtube.com/channel/UCBJ0p9aCW-W82TwNM-z3V2w">
                 <img src={youtubeIcon} className={styles.youtubeIcon} />
               </a>
-              <a href="#">
+              <a href="https://iohk.io/en/blog">
                 <img src={newsletterIcon} className={styles.newsletterIcon} />
               </a>
             </div>
@@ -54,23 +54,11 @@ export const Footer = observer(() => {
             </h5>
             <div className={styles.cardanoText}>
               Cardano is a software platform ONLY and does not conduct any
-              independent diligence on or substantive review of any blockchain
-              asset, digital currency, cryptocurrency or associated funds. You
-              are fully and solely responsible for evaluating your investments,
-              for determining whether you will exchange blockchain assets based
-              on your own, and for all your decisions as to whether to exchange
-              blockchain assets with Cardano. In many cases, blockchain assets
-              you exchange on the basis of your research may not increase in
-              value, and may decrease in value. Similarly, blockchain assets you
-              exchange on the basis of your research may increase in value after
-              your exchange.
-              <p>
-                Past performance is not indicative of future results. Any
-                investment in blockchain assets involves the risk of loss of
-                part or all of your investment. The value of the blockchain
-                assets you exchange is subject to market and other investment
-                risks.
-              </p>
+              independent diligence on or substantive review of any blockchain ,
+              digital currency, cryptocurrency or associated technology. Your
+              use of this website and software is entirely at your own risk, and
+              this website is provided on an "as is" basis and for reference
+              only.
             </div>
           </div>
           <div className={styles.footerMenusContainer}>
@@ -78,7 +66,9 @@ export const Footer = observer(() => {
               <h5 className={styles.aboutCardanoTitle}>More about Cardano</h5>
               <ul className={styles.aboutCardanoMenu}>
                 <li>
-                  <a href={'#'}>Blockchain Explorer</a>
+                  <a href={'https://shelleyexplorer.cardano.org/'}>
+                    Shelley Explorer
+                  </a>
                 </li>
                 <li>
                   <a href={'https://cardanofoundation.org/'}>
@@ -97,11 +87,8 @@ export const Footer = observer(() => {
                   <a href={'https://whycardano.com/'}>Why Cardano</a>
                 </li>
                 <li>
-                  <a href={'https://daedaluswallet.io/'}>Daedalus Platform</a>
-                </li>
-                <li>
                   <a href={'https://www.cardano.org/en/ouroboros/'}>
-                    Ouroboros algorithm
+                    Ouroboros Algorithm
                   </a>
                 </li>
               </ul>
@@ -112,13 +99,17 @@ export const Footer = observer(() => {
               </h5>
               <ul className={styles.joinTheCommunityMenu}>
                 <li>
-                  <a href={'https://cardanohub.org/'}>Cardano Community</a>
+                  <a href={'https://www.cardano.org/en/home/'}>
+                    Cardano Community
+                  </a>
                 </li>
                 <li>
-                  <a href={'https://chat.cardanohub.org/'}>Cardano Chat</a>
+                  <a href={'https://t.me/CardanoAnnouncements/'}>
+                    Cardano Chat
+                  </a>
                 </li>
                 <li>
-                  <a href={'https://forum.cardanohub.org/'}>Cardano Forum</a>
+                  <a href={'https://forum.cardano.org/'}>Cardano Forum</a>
                 </li>
                 <li>
                   <a href={'https://www.reddit.com/r/cardano/'}>
@@ -137,14 +128,6 @@ export const Footer = observer(() => {
                 <li>
                   <a href={'https://twitter.com/CardanoStiftung'}>
                     Cardano Foundation Twitter
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="mailto:info@cardano.org"
-                    className={styles.highlightedLink}
-                  >
-                    info@cardano.org
                   </a>
                 </li>
               </ul>

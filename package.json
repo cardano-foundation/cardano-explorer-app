@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "dev": "next dev source -p 4000",
-    "dev:mainnet": "CARDANO_NETWORK=mainnet GRAPHQL_API_PROTOCOL=https GRAPHQL_API_HOST=cardano-graphql-byron.daedalus-operations.com GRAPHQL_PORT=443 yarn dev",
+    "dev:mainnet": "CARDANO_NETWORK=mainnet GRAPHQL_API_PROTOCOL=http GRAPHQL_API_HOST=cardano-networks-mainnet-941840574.ap-southeast-2.elb.amazonaws.com GRAPHQL_PORT=80 yarn dev",
     "build": "next build source",
     "build:check": "yarn prettier:check && yarn lint && yarn test && yarn build",
     "build:clean": "rm -rf ./build",
