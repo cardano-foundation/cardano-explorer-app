@@ -7,7 +7,7 @@ module.exports = async function deploy() {
     'CARDANO_NETWORK',
     'GRAPHQL_API_PROTOCOL',
     'GRAPHQL_API_HOST',
-    'GRAPHQL_PORT'
+    'GRAPHQL_API_PORT'
   ];
 
   requiredEnvs.forEach(env => {

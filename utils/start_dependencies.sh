@@ -4,7 +4,7 @@ API_HOST="${API_HOST:-localhost}"
 API_PROTOCOL="${API_PROTOCOL:-http}"
 
 echo "Starting development containers"
-API_PORT=$API_PORT docker-compose up -d
+API_PORT=${API_PORT} docker-compose up -d
 
 echo "Waiting for GraphQL server to be available..."
 until $(curl --output /dev/null --silent --get ${API_PROTOCOL}://${API_HOST}:${API_PORT}); do
