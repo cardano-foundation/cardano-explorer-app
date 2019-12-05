@@ -7,7 +7,7 @@ export const environment = {
     ERA: (process.env.CARDANO_ERA as CardanoEra) || CardanoEra.BYRON,
     GRAPHQL: {
       HTTP_URL: `${process.env.GRAPHQL_API_PROTOCOL || 'http'}://${process.env
-        .GRAPHQL_API_HOST || 'localhost'}:${process.env.GRAPHQL_PORT ||
+        .GRAPHQL_API_HOST || 'localhost'}:${process.env.GRAPHQL_API_PORT ||
         '3100'}/${process.env.GRAPHQL_API_PATH || ''}`,
     },
     NETWORK:

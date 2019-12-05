@@ -5,7 +5,7 @@ const {
   GRAPHQL_API_HOST,
   GRAPHQL_API_PATH,
   GRAPHQL_API_PROTOCOL,
-  GRAPHQL_PORT
+  GRAPHQL_API_PORT
 } = process.env;
 
 const proc = spawn('sh', ['utils/start_dependencies.sh'], {
@@ -14,7 +14,7 @@ const proc = spawn('sh', ['utils/start_dependencies.sh'], {
     API_HOST: GRAPHQL_API_HOST,
     API_PATH: GRAPHQL_API_PATH,
     API_PROTOCOL: GRAPHQL_API_PROTOCOL,
-    API_PORT: GRAPHQL_PORT,
+    API_PORT: GRAPHQL_API_PORT,
   },
 });
 
