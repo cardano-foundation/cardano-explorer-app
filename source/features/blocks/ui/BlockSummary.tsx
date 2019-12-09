@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../../transactions/types';
@@ -69,7 +69,7 @@ const BlockSummary = (props: BlockSummaryProps) => {
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Time</div>
             <div className={styles.infoValue}>
-              {moment(props.createdAt).format('YYYY/MM/DD HH:mm:ss')}
+              {dayjs(props.createdAt).format('YYYY/MM/DD HH:mm:ss')}
             </div>
           </div>
           <div className={styles.infoRow}>

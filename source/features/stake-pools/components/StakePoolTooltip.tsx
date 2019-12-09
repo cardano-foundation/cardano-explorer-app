@@ -1,10 +1,12 @@
 import classnames from 'classnames';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 import { getColorFromRange } from '../../../lib/colors';
 import { IStakePoolTooltipProps } from '../types';
 import styles from './StakePoolTooltip.scss';
 
+dayjs.extend(relativeTime);
 const CloseCrossIcon = require('../../../public/assets/images/stake-pools/close-cross.svg');
 const ExternalLinkIcon = require('../../../public/assets/images/stake-pools/link-ic.svg');
 
@@ -28,7 +30,7 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
   const darken = 1;
   const alpha = 0.3;
   const reverse = true;
-  const retirementFromNow = retiring ? moment(retiring).fromNow(true) : '';
+  const retirementFromNow = retiring ? dayjs(retiring).fromNow(true) : '';
   const colorBand = getColorFromRange(ranking);
 
   const colorBandStyle = {

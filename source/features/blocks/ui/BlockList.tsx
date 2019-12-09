@@ -1,5 +1,5 @@
+import dayjs from 'dayjs';
 import { observer } from 'mobx-react-lite';
-import moment from 'moment';
 import React, { FC } from 'react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
@@ -37,7 +37,7 @@ const columns = (
   },
   {
     cellValue: (row: IBlockOverview) =>
-      moment(row.createdAt).format('YYYY/MM/DD HH:mm:ss'),
+      dayjs(row.createdAt).format('YYYY/MM/DD HH:mm:ss'),
     cssClass: 'createdAt',
     head: 'Created At',
     key: 'createdAt',

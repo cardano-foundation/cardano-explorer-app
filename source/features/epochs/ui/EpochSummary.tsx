@@ -1,5 +1,5 @@
+import dayjs from 'dayjs';
 import { observer } from 'mobx-react-lite';
-import moment from 'moment';
 import CircularProgress, {
   CircularProgressSize,
 } from '../../../widgets/circular-progress/CircularProgress';
@@ -39,13 +39,13 @@ const EpochSummary = ({ title, epoch }: IEpochSummaryProps) => (
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Started at</div>
           <div className={styles.infoValue}>
-            {moment(epoch.startedAt).format('YYYY/MM/DD HH:mm:ss')}
+            {dayjs(epoch.startedAt).format('YYYY/MM/DD HH:mm:ss')}
           </div>
         </div>
         <div className={styles.infoRow}>
           <div className={styles.infoLabel}>Last Block at</div>
           <div className={styles.infoValue}>
-            {moment(epoch.lastBlockAt).format('YYYY/MM/DD HH:mm:ss')}
+            {dayjs(epoch.lastBlockAt).format('YYYY/MM/DD HH:mm:ss')}
           </div>
         </div>
         <div className={styles.infoRow}>

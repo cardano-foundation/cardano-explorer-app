@@ -1,5 +1,5 @@
+import dayjs from 'dayjs';
 import { observer } from 'mobx-react-lite';
-import moment from 'moment';
 import React, { FC } from 'react';
 import CircularProgress, {
   CircularProgressSize,
@@ -58,14 +58,14 @@ const columns = (
   },
   {
     cellValue: (row: IEpochOverview) =>
-      moment(row.startedAt).format('YYYY/MM/DD HH:mm:ss'),
+      dayjs(row.startedAt).format('YYYY/MM/DD HH:mm:ss'),
     cssClass: 'startedAt',
     head: 'Started At',
     key: 'startedAt',
   },
   {
     cellRender: (value: any) =>
-      moment(value.lastBlockAt).format('YYYY/MM/DD HH:mm:ss'),
+      dayjs(value.lastBlockAt).format('YYYY/MM/DD HH:mm:ss'),
     cellValue: (row: IEpochOverview) => ({
       lastBlockAt: row.lastBlockAt,
     }),

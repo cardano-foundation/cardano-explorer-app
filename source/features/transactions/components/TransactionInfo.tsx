@@ -1,12 +1,14 @@
 import classnames from 'classnames';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { observer } from 'mobx-react-lite';
-import moment from 'moment';
 import React from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../types';
 import styles from './TransactionInfo.scss';
 
+dayjs.extend(relativeTime);
 const ArrowNext = require('../../../public/assets/images/arrow-next.svg');
 const SEVEN_DAYS = 7 * 24 * 3600000;
 
@@ -18,12 +20,12 @@ export interface ITransactionInfoProps extends ITransactionDetails {
 }
 
 const TransactionInfo = (props: ITransactionInfoProps) => {
-  const duration = moment(props.includedAt).diff(moment());
+  const duration = dayjs().diff(dayjs(props.includedAt));
   let includedAt = null;
   if (Math.abs(duration) > SEVEN_DAYS) {
-    includedAt = moment(props.includedAt).format('YYYY-MM-DD HH:mm');
+    includedAt = dayjs(props.includedAt).format('YYYY-MM-DD HH:mm');
   } else {
-    includedAt = moment.duration(duration, 'milliseconds').humanize(true);
+    includedAt = dayjs().to(dayjs(props.includedAt));
   }
   const onAddressClick = (address: string) => {
     if (!address) {
