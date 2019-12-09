@@ -7,6 +7,7 @@ const withImages = require('next-images');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 require('dotenv').config();
+const webpack = require('webpack');
 
 const resourcesDir = path.join(__dirname, 'source/styles/resources');
 const theme = process.env.CARDANO_NETWORK || 'incentivized-testnet';
@@ -73,6 +74,9 @@ module.exports = withPlugins(
     distDir: '../build/.next',
     env: {
       DEBUG
+    },
+    experimental: {
+      granularChunks: true
     },
     webpack(config) {
       config.plugins.push(new LodashModuleReplacementPlugin());
