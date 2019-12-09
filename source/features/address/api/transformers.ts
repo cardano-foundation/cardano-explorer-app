@@ -15,5 +15,6 @@ export const addressDetailTransformer = (
   transactions: s.transactions
     .filter(isNotNull)
     .map(transactionDetailsTransformer),
-  transactionsCount: s.transactions_aggregate?.aggregate?.count || '0',
+  transactionsCount:
+    s.transactions_aggregate?.aggregate?.count.toString() || '0',
 });
