@@ -112,16 +112,16 @@ export class SearchStore extends Store {
       id,
     });
     let path = '';
-    if (result?.data.blocks.length > 0) {
-      const blockData = result.data.blocks[0];
+    if (result?.blocks.length > 0) {
+      const blockData = result.blocks[0];
       if (isNotNull(blockData)) {
         runInAction(() => {
           this.blockSearchResult = blockDetailsTransformer(blockData);
         });
         path = `/block?id=${id}`;
       }
-    } else if (result?.data.transactions.length > 0) {
-      const txSearchResult = result.data.transactions[0];
+    } else if (result?.transactions.length > 0) {
+      const txSearchResult = result.transactions[0];
       if (isNotNull(txSearchResult)) {
         runInAction(() => {
           this.transactionSearchResult = transactionDetailsTransformer(
@@ -179,13 +179,10 @@ export class SearchStore extends Store {
     const result = await this.searchApi.searchForAddressQuery.execute({
       address,
     });
-    if (result) {
-      const { data } = result;
-      if (isNotNull(data)) {
-        runInAction(() => {
-          this.addressSearchResult = addressDetailTransformer(address, data);
-        });
-      }
+    if (isNotNull(result)) {
+      runInAction(() => {
+        this.addressSearchResult = addressDetailTransformer(address, result);
+      });
     }
   };
 
@@ -217,8 +214,8 @@ export class SearchStore extends Store {
     const result = await this.searchApi.searchForBlockByNumberQuery.execute(
       params
     );
-    if (result.data) {
-      const blockData = result.data.blocks[0];
+    if (result) {
+      const blockData = result.blocks[0];
       if (isNotNull(blockData)) {
         runInAction(() => {
           this.blockSearchResult = blockDetailsTransformer(blockData);
@@ -241,8 +238,8 @@ export class SearchStore extends Store {
     const result = await this.searchApi.searchForEpochByNumberQuery.execute(
       params
     );
-    if (result.data) {
-      const epochData = result.data.epochs[0];
+    if (result) {
+      const epochData = result.epochs[0];
       if (isNotNull(epochData)) {
         runInAction(() => {
           this.epochSearchResult = epochDetailsTransformer(

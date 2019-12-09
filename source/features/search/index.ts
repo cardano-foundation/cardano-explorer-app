@@ -1,4 +1,4 @@
-import ApolloClient from 'apollo-client';
+import { GraphQLClient } from 'graphql-request';
 import Action from '../../lib/Action';
 import { NavigationActions } from '../navigation';
 import { NetworkInfoStore } from '../network-info/store';
@@ -49,12 +49,12 @@ export interface INetworkInfoFeatureDependency {
  * configured and / or displayed multiple times on the same page.
  */
 export const createSearchFeature = (
-  apolloClient: ApolloClient<object>,
+  graphqlClient: GraphQLClient,
   navigation: INavigationFeatureDependency,
   networkInfo: INetworkInfoFeatureDependency
 ): ISearchFeature => {
   const searchActions = new SearchActions();
-  const searchApi = new SearchApi(apolloClient);
+  const searchApi = new SearchApi(graphqlClient);
   const searchStore = new SearchStore(
     searchActions,
     searchApi,

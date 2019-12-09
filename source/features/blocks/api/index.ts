@@ -1,4 +1,4 @@
-import ApolloClient from 'apollo-client';
+import { GraphQLClient } from 'graphql-request';
 import {
   GetBlocksInRangeQuery,
   GetBlocksInRangeQueryVariables,
@@ -6,13 +6,15 @@ import {
 import { GraphQLRequest } from '../../../lib/graphql/GraphQLRequest';
 import getBlocksInRangeQuery from './getBlocksInRange.graphql';
 
+console.log(getBlocksInRangeQuery);
+
 export class BlocksApi {
   // https://github.com/input-output-hk/cardano-graphql/issues/52
   public getBlocksInRangeQuery: GraphQLRequest<
     GetBlocksInRangeQuery,
     GetBlocksInRangeQueryVariables
   >;
-  constructor(client: ApolloClient<any>) {
+  constructor(client: GraphQLClient) {
     this.getBlocksInRangeQuery = new GraphQLRequest(
       client,
       getBlocksInRangeQuery

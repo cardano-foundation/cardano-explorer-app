@@ -1,5 +1,4 @@
-import ApolloClient from 'apollo-client';
-
+import { GraphQLClient } from 'graphql-request';
 import { GraphQLRequest } from '../../../lib/graphql/GraphQLRequest';
 import {
   CardanoDynamicQuery,
@@ -12,7 +11,7 @@ export class NetworkInfoApi {
   public fetchDynamic: GraphQLRequest<CardanoDynamicQuery, {}>;
   public fetchStatic: GraphQLRequest<CardanoStaticQuery, {}>;
 
-  constructor(client: ApolloClient<any>) {
+  constructor(client: GraphQLClient) {
     this.fetchDynamic = new GraphQLRequest(client, cardanoDynamic);
     this.fetchStatic = new GraphQLRequest(client, cardanoStatic);
   }

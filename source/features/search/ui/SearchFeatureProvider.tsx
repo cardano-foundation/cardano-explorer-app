@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useApolloClient } from 'react-apollo-hooks';
+import { useGraphQLClient } from '../../../lib/graphql/GraphQLProvider';
 import { useFeature } from '../../../lib/react/hooks';
 import { useNavigationFeature } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
@@ -11,11 +11,11 @@ interface IProps {
 }
 
 export const SearchFeatureProvider = (props: IProps) => {
-  const apollo = useApolloClient();
+  const graphqlClient = useGraphQLClient();
   const navigation = useNavigationFeature();
   const networkInfo = useNetworkInfoFeature();
   const [searchFeature] = useState<ISearchFeature>(
-    createSearchFeature(apollo, navigation, networkInfo)
+    createSearchFeature(graphqlClient, navigation, networkInfo)
   );
   useFeature(searchFeature);
   return (

@@ -1,4 +1,4 @@
-// import ApolloClient from 'apollo-client';
+import { GraphQLClient } from 'graphql-request';
 
 // import {
 //   GetBlocksQuery,
@@ -12,7 +12,7 @@ export class StakePoolsApi {
   //   GetBlocksQuery,
   //   GetBlocksQueryVariables
   // >;
-  // constructor(client: ApolloClient<any>) {
+  // constructor(client: GraphqlClient) {
   //   // this.getBlocksByIdsQuery = new GraphQLRequest<
   //   //   GetBlocksQuery,
   //   //   GetBlocksQueryVariables

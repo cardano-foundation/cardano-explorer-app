@@ -70,7 +70,7 @@ export class NetworkInfoStore extends Store {
   @action private fetchDynamicInfo = async () => {
     const result = await this.networkInfoApi.fetchDynamic.execute({});
     if (result) {
-      const { cardano } = result.data;
+      const { cardano } = result;
       const { currentEpoch } = cardano;
       runInAction(() => {
         this.blockHeight = cardano.blockHeight;
@@ -84,7 +84,7 @@ export class NetworkInfoStore extends Store {
   @action private fetchStaticInfo = async () => {
     const result = await this.networkInfoApi.fetchStatic.execute({});
     if (result) {
-      const { cardano } = result.data;
+      const { cardano } = result;
       runInAction(() => {
         this.protocolConst = cardano.protocolConst;
         this.startTime = new Date(cardano.startTime);
