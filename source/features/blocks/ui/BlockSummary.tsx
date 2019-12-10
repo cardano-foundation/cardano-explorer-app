@@ -1,5 +1,5 @@
-import { observer } from 'mobx-react-lite';
 import dayjs from 'dayjs';
+import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../../transactions/types';

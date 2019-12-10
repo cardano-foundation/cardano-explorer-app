@@ -6,8 +6,6 @@ import {
 import { GraphQLRequest } from '../../../lib/graphql/GraphQLRequest';
 import getBlocksInRangeQuery from './getBlocksInRange.graphql';
 
-console.log(getBlocksInRangeQuery);
-
 export class BlocksApi {
   // https://github.com/input-output-hk/cardano-graphql/issues/52
   public getBlocksInRangeQuery: GraphQLRequest<
