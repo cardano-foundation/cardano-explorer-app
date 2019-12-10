@@ -11,10 +11,10 @@ export const generateFakeBlockOverview = (
   epoch: chance.integer({ min: 0, max: 999 }),
   id: chance.hash(),
   number: chance.integer({ min: 0, max: 100000 }),
-  output: chance.floating({ min: 0, fixed: 6 }),
+  output: chance.floating({ min: 0, fixed: 6 }).toString(),
   size: chance.integer({ min: 100, max: 2000 }),
   slotWithinEpoch: chance.integer({ min: 0, max: 21600 }),
-  transactionsCount: chance.integer({ min: 0, max: 1000 }),
+  transactionsCount: chance.integer({ min: 0, max: 1000 }).toString(),
   ...overrides,
 });
 

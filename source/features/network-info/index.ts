@@ -1,4 +1,4 @@
-import ApolloClient from 'apollo-client';
+import { GraphQLClient } from 'graphql-request';
 import Action from '../../lib/Action';
 import { NetworkInfoApi } from './api';
 import { NetworkInfoStore } from './store';
@@ -29,10 +29,10 @@ export interface INetworkInfoFeature {
  * configured and / or displayed multiple times on the same page.
  */
 export const createNetworkInfoFeature = (
-  apolloClient: ApolloClient<object>
+  graphqlClient: GraphQLClient
 ): INetworkInfoFeature => {
   const networkInfoActions = new NetworkInfoActions();
-  const networkInfoApi = new NetworkInfoApi(apolloClient);
+  const networkInfoApi = new NetworkInfoApi(graphqlClient);
   const networkInfoStore = new NetworkInfoStore(
     networkInfoActions,
     networkInfoApi

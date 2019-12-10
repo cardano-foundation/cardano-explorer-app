@@ -1,7 +1,6 @@
-import gql from 'graphql-tag';
 import { RetryPromise } from 'promise-exponential-retry';
 import waitForExpect from 'wait-for-expect';
-import { apolloClient } from '../lib/graphql/apolloClient';
+import { graphqlClient } from '../lib/graphql/graphqlClient';
 import './mobx.config';
 
 beforeAll(async () => {
@@ -10,15 +9,14 @@ beforeAll(async () => {
   await RetryPromise.retryPromise(
     'Checking Cardano GraphQL server is available',
     () => {
-      return apolloClient.query({
-        query: gql`
-          query {
+      return graphqlClient.request(
+        `query {
             cardano {
               blockHeight
             }
           }
-        `,
-      });
+        `
+      );
     },
     40
   );

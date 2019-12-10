@@ -1,5 +1,5 @@
 import waitForExpect from 'wait-for-expect';
-import { apolloClient } from '../../../lib/graphql/apolloClient';
+import { graphqlClient } from '../../../lib/graphql/graphqlClient';
 import { NavigationActions } from '../../navigation';
 import { NetworkInfoActions } from '../../network-info';
 import { NetworkInfoApi } from '../../network-info/api';
@@ -11,12 +11,12 @@ describe('Searching for an address summary', () => {
   let search: ISearchFeature;
   beforeEach(() => {
     search = createSearchFeature(
-      apolloClient,
+      graphqlClient,
       { actions: new NavigationActions() },
       {
         store: new NetworkInfoStore(
           new NetworkInfoActions(),
-          new NetworkInfoApi(apolloClient)
+          new NetworkInfoApi(graphqlClient)
         ),
       }
     );

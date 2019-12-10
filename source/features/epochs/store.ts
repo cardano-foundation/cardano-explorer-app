@@ -114,7 +114,7 @@ export class EpochsStore extends Store {
     | null => {
     const { result } = this.epochsApi.getEpochsInRangeQuery;
     return (
-      result?.data.epochs
+      result?.epochs
         .filter(isNotNull)
         .map(e => epochOverviewTransformer(e, this.networkInfo.store)) ?? null
     );
@@ -139,7 +139,7 @@ export class EpochsStore extends Store {
   private syncLatestEpochWithLatestBlockDate = () => {
     const { latestBlocks } = this.blocks.store;
     const latestBlock = latestBlocks.length > 0 ? latestBlocks[0] : null;
-    const epochs = this.epochsApi.getEpochsInRangeQuery.result?.data.epochs;
+    const epochs = this.epochsApi.getEpochsInRangeQuery.result?.epochs;
     const currentEpoch = epochs && epochs?.length > 0 ? epochs[0] : null;
     if (!latestBlock || !currentEpoch) {
       return;

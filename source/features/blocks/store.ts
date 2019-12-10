@@ -106,8 +106,7 @@ export class BlocksStore extends Store {
     | null => {
     const { result } = this.blocksApi.getBlocksInRangeQuery;
     return (
-      result?.data.blocks.filter(isNotNull).map(blockOverviewTransformer) ??
-      null
+      result?.blocks.filter(isNotNull).map(blockOverviewTransformer) ?? null
     );
   };
 

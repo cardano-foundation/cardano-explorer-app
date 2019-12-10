@@ -1,4 +1,4 @@
-import ApolloClient from 'apollo-client';
+import { GraphQLClient } from 'graphql-request';
 import {
   GetEpochsInRangeQuery,
   GetEpochsInRangeQueryVariables,
@@ -19,7 +19,7 @@ export class EpochsApi {
     GetEpochsInRangeQuery,
     GetEpochsInRangeQueryVariables
   >;
-  constructor(client: ApolloClient<any>) {
+  constructor(client: GraphQLClient) {
     this.getLatestEpochsQuery = new GraphQLRequest(
       client,
       getLatestEpochsQuery

@@ -1,5 +1,5 @@
 import waitForExpect from 'wait-for-expect';
-import { apolloClient } from '../../../lib/graphql/apolloClient';
+import { graphqlClient } from '../../../lib/graphql/graphqlClient';
 import { BlocksActions } from '../../blocks';
 import { BlocksApi } from '../../blocks/api';
 import { BlocksStore } from '../../blocks/store';
@@ -16,11 +16,11 @@ describe('Epochs feature', () => {
   beforeEach(async () => {
     networkInfoStore = new NetworkInfoStore(
       new NetworkInfoActions(),
-      new NetworkInfoApi(apolloClient)
+      new NetworkInfoApi(graphqlClient)
     );
     blocksStore = new BlocksStore(
       new BlocksActions(),
-      new BlocksApi(apolloClient),
+      new BlocksApi(graphqlClient),
       {
         store: networkInfoStore,
       }
@@ -29,7 +29,7 @@ describe('Epochs feature', () => {
     epochs = createEpochsFeature(
       { store: blocksStore },
       { store: networkInfoStore },
-      apolloClient
+      graphqlClient
     );
   });
 

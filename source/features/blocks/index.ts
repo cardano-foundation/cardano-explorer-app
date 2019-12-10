@@ -1,5 +1,4 @@
-import { ApolloClient } from 'apollo-client';
-
+import { GraphQLClient } from 'graphql-request';
 import Action from '../../lib/Action';
 import { INetworkInfoFeature } from '../network-info';
 import { BlocksApi } from './api';
@@ -41,10 +40,10 @@ export interface INetworkInfoFeatureDependency {
  */
 export const createBlocksFeature = (
   networkInfo: INetworkInfoFeatureDependency,
-  apolloClient: ApolloClient<object>
+  graphqlClient: GraphQLClient
 ): IBlocksFeature => {
   const blocksActions = new BlocksActions();
-  const blocksApi = new BlocksApi(apolloClient);
+  const blocksApi = new BlocksApi(graphqlClient);
   const blocksStore = new BlocksStore(blocksActions, blocksApi, networkInfo);
   return {
     actions: blocksActions,

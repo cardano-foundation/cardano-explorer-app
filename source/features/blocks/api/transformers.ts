@@ -25,7 +25,8 @@ export const blockOverviewTransformer = (
       b.transactions_aggregate?.aggregate?.sum?.totalOutput || '0'
     ),
     slotWithinEpoch: formatSlotWithinEpoch(b.slotWithinEpoch),
-    transactionsCount: b.transactions_aggregate?.aggregate?.count || '0',
+    transactionsCount:
+      b.transactions_aggregate?.aggregate?.count.toString() || '0',
   };
 };
 

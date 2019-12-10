@@ -1,5 +1,4 @@
-import ApolloClient from 'apollo-client';
-
+import { GraphQLClient } from 'graphql-request';
 import { GraphQLRequest } from '../../../lib/graphql/GraphQLRequest';
 import {
   SearchByIdQuery,
@@ -37,7 +36,7 @@ export class SearchApi {
     SearchForEpochByNumberQueryVariables
   >;
 
-  constructor(client: ApolloClient<any>) {
+  constructor(client: GraphQLClient) {
     this.searchForAddressQuery = new GraphQLRequest(
       client,
       searchForAddressQuery

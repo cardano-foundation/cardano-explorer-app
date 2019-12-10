@@ -1,11 +1,11 @@
 import waitForExpect from 'wait-for-expect';
-import { apolloClient } from '../../../lib/graphql/apolloClient';
+import { graphqlClient } from '../../../lib/graphql/graphqlClient';
 import { createNetworkInfoFeature, INetworkInfoFeature } from '../index';
 
 describe('Network information', () => {
   let networkInfo: INetworkInfoFeature;
   beforeEach(async () => {
-    networkInfo = createNetworkInfoFeature(apolloClient);
+    networkInfo = createNetworkInfoFeature(graphqlClient);
     await networkInfo.start();
   });
   afterEach(() => {

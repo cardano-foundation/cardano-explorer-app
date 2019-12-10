@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { NavigationActions } from '../../navigation';
@@ -33,7 +34,7 @@ const TransactionSummary = (props: ITransactionSummaryProps) => {
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>Received Time</div>
             <div className={styles.infoValue}>
-              {props.includedAt.toString()}
+              {dayjs(props.includedAt).format('YYYY-MM-DD HH:mm')}
             </div>
           </div>
           <div className={styles.infoRow}>

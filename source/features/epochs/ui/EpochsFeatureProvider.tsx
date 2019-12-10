@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useApolloClient } from 'react-apollo-hooks';
+import { useGraphQLClient } from '../../../lib/graphql/GraphQLProvider';
 import { useFeature } from '../../../lib/react/hooks';
 import { useBlocksFeature } from '../../blocks/context';
 import { useNetworkInfoFeature } from '../../network-info/context';
@@ -11,11 +11,11 @@ interface IProps {
 }
 
 export const EpochsFeatureProvider = (props: IProps) => {
-  const apolloClient = useApolloClient();
+  const graphqlClient = useGraphQLClient();
   const networkInfo = useNetworkInfoFeature();
   const blocks = useBlocksFeature();
   const [epochsFeature] = useState<IEpochsFeature>(
-    createEpochsFeature(blocks, networkInfo, apolloClient)
+    createEpochsFeature(blocks, networkInfo, graphqlClient)
   );
   useFeature(epochsFeature);
   return (

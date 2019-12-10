@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useApolloClient } from 'react-apollo-hooks';
+import { useGraphQLClient } from '../../../lib/graphql/GraphQLProvider';
 import { useFeature } from '../../../lib/react/hooks';
 import { networkInfoContext } from '../context';
 import { createNetworkInfoFeature, INetworkInfoFeature } from '../index';
@@ -9,9 +9,9 @@ interface IProps {
 }
 
 export const NetworkInfoFeatureProvider = (props: IProps) => {
-  const apollo = useApolloClient();
+  const graphqlClient = useGraphQLClient();
   const [networkInfoFeature] = useState<INetworkInfoFeature>(
-    createNetworkInfoFeature(apollo)
+    createNetworkInfoFeature(graphqlClient)
   );
   useFeature(networkInfoFeature);
   return (

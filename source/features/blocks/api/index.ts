@@ -1,4 +1,4 @@
-import ApolloClient from 'apollo-client';
+import { GraphQLClient } from 'graphql-request';
 import {
   GetBlocksInRangeQuery,
   GetBlocksInRangeQueryVariables,
@@ -12,7 +12,7 @@ export class BlocksApi {
     GetBlocksInRangeQuery,
     GetBlocksInRangeQueryVariables
   >;
-  constructor(client: ApolloClient<any>) {
+  constructor(client: GraphQLClient) {
     this.getBlocksInRangeQuery = new GraphQLRequest(
       client,
       getBlocksInRangeQuery

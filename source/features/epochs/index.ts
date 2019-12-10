@@ -1,5 +1,4 @@
-import ApolloClient from 'apollo-client';
-
+import { GraphQLClient } from 'graphql-request';
 import Action from '../../lib/Action';
 import { IBlocksFeature } from '../blocks';
 import { INetworkInfoFeature } from '../network-info';
@@ -46,10 +45,10 @@ export interface INetworkInfoFeatureDependency {
 export const createEpochsFeature = (
   blocks: IBlocksFeatureDependency,
   networkInfo: INetworkInfoFeatureDependency,
-  apolloClient: ApolloClient<object>
+  graphqlClient: GraphQLClient
 ): IEpochsFeature => {
   const epochsActions = new EpochsActions();
-  const epochsApi = new EpochsApi(apolloClient);
+  const epochsApi = new EpochsApi(graphqlClient);
   const epochsStore = new EpochsStore(
     epochsActions,
     blocks,
