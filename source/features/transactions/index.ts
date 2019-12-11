@@ -12,6 +12,11 @@ export class TransactionsActions {
     offset: number;
     limit: number;
   }> = new Action();
+  public browseAddressTransactions: Action<{
+    address: string;
+    offset: number;
+    limit: number;
+  }> = new Action();
 }
 
 /**

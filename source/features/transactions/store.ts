@@ -8,6 +8,7 @@ import { TransactionsActions } from './index';
 import { ITransactionDetails } from './types';
 
 export class TransactionsStore extends Store {
+  @observable public browsedAddressTransactions: ITransactionDetails[] = [];
   @observable public browsedBlockTransactions: ITransactionDetails[] = [];
 
   private readonly actions: TransactionsActions;
@@ -22,10 +23,29 @@ export class TransactionsStore extends Store {
 
     this.registerActions(
       createActionBindings([
+        [
+          this.actions.browseAddressTransactions,
+          this.browseAddressTransactions,
+        ],
         [this.actions.browseBlocksTransactions, this.browseBlocksTransactions],
       ])
     );
   }
+
+  @action public browseAddressTransactions = async (
+    params: ActionProps<
+      typeof TransactionsActions.prototype.browseAddressTransactions
+    >
+  ): Promise<void> => {
+    const result = await this.api.getAddressTransactionsQuery.execute(params);
+    if (result) {
+      runInAction(() => {
+        this.browsedAddressTransactions = result.transactions
+          .filter(isNotNull)
+          .map(transactionDetailsTransformer);
+      });
+    }
+  };
 
   @action public browseBlocksTransactions = async (
     params: ActionProps<

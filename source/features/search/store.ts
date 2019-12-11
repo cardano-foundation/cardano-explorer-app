@@ -3,7 +3,7 @@ import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { isNotNull } from '../../lib/types';
 import { addressDetailTransformer } from '../address/api/transformers';
-import { IAddressDetail } from '../address/types';
+import { IAddressSummary } from '../address/types';
 import { blockDetailsTransformer } from '../blocks/api/transformers';
 import { IBlockDetailed } from '../blocks/types';
 import { epochDetailsTransformer } from '../epochs/api/transformers';
@@ -25,7 +25,7 @@ export enum SearchType {
 }
 
 export class SearchStore extends Store {
-  @observable public addressSearchResult: IAddressDetail | null = null;
+  @observable public addressSearchResult: IAddressSummary | null = null;
   @observable public blockSearchResult: IBlockDetailed | null = null;
   @observable public epochSearchResult: IEpochDetails | null = null;
   @observable public transactionSearchResult: ITransactionDetails | null = null;

@@ -1,5 +1,3 @@
-#import "../../transactions/api/TransactionDetails.graphql"
-
 query searchForAddress(
   $address: String!
 ) {
@@ -36,24 +34,5 @@ query searchForAddress(
         aggregate {
             count
         }
-    }
-    transactions (
-        where: {
-            _or: [{
-                inputs: {
-                    address: {
-                        _eq: $address
-                    }
-                }
-            }, {
-                outputs: {
-                    address: {
-                        _eq: $address
-                    }
-                }
-            }]
-        }
-    ) {
-        ...TransactionDetails
     }
 }

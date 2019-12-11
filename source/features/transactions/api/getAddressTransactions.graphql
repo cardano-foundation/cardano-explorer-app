@@ -1,0 +1,29 @@
+#import "./TransactionDetails.graphql"
+
+query getAddressTransactions(
+  $address: String!
+  $offset: Int!
+  $limit: Int!
+) {
+  transactions(
+    where: {
+      _or: [{
+        inputs: {
+          address: {
+            _eq: $address
+          }
+        }
+      }, {
+        outputs: {
+          address: {
+            _eq: $address
+          }
+        }
+      }]
+    }
+    offset: $offset
+    limit: $limit
+  ) {
+    ...TransactionDetails
+  }
+}
