@@ -5,7 +5,8 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockSummary from '../../blocks/ui/BlockSummary';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
-import TransactionList from '../../transactions/components/TransactionList';
+import TransactionBrowser from '../../transactions/components/TransactionsBrowser';
+import { useTransactionsFeature } from '../../transactions/context';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
 import styles from './BlockSearchResult.scss';
@@ -15,6 +16,7 @@ export const BlockSearchResult = () => {
   const { actions, api, store } = useSearchFeature();
   const networkInfo = useNetworkInfoFeature();
   const navigation = useNavigationFeatureOptionally();
+  const transactions = useTransactionsFeature();
   const router = useRouter();
 
   // Trigger search after component did render
@@ -31,7 +33,8 @@ export const BlockSearchResult = () => {
         const { blockSearchResult } = store;
         if (
           !api.searchByIdQuery.hasBeenExecutedAtLeastOnce ||
-          store.isSearching
+          store.isSearching ||
+          !networkInfo.store.blockHeight
         ) {
           return <LoadingSpinner />;
         } else if (blockSearchResult) {
@@ -44,12 +47,35 @@ export const BlockSearchResult = () => {
                 {...blockSearchResult}
               />
               <div className={styles.transactions}>
-                {blockSearchResult.transactionsCount !== '0' && (
-                  <TransactionList
-                    items={blockSearchResult.transactions}
-                    title="Transactions"
-                  />
-                )}
+                <TransactionBrowser
+                  isLoading={
+                    transactions.api.getBlockTransactionsQuery.isExecuting
+                  }
+                  isLoadingFirstTime={
+                    transactions.api.getBlockTransactionsQuery
+                      .isExecutingTheFirstTime
+                  }
+                  onBoundsChanged={bounds => {
+                    router.push({
+                      pathname: '/block',
+                      query: {
+                        id: blockSearchResult.id,
+                        ...bounds,
+                      },
+                    });
+                  }}
+                  onBrowseParamsChanged={params => {
+                    transactions.actions.browseBlocksTransactions.trigger({
+                      blockId: blockSearchResult.id,
+                      limit: params.bounds.upper - params.bounds.lower,
+                      offset: params.bounds.lower,
+                    });
+                  }}
+                  userParamLower={router.query?.lower as string}
+                  userParamUpper={router.query?.upper as string}
+                  total={parseInt(blockSearchResult?.transactionsCount, 10)}
+                  transactions={transactions.store.browsedBlockTransactions}
+                />
               </div>
             </>
           );

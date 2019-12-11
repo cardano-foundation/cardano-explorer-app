@@ -16,7 +16,7 @@ const Pagination = (props: IPaginationProps) => {
     <div className={styles.paginationContainer}>
       <Button
         className={styles.leftArrow}
-        disabled={currentPage <= 0}
+        disabled={currentPage <= 1}
         label=""
         onClick={() => onChangePage(currentPage - 1)}
       />

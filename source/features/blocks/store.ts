@@ -24,8 +24,8 @@ export class BlocksStore extends Store {
     networkInfo: INetworkInfoFeatureDependency
   ) {
     super();
-    this.blocksActions = blocksActions;
     Object.assign(this, {
+      blocksActions,
       blocksApi,
       networkInfo,
     });
