@@ -37,6 +37,10 @@ export class TransactionsStore extends Store {
       typeof TransactionsActions.prototype.browseAddressTransactions
     >
   ): Promise<void> => {
+    // Do not execute queries multiple times!
+    if (this.api.getAddressTransactionsQuery.isExecuting) {
+      return;
+    }
     const result = await this.api.getAddressTransactionsQuery.execute(params);
     if (result) {
       runInAction(() => {
@@ -52,6 +56,10 @@ export class TransactionsStore extends Store {
       typeof TransactionsActions.prototype.browseBlocksTransactions
     >
   ): Promise<void> => {
+    // Do not execute queries multiple times!
+    if (this.api.getBlockTransactionsQuery.isExecuting) {
+      return;
+    }
     const result = await this.api.getBlockTransactionsQuery.execute(params);
     if (result) {
       runInAction(() => {

@@ -8,7 +8,7 @@ import { BlocksStore } from './store';
  * Defines the actions that are supported by this feature
  */
 export class BlocksActions {
-  public browseBlocks: Action<{ lower: number; upper: number }> = new Action();
+  public browseBlocks: Action<{ page: number; perPage: number }> = new Action();
   public fetchLatestBlocks: Action<void> = new Action();
   public startPollingLatestBlocks: Action<void> = new Action();
   public stopPollingLatestBlocks: Action<void> = new Action();

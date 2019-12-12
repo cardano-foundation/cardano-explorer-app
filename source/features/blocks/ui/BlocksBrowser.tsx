@@ -1,11 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
-import {
-  BrowseInRange,
-  IBrowseInRangeBounds,
-  IBrowseInRangeResult,
-} from '../../../widgets/browsing/BrowseInRange';
+import React, { useEffect } from 'react';
+import { calculatePaging } from '../../../lib/paging';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 
 import Pagination from '../../../widgets/browsing/Pagination';
@@ -16,11 +12,8 @@ import BlockList from './BlockList';
 // TODO: This actually fetches 1 item more than given
 // because the query includes lower and upper boundaries
 const BLOCKS_PER_PAGE_DEFAULT = 20;
-const BLOCKS_PER_PAGE_MINIMUM = 5;
 const BLOCKS_PER_PAGE_MAXIMUM = 50;
-
-const createBrowsePath = ({ lower, upper }: IBrowseInRangeBounds) =>
-  `/browse-blocks?lower=${lower}&upper=${upper}`;
+const BLOCKS_PER_PAGE_MINIMUM = 5;
 
 const BlocksBrowser = () => {
   const router = useRouter();
@@ -29,64 +22,51 @@ const BlocksBrowser = () => {
   const { blockHeight } = networkInfo.store;
   const isBlockHeightAvailable = !!blockHeight;
   const blocks = useBlocksFeature();
-
-  const [
-    browseParams,
-    setBrowserParams,
-  ] = useState<IBrowseInRangeResult | null>(null);
   const isLoadingFirstTime =
     blocks.api.getBlocksInRangeQuery.isExecutingTheFirstTime;
 
-  return (
-    <div>
-      {isBlockHeightAvailable ? (
-        <>
-          <BrowseInRange
-            onReadyToBrowse={params => {
-              blocks.actions.browseBlocks.trigger(params.bounds);
-              setBrowserParams(params);
-            }}
-            perPageDefault={BLOCKS_PER_PAGE_DEFAULT}
-            perPageMinimum={BLOCKS_PER_PAGE_MINIMUM}
-            perPageMaximum={BLOCKS_PER_PAGE_MAXIMUM}
-            userParamLower={router.query?.lower as string}
-            userParamUpper={router.query?.upper as string}
-            total={blockHeight}
-          />
-          {browseParams && !isLoadingFirstTime ? (
-            <>
-              <BlockList
-                isLoading={blocks.api.getBlocksInRangeQuery.isExecuting}
-                title="Browse Blocks"
-                items={blocks.store.browsedBlocks}
-              />
-              <Pagination
-                currentPage={browseParams.currentPage}
-                onChangePage={(page: number) => {
-                  if (page > 0 && page <= browseParams.totalPages) {
-                    const upper = Math.min(
-                      page * browseParams.itemsPerPage,
-                      blockHeight
-                    );
-                    router.push(
-                      createBrowsePath({
-                        lower: upper - browseParams.itemsPerPage,
-                        upper,
-                      })
-                    );
-                  }
-                }}
-                totalPages={browseParams.totalPages}
-              />
-            </>
-          ) : (
-            <LoadingSpinner />
-          )}
-        </>
-      ) : (
-        <LoadingSpinner />
-      )}
-    </div>
+  const paging = calculatePaging({
+    currentPage: router.query?.page as string,
+    perPage: router.query?.perPage as string,
+    perPageDefault: BLOCKS_PER_PAGE_DEFAULT,
+    perPageMaximum: BLOCKS_PER_PAGE_MAXIMUM,
+    perPageMinimum: BLOCKS_PER_PAGE_MINIMUM,
+    totalItems: blockHeight,
+  });
+
+  useEffect(() => {
+    if (!isBlockHeightAvailable) {
+      return;
+    }
+    blocks.actions.browseBlocks.trigger({
+      page: paging.currentPage,
+      perPage: paging.itemsPerPage,
+    });
+  }, [isBlockHeightAvailable, router.query?.page, router.query?.perPage]);
+
+  return isBlockHeightAvailable && !isLoadingFirstTime ? (
+    <>
+      <BlockList
+        isLoading={blocks.api.getBlocksInRangeQuery.isExecuting}
+        title="Browse Blocks"
+        items={blocks.store.browsedBlocks}
+      />
+      <Pagination
+        currentPage={paging.currentPage}
+        onChangePage={(page: number) => {
+          router.push({
+            pathname: '/browse-blocks',
+            query: {
+              page,
+              perPage: paging.itemsPerPage,
+            },
+          });
+        }}
+        totalPages={paging.totalPages}
+      />
+    </>
+  ) : (
+    <LoadingSpinner />
   );
 };
 

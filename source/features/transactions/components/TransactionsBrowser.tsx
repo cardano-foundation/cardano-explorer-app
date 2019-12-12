@@ -1,10 +1,6 @@
 import { observer } from 'mobx-react-lite';
-import React, { useState } from 'react';
-import {
-  BrowseInRange,
-  IBrowseInRangeBounds,
-  IBrowseInRangeResult,
-} from '../../../widgets/browsing/BrowseInRange';
+import React, { useEffect } from 'react';
+import { calculatePaging, ICalculatePagingOutputs } from '../../../lib/paging';
 import Pagination from '../../../widgets/browsing/Pagination';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { ITransactionDetails } from '../types';
@@ -18,54 +14,40 @@ const TRANSACTIONS_PER_PAGE_MAXIMUM = 5;
 interface ITransactionsBrowserProps {
   isLoading: boolean;
   isLoadingFirstTime: boolean;
-  onBrowseParamsChanged: (params: IBrowseInRangeResult) => void;
-  onBoundsChanged: (bounds: IBrowseInRangeBounds) => void;
-  userParamLower?: string;
-  userParamUpper?: string;
+  onPagingCalculated: (paging: ICalculatePagingOutputs) => void;
+  onChangePage: (page: number) => void;
+  currentPage?: string | number;
+  perPage?: string | number;
   total: number;
   transactions: ITransactionDetails[];
 }
 
 const TransactionsBrowser = (props: ITransactionsBrowserProps) => {
-  const [
-    browseParams,
-    setBrowserParams,
-  ] = useState<IBrowseInRangeResult | null>(null);
+  const paging = calculatePaging({
+    currentPage: props.currentPage,
+    perPage: props.perPage,
+    perPageDefault: TRANSACTIONS_PER_PAGE_DEFAULT,
+    perPageMaximum: TRANSACTIONS_PER_PAGE_MAXIMUM,
+    perPageMinimum: TRANSACTIONS_PER_PAGE_MINIMUM,
+    totalItems: props.total,
+  });
+  useEffect(() => {
+    props.onPagingCalculated(paging);
+  }, [props.currentPage, props.perPage]);
   return (
     <>
-      <BrowseInRange
-        {...props}
-        onReadyToBrowse={params => {
-          props.onBrowseParamsChanged(params);
-          setBrowserParams(params);
-        }}
-        perPageDefault={TRANSACTIONS_PER_PAGE_DEFAULT}
-        perPageMinimum={TRANSACTIONS_PER_PAGE_MINIMUM}
-        perPageMaximum={TRANSACTIONS_PER_PAGE_MAXIMUM}
-      />
-      {browseParams && !props.isLoadingFirstTime ? (
+      {!props.isLoadingFirstTime ? (
         <>
           <TransactionList
             isLoading={props.isLoading}
             title="Transactions"
             items={props.transactions}
           />
-          {browseParams.totalPages > 0 ? (
+          {paging.totalPages > 0 ? (
             <Pagination
-              currentPage={browseParams.currentPage}
-              onChangePage={(page: number) => {
-                if (page > 0 && page <= browseParams.totalPages) {
-                  const upper = Math.min(
-                    page * browseParams.itemsPerPage,
-                    props.total
-                  );
-                  props.onBoundsChanged({
-                    lower: upper - browseParams.itemsPerPage,
-                    upper,
-                  });
-                }
-              }}
-              totalPages={browseParams.totalPages}
+              currentPage={paging.currentPage}
+              onChangePage={props.onChangePage}
+              totalPages={paging.totalPages}
             />
           ) : (
             <div className={styles.noTransactions}>No Transactions</div>

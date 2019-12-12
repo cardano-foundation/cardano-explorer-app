@@ -87,13 +87,14 @@ export class EpochsStore extends Store {
   /**
    * Fetches the epochs in given range.
    */
-  @action public browseEpochs = async ({
-    lower,
-    upper,
-  }: ActionProps<typeof EpochsActions.prototype.browseEpochs>): Promise<
-    void
-  > => {
-    const result = await this.fetchEpochsInRange({ lower, upper });
+  @action public browseEpochs = async (
+    params: ActionProps<typeof EpochsActions.prototype.browseEpochs>
+  ): Promise<void> => {
+    const upper = params.page * params.perPage;
+    const result = await this.fetchEpochsInRange({
+      lower: upper - params.perPage,
+      upper,
+    });
     if (result) {
       runInAction(() => {
         this.browsedEpochs = result;

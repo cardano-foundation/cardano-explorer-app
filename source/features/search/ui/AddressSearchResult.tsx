@@ -58,24 +58,25 @@ export const AddressSearchResult = () => {
                     transactions.api.getAddressTransactionsQuery
                       .isExecutingTheFirstTime
                   }
-                  onBoundsChanged={bounds => {
+                  onChangePage={page => {
                     router.push({
                       pathname: '/address',
                       query: {
                         address,
-                        ...bounds,
+                        page,
+                        perPage: router.query?.perPage,
                       },
                     });
                   }}
-                  onBrowseParamsChanged={params => {
+                  onPagingCalculated={paging => {
                     transactions.actions.browseAddressTransactions.trigger({
                       address,
-                      limit: params.bounds.upper - params.bounds.lower,
-                      offset: params.bounds.lower,
+                      limit: paging.itemsPerPage,
+                      offset: (paging.currentPage - 1) * paging.itemsPerPage,
                     });
                   }}
-                  userParamLower={router.query?.lower as string}
-                  userParamUpper={router.query?.upper as string}
+                  perPage={router.query?.perPage as string}
+                  currentPage={(router.query?.page as string) ?? 1}
                   total={parseInt(transactionsCount, 10)}
                   transactions={transactions.store.browsedAddressTransactions}
                 />

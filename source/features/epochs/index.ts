@@ -9,7 +9,7 @@ import { EpochsStore } from './store';
  * Defines the actions that are supported by this feature
  */
 export class EpochsActions {
-  public browseEpochs: Action<{ lower: number; upper: number }> = new Action();
+  public browseEpochs: Action<{ page: number; perPage: number }> = new Action();
   public fetchLatestEpochs: Action<void> = new Action();
   public startPollingLatestEpochs: Action<void> = new Action();
   public stopPollingLatestEpochs: Action<void> = new Action();
