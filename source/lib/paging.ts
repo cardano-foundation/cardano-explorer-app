@@ -47,7 +47,9 @@ export const calculatePaging = (
   );
 
   let itemsPerPage =
-    params.perPage != null ? parseInt(params.perPage.toString(), 10) : null;
+    params.perPage != null && params.perPage !== ''
+      ? parseInt(params.perPage.toString(), 10)
+      : null;
   if (itemsPerPage == null) {
     itemsPerPage = perPageDefault;
   } else if (itemsPerPage < perPageMinimum) {
@@ -59,7 +61,7 @@ export const calculatePaging = (
   const totalPages = Math.ceil(params.totalItems / itemsPerPage);
 
   let currentPage =
-    params.currentPage != null
+    params.currentPage != null && params.currentPage !== ''
       ? parseInt(params.currentPage.toString(), 10)
       : null;
   if (currentPage == null || currentPage > totalPages) {

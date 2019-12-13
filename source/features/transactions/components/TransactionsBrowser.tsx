@@ -7,9 +7,9 @@ import { ITransactionDetails } from '../types';
 import TransactionList from './TransactionList';
 import styles from './TransactionsBrowser.scss';
 
-const TRANSACTIONS_PER_PAGE_DEFAULT = 2;
-const TRANSACTIONS_PER_PAGE_MINIMUM = 1;
-const TRANSACTIONS_PER_PAGE_MAXIMUM = 5;
+export const TRANSACTIONS_PER_PAGE_DEFAULT = 2;
+export const TRANSACTIONS_PER_PAGE_MINIMUM = 1;
+export const TRANSACTIONS_PER_PAGE_MAXIMUM = 5;
 
 interface ITransactionsBrowserProps {
   isLoading: boolean;

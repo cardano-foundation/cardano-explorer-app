@@ -25,6 +25,18 @@ describe('Paging calculation', () => {
     expect(result.currentPage).toEqual(5);
   });
 
+  it('handles empty per page param', () => {
+    const result = calculatePaging({
+      perPage: '',
+      totalItems: 10,
+    });
+    expect(result).toEqual({
+      currentPage: 2,
+      itemsPerPage: 5,
+      totalPages: 2,
+    });
+  });
+
   it('gives back the latest page if current page is undefind', () => {
     const result = calculatePaging({
       totalItems: 10,
@@ -46,6 +58,18 @@ describe('Paging calculation', () => {
       totalItems: 10,
     });
     expect(result.currentPage).toEqual(1);
+  });
+
+  it('handles empty current page param', () => {
+    const result = calculatePaging({
+      currentPage: '',
+      totalItems: 10,
+    });
+    expect(result).toEqual({
+      currentPage: 2,
+      itemsPerPage: 5,
+      totalPages: 2,
+    });
   });
 
   it('returns zero result if total items is not positive', () => {

@@ -4,7 +4,9 @@ import React, { useEffect } from 'react';
 import Container from '../../../widgets/container/Container';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import AddressSummary from '../../address/ui/AddressSummary';
-import TransactionBrowser from '../../transactions/components/TransactionsBrowser';
+import TransactionBrowser, {
+  TRANSACTIONS_PER_PAGE_DEFAULT,
+} from '../../transactions/components/TransactionsBrowser';
 import { useTransactionsFeature } from '../../transactions/context';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
@@ -64,7 +66,9 @@ export const AddressSearchResult = () => {
                       query: {
                         address,
                         page,
-                        perPage: router.query?.perPage,
+                        perPage:
+                          router.query?.perPage ??
+                          TRANSACTIONS_PER_PAGE_DEFAULT,
                       },
                     });
                   }}

@@ -5,7 +5,9 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockSummary from '../../blocks/ui/BlockSummary';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
-import TransactionBrowser from '../../transactions/components/TransactionsBrowser';
+import TransactionBrowser, {
+  TRANSACTIONS_PER_PAGE_DEFAULT,
+} from '../../transactions/components/TransactionsBrowser';
 import { useTransactionsFeature } from '../../transactions/context';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
@@ -61,7 +63,9 @@ export const BlockSearchResult = () => {
                       query: {
                         id: blockSearchResult.id,
                         page,
-                        perPage: router.query?.perPage,
+                        perPage:
+                          router.query?.perPage ??
+                          TRANSACTIONS_PER_PAGE_DEFAULT,
                       },
                     });
                   }}

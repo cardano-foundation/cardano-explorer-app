@@ -139,6 +139,7 @@ storiesOf('Transactions', module)
   .add('Transaction List', () => (
     <TransactionList
       title="Transactions"
+      isLoading={false}
       items={transactions.map(t => ({
         ...t,
         currentAddress,
