@@ -1,6 +1,6 @@
 import { calculatePaging } from './paging';
 
-describe.only('Paging calculation', () => {
+describe('Paging calculation', () => {
   it('per page defaults to 5 items', () => {
     const result = calculatePaging({
       totalItems: 10,
@@ -70,6 +70,4 @@ describe.only('Paging calculation', () => {
       totalPages: 2,
     });
   });
-
-  it('handles invalid total items values', () => {});
 });
