@@ -42,9 +42,6 @@ describe('Searching for an address summary', () => {
       expect(search.store?.addressSearchResult?.transactionsCount).toBe(
         exampleAddressData.transactionsCount
       );
-      expect(search.store?.addressSearchResult?.transactions[0]?.fee).toBe(
-        exampleAddressData.transactions[0].fee
-      );
     });
   });
 });

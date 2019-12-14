@@ -1,0 +1,21 @@
+#import "./TransactionDetails.graphql"
+
+query getBlockTransactions(
+  $blockId: Hash32HexString!
+  $offset: Int!
+  $limit: Int!
+) {
+  transactions(
+    where: {
+      block: {
+        id: {
+          _eq: $blockId
+        }
+      }
+    }
+    offset: $offset
+    limit: $limit
+  ) {
+    ...TransactionDetails
+  }
+}

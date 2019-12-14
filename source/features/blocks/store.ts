@@ -24,8 +24,8 @@ export class BlocksStore extends Store {
     networkInfo: INetworkInfoFeatureDependency
   ) {
     super();
-    this.blocksActions = blocksActions;
     Object.assign(this, {
+      blocksActions,
       blocksApi,
       networkInfo,
     });
@@ -79,13 +79,14 @@ export class BlocksStore extends Store {
   /**
    * Fetches the blocks in given range.
    */
-  @action public browseBlocks = async ({
-    lower,
-    upper,
-  }: ActionProps<typeof BlocksActions.prototype.browseBlocks>): Promise<
-    void
-  > => {
-    const result = await this.fetchBlocksInRange({ lower, upper });
+  @action public browseBlocks = async (
+    params: ActionProps<typeof BlocksActions.prototype.browseBlocks>
+  ): Promise<void> => {
+    const upper = params.page * params.perPage;
+    const result = await this.fetchBlocksInRange({
+      lower: upper - params.perPage,
+      upper,
+    });
     if (result) {
       runInAction(() => {
         this.browsedBlocks = result;

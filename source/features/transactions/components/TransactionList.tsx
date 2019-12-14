@@ -1,43 +1,35 @@
 import { observer } from 'mobx-react-lite';
-import React, { useState } from 'react';
-import Pagination from '../../../widgets/browsing/Pagination';
+import React from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import TransactionInfo, { ITransactionInfoProps } from './TransactionInfo';
 import styles from './TransactionList.scss';
 
 export interface ITransactionListProps {
+  isLoading: boolean;
   items: Array<ITransactionInfoProps>;
   title: string;
 }
 
 const TransactionList = (props: ITransactionListProps) => {
-  const [page, setPage] = useState(0);
   const navigation = useNavigationFeatureOptionally();
-  const handleChangePage = (newPage: number) => setPage(newPage);
-  const rowsPerPage = 2;
-  const renderedItems = props.items.slice(
-    rowsPerPage * page,
-    rowsPerPage * (page + 1)
-  );
-
+  const hasItems = props.items.length > 0;
   return (
     <div className={styles.transactionListContainer}>
+      {hasItems && props.isLoading && (
+        <div className={styles.loadingOverlay}>
+          <LoadingSpinner />
+        </div>
+      )}
       <div className={styles.header}>
         <DividerWithTitle title={props.title} />
       </div>
-      {renderedItems.map((item, index) => (
+      {props.items.map((item, index) => (
         <div key={`transaction_${index}`} className={styles.transactionListRow}>
           <TransactionInfo navigation={navigation?.actions} {...item} />
         </div>
       ))}
-      {props.items.length > rowsPerPage && (
-        <Pagination
-          currentPage={page}
-          totalPages={props.items.length}
-          onChangePage={handleChangePage}
-        />
-      )}
     </div>
   );
 };

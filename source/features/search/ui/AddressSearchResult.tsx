@@ -4,7 +4,10 @@ import React, { useEffect } from 'react';
 import Container from '../../../widgets/container/Container';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import AddressSummary from '../../address/ui/AddressSummary';
-import TransactionList from '../../transactions/components/TransactionList';
+import TransactionBrowser, {
+  TRANSACTIONS_PER_PAGE_DEFAULT,
+} from '../../transactions/components/TransactionsBrowser';
+import { useTransactionsFeature } from '../../transactions/context';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
 import styles from './AddressSearchResult.scss';
@@ -12,6 +15,7 @@ import NoSearchResult from './NoSearchResult';
 
 export const AddressSearchResult = () => {
   const { actions, api, store } = useSearchFeature();
+  const transactions = useTransactionsFeature();
   const router = useRouter();
 
   // Trigger search after component did render
@@ -35,7 +39,6 @@ export const AddressSearchResult = () => {
           const {
             address,
             finalBalance,
-            transactions,
             transactionsCount,
           } = addressSearchResult;
           return (
@@ -48,17 +51,40 @@ export const AddressSearchResult = () => {
                   transactionsCount={transactionsCount}
                 />
               </div>
-              {transactions.length > 0 && (
-                <div className={styles.transactionList}>
-                  <TransactionList
-                    title="Transactions"
-                    items={transactions.map(t => ({
-                      ...t,
-                      highlightAddress: address,
-                    }))}
-                  />
-                </div>
-              )}
+              <div className={styles.transactionList}>
+                <TransactionBrowser
+                  isLoading={
+                    transactions.api.getAddressTransactionsQuery.isExecuting
+                  }
+                  isLoadingFirstTime={
+                    transactions.api.getAddressTransactionsQuery
+                      .isExecutingTheFirstTime
+                  }
+                  onChangePage={page => {
+                    router.push({
+                      pathname: '/address',
+                      query: {
+                        address,
+                        page,
+                        perPage:
+                          router.query?.perPage ??
+                          TRANSACTIONS_PER_PAGE_DEFAULT,
+                      },
+                    });
+                  }}
+                  onPagingCalculated={paging => {
+                    transactions.actions.browseAddressTransactions.trigger({
+                      address,
+                      limit: paging.itemsPerPage,
+                      offset: (paging.currentPage - 1) * paging.itemsPerPage,
+                    });
+                  }}
+                  perPage={router.query?.perPage as string}
+                  currentPage={(router.query?.page as string) ?? 1}
+                  total={parseInt(transactionsCount, 10)}
+                  transactions={transactions.store.browsedAddressTransactions}
+                />
+              </div>
             </Container>
           );
         } else {
