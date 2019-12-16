@@ -84,6 +84,7 @@ export const EpochsSearchResult = () => {
               >
                 <BlockList
                   title="Blocks"
+                  ignoreLinksToEpoch={epochSearchResult?.number}
                   items={epochSearchResult.blocks.slice(0, 10)}
                   isLoading={false}
                 />

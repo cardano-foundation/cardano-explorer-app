@@ -26,10 +26,11 @@ const TableBodyRow: FC<ITableBodyRowProps> = ({ columns, row }) => (
           cellContent = column.cellRender;
         }
       }
-
+      const isCellClickable =
+        !column.isCellClickable || column.isCellClickable(row);
       return (
         <div key={`column_${index}`} className={column.cssClass}>
-          {column.cellOnClick ? (
+          {isCellClickable && column.cellOnClick ? (
             <span
               className={styles.clickableCell}
               onClick={() => {

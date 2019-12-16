@@ -17,6 +17,7 @@ export interface IColumnDefinition<R = any, CE = any, CO = any> {
   cellValue?: Transform<R, CE>;
   cellOnClick?: (row: CE) => void;
   cssClass?: string;
+  isCellClickable?: (row: CE) => boolean;
   head: CellHeaderTemplate;
   key: string;
 }
