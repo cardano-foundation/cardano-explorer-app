@@ -8,12 +8,14 @@ import { IBlockOverview } from '../types';
 import styles from './BlockList.scss';
 
 export interface IBlockListProps {
+  ignoreLinksToEpoch?: number;
   isLoading: boolean;
   items: Array<IBlockOverview>;
   title: string;
 }
 
 interface IColumnsProps {
+  ignoreLinksToEpoch?: number;
   onEpochNumberClicked: (epochNo: IBlockOverview['epoch']) => void;
   onBlockNumberClicked: (id: IBlockOverview['id']) => void;
 }
@@ -27,6 +29,8 @@ const columns = (
     cellValue: (row: IBlockOverview) => `${row.epoch} / ${row.slotWithinEpoch}`,
     cssClass: 'epoch',
     head: 'Epoch / Slot',
+    isCellClickable: (row: IBlockOverview) =>
+      props.ignoreLinksToEpoch !== row.epoch,
     key: 'epochsSlots',
   },
   {
@@ -77,6 +81,7 @@ const BlockList: FC<IBlockListProps> = props => {
       <Table
         title={props.title}
         columns={columns({
+          ignoreLinksToEpoch: props.ignoreLinksToEpoch,
           onBlockNumberClicked: id =>
             navigation?.actions.goToBlockDetailsPage.trigger({
               id,
