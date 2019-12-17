@@ -2,15 +2,13 @@ import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { calculatePaging } from '../../../lib/paging';
+import NextRouterPagination from '../../../widgets/browsing/NextRouterPagination';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 
-import Pagination from '../../../widgets/browsing/Pagination';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useBlocksFeature } from '../context';
 import BlockList from './BlockList';
 
-// TODO: This actually fetches 1 item more than given
-// because the query includes lower and upper boundaries
 const BLOCKS_PER_PAGE_DEFAULT = 20;
 const BLOCKS_PER_PAGE_MAXIMUM = 50;
 const BLOCKS_PER_PAGE_MINIMUM = 5;
@@ -51,17 +49,10 @@ const BlocksBrowser = () => {
         title="Browse Blocks"
         items={blocks.store.browsedBlocks}
       />
-      <Pagination
+      <NextRouterPagination
         currentPage={paging.currentPage}
-        onChangePage={(page: number) => {
-          router.push({
-            pathname: '/browse-blocks',
-            query: {
-              page,
-              perPage: paging.itemsPerPage,
-            },
-          });
-        }}
+        itemsPerPage={paging.itemsPerPage}
+        router={router}
         totalPages={paging.totalPages}
       />
     </>

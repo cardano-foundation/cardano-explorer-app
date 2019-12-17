@@ -2,9 +2,9 @@ import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { calculatePaging } from '../../../lib/paging';
+import NextRouterPagination from '../../../widgets/browsing/NextRouterPagination';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 
-import Pagination from '../../../widgets/browsing/Pagination';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useEpochsFeature } from '../context';
 import EpochList from './EpochList';
@@ -49,17 +49,10 @@ const EpochsBrowser = () => {
         title="Browse Epochs"
         items={epochs.store.browsedEpochs}
       />
-      <Pagination
+      <NextRouterPagination
         currentPage={paging.currentPage}
-        onChangePage={(page: number) => {
-          router.push({
-            pathname: '/browse-epochs',
-            query: {
-              page,
-              perPage: paging.itemsPerPage,
-            },
-          });
-        }}
+        itemsPerPage={paging.itemsPerPage}
+        router={router}
         totalPages={paging.totalPages}
       />
     </>
