@@ -60,7 +60,7 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
       <BlockList
         isLoading={query.isExecuting}
         title={props.title}
-        items={blocks.store.browsedBlocks.reverse()}
+        items={blocks.store.browsedBlocks.slice().reverse()}
       />
       <RouterPagination
         currentPage={paging.currentPage}
