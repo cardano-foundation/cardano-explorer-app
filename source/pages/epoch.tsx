@@ -3,7 +3,7 @@ import NoSSR from 'react-no-ssr';
 import { BrandType } from '../constants';
 import { environment } from '../environment';
 import { BlocksFeatureProvider } from '../features/blocks/ui/BlocksFeatureProvider';
-import { EpochsSearchResult } from '../features/search/ui/EpochsSearchResult';
+import EpochsSearchResult from '../features/search/ui/EpochsSearchResult';
 import { Footer, Header, Layout } from '../widgets/layout';
 import styles from './epoch.scss';
 
