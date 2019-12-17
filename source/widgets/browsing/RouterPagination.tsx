@@ -10,12 +10,13 @@ export interface IPaginationProps {
   router: NextRouter;
 }
 
-const NextRouterPagination = (props: IPaginationProps) => {
+const RouterPagination = (props: IPaginationProps) => {
   const { currentPage, itemsPerPage, router, totalPages } = props;
   const onChangePage = (page: number) => {
     router.push({
       pathname: router.pathname,
       query: {
+        ...router.query,
         page,
         perPage: itemsPerPage,
       },
@@ -30,4 +31,4 @@ const NextRouterPagination = (props: IPaginationProps) => {
   );
 };
 
-export default observer(NextRouterPagination);
+export default observer(RouterPagination);

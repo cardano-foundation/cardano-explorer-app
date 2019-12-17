@@ -6,6 +6,7 @@ import { environment } from '../../../environment';
 import ShowMoreButtonDecorator from '../../../widgets/decorators/ShowMoreButtonDecorator';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockList from '../../blocks/ui/BlockList';
+import BlocksBrowser from '../../blocks/ui/BlocksBrowser';
 import EpochSummary from '../../epochs/ui/EpochSummary';
 import StakeDistribution from '../../epochs/ui/StakeDistribution';
 import { useSearchFeature } from '../context';
@@ -73,22 +74,12 @@ export const EpochsSearchResult = () => {
               <div className={styles.epochSummary}>
                 <EpochSummary title="Epoch Summary" epoch={epochSearchResult} />
               </div>
-              <ShowMoreButtonDecorator
-                label={'show more'}
-                isHidden={epochSearchResult.blocks.length < 10}
-                onClick={() =>
-                  router.push(
-                    `/browse-blocks?upper=${epochSearchResult.blocks[0].number}`
-                  )
-                }
-              >
-                <BlockList
-                  title="Blocks"
-                  ignoreLinksToEpoch={epochSearchResult?.number}
-                  items={epochSearchResult.blocks.slice(0, 10)}
-                  isLoading={false}
-                />
-              </ShowMoreButtonDecorator>
+              <BlocksBrowser
+                epoch={epochSearchResult.number}
+                perPageDefault={10}
+                title="Blocks"
+                totalItems={epochSearchResult?.blocksCount}
+              />
               {environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
                 <div className={styles.stakeDistribution}>
                   <StakeDistribution

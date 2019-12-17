@@ -68,7 +68,10 @@ export class BlocksStore extends Store {
     const { blockHeight } = this.networkInfo.store;
     const upper = blockHeight;
     const lower = Math.max(0, upper - 9);
-    const result = await this.fetchBlocksInRange({ lower, upper });
+    const result = await this.fetchBlocksInRange({
+      lower,
+      upper,
+    });
     if (result) {
       runInAction(() => {
         this.latestBlocks = result;
@@ -82,16 +85,27 @@ export class BlocksStore extends Store {
   @action public browseBlocks = async (
     params: ActionProps<typeof BlocksActions.prototype.browseBlocks>
   ): Promise<void> => {
-    const upper = params.page * params.perPage;
-    const result = await this.fetchBlocksInRange({
-      lower: upper - params.perPage,
-      upper,
-    });
-    if (result) {
-      runInAction(() => {
-        this.browsedBlocks = result;
+    let result: IBlockOverview[] | null = null;
+    const offset = (params.page - 1) * params.perPage;
+    const limit = params.perPage;
+    if (params.epoch) {
+      result = await this.fetchBlocksInEpoch({
+        epoch: params.epoch,
+        limit,
+        offset,
+      });
+    } else {
+      result = await this.fetchBlocksInRange({
+        lower: offset,
+        upper: offset + limit,
       });
     }
+
+    runInAction(() => {
+      if (result) {
+        this.browsedBlocks = result;
+      }
+    });
   };
 
   @action public startPollingLatestBlocks = () => {
@@ -100,15 +114,6 @@ export class BlocksStore extends Store {
 
   @action public stopPollingLatestBlocks = () => {
     this.stopReactions(this.latestBlocksReactions);
-  };
-
-  @action protected transformBrowsedBlocksResult = ():
-    | IBlockOverview[]
-    | null => {
-    const { result } = this.blocksApi.getBlocksInRangeQuery;
-    return (
-      result?.blocks.filter(isNotNull).map(blockOverviewTransformer) ?? null
-    );
   };
 
   // ============ REACTIONS =============
@@ -135,7 +140,7 @@ export class BlocksStore extends Store {
   // ============ HELPERS =============
 
   /**
-   * Fetches blocks in given range and returns the result.
+   * Fetches blocks in given range.
    */
   private fetchBlocksInRange = async (
     params: GraphQLRequestVariables<
@@ -143,11 +148,30 @@ export class BlocksStore extends Store {
     >
   ): Promise<IBlockOverview[] | null> => {
     const { getBlocksInRangeQuery } = this.blocksApi;
-    // Wait for potential current execution (only supports one queued query)
     if (getBlocksInRangeQuery.isExecuting) {
       return null;
     }
-    await getBlocksInRangeQuery.execute(params);
-    return this.transformBrowsedBlocksResult();
+    const result = await getBlocksInRangeQuery.execute(params);
+    return (
+      result?.blocks.filter(isNotNull).map(blockOverviewTransformer) ?? null
+    );
+  };
+
+  /**
+   * Fetches blocks in given epoch.
+   */
+  private fetchBlocksInEpoch = async (
+    params: GraphQLRequestVariables<
+      typeof BlocksApi.prototype.getBlocksInEpochQuery
+    >
+  ): Promise<IBlockOverview[] | null> => {
+    const { getBlocksInEpochQuery } = this.blocksApi;
+    if (getBlocksInEpochQuery.isExecuting) {
+      return null;
+    }
+    const result = await getBlocksInEpochQuery.execute(params);
+    return (
+      result?.blocks.filter(isNotNull).map(blockOverviewTransformer) ?? null
+    );
   };
 }

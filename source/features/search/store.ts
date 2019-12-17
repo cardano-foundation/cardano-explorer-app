@@ -6,8 +6,8 @@ import { addressDetailTransformer } from '../address/api/transformers';
 import { IAddressSummary } from '../address/types';
 import { blockDetailsTransformer } from '../blocks/api/transformers';
 import { IBlockDetailed } from '../blocks/types';
-import { epochDetailsTransformer } from '../epochs/api/transformers';
-import { IEpochDetails } from '../epochs/types';
+import { epochOverviewTransformer } from '../epochs/api/transformers';
+import { IEpochOverview } from '../epochs/types';
 import { transactionDetailsTransformer } from '../transactions/api/transformers';
 import { ITransactionDetails } from '../transactions/types';
 import { SearchApi } from './api';
@@ -27,7 +27,7 @@ export enum SearchType {
 export class SearchStore extends Store {
   @observable public addressSearchResult: IAddressSummary | null = null;
   @observable public blockSearchResult: IBlockDetailed | null = null;
-  @observable public epochSearchResult: IEpochDetails | null = null;
+  @observable public epochSearchResult: IEpochOverview | null = null;
   @observable public transactionSearchResult: ITransactionDetails | null = null;
 
   private readonly searchApi: SearchApi;
@@ -242,7 +242,7 @@ export class SearchStore extends Store {
       const epochData = result.epochs[0];
       if (isNotNull(epochData)) {
         runInAction(() => {
-          this.epochSearchResult = epochDetailsTransformer(
+          this.epochSearchResult = epochOverviewTransformer(
             epochData,
             this.networkInfo.store
           );
