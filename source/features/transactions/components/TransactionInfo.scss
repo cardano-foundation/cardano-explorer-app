@@ -14,7 +14,7 @@
     letter-spacing: 0.4px;
     line-height: 1.33;
 
-    @media (max-width: 992px) {
+    @media (max-width: 768px) {
       align-items: flex-start;
       flex-direction: column;
     }
@@ -25,10 +25,16 @@
       padding-right: 66.5px;
 
       @media (max-width: 992px) {
-        max-width: initial;
+        max-width: 80%;
         min-width: initial;
+        padding-right: 10px;
+      }
+
+      @media (max-width: 768px) {
+        margin-bottom: 10px;
+        max-width: 100%;
+        min-width: 100%;
         padding-right: 0;
-        width: 100%;
       }
 
       .infoRow {
@@ -37,7 +43,7 @@
         justify-content: space-between;
         margin-bottom: 10px;
 
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
           align-items: flex-start;
           flex-direction: column;
         }
@@ -60,8 +66,7 @@
           flex-direction: column;
           width: calc(50% - 27px);
 
-          @media (max-width: 992px) {
-            margin-bottom: 10px;
+          @media (max-width: 768px) {
             width: 100%;
           }
 
@@ -77,10 +82,6 @@
 
         .outputs {
           align-items: flex-end;
-
-          @media (max-width: 992px) {
-            align-items: flex-start;
-          }
         }
 
         .id {
@@ -89,16 +90,15 @@
           font-weight: 600;
           letter-spacing: 0.6px;
           line-height: 1.33;
-
-          @media (max-width: 992px) {
-            margin-bottom: 10px;
-            word-break: break-word;
-          }
         }
 
         .linkedId {
           color: $primary-highlight-color;
           cursor: pointer;
+
+          @media (max-width: 768px) {
+            word-break: break-all;
+          }
         }
 
         .input,
@@ -116,10 +116,6 @@
           &:last-child {
             margin-bottom: 0;
           }
-
-          @media (max-width: 992px) {
-            margin-bottom: 10px;
-          }
         }
 
         .includedAt {
@@ -129,8 +125,8 @@
           letter-spacing: 0.4px;
           line-height: 1.33;
 
-          @media (max-width: 992px) {
-            display: none;
+          @media (max-width: 768px) {
+            margin-top: 10px;
           }
         }
 
@@ -138,14 +134,16 @@
           display: flex;
           justify-content: center;
 
+          @media (max-width: 768px) {
+            margin: 10px 0;
+            transform: rotate(90deg);
+            width: 100%;
+          }
+
           svg {
             height: 10px;
             object-fit: contain;
             width: 14px;
-          }
-
-          @media (max-width: 992px) {
-            margin-bottom: 10px;
           }
         }
       }
@@ -156,8 +154,12 @@
       margin-top: -5px;
 
       @media (max-width: 992px) {
-        margin-top: 0;
-        width: 100%;
+        max-width: 20%;
+      }
+
+      @media (max-width: 768px) {
+        margin-left: -5px;
+        max-width: initial;
       }
 
       .infoRow {
@@ -165,6 +167,10 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 5px;
+
+        @media (max-width: 768px) {
+          margin-top: 5px;
+        }
 
         &:last-child {
           margin-bottom: 0;
@@ -192,10 +198,6 @@
 
           &:last-child {
             margin-bottom: 0;
-          }
-
-          @media (max-width: 992px) {
-            display: none;
           }
         }
       }
