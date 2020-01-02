@@ -1,0 +1,22 @@
+#import "./BlockOverview.graphql"
+
+query getBlocksInEpoch(
+  $epoch: Int!
+  $offset: Int!
+  $limit: Int!
+) {
+  blocks(
+    order_by: { number: asc_nulls_last }
+    where: {
+      epoch: {
+        number: {
+          _eq: $epoch
+        }
+      }
+    }
+    offset: $offset
+    limit: $limit
+  ) {
+    ...BlockOverview
+  }
+}

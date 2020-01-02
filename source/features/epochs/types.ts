@@ -1,7 +1,7 @@
 import { IBlockOverview } from '../blocks/types';
 
 export interface IEpochOverview {
-  blocksCount: string;
+  blocksCount: number;
   number: number;
   lastBlockAt: Date;
   output: string;
@@ -9,8 +9,4 @@ export interface IEpochOverview {
   slotsCount: number;
   startedAt: Date;
   transactionsCount: string;
-}
-
-export interface IEpochDetails extends IEpochOverview {
-  blocks: IBlockOverview[];
 }

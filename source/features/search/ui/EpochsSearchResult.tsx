@@ -1,4 +1,4 @@
-import { Observer } from 'mobx-react-lite';
+import { observer } from 'mobx-react-lite';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { CardanoEra } from '../../../constants';
@@ -6,8 +6,10 @@ import { environment } from '../../../environment';
 import ShowMoreButtonDecorator from '../../../widgets/decorators/ShowMoreButtonDecorator';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockList from '../../blocks/ui/BlockList';
+import BlocksBrowser from '../../blocks/ui/BlocksBrowser';
 import EpochSummary from '../../epochs/ui/EpochSummary';
 import StakeDistribution from '../../epochs/ui/StakeDistribution';
+import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
 import styles from './EpochsSearchResult.scss';
@@ -46,68 +48,58 @@ const stakeDistribution = [
   },
 ];
 
-export const EpochsSearchResult = () => {
+const EpochsSearchResult = () => {
   const { actions, api, store } = useSearchFeature();
+  const networkInfo = useNetworkInfoFeature();
   const router = useRouter();
+  const { epochSearchResult } = store;
 
   // Trigger search after component did render
   useEffect(() => {
     const { query } = router;
-    if (query?.number) {
+    if (networkInfo.store.currentEpoch && query?.number) {
       const num = parseInt(query.number as string, 10);
-      actions.searchForEpochByNumber.trigger({ number: num });
+      if (!epochSearchResult || epochSearchResult.number !== num) {
+        actions.searchForEpochByNumber.trigger({ number: num });
+      }
     }
-  });
-  return (
-    <Observer>
-      {() => {
-        const { epochSearchResult } = store;
-        if (
-          !api.searchForEpochByNumberQuery.hasBeenExecutedAtLeastOnce ||
-          store.isSearching
-        ) {
-          return <LoadingSpinner />;
-        } else if (epochSearchResult) {
-          return (
-            <div className={styles.container}>
-              <div className={styles.epochSummary}>
-                <EpochSummary title="Epoch Summary" epoch={epochSearchResult} />
-              </div>
-              <ShowMoreButtonDecorator
-                label={'show more'}
-                isHidden={epochSearchResult.blocks.length < 10}
-                onClick={() =>
-                  router.push(
-                    `/browse-blocks?upper=${epochSearchResult.blocks[0].number}`
-                  )
-                }
-              >
-                <BlockList
-                  title="Blocks"
-                  ignoreLinksToEpoch={epochSearchResult?.number}
-                  items={epochSearchResult.blocks.slice(0, 10)}
-                  isLoading={false}
-                />
-              </ShowMoreButtonDecorator>
-              {environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
-                <div className={styles.stakeDistribution}>
-                  <StakeDistribution
-                    title="Stake Distribution"
-                    items={stakeDistribution}
-                  />
-                </div>
-              ) : null}
-            </div>
-          );
-        } else {
-          return (
-            <NoSearchResult
-              searchQuery={router.query?.number as string}
-              searchType={SearchType.number}
+  }, [networkInfo.store.currentEpoch, router.query, store.epochSearchResult]);
+
+  if (
+    !api.searchForEpochByNumberQuery.hasBeenExecutedAtLeastOnce ||
+    store.isSearching
+  ) {
+    return <LoadingSpinner />;
+  } else if (epochSearchResult) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.epochSummary}>
+          <EpochSummary title="Epoch Summary" epoch={epochSearchResult} />
+        </div>
+        <BlocksBrowser
+          epoch={epochSearchResult.number}
+          perPageDefault={10}
+          title="Blocks"
+          totalItems={epochSearchResult?.blocksCount}
+        />
+        {environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
+          <div className={styles.stakeDistribution}>
+            <StakeDistribution
+              title="Stake Distribution"
+              items={stakeDistribution}
             />
-          );
-        }
-      }}
-    </Observer>
-  );
+          </div>
+        ) : null}
+      </div>
+    );
+  } else {
+    return (
+      <NoSearchResult
+        searchQuery={router.query?.number as string}
+        searchType={SearchType.number}
+      />
+    );
+  }
 };
+
+export default observer(EpochsSearchResult);

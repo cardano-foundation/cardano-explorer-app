@@ -12,7 +12,7 @@ if (environment.IS_CLIENT) {
     <NoSSR>
       <Layout header={<Header brandType={BrandType.SHRINKED} />}>
         <BlocksFeatureProvider>
-          <BlocksBrowser />
+          <BlocksBrowser title="Browse Blocks" />
         </BlocksFeatureProvider>
         <Footer />
       </Layout>

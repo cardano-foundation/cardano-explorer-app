@@ -18,8 +18,7 @@ if (environment.IS_CLIENT) {
         <Container hasTopMargin>
           <EpochSummary
             epoch={{
-              blocks: [],
-              blocksCount: '21073',
+              blocksCount: 21073,
               lastBlockAt: new Date(1569144483000),
               number: 135,
               output: '8397621',

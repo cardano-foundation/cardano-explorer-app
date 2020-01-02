@@ -1,4 +1,4 @@
-#import "../../epochs/api/EpochDetails.graphql"
+#import "../../epochs/api/EpochOverview.graphql"
 
 query searchForEpochByNumber (
   $number: Int!
@@ -10,6 +10,6 @@ query searchForEpochByNumber (
       }
     }
   ) {
-    ...EpochDetails
+    ...EpochOverview
   }
 }

@@ -4,12 +4,12 @@ import CircularProgress, {
   CircularProgressSize,
 } from '../../../widgets/circular-progress/CircularProgress';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
-import { IEpochDetails } from '../types';
+import { IEpochOverview } from '../types';
 import styles from './EpochSummary.scss';
 
 export interface IEpochSummaryProps {
   title: string;
-  epoch: IEpochDetails;
+  epoch: IEpochOverview;
 }
 
 const EpochSummary = ({ title, epoch }: IEpochSummaryProps) => (
