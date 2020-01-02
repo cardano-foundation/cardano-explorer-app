@@ -1,3 +1,4 @@
+import isNumber from 'lodash/isNumber';
 import { action, computed, observable, runInAction } from 'mobx';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import { GraphQLRequestVariables } from '../../lib/graphql/GraphQLRequest';
@@ -127,13 +128,16 @@ export class EpochsStore extends Store {
     const { getEpochsInRangeQuery } = this.epochsApi;
     const { blockHeight, currentEpoch, isFetching } = this.networkInfo.store;
     if (
-      !currentEpoch ||
+      !isNumber(currentEpoch) ||
       getEpochsInRangeQuery.isExecuting ||
       isFetching ||
       this.lastFetchedAtBlockHeight === blockHeight
     ) {
       return;
     }
+    runInAction(() => {
+      this.lastFetchedAtBlockHeight = blockHeight;
+    });
     this.epochsActions.fetchLatestEpochs.trigger();
   };
 
