@@ -9,6 +9,7 @@ import NoSSR from 'react-no-ssr';
 import '../config/mobx.config';
 import { NavigationFeatureProvider } from '../features/navigation/ui/NavigationFeatureProvider';
 import { NetworkInfoFeatureProvider } from '../features/network-info/ui/NetworkInfoFeatureProvider';
+import { BrowserUpdate } from '../features/outdated-browser/BrowserUpdate';
 import { SearchFeatureProvider } from '../features/search/ui/SearchFeatureProvider';
 import GraphQLProvider from '../lib/graphql/GraphQLProvider';
 import { CssVariablesProvider } from '../styles/theme/CssVariablesProvider';
@@ -28,6 +29,7 @@ class CardanoExplorer extends App {
     // Provide global app features that must survive page navigation:
     return wrapInStaticLayout(
       <NoSSR>
+        <BrowserUpdate />
         <Head>
           {process.env.NODE_ENV !== 'production' && (
             <link
