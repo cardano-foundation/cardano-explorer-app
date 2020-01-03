@@ -6,5 +6,6 @@
     src: url('#{$src}.eot?#iefix') format('embedded-opentype'),
       url('#{$src}.woff') format('woff'), url('#{$src}.ttf') format('truetype'),
       url('#{$src}.svg#webfont') format('svg');
+    font-display: swap;
   }
 }
