@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useLayoutEffect } from 'react';
+import { environment } from '../../environment';
 import { Store } from '../Store';
 
 /**
@@ -9,6 +10,9 @@ import { Store } from '../Store';
  * @param feature
  */
 export const useFeature = (feature: { store: Store }) => {
+  if (environment.IS_SERVER) {
+    return;
+  }
   useLayoutEffect(() => {
     // Start feature store before first render is done
     feature.store.start();

@@ -27,32 +27,34 @@ class CardanoExplorer extends App {
     const emptyLayout = (page: JSX.Element) => page;
     const wrapInStaticLayout = Component.getStaticLayout || emptyLayout;
     // Provide global app features that must survive page navigation:
-    return wrapInStaticLayout(
-      <NoSSR>
-        <BrowserUpdate />
-        <Head>
-          {process.env.NODE_ENV !== 'production' && (
-            <link
-              rel="stylesheet"
-              type="text/css"
-              href={`/_next/static/css/styles.chunk.css?v=${Date.now()}`}
-            />
-          )}
-        </Head>
-        <GraphQLProvider>
-          <CssVariablesProvider variables={cardanoExplorerTheme}>
-            <PolymorphThemeProvider>
-              <NetworkInfoFeatureProvider>
-                <NavigationFeatureProvider>
-                  <SearchFeatureProvider>
-                    <Component {...pageProps} />
-                  </SearchFeatureProvider>
-                </NavigationFeatureProvider>
-              </NetworkInfoFeatureProvider>
-            </PolymorphThemeProvider>
-          </CssVariablesProvider>
-        </GraphQLProvider>
-      </NoSSR>
+    return (
+      <GraphQLProvider>
+        <CssVariablesProvider variables={cardanoExplorerTheme}>
+          <PolymorphThemeProvider>
+            <NetworkInfoFeatureProvider>
+              <NavigationFeatureProvider>
+                <SearchFeatureProvider>
+                  {wrapInStaticLayout(
+                    <NoSSR>
+                      <BrowserUpdate />
+                      <Head>
+                        {process.env.NODE_ENV !== 'production' && (
+                          <link
+                            rel="stylesheet"
+                            type="text/css"
+                            href={`/_next/static/css/styles.chunk.css?v=${Date.now()}`}
+                          />
+                        )}
+                      </Head>
+                      <Component {...pageProps} />
+                    </NoSSR>
+                  )}
+                </SearchFeatureProvider>
+              </NavigationFeatureProvider>
+            </NetworkInfoFeatureProvider>
+          </PolymorphThemeProvider>
+        </CssVariablesProvider>
+      </GraphQLProvider>
     );
   }
 }
