@@ -1,13 +1,10 @@
-import Head from 'next/head';
 import React from 'react';
 import { BrandType } from '../constants';
-import { environment } from '../environment';
 import { BlocksFeatureProvider } from '../features/blocks/ui/BlocksFeatureProvider';
 import { LatestBlocks } from '../features/blocks/ui/LatestBlocks';
 import { EpochsFeatureProvider } from '../features/epochs/ui/EpochsFeatureProvider';
 import { LatestEpochs } from '../features/epochs/ui/LatestEpochs';
 import { SearchBar } from '../features/search/ui/SearchBar';
-import { isMobileScreen } from '../helpers';
 import SideBackgroundImage from '../public/assets/images/main-side-background.svg';
 import { Footer, Header, Layout } from '../widgets/layout';
 import styles from './index.scss';
@@ -38,21 +35,18 @@ Index.getStaticLayout = (page: React.ReactNode) => (
     {/*  </div>*/}
     {/*)}*/}
     <Layout>
-      <Head>
-        <title>Cardano Explorer | Index</title>
-      </Head>
       <Header brandType={BrandType.ENLARGED} />
       {page}
       <Footer />
     </Layout>
-    {environment.IS_CLIENT && !isMobileScreen() && (
-      <div className={styles.sideBgContainer}>
-        <div className={styles.sideBackgroundImageContainer}>
-          <SideBackgroundImage className={styles.sideBackgroundImage} />
-        </div>
+    <div className={styles.sideBgContainer}>
+      <div className={styles.sideBackgroundImageContainer}>
+        <SideBackgroundImage className={styles.sideBackgroundImage} />
       </div>
-    )}
+    </div>
   </>
 );
+
+Index.pageTitle = 'Cardano Explorer | Index';
 
 export default Index;

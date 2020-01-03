@@ -15,9 +15,12 @@ import GraphQLProvider from '../lib/graphql/GraphQLProvider';
 import { CssVariablesProvider } from '../styles/theme/CssVariablesProvider';
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import { cardanoExplorerTheme } from '../styles/theme/theme';
+import { Layout } from '../widgets/layout';
+import LoadingSpinner from '../widgets/loading-spinner/LoadingSpinner';
 
 type PageComponentWithStaticLayout = NextComponentType<NextPageContext, any> & {
   getStaticLayout?: (page: React.ReactNode) => JSX.Element;
+  pageTitle: string;
 };
 
 class CardanoExplorer extends App {
@@ -35,9 +38,12 @@ class CardanoExplorer extends App {
               <NavigationFeatureProvider>
                 <SearchFeatureProvider>
                   {wrapInStaticLayout(
-                    <NoSSR>
+                    <NoSSR onSSR={<LoadingSpinner />}>
                       <BrowserUpdate />
                       <Head>
+                        {Component.pageTitle && (
+                          <title>{Component.pageTitle}</title>
+                        )}
                         {process.env.NODE_ENV !== 'production' && (
                           <link
                             rel="stylesheet"

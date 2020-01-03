@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
@@ -15,19 +16,18 @@ export interface IHeaderProps {
 
 export const Header = observer((props: IHeaderProps) => {
   const { brandType } = props;
+  const router = useRouter();
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
       ? styles.enlargedHeaderContainer
       : styles.shrinkedHeaderContainer;
   const headerContainerStyles = cx([styles.headerContainer, brandTypeStyle]);
-  const indexClassName =
-    environment.IS_CLIENT && !location.pathname.includes('stake-pools')
-      ? styles.activeTab
-      : '';
-  const stakePoolsClassName =
-    environment.IS_CLIENT && location.pathname.includes('stake-pools')
-      ? styles.activeTab
-      : '';
+  const indexClassName = !router.pathname.includes('stake-pools')
+    ? styles.activeTab
+    : '';
+  const stakePoolsClassName = router.pathname.includes('stake-pools')
+    ? styles.activeTab
+    : '';
   const testnetSubtitle =
     environment.CARDANO.NETWORK !== CardanoNetwork.MAINNET ? (
       <div className={styles.networkTitle}>
