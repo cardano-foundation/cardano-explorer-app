@@ -20,12 +20,14 @@ export const Header = observer((props: IHeaderProps) => {
       ? styles.enlargedHeaderContainer
       : styles.shrinkedHeaderContainer;
   const headerContainerStyles = cx([styles.headerContainer, brandTypeStyle]);
-  const indexClassName = !location.pathname.includes('stake-pools')
-    ? styles.activeTab
-    : '';
-  const stakePoolsClassName = location.pathname.includes('stake-pools')
-    ? styles.activeTab
-    : '';
+  const indexClassName =
+    environment.IS_CLIENT && !location.pathname.includes('stake-pools')
+      ? styles.activeTab
+      : '';
+  const stakePoolsClassName =
+    environment.IS_CLIENT && location.pathname.includes('stake-pools')
+      ? styles.activeTab
+      : '';
   const testnetSubtitle =
     environment.CARDANO.NETWORK !== CardanoNetwork.MAINNET ? (
       <div className={styles.networkTitle}>

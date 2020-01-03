@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import React from 'react';
-import NoSSR from 'react-no-ssr';
 import { BrandType } from '../constants';
 import { environment } from '../environment';
 import { BlocksFeatureProvider } from '../features/blocks/ui/BlocksFeatureProvider';
@@ -9,54 +8,51 @@ import { EpochsFeatureProvider } from '../features/epochs/ui/EpochsFeatureProvid
 import { LatestEpochs } from '../features/epochs/ui/LatestEpochs';
 import { SearchBar } from '../features/search/ui/SearchBar';
 import { isMobileScreen } from '../helpers';
+import SideBackgroundImage from '../public/assets/images/main-side-background.svg';
 import { Footer, Header, Layout } from '../widgets/layout';
 import styles from './index.scss';
 
-const SideBackgroundImage = require('../public/assets/images/main-side-background.svg');
+const Index = () => (
+  <>
+    <SearchBar brandType={BrandType.ENLARGED} />
+    <BlocksFeatureProvider>
+      <div className={styles.epochList}>
+        <EpochsFeatureProvider>
+          <LatestEpochs />
+        </EpochsFeatureProvider>
+      </div>
+      <div className={styles.blockList}>
+        <LatestBlocks />
+      </div>
+    </BlocksFeatureProvider>
+  </>
+);
 
-// Empty on server
-let Index = () => <NoSSR />;
-
-// Full components on client
-if (environment.IS_CLIENT) {
-  Index = () => (
-    <NoSSR>
+Index.getStaticLayout = (page: React.ReactNode) => (
+  <>
+    {/*{!isMobileScreen() && (*/}
+    {/*  <div className={styles.headerBgContainer}>*/}
+    {/*    <div className={styles.headerBg}>*/}
+    {/*      <img src="/assets/images/main-header-background.png" />*/}
+    {/*    </div>*/}
+    {/*  </div>*/}
+    {/*)}*/}
+    <Layout>
       <Head>
         <title>Byron | Index</title>
       </Head>
-      {/*{!isMobileScreen() && (*/}
-      {/*  <div className={styles.headerBgContainer}>*/}
-      {/*    <div className={styles.headerBg}>*/}
-      {/*      <img src="/assets/images/main-header-background.png" />*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*)}*/}
-      <Layout>
-        <Header brandType={BrandType.ENLARGED} />
-        <div>
-          <SearchBar brandType={BrandType.ENLARGED} />
+      <Header brandType={BrandType.ENLARGED} />
+      {page}
+      <Footer />
+    </Layout>
+    {environment.IS_CLIENT && !isMobileScreen() && (
+      <div className={styles.sideBgContainer}>
+        <div className={styles.sideBackgroundImageContainer}>
+          <SideBackgroundImage className={styles.sideBackgroundImage} />
         </div>
-        <BlocksFeatureProvider>
-          <div className={styles.epochList}>
-            <EpochsFeatureProvider>
-              <LatestEpochs />
-            </EpochsFeatureProvider>
-          </div>
-          <div className={styles.blockList}>
-            <LatestBlocks />
-          </div>
-        </BlocksFeatureProvider>
-        <Footer />
-      </Layout>
-      {!isMobileScreen() && (
-        <div className={styles.sideBgContainer}>
-          <div className={styles.sideBackgroundImageContainer}>
-            <SideBackgroundImage className={styles.sideBackgroundImage} />
-          </div>
-        </div>
-      )}
-    </NoSSR>
-  );
-}
+      </div>
+    )}
+  </>
+);
 
 export default Index;

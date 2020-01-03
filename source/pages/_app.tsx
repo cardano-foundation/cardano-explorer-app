@@ -1,7 +1,12 @@
 import App from 'next/app';
+import {
+  NextComponentType,
+  NextPageContext,
+} from 'next/dist/next-server/lib/utils';
+import Head from 'next/head';
 import React from 'react';
+import NoSSR from 'react-no-ssr';
 import '../config/mobx.config';
-import { environment } from '../environment';
 import { NavigationFeatureProvider } from '../features/navigation/ui/NavigationFeatureProvider';
 import { NetworkInfoFeatureProvider } from '../features/network-info/ui/NetworkInfoFeatureProvider';
 import { SearchFeatureProvider } from '../features/search/ui/SearchFeatureProvider';
@@ -10,13 +15,28 @@ import { CssVariablesProvider } from '../styles/theme/CssVariablesProvider';
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import { cardanoExplorerTheme } from '../styles/theme/theme';
 
-let app = App;
-if (environment.IS_CLIENT) {
-  class CardanoExplorer extends App {
-    public render() {
-      const { Component, pageProps } = this.props;
-      // Provide global app features that must survive page navigation:
-      return (
+type PageComponentWithStaticLayout = NextComponentType<NextPageContext, any> & {
+  getStaticLayout?: (page: React.ReactNode) => JSX.Element;
+};
+
+class CardanoExplorer extends App {
+  public render() {
+    const { pageProps } = this.props;
+    const Component = this.props.Component as PageComponentWithStaticLayout;
+    const emptyLayout = (page: JSX.Element) => page;
+    const wrapInStaticLayout = Component.getStaticLayout || emptyLayout;
+    // Provide global app features that must survive page navigation:
+    return wrapInStaticLayout(
+      <NoSSR>
+        <Head>
+          {process.env.NODE_ENV !== 'production' && (
+            <link
+              rel="stylesheet"
+              type="text/css"
+              href={`/_next/static/css/styles.chunk.css?v=${Date.now()}`}
+            />
+          )}
+        </Head>
         <GraphQLProvider>
           <CssVariablesProvider variables={cardanoExplorerTheme}>
             <PolymorphThemeProvider>
@@ -30,10 +50,9 @@ if (environment.IS_CLIENT) {
             </PolymorphThemeProvider>
           </CssVariablesProvider>
         </GraphQLProvider>
-      );
-    }
+      </NoSSR>
+    );
   }
-  app = CardanoExplorer;
 }
 
-export default app;
+export default CardanoExplorer;
