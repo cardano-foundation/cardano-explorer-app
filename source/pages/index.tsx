@@ -39,7 +39,7 @@ Index.getStaticLayout = (page: React.ReactNode) => (
     {/*)}*/}
     <Layout>
       <Head>
-        <title>Byron | Index</title>
+        <title>Cardano Explorer | Index</title>
       </Head>
       <Header brandType={BrandType.ENLARGED} />
       {page}
