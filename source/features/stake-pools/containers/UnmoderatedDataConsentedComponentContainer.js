@@ -1,7 +1,5 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import Container from '../../../widgets/container/Container';
-import StakePools from '../components/StakePools';
 import UnmoderatedDataConsented from '../components/UnmoderatedDataConsented';
 import { useStakePools } from '../hooks';
 
