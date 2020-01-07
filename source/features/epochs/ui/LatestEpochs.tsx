@@ -31,6 +31,7 @@ export const LatestEpochs = () => {
             onClick={() => router.push('/browse-epochs')}
           >
             <EpochList
+              currentEpoch={store.currentEpochNumber}
               title="Latest Epochs"
               items={latestEpochs}
               isLoading={store.isLoadingLatestEpochsFirstTime}
