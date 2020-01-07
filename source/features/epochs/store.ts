@@ -1,5 +1,6 @@
 import isNumber from 'lodash/isNumber';
 import { action, computed, observable, runInAction } from 'mobx';
+import { GetEpochsInRangeQuery } from '../../../generated/typings/graphql-schema';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import { GraphQLRequestVariables } from '../../lib/graphql/GraphQLRequest';
 import Reaction, { createReactions } from '../../lib/mobx/Reaction';
@@ -15,14 +16,15 @@ import {
 import { IEpochOverview } from './types';
 
 export class EpochsStore extends Store {
-  @observable public latestEpochs: IEpochOverview[] = [];
-  @observable public browsedEpochs: IEpochOverview[] = [];
-
   private readonly epochsActions: EpochsActions;
   private readonly blocks: IBlocksFeatureDependency;
   private readonly epochsApi: EpochsApi;
   private readonly networkInfo: INetworkInfoFeatureDependency;
   private readonly latestEpochsReactions: Reaction[];
+
+  @observable
+  private browsedEpochsRawData: GetEpochsInRangeQuery['epochs'] = [];
+  @observable private latestEpochsRawData: GetEpochsInRangeQuery['epochs'] = [];
   @observable private lastFetchedAtBlockHeight = 0;
 
   constructor(
@@ -60,6 +62,18 @@ export class EpochsStore extends Store {
 
   // ============ COMPUTED GETTERS =============
 
+  @computed get browsedEpochs(): IEpochOverview[] {
+    return this.transformEpochs(this.browsedEpochsRawData);
+  }
+
+  @computed get currentEpochNumber(): number {
+    return this.networkInfo.store.currentEpoch;
+  }
+
+  @computed get latestEpochs(): IEpochOverview[] {
+    return this.transformEpochs(this.latestEpochsRawData);
+  }
+
   @computed get isLoadingLatestEpochsFirstTime() {
     const { getEpochsInRangeQuery } = this.epochsApi;
     return (
@@ -80,7 +94,7 @@ export class EpochsStore extends Store {
     const result = await this.fetchEpochsInRange({ lower, upper });
     if (result) {
       runInAction(() => {
-        this.latestEpochs = result;
+        this.latestEpochsRawData = result.epochs;
       });
     }
   };
@@ -98,7 +112,7 @@ export class EpochsStore extends Store {
     });
     if (result) {
       runInAction(() => {
-        this.browsedEpochs = result;
+        this.browsedEpochsRawData = result.epochs;
       });
     }
   };
@@ -167,13 +181,20 @@ export class EpochsStore extends Store {
     params: GraphQLRequestVariables<
       typeof EpochsApi.prototype.getEpochsInRangeQuery
     >
-  ): Promise<IEpochOverview[] | null> => {
+  ): Promise<GetEpochsInRangeQuery | null> => {
     const { getEpochsInRangeQuery } = this.epochsApi;
     // Wait for potential current execution (only supports one queued query)
     if (getEpochsInRangeQuery.isExecuting) {
       return null;
     }
-    await getEpochsInRangeQuery.execute(params);
-    return this.transformBrowsedEpochsResult();
+    return getEpochsInRangeQuery.execute(params);
+  };
+
+  private transformEpochs = (
+    epochs: GetEpochsInRangeQuery['epochs']
+  ): IEpochOverview[] => {
+    return epochs
+      .filter(isNotNull)
+      .map(e => epochOverviewTransformer(e, this.networkInfo.store));
   };
 }

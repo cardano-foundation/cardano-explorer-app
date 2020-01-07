@@ -11,12 +11,14 @@ import { IEpochOverview } from '../types';
 import styles from './EpochList.scss';
 
 export interface IEpochListProps {
+  currentEpoch: number;
   title: string;
   items: Array<IEpochOverview>;
   isLoading: boolean;
 }
 
 interface IColumnsProps {
+  currentEpoch: number;
   onEpochNumberClicked: (epochNo: number) => void;
 }
 
@@ -27,17 +29,15 @@ const columns = (
     cellOnClick: (row: IEpochOverview) =>
       props.onEpochNumberClicked?.(row.number),
     cellRender: (value: any) => {
-      if (value.lastBlockAt) {
-        return value.epoch;
-      }
-
-      return (
+      return props.currentEpoch === value.epoch ? (
         <CircularProgress
           percentage={value.percentage}
           size={CircularProgressSize.SMALL}
           showText
           text={value.epoch}
         />
+      ) : (
+        value.epoch
       );
     },
     cellValue: (row: IEpochOverview) => ({
@@ -85,7 +85,12 @@ const columns = (
   },
 ];
 
-const EpochList: FC<IEpochListProps> = ({ title, items, isLoading }) => {
+const EpochList: FC<IEpochListProps> = ({
+  currentEpoch,
+  title,
+  items,
+  isLoading,
+}) => {
   const navigation = useNavigationFeatureOptionally();
   const displaysItems = items.length > 0;
   return (
@@ -98,6 +103,7 @@ const EpochList: FC<IEpochListProps> = ({ title, items, isLoading }) => {
       <Table
         title={title}
         columns={columns({
+          currentEpoch,
           onEpochNumberClicked: epochNo =>
             navigation?.actions.goToEpochDetailsPage.trigger({
               number: epochNo,

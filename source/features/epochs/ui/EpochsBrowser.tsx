@@ -45,6 +45,7 @@ const EpochsBrowser = () => {
   return isCurrentEpochAvailable && !isLoadingFirstTime ? (
     <>
       <EpochList
+        currentEpoch={epochs.store.currentEpochNumber}
         isLoading={epochs.api.getEpochsInRangeQuery.isExecuting}
         title="Browse Epochs"
         items={epochs.store.browsedEpochs}
