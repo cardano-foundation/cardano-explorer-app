@@ -4,8 +4,8 @@ import PolymorphThemeProvider from '../../source/styles/theme/PolymorphThemeProv
 
 import '../../source/styles/global/_fonts.scss';
 import '../../source/styles/global/_reset.scss';
-import './global.scss';
 import { cardanoExplorerTheme } from '../../source/styles/theme/theme';
+import './global.scss';
 
 import styles from './ThemeDecorator.scss';
 
