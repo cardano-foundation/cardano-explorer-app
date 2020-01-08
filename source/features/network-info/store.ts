@@ -85,6 +85,11 @@ export class NetworkInfoStore extends Store {
     const result = await this.networkInfoApi.fetchStatic.execute({});
     if (result) {
       const { cardano } = result;
+      if (cardano.networkName !== environment.CARDANO.NETWORK) {
+        throw new Error(
+          `API network '${cardano.networkName}' does not match environment network '${environment.CARDANO.NETWORK}'`
+        );
+      }
       runInAction(() => {
         this.protocolConst = cardano.protocolConst;
         this.startTime = new Date(cardano.startTime);
