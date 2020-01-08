@@ -40,7 +40,7 @@
   "dependencies": {
     "@types/react-addons-css-transition-group": "15.0.5",
     "array-sync": "4.0.0",
-    "browser-update": "3.3.1",
+    "browser-update": "3.3.9",
     "cardano-js": "0.3.0",
     "chroma-js": "2.0.6",
     "classnames": "2.2.6",

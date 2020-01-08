@@ -4557,10 +4557,10 @@ browser-resolve@^1.11.3:
   dependencies:
     resolve "1.1.7"
 
-browser-update@3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/browser-update/-/browser-update-3.3.1.tgz#140c046d38ec1d91aaf4679b585a9741bd06e47e"
-  integrity sha512-Wk8/puLUA6p2UGB6kRK1scJ4VcMyl0Ye+5XW7v6j2K3sJAQ1t9jjEFJcWjg2GNqaw3HFTcuFjIeL23NJV6gs2g==
+browser-update@3.3.9:
+  version "3.3.9"
+  resolved "https://registry.yarnpkg.com/browser-update/-/browser-update-3.3.9.tgz#62a23b1002676ab3602929fd5d3d514bf1f11f9a"
+  integrity sha512-I2X8GhOJyvgSqesthJoD1tFkU1VE3ofMIZZVs+M+2pVB9tJtwulx3U0s7Ds/aH0SyW0gLSqCQ10Yli37694S7w==
 
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
