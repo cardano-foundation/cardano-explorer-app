@@ -10,7 +10,7 @@ require('dotenv').config();
 const webpack = require('webpack');
 
 const resourcesDir = path.join(__dirname, 'source/styles/resources');
-const theme = process.env.CARDANO_NETWORK || 'incentivized-testnet';
+const theme = process.env.CARDANO_NETWORK || 'mainnet';
 const resources = [
   `${resourcesDir}/mixins/**/*.scss`,
   `${resourcesDir}/variables-common/**/*.scss`,
