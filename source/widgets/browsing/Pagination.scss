@@ -7,8 +7,8 @@
   :global {
     .SimpleButton_root:not(.SimpleButton_disabled):hover {
       background-color: transparent;
-      border-left-color: $primary-highlight-color;
-      border-right-color: $primary-highlight-color;
+      border-left-color: var(--primary-highlight-color);
+      border-right-color: var(--primary-highlight-color);
       opacity: 1;
     }
   }
@@ -26,13 +26,13 @@
   }
 
   .leftArrow {
-    border-right: 9px solid $secondary-highlight-color;
+    border-right: 9px solid var(--secondary-highlight-color);
     margin-right: 12px;
     opacity: 0.3;
   }
 
   .rightArrow {
-    border-left: 9px solid $secondary-highlight-color;
+    border-left: 9px solid var(--secondary-highlight-color);
     margin-left: 12px;
     opacity: 0.3;
   }
@@ -44,17 +44,17 @@
     line-height: 1.67;
 
     .pageNumber {
-      color: $solid-text;
+      color: var(--solid-text-color);
       margin-right: 10px;
     }
 
     .pageOf {
-      color: $hint-text;
+      color: var(--hint-text-color);
       margin-right: 10px;
     }
 
     .totalPagesNumber {
-      color: $hint-text;
+      color: var(--hint-text-color);
     }
   }
 }

@@ -1,6 +1,6 @@
 .unmoderatedDataWarningContainer {
-  background: $popup-bg;
-  color: $solid-text;
+  background: var(--popup-bg-color);
+  color: var(--solid-text-color);
   margin: 30px 0 70px;
   padding: 60px;
 
@@ -25,7 +25,7 @@
   }
 
   a {
-    color: $solid-text;
+    color: var(--solid-text-color);
     font-size: 12px;
     font-weight: 600;
     height: 16px;
@@ -41,9 +41,9 @@
   }
 
   button {
-    background-color: $secondary-highlight-color;
+    background-color: var(--secondary-highlight-color);
     border-radius: 2px;
-    color: $primary-bg;
+    color: var(--primary-bg-color);
     cursor: pointer;
     font-weight: 600;
     height: 35px;

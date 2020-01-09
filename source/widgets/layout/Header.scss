@@ -24,7 +24,7 @@
         position: relative;
 
         .straightLine {
-          background-color: $primary-highlight-color;
+          background-color: var(--primary-highlight-color);
           height: 1px;
           left: -63px;
           opacity: 0.5;
@@ -37,7 +37,7 @@
         .triangle {
           border-left: 14.5px solid transparent;
           border-right: 14.5px solid transparent;
-          border-top: 20px solid $primary-highlight-color;
+          border-top: 20px solid var(--primary-highlight-color);
           height: 0;
           left: 50%;
           position: absolute;
@@ -49,7 +49,7 @@
           .innerTriangle {
             border-left: 11.5px solid transparent;
             border-right: 11.5px solid transparent;
-            border-top: 17px solid $primary-bg;
+            border-top: 17px solid var(--primary-bg-color);
             height: 0;
             left: -11.5px;
             position: relative;
@@ -62,7 +62,7 @@
   }
 
   &.shrinkedHeaderContainer {
-    background-color: $search-area-bg;
+    background-color: var(--search-area-bg-color);
     margin-bottom: 72px;
 
     .brandType {
@@ -121,7 +121,7 @@
     }
 
     .titleContainer {
-      color: $solid-text;
+      color: var(--solid-text-color);
       font-family: ProximaNova, sans-serif;
       letter-spacing: 1.8px;
       line-height: 1.39;
@@ -136,7 +136,7 @@
         font-weight: 600;
       }
       .networkTitle {
-        color: $secondary-highlight-color;
+        color: var(--secondary-highlight-color);
         font-weight: 600;
         letter-spacing: 1.8px;
         line-height: 1.11;
@@ -155,7 +155,7 @@
       width: 100%;
 
       a {
-        color: $primary-highlight-color;
+        color: var(--primary-highlight-color);
         font-family: ProximaNova, sans-serif;
         font-size: 12px;
         font-weight: 600;
@@ -168,23 +168,31 @@
       }
 
       .activeTab {
-        color: $solid-text;
+        color: var(--solid-text-color);
       }
 
       .tabLeftLine {
-        background-image: linear-gradient(to left, $solid-text, $primary-bg);
+        background-image: linear-gradient(
+          to left,
+          var(--solid-text-color),
+          var(--primary-bg-color)
+        );
         flex: 1;
         height: 2px;
         opacity: 0.5;
       }
       .tabCircle {
-        background-color: $solid-text;
+        background-color: var(--solid-text-color);
         border-radius: 50%;
         height: 6px;
         width: 6px;
       }
       .tabRightLine {
-        background-image: linear-gradient(to right, $solid-text, $primary-bg);
+        background-image: linear-gradient(
+          to right,
+          var(--solid-text-color),
+          var(--primary-bg-color)
+        );
         flex: 1;
         height: 2px;
         opacity: 0.5;

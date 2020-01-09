@@ -1,7 +1,7 @@
 .row {
   align-items: center;
-  border-bottom: 2px dotted $dotted-separator-color;
-  color: $table-text;
+  border-bottom: 2px dotted var(--dotted-separator-color);
+  color: var(--table-text-color);
   display: flex;
   font-family: ProximaNova, sans-serif;
   font-size: 12px;
@@ -16,7 +16,7 @@
 }
 
 .clickableCell {
-  color: $primary-highlight-color;
+  color: var(--primary-highlight-color);
   &:hover {
     cursor: pointer;
   }

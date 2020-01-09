@@ -3,7 +3,7 @@
   max-width: 872px;
 
   &.enlargedSearchContainer {
-    background-color: $search-area-bg;
+    background-color: var(--search-area-bg-color);
     padding: 30px 50px 40px;
 
     .searchTitle {
@@ -32,7 +32,7 @@
   }
 
   .searchTitle {
-    color: $solid-text;
+    color: var(--solid-text-color);
     font-family: ProximaNova, sans-serif;
     font-size: 14px;
     height: 20px;
@@ -56,7 +56,7 @@
 
     .searchInput {
       border: 0;
-      border-bottom: 1px solid $secondary-half-color;
+      border-bottom: 1px solid var(--secondary-half-color);
       flex: 1;
       font-family: ProximaNova, sans-serif;
       height: 40px;
@@ -66,9 +66,9 @@
       }
 
       input {
-        background-color: $transparent-color;
+        background-color: transparent;
         border: 0;
-        color: $solid-text;
+        color: var(--solid-text-color);
         letter-spacing: 0.6px;
         line-height: 1.67;
 
@@ -83,7 +83,7 @@
 
     .searchButton {
       align-items: center;
-      background-color: $primary-highlight-color;
+      background-color: var(--primary-highlight-color);
       border-radius: 2px;
       display: flex;
       height: 40px;
@@ -92,7 +92,7 @@
       width: 40px;
 
       &:hover {
-        background-color: $primary-highlight-color-hover;
+        background-color: var(--primary-highlight-color-hover);
       }
 
       @media (max-width: 575px) {
@@ -102,7 +102,7 @@
 
       .searchButtonIcon {
         border-bottom: 7px solid transparent;
-        border-left: 9px solid $primary-bg;
+        border-left: 9px solid var(--primary-bg-color);
         border-top: 7px solid transparent;
         height: 0;
         width: 0;

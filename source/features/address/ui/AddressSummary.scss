@@ -16,7 +16,7 @@
     }
 
     .infoPanel {
-      color: $info-text;
+      color: var(--info-text-color);
       flex: 1;
       font-family: ProximaNova, sans-serif;
       max-width: calc(100% - 124px);

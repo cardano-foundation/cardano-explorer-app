@@ -12,10 +12,7 @@ import { NetworkInfoFeatureProvider } from '../features/network-info/ui/NetworkI
 import { BrowserUpdate } from '../features/outdated-browser/BrowserUpdate';
 import { SearchFeatureProvider } from '../features/search/ui/SearchFeatureProvider';
 import GraphQLProvider from '../lib/graphql/GraphQLProvider';
-import { CssVariablesProvider } from '../styles/theme/CssVariablesProvider';
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
-import { cardanoExplorerTheme } from '../styles/theme/theme';
-import { Layout } from '../widgets/layout';
 import LoadingSpinner from '../widgets/loading-spinner/LoadingSpinner';
 
 type PageComponentWithStaticLayout = NextComponentType<NextPageContext, any> & {

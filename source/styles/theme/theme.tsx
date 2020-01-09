@@ -25,7 +25,7 @@ interface IGenerateThemeConfig {
   hintTextColor: string;
   infoTextColor: string;
   popupBgColor: string;
-  primaryBg: string;
+  primaryBgColor: string;
   primaryHighlightColor: string;
   primaryHighlightHoverColor: string;
   primaryHighlightPressColor: string;
@@ -56,9 +56,10 @@ export const generateTheme = (config: IGenerateThemeConfig): CSSProperties => ({
   ['--hint-text-color' as any]: config.hintTextColor,
   ['--info-text-color' as any]: config.infoTextColor,
   ['--popup-bg-color' as any]: config.popupBgColor,
-  ['--primary-bg' as any]: config.primaryBg,
+  ['--primary-bg-color' as any]: config.primaryBgColor,
   ['--primary-highlight-color' as any]: config.primaryHighlightColor,
   ['--primary-highlight-color-hover' as any]: config.primaryHighlightHoverColor,
+  ['--primary-highlight-color-press' as any]: config.primaryHighlightPressColor,
   ['--search-area-bg-color' as any]: config.searchAreaBgColor,
   ['--secondary-half-color' as any]: config.secondaryHalfColor,
   ['--secondary-highlight-color' as any]: config.secondaryHighlightColor,
@@ -73,7 +74,7 @@ const commonThemeProps = {
   hintTextColor: 'rgba(255, 255, 255, 0.3)',
   infoTextColor: 'rgba(255, 255, 255, 0.7)',
   popupBgColor: '#3f404f',
-  primaryBg: '#121326',
+  primaryBgColor: '#121326',
   searchAreaBgColor: 'rgba(255, 255, 255, 0.05)',
   shadowColor: 'rgba(0, 0, 0, 0.5)',
   solidTextColor: 'rgba(255, 255, 255, 1)',

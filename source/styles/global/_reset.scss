@@ -139,7 +139,7 @@
 
   * {
     box-sizing: border-box;
-    font-family: ProximaNova;
+    font-family: ProximaNova, 'Helvetica', 'Verdana';
   }
   html,
   body,
@@ -152,7 +152,7 @@
     position: relative;
   }
   body {
-    background-color: $primary-bg;
+    background-color: var(--primary-bg-color);
   }
 
   @media screen and (-webkit-min-device-pixel-ratio: 0) {
