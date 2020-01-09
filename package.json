@@ -83,7 +83,6 @@
     "@types/chance": "^1.0.7",
     "@types/chroma-js": "1.4.3",
     "@types/classnames": "2.2.9",
-    "@types/color": "3.0.0",
     "@types/debug": "4.1.4",
     "@types/graphql": "14.2.0",
     "@types/jest": "24.0.19",
