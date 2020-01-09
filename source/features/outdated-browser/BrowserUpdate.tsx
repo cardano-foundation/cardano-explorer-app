@@ -18,7 +18,7 @@ export const BrowserUpdate = () => {
         reminderClosed: 150,
         // if the user explicitly closes message it reappears after x hours
 
-        required: { i: 8, f: 25, o: 17, s: 9, c: 22 },
+        required: { e: -3, f: -3, o: -3, s: -1, c: -3 },
         // Specifies required browser versions
         // Browsers older than this will be notified.
         // f:22 ---> Firefox < 22 gets notified
