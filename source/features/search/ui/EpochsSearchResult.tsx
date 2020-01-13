@@ -54,21 +54,26 @@ const EpochsSearchResult = () => {
   const router = useRouter();
   const { epochSearchResult } = store;
 
-  // Trigger search after component did render
+  // Subscribe to epoch results on mounting
   useEffect(() => {
     const { query } = router;
     if (networkInfo.store.currentEpoch && query?.number) {
       const num = parseInt(query.number as string, 10);
       if (!epochSearchResult || epochSearchResult.number !== num) {
-        actions.searchForEpochByNumber.trigger({ number: num });
+        actions.subscribeToEpoch.trigger({ number: num });
       }
     }
   }, [networkInfo.store.currentEpoch, router.query, store.epochSearchResult]);
 
-  if (
-    !api.searchForEpochByNumberQuery.hasBeenExecutedAtLeastOnce ||
-    store.isSearching
-  ) {
+  // Unsubscribe from any epoch on unmounting
+  useEffect(
+    () => () => {
+      actions.unsubscribeFromEpoch.trigger();
+    },
+    []
+  );
+
+  if (!api.searchForEpochByNumberQuery.hasBeenExecutedAtLeastOnce) {
     return <LoadingSpinner />;
   } else if (epochSearchResult) {
     return (

@@ -18,6 +18,8 @@ export class SearchActions {
   public searchForAddress: Action<{ address: string }> = new Action();
   public searchForBlockByNumber: Action<{ number: number }> = new Action();
   public searchForEpochByNumber: Action<{ number: number }> = new Action();
+  public subscribeToEpoch: Action<{ number: number }> = new Action();
+  public unsubscribeFromEpoch: Action<void> = new Action();
 }
 
 /**
