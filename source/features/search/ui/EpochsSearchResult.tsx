@@ -53,14 +53,21 @@ const EpochsSearchResult = () => {
   const networkInfo = useNetworkInfoFeature();
   const router = useRouter();
   const { epochSearchResult } = store;
+  const { query } = router;
+  const queryEpochNumber = parseInt(query.number as string, 10);
 
   // Subscribe to epoch results on mounting
   useEffect(() => {
-    const { query } = router;
-    if (networkInfo.store.currentEpoch && query?.number) {
-      const num = parseInt(query.number as string, 10);
-      if (!epochSearchResult || epochSearchResult.number !== num) {
-        actions.subscribeToEpoch.trigger({ number: num });
+    const { currentEpoch } = networkInfo.store;
+    if (currentEpoch && query?.number) {
+      if (!epochSearchResult || epochSearchResult.number !== queryEpochNumber) {
+        if (currentEpoch === queryEpochNumber) {
+          // Subscribe to current epoch data
+          actions.subscribeToEpoch.trigger({ number: queryEpochNumber });
+        } else {
+          // Fetch completed epochs only once
+          actions.searchForEpochByNumber.trigger({ number: queryEpochNumber });
+        }
       }
     }
   }, [networkInfo.store.currentEpoch, router.query, store.epochSearchResult]);
@@ -73,7 +80,10 @@ const EpochsSearchResult = () => {
     []
   );
 
-  if (!api.searchForEpochByNumberQuery.hasBeenExecutedAtLeastOnce) {
+  if (
+    !api.searchForEpochByNumberQuery.hasBeenExecutedAtLeastOnce ||
+    queryEpochNumber !== epochSearchResult?.number
+  ) {
     return <LoadingSpinner />;
   } else if (epochSearchResult) {
     return (
