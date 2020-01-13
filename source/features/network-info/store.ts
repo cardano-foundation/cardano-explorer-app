@@ -87,7 +87,7 @@ export class NetworkInfoStore extends Store {
       const { cardano } = result;
       if (cardano.networkName !== environment.CARDANO.NETWORK) {
         throw new Error(
-          `API network '${cardano.networkName}' does not match environment network '${environment.CARDANO.NETWORK}'`
+          `Cardano GraphQL is connected to" '${cardano.networkName}', whereas the web app is expecting '${environment.CARDANO.NETWORK}'`. The instance of Cardano GraphQL needs to be configured to match our expected environment. 
         );
       }
       runInAction(() => {
