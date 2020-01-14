@@ -9,7 +9,7 @@
 
   .listHeader {
     align-items: center;
-    color: $secondary-highlight-color;
+    color: var(--secondary-highlight-color);
     display: flex;
     font-family: ProximaNova, sans-serif;
     font-size: 10px;
@@ -42,6 +42,6 @@
   }
 
   .stakeDistributionRowContainer {
-    border-bottom: 2px dotted $dotted-separator-color;
+    border-bottom: 2px dotted var(--dotted-separator-color);
   }
 }

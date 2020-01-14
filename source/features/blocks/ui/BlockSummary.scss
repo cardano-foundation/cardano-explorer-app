@@ -12,7 +12,7 @@
     justify-content: space-between;
 
     .infoPanel {
-      color: $info-text;
+      color: var(--info-text-color);
 
       .infoRow {
         display: flex;
@@ -32,7 +32,7 @@
           font-weight: 300;
 
           span {
-            color: $primary-highlight-color;
+            color: var(--primary-highlight-color);
             cursor: pointer;
           }
 

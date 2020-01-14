@@ -9,8 +9,8 @@
   }
 
   .title {
-    background-color: $primary-bg;
-    color: $solid-text;
+    background-color: var(--primary-bg-color);
+    color: var(--solid-text-color);
     font-family: ProximaNova, sans-serif;
     font-size: 12px;
     font-weight: 600;

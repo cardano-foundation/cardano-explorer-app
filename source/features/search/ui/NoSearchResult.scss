@@ -15,7 +15,7 @@
     padding-bottom: 50px;
 
     .errorPanel {
-      color: $solid-text;
+      color: var(--solid-text-color);
 
       .errorRow {
         align-items: center;
@@ -27,7 +27,7 @@
 
         .errorIcon {
           align-items: center;
-          background-color: $error-color;
+          background-color: var(--error-color);
           border-radius: 50%;
           display: flex;
           height: 24px;
@@ -35,7 +35,7 @@
           width: 24px;
 
           .errorInnerIcon {
-            color: $primary-bg;
+            color: var(--primary-bg-color);
             font-family: ProximaNova, sans-serif;
             font-size: 12px;
             font-weight: 600;
@@ -47,7 +47,7 @@
         }
 
         .errorMessage {
-          color: $error-color;
+          color: var(--error-color);
           font-family: ProximaNova, sans-serif;
           font-size: 12px;
           font-weight: 600;
@@ -72,7 +72,7 @@
         padding-left: 45px;
 
         .errorValue {
-          color: $solid-text;
+          color: var(--solid-text-color);
           font-family: ProximaNova, sans-serif;
           font-size: 12px;
           letter-spacing: 1.2px;
@@ -89,14 +89,14 @@
           padding-top: 10px;
 
           .errorDescriptionIcon {
-            border-bottom: 1px solid $secondary-highlight-color;
-            border-left: 1px solid $secondary-highlight-color;
+            border-bottom: 1px solid var(--secondary-highlight-color);
+            border-left: 1px solid var(--secondary-highlight-color);
             height: 20px;
             width: 20px;
           }
 
           .errorDescriptionText {
-            color: $info-text;
+            color: var(--info-text-color);
             font-family: ProximaNova, sans-serif;
             font-size: 12px;
             font-weight: 300;

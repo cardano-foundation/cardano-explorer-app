@@ -8,9 +8,9 @@
   }
   .showMoreButton {
     align-items: center;
-    background-color: $primary-highlight-color;
+    background-color: var(--primary-highlight-color);
     border-radius: 2px;
-    color: $primary-bg;
+    color: var(--primary-bg-color);
     display: flex;
     font-family: ProximaNova, sans-serif;
     font-size: 12px;
@@ -23,10 +23,10 @@
     width: 133.5px;
 
     &:hover {
-      background-color: $primary-highlight-color-hover;
+      background-color: var(--primary-highlight-color-hover);
     }
     &:active {
-      background-color: $primary-highlight-color-press;
+      background-color: var(--primary-highlight-color-press);
     }
   }
 }

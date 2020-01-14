@@ -12,10 +12,7 @@ import { NetworkInfoFeatureProvider } from '../features/network-info/ui/NetworkI
 import { BrowserUpdate } from '../features/outdated-browser/BrowserUpdate';
 import { SearchFeatureProvider } from '../features/search/ui/SearchFeatureProvider';
 import GraphQLProvider from '../lib/graphql/GraphQLProvider';
-import { CssVariablesProvider } from '../styles/theme/CssVariablesProvider';
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
-import { cardanoExplorerTheme } from '../styles/theme/theme';
-import { Layout } from '../widgets/layout';
 import LoadingSpinner from '../widgets/loading-spinner/LoadingSpinner';
 
 type PageComponentWithStaticLayout = NextComponentType<NextPageContext, any> & {
@@ -32,34 +29,32 @@ class CardanoExplorer extends App {
     // Provide global app features that must survive page navigation:
     return (
       <GraphQLProvider>
-        <CssVariablesProvider variables={cardanoExplorerTheme}>
-          <PolymorphThemeProvider>
-            <NetworkInfoFeatureProvider>
-              <NavigationFeatureProvider>
-                <SearchFeatureProvider>
-                  {wrapInStaticLayout(
-                    <NoSSR onSSR={<LoadingSpinner />}>
-                      <BrowserUpdate />
-                      <Head>
-                        {Component.pageTitle && (
-                          <title>{Component.pageTitle}</title>
-                        )}
-                        {process.env.NODE_ENV !== 'production' && (
-                          <link
-                            rel="stylesheet"
-                            type="text/css"
-                            href={`/_next/static/css/styles.chunk.css?v=${Date.now()}`}
-                          />
-                        )}
-                      </Head>
-                      <Component {...pageProps} />
-                    </NoSSR>
-                  )}
-                </SearchFeatureProvider>
-              </NavigationFeatureProvider>
-            </NetworkInfoFeatureProvider>
-          </PolymorphThemeProvider>
-        </CssVariablesProvider>
+        <PolymorphThemeProvider>
+          <NetworkInfoFeatureProvider>
+            <NavigationFeatureProvider>
+              <SearchFeatureProvider>
+                {wrapInStaticLayout(
+                  <NoSSR onSSR={<LoadingSpinner />}>
+                    <BrowserUpdate />
+                    <Head>
+                      {Component.pageTitle && (
+                        <title>{Component.pageTitle}</title>
+                      )}
+                      {process.env.NODE_ENV !== 'production' && (
+                        <link
+                          rel="stylesheet"
+                          type="text/css"
+                          href={`/_next/static/css/styles.chunk.css?v=${Date.now()}`}
+                        />
+                      )}
+                    </Head>
+                    <Component {...pageProps} />
+                  </NoSSR>
+                )}
+              </SearchFeatureProvider>
+            </NavigationFeatureProvider>
+          </NetworkInfoFeatureProvider>
+        </PolymorphThemeProvider>
       </GraphQLProvider>
     );
   }

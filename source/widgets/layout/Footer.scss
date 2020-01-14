@@ -26,7 +26,7 @@
     width: 100%;
 
     .copyright {
-      @include footerText($solid-text, ProximaNova, 12px, normal);
+      @include footerText(var(--solid-text-color), ProximaNova, 12px, normal);
       letter-spacing: 1.2px;
       line-height: 1.5;
       opacity: 0.3;
@@ -48,7 +48,12 @@
         }
 
         .iohkText {
-          @include footerText($solid-text, ProximaNova, 10px, normal);
+          @include footerText(
+            var(--solid-text-color),
+            ProximaNova,
+            10px,
+            normal
+          );
           letter-spacing: 1px;
           line-height: 1.6;
           opacity: 0.3;
@@ -89,7 +94,7 @@
 
   .footerMiddleContainer {
     .footerSeparator {
-      background-color: $solid-text;
+      background-color: var(--solid-text-color);
       height: 2px;
       margin: 9px 0;
       opacity: 0.1;
@@ -103,7 +108,7 @@
       max-width: 63.5%;
 
       .cardanoTextTitle {
-        @include footerText($hint-text, ProximaNova, 10px, 300);
+        @include footerText(var(--hint-text-color), ProximaNova, 10px, 300);
         letter-spacing: 0.2px;
         line-height: 1.6;
 
@@ -113,7 +118,7 @@
       }
 
       .cardanoText {
-        @include footerText($hint-text, ProximaNova, 10px, 300);
+        @include footerText(var(--hint-text-color), ProximaNova, 10px, 300);
         letter-spacing: 0.2px;
         line-height: 1.6;
 
@@ -130,7 +135,7 @@
     }
 
     a {
-      @include footerText($solid-text, ProximaNova, 10px, 300);
+      @include footerText(var(--solid-text-color), ProximaNova, 10px, 300);
       opacity: 0.3;
       letter-spacing: 0.5px;
       line-height: 1.8;
@@ -141,11 +146,11 @@
       }
 
       &.highlightedLink {
-        color: $footer-text-color;
+        color: var(--footer-text-color);
         font-weight: 600;
         opacity: 1;
         &:hover {
-          color: $primary-highlight-color-hover;
+          color: var(--primary-highlight-color-hover);
         }
       }
     }
@@ -159,7 +164,7 @@
 
         .aboutCardanoTitle,
         .joinTheCommunityTitle {
-          @include footerText($solid-text, ProximaNova, 10px, 600);
+          @include footerText(var(--solid-text-color), ProximaNova, 10px, 600);
           letter-spacing: 0.5px;
           line-height: 1.8;
           opacity: 0.3;

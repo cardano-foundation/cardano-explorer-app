@@ -7,19 +7,6 @@ const withImages = require('next-images');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 require('dotenv').config();
-const webpack = require('webpack');
-
-const resourcesDir = path.join(__dirname, 'source/styles/resources');
-const theme = process.env.CARDANO_NETWORK || 'mainnet';
-const resources = [
-  `${resourcesDir}/mixins/**/*.scss`,
-  `${resourcesDir}/variables-common/**/*.scss`,
-  `${resourcesDir}/variables-themes/variables-theme-${theme}.scss`,
-];
-const resourcesLoader = {
-  loader: 'sass-resources-loader',
-  options: { resources },
-};
 
 const DEBUG = process.env.DEBUG;
 
@@ -99,12 +86,6 @@ module.exports = withPlugins(
         ],
       });
 
-      // Includes the global SCSS variables
-      config.module.rules.forEach(rule => {
-        if (rule.test.source.includes("scss")) {
-          rule.use.push(resourcesLoader);
-        }
-      });
       return config;
     },
   }

@@ -2,9 +2,9 @@ $vertical: -38px;
 $horizontal: 77px;
 
 .stakePoolTooltipContainer {
-  background: $popup-bg;
+  background: var(--popup-bg-color);
   border-radius: 5px;
-  box-shadow: 0 5px 20px 0 $shadow-color;
+  box-shadow: 0 5px 20px 0 var(--shadow-color);
   padding: 10px;
   position: absolute;
   user-select: text;
@@ -30,7 +30,7 @@ $horizontal: 77px;
   &.right {
     right: $horizontal;
     &:before {
-      border-left-color: $popup-bg;
+      border-left-color: var(--popup-bg-color);
       border-width: 10px 0px 10px 10px;
       right: -10px;
     }
@@ -44,7 +44,7 @@ $horizontal: 77px;
   &.left {
     left: $horizontal;
     &:before {
-      border-right-color: $popup-bg;
+      border-right-color: var(--popup-bg-color);
       border-width: 10px 10px 10px 0px;
       left: -10px;
     }
@@ -66,7 +66,7 @@ $horizontal: 77px;
 }
 
 .name {
-  color: $solid-text;
+  color: var(--solid-text-color);
   font-family: ProximaNova, sans-serif;
   font-size: 16px;
   letter-spacing: 0.5px;
@@ -96,13 +96,13 @@ $horizontal: 77px;
     width: 8px;
 
     path {
-      fill: $solid-text;
+      fill: var(--solid-text-color);
     }
   }
 }
 
 .ticker {
-  color: $solid-text;
+  color: var(--solid-text-color);
   display: inline-block;
   font-size: 14px;
   line-height: 1.36;
@@ -112,9 +112,9 @@ $horizontal: 77px;
 }
 
 .retirement {
-  background: $secondary-half-color;
+  background: var(--secondary-half-color);
   border-radius: 3px;
-  color: $solid-text;
+  color: var(--solid-text-color);
   display: inline-block;
   font-size: 10px;
   margin-bottom: 9px;
@@ -124,7 +124,7 @@ $horizontal: 77px;
 }
 
 .description {
-  color: $solid-text;
+  color: var(--solid-text-color);
   font-size: 14px;
   line-height: 1.36;
   margin-bottom: 4px;
@@ -134,8 +134,8 @@ $horizontal: 77px;
 }
 
 .url {
-  border-bottom: 1px solid $secondary-highlight-color;
-  color: $secondary-highlight-color;
+  border-bottom: 1px solid var(--secondary-highlight-color);
+  color: var(--secondary-highlight-color);
   font-family: ProximaNova, sans-serif;
   font-size: 12px;
   line-height: 1.36;
@@ -156,7 +156,7 @@ $horizontal: 77px;
     width: 13px;
 
     path {
-      stroke: $secondary-highlight-color;
+      stroke: var(--secondary-highlight-color);
     }
   }
 }
@@ -178,7 +178,7 @@ $horizontal: 77px;
   }
 
   dt {
-    color: $solid-text;
+    color: var(--solid-text-color);
     font-size: 14px;
     line-height: 1.36;
     opacity: 0.8;
@@ -195,7 +195,7 @@ $horizontal: 77px;
 
   span {
     border-radius: 3px;
-    color: $solid-text;
+    color: var(--solid-text-color);
     display: inline-block;
     font-size: 8px;
     font-weight: bold;

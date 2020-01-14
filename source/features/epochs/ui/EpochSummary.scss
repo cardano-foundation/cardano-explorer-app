@@ -18,7 +18,7 @@
       justify-content: center;
 
       .progressTextLabel {
-        color: $info-text;
+        color: var(--info-text-color);
         font-family: ProximaNova, sans-serif;
         font-size: 10px;
         font-weight: 300;
@@ -28,7 +28,7 @@
       }
 
       .progressTextValue {
-        color: $solid-text;
+        color: var(--solid-text-color);
         font-family: ProximaNova, sans-serif;
         font-size: 46px;
         font-weight: 300;
@@ -37,7 +37,7 @@
     }
 
     .infoPanel {
-      color: $info-text;
+      color: var(--info-text-color);
       margin-left: 60px;
 
       .infoRow {
