@@ -11,8 +11,7 @@ export const environment = {
         '3100'}/${process.env.GRAPHQL_API_PATH || ''}`,
     },
     NETWORK:
-      (process.env.CARDANO_NETWORK as CardanoNetwork) ||
-      CardanoNetwork.INCENTIVIZED_TESTNET,
+      (process.env.CARDANO_NETWORK as CardanoNetwork) || CardanoNetwork.MAINNET,
   },
   DEBUG: process.env.DEBUG || 'false',
   IS_CLIENT: isNavigatorDefined,

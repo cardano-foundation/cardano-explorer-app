@@ -85,6 +85,11 @@ export class NetworkInfoStore extends Store {
     const result = await this.networkInfoApi.fetchStatic.execute({});
     if (result) {
       const { cardano } = result;
+      if (cardano.networkName !== environment.CARDANO.NETWORK) {
+        throw new Error(
+          `Cardano GraphQL is connected to ${cardano.networkName}, whereas the web app is expecting ${environment.CARDANO.NETWORK}. The instance of Cardano GraphQL needs to be configured to match our expected environment.`
+        );
+      }
       runInAction(() => {
         this.protocolConst = cardano.protocolConst;
         this.startTime = new Date(cardano.startTime);
