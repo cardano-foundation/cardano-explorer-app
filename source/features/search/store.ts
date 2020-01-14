@@ -1,5 +1,6 @@
 import { action, computed, observable, runInAction } from 'mobx';
-import { createActionBindings } from '../../lib/ActionBinding';
+import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
+import Reaction, { createReactions } from '../../lib/mobx/Reaction';
 import { Store } from '../../lib/Store';
 import { isNotNull } from '../../lib/types';
 import { addressDetailTransformer } from '../address/api/transformers';
@@ -34,6 +35,8 @@ export class SearchStore extends Store {
   private readonly searchActions: SearchActions;
   private readonly navigation: INavigationFeatureDependency;
   private readonly networkInfo: INetworkInfoFeatureDependency;
+  private readonly watchEpochReaction: Reaction[];
+  @observable private watchedEpochNumber: number | null = null;
 
   constructor(
     searchActions: SearchActions,
@@ -76,8 +79,16 @@ export class SearchStore extends Store {
           this.searchActions.unknownSearchRequested,
           this.onUnknownSearchRequested,
         ],
+        [this.searchActions.subscribeToEpoch, this.subscribeToEpochByNumber],
+        [
+          this.searchActions.unsubscribeFromEpoch,
+          this.unsubscribeFromEpochByNumber,
+        ],
       ])
     );
+    this.watchEpochReaction = createReactions([
+      this.fetchWatchedEpochOnBlockHeightChange,
+    ]);
   }
 
   @computed get isSearching() {
@@ -228,13 +239,9 @@ export class SearchStore extends Store {
     number: number;
   }) => {
     // Do not trigger another search if we already have the requested data!
-    if (
-      this.searchApi.searchForEpochByNumberQuery.isExecuting ||
-      this.epochSearchResult?.number === params.number
-    ) {
+    if (this.searchApi.searchForEpochByNumberQuery.isExecuting) {
       return;
     }
-    this.epochSearchResult = null;
     const result = await this.searchApi.searchForEpochByNumberQuery.execute(
       params
     );
@@ -249,5 +256,30 @@ export class SearchStore extends Store {
         });
       }
     }
+  };
+
+  @action private subscribeToEpochByNumber = async (
+    params: ActionProps<typeof SearchActions.prototype.subscribeToEpoch>
+  ) => {
+    this.watchedEpochNumber = params.number;
+    this.startReactions(this.watchEpochReaction);
+  };
+
+  @action private unsubscribeFromEpochByNumber = async () => {
+    this.watchedEpochNumber = null;
+    this.stopReactions(this.watchEpochReaction);
+  };
+
+  // ============ REACTIONS =============
+
+  /**
+   * Re-fetches watched epoch whenever the network block height changes.
+   */
+  private fetchWatchedEpochOnBlockHeightChange = () => {
+    const { blockHeight } = this.networkInfo.store;
+    if (this.watchedEpochNumber == null) {
+      return;
+    }
+    this.searchForEpochByNumber({ number: this.watchedEpochNumber });
   };
 }

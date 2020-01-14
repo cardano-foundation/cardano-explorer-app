@@ -53,7 +53,12 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
       page: paging.currentPage,
       perPage: paging.itemsPerPage,
     });
-  }, [isBlockHeightAvailable, router.query?.page, router.query?.perPage]);
+  }, [
+    isBlockHeightAvailable,
+    props.totalItems,
+    router.query?.page,
+    router.query?.perPage,
+  ]);
 
   return isBlockHeightAvailable && !query.isExecutingTheFirstTime ? (
     <>
