@@ -13,7 +13,7 @@
     width: 24px;
 
     .icon path {
-      fill: $primary-highlight-color;
+      fill: var(--primary-highlight-color);
     }
   }
 
@@ -23,7 +23,7 @@
   }
 
   .icon path {
-    fill: $primary-highlight-color;
+    fill: var(--primary-highlight-color);
   }
 
   svg :global {

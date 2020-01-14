@@ -17,7 +17,7 @@
 
     .insideCircle {
       align-items: center;
-      background-color: $primary-bg;
+      background-color: var(--primary-bg-color);
       border-radius: 50%;
       display: flex;
       justify-content: center;

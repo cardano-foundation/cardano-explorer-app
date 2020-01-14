@@ -31,11 +31,11 @@
 }
 
 .isHighlighted {
-  background-color: $popup-bg;
+  background-color: var(--popup-bg-color);
 }
 
 .ticker {
-  color: $solid-text;
+  color: var(--solid-text-color);
   font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.5px;
@@ -62,7 +62,7 @@
     height: 18px;
     width: 18px;
     > g > path {
-      fill: $secondary-half-color;
+      fill: var(--secondary-half-color);
     }
   }
 }

@@ -27,7 +27,7 @@
       z-index: 200;
 
       .titleContainer {
-        color: $solid-text;
+        color: var(--solid-text-color);
         font-family: ProximaNova, sans-serif;
         font-size: 18px;
         letter-spacing: 1.8px;
@@ -66,7 +66,7 @@
           position: relative;
 
           .straightLine {
-            background-color: $primary-highlight-color;
+            background-color: var(--primary-highlight-color);
             height: 1px;
             left: -63px;
             opacity: 0.5;
@@ -79,7 +79,7 @@
           .triangle {
             border-left: 14.5px solid transparent;
             border-right: 14.5px solid transparent;
-            border-top: 20px solid $primary-highlight-color;
+            border-top: 20px solid var(--primary-highlight-color);
             height: 0;
             left: 50%;
             position: absolute;
@@ -91,7 +91,7 @@
             .innerTriangle {
               border-left: 11.5px solid transparent;
               border-right: 11.5px solid transparent;
-              border-top: 17px solid $primary-bg;
+              border-top: 17px solid var(--primary-bg-color);
               height: 0;
               left: -11.5px;
               position: relative;
@@ -146,7 +146,7 @@
         text-transform: uppercase;
 
         .browserLink {
-          color: $primary-highlight-color;
+          color: var(--primary-highlight-color);
           text-decoration: none;
         }
       }
@@ -161,7 +161,7 @@
       }
 
       .browserCompany {
-        color: $info-text;
+        color: var(--info-text-color);
         font-family: ProximaNova, sans-serif;
         font-size: 12px;
         font-weight: 300;
@@ -190,7 +190,7 @@
     z-index: 2;
 
     .bottomContainerText {
-      color: $info-text;
+      color: var(--info-text-color);
       font-family: ProximaNova, sans-serif;
       font-size: 14px;
       font-weight: 300;

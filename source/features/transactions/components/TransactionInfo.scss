@@ -54,7 +54,7 @@
 
         .highlightAddress {
           align-items: center;
-          color: $info-text;
+          color: var(--info-text-color);
           display: flex;
           font-family: ProximaNova, sans-serif;
           width: 100%;
@@ -85,7 +85,7 @@
         }
 
         .id {
-          color: $info-text;
+          color: var(--info-text-color);
           font-family: ProximaNova, sans-serif;
           font-weight: 600;
           letter-spacing: 0.6px;
@@ -93,7 +93,7 @@
         }
 
         .linkedId {
-          color: $primary-highlight-color;
+          color: var(--primary-highlight-color);
           cursor: pointer;
 
           @media (max-width: 768px) {
@@ -104,7 +104,7 @@
         .input,
         .output {
           align-items: center;
-          color: $primary-highlight-color;
+          color: var(--primary-highlight-color);
           cursor: pointer;
           display: flex;
           font-family: ProximaNova, sans-serif;
@@ -119,7 +119,7 @@
         }
 
         .includedAt {
-          color: $info-text;
+          color: var(--info-text-color);
           font-family: ProximaNova, sans-serif;
           font-weight: 300;
           letter-spacing: 0.4px;
@@ -178,7 +178,7 @@
 
         .value,
         .totalOutput {
-          color: $solid-text;
+          color: var(--solid-text-color);
           white-space: nowrap;
           letter-spacing: 0.4px;
           font-family: ProximaNova, sans-serif;
@@ -187,7 +187,7 @@
         }
 
         .totalOutput {
-          background-color: $highlighted-dark-area-bg;
+          background-color: var(--highlighted-dark-area-bg-color);
           border-radius: 1px;
           padding: 5px 10px;
         }

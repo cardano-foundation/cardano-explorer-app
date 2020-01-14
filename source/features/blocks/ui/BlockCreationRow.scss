@@ -1,7 +1,7 @@
 .blockCreationRowContainer {
   align-items: center;
-  border-bottom: 2px dotted $dotted-separator-color;
-  color: $table-text;
+  border-bottom: 2px dotted var(--dotted-separator-color);
+  color: var(--table-text-color);
   display: flex;
   font-family: ProximaNova, sans-serif;
   font-size: 12px;
@@ -20,7 +20,7 @@
   }
 
   .performancePercentage {
-    color: $info-text;
+    color: var(--info-text-color);
   }
 
   .sharedRewards {
@@ -29,7 +29,7 @@
   }
 
   .sharedRewardsValue {
-    color: $info-text;
+    color: var(--info-text-color);
   }
 
   .slotsElected {
@@ -38,11 +38,11 @@
   }
 
   .slotsElectedPercentage {
-    color: $info-text;
+    color: var(--info-text-color);
   }
 
   .stakePool {
-    color: $table-text;
+    color: var(--table-text-color);
     overflow: hidden;
     padding: 0 20px 0 0 !important;
     text-align: left;
@@ -52,7 +52,7 @@
   }
 
   .stakePoolName {
-    color: $info-text;
+    color: var(--info-text-color);
   }
 
   @media (max-width: 575px) {
