@@ -22,10 +22,10 @@ export const Header = observer((props: IHeaderProps) => {
       ? styles.enlargedHeaderContainer
       : styles.shrinkedHeaderContainer;
   const headerContainerStyles = cx([styles.headerContainer, brandTypeStyle]);
-  const indexClassName = !router.pathname.includes('stake-pools')
+  const indexClassName = !router?.pathname.includes('stake-pools')
     ? styles.activeTab
     : '';
-  const stakePoolsClassName = router.pathname.includes('stake-pools')
+  const stakePoolsClassName = router?.pathname.includes('stake-pools')
     ? styles.activeTab
     : '';
   const testnetSubtitle =
