@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { BrandType } from '../source/constants';
-import { Header } from '../source/widgets/layout/Header';
+import { Header } from '../source/widgets/layout';
 import { PaddingDecorator } from './support/PaddingDecorator';
 
 storiesOf('Header', module)

@@ -1,14 +1,6 @@
 const path = require('path');
 const isCi = process.env.CI && process.env.CI !== '';
 
-let themeResource = 'incentivized-testnet';
-const resourcesDir = path.join(__dirname, '..','source/styles/resources');
-const resources = [
-  `${resourcesDir}/mixins/**/*.scss`,
-  `${resourcesDir}/variables-common/**/*.scss`,
-  `${resourcesDir}/variables-themes/variables-theme-${themeResource}.scss`,
-];
-
 module.exports = ({ config, mode }) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
@@ -29,7 +21,6 @@ module.exports = ({ config, mode }) => {
         },
       },
       { loader: 'fast-sass-loader', options: { sourceMap: !isCi } },
-      { loader: 'sass-resources-loader', options: { resources } },
     ],
   });
   config.resolve.extensions.push('.ts', '.tsx');

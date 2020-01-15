@@ -1,5 +1,4 @@
 import React from 'react';
-import { CssVariablesProvider } from '../../source/styles/theme/CssVariablesProvider';
 import PolymorphThemeProvider from '../../source/styles/theme/PolymorphThemeProvider';
 
 import '../../source/styles/global/_fonts.scss';
@@ -15,8 +14,8 @@ interface IProps {
 
 export const ThemeDecorator = ({ children }: IProps) => (
   <PolymorphThemeProvider>
-    <CssVariablesProvider variables={cardanoExplorerTheme}>
+    <div style={cardanoExplorerTheme}>
       <div className={styles.storyContainer}>{children}</div>
-    </CssVariablesProvider>
+    </div>
   </PolymorphThemeProvider>
 );
