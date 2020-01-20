@@ -4,7 +4,6 @@ import { latestEpochsExample } from '../source/features/epochs/specs/helpers/lat
 import EpochList from '../source/features/epochs/ui/EpochList';
 import EpochSummary from '../source/features/epochs/ui/EpochSummary';
 import StakeDistribution from '../source/features/epochs/ui/StakeDistribution';
-import { CssVariablesProvider } from '../source/styles/theme/CssVariablesProvider';
 import {
   incentivizedTestnetTheme,
   mainnetTheme,
@@ -62,9 +61,9 @@ storiesOf('Epochs|List', module)
 
 storiesOf('Epochs|Summary', module)
   .addDecorator(story => (
-    <CssVariablesProvider variables={incentivizedTestnetTheme}>
+    <div style={incentivizedTestnetTheme}>
       <PaddingDecorator>{story()}</PaddingDecorator>
-    </CssVariablesProvider>
+    </div>
   ))
   .add('40% Complete', () => (
     <EpochSummary
@@ -85,10 +84,10 @@ storiesOf('Epochs|Summary', module)
     />
   ))
   .add('Mainnet 40%', () => (
-    <CssVariablesProvider variables={mainnetTheme}>
+    <div style={mainnetTheme}>
       <EpochSummary
         title="Epoch"
         epoch={{ ...epochs[0], ...{ percentage: 40 } }}
       />
-    </CssVariablesProvider>
+    </div>
   ));
