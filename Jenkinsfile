@@ -38,7 +38,7 @@ pipeline {
     stage('Test') {
       steps {
         sh 'yarn test'
-        sh 'yarn static:serve'
+        sh 'npx serve -p 4000 &'
         sh 'yarn test:e2e'
       }
       post {
