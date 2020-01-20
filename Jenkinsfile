@@ -32,11 +32,13 @@ pipeline {
     stage('Build') {
       steps {
         sh 'yarn build'
+        sh 'yarn static:build'
       }
     }
     stage('Test') {
       steps {
         sh 'yarn test'
+        sh 'yarn static:serve'
         sh 'yarn test:e2e'
       }
       post {
