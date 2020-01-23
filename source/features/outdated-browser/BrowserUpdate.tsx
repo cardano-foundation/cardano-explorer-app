@@ -1,14 +1,14 @@
-import { useRouter } from 'next/router';
 import { useLayoutEffect } from 'react';
+import { useNavigationFeature } from '../navigation';
 
 export const BrowserUpdate = () => {
-  const router = useRouter();
+  const navigation = useNavigationFeature();
   useLayoutEffect(() => {
     const browserUpdate = require('browser-update/update.npm.js');
     if (browserUpdate) {
       browserUpdate({
         onshow: (infos: any) => {
-          router.push('/outdated-browser');
+          navigation.actions.push.trigger({ path: '/outdated-browser' });
         },
 
         reminder: 24,

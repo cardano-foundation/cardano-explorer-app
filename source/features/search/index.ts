@@ -1,6 +1,7 @@
 import { GraphQLClient } from 'graphql-request';
 import Action from '../../lib/Action';
 import { NavigationActions } from '../navigation';
+import { NavigationStore } from '../navigation/store';
 import { NetworkInfoStore } from '../network-info/store';
 import { SearchApi } from './api';
 import { SearchStore } from './store';
@@ -38,6 +39,7 @@ export interface ISearchFeature {
  */
 export interface INavigationFeatureDependency {
   actions: NavigationActions;
+  store: NavigationStore;
 }
 
 export interface INetworkInfoFeatureDependency {

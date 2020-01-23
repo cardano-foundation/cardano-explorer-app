@@ -1,9 +1,8 @@
 import { Observer } from 'mobx-react-lite';
-import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockSummary from '../../blocks/ui/BlockSummary';
-import { useNavigationFeatureOptionally } from '../../navigation';
+import { useNavigationFeature } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import TransactionBrowser, {
   TRANSACTIONS_PER_PAGE_DEFAULT,
@@ -17,13 +16,12 @@ import NoSearchResult from './NoSearchResult';
 export const BlockSearchResult = () => {
   const { actions, api, store } = useSearchFeature();
   const networkInfo = useNetworkInfoFeature();
-  const navigation = useNavigationFeatureOptionally();
   const transactions = useTransactionsFeature();
-  const router = useRouter();
+  const navigation = useNavigationFeature();
 
   // Trigger search after component did render
   useEffect(() => {
-    const { query } = router;
+    const { query } = navigation.store;
     if (query?.id) {
       const id = query.id as string;
       actions.searchById.trigger({ id });
@@ -58,13 +56,13 @@ export const BlockSearchResult = () => {
                       .isExecutingTheFirstTime
                   }
                   onChangePage={page => {
-                    router.push({
-                      pathname: '/block',
+                    navigation.actions.push.trigger({
+                      path: '/block',
                       query: {
                         id: blockSearchResult.id,
                         page,
                         perPage:
-                          router.query?.perPage ??
+                          navigation.store.query.perPage ??
                           TRANSACTIONS_PER_PAGE_DEFAULT,
                       },
                     });
@@ -76,8 +74,8 @@ export const BlockSearchResult = () => {
                       offset: (paging.currentPage - 1) * paging.itemsPerPage,
                     });
                   }}
-                  perPage={router.query?.perPage as string}
-                  currentPage={(router.query?.page as string) ?? 1}
+                  perPage={navigation.store.query.perPage as string}
+                  currentPage={(navigation.store.query.page as string) ?? 1}
                   total={parseInt(blockSearchResult?.transactionsCount, 10)}
                   transactions={transactions.store.browsedBlockTransactions}
                 />
@@ -87,7 +85,7 @@ export const BlockSearchResult = () => {
         } else {
           return (
             <NoSearchResult
-              searchQuery={router.query?.id as string}
+              searchQuery={navigation.store.query.id as string}
               searchType={SearchType.id}
             />
           );

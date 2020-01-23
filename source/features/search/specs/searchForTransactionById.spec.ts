@@ -1,6 +1,8 @@
 import waitForExpect from 'wait-for-expect';
 import { graphqlClient } from '../../../lib/graphql/graphqlClient';
 import { NavigationActions } from '../../navigation';
+import { NavigationStore } from '../../navigation/store';
+import { NavigationRouterMock } from '../../navigation/testing/NavigationRouterMock';
 import { NetworkInfoActions } from '../../network-info';
 import { NetworkInfoApi } from '../../network-info/api';
 import { NetworkInfoStore } from '../../network-info/store';
@@ -10,9 +12,13 @@ import { exampleTransactionData } from './helpers/exampleTransactionData';
 describe('Searching for a transaction', () => {
   let search: ISearchFeature;
   beforeEach(() => {
+    const navActions = new NavigationActions();
     search = createSearchFeature(
       graphqlClient,
-      { actions: new NavigationActions() },
+      {
+        actions: new NavigationActions(),
+        store: new NavigationStore(navActions, new NavigationRouterMock()),
+      },
       {
         store: new NetworkInfoStore(
           new NetworkInfoActions(),
