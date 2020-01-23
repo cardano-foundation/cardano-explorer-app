@@ -1,5 +1,7 @@
+import { isString } from 'lodash';
 import { Observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useObservableEffect } from '../../../lib/mobx/react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlockSummary from '../../blocks/ui/BlockSummary';
 import { useNavigationFeature } from '../../navigation';
@@ -19,11 +21,10 @@ export const BlockSearchResult = () => {
   const transactions = useTransactionsFeature();
   const navigation = useNavigationFeature();
 
-  // Trigger search after component did render
-  useEffect(() => {
+  useObservableEffect(() => {
     const { query } = navigation.store;
-    if (query?.id) {
-      const id = query.id as string;
+    const { id } = query;
+    if (isString(id)) {
       actions.searchById.trigger({ id });
     }
   });
