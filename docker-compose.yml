@@ -1,14 +1,16 @@
 version: '3.7'
 services:
-  api:
-    image: samjeston/cardano-graphql-dev:1.0.0-rc.0
-    restart: always
+  api-server:
+    build:
+      context: ./cardano-graphql
+      target: server
     environment:
+      - CACHE_ENABLED=true
       - HASURA_URI=http://hasura:8080/v1/graphql
     ports:
       - ${API_PORT:-3100}:3100
   hasura:
-    image: samjeston/cardano-graphql-hasura:1.0.0-rc.0
+    image: hasura/graphql-engine:v1.0.0-beta.10.cli-migrations
     depends_on:
       - "postgres"
     restart: always
@@ -16,6 +18,15 @@ services:
       - HASURA_GRAPHQL_DATABASE_URL=postgres://postgres:postgres@postgres:5432/cexplorer
       - HASURA_GRAPHQL_ENABLE_CONSOLE=false
       - HASURA_GRAPHQL_ENABLED_LOG_TYPES=startup
+    volumes:
+      - ./cardano-graphql/hasura/migrations:/hasura-migrations
   postgres:
-    image: samjeston/cardano-graphql-pgseed:1.0.0-rc.0
+    image: postgres:11.5-alpine
     restart: always
+    environment:
+      - POSTGRES_LOGGING=true
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=cexplorer
+    volumes:
+      - ./cardano-graphql/test/postgres/init:/docker-entrypoint-initdb.d
