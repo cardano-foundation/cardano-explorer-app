@@ -1,22 +1,22 @@
 import { observer } from 'mobx-react-lite';
-import { NextRouter } from 'next/dist/next-server/lib/router/router';
 import React from 'react';
+import { useNavigationFeature } from '../../features/navigation';
 import Pagination from './Pagination';
 
 export interface IPaginationProps {
   currentPage: number;
   itemsPerPage: number;
   totalPages: number;
-  router: NextRouter;
 }
 
-const RouterPagination = (props: IPaginationProps) => {
-  const { currentPage, itemsPerPage, router, totalPages } = props;
+const NavigationPagination = (props: IPaginationProps) => {
+  const { currentPage, itemsPerPage, totalPages } = props;
+  const navigation = useNavigationFeature();
   const onChangePage = (page: number) => {
-    router.push({
-      pathname: router.pathname,
+    navigation.actions.push.trigger({
+      path: navigation.store.path,
       query: {
-        ...router.query,
+        ...navigation.store.query,
         page,
         perPage: itemsPerPage,
       },
@@ -31,4 +31,4 @@ const RouterPagination = (props: IPaginationProps) => {
   );
 };
 
-export default observer(RouterPagination);
+export default observer(NavigationPagination);

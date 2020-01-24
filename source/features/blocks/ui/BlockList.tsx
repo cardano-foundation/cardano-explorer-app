@@ -3,7 +3,9 @@ import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
+import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
 import { useNavigationFeatureOptionally } from '../../navigation';
+import { BLOCK_SEARCH_RESULT_PATH } from '../config';
 import { IBlockOverview } from '../types';
 import styles from './BlockList.scss';
 
@@ -83,13 +85,15 @@ const BlockList: FC<IBlockListProps> = props => {
         columns={columns({
           ignoreLinksToEpoch: props.ignoreLinksToEpoch,
           onBlockNumberClicked: id =>
-            navigation?.actions.goToBlockDetailsPage.trigger({
-              id,
+            navigation?.actions.push.trigger({
+              path: BLOCK_SEARCH_RESULT_PATH,
+              query: { id },
             }),
           onEpochNumberClicked: epochNo => {
             if (epochNo !== '-') {
-              navigation?.actions.goToEpochDetailsPage.trigger({
-                number: epochNo,
+              navigation?.actions.push.trigger({
+                path: EPOCH_SEARCH_RESULT_PATH,
+                query: { number: epochNo },
               });
             }
           },

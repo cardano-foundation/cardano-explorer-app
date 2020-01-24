@@ -1,20 +1,21 @@
 import { observer } from 'mobx-react-lite';
-import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { calculatePaging } from '../../../lib/paging';
-import RouterPagination from '../../../widgets/browsing/RouterPagination';
+import NavigationPagination from '../../../widgets/browsing/NavigationPagination';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
+import { useNavigationFeature } from '../../navigation';
 
 import { useNetworkInfoFeature } from '../../network-info/context';
+import {
+  EPOCHS_PER_PAGE_DEFAULT,
+  EPOCHS_PER_PAGE_MAXIMUM,
+  EPOCHS_PER_PAGE_MINIMUM,
+} from '../config';
 import { useEpochsFeature } from '../context';
 import EpochList from './EpochList';
 
-const EPOCHS_PER_PAGE_DEFAULT = 10;
-const EPOCHS_PER_PAGE_MINIMUM = 5;
-const EPOCHS_PER_PAGE_MAXIMUM = 50;
-
 const EpochsBrowser = () => {
-  const router = useRouter();
+  const navigation = useNavigationFeature();
   // The network block height is required before doing any browsing
   const networkInfo = useNetworkInfoFeature();
   const { currentEpoch } = networkInfo.store;
@@ -24,8 +25,8 @@ const EpochsBrowser = () => {
     epochs.api.getEpochsInRangeQuery.isExecutingTheFirstTime;
 
   const paging = calculatePaging({
-    currentPage: router.query?.page as string,
-    perPage: router.query?.perPage as string,
+    currentPage: navigation.store.query.page as string,
+    perPage: navigation.store.query.perPage as string,
     perPageDefault: EPOCHS_PER_PAGE_DEFAULT,
     perPageMaximum: EPOCHS_PER_PAGE_MAXIMUM,
     perPageMinimum: EPOCHS_PER_PAGE_MINIMUM,
@@ -40,7 +41,11 @@ const EpochsBrowser = () => {
       page: paging.currentPage,
       perPage: paging.itemsPerPage,
     });
-  }, [currentEpoch, router.query?.page, router.query?.perPage]);
+  }, [
+    currentEpoch,
+    navigation.store.query.page,
+    navigation.store.query.perPage,
+  ]);
 
   return isCurrentEpochAvailable && !isLoadingFirstTime ? (
     <>
@@ -50,10 +55,9 @@ const EpochsBrowser = () => {
         title="Browse Epochs"
         items={epochs.store.browsedEpochs}
       />
-      <RouterPagination
+      <NavigationPagination
         currentPage={paging.currentPage}
         itemsPerPage={paging.itemsPerPage}
-        router={router}
         totalPages={paging.totalPages}
       />
     </>

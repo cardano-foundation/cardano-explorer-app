@@ -4,7 +4,9 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import { ADDRESS_SEARCH_RESULT_PATH } from '../../address/config';
 import { NavigationActions } from '../../navigation';
+import { TRANSACTION_SEARCH_RESULT_PATH } from '../config';
 import { ITransactionDetails } from '../types';
 import styles from './TransactionInfo.scss';
 
@@ -31,13 +33,19 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
     if (!address) {
       return;
     }
-    props.navigation?.goToAddressDetailsPage.trigger({ address });
+    props.navigation?.push.trigger({
+      path: ADDRESS_SEARCH_RESULT_PATH,
+      query: { address },
+    });
   };
   const onIdClick = (id: ITransactionDetails['id']) => {
     if (!id) {
       return;
     }
-    props.navigation?.goToTransactionDetailsPage.trigger({ id });
+    props.navigation?.push.trigger({
+      path: TRANSACTION_SEARCH_RESULT_PATH,
+      query: { id },
+    });
   };
   return (
     <div className={styles.transactionInfoContainer}>

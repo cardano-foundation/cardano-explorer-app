@@ -13,7 +13,7 @@ interface IProps {
 
 export const NavigationFeatureProvider = (props: IProps) => {
   const [navigationFeature] = useState<INavigationFeature>(
-    createNavigationFeature(useRouter())
+    createNavigationFeature({ router: useRouter() })
   );
   useFeature(navigationFeature);
   return (

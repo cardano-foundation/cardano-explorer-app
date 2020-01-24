@@ -1,9 +1,11 @@
+import { isString } from 'lodash';
 import { Observer } from 'mobx-react-lite';
-import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useObservableEffect } from '../../../lib/mobx/react';
 import Container from '../../../widgets/container/Container';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import AddressSummary from '../../address/ui/AddressSummary';
+import { useNavigationFeature } from '../../navigation';
 import TransactionBrowser, {
   TRANSACTIONS_PER_PAGE_DEFAULT,
 } from '../../transactions/components/TransactionsBrowser';
@@ -16,13 +18,12 @@ import NoSearchResult from './NoSearchResult';
 export const AddressSearchResult = () => {
   const { actions, api, store } = useSearchFeature();
   const transactions = useTransactionsFeature();
-  const router = useRouter();
+  const navigation = useNavigationFeature();
 
-  // Trigger search after component did render
-  useEffect(() => {
-    const { query } = router;
-    if (query?.address) {
-      const address = query.address as string;
+  useObservableEffect(() => {
+    const { query } = navigation.store;
+    const { address } = query;
+    if (isString(address)) {
       actions.searchForAddress.trigger({ address });
     }
   });
@@ -61,13 +62,13 @@ export const AddressSearchResult = () => {
                       .isExecutingTheFirstTime
                   }
                   onChangePage={page => {
-                    router.push({
-                      pathname: '/address',
+                    navigation.actions.push.trigger({
+                      path: '/address',
                       query: {
                         address,
                         page,
                         perPage:
-                          router.query?.perPage ??
+                          navigation.store.query.perPage ??
                           TRANSACTIONS_PER_PAGE_DEFAULT,
                       },
                     });
@@ -79,8 +80,8 @@ export const AddressSearchResult = () => {
                       offset: (paging.currentPage - 1) * paging.itemsPerPage,
                     });
                   }}
-                  perPage={router.query?.perPage as string}
-                  currentPage={(router.query?.page as string) ?? 1}
+                  perPage={navigation.store.query.perPage as string}
+                  currentPage={(navigation.store.query.page as string) ?? 1}
                   total={parseInt(transactionsCount, 10)}
                   transactions={transactions.store.browsedAddressTransactions}
                 />
@@ -90,7 +91,7 @@ export const AddressSearchResult = () => {
         } else {
           return (
             <NoSearchResult
-              searchQuery={router.query?.address as string}
+              searchQuery={navigation.store.query.address as string}
               searchType={SearchType.address}
             />
           );
