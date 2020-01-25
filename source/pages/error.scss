@@ -1,0 +1,19 @@
+.errorContainerLayout {
+  header {
+    > div {
+      > div {
+        > div:nth-child(3),
+        > div:nth-child(4) {
+          display: none !important;
+        }
+      }
+    }
+  }
+
+  footer {
+    margin-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+  }
+}

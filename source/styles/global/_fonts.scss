@@ -5,3 +5,9 @@ $url: '/assets/fonts/Proxima-Nova-';
 @include font-face('ProximaNova', '#{$url}Semibold', 600);
 @include font-face('ProximaNova', '#{$url}Regular', normal);
 @include font-face('ProximaNova', '#{$url}Thin', 100);
+
+@include font-face(
+  'CharletComprime',
+  '/assets/fonts/ChaletComprime-CologneEighty',
+  normal
+);
