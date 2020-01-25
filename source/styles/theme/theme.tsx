@@ -71,7 +71,7 @@ export const generateTheme = (config: IGenerateThemeConfig): CSSProperties => ({
 const commonThemeProps = {
   footerSeparatorColor: 'rgba(255, 255, 255, 0.1)',
   highlightedDarkAreaBgColor: 'rgba(255, 255, 255, 0.05)',
-  hintTextColor: 'rgba(255, 255, 255, 0.3)',
+  hintTextColor: 'rgba(255, 255, 255, 0.5)',
   infoTextColor: 'rgba(255, 255, 255, 0.7)',
   popupBgColor: '#3f404f',
   primaryBgColor: '#121326',
@@ -108,7 +108,7 @@ export const mainnetTheme = generateTheme({
   ...commonThemeProps,
   dottedSeparatorColor: '#36395d',
   errorColor: '#eb2256',
-  footerTextColor: 'rgba(31, 193, 195, 0.3)',
+  footerTextColor: 'rgba(31, 193, 195, 0.5)',
   primaryHighlightColor: '#1fc1c3',
   primaryHighlightHoverColor: '#1db0b3',
   primaryHighlightPressColor: '#1aa1a3',

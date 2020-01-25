@@ -25,12 +25,37 @@
     max-width: 872px;
     width: 100%;
 
-    .copyright {
-      @include footerText(var(--solid-text-color), ProximaNova, 12px, normal);
-      letter-spacing: 1.2px;
-      line-height: 1.5;
-      opacity: 0.3;
-      text-transform: uppercase;
+    .footerTopContainerLeft {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      max-width: 155px;
+      width: 100%;
+
+      @media (max-width: 768px) {
+        padding-bottom: 10px;
+      }
+
+      .copyright {
+        @include footerText(var(--solid-text-color), ProximaNova, 12px, 300);
+        letter-spacing: 1.2px;
+        line-height: 1.5;
+        opacity: 0.5;
+        text-transform: uppercase;
+      }
+
+      .gitLink {
+        display: initial;
+
+        .gitIcon {
+          height: 18px;
+          width: 18px;
+
+          path {
+            fill: var(--primary-highlight-color-hover);
+          }
+        }
+      }
     }
 
     .logos {
@@ -56,7 +81,7 @@
           );
           letter-spacing: 1px;
           line-height: 1.6;
-          opacity: 0.3;
+          opacity: 0.5;
           padding-left: 10px;
           text-transform: uppercase;
         }
@@ -135,8 +160,13 @@
     }
 
     a {
-      @include footerText(var(--solid-text-color), ProximaNova, 10px, 300);
-      opacity: 0.3;
+      @include footerText(
+        var(--primary-highlight-color),
+        ProximaNova,
+        10px,
+        600
+      );
+      opacity: 0.5;
       letter-spacing: 0.5px;
       line-height: 1.8;
       text-decoration: none;
@@ -167,7 +197,7 @@
           @include footerText(var(--solid-text-color), ProximaNova, 10px, 600);
           letter-spacing: 0.5px;
           line-height: 1.8;
-          opacity: 0.3;
+          opacity: 0.5;
         }
 
         .aboutCardanoMenu,
