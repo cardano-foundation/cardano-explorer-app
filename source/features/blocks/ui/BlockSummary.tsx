@@ -1,8 +1,10 @@
 import dayjs from 'dayjs';
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../../transactions/types';
+import { BLOCK_SEARCH_RESULT_PATH } from '../config';
 import { IBlockDetailed } from '../types';
 import styles from './BlockSummary.module.scss';
 
@@ -17,12 +19,18 @@ const BlockSummary = (props: BlockSummaryProps) => {
     epoch: ITransactionDetails['block']['epoch']
   ) => () => {
     if (epoch && epoch !== '-') {
-      props.navigation?.goToEpochDetailsPage.trigger({ number: epoch });
+      props.navigation?.push.trigger({
+        path: EPOCH_SEARCH_RESULT_PATH,
+        query: { number: epoch },
+      });
     }
   };
   const onBlockIdClick = (id: ITransactionDetails['block']['id']) => () => {
     if (id) {
-      props.navigation?.goToBlockDetailsPage.trigger({ id });
+      props.navigation?.push.trigger({
+        path: BLOCK_SEARCH_RESULT_PATH,
+        query: { id },
+      });
     }
   };
   const effectiveNumber = props.number !== '-' ? props.number : 0;

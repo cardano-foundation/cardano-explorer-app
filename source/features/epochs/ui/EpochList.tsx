@@ -7,6 +7,7 @@ import CircularProgress, {
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import { useNavigationFeatureOptionally } from '../../navigation';
+import { EPOCH_SEARCH_RESULT_PATH } from '../config';
 import { IEpochOverview } from '../types';
 import styles from './EpochList.module.scss';
 
@@ -105,8 +106,11 @@ const EpochList: FC<IEpochListProps> = ({
         columns={columns({
           currentEpoch,
           onEpochNumberClicked: epochNo =>
-            navigation?.actions.goToEpochDetailsPage.trigger({
-              number: epochNo,
+            navigation?.actions.push.trigger({
+              path: EPOCH_SEARCH_RESULT_PATH,
+              query: {
+                number: epochNo,
+              },
             }),
         })}
         rows={items.map(i => Object.assign({}, i, { key: i.number }))}

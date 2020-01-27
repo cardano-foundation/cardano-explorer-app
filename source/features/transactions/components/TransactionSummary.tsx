@@ -1,6 +1,8 @@
 import dayjs from 'dayjs';
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import { BLOCK_SEARCH_RESULT_PATH } from '../../blocks/config';
+import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../types';
 import styles from './TransactionSummary.module.scss';
@@ -16,13 +18,19 @@ const TransactionSummary = (props: ITransactionSummaryProps) => {
     if ((!epoch && epoch !== 0) || epoch === '-') {
       return;
     }
-    props.navigation?.goToEpochDetailsPage.trigger({ number: epoch });
+    props.navigation?.push.trigger({
+      path: EPOCH_SEARCH_RESULT_PATH,
+      query: { number: epoch },
+    });
   };
   const onBlockIdClick = (id: ITransactionDetails['block']['id']) => {
     if (!id) {
       return;
     }
-    props.navigation?.goToBlockDetailsPage.trigger({ id });
+    props.navigation?.push.trigger({
+      path: BLOCK_SEARCH_RESULT_PATH,
+      query: { id },
+    });
   };
   return (
     <div className={styles.transactionSummaryContainer}>

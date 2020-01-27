@@ -1,10 +1,10 @@
 import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
+import { useNavigationFeatureOptionally } from '../../features/navigation';
 import { SearchBar } from '../../features/search/ui/SearchBar';
 import CardanoLogo from '../../public/assets/images/header/cardano-logo.svg';
 import styles from './Header.module.scss';
@@ -16,16 +16,16 @@ export interface IHeaderProps {
 
 export const Header = observer((props: IHeaderProps) => {
   const { brandType } = props;
-  const router = useRouter();
+  const navigation = useNavigationFeatureOptionally();
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
       ? styles.enlargedHeaderContainer
       : styles.shrinkedHeaderContainer;
   const headerContainerStyles = cx([styles.headerContainer, brandTypeStyle]);
-  const indexClassName = !router?.pathname.includes('stake-pools')
+  const indexClassName = !navigation?.store.path.includes('stake-pools')
     ? styles.activeTab
     : '';
-  const stakePoolsClassName = router?.pathname.includes('stake-pools')
+  const stakePoolsClassName = navigation?.store.path.includes('stake-pools')
     ? styles.activeTab
     : '';
   const testnetSubtitle =

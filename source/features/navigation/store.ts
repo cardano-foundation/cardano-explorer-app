@@ -1,65 +1,66 @@
-import { action } from 'mobx';
-import { NextRouter } from 'next/router';
+import { action, observable } from 'mobx';
+import Router from 'next/router';
+import * as querystring from 'querystring';
+import { ParsedUrlQuery } from 'querystring';
+import URL from 'url';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
-import { NavigationActions } from './index';
+import { INavigationRouterDependency, NavigationActions } from './index';
 
+/**
+ * Router abstraction layer and mobx based route state
+ */
 export class NavigationStore extends Store {
-  private readonly navigationActions: NavigationActions;
-  private readonly router: NextRouter;
+  @observable public path: string = '';
+  @observable public query: ParsedUrlQuery = {};
 
-  constructor(navigationActions: NavigationActions, router: NextRouter) {
+  private readonly navigationActions: NavigationActions;
+  private readonly router: INavigationRouterDependency;
+
+  constructor(
+    navigationActions: NavigationActions,
+    router: INavigationRouterDependency
+  ) {
     super();
     this.navigationActions = navigationActions;
     this.router = router;
 
     this.registerActions(
-      createActionBindings([
-        [this.navigationActions.redirectTo, this.redirectTo],
-        [this.navigationActions.goToAddressDetailsPage, this.showAddress],
-        [this.navigationActions.goToBlockDetailsPage, this.showBlockById],
-        [this.navigationActions.goToEpochDetailsPage, this.showEpochByNumber],
-        [
-          this.navigationActions.goToTransactionDetailsPage,
-          this.showTransactionById,
-        ],
-      ])
+      createActionBindings([[this.navigationActions.push, this.push]])
     );
+  }
+
+  public async start(): Promise<void> {
+    super.start();
+    Router.events.on('routeChangeComplete', this.updateStateOnRouteChange);
+  }
+
+  public async stop(): Promise<void> {
+    super.stop();
+    Router.events.off('routeChangeComplete', this.updateStateOnRouteChange);
   }
 
   // ========= PRIVATE ACTION HANDLERS ==========
 
-  @action private redirectTo = async (
-    props: ActionProps<typeof NavigationActions.prototype.redirectTo>
+  @action private push = async (
+    props: ActionProps<typeof NavigationActions.prototype.push>
   ) => {
-    return this.router.push(props.path);
+    this.router.push({
+      pathname: props.path,
+      query: props.query,
+    });
   };
 
-  @action private showAddress = async (
-    props: ActionProps<
-      typeof NavigationActions.prototype.goToAddressDetailsPage
-    >
-  ) => {
-    return this.router.push(`/address?address=${props.address}`);
-  };
-
-  @action private showBlockById = async (
-    props: ActionProps<typeof NavigationActions.prototype.goToBlockDetailsPage>
-  ) => {
-    return this.router.push(`/block?id=${props.id}`);
-  };
-
-  @action private showEpochByNumber = async (
-    props: ActionProps<typeof NavigationActions.prototype.goToEpochDetailsPage>
-  ) => {
-    return this.router.push(`/epoch?number=${props.number}`);
-  };
-
-  @action private showTransactionById = async (
-    props: ActionProps<
-      typeof NavigationActions.prototype.goToTransactionDetailsPage
-    >
-  ) => {
-    return this.router.push(`/transaction?id=${props.id}`);
+  @action private updateStateOnRouteChange = (url: string) => {
+    const parsedUrl = URL.parse(url);
+    if (!parsedUrl.pathname) {
+      return;
+    }
+    this.path = parsedUrl.pathname;
+    if (parsedUrl.query) {
+      this.query = querystring.parse(parsedUrl.query);
+    } else {
+      this.query = {};
+    }
   };
 }

@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import Link from 'next/link';
 import React from 'react';
 import styles from './Footer.module.scss';
 
@@ -7,6 +8,7 @@ const twitterIcon = require('../../public/assets/images/twitter-icon.png');
 const facebookIcon = require('../../public/assets/images/facebook-icon.png');
 const youtubeIcon = require('../../public/assets/images/youtube-icon.png');
 const newsletterIcon = require('../../public/assets/images/newsletter-icon.png');
+const GitIcon = require('../../public/assets/images/git-icon.svg');
 
 interface IFooterProps {
   rootClassname?: string;
@@ -18,7 +20,16 @@ export const Footer = (props: IFooterProps) => {
     >
       <div className={styles.footerContent}>
         <div className={styles.footerTopContainer}>
-          <p className={styles.copyright}>Cardano {new Date().getFullYear()}</p>
+          <div className={styles.footerTopContainerLeft}>
+            <p className={styles.copyright}>
+              © IOHK 2015 - {new Date().getFullYear()}
+            </p>
+            <Link href="https://github.com/input-output-hk/cardano-explorer-app/">
+              <a className={styles.gitLink}>
+                <GitIcon className={styles.gitIcon} />
+              </a>
+            </Link>
+          </div>
           <div className={styles.logos}>
             <div className={styles.logoText}>
               <a href="#">

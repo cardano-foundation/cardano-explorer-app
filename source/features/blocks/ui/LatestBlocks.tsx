@@ -1,14 +1,15 @@
 import { Observer } from 'mobx-react-lite';
-import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import ShowMoreButtonDecorator from '../../../widgets/decorators/ShowMoreButtonDecorator';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
+import { useNavigationFeature } from '../../navigation';
+import { BLOCK_BROWSE_PATH } from '../config';
 import { useBlocksFeature } from '../context';
 import BlockList from './BlockList';
 
 export const LatestBlocks = () => {
   const { actions, store } = useBlocksFeature();
-  const router = useRouter();
+  const navigation = useNavigationFeature();
   useEffect(() => {
     // Start fetching latest blocks on mount
     actions.startPollingLatestBlocks.trigger();
@@ -28,7 +29,9 @@ export const LatestBlocks = () => {
               store.isLoadingLatestBlocksFirstTime ||
               store.latestBlocks.length < 10
             }
-            onClick={() => router.push('/browse-blocks')}
+            onClick={() =>
+              navigation.actions.push.trigger({ path: BLOCK_BROWSE_PATH })
+            }
           >
             <BlockList
               isLoading={store.isLoadingLatestBlocksFirstTime}
