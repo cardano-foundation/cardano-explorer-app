@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../types';
-import styles from './TransactionSummary.scss';
+import styles from './TransactionSummary.module.scss';
 
 export interface ITransactionSummaryProps extends ITransactionDetails {
   navigation?: NavigationActions;

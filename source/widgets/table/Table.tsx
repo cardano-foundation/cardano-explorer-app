@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import DividerWithTitle from '../divider-with-title/DividerWithTitle';
-import styles from './Table.scss';
+import styles from './Table.module.scss';
 import TableBody from './TableBody';
 import TableHead from './TableHead';
 

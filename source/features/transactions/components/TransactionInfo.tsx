@@ -6,7 +6,7 @@ import React from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../types';
-import styles from './TransactionInfo.scss';
+import styles from './TransactionInfo.module.scss';
 
 dayjs.extend(relativeTime);
 const ArrowNext = require('../../../public/assets/images/arrow-next.svg');

@@ -1,4 +1,3 @@
-const path = require('path');
 const isCi = process.env.CI && process.env.CI !== '';
 
 module.exports = ({ config, mode }) => {
@@ -16,11 +15,10 @@ module.exports = ({ config, mode }) => {
         options: {
           sourceMap: !isCi,
           modules: true,
-          localIdentName: '[name]_[local]',
           importLoaders: true,
         },
       },
-      { loader: 'fast-sass-loader', options: { sourceMap: !isCi } },
+      { loader: 'sass-loader', options: { sourceMap: !isCi } },
     ],
   });
   config.resolve.extensions.push('.ts', '.tsx');

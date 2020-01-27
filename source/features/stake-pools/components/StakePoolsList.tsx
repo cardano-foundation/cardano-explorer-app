@@ -7,7 +7,7 @@ import {
   IStakePoolsListProps,
   IStakePoolTooltipPositionProps,
 } from '../types';
-import styles from './StakePoolsList.scss';
+import styles from './StakePoolsList.module.scss';
 import StakePoolThumbnail from './StakePoolThumbnail';
 import StakePoolTooltip from './StakePoolTooltip';
 

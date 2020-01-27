@@ -4,7 +4,7 @@ import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTit
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../../transactions/types';
 import { IBlockDetailed } from '../types';
-import styles from './BlockSummary.scss';
+import styles from './BlockSummary.module.scss';
 
 export type BlockSummaryProps = {
   navigation?: NavigationActions;

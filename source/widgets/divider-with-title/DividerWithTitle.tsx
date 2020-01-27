@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './DividerWithTitle.scss';
+import styles from './DividerWithTitle.module.scss';
 
 export interface IDividerWithTitleProps {
   title: string;

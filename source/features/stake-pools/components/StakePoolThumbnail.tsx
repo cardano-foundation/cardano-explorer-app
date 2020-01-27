@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { IStakePoolThumbnailProps } from '../types';
-import styles from './StakePoolThumbnail.scss';
+import styles from './StakePoolThumbnail.module.scss';
 
 const ClockIcon = require('../../../public/assets/images/stake-pools/clock-icon.svg');
 

@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
-import styles from './Pagination.scss';
+import styles from './Pagination.module.scss';
 
 export interface IPaginationProps {
   currentPage: number;

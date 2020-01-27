@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { getFilteredStakePoolsList } from '../helpers';
 import { IStakePoolProps, IStakePoolsProps } from '../types';
-import styles from './StakePools.scss';
+import styles from './StakePools.module.scss';
 import StakePoolsList from './StakePoolsList';
 import StakePoolsSearch from './StakePoolsSearch';
 

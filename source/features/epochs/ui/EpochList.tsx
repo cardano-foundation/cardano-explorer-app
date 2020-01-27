@@ -8,7 +8,7 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import { IEpochOverview } from '../types';
-import styles from './EpochList.scss';
+import styles from './EpochList.module.scss';
 
 export interface IEpochListProps {
   currentEpoch: number;

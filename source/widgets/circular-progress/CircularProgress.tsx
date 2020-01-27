@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import CircularProgressPin from '../../public/assets/images/epoch/epoch-filled.svg';
-import styles from './CircularProgress.scss';
+import styles from './CircularProgress.module.scss';
 
 export enum CircularProgressSize {
   SMALL = 'small',

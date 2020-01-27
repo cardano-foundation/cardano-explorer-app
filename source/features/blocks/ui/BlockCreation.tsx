@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
-import styles from './BlockCreation.scss';
+import styles from './BlockCreation.module.scss';
 import BlockCreationRow, { IBlockCreationRowProps } from './BlockCreationRow';
 
 export interface IBlockCreationProps {

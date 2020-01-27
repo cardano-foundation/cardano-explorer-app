@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import React, { Component } from 'react';
-import styles from './LoadingSpinner.scss';
+import styles from './LoadingSpinner.module.scss';
 
 const SpinnerBig = require('../../public/assets/images/spinner-dark-big.inline.svg');
 const SpinnerSmall = require('../../public/assets/images/spinner-dark.inline.svg');

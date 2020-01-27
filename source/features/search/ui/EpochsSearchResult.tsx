@@ -12,7 +12,7 @@ import StakeDistribution from '../../epochs/ui/StakeDistribution';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
-import styles from './EpochsSearchResult.scss';
+import styles from './EpochsSearchResult.module.scss';
 import NoSearchResult from './NoSearchResult';
 
 const stakeDistribution = [

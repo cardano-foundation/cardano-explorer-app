@@ -10,7 +10,7 @@ import TransactionBrowser, {
 import { useTransactionsFeature } from '../../transactions/context';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
-import styles from './AddressSearchResult.scss';
+import styles from './AddressSearchResult.module.scss';
 import NoSearchResult from './NoSearchResult';
 
 export const AddressSearchResult = () => {

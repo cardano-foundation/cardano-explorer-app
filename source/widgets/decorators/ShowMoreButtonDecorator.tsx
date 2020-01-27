@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
-import styles from './ShowMoreButtonDecorator.scss';
+import styles from './ShowMoreButtonDecorator.module.scss';
 
 export interface IShowMoreButtonDecorator {
   label: string;

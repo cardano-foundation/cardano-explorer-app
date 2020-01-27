@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { IColumnDefinition } from './Table';
-import styles from './TableBodyRow.scss';
+import styles from './TableBodyRow.module.scss';
 
 export interface ITableBodyRowProps {
   columns: Array<IColumnDefinition>;

@@ -5,7 +5,7 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import { IBlockOverview } from '../types';
-import styles from './BlockList.scss';
+import styles from './BlockList.module.scss';
 
 export interface IBlockListProps {
   ignoreLinksToEpoch?: number;

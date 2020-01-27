@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { SearchType } from '../store';
-import styles from './NoSearchResult.scss';
+import styles from './NoSearchResult.module.scss';
 
 const NoSearchResult = ({
   searchQuery,

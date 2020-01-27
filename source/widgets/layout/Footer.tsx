@@ -1,6 +1,6 @@
-import { observer } from 'mobx-react-lite';
+import classnames from 'classnames';
 import React from 'react';
-import styles from './Footer.scss';
+import styles from './Footer.module.scss';
 
 const iohkLogo = require('../../public/assets/images/iohk-logo.png');
 const twitterIcon = require('../../public/assets/images/twitter-icon.png');
@@ -8,9 +8,14 @@ const facebookIcon = require('../../public/assets/images/facebook-icon.png');
 const youtubeIcon = require('../../public/assets/images/youtube-icon.png');
 const newsletterIcon = require('../../public/assets/images/newsletter-icon.png');
 
-export const Footer = observer(() => {
+interface IFooterProps {
+  rootClassname?: string;
+}
+export const Footer = (props: IFooterProps) => {
   return (
-    <footer className={styles.footerContainer}>
+    <footer
+      className={classnames([styles.footerContainer, props.rootClassname])}
+    >
       <div className={styles.footerContent}>
         <div className={styles.footerTopContainer}>
           <p className={styles.copyright}>Cardano {new Date().getFullYear()}</p>
@@ -137,4 +142,4 @@ export const Footer = observer(() => {
       </div>
     </footer>
   );
-});
+};

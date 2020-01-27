@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { IColumnDefinition } from './Table';
-import styles from './TableBody.scss';
+import styles from './TableBody.module.scss';
 import TableBodyRow from './TableBodyRow';
 
 export interface ITableBodyProps {

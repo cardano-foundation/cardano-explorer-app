@@ -12,6 +12,7 @@ import { NetworkInfoFeatureProvider } from '../features/network-info/ui/NetworkI
 import { BrowserUpdate } from '../features/outdated-browser/BrowserUpdate';
 import { SearchFeatureProvider } from '../features/search/ui/SearchFeatureProvider';
 import GraphQLProvider from '../lib/graphql/GraphQLProvider';
+import '../styles/global/index.scss';
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import LoadingSpinner from '../widgets/loading-spinner/LoadingSpinner';
 
@@ -39,13 +40,6 @@ class CardanoExplorer extends App {
                     <Head>
                       {Component.pageTitle && (
                         <title>{Component.pageTitle}</title>
-                      )}
-                      {process.env.NODE_ENV !== 'production' && (
-                        <link
-                          rel="stylesheet"
-                          type="text/css"
-                          href={`/_next/static/css/styles.chunk.css?v=${Date.now()}`}
-                        />
                       )}
                     </Head>
                     <Component {...pageProps} />

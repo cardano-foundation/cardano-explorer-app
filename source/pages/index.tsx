@@ -7,7 +7,7 @@ import { LatestEpochs } from '../features/epochs/ui/LatestEpochs';
 import { SearchBar } from '../features/search/ui/SearchBar';
 import SideBackgroundImage from '../public/assets/images/main-side-background.svg';
 import { Footer, Header, Layout } from '../widgets/layout';
-import styles from './index.scss';
+import styles from './index.module.scss';
 
 const Index = () => (
   <>
@@ -37,7 +37,7 @@ Index.getStaticLayout = (page: React.ReactNode) => (
     <Layout>
       <Header brandType={BrandType.ENLARGED} />
       {page}
-      <Footer />
+      <Footer rootClassname={styles.footer} />
     </Layout>
     <div className={styles.sideBgContainer}>
       <div className={styles.sideBackgroundImageContainer}>

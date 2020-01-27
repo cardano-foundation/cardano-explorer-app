@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import styles from './Container.scss';
+import styles from './Container.module.scss';
 
 interface IContainer {
   children: any;

@@ -5,7 +5,7 @@ import CircularProgress, {
 } from '../../../widgets/circular-progress/CircularProgress';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { IEpochOverview } from '../types';
-import styles from './EpochSummary.scss';
+import styles from './EpochSummary.module.scss';
 
 export interface IEpochSummaryProps {
   title: string;
