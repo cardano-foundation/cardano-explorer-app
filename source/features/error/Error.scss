@@ -1,3 +1,11 @@
+@import '../../styles/mixins/font-face';
+
+@include font-face(
+  'CharletComprime',
+  '/assets/fonts/ChaletComprime-CologneEighty',
+  normal
+);
+
 .errorContainer {
   margin: 0 auto;
   max-width: 872px;
