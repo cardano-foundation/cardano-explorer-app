@@ -2,7 +2,13 @@ Cardano Explorer App
 ====================
 [![Build Status](https://jenkins.daedalus-operations.com/buildStatus/icon?job=cardano-explorer-app%2Fdevelop)](https://jenkins.daedalus-operations.com/blue/organizations/jenkins/cardano-explorer-app/)
 
-Web app for the Cardano Explorer, covering the Byron and Shelley eras. This project depends on the [Cardano GraphQL API stack](https://github.com/input-output-hk/cardano-graphql), as defined in [docker-compose](docker-compose.yml). The schema typings are generated from the running API service, and should be regenerated when changing the version.
+Cardano Explorer uses [Cardano GraphQL](https://github.com/input-output-hk/cardano-graphql) as the network interface. For the purpose of integration testing, it's a git **submodule** of this repository.
+
+```
+git clone https://github.com/input-output-hk/cardano-explorer-app.git --recurse-submodules
+```
+
+The schema typings are generated from the running API service, and are therefore not committed to source control. 
 
 ## Development
 See [.env.example](.env.example) for _optional_ config

@@ -1,0 +1,3 @@
+[submodule "cardano-graphql"]
+	path = cardano-graphql
+	url = https://github.com/input-output-hk/cardano-graphql
