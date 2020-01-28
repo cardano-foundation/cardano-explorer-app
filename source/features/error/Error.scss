@@ -2,7 +2,7 @@
 
 @include font-face(
   'CharletComprime',
-  '/assets/fonts/ChaletComprime-CologneEighty',
+  '../../public/assets/fonts/ChaletComprime-CologneEighty',
   normal
 );
 
@@ -143,7 +143,7 @@
     }
 
     .bottomContainerText {
-      color: var(--info-text-color);
+      color: var(--solid-text-color);
       font-family: ProximaNova, sans-serif;
       font-size: 12px;
       font-weight: 300;
