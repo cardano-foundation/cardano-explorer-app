@@ -17,11 +17,21 @@ export interface IHeaderProps {
 export const Header = observer((props: IHeaderProps) => {
   const { brandType } = props;
   const navigation = useNavigationFeatureOptionally();
+  const headerBackgroundStyle =
+    environment.CARDANO.NETWORK === CardanoNetwork.MAINNET
+      ? styles.mainNetHeader
+      : environment.CARDANO.NETWORK === CardanoNetwork.TESTNET
+      ? styles.testNetHeader
+      : styles.incentivizedTestNetHeader;
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
       ? styles.enlargedHeaderContainer
       : styles.shrinkedHeaderContainer;
-  const headerContainerStyles = cx([styles.headerContainer, brandTypeStyle]);
+  const headerContainerStyles = cx([
+    styles.headerContainer,
+    headerBackgroundStyle,
+    brandTypeStyle,
+  ]);
   const indexClassName = !navigation?.store.path.includes('stake-pools')
     ? styles.activeTab
     : '';
