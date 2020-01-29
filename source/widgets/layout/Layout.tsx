@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '../container/Container';
-import styles from './Layout.scss';
+import styles from './Layout.module.scss';
 
 interface IProps {
   children: React.ReactNode;

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { Component } from 'react';
-import styles from './Error.scss';
+import styles from './PageNotFoundError.module.scss';
 
 const ContainerBackground = require('../../public/assets/images/error/hub-tripple.svg');
 

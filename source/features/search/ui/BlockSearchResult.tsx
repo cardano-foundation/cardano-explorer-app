@@ -12,7 +12,7 @@ import TransactionBrowser, {
 import { useTransactionsFeature } from '../../transactions/context';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
-import styles from './BlockSearchResult.scss';
+import styles from './BlockSearchResult.module.scss';
 import NoSearchResult from './NoSearchResult';
 
 export const BlockSearchResult = () => {

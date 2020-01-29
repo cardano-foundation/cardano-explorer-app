@@ -1,9 +1,9 @@
 import chroma from 'chroma-js';
 import { CSSProperties } from 'react';
 import { IDENTIFIERS } from 'react-polymorph/lib/components';
-import SimpleButton from 'react-polymorph/lib/themes/simple/SimpleButton.scss';
-import SimpleFormField from 'react-polymorph/lib/themes/simple/SimpleFormField.scss';
-import SimpleInput from 'react-polymorph/lib/themes/simple/SimpleInput.scss';
+import SimpleButton from 'react-polymorph/lib/themes/simple/SimpleButton.module.scss';
+import SimpleFormField from 'react-polymorph/lib/themes/simple/SimpleFormField.module.scss';
+import SimpleInput from 'react-polymorph/lib/themes/simple/SimpleInput.module.scss';
 import { CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
 

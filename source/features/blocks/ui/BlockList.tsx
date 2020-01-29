@@ -7,7 +7,7 @@ import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import { BLOCK_SEARCH_RESULT_PATH } from '../config';
 import { IBlockOverview } from '../types';
-import styles from './BlockList.scss';
+import styles from './BlockList.module.scss';
 
 export interface IBlockListProps {
   ignoreLinksToEpoch?: number;

@@ -5,7 +5,7 @@ import { BLOCK_SEARCH_RESULT_PATH } from '../../blocks/config';
 import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../types';
-import styles from './TransactionSummary.scss';
+import styles from './TransactionSummary.module.scss';
 
 export interface ITransactionSummaryProps extends ITransactionDetails {
   navigation?: NavigationActions;

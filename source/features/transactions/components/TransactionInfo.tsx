@@ -8,7 +8,7 @@ import { ADDRESS_SEARCH_RESULT_PATH } from '../../address/config';
 import { NavigationActions } from '../../navigation';
 import { TRANSACTION_SEARCH_RESULT_PATH } from '../config';
 import { ITransactionDetails } from '../types';
-import styles from './TransactionInfo.scss';
+import styles from './TransactionInfo.module.scss';
 
 dayjs.extend(relativeTime);
 const ArrowNext = require('../../../public/assets/images/arrow-next.svg');

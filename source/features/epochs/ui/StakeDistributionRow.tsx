@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import styles from './StakeDistributionRow.scss';
+import styles from './StakeDistributionRow.module.scss';
 
 export interface IStakeDistributionRowProps {
   slotsElectedPercentage: number;

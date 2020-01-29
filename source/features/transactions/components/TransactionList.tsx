@@ -4,7 +4,7 @@ import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTit
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import TransactionInfo, { ITransactionInfoProps } from './TransactionInfo';
-import styles from './TransactionList.scss';
+import styles from './TransactionList.module.scss';
 
 export interface ITransactionListProps {
   isLoading: boolean;

@@ -7,7 +7,7 @@ import { environment } from '../../environment';
 import { useNavigationFeatureOptionally } from '../../features/navigation';
 import { SearchBar } from '../../features/search/ui/SearchBar';
 import CardanoLogo from '../../public/assets/images/header/cardano-logo.svg';
-import styles from './Header.scss';
+import styles from './Header.module.scss';
 
 export interface IHeaderProps {
   brandType?: BrandType;

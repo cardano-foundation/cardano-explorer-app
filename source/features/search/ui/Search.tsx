@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
 import { Input } from 'react-polymorph/lib/components/Input';
 import { BrandType } from '../../../constants';
-import styles from './Search.scss';
+import styles from './Search.module.scss';
 
 export interface ISearchProps {
   placeholder?: string;

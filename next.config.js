@@ -1,7 +1,5 @@
-const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
-const withSass = require('@zeit/next-sass');
 const withFonts = require('next-fonts');
 const withImages = require('next-images');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
@@ -12,18 +10,6 @@ const DEBUG = process.env.DEBUG;
 
 module.exports = withPlugins(
   [
-    [
-      withSass,
-      {
-        cssModules: true,
-        cssLoaderOptions: {
-          sourceMap: true,
-          modules: true,
-          localIdentName: '[name]_[local]',
-          importLoaders: true,
-        },
-      },
-    ],
     [
       withBundleAnalyzer,
       {
@@ -63,7 +49,8 @@ module.exports = withPlugins(
       DEBUG
     },
     experimental: {
-      granularChunks: true
+      css: true,
+      scss: true
     },
     webpack(config) {
       config.plugins.push(new LodashModuleReplacementPlugin());

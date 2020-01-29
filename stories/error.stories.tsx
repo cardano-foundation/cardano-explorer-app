@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { BrandType } from '../source/constants';
-import Error from '../source/features/error/Error';
-import styles from '../source/pages/error.scss';
+import styles from '../source/features/errors/ErrorPage.module.scss';
+import Error from '../source/features/errors/PageNotFoundError';
 import { Header } from '../source/widgets/layout';
 import { PaddingDecorator } from './support/PaddingDecorator';
 

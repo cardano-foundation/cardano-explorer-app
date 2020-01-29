@@ -1,4 +1,4 @@
-import styles from './UnmoderatedDataConsented.scss';
+import styles from './UnmoderatedDataConsented.module.scss';
 
 export default () => (
   <div className={styles.unmoderatedDataConsentedContainer}>

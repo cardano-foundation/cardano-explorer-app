@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import styles from './BlockCreationRow.scss';
+import styles from './BlockCreationRow.module.scss';
 
 export interface IBlockCreationRowProps {
   performance: number;

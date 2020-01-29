@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Container from '../../../widgets/container/Container';
 import { IUnmoderatedDataWarning } from '../types';
-import styles from './UnmoderatedDataWarning.scss';
+import styles from './UnmoderatedDataWarning.module.scss';
 
 export default ({ onAcceptUnmoderatedData }: IUnmoderatedDataWarning) => (
   <div className={styles.unmoderatedDataWarningContainer}>

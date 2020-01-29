@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { IColumnDefinition } from './Table';
-import styles from './TableHead.scss';
+import styles from './TableHead.module.scss';
 
 export interface ITableHeadProps {
   columns: Array<IColumnDefinition>;

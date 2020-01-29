@@ -9,7 +9,7 @@ import Table, { IColumnDefinition } from '../../../widgets/table/Table';
 import { useNavigationFeatureOptionally } from '../../navigation';
 import { EPOCH_SEARCH_RESULT_PATH } from '../config';
 import { IEpochOverview } from '../types';
-import styles from './EpochList.scss';
+import styles from './EpochList.module.scss';
 
 export interface IEpochListProps {
   currentEpoch: number;

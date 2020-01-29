@@ -4,7 +4,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 import { getColorFromRange } from '../../../lib/colors';
 import { IStakePoolTooltipProps } from '../types';
-import styles from './StakePoolTooltip.scss';
+import styles from './StakePoolTooltip.module.scss';
 
 dayjs.extend(relativeTime);
 const CloseCrossIcon = require('../../../public/assets/images/stake-pools/close-cross.svg');

@@ -10,7 +10,7 @@ import TransactionSummary from '../../transactions/components/TransactionSummary
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
 import NoSearchResult from './NoSearchResult';
-import styles from './TransactionSearchResult.scss';
+import styles from './TransactionSearchResult.module.scss';
 
 export const TransactionSearchResult = () => {
   const search = useSearchFeature();
