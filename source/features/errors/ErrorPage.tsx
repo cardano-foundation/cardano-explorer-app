@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrandType } from '../constants';
-import Error from '../features/error/Error';
-import { Footer, Header, Layout } from '../widgets/layout';
-import styles from './error.scss';
+import { BrandType } from '../../constants';
+import { Footer, Header, Layout } from '../../widgets/layout';
+import styles from './ErrorPage.module.scss';
+import Error from './PageNotFoundError';
 
 const ErrorPage = () => (
   <Error
