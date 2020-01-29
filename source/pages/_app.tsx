@@ -15,6 +15,7 @@ import GraphQLProvider from '../lib/graphql/GraphQLProvider';
 import '../styles/global/index.scss';
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import LoadingSpinner from '../widgets/loading-spinner/LoadingSpinner';
+import ErrorPage from './error';
 
 type PageComponentWithStaticLayout = NextComponentType<NextPageContext, any> & {
   getStaticLayout?: (page: React.ReactNode) => JSX.Element;
@@ -23,10 +24,14 @@ type PageComponentWithStaticLayout = NextComponentType<NextPageContext, any> & {
 
 class CardanoExplorer extends App {
   public render() {
-    const { pageProps } = this.props;
-    const Component = this.props.Component as PageComponentWithStaticLayout;
-    const emptyLayout = (page: JSX.Element) => page;
-    const wrapInStaticLayout = Component.getStaticLayout || emptyLayout;
+    let { pageProps } = this.props;
+    let Component = this.props.Component as PageComponentWithStaticLayout;
+    if (pageProps && pageProps.statusCode && pageProps.statusCode === 404) {
+      pageProps = {};
+      Component = ErrorPage;
+    }
+    const wrapInStaticLayout =
+      Component.getStaticLayout || ErrorPage.getStaticLayout;
     // Provide global app features that must survive page navigation:
     return (
       <GraphQLProvider>
