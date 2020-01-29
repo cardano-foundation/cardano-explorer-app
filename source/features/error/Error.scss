@@ -1,0 +1,208 @@
+@import '../../styles/mixins/font-face';
+
+@include font-face(
+  'CharletComprime',
+  '../../public/assets/fonts/ChaletComprime-CologneEighty',
+  normal
+);
+
+.errorContainer {
+  margin: 0 auto;
+  max-width: 872px;
+  width: 100%;
+
+  .errorContainerBackground {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    opacity: 0.5;
+    top: -170px;
+    width: 100%;
+    z-index: 0;
+
+    @media (max-width: 768px) {
+      top: -320px;
+    }
+  }
+
+  .mainContainer {
+    display: table;
+    margin: 0 auto;
+    padding-bottom: 175px;
+    padding-top: 150px;
+
+    .errorCode {
+      color: var(--solid-text-color);
+      font-family: ProximaNova, sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: 0.6px;
+      opacity: 0.7;
+      padding: 0 19px;
+      text-transform: uppercase;
+    }
+
+    .errorCodeSeparator {
+      background-color: var(--solid-text-color);
+      height: 1px;
+      opacity: 0.5;
+      margin: 5px 19px;
+      width: 10px;
+    }
+
+    .errorCodeMessage {
+      color: var(--secondary-highlight-color);
+      font-family: CharletComprime, sans-serif;
+      font-size: 120px;
+      letter-spacing: 6px;
+      padding-top: 5px;
+    }
+  }
+
+  .bottomContainer {
+    display: table;
+    margin: 0 auto;
+    max-width: 390px;
+    padding-bottom: 135px;
+    z-index: 2;
+
+    .contentContainer {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 100%;
+      z-index: 200;
+
+      .messageContainer {
+        color: var(--solid-text-color);
+        font-family: ProximaNova, sans-serif;
+        font-size: 16px;
+        letter-spacing: 1.8px;
+        line-height: 1.39;
+        text-align: center;
+        text-transform: uppercase;
+
+        .message {
+          font-weight: 600;
+        }
+      }
+
+      .bottomContent {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .messageContainer {
+          font-size: 18px;
+          margin-bottom: 30px;
+          margin-top: 30px;
+        }
+
+        .triangleSign {
+          position: relative;
+
+          .straightLine {
+            background-color: var(--secondary-highlight-color);
+            height: 1px;
+            left: -63px;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            width: 126px;
+            z-index: 400;
+          }
+
+          .triangle {
+            border-left: 14.5px solid transparent;
+            border-right: 14.5px solid transparent;
+            border-top: 20px solid var(--secondary-highlight-color);
+            height: 0;
+            left: 50%;
+            position: absolute;
+            top: 2px;
+            transform: translate(-50%, -50%);
+            width: 0;
+            z-index: 300;
+
+            .innerTriangle {
+              border-left: 11.5px solid transparent;
+              border-right: 11.5px solid transparent;
+              border-top: 17px solid var(--primary-bg-color);
+              height: 0;
+              left: -11.5px;
+              position: relative;
+              top: -19px;
+              width: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .bottomContainerText {
+      color: var(--solid-text-color);
+      font-family: ProximaNova, sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.7px;
+      line-height: 1.43;
+      padding-top: 30px;
+      text-align: center;
+    }
+
+    .bottomContainerLinks {
+      display: flex;
+      justify-content: center;
+      margin-left: -30px;
+      padding-top: 40px;
+
+      @media (max-width: 768px) {
+        align-items: center;
+        flex-direction: column;
+        margin-left: 0;
+        padding-top: 40px;
+      }
+
+      .bottomContainerLink {
+        color: var(--primary-highlight-color);
+        font-family: ProximaNova, sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.2px;
+        line-height: 1.67;
+        text-decoration: none;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+
+      .bottomContainerLinksSeparator {
+        border: 1px dashed var(--primary-highlight-color);
+        margin: 0 20px;
+
+        @media (max-width: 768px) {
+          margin: 20px;
+          width: 100px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .bottomContainer {
+    .contentContainer {
+      .bottomContent {
+        .messageContainer {
+          margin-top: 15.5px;
+
+          .cardanoTitle {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
