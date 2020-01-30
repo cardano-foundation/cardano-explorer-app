@@ -20,9 +20,7 @@ export const Header = observer((props: IHeaderProps) => {
   const headerBackgroundStyle =
     environment.CARDANO.NETWORK === CardanoNetwork.MAINNET
       ? styles.mainNetHeader
-      : environment.CARDANO.NETWORK === CardanoNetwork.TESTNET
-      ? styles.testNetHeader
-      : styles.incentivizedTestNetHeader;
+      : styles.testNetHeader;
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
       ? styles.enlargedHeaderContainer
