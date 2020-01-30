@@ -4,10 +4,7 @@ import { latestEpochsExample } from '../source/features/epochs/specs/helpers/lat
 import EpochList from '../source/features/epochs/ui/EpochList';
 import EpochSummary from '../source/features/epochs/ui/EpochSummary';
 import StakeDistribution from '../source/features/epochs/ui/StakeDistribution';
-import {
-  incentivizedTestnetTheme,
-  mainnetTheme,
-} from '../source/styles/theme/theme';
+import { mainnetTheme } from '../source/styles/theme/theme';
 import { PaddingDecorator } from './support/PaddingDecorator';
 
 const epochs = latestEpochsExample;
@@ -61,7 +58,7 @@ storiesOf('Epochs|List', module)
 
 storiesOf('Epochs|Summary', module)
   .addDecorator(story => (
-    <div style={incentivizedTestnetTheme}>
+    <div style={mainnetTheme}>
       <PaddingDecorator>{story()}</PaddingDecorator>
     </div>
   ))
@@ -82,12 +79,4 @@ storiesOf('Epochs|Summary', module)
       title="Epoch"
       epoch={{ ...epochs[0], ...{ percentage: 100 } }}
     />
-  ))
-  .add('Mainnet 40%', () => (
-    <div style={mainnetTheme}>
-      <EpochSummary
-        title="Epoch"
-        epoch={{ ...epochs[0], ...{ percentage: 40 } }}
-      />
-    </div>
   ));

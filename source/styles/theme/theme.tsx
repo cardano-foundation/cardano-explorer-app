@@ -4,17 +4,12 @@ import { IDENTIFIERS } from 'react-polymorph/lib/components';
 import SimpleButton from 'react-polymorph/lib/themes/simple/SimpleButton.module.scss';
 import SimpleFormField from 'react-polymorph/lib/themes/simple/SimpleFormField.module.scss';
 import SimpleInput from 'react-polymorph/lib/themes/simple/SimpleInput.module.scss';
-import { CardanoNetwork } from '../../constants';
-import { environment } from '../../environment';
 
 export const reactPolymorphTheme = {
   [IDENTIFIERS.BUTTON]: SimpleButton,
   [IDENTIFIERS.FORM_FIELD]: SimpleFormField,
   [IDENTIFIERS.INPUT]: SimpleInput,
 };
-
-const isIncentivisedTestnet =
-  environment.CARDANO.NETWORK === CardanoNetwork.INCENTIVIZED_TESTNET;
 
 interface IGenerateThemeConfig {
   dottedSeparatorColor: string;
@@ -81,29 +76,6 @@ const commonThemeProps = {
   tableTextColor: 'rgba(255, 255, 255, 0.5)',
 };
 
-export const incentivizedTestnetTheme = generateTheme({
-  ...commonThemeProps,
-  dottedSeparatorColor: 'rgba(246, 154, 178, 0.3)',
-  errorColor: '#eb4a22',
-  footerTextColor: '#eb2256',
-  primaryHighlightColor: '#eb2256',
-  primaryHighlightHoverColor: '#d41345',
-  primaryHighlightPressColor: '#c81241',
-  secondaryColor: 'rgba(235, 34, 86, 0.3)',
-  secondaryHalfColor: 'rgba(246, 154, 178, 0.5)',
-  secondaryHighlightColor: '#f69ab2',
-  spinnerCircleBgColor: `
-    conic-gradient(
-      rgba(235, 34, 86, 0),
-      rgba(235, 34, 86, 0.2) 21%,
-      #eb2256 52%,
-      rgba(235, 34, 86, 0.3) 57%,
-      rgba(235, 34, 86, 0),
-      rgba(235, 34, 86, 0)
-    )
-  `,
-});
-
 export const mainnetTheme = generateTheme({
   ...commonThemeProps,
   dottedSeparatorColor: '#36395d',
@@ -127,6 +99,4 @@ export const mainnetTheme = generateTheme({
   `,
 });
 
-export const cardanoExplorerTheme = isIncentivisedTestnet
-  ? incentivizedTestnetTheme
-  : mainnetTheme;
+export const cardanoExplorerTheme = mainnetTheme;
