@@ -149,6 +149,7 @@
       text-transform: uppercase;
 
       .cardanoTitle {
+        font-family: ProximaNova, sans-serif !important;
         font-weight: 300;
         margin-right: 10px;
       }
@@ -216,6 +217,10 @@
         flex: 1;
         height: 2px;
         opacity: 0.5;
+      }
+
+      @media (max-width: 768px) {
+        margin-bottom: 50px;
       }
     }
 

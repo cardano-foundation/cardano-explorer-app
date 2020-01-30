@@ -4,4 +4,5 @@ $url: '/assets/fonts/Proxima-Nova-';
 @include font-face('ProximaNova', '#{$url}Bold', 800);
 @include font-face('ProximaNova', '#{$url}Semibold', 600);
 @include font-face('ProximaNova', '#{$url}Regular', normal);
+@include font-face('ProximaNova', '#{$url}Light', 300);
 @include font-face('ProximaNova', '#{$url}Thin', 100);

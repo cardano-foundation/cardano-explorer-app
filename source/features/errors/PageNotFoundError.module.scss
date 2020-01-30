@@ -1,7 +1,7 @@
 @import '../../styles/mixins/font-face';
 
 @include font-face(
-  'CharletComprime',
+  'ChaletComprime',
   '../../public/assets/fonts/ChaletComprime-CologneEighty',
   normal
 );
@@ -10,20 +10,6 @@
   margin: 0 auto;
   max-width: 872px;
   width: 100%;
-
-  .errorContainerBackground {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    opacity: 0.5;
-    top: -170px;
-    width: 100%;
-    z-index: 0;
-
-    @media (max-width: 768px) {
-      top: -320px;
-    }
-  }
 
   .mainContainer {
     display: table;
@@ -53,7 +39,7 @@
 
     .errorCodeMessage {
       color: var(--secondary-highlight-color);
-      font-family: CharletComprime, sans-serif;
+      font-family: ChaletComprime, sans-serif;
       font-size: 120px;
       letter-spacing: 6px;
       padding-top: 5px;

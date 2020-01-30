@@ -2,8 +2,6 @@ import Link from 'next/link';
 import React, { Component } from 'react';
 import styles from './PageNotFoundError.module.scss';
 
-const ContainerBackground = require('../../public/assets/images/error/hub-tripple.svg');
-
 export interface IErrorProps {
   notFoundTitle: string;
   notFoundText: string;
@@ -15,7 +13,6 @@ export default class Error extends Component<IErrorProps> {
 
     return (
       <div className={styles.errorContainer}>
-        <ContainerBackground className={styles.errorContainerBackground} />
         <div className={styles.mainContainer}>
           <div className={styles.errorCode}>Error code:</div>
           <div className={styles.errorCodeSeparator} />

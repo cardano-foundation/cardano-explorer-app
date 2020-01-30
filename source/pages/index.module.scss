@@ -63,3 +63,23 @@
 .footer {
   padding: 0 0 92px !important;
 }
+
+.mainNetHeaderImage,
+.testNetHeaderImage {
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0;
+  top: -113px;
+  width: 1100px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.testNetHeaderImage {
+  top: -163px !important;
+  width: 620px !important;
+}
