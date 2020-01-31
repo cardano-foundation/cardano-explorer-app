@@ -1,11 +1,3 @@
-@import '../../styles/mixins/font-face';
-
-@include font-face(
-  'ChaletComprime',
-  '../../public/assets/fonts/ChaletComprime-CologneEighty',
-  normal
-);
-
 .errorContainer {
   margin: 0 auto;
   max-width: 872px;

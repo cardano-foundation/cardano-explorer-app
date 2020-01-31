@@ -6,7 +6,6 @@ import { LatestBlocks } from '../features/blocks/ui/LatestBlocks';
 import { EpochsFeatureProvider } from '../features/epochs/ui/EpochsFeatureProvider';
 import { LatestEpochs } from '../features/epochs/ui/LatestEpochs';
 import { SearchBar } from '../features/search/ui/SearchBar';
-import IncentivizedTestNetHeaderImage from '../public/assets/images/header/itn.svg';
 import SideBackgroundImage from '../public/assets/images/main-side-background.svg';
 import { Footer, Header, Layout } from '../widgets/layout';
 const mainNetHeaderImage = require('../public/assets/images/header/mainnet.png');
@@ -36,11 +35,6 @@ Index.getStaticLayout = (page: React.ReactNode) => (
     )}
     {environment.CARDANO.NETWORK === CardanoNetwork.TESTNET && (
       <img src={testNetHeaderImage} className={styles.testNetHeaderImage} />
-    )}
-    {environment.CARDANO.NETWORK === CardanoNetwork.INCENTIVIZED_TESTNET && (
-      <IncentivizedTestNetHeaderImage
-        className={styles.incentivizedTestNetHeaderImage}
-      />
     )}
     <Layout>
       <Header brandType={BrandType.ENLARGED} />
