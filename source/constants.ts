@@ -8,7 +8,6 @@ export enum BrandType {
 }
 
 export enum CardanoNetwork {
-  INCENTIVIZED_TESTNET = 'incentivized-testnet',
   MAINNET = 'mainnet',
   TESTNET = 'testnet',
 }
