@@ -41,3 +41,36 @@
     top: -340px;
   }
 }
+
+.topBackgroundContainer {
+  background-image: var(--error-top-container-bg-color);
+  height: 320px;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1200px;
+  z-index: 1;
+}
+
+.bottomBackgroundContainer {
+  background-image: var(--error-bottom-container-bg-color);
+  bottom: 300px;
+  height: 320px;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  right: 0;
+  width: 1200px;
+
+  @media (max-width: 768px) {
+    bottom: 500px;
+  }
+
+  @media (max-width: 575px) {
+    bottom: 650px;
+  }
+}

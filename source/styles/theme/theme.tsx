@@ -14,6 +14,8 @@ export const reactPolymorphTheme = {
 interface IGenerateThemeConfig {
   dottedSeparatorColor: string;
   errorColor: string;
+  errorPageBottomContainerBgColor: string;
+  errorPageTopContainerBgColor: string;
   footerSeparatorColor: string;
   footerTextColor: string;
   highlightedDarkAreaBgColor: string;
@@ -46,6 +48,8 @@ export const generateTheme = (config: IGenerateThemeConfig): CSSProperties => ({
       rgba(0, 0, 0, 0)
     )`,
   ['--error-color' as any]: config.errorColor,
+  ['--error-bottom-container-bg-color' as any]: config.errorPageBottomContainerBgColor,
+  ['--error-top-container-bg-color' as any]: config.errorPageTopContainerBgColor,
   ['--footer-text-color' as any]: config.footerTextColor,
   ['--highlighted-dark-area-bg-color' as any]: config.highlightedDarkAreaBgColor,
   ['--hint-text-color' as any]: config.hintTextColor,
@@ -64,6 +68,18 @@ export const generateTheme = (config: IGenerateThemeConfig): CSSProperties => ({
 });
 
 const commonThemeProps = {
+  errorPageBottomContainerBgColor: `linear-gradient(
+      rgba(18, 19, 38, 0.35),
+      rgba(18, 19, 38, 0.65),
+      rgba(18, 19, 38, 0.85),
+      rgba(18, 19, 38, 0.95)
+  )`,
+  errorPageTopContainerBgColor: `linear-gradient(
+      rgba(18, 19, 38, 0.95),
+      rgba(18, 19, 38, 0.85),
+      rgba(18, 19, 38, 0.65),
+      rgba(18, 19, 38, 0.35)
+  )`,
   footerSeparatorColor: 'rgba(255, 255, 255, 0.1)',
   highlightedDarkAreaBgColor: 'rgba(255, 255, 255, 0.05)',
   hintTextColor: 'rgba(255, 255, 255, 0.5)',

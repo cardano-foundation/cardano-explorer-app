@@ -14,7 +14,9 @@ const ErrorPage = () => (
 
 ErrorPage.getStaticLayout = (page: React.ReactNode) => (
   <>
+    <div className={styles.topBackgroundContainer} />
     <ContainerBackground className={styles.errorContainerBackground} />
+    <div className={styles.bottomBackgroundContainer} />
     <Layout>
       <div className={styles.errorContainerLayout}>
         <Header brandType={BrandType.ENLARGED} />
