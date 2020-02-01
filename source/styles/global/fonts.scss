@@ -6,4 +6,3 @@ $url: '/assets/fonts/Proxima-Nova-';
 @include font-face('ProximaNova', '#{$url}Regular', normal);
 @include font-face('ProximaNova', '#{$url}Light', 300);
 @include font-face('ProximaNova', '#{$url}Thin', 100);
-@include font-face('ChaletComprime', '/assets/fonts/ChaletComprime', normal);
