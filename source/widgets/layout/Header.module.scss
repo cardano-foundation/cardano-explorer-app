@@ -103,19 +103,6 @@
     }
   }
 
-  &.mainNetHeader {
-    background-image: url('../../public/assets/images/header/mainnet.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-  }
-
-  &.testNetHeader {
-    background-image: url('../../public/assets/images/header/testnet.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: bottom;
-  }
-
   .contentContainer {
     align-items: center;
     display: flex;
@@ -142,6 +129,7 @@
       text-transform: uppercase;
 
       .cardanoTitle {
+        font-family: ProximaNova, sans-serif !important;
         font-weight: 300;
         margin-right: 10px;
       }
@@ -209,6 +197,10 @@
         flex: 1;
         height: 2px;
         opacity: 0.5;
+      }
+
+      @media (max-width: 768px) {
+        margin-bottom: 50px;
       }
     }
 

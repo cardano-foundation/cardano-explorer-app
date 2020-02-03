@@ -3,6 +3,7 @@ import { BrandType } from '../../constants';
 import { Footer, Header, Layout } from '../../widgets/layout';
 import styles from './ErrorPage.module.scss';
 import Error from './PageNotFoundError';
+const ContainerBackground = require('../../public/assets/images/error/hub-tripple.svg');
 
 const ErrorPage = () => (
   <Error
@@ -12,13 +13,18 @@ const ErrorPage = () => (
 );
 
 ErrorPage.getStaticLayout = (page: React.ReactNode) => (
-  <Layout>
-    <div className={styles.errorContainerLayout}>
-      <Header brandType={BrandType.ENLARGED} />
-      {page}
-      <Footer />
-    </div>
-  </Layout>
+  <>
+    <div className={styles.topBackgroundContainer} />
+    <ContainerBackground className={styles.errorContainerBackground} />
+    <div className={styles.bottomBackgroundContainer} />
+    <Layout>
+      <div className={styles.errorContainerLayout}>
+        <Header brandType={BrandType.ENLARGED} />
+        {page}
+        <Footer />
+      </div>
+    </Layout>
+  </>
 );
 
 ErrorPage.pageTitle = 'Cardano Explorer | Error 404';

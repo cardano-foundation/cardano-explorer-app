@@ -5,6 +5,10 @@
   position: relative;
   width: 100%;
 
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+
   &.topMargin {
     margin-top: 72px;
 

@@ -208,29 +208,28 @@
         }
 
         @media (max-width: 992px) {
-          min-width: 27.25%;
+          min-width: 180px;
         }
 
         @media (max-width: 768px) {
-          max-width: initial;
-          min-width: initial;
+          min-width: 150px;
           padding-left: 0;
         }
       }
 
-      @media (max-width: 992px) {
-        justify-content: space-between;
-        min-width: 47%;
+      @media (max-width: 768px) {
+        margin-left: 30px;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 530px) {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
+        margin-left: 0;
         padding-top: 20px;
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 530px) {
       flex-direction: column;
     }
   }

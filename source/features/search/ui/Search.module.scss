@@ -16,6 +16,10 @@
         padding: 10px 0;
       }
     }
+
+    @media (max-width: 768px) {
+      padding: 20px 16px;
+    }
   }
 
   &.shrinkedSearchContainer {
