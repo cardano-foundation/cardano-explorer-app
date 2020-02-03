@@ -21,10 +21,7 @@ export const Header = observer((props: IHeaderProps) => {
     brandType === BrandType.ENLARGED
       ? styles.enlargedHeaderContainer
       : styles.shrinkedHeaderContainer;
-  const headerContainerStyles = cx([
-    styles.headerContainer,
-    brandTypeStyle,
-  ]);
+  const headerContainerStyles = cx([styles.headerContainer, brandTypeStyle]);
   const indexClassName = !navigation?.store.path.includes('stake-pools')
     ? styles.activeTab
     : '';
