@@ -103,19 +103,6 @@
     }
   }
 
-  &.mainNetHeader {
-    background-image: url('../../public/assets/images/header/mainnet.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-  }
-
-  &.testNetHeader {
-    background-image: url('../../public/assets/images/header/testnet.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: bottom;
-  }
-
   .contentContainer {
     align-items: center;
     display: flex;
