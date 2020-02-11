@@ -1,4 +1,5 @@
 const isCi = process.env.CI && process.env.CI !== '';
+const path = require('path');
 
 module.exports = ({ config, mode }) => {
   config.module.rules.push({
@@ -20,6 +21,10 @@ module.exports = ({ config, mode }) => {
       },
       { loader: 'sass-loader', options: { sourceMap: !isCi } },
     ],
+  }, {
+    test: /\.(woff|woff2)$/,
+    loaders: ['file-loader'],
+    include: path.resolve(__dirname, '../source/public')
   });
   config.resolve.extensions.push('.ts', '.tsx');
   return config;
