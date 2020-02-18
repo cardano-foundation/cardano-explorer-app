@@ -20,21 +20,15 @@
     }
 
     .addresses {
-      max-width: 698px;
-      min-width: 656px;
-      padding-right: 66.5px;
+      margin-bottom: 10px;
+      max-width: 100%;
+      min-width: 100%;
+      padding-right: 0;
 
-      @media (max-width: 992px) {
-        max-width: 80%;
-        min-width: initial;
-        padding-right: 10px;
-      }
-
-      @media (max-width: 768px) {
-        margin-bottom: 10px;
-        max-width: 100%;
-        min-width: 100%;
-        padding-right: 0;
+      @media (min-width: 768px) {
+        max-width: 698px;
+        min-width: 656px;
+        padding-right: 66.5px;
       }
 
       .infoRow {
@@ -113,7 +107,7 @@
           letter-spacing: 0.4px;
           line-height: 1.33;
           margin-bottom: 5px;
-          max-width: 260px;
+          max-width: 244px;
           width: 100%;
 
           &:last-child {
