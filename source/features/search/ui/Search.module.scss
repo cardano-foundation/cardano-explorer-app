@@ -28,8 +28,6 @@
     }
 
     .searchInput {
-      border-bottom: 1px solid var(--footer-text-color) !important;
-
       input {
         font-size: 14px !important;
         padding: 9px 0 8px;
@@ -49,7 +47,7 @@
 
         &:hover {
           .searchButtonIcon {
-            border-left: 9px solid var(--primary-bg-color);
+            border-left-color: var(--primary-bg-color);
           }
         }
       }
