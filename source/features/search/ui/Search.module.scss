@@ -28,9 +28,30 @@
     }
 
     .searchInput {
+      border-bottom: 1px solid var(--footer-text-color) !important;
+
       input {
         font-size: 14px !important;
         padding: 9px 0 8px;
+      }
+    }
+
+    .searchContent {
+      .searchButton {
+        background-color: transparent;
+        border: 1px solid var(--primary-highlight-color);
+
+        .searchButtonIcon {
+          border-bottom: 7px solid transparent;
+          border-left: 9px solid var(--primary-highlight-color);
+          border-top: 7px solid transparent;
+        }
+
+        &:hover {
+          .searchButtonIcon {
+            border-left: 9px solid var(--primary-bg-color);
+          }
+        }
       }
     }
   }
