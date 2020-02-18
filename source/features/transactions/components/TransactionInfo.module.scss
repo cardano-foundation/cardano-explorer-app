@@ -71,8 +71,10 @@
           }
 
           .startCharacters {
+            max-width: 171px;
             overflow: hidden;
             text-overflow: ellipsis;
+            white-space: nowrap;
           }
         }
 
@@ -111,6 +113,7 @@
           letter-spacing: 0.4px;
           line-height: 1.33;
           margin-bottom: 5px;
+          max-width: 260px;
           width: 100%;
 
           &:last-child {
