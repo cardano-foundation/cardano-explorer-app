@@ -24,7 +24,7 @@
         position: relative;
 
         .straightLine {
-          background-color: var(--primary-highlight-color);
+          background-color: var(--secondary-half-color);
           height: 1px;
           left: -63px;
           opacity: 0.5;
@@ -37,7 +37,7 @@
         .triangle {
           border-left: 14.5px solid transparent;
           border-right: 14.5px solid transparent;
-          border-top: 20px solid var(--primary-highlight-color);
+          border-top: 20px solid var(--secondary-half-color);
           height: 0;
           left: 50%;
           position: absolute;
