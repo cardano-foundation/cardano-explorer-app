@@ -18,23 +18,37 @@
     background-color: transparent;
     border: 0;
     border-bottom: 7px solid transparent;
-    border-radius: 0;
     border-top: 7px solid transparent;
+    border-radius: 0;
     height: 0;
     padding: 0;
     width: 0;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 
   .leftArrow {
     border-right: 9px solid var(--secondary-highlight-color);
     margin-right: 12px;
     opacity: 0.3;
+
+    &:not(.disabled):hover {
+      border-right-color: var(--primary-highlight-color);
+      opacity: 1;
+    }
   }
 
   .rightArrow {
     border-left: 9px solid var(--secondary-highlight-color);
     margin-left: 12px;
     opacity: 0.3;
+
+    &:not(.disabled):hover {
+      border-left-color: var(--primary-highlight-color);
+      opacity: 1;
+    }
   }
 
   .pageInfo {
