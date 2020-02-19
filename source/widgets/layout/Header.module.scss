@@ -128,14 +128,22 @@
       text-align: center;
       text-transform: uppercase;
 
+      a {
+        text-decoration: none;
+      }
+
       .cardanoTitle {
+        color: var(--solid-text-color);
         font-family: ProximaNova, sans-serif !important;
         font-weight: 300;
         margin-right: 10px;
       }
+
       .explorerTitle {
+        color: var(--solid-text-color);
         font-weight: 600;
       }
+
       .networkTitle {
         color: var(--secondary-highlight-color);
         font-weight: 600;
