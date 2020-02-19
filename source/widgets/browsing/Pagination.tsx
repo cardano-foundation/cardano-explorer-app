@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
@@ -11,12 +12,16 @@ export interface IPaginationProps {
 
 const Pagination = (props: IPaginationProps) => {
   const { totalPages, onChangePage, currentPage } = props;
-
+  const isLeftButtonDisabled = currentPage <= 1;
+  const isRightButtonDisabled = currentPage >= totalPages;
   return (
     <div className={styles.paginationContainer}>
       <Button
-        className={styles.leftArrow}
-        disabled={currentPage <= 1}
+        className={classnames([
+          styles.leftArrow,
+          isLeftButtonDisabled ? styles.disabled : null,
+        ])}
+        disabled={isLeftButtonDisabled}
         label=""
         onClick={() => onChangePage(currentPage - 1)}
       />
@@ -26,8 +31,11 @@ const Pagination = (props: IPaginationProps) => {
         <span className={styles.totalPagesNumber}>{totalPages}</span>
       </div>
       <Button
-        className={styles.rightArrow}
-        disabled={currentPage >= totalPages}
+        className={classnames([
+          styles.rightArrow,
+          isRightButtonDisabled ? styles.disabled : null,
+        ])}
+        disabled={isRightButtonDisabled}
         label=""
         onClick={() => onChangePage(currentPage + 1)}
       />
