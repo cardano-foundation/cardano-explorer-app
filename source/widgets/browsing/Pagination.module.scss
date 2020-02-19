@@ -18,8 +18,8 @@
     background-color: transparent;
     border: 0;
     border-bottom: 7px solid transparent;
-    border-radius: 0;
     border-top: 7px solid transparent;
+    border-radius: 0;
     height: 0;
     padding: 0;
     width: 0;
@@ -34,8 +34,8 @@
     margin-right: 12px;
     opacity: 0.3;
 
-    &:hover {
-      border-right: 9px solid var(--primary-highlight-color);
+    &:not(.disabled):hover {
+      border-right-color: var(--primary-highlight-color);
       opacity: 1;
     }
   }
@@ -45,8 +45,8 @@
     margin-left: 12px;
     opacity: 0.3;
 
-    &:hover {
-      border-left: 9px solid var(--primary-highlight-color);
+    &:not(.disabled):hover {
+      border-left-color: var(--primary-highlight-color);
       opacity: 1;
     }
   }
