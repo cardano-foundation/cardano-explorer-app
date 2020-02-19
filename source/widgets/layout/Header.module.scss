@@ -21,6 +21,7 @@
       }
 
       .triangleSign {
+        margin: 30px 0 62px 0;
         position: relative;
 
         .straightLine {
@@ -92,10 +93,6 @@
       .triangleSign {
         display: none;
       }
-
-      .tabs {
-        display: none;
-      }
     }
 
     .searchContainer {
@@ -151,64 +148,6 @@
         line-height: 1.11;
         padding-top: 5px;
         text-align: center;
-      }
-    }
-
-    .tabs {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 60px;
-      margin-top: 40px;
-      max-width: 872px;
-      width: 100%;
-
-      a {
-        color: var(--primary-highlight-color);
-        font-family: ProximaNova, sans-serif;
-        font-size: 12px;
-        font-weight: 600;
-        height: 20px;
-        letter-spacing: 1.2px;
-        line-height: 1.67;
-        margin: 0 13px;
-        text-decoration: none;
-        text-transform: uppercase;
-      }
-
-      .activeTab {
-        color: var(--solid-text-color);
-      }
-
-      .tabLeftLine {
-        background-image: linear-gradient(
-          to left,
-          var(--solid-text-color),
-          var(--primary-bg-color)
-        );
-        flex: 1;
-        height: 2px;
-        opacity: 0.5;
-      }
-      .tabCircle {
-        background-color: var(--solid-text-color);
-        border-radius: 50%;
-        height: 6px;
-        width: 6px;
-      }
-      .tabRightLine {
-        background-image: linear-gradient(
-          to right,
-          var(--solid-text-color),
-          var(--primary-bg-color)
-        );
-        flex: 1;
-        height: 2px;
-        opacity: 0.5;
-      }
-
-      @media (max-width: 768px) {
-        margin-bottom: 50px;
       }
     }
 

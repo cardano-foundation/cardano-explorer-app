@@ -62,17 +62,6 @@ export const Header = observer((props: IHeaderProps) => {
             </Link>
             {testnetSubtitle}
           </div>
-          <div className={styles.tabs}>
-            <div className={styles.tabLeftLine} />
-            <div className={styles.tabCircle} />
-            <Link href="/">
-              <a className={indexClassName}>Epochs & Blocks</a>
-            </Link>
-            {stakePoolLink && <div className={styles.tabCircle} />}
-            {stakePoolLink}
-            <div className={styles.tabCircle} />
-            <div className={styles.tabRightLine} />
-          </div>
           <div className={styles.triangleSign}>
             <div className={styles.straightLine} />
             <div className={styles.triangle}>
