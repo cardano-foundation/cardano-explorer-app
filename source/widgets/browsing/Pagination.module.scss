@@ -23,18 +23,32 @@
     height: 0;
     padding: 0;
     width: 0;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 
   .leftArrow {
     border-right: 9px solid var(--secondary-highlight-color);
     margin-right: 12px;
     opacity: 0.3;
+
+    &:hover {
+      border-right: 9px solid var(--primary-highlight-color);
+      opacity: 1;
+    }
   }
 
   .rightArrow {
     border-left: 9px solid var(--secondary-highlight-color);
     margin-left: 12px;
     opacity: 0.3;
+
+    &:hover {
+      border-left: 9px solid var(--primary-highlight-color);
+      opacity: 1;
+    }
   }
 
   .pageInfo {
