@@ -52,8 +52,14 @@ export const Header = observer((props: IHeaderProps) => {
             </Link>
           </div>
           <div className={styles.titleContainer}>
-            <span className={styles.cardanoTitle}>Cardano</span>
-            <span className={styles.explorerTitle}>Blockchain Explorer</span>
+            <Link href="/">
+              <a>
+                <span className={styles.cardanoTitle}>Cardano</span>
+                <span className={styles.explorerTitle}>
+                  Blockchain Explorer
+                </span>
+              </a>
+            </Link>
             {testnetSubtitle}
           </div>
           <div className={styles.tabs}>
