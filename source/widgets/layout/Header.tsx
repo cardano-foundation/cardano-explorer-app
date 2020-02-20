@@ -40,6 +40,11 @@ export const Header = observer((props: IHeaderProps) => {
         <a className={stakePoolsClassName}>Stake Pools</a>
       </Link>
     ) : null;
+  const stakePoolTriangleStyle = stakePoolLink ? '' : styles.stakePoolTriangle;
+  const triangleContainerStyles = cx([
+    styles.triangleSign,
+    stakePoolTriangleStyle,
+  ]);
   return (
     <header className={headerContainerStyles}>
       <div className={styles.contentContainer}>
@@ -62,7 +67,20 @@ export const Header = observer((props: IHeaderProps) => {
             </Link>
             {testnetSubtitle}
           </div>
-          <div className={styles.triangleSign}>
+          {stakePoolLink && (
+            <div className={styles.tabs}>
+              <div className={styles.tabLeftLine} />
+              <div className={styles.tabCircle} />
+              <Link href="/">
+                <a className={indexClassName}>Epochs & Blocks</a>
+              </Link>
+              <div className={styles.tabCircle} />
+              {stakePoolLink}
+              <div className={styles.tabCircle} />
+              <div className={styles.tabRightLine} />
+            </div>
+          )}
+          <div className={triangleContainerStyles}>
             <div className={styles.straightLine} />
             <div className={styles.triangle}>
               <div className={styles.innerTriangle} />
