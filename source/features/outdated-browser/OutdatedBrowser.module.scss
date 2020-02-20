@@ -10,7 +10,7 @@
     opacity: 0.15;
     top: -10px;
     width: 100%;
-    z-index: 0;
+    z-index: -1;
   }
 
   .topHeaderContainer {
@@ -66,7 +66,7 @@
           position: relative;
 
           .straightLine {
-            background-color: var(--primary-highlight-color);
+            background-color: var(--secondary-highlight-color);
             height: 1px;
             left: -63px;
             opacity: 0.5;
@@ -79,7 +79,7 @@
           .triangle {
             border-left: 14.5px solid transparent;
             border-right: 14.5px solid transparent;
-            border-top: 20px solid var(--primary-highlight-color);
+            border-top: 20px solid var(--secondary-highlight-color);
             height: 0;
             left: 50%;
             position: absolute;
@@ -115,14 +115,16 @@
 
       .browserLink {
         display: block;
-        height: 97px;
+
         .browserIconHover {
           display: none;
         }
+
         &:hover {
           .browserIcon {
             display: none;
           }
+
           .browserIconHover {
             display: block;
           }
@@ -133,6 +135,10 @@
       .browserIconHover {
         height: 96px;
         width: 96px;
+      }
+
+      .browserIconHover {
+        margin-bottom: 3px;
       }
 
       .browserName {
@@ -166,7 +172,6 @@
         font-size: 12px;
         font-weight: 300;
         letter-spacing: 0.3px;
-        line-height: 1.33;
         text-align: center;
       }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import OutdatedBrowser from '../features/outdated-browser/OutdatedBrowser';
-import { Layout } from '../widgets/layout';
+import { Footer, Layout } from '../widgets/layout';
 
 const OutdatedBrowserPage = () => (
   <OutdatedBrowser
@@ -10,7 +10,10 @@ const OutdatedBrowserPage = () => (
 );
 
 OutdatedBrowserPage.getStaticLayout = (page: React.ReactNode) => (
-  <Layout>{page}</Layout>
+  <Layout>
+    {page}
+    <Footer />
+  </Layout>
 );
 OutdatedBrowserPage.pageTitle = 'Cardano Explorer | Outdated Browser';
 
