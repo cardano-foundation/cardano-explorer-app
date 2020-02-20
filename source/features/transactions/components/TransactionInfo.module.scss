@@ -64,13 +64,6 @@ $medium-breakpoint: 780px;
           @media (max-width: $medium-breakpoint) {
             width: 100%;
           }
-
-          .startCharacters {
-            max-width: 171px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
         }
 
         .inputs {

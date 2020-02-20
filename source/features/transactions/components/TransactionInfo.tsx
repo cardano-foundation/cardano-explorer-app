@@ -89,12 +89,11 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
                     <span>{input.address}</span>
                   ) : (
                     <>
-                      <span className={styles.startCharacters}>
-                        {input.address.substring(0, input.address.length - 17)}
-                      </span>
-                      <span>
-                        {input.address.substring(input.address.length - 17)}
-                      </span>
+                      <div>{input.address.substring(0, 16)}</div>
+                      {'...'}
+                      <div>
+                        {input.address.substring(input.address.length - 16)}
+                      </div>
                     </>
                   )}
                 </div>
@@ -118,15 +117,13 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
                     <span>{output.address}</span>
                   ) : (
                     <>
-                      <span className={styles.startCharacters}>
-                        {output.address.substring(
-                          0,
-                          output.address.length - 17
-                        )}
-                      </span>
-                      <span>
-                        {output.address.substring(output.address.length - 17)}
-                      </span>
+                      <div>{output.address.toString().substring(0, 16)}</div>
+                      {'...'}
+                      <div>
+                        {output.address
+                          .toString()
+                          .substring(output.address.length - 16)}
+                      </div>
                     </>
                   )}
                 </div>
