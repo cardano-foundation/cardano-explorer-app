@@ -7,6 +7,7 @@ const Dotenv = require('dotenv-webpack');
 require('dotenv').config();
 
 const DEBUG = process.env.DEBUG;
+const SUPPORTED_LOCALES = ['en', 'de', 'ja'];
 
 module.exports = withPlugins(
   [
@@ -75,5 +76,27 @@ module.exports = withPlugins(
 
       return config;
     },
-  }
+    exportTrailingSlash: true,
+    /**
+     * Generate language specific pages under /$language/... paths e.g:
+     * /de/ leads to the the German landing page
+     * /de/block leads to the German block page etc.
+     *
+     * @param defaultPathMap
+     * @returns {Promise<{}>}
+     */
+    exportPathMap: async function(defaultPathMap) {
+      const pathMap = {};
+      Object.entries(defaultPathMap).forEach(([key, value]) => {
+        if (!key.includes('[locale]')) {
+          pathMap[key] = value;
+          return;
+        }
+        SUPPORTED_LOCALES.forEach(locale => {
+          pathMap[`${key.replace('[locale]', locale)}`] = { ...value, query: { locale } };
+        });
+      });
+      return pathMap;
+    },
+  },
 );

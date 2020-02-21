@@ -1,10 +1,11 @@
+import { isEqual } from 'lodash';
 import { action, observable } from 'mobx';
-import Router from 'next/router';
 import * as querystring from 'querystring';
 import { ParsedUrlQuery } from 'querystring';
 import URL from 'url';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
+import { I18nFeature } from '../i18n';
 import { INavigationRouterDependency, NavigationActions } from './index';
 
 /**
@@ -16,14 +17,20 @@ export class NavigationStore extends Store {
 
   private readonly navigationActions: NavigationActions;
   private readonly router: INavigationRouterDependency;
+  private readonly i18n: I18nFeature;
 
   constructor(
     navigationActions: NavigationActions,
-    router: INavigationRouterDependency
+    router: INavigationRouterDependency,
+    i18n: I18nFeature
   ) {
     super();
-    this.navigationActions = navigationActions;
-    this.router = router;
+
+    Object.assign(this, {
+      i18n,
+      navigationActions,
+      router,
+    });
 
     this.registerActions(
       createActionBindings([[this.navigationActions.push, this.push]])
@@ -32,12 +39,16 @@ export class NavigationStore extends Store {
 
   public async start(): Promise<void> {
     super.start();
-    Router.events.on('routeChangeComplete', this.updateStateOnRouteChange);
+    this.updateStateOnRouteChange(this.router.asPath);
+    this.router.events.on('routeChangeComplete', this.updateStateOnRouteChange);
   }
 
   public async stop(): Promise<void> {
     super.stop();
-    Router.events.off('routeChangeComplete', this.updateStateOnRouteChange);
+    this.router.events.off(
+      'routeChangeComplete',
+      this.updateStateOnRouteChange
+    );
   }
 
   // ========= PRIVATE ACTION HANDLERS ==========
@@ -45,9 +56,12 @@ export class NavigationStore extends Store {
   @action private push = async (
     props: ActionProps<typeof NavigationActions.prototype.push>
   ) => {
-    this.router.push({
-      pathname: props.path,
-      query: props.query,
+    const query = querystring.stringify(props.query);
+    const url = `${props.path}?${query}`;
+    // Use Next.js shallow routing in combination with dynamic routes
+    // https://nextjs.org/docs/routing/shallow-routing
+    this.router.push(`/[locale]${url}`, `/${this.i18n.store.locale}${url}`, {
+      shallow: true,
     });
   };
 
@@ -56,7 +70,8 @@ export class NavigationStore extends Store {
     if (!parsedUrl.pathname) {
       return;
     }
-    this.path = parsedUrl.pathname;
+    // Extract locale from the URL to normalize the paths internally
+    this.path = parsedUrl.pathname.substring(3);
     if (parsedUrl.query) {
       this.query = querystring.parse(parsedUrl.query);
     } else {

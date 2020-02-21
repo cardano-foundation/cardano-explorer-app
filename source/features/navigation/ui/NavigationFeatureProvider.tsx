@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { useFeature } from '../../../lib/react/hooks';
+import { useI18nFeature } from '../../i18n/context';
 import {
   createNavigationFeature,
   INavigationFeature,
@@ -13,7 +14,10 @@ interface IProps {
 
 export const NavigationFeatureProvider = (props: IProps) => {
   const [navigationFeature] = useState<INavigationFeature>(
-    createNavigationFeature({ router: useRouter() })
+    createNavigationFeature({
+      i18n: useI18nFeature(),
+      router: useRouter(),
+    })
   );
   useFeature(navigationFeature);
   return (
