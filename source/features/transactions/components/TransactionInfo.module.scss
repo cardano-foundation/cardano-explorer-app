@@ -25,6 +25,7 @@ $medium-breakpoint: 780px;
       margin-bottom: 10px;
       flex-grow: 1;
       padding-right: 0;
+      min-width: 100%;
 
       @media (min-width: $medium-breakpoint) {
         max-width: 680px;
