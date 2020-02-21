@@ -38,9 +38,12 @@ export default class Error extends Component<IErrorProps> {
               <a className={styles.bottomContainerLink}>Blockchain Explorer</a>
             </Link>
             <div className={styles.bottomContainerLinksSeparator} />
-            <Link href="https://help.cardano.org/">
-              <a className={styles.bottomContainerLink}>Contact Support</a>
-            </Link>
+            <a
+              href="https://help.cardano.org/"
+              className={styles.bottomContainerLink}
+            >
+              Contact Support
+            </a>
           </div>
         </div>
       </div>

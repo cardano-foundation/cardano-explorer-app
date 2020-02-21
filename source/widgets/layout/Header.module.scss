@@ -37,7 +37,7 @@
         .triangle {
           border-left: 14.5px solid transparent;
           border-right: 14.5px solid transparent;
-          border-top: 20px solid var(--secondary-half-color);
+          border-top: 20px solid var(--secondary-highlight-color);
           height: 0;
           left: 50%;
           position: absolute;
@@ -56,6 +56,10 @@
             top: -19px;
             width: 0;
           }
+        }
+
+        &.stakePoolTriangle {
+          margin: 30px 0 62px 0;
         }
       }
     }
