@@ -24,11 +24,12 @@ export const Footer = (props: IFooterProps) => {
             <p className={styles.copyright}>
               © IOHK 2015 - {new Date().getFullYear()}
             </p>
-            <Link href="https://github.com/input-output-hk/cardano-explorer-app/">
-              <a className={styles.gitLink}>
-                <GitIcon className={styles.gitIcon} />
-              </a>
-            </Link>
+            <a
+              href="https://github.com/input-output-hk/cardano-explorer-app/"
+              className={styles.gitLink}
+            >
+              <GitIcon className={styles.gitIcon} />
+            </a>
           </div>
           <div className={styles.logos}>
             <div className={styles.logoText}>
