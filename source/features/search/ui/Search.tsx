@@ -39,7 +39,11 @@ const Search = (props: ISearchProps) => {
         />
         <Button
           className={styles.searchButton}
-          label={<div className={styles.searchButtonIcon} />}
+          label={
+            <div className={styles.searchButtonIcon}>
+              <div className={styles.searchButtonInner} />
+            </div>
+          }
           onClick={() => onSearch(searchValue)}
         />
       </div>
