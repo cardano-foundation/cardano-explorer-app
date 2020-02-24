@@ -18,6 +18,7 @@ interface IGenerateThemeConfig {
   errorPageTopContainerBgColor: string;
   footerSeparatorColor: string;
   footerTextColor: string;
+  headerBackgroundColor: string;
   highlightedDarkAreaBgColor: string;
   hintTextColor: string;
   infoTextColor: string;
@@ -51,6 +52,7 @@ export const generateTheme = (config: IGenerateThemeConfig): CSSProperties => ({
   ['--error-bottom-container-bg-color' as any]: config.errorPageBottomContainerBgColor,
   ['--error-top-container-bg-color' as any]: config.errorPageTopContainerBgColor,
   ['--footer-text-color' as any]: config.footerTextColor,
+  ['--header-background-color' as any]: config.headerBackgroundColor,
   ['--highlighted-dark-area-bg-color' as any]: config.highlightedDarkAreaBgColor,
   ['--hint-text-color' as any]: config.hintTextColor,
   ['--info-text-color' as any]: config.infoTextColor,
@@ -81,6 +83,7 @@ const commonThemeProps = {
       rgba(18, 19, 38, 0.35)
   )`,
   footerSeparatorColor: 'rgba(255, 255, 255, 0.1)',
+  headerBackgroundColor: '#1D1E31',
   highlightedDarkAreaBgColor: 'rgba(255, 255, 255, 0.05)',
   hintTextColor: 'rgba(255, 255, 255, 0.5)',
   infoTextColor: 'rgba(255, 255, 255, 0.7)',
