@@ -10,6 +10,7 @@ import SideBackgroundImage from '../public/assets/images/main-side-background.sv
 import { Footer, Header, Layout } from '../widgets/layout';
 const mainNetHeaderImage = require('../public/assets/images/header/mainnet.png');
 const testNetHeaderImage = require('../public/assets/images/header/testnet.png');
+import LanguageSwitcher from '../widgets/language-switcher/LanguageSwitcher';
 import styles from './index.module.scss';
 
 const Index = () => (
@@ -28,6 +29,16 @@ const Index = () => (
   </>
 );
 
+const currentLanguage = {
+  code: 'EN',
+  title: 'English',
+};
+
+const languages = [
+  { code: 'EN', title: 'English' },
+  { code: 'JP', title: 'Japanese' },
+];
+
 Index.getStaticLayout = (page: React.ReactNode) => (
   <>
     {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET && (
@@ -37,6 +48,10 @@ Index.getStaticLayout = (page: React.ReactNode) => (
       <img src={testNetHeaderImage} className={styles.testNetHeaderImage} />
     )}
     <Layout>
+      <LanguageSwitcher
+        currentLanguage={currentLanguage}
+        languages={languages}
+      />
       <Header brandType={BrandType.ENLARGED} />
       {page}
       <Footer rootClassname={styles.footer} />
