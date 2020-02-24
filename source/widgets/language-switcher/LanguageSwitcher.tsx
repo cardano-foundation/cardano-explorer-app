@@ -21,7 +21,8 @@ export default class LanguageSwitcher extends Component<
   public render() {
     const { currentLanguage, languages } = this.props;
 
-    const isMobileScreen = window.innerWidth < SCREEN_BREAKPOINTS.MD;
+    // const isMobileScreen = window.innerWidth < SCREEN_BREAKPOINTS.MD;
+    const isMobileScreen = false;
 
     return (
       <div
@@ -33,21 +34,21 @@ export default class LanguageSwitcher extends Component<
         </div>
         <div className={styles.languageSelector}>
           <span className={styles.languageDropdown} />
-          {languages.length > 0 && (
-            <ul className={styles.languagesDropdown}>
-              {languages.map(lang => (
-                <li
-                  key={lang.code}
-                  onClick={() => {
-                    this.onLanguageSwitch(lang);
-                  }}
-                >
-                  {lang.title}
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
+        {languages.length > 0 && (
+          <ul className={styles.languagesDropdown}>
+            {languages.map(lang => (
+              <li
+                key={lang.code}
+                onClick={() => {
+                  this.onLanguageSwitch(lang);
+                }}
+              >
+                {lang.title}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     );
   }
