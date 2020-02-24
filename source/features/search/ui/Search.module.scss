@@ -45,6 +45,15 @@
           border-top: 7px solid transparent;
         }
 
+        .searchButtonInner {
+          border-bottom: 5px solid transparent;
+          border-left: 6px solid var(--header-background-color);
+          border-top: 5px solid transparent;
+          left: -8px;
+          position: relative;
+          top: -5px;
+        }
+
         &:hover {
           .searchButtonIcon {
             border-left-color: var(--primary-bg-color);

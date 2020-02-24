@@ -1,3 +1,5 @@
+$medium-breakpoint: 780px;
+
 .transactionInfoContainer {
   margin: 0 auto;
   max-width: 872px;
@@ -20,21 +22,15 @@
     }
 
     .addresses {
-      max-width: 698px;
-      min-width: 656px;
-      padding-right: 66.5px;
+      margin-bottom: 10px;
+      flex-grow: 1;
+      padding-right: 0;
+      min-width: 100%;
 
-      @media (max-width: 992px) {
-        max-width: 80%;
-        min-width: initial;
-        padding-right: 10px;
-      }
-
-      @media (max-width: 768px) {
-        margin-bottom: 10px;
-        max-width: 100%;
-        min-width: 100%;
-        padding-right: 0;
+      @media (min-width: $medium-breakpoint) {
+        max-width: 680px;
+        min-width: 580px;
+        padding-right: 20px;
       }
 
       .infoRow {
@@ -43,7 +39,7 @@
         justify-content: space-between;
         margin-bottom: 10px;
 
-        @media (max-width: 768px) {
+        @media (max-width: $medium-breakpoint) {
           align-items: flex-start;
           flex-direction: column;
         }
@@ -66,13 +62,8 @@
           flex-direction: column;
           width: calc(50% - 27px);
 
-          @media (max-width: 768px) {
+          @media (max-width: $medium-breakpoint) {
             width: 100%;
-          }
-
-          .startCharacters {
-            overflow: hidden;
-            text-overflow: ellipsis;
           }
         }
 
@@ -96,7 +87,7 @@
           color: var(--primary-highlight-color);
           cursor: pointer;
 
-          @media (max-width: 768px) {
+          @media (max-width: $medium-breakpoint) {
             word-break: break-all;
           }
         }
@@ -111,6 +102,7 @@
           letter-spacing: 0.4px;
           line-height: 1.33;
           margin-bottom: 5px;
+          max-width: 244px;
           width: 100%;
 
           &:last-child {
@@ -125,7 +117,7 @@
           letter-spacing: 0.4px;
           line-height: 1.33;
 
-          @media (max-width: 768px) {
+          @media (max-width: $medium-breakpoint) {
             margin-top: 10px;
           }
         }
@@ -134,7 +126,7 @@
           display: flex;
           justify-content: center;
 
-          @media (max-width: 768px) {
+          @media (max-width: $medium-breakpoint) {
             margin: 10px 0;
             transform: rotate(90deg);
             width: 100%;
@@ -157,7 +149,7 @@
         max-width: 20%;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: $medium-breakpoint) {
         margin-left: -5px;
         max-width: initial;
       }
@@ -168,7 +160,7 @@
         flex-direction: column;
         margin-bottom: 5px;
 
-        @media (max-width: 768px) {
+        @media (max-width: $medium-breakpoint) {
           margin-top: 5px;
         }
 
