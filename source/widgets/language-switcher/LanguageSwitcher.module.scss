@@ -1,7 +1,8 @@
 .languageSwitcherContainer {
   background-color: transparent;
-  border: solid 0.5px var(--solid-text-color);
+  border: solid 1px var(--hint-text-color);
   border-radius: 1px;
+  cursor: pointer;
   display: flex;
   height: 30px;
   position: fixed;
@@ -28,7 +29,7 @@
   }
 
   .languageSelector {
-    border-left: solid 0.5px var(--solid-text-color);
+    border-left: solid 1px var(--hint-text-color);
 
     .languageDropdown {
       border-left: 5.5px solid transparent;
@@ -49,35 +50,46 @@
   .languagesDropdown {
     display: none;
 
-    &.show {
-      background-color: transparent;
-      border: solid 0.5px var(--solid-text-color);
-      border-radius: 1px;
-      color: var(--solid-text-color);
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      right: 0;
-      top: 28px;
-      width: 92px;
+    @media (max-width: 768px) {
+      top: 26px;
+      width: 32px;
+    }
+  }
 
-      li {
-        border-bottom: solid 0.5px var(--solid-text-color);
-        font-family: ProximaNova, sans-serif;
-        font-size: 12px;
-        font-weight: 300;
-        letter-spacing: 0.6px;
-        padding: 7.5px 10.3px;
+  .showLanguagesDropdown {
+    background-color: transparent;
+    border-bottom: solid 1px var(--hint-text-color);
+    border-left: solid 1px var(--hint-text-color);
+    border-right: solid 1px var(--hint-text-color);
+    border-radius: 1px;
+    color: var(--solid-text-color);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: -1px;
+    top: 28px;
+    width: 92px;
 
-        &:last-child {
-          border-bottom: none;
-        }
+    li {
+      border-bottom: solid 1px var(--hint-text-color);
+      font-family: ProximaNova, sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.6px;
+      padding: 7.5px 10.3px;
 
-        &:hover {
-          background-color: var(--primary-highlight-color);
-          color: var(--primary-bg-color);
-          cursor: pointer;
-        }
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: var(--primary-highlight-color);
+        color: var(--primary-bg-color);
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        padding: 7.5px;
       }
     }
 

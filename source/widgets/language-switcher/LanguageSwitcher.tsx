@@ -7,11 +7,24 @@ export interface ILanguageSwitcherParams {
   languages: Array<any>;
 }
 
+interface IState {
+  isDropdownVisible: boolean;
+}
+const initialState = {
+  isDropdownVisible: false,
+};
+
 export default class LanguageSwitcher extends Component<
-  ILanguageSwitcherParams
+  ILanguageSwitcherParams,
+  IState
 > {
+  public state = {
+    ...initialState,
+  };
+
   public onLanguageClick = () => {
     // @todo
+    this.setState({ isDropdownVisible: !this.state.isDropdownVisible });
   };
 
   public onLanguageSwitch = (language: any) => {
@@ -20,14 +33,14 @@ export default class LanguageSwitcher extends Component<
 
   public render() {
     const { currentLanguage, languages } = this.props;
+    const { isDropdownVisible } = this.state;
 
-    // const isMobileScreen = window.innerWidth < SCREEN_BREAKPOINTS.MD;
-    const isMobileScreen = false;
+    const isMobileScreen = window.innerWidth < SCREEN_BREAKPOINTS.MD;
 
     return (
       <div
         className={styles.languageSwitcherContainer}
-        onClick={this.onLanguageClick}
+        onClick={() => this.onLanguageClick()}
       >
         <div className={styles.currentLanguage}>
           {isMobileScreen ? currentLanguage.code : currentLanguage.title}
@@ -36,7 +49,13 @@ export default class LanguageSwitcher extends Component<
           <span className={styles.languageDropdown} />
         </div>
         {languages.length > 0 && (
-          <ul className={styles.languagesDropdown}>
+          <ul
+            className={
+              isDropdownVisible
+                ? styles.showLanguagesDropdown
+                : styles.languagesDropdown
+            }
+          >
             {languages.map(lang => (
               <li
                 key={lang.code}
@@ -44,7 +63,7 @@ export default class LanguageSwitcher extends Component<
                   this.onLanguageSwitch(lang);
                 }}
               >
-                {lang.title}
+                {isMobileScreen ? lang.code : lang.title}
               </li>
             ))}
           </ul>
