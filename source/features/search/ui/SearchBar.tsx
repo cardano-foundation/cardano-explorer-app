@@ -61,6 +61,8 @@ export const SearchBar = (props: ISearchBarProps) => {
     // @todo
   };
 
+  const isSearchValueValid = searchValue && searchValue.length < 10;
+
   return (
     <>
       <Search
@@ -68,7 +70,7 @@ export const SearchBar = (props: ISearchBarProps) => {
         onInputChange={query => setSearchValue(query)}
         onSearch={query => introspectQuery(query)}
       />
-      {searchValue && (
+      {isSearchValueValid && (
         <SearchSuggestions
           value={searchValue}
           onSearchTypeSelect={value => searchTypeSelectQuery(value)}
