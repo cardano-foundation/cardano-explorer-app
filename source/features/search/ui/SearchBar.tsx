@@ -16,6 +16,7 @@ export interface ISearchBarProps {
 
 export const SearchBar = (props: ISearchBarProps) => {
   const [searchValue, setSearchValue] = useState('');
+  const [searchType, setSearchType] = useState('');
   const search = useSearchFeature();
   const networkInfo = useNetworkInfoFeature().store;
   const introspectQuery = (query: string) => {
@@ -58,7 +59,13 @@ export const SearchBar = (props: ISearchBarProps) => {
   };
 
   const searchTypeSelectQuery = (value: string) => {
-    // @todo
+    setSearchType(value);
+    setSearchValue('');
+  };
+
+  const removeSearchType = () => {
+    setSearchType('');
+    setSearchValue('');
   };
 
   const isSearchValueValid = searchValue && searchValue.length < 10;
@@ -69,6 +76,8 @@ export const SearchBar = (props: ISearchBarProps) => {
         brandType={props.brandType}
         onInputChange={query => setSearchValue(query)}
         onSearch={query => introspectQuery(query)}
+        onRemoveSearchType={removeSearchType}
+        searchType={searchType}
       />
       {isSearchValueValid && (
         <SearchSuggestions

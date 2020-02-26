@@ -115,6 +115,12 @@
           padding: 7px 0;
         }
       }
+
+      &.type {
+        input {
+          padding-left: 90px;
+        }
+      }
     }
 
     .searchButton {
@@ -143,6 +149,36 @@
         height: 0;
         width: 0;
       }
+    }
+  }
+
+  .typeOfSearch {
+    align-items: center;
+    background-color: var(--secondary-highlight-color);
+    border-radius: 4px;
+    display: flex;
+    height: 24px;
+    justify-content: space-evenly;
+    position: absolute;
+    text-transform: capitalize;
+    width: 70.5px;
+    z-index: 10;
+
+    .typeOfSearchText {
+      color: var(--primary-bg-color);
+      font-family: ProximaNova, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      line-height: 1.67;
+    }
+
+    svg {
+      cursor: pointer;
+      height: 6px;
+      position: relative;
+      top: -2px;
+      width: 6px;
     }
   }
 }
