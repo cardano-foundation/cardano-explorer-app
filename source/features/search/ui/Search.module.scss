@@ -142,3 +142,47 @@
     }
   }
 }
+
+.searchSuggestionsContainer {
+  .searchSuggestionsContent {
+    background-color: var(--primary-bg-color);
+    border-radius: 2px;
+    border: solid 1px var(--footer-text-color);
+    left: 80px;
+    margin-top: -30px;
+    min-width: 210.5px;
+    position: absolute;
+
+    li {
+      align-items: center;
+      color: var(--solid-text-color);
+      display: flex;
+      font-family: ProximaNova, sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      justify-content: space-between;
+      letter-spacing: 0.7px;
+      line-height: 1.43;
+      padding: 10px 16px;
+
+      span {
+        font-weight: 600;
+        padding-right: 10px;
+      }
+
+      svg {
+        height: 8px;
+        width: 5px;
+      }
+
+      &:hover {
+        background-color: var(--footer-separator-color);
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0 8px 0 var(--footer-text-color);
+    }
+  }
+}

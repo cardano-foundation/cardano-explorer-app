@@ -2,17 +2,20 @@ import { Address } from 'cardano-js';
 import { AddressGroup } from 'cardano-js/dist/Address/AddressGroup';
 import { ChainSettings } from 'cardano-js/dist/ChainSettings';
 import React from 'react';
+import { useState } from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../../constants';
 import { environment } from '../../../environment';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
 import Search from './Search';
+import SearchSuggestions from './SearchSuggestions';
 
 export interface ISearchBarProps {
   brandType?: BrandType;
 }
 
 export const SearchBar = (props: ISearchBarProps) => {
+  const [searchValue, setSearchValue] = useState('');
   const search = useSearchFeature();
   const networkInfo = useNetworkInfoFeature().store;
   const introspectQuery = (query: string) => {
@@ -54,15 +57,23 @@ export const SearchBar = (props: ISearchBarProps) => {
     }
   };
 
-  const introspectQueryOnInput = (query: string) => {
+  const searchTypeSelectQuery = (value: string) => {
     // @todo
   };
 
   return (
-    <Search
-      brandType={props.brandType}
-      onInputChange={query => introspectQueryOnInput(query)}
-      onSearch={query => introspectQuery(query)}
-    />
+    <>
+      <Search
+        brandType={props.brandType}
+        onInputChange={query => setSearchValue(query)}
+        onSearch={query => introspectQuery(query)}
+      />
+      {searchValue && (
+        <SearchSuggestions
+          value={searchValue}
+          onSearchTypeSelect={value => searchTypeSelectQuery(value)}
+        />
+      )}
+    </>
   );
 };

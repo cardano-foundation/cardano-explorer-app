@@ -10,14 +10,13 @@ import { SearchType } from '../source/features/search/store';
 import NoSearchResult from '../source/features/search/ui/NoSearchResult';
 import Search, { ISearchProps } from '../source/features/search/ui/Search';
 import styles from '../source/features/search/ui/Search.module.scss';
+import SearchSuggestions from '../source/features/search/ui/SearchSuggestions';
 import { PaddingDecorator } from './support/PaddingDecorator';
 
 const SearchWithValue = (props: ISearchProps) =>
   React.createElement(() => {
     const { placeholder, brandType, onSearch, title } = props;
-    const [searchValue, setSearchValue] = useState(
-      '84e9de7924aba73f58b81e142f4bce7f1d00cf4630f94f631e6ca3594b2d1634'
-    );
+    const [searchValue, setSearchValue] = useState('12');
     const brandTypeStyle =
       brandType === BrandType.ENLARGED
         ? styles.enlargedSearchContainer
@@ -51,13 +50,27 @@ const SearchWithValue = (props: ISearchProps) =>
 
 storiesOf('Search|Search Bar', module)
   .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
-  .add('Search without value', () => <Search onSearch={noop} />)
+  .add('Search without value', () => (
+    <Search onInputChange={noop} onSearch={noop} />
+  ))
   .add('Search with value', () => (
     <SearchWithValue
       title="Search"
       brandType={BrandType.ENLARGED}
       onSearch={noop}
+      onInputChange={noop}
     />
+  ))
+  .add('Search with suggestions', () => (
+    <div>
+      <SearchWithValue
+        title="Search"
+        brandType={BrandType.ENLARGED}
+        onSearch={noop}
+        onInputChange={noop}
+      />
+      <SearchSuggestions value={'12'} onSearchTypeSelect={noop} />
+    </div>
   ));
 
 storiesOf('Search|No Result', module)
