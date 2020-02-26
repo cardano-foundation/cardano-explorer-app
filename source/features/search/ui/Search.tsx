@@ -11,10 +11,11 @@ export interface ISearchProps {
   title?: string | boolean;
   brandType?: BrandType;
   onSearch: (value: string) => any;
+  onInputChange: (value: string) => any;
 }
 
 const Search = (props: ISearchProps) => {
-  const { placeholder, brandType, onSearch, title } = props;
+  const { placeholder, brandType, onSearch, onInputChange, title } = props;
   const [searchValue, setSearchValue] = useState('');
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
@@ -30,7 +31,10 @@ const Search = (props: ISearchProps) => {
           className={styles.searchInput}
           placeholder={placeholder}
           value={searchValue}
-          onChange={v => setSearchValue(v)}
+          onChange={inputValue => {
+            setSearchValue(inputValue);
+            onInputChange(inputValue);
+          }}
           onKeyPress={e => {
             if (e.key === 'Enter') {
               onSearch(searchValue);

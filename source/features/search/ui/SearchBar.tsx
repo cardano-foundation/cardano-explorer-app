@@ -54,9 +54,14 @@ export const SearchBar = (props: ISearchBarProps) => {
     }
   };
 
+  const introspectQueryOnInput = (query: string) => {
+    // @todo
+  };
+
   return (
     <Search
       brandType={props.brandType}
+      onInputChange={query => introspectQueryOnInput(query)}
       onSearch={query => introspectQuery(query)}
     />
   );

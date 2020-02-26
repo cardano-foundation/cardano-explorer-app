@@ -13,6 +13,7 @@ export interface IStakePoolsProps {
 export interface IStakePoolsSearchProps {
   search: string;
   onSearch: GenericArgFn;
+  onInputChange: GenericArgFn;
 }
 
 export interface IStakePoolsListProps {
