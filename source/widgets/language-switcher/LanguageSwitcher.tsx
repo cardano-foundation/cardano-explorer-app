@@ -46,7 +46,13 @@ export default class LanguageSwitcher extends Component<
           {isMobileScreen ? currentLanguage.code : currentLanguage.title}
         </div>
         <div className={styles.languageSelector}>
-          <span className={styles.languageDropdown} />
+          <span
+            className={
+              isDropdownVisible
+                ? styles.showLanguageDropdown
+                : styles.languageDropdown
+            }
+          />
         </div>
         {languages.length > 0 && (
           <ul
