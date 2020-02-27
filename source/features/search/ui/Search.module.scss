@@ -59,6 +59,10 @@
             border-left-color: var(--primary-bg-color);
           }
         }
+
+        &:active {
+          background-color: transparent;
+        }
       }
     }
   }
