@@ -10,28 +10,63 @@ import { SearchType } from '../source/features/search/store';
 import NoSearchResult from '../source/features/search/ui/NoSearchResult';
 import Search, { ISearchProps } from '../source/features/search/ui/Search';
 import styles from '../source/features/search/ui/Search.module.scss';
-import SearchSuggestions from '../source/features/search/ui/SearchSuggestions';
+import { ISearchSuggestionsProps } from '../source/features/search/ui/SearchSuggestions';
 import { PaddingDecorator } from './support/PaddingDecorator';
+const DeleteButton = require('../source/public/assets/images/delete.svg');
+const ArrowRight = require('../source/public/assets/images/arrow-right.svg');
 
 const SearchWithValue = (props: ISearchProps) =>
   React.createElement(() => {
-    const { placeholder, brandType, onSearch, title } = props;
+    const {
+      placeholder,
+      brandType,
+      onSearch,
+      onInputChange,
+      onRemoveSearchType,
+      title,
+      searchType,
+    } = props;
     const [searchValue, setSearchValue] = useState('12');
     const brandTypeStyle =
       brandType === BrandType.ENLARGED
         ? styles.enlargedSearchContainer
         : styles.shrinkedSearchContainer;
+    const searchTypeStyle =
+      searchType === 'epoch' || searchType === 'block' ? styles.type : '';
+
     const searchContainerStyles = cx([styles.searchContainer, brandTypeStyle]);
+    const searchInputStyles = cx([styles.searchInput, searchTypeStyle]);
 
     return (
       <div className={searchContainerStyles}>
         {title && <h2 className={styles.searchTitle}>{title}</h2>}
         <div className={styles.searchContent}>
+          {searchType && (
+            <div className={styles.typeOfSearch}>
+              <span className={styles.typeOfSearchText}>
+                {searchType}
+                {':'}
+              </span>
+              <span
+                onClick={() => {
+                  setSearchValue('');
+                  if (onRemoveSearchType) {
+                    onRemoveSearchType();
+                  }
+                }}
+              >
+                <DeleteButton />
+              </span>
+            </div>
+          )}
           <Input
-            className={styles.searchInput}
+            className={searchInputStyles}
             placeholder={placeholder}
             value={searchValue}
-            onChange={v => setSearchValue(v)}
+            onChange={inputValue => {
+              setSearchValue(inputValue);
+              onInputChange(inputValue);
+            }}
             onKeyPress={e => {
               if (e.key === 'Enter') {
                 onSearch(searchValue);
@@ -40,11 +75,115 @@ const SearchWithValue = (props: ISearchProps) =>
           />
           <Button
             className={styles.searchButton}
-            label={<div className={styles.searchButtonIcon} />}
+            label={
+              <div className={styles.searchButtonIcon}>
+                <div className={styles.searchButtonInner} />
+              </div>
+            }
             onClick={() => onSearch(searchValue)}
           />
         </div>
       </div>
+    );
+  });
+
+const SearchWithValueSuggestion = (props: ISearchProps) =>
+  React.createElement(() => {
+    const {
+      placeholder,
+      brandType,
+      onSearch,
+      onInputChange,
+      onRemoveSearchType,
+      title,
+      searchType,
+    } = props;
+    const [searchValue, setSearchValue] = useState('12');
+    const brandTypeStyle =
+      brandType === BrandType.ENLARGED
+        ? styles.enlargedSearchContainer
+        : styles.shrinkedSearchContainer;
+    const searchTypeStyle =
+      searchType === 'epoch' || searchType === 'block' ? styles.type : '';
+
+    const searchContainerStyles = cx([styles.searchContainer, brandTypeStyle]);
+    const searchInputStyles = cx([styles.searchInput, searchTypeStyle]);
+
+    return (
+      <div className={searchContainerStyles}>
+        {title && <h2 className={styles.searchTitle}>{title}</h2>}
+        <div className={styles.searchContent}>
+          {searchType && (
+            <div className={styles.typeOfSearch}>
+              <span className={styles.typeOfSearchText}>
+                {searchType}
+                {':'}
+              </span>
+              <span
+                onClick={() => {
+                  setSearchValue('');
+                  if (onRemoveSearchType) {
+                    onRemoveSearchType();
+                  }
+                }}
+              >
+                <DeleteButton />
+              </span>
+            </div>
+          )}
+          <Input
+            className={searchInputStyles}
+            placeholder={placeholder}
+            value={searchValue}
+            onChange={inputValue => {
+              setSearchValue(inputValue);
+              onInputChange(inputValue);
+            }}
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                onSearch(searchValue);
+              }
+            }}
+          />
+          <Button
+            className={styles.searchButton}
+            label={
+              <div className={styles.searchButtonIcon}>
+                <div className={styles.searchButtonInner} />
+              </div>
+            }
+            onClick={() => onSearch(searchValue)}
+          />
+        </div>
+      </div>
+    );
+  });
+
+const SearchWithSuggestions = (props: ISearchSuggestionsProps) =>
+  React.createElement(() => {
+    const { value, onSearchTypeSelect } = props;
+
+    return (
+      <>
+        {value && (
+          <div className={styles.searchSuggestionsContainer}>
+            <ul className={styles.searchSuggestionsContent}>
+              <li onClick={() => onSearchTypeSelect('epoch')}>
+                <div>
+                  Search for an epoch <span>{value}</span>
+                </div>
+                <ArrowRight />
+              </li>
+              <li onClick={() => onSearchTypeSelect('block')}>
+                <div>
+                  Search for a block <span>{value}</span>
+                </div>
+                <ArrowRight />
+              </li>
+            </ul>
+          </div>
+        )}
+      </>
     );
   });
 
@@ -69,7 +208,23 @@ storiesOf('Search|Search Bar', module)
         onSearch={noop}
         onInputChange={noop}
       />
-      <SearchSuggestions value={'12'} onSearchTypeSelect={noop} />
+      <div className={styles.searchSuggestionsWrapper}>
+        <SearchWithSuggestions value={'12'} onSearchTypeSelect={noop} />
+      </div>
+    </div>
+  ))
+  .add('Search with suggestion selected', () => (
+    <div>
+      <SearchWithValueSuggestion
+        title="Search"
+        searchType={'block'}
+        brandType={BrandType.ENLARGED}
+        onSearch={noop}
+        onInputChange={noop}
+      />
+      <div className={styles.searchSuggestionsWrapper}>
+        <SearchWithSuggestions value={''} onSearchTypeSelect={noop} />
+      </div>
     </div>
   ));
 
