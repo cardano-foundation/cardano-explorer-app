@@ -52,6 +52,7 @@ export const generateTheme = (config: IGenerateThemeConfig): CSSProperties => ({
   ['--error-bottom-container-bg-color' as any]: config.errorPageBottomContainerBgColor,
   ['--error-top-container-bg-color' as any]: config.errorPageTopContainerBgColor,
   ['--footer-text-color' as any]: config.footerTextColor,
+  ['--footer-separator-color' as any]: config.footerSeparatorColor,
   ['--header-background-color' as any]: config.headerBackgroundColor,
   ['--highlighted-dark-area-bg-color' as any]: config.highlightedDarkAreaBgColor,
   ['--hint-text-color' as any]: config.hintTextColor,
