@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { BrandType, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
 import { StaticLayoutProps } from '../../lib/types';
@@ -10,6 +9,7 @@ import { BlocksFeatureProvider } from '../blocks/ui/BlocksFeatureProvider';
 import { LatestBlocks } from '../blocks/ui/LatestBlocks';
 import { EpochsFeatureProvider } from '../epochs/ui/EpochsFeatureProvider';
 import { LatestEpochs } from '../epochs/ui/LatestEpochs';
+import { useI18nFeature } from '../i18n/context';
 import { i18nInitialProps } from '../i18n/utils';
 import { SearchBar } from '../search/ui/SearchBar';
 const mainNetHeaderImage = require('../../public/assets/images/header/mainnet.png');
@@ -33,11 +33,11 @@ export const LandingPage = () => (
 );
 
 const StaticLayout = (props: StaticLayoutProps) => {
-  const { t } = useTranslation();
+  const { translate } = useI18nFeature().store;
   return (
     <>
       <Head>
-        <title>{t('index.pageTitle')}</title>
+        <title>{translate('index.pageTitle')}</title>
       </Head>
       {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET && (
         <img src={mainNetHeaderImage} className={styles.mainNetHeaderImage} />

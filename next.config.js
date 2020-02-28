@@ -78,7 +78,7 @@ module.exports = withPlugins(
     },
     exportTrailingSlash: true,
     /**
-     * Generate language specific pages under /$language/... paths e.g:
+     * Generate language specific pages under /[locale]/... paths e.g:
      * /de/ leads to the the German landing page
      * /de/block leads to the German block page etc.
      *
@@ -88,6 +88,7 @@ module.exports = withPlugins(
     exportPathMap: async function(defaultPathMap) {
       const pathMap = {};
       Object.entries(defaultPathMap).forEach(([key, value]) => {
+        // Only generate language specific paths for localized routes
         if (!key.includes('[locale]')) {
           pathMap[key] = value;
           return;

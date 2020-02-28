@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { StaticLayoutProps } from '../../../../lib/types';
 import { ShrinkedHeaderLayout } from '../../../../widgets/layout/ShrinkedHeaderLayout';
+import { useI18nFeature } from '../../../i18n/context';
 import { i18nInitialProps } from '../../../i18n/utils';
 import BlocksBrowser from '../BlocksBrowser';
 import { BlocksFeatureProvider } from '../BlocksFeatureProvider';
@@ -14,11 +14,11 @@ export const BrowseBlocksPage = () => (
 );
 
 const StaticLayout = (props: StaticLayoutProps) => {
-  const { t } = useTranslation();
+  const { translate } = useI18nFeature().store;
   return (
     <>
       <Head>
-        <title>{t('browseBlocks.pageTitle')}</title>
+        <title>{translate('browseBlocks.pageTitle')}</title>
       </Head>
       <ShrinkedHeaderLayout>{props.children}</ShrinkedHeaderLayout>
     </>

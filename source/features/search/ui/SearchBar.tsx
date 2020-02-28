@@ -2,9 +2,9 @@ import { Address } from 'cardano-js';
 import { AddressGroup } from 'cardano-js/dist/Address/AddressGroup';
 import { ChainSettings } from 'cardano-js/dist/ChainSettings';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../../constants';
 import { environment } from '../../../environment';
+import { useI18nFeature } from '../../i18n/context';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
 import Search from './Search';
@@ -14,7 +14,7 @@ export interface ISearchBarProps {
 }
 
 export const SearchBar = (props: ISearchBarProps) => {
-  const { t } = useTranslation();
+  const { translate } = useI18nFeature().store;
   const search = useSearchFeature();
   const networkInfo = useNetworkInfoFeature().store;
   const introspectQuery = (query: string) => {
@@ -59,8 +59,8 @@ export const SearchBar = (props: ISearchBarProps) => {
     <Search
       brandType={props.brandType}
       onSearch={query => introspectQuery(query)}
-      placeholder={t('search.placeholder') as string}
-      title={t('search.title') as string}
+      placeholder={translate('search.placeholder') as string}
+      title={translate('search.title') as string}
     />
   );
 };

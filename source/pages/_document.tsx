@@ -1,10 +1,13 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+import { DEFAULT_LOCALE } from '../features/i18n';
 import { cardanoExplorerTheme } from '../styles/theme/theme';
 
-class MyDocument extends Document {
+class CardanoExplorerDocument extends Document {
   public render() {
+    const lang =
+      this.props.__NEXT_DATA__.props?.pageProps?.locale || DEFAULT_LOCALE;
     return (
-      <Html style={cardanoExplorerTheme}>
+      <Html style={cardanoExplorerTheme} lang={lang}>
         <Head />
         <body>
           <Main />
@@ -15,4 +18,4 @@ class MyDocument extends Document {
   }
 }
 
-export default MyDocument;
+export default CardanoExplorerDocument;

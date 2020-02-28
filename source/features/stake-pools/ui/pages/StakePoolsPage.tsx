@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import NoSSR from 'react-no-ssr';
 import { BrandType } from '../../../../constants';
 import { StaticLayoutProps } from '../../../../lib/types';
 import Container from '../../../../widgets/container/Container';
 import { Footer, Header, Layout } from '../../../../widgets/layout';
 import EpochSummary from '../../../epochs/ui/EpochSummary';
+import { useI18nFeature } from '../../../i18n/context';
 import { i18nInitialProps } from '../../../i18n/utils';
 import StakePoolsContainer from '../../containers/StakePoolsContainer';
 import UnmoderatedDataConsentedContainer from '../../containers/UnmoderatedDataConsentedContainer';
@@ -31,7 +31,7 @@ export const StakePoolsPage = () => (
 );
 
 const StaticLayout = (props: StaticLayoutProps) => {
-  const { t } = useTranslation();
+  const { translate } = useI18nFeature().store;
   return (
     <Layout
       header={
@@ -44,7 +44,7 @@ const StaticLayout = (props: StaticLayoutProps) => {
       }
     >
       <Head>
-        <title>{t('stakePools.pageTitle')}</title>
+        <title>{translate('stakePools.pageTitle')}</title>
       </Head>
       <Container hasTopMargin>{props.children}</Container>
       <Footer />

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { UrlObject } from 'url';
 import Action from '../../lib/Action';
 import { debugActions } from '../../lib/logging';
 import { ensureContextExists } from '../../lib/react/hooks';
@@ -25,12 +24,6 @@ export interface INavigationFeature {
   store: NavigationStore;
   start: () => void;
   stop: () => void;
-}
-
-export interface INavigationRouterPushParams {
-  as?: string;
-  pathname?: string;
-  query?: object;
 }
 
 export interface INavigationRouterPushOptions {

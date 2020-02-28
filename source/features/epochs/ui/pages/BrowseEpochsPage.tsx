@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { StaticLayoutProps } from '../../../../lib/types';
 import { ShrinkedHeaderLayout } from '../../../../widgets/layout/ShrinkedHeaderLayout';
 import { BlocksFeatureProvider } from '../../../blocks/ui/BlocksFeatureProvider';
+import { useI18nFeature } from '../../../i18n/context';
 import { i18nInitialProps } from '../../../i18n/utils';
 import EpochsBrowser from '../EpochsBrowser';
 import { EpochsFeatureProvider } from '../EpochsFeatureProvider';
@@ -17,11 +17,11 @@ export const BrowseEpochsPage = () => (
 );
 
 const StaticLayout = (props: StaticLayoutProps) => {
-  const { t } = useTranslation();
+  const { translate } = useI18nFeature().store;
   return (
     <>
       <Head>
-        <title>{t('browseEpochs.pageTitle')}</title>
+        <title>{translate('browseEpochs.pageTitle')}</title>
       </Head>
       <ShrinkedHeaderLayout>{props.children}</ShrinkedHeaderLayout>
     </>

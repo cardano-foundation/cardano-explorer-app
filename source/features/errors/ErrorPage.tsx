@@ -1,24 +1,24 @@
 import Head from 'next/head';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { BrandType } from '../../constants';
 import { PageComponentWithStaticLayout } from '../../lib/types';
 import { Footer, Header, Layout } from '../../widgets/layout';
+import { useI18nFeature } from '../i18n/context';
 import styles from './ErrorPage.module.scss';
 import Error from './PageNotFoundError';
 const ContainerBackground = require('../../public/assets/images/error/hub-tripple.svg');
 
 const ErrorPage: PageComponentWithStaticLayout = () => {
-  const { t } = useTranslation();
+  const { translate } = useI18nFeature().store;
   return (
     <>
       <Head>
-        <title>{t('404:document.title')}</title>
+        <title>{translate('404:document.title')}</title>
       </Head>
       <Header brandType={BrandType.ENLARGED} />
       <Error
-        notFoundTitle={t('404:error.title')}
-        notFoundText={t('404:error.description')}
+        notFoundTitle={translate('404:error.title')}
+        notFoundText={translate('404:error.description')}
       />
       <Footer />
     </>

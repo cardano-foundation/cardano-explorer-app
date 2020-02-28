@@ -31,7 +31,7 @@ const StaticLayout = (props: StaticLayoutProps) => {
   return (
     <Layout>
       <Head>
-        <title>{i18n.store.t('noSearchResult.pageTitle')}</title>
+        <title>{i18n.store.translate('noSearchResult.pageTitle')}</title>
       </Head>
       <Header brandType={BrandType.ENLARGED} />
       {props.children}

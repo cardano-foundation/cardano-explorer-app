@@ -29,7 +29,7 @@ export class I18nStore extends Store {
         // Set the language based on browser locale or user setting
         locale = this.getInitialLocale();
       } else {
-        // Fallback to English error on server (for dev mode)
+        // Fallback to English on server (for dev mode)
         locale = DEFAULT_LOCALE;
       }
     }
@@ -66,8 +66,9 @@ export class I18nStore extends Store {
       lng: this.locale,
       ns: ['404', 'translation'],
       resources: {
+        // Only pre-load the translations for the language we are building for
+        // (the pages are static, so we don't need to include all languages on all pages)
         [this.locale]: Object.assign(resources[this.locale], {
-          // Only pre-load the translations for the language we are building for
           translation: require(`./translations/${this.locale}.json`),
         }),
       },
@@ -76,7 +77,11 @@ export class I18nStore extends Store {
 
   // ========== PUBLIC API ============
 
-  public t(key: TFunctionKeys | TFunctionKeys[]) {
+  /**
+   * Translation function, directly forwards to i18next
+   * @param key
+   */
+  public translate(key: TFunctionKeys | TFunctionKeys[]) {
     return i18next.t(key);
   }
 
@@ -85,23 +90,22 @@ export class I18nStore extends Store {
   @action public switchLocale = async (
     params: ActionProps<typeof I18nActions.prototype.switchLocale>
   ): Promise<void> => {
-    console.log('Switch locale', params.locale);
+    // TODO: actually redirect to same page with different locale
   };
 
   // ========== HELPERS ============
 
   private getInitialLocale() {
-    // Preference from the previous session
+    // Explicit user preference from locale storage
     const localSetting = localStorage.getItem('locale');
     if (localSetting && isSupportedLocale(localSetting)) {
       return localSetting;
     }
-    // The language setting of the browser
+    // Language setting of the browser
     const [browserSetting] = navigator.language.split('-');
     if (isSupportedLocale(browserSetting)) {
       return browserSetting;
     }
-    // Default
     return DEFAULT_LOCALE;
   }
 }
