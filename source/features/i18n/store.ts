@@ -92,6 +92,8 @@ export class I18nStore extends Store {
   ): Promise<void> => {
     if (isSupportedLocale(params.locale)) {
       this.locale = params.locale;
+      // Save user preference!
+      localStorage.setItem('locale', params.locale);
     }
   };
 
