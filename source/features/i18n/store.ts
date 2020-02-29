@@ -90,7 +90,9 @@ export class I18nStore extends Store {
   @action public switchLocale = async (
     params: ActionProps<typeof I18nActions.prototype.switchLocale>
   ): Promise<void> => {
-    // TODO: actually redirect to same page with different locale
+    if (isSupportedLocale(params.locale)) {
+      this.locale = params.locale;
+    }
   };
 
   // ========== HELPERS ============

@@ -5,6 +5,10 @@ import { ensureContextExists } from '../../lib/react/hooks';
 import { I18nFeature } from '../i18n';
 import { NavigationStore } from './store';
 
+export interface INavigationPushQuery {
+  [key: string]: number | string | string[];
+}
+
 /**
  * Defines the actions that are supported by this feature
  */
@@ -12,7 +16,7 @@ import { NavigationStore } from './store';
 export class NavigationActions {
   public push: Action<{
     path?: string;
-    query?: { [key: string]: number | string | string[] };
+    query?: INavigationPushQuery;
   }> = new Action();
 }
 
@@ -26,10 +30,6 @@ export interface INavigationFeature {
   stop: () => void;
 }
 
-export interface INavigationRouterPushOptions {
-  shallow: boolean;
-}
-
 /**
  * This is the minimal interface needed to interact with NextRouter
  */
@@ -39,11 +39,7 @@ export interface INavigationRouterDependency {
     on: (type: string, callback: (url: string) => void) => void;
     off: (type: string, callback: (url: string) => void) => void;
   };
-  push: (
-    url: string,
-    as: string,
-    options: INavigationRouterPushOptions
-  ) => void;
+  push: (url: string, as: string) => void;
 }
 
 /**

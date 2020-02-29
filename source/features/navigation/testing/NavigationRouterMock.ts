@@ -21,7 +21,7 @@ export class NavigationRouterMock implements INavigationRouterDependency {
   };
   private eventType: string | null = null;
   private callback: ((url: string) => void) | null = null;
-  public push(url: string, as: string, options: any) {
+  public push(url: string, as: string) {
     if (this.callback && this.eventType === 'routeChangeComplete') {
       this.callback(`http://localhost:4000/${as}`);
     }

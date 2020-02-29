@@ -5,116 +5,116 @@
   cursor: pointer;
   display: flex;
   height: 30px;
-  position: fixed;
+  position: absolute;
   right: 61px;
   top: 53px;
-  width: 92.5px;
+  min-width: 90px;
   z-index: 9999;
-
-  .currentLanguage {
-    align-items: center;
-    color: var(--solid-text-color);
-    display: flex;
-    font-family: ProximaNova, sans-serif;
-    font-size: 12px;
-    font-weight: 300;
-    height: 100%;
-    letter-spacing: 0.6px;
-    padding: 7.5px 10.3px;
-
-    @media (max-width: 768px) {
-      color: var(--primary-highlight-color);
-      padding: 7.5px;
-    }
-  }
-
-  .languageSelector {
-    border-left: solid 1px var(--hint-text-color);
-
-    .languageDropdown {
-      border-left: 5.5px solid transparent;
-      border-right: 5.5px solid transparent;
-      border-top: 5.5px solid var(--primary-highlight-color);
-      height: 0;
-      left: 8px;
-      position: relative;
-      top: 18px;
-      width: 0;
-    }
-
-    @media (max-width: 768px) {
-      display: none;
-    }
-
-    .showLanguageDropdown {
-      border-left: 5.5px solid transparent;
-      border-right: 5.5px solid transparent;
-      border-bottom: 5.5px solid var(--primary-highlight-color);
-      height: 0;
-      left: 8px;
-      position: relative;
-      top: -6px;
-      width: 0;
-    }
-
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
-
-  .languagesDropdown {
-    display: none;
-
-    @media (max-width: 768px) {
-      top: 26px;
-      width: 32px;
-    }
-  }
-
-  .showLanguagesDropdown {
-    background-color: transparent;
-    border: 1px solid var(--hint-text-color);
-    border-radius: 1px;
-    color: var(--solid-text-color);
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    right: -1px;
-    top: 33px;
-    width: 92px;
-
-    li {
-      font-family: ProximaNova, sans-serif;
-      font-size: 12px;
-      font-weight: 300;
-      letter-spacing: 0.6px;
-      padding: 8px 10px 7px 10px;
-
-      &:last-child {
-        border-bottom: none;
-      }
-
-      &:hover {
-        background-color: var(--footer-separator-color);
-        cursor: pointer;
-      }
-
-      @media (max-width: 768px) {
-        padding: 7.5px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      top: 26px;
-      width: 32px;
-    }
-  }
 
   @media (max-width: 768px) {
     height: 28px;
     right: 16px;
     position: absolute;
     top: 32px;
+    min-width: 32px;
+  }
+}
+
+.currentLanguage {
+  align-items: center;
+  color: var(--solid-text-color);
+  display: flex;
+  font-family: ProximaNova, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  height: 100%;
+  letter-spacing: 0.6px;
+  padding: 7.5px 10.3px;
+
+  @media (max-width: 768px) {
+    color: var(--primary-highlight-color);
+    padding: 7.5px;
+  }
+}
+
+.languagesMenu {
+  background-color: transparent;
+  border: 1px solid var(--hint-text-color);
+  border-radius: 1px;
+  color: var(--solid-text-color);
+  flex-direction: column;
+  position: absolute;
+  top: 33px;
+  width: 100%;
+  display: none;
+
+  &.isDropdownVisible {
+    display: flex;
+  }
+
+  @media (max-width: 768px) {
+    top: 26px;
     width: 32px;
+  }
+
+  li {
+    font-family: ProximaNova, sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.6px;
+    padding: 8px 10px 7px 10px;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: var(--footer-separator-color);
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      padding: 7.5px;
+    }
+  }
+}
+
+.languageSelector {
+  width: 30px;
+  border-left: solid 1px var(--hint-text-color);
+
+  .arrow {
+    border-left: 5.5px solid transparent;
+    border-right: 5.5px solid transparent;
+    border-top: 5.5px solid var(--primary-highlight-color);
+    height: 0;
+    left: 9px;
+    position: relative;
+    top: 19px;
+    width: 0;
+
+    &.isDropdownVisible {
+      border-top: none;
+      border-left: 5.5px solid transparent;
+      border-right: 5.5px solid transparent;
+      border-bottom: 5.5px solid var(--primary-highlight-color);
+      top: -7px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.isMobileOnly {
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.isDektopOnly {
+  @media (max-width: 768px) {
+    display: none;
   }
 }

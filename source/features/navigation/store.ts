@@ -1,18 +1,25 @@
-import { isEqual } from 'lodash';
-import { action, observable } from 'mobx';
-import * as querystring from 'querystring';
+import { isEmpty } from 'lodash';
+import { action, observable, runInAction } from 'mobx';
 import { ParsedUrlQuery } from 'querystring';
+import * as querystring from 'querystring';
 import URL from 'url';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
+import { createReactions } from '../../lib/mobx/Reaction';
 import { Store } from '../../lib/Store';
-import { I18nFeature } from '../i18n';
-import { INavigationRouterDependency, NavigationActions } from './index';
+import { I18nActions, I18nFeature } from '../i18n';
+import { SupportedLocale } from '../i18n/types';
+import {
+  INavigationPushQuery,
+  INavigationRouterDependency,
+  NavigationActions,
+} from './index';
 
 /**
  * Router abstraction layer and mobx based route state
  */
 export class NavigationStore extends Store {
   @observable public path: string = '';
+  @observable public url: string = '';
   @observable public query: ParsedUrlQuery = {};
 
   private readonly navigationActions: NavigationActions;
@@ -33,14 +40,17 @@ export class NavigationStore extends Store {
     });
 
     this.registerActions(
-      createActionBindings([[this.navigationActions.push, this.push]])
+      createActionBindings([
+        [this.navigationActions.push, this.push],
+        [this.i18n.actions.switchLocale, this.updateRouteOnLocaleChange],
+      ])
     );
   }
 
   public async start(): Promise<void> {
-    super.start();
     this.updateStateOnRouteChange(this.router.asPath);
     this.router.events.on('routeChangeComplete', this.updateStateOnRouteChange);
+    super.start();
   }
 
   public async stop(): Promise<void> {
@@ -53,16 +63,13 @@ export class NavigationStore extends Store {
 
   // ========= PRIVATE ACTION HANDLERS ==========
 
-  @action private push = async (
+  @action private push = (
     props: ActionProps<typeof NavigationActions.prototype.push>
   ) => {
-    const query = querystring.stringify(props.query);
-    const url = `${props.path}?${query}`;
-    // Use Next.js shallow routing in combination with dynamic routes
-    // https://nextjs.org/docs/routing/shallow-routing
-    this.router.push(`/[locale]${url}`, `/${this.i18n.store.locale}${url}`, {
-      shallow: true,
-    });
+    const path = props.path ?? this.path;
+    const query = props.query ?? this.query;
+    const { locale } = this.i18n.store;
+    this.pushRoute(this.buildUrl(path, query), locale);
   };
 
   @action private updateStateOnRouteChange = (url: string) => {
@@ -76,6 +83,33 @@ export class NavigationStore extends Store {
       this.query = querystring.parse(parsedUrl.query);
     } else {
       this.query = {};
+    }
+    this.url = url;
+  };
+
+  @action private updateRouteOnLocaleChange = (
+    props: ActionProps<typeof I18nActions.prototype.switchLocale>
+  ) => {
+    this.pushRoute(this.buildUrl(this.path, this.query), props.locale, true);
+  };
+
+  // ========= PRIVATE HELPERS ==========
+
+  private buildUrl = (path: string, query: INavigationPushQuery) =>
+    isEmpty(query) ? path : `${path}?${querystring.stringify(query)}`;
+
+  private pushRoute = (
+    url: string,
+    locale: SupportedLocale,
+    isForcedLoad = false
+  ) => {
+    const localizedUrl = `/${locale}${url}`;
+    if (this.url !== localizedUrl) {
+      if (isForcedLoad) {
+        window.location.href = localizedUrl;
+      } else {
+        this.router.push(`/[locale]${url}`, localizedUrl);
+      }
     }
   };
 }

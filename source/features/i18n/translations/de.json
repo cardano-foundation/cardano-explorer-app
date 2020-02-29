@@ -11,7 +11,6 @@
   "browseEpochs": {
     "pageTitle": "Epochen Suchen | $t(productTitle)"
   },
-  "productTitle": "Cardano Explorer",
   "epoch": {
     "pageTitle": "Epoche | $t(productTitle)"
   },
@@ -21,6 +20,12 @@
   "index": {
     "pageTitle": "$t(productTitle)"
   },
+  "locales": {
+    "de": "Deutsch",
+    "en": "Englisch",
+    "ja": "Japanisch"
+  },
+  "productTitle": "Cardano Explorer",
   "search": {
     "placeholder": "Suche nach Epochen, Blöcken, Addressen und Transaktionen",
     "title": "Suche"

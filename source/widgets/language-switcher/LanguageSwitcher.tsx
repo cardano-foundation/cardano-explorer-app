@@ -1,10 +1,17 @@
+import classnames from 'classnames';
 import React, { Component } from 'react';
-import { SCREEN_BREAKPOINTS } from '../../constants';
+import { SupportedLocale } from '../../features/i18n/types';
 import styles from './LanguageSwitcher.module.scss';
 
+export interface ILocaleProps {
+  code: SupportedLocale;
+  title: string;
+}
+
 export interface ILanguageSwitcherParams {
-  currentLanguage: any;
-  languages: Array<any>;
+  currentLanguage: ILocaleProps;
+  languageOptions: Array<ILocaleProps>;
+  onLanguageSwitch: (locale: SupportedLocale) => void;
 }
 
 interface IState {
@@ -27,15 +34,9 @@ export default class LanguageSwitcher extends Component<
     this.setState({ isDropdownVisible: !this.state.isDropdownVisible });
   };
 
-  public onLanguageSwitch = (language: any) => {
-    // @todo
-  };
-
   public render() {
-    const { currentLanguage, languages } = this.props;
+    const { currentLanguage, languageOptions } = this.props;
     const { isDropdownVisible } = this.state;
-
-    const isMobileScreen = window.innerWidth < SCREEN_BREAKPOINTS.MD;
 
     return (
       <div
@@ -43,33 +44,33 @@ export default class LanguageSwitcher extends Component<
         onClick={() => this.onLanguageClick()}
       >
         <div className={styles.currentLanguage}>
-          {isMobileScreen ? currentLanguage.code : currentLanguage.title}
+          <span className={styles.isMobileOnly}>{currentLanguage.code}</span>
+          <span className={styles.isDektopOnly}>{currentLanguage.title}</span>
         </div>
         <div className={styles.languageSelector}>
           <span
-            className={
-              isDropdownVisible
-                ? styles.showLanguageDropdown
-                : styles.languageDropdown
-            }
+            className={classnames([
+              styles.arrow,
+              isDropdownVisible ? styles.isDropdownVisible : null,
+            ])}
           />
         </div>
-        {languages.length > 0 && (
+        {languageOptions.length > 0 && (
           <ul
-            className={
-              isDropdownVisible
-                ? styles.showLanguagesDropdown
-                : styles.languagesDropdown
-            }
+            className={classnames([
+              styles.languagesMenu,
+              isDropdownVisible ? styles.isDropdownVisible : null,
+            ])}
           >
-            {languages.map(lang => (
+            {languageOptions.map(lang => (
               <li
                 key={lang.code}
                 onClick={() => {
-                  this.onLanguageSwitch(lang);
+                  this.props.onLanguageSwitch(lang.code);
                 }}
               >
-                {isMobileScreen ? lang.code : lang.title}
+                <span className={styles.isMobileOnly}>{lang.code}</span>
+                <span className={styles.isDektopOnly}>{lang.title}</span>
               </li>
             ))}
           </ul>

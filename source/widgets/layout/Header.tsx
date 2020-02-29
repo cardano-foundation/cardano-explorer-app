@@ -1,12 +1,16 @@
 import cx from 'classnames';
+import { without } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
+import { SUPPORTED_LOCALES } from '../../features/i18n';
+import { useI18nFeature } from '../../features/i18n/context';
 import { useNavigationFeatureOptionally } from '../../features/navigation';
 import { LocalizedLink } from '../../features/navigation/ui/LocalizedLink';
 import { SearchBar } from '../../features/search/ui/SearchBar';
 import CardanoLogo from '../../public/assets/images/header/cardano-logo.svg';
+import LanguageSwitcher from '../language-switcher/LanguageSwitcher';
 import styles from './Header.module.scss';
 
 export interface IHeaderProps {

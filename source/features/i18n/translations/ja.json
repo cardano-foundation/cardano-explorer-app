@@ -1,1 +1,36 @@
-{}
+{
+  "address": {
+    "pageTitle": "!!!Address | $t(productTitle)"
+  },
+  "block": {
+    "pageTitle": "!!!Block | $t(productTitle)"
+  },
+  "browseBlocks": {
+    "pageTitle": "!!!Browse Blocks | $t(productTitle)"
+  },
+  "browseEpochs": {
+    "pageTitle": "!!!Browse Epochs | $t(productTitle)"
+  },
+  "epoch": {
+    "pageTitle": "!!!Epoch | $t(productTitle)"
+  },
+  "error": {
+    "pageTitle": "!!!Error 404 | $t(productTitle)"
+  },
+  "index": {
+    "pageTitle": "!!!$t(productTitle)"
+  },
+  "locales": {
+    "de": "!!!German",
+    "en": "!!!English",
+    "ja": "!!!Japanese"
+  },
+  "productTitle": "!!!Cardano Explorer",
+  "search": {
+    "placeholder": "!!!Search for epochs, blocks, addresses and transactions",
+    "title": "!!!Search"
+  },
+  "transaction": {
+    "pageTitle": "!!!Transaction | $t(productTitle)"
+  }
+}
