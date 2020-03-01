@@ -184,8 +184,14 @@
 }
 
 .searchSuggestionsWrapper {
-  left: 264px;
-  position: relative;
+  margin: 0 auto;
+  max-width: 300px;
+  min-width: 210px;
+
+  @media (max-width: 768px) {
+    margin: 0;
+    margin-left: 15px;
+  }
 }
 
 .searchSuggestionsContainer {
@@ -193,10 +199,11 @@
     background-color: var(--primary-bg-color);
     border-radius: 2px;
     border: solid 1px var(--footer-text-color);
-    left: 80px;
+    margin-left: -235px;
     margin-top: -30px;
     min-width: 210.5px;
     position: absolute;
+    z-index: 600;
 
     li {
       align-items: center;
@@ -228,6 +235,11 @@
 
     &:hover {
       box-shadow: 0 0 8px 0 var(--footer-text-color);
+    }
+
+    @media (max-width: 768px) {
+      margin-left: 0;
+      margin-top: -10px;
     }
   }
 }

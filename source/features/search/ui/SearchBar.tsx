@@ -14,6 +14,7 @@ import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
 import Search from './Search';
 import SearchSuggestions from './SearchSuggestions';
+import styles from './Search.module.scss';
 
 export interface ISearchBarProps {
   brandType?: BrandType;
@@ -86,10 +87,12 @@ export const SearchBar = (props: ISearchBarProps) => {
         searchType={searchType}
       />
       {isSearchValueValid && (
-        <SearchSuggestions
-          value={searchValue}
-          onSearchTypeSelect={value => searchTypeSelectQuery(value)}
-        />
+        <div className={styles.searchSuggestionsWrapper}>
+          <SearchSuggestions
+            value={searchValue}
+            onSearchTypeSelect={value => searchTypeSelectQuery(value)}
+          />
+        </div>
       )}
     </>
   );
