@@ -110,7 +110,7 @@
     "concurrently": "4.1.0",
     "cucumber": "5.1.0",
     "cucumber-pretty": "1.5.0",
-    "cypress": "3.8.3",
+    "cypress": "4.1.0",
     "dotenv": "8.0.0",
     "dotenv-webpack": "1.7.0",
     "husky": "3.0.3",

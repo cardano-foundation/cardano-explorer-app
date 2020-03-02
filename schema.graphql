@@ -1,0 +1,501 @@
+directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+"""
+The `BigInt` scalar type represents non-fractional signed whole numeric values.
+BigInt can represent values between -(2^53) + 1 and 2^53 - 1. 
+"""
+scalar BigInt
+
+"""
+expression to compare data of type BigInt. All fields are combined with logical 'AND'.
+"""
+input BigInt_comparison_exp {
+  _eq: BigInt
+  _gt: BigInt
+  _gte: BigInt
+  _in: [BigInt!]
+  _is_null: Boolean
+  _lt: BigInt
+  _lte: BigInt
+  _neq: BigInt
+  _nin: [BigInt!]
+}
+
+type Block {
+  createdAt: DateTime!
+  createdBy: String!
+
+  """
+  Genesis block does not belong to the 0th epoch, therefore it could be null
+  """
+  epoch: Epoch
+  epochNo: Int
+  fees: BigInt!
+  id: Hash32HexString!
+
+  """
+  Ouroboros Classic Epoch Boundary blocks (EBB) do not have a merkel root
+  """
+  merkelRootHash: Hash32HexString
+
+  """
+  Ouroboros Classic Epoch Boundary blocks (EBB) do not have a block number
+  """
+  number: Int
+
+  """
+  Ouroboros Classic Epoch Boundary blocks (EBB) do not have a slot number
+  """
+  slotNo: Int
+
+  """
+  Ouroboros Classic Epoch Boundary blocks (EBB) do not have a slot number
+  """
+  slotWithinEpoch: Int
+  previousBlock: Block
+  nextBlock: Block
+  size: BigInt!
+  transactions(limit: Int, order_by: [Transaction_order_by!], offset: Int, where: Transaction_bool_exp): [Transaction]!
+  transactions_aggregate(limit: Int, order_by: [Transaction_order_by!], offset: Int, where: Transaction_bool_exp): Transaction_aggregate!
+  transactionsCount: String!
+}
+
+type Block_aggregate {
+  aggregate: Block_aggregate_fields
+}
+
+type Block_aggregate_fields {
+  avg: Block_avg_fields!
+  count: String!
+  max: Block_max_fields!
+  min: Block_min_fields!
+  sum: Block_sum_fields!
+}
+
+type Block_avg_fields {
+  fees: Float
+  size: Float
+}
+
+input Block_bool_exp {
+  _and: [Block_bool_exp]
+  _not: Block_bool_exp
+  _or: [Block_bool_exp]
+  createdAt: Date_comparison_exp
+  createdBy: text_comparison_exp
+  epoch: Epoch_bool_exp
+  fees: BigInt_comparison_exp
+  id: Hash32HexString_comparison_exp
+  number: Int_comparison_exp
+  previousBlock: Block_bool_exp
+  nextBlock: Block_bool_exp
+  size: BigInt_comparison_exp
+  slotNo: Int_comparison_exp
+  slotWithinEpoch: Int_comparison_exp
+  transactions: Transaction_bool_exp
+  transactionsCount: text_comparison_exp
+}
+
+type Block_max_fields {
+  fees: String
+  size: String
+}
+
+type Block_min_fields {
+  fees: String
+  size: String
+}
+
+input Block_order_by {
+  createdAt: order_by
+  createdBy: order_by
+  epoch: Epoch_order_by
+  fees: order_by
+  number: order_by_with_nulls
+  size: order_by
+  slotNo: order_by_with_nulls
+  slotWithinEpoch: order_by_with_nulls
+  transactionsCount: order_by
+}
+
+type Block_sum_fields {
+  fees: String
+  size: String
+}
+
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
+
+type Cardano {
+  blockHeight: Int!
+  currentEpoch: Epoch!
+  networkName: String!
+  protocolConst: Int!
+  slotDuration: Int!
+  startTime: DateTime!
+}
+
+type Coin_aggregate {
+  aggregate: Coin_aggregate_fields
+}
+
+type Coin_aggregate_fields {
+  avg: Coin_avg_fields!
+  count: String!
+  max: Coin_max_fields!
+  min: Coin_min_fields!
+  sum: Coin_sum_fields!
+}
+
+type Coin_avg_fields {
+  value: String
+}
+
+input Coin_bool_exp {
+  _and: [Coin_bool_exp]
+  _not: Coin_bool_exp
+  _or: [Coin_bool_exp]
+  address: text_comparison_exp
+  value: text_comparison_exp
+}
+
+type Coin_max_fields {
+  value: String
+}
+
+type Coin_min_fields {
+  value: String
+}
+
+input Coin_order_by {
+  address: order_by
+  txId: order_by
+  value: order_by
+}
+
+type Coin_sum_fields {
+  value: String
+}
+
+"""
+expression to compare data of type date. All fields are combined with logical 'AND'.
+"""
+input Date_comparison_exp {
+  _eq: DateTime
+  _gt: DateTime
+  _gte: DateTime
+  _in: [DateTime]
+  _lt: DateTime
+  _lte: DateTime
+  _neq: DateTime
+  _nin: [DateTime]
+}
+
+"""
+The `DateTime` scalar represents a date and time following the ISO 8601 standard
+"""
+scalar DateTime
+
+type Epoch {
+  blocks(limit: Int, order_by: [Block_order_by!], offset: Int, where: Block_bool_exp): [Block!]!
+  blocks_aggregate(limit: Int, order_by: [Block_order_by!], offset: Int, where: Block_bool_exp): Block_aggregate!
+  output: String!
+  number: Int!
+  transactionsCount: String!
+  startedAt: DateTime!
+  lastBlockTime: DateTime!
+}
+
+type Epoch_aggregate {
+  aggregate: Epoch_aggregate_fields!
+}
+
+type Epoch_aggregate_fields {
+  count: String!
+  max: Epoch_max_fields!
+  min: Epoch_min_fields!
+  sum: Epoch_sum_fields!
+}
+
+input Epoch_bool_exp {
+  _and: [Epoch_bool_exp]
+  _not: Epoch_bool_exp
+  _or: [Epoch_bool_exp]
+  blocks: Block_bool_exp
+  number: Int_comparison_exp
+  output: text_comparison_exp
+  transactionsCount: text_comparison_exp
+}
+
+type Epoch_max_fields {
+  number: Int!
+  output: String!
+  transactionsCount: String!
+}
+
+type Epoch_min_fields {
+  output: String!
+  transactionsCount: String!
+}
+
+input Epoch_order_by {
+  number: order_by
+  output: order_by
+  transactionsCount: order_by
+}
+
+type Epoch_sum_fields {
+  output: String!
+  transactionsCount: String!
+}
+
+"""Hex encoded hash32 string, 64 characters"""
+scalar Hash32HexString
+
+"""All fields are combined with logical 'AND'."""
+input Hash32HexString_comparison_exp {
+  _eq: Hash32HexString
+  _in: [Hash32HexString]
+  _neq: Hash32HexString
+  _nin: [Hash32HexString]
+}
+
+"""
+expression to compare data of type Int. All fields are combined with logical 'AND'.
+"""
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int!]
+}
+
+"""LoveLaces, the atomic unit of ADA"""
+scalar LoveLaces
+
+"""
+expression to compare data of type Lovelaces. All fields are combined with logical 'AND'.
+"""
+input Lovelaces_comparison_exp {
+  _eq: LoveLaces
+  _gt: LoveLaces
+  _gte: LoveLaces
+  _in: [LoveLaces!]
+  _lt: LoveLaces
+  _lte: LoveLaces
+  _neq: LoveLaces
+  _nin: [LoveLaces!]
+}
+
+"""ordering options"""
+enum order_by {
+  """in the ascending order, nulls last"""
+  asc
+
+  """in the ascending order, nulls first"""
+  desc
+}
+
+"""ordering options"""
+enum order_by_with_nulls {
+  """in the ascending order, nulls last"""
+  asc
+
+  """in the ascending order, nulls first"""
+  asc_nulls_first
+
+  """in the ascending order, nulls last"""
+  asc_nulls_last
+
+  """in the descending order, nulls first"""
+  desc
+
+  """in the descending order, nulls first"""
+  desc_nulls_first
+
+  """in the descending order, nulls last"""
+  desc_nulls_last
+}
+
+"""0-100"""
+scalar Percentage
+
+"""
+expression to compare data of type Percentage. All fields are combined with logical 'AND'.
+"""
+input Percentage_comparison_exp {
+  _eq: Percentage
+  _gt: Percentage
+  _gte: Percentage
+  _lt: Percentage
+  _lte: Percentage
+  _neq: Percentage
+}
+
+type Query {
+  blocks(limit: Int, order_by: [Block_order_by!], offset: Int, where: Block_bool_exp): [Block]!
+  blocks_aggregate(limit: Int, order_by: [Block_order_by!], offset: Int, where: Block_bool_exp): Block_aggregate!
+  epochs(limit: Int, order_by: [Epoch_order_by!], offset: Int, where: Epoch_bool_exp): [Epoch]!
+  epochs_aggregate(limit: Int, order_by: [Epoch_order_by!], offset: Int, where: Epoch_bool_exp): Epoch_aggregate!
+  cardano: Cardano!
+  transactions(limit: Int, order_by: [Transaction_order_by!], offset: Int, where: Transaction_bool_exp): [Transaction]!
+  transactions_aggregate(limit: Int, order_by: [Transaction_order_by!], offset: Int, where: Transaction_bool_exp): Transaction_aggregate!
+  utxos(limit: Int, order_by: [Utxo_order_by!], offset: Int, where: Utxo_bool_exp): [TransactionOutput]!
+  utxos_aggregate(limit: Int, order_by: [Utxo_order_by!], offset: Int, where: Utxo_bool_exp): Utxo_aggregate!
+}
+
+input text_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _ilike: String
+  _in: [String]
+  _is_null: Boolean
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  _nilike: String
+  _nin: [String]
+  _nlike: String
+  _nsimilar: String
+  _similar: String
+}
+
+type Transaction {
+  block: Block
+  fee: BigInt!
+  id: Hash32HexString!
+  inputs(limit: Int, order_by: [Coin_order_by], offset: Int, where: Coin_bool_exp): [TransactionInput!]!
+  inputs_aggregate(limit: Int, order_by: [Coin_order_by], offset: Int, where: Coin_bool_exp): Coin_aggregate
+  outputs(limit: Int, order_by: [Coin_order_by], offset: Int, where: Coin_bool_exp): [TransactionOutput!]!
+  outputs_aggregate(limit: Int, order_by: [Coin_order_by], offset: Int, where: Coin_bool_exp): Coin_aggregate
+  size: BigInt!
+  totalOutput: String!
+  includedAt: DateTime!
+}
+
+type Transaction_aggregate {
+  aggregate: Transaction_aggregate_fields
+}
+
+type Transaction_aggregate_fields {
+  avg: Transaction_avg_fields!
+  count: String!
+  max: Transaction_max_fields!
+  min: Transaction_min_fields!
+  sum: Transaction_sum_fields!
+}
+
+type Transaction_avg_fields {
+  fee: Float
+  size: Float
+  totalOutput: Float
+}
+
+input Transaction_bool_exp {
+  _and: [Transaction_bool_exp]
+  _not: Transaction_bool_exp
+  _or: [Transaction_bool_exp]
+  block: Block_bool_exp
+  fee: BigInt_comparison_exp
+  id: Hash32HexString_comparison_exp
+  includedAt: Date_comparison_exp
+  inputs: Coin_bool_exp
+  outputs: Coin_bool_exp
+  size: BigInt_comparison_exp
+  totalOutput: text_comparison_exp
+}
+
+type Transaction_max_fields {
+  fee: String
+  size: String
+  totalOutput: String
+}
+
+type Transaction_min_fields {
+  fee: String
+  size: String
+  totalOutput: String
+}
+
+input Transaction_order_by {
+  block: order_by
+  fee: order_by
+  includedAt: order_by
+  size: order_by
+  totalOutput: order_by
+}
+
+type Transaction_sum_fields {
+  fee: String
+  size: String
+  totalOutput: String
+}
+
+type TransactionInput {
+  sourceTxId: Hash32HexString!
+  sourceTxIndex: Int!
+  address: String!
+  value: String!
+}
+
+type TransactionOutput {
+  address: String!
+  index: Int!
+  txId: Hash32HexString!
+  value: String!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type Utxo_aggregate {
+  aggregate: Utxo_aggregate_fields
+}
+
+type Utxo_aggregate_fields {
+  avg: Uxto_avg_fields!
+  count: String!
+  max: Uxto_max_fields!
+  min: Uxto_min_fields!
+  sum: Uxto_sum_fields!
+}
+
+input Utxo_bool_exp {
+  _and: [Utxo_bool_exp]
+  _not: Utxo_bool_exp
+  _or: [Utxo_bool_exp]
+  address: text_comparison_exp
+  value: text_comparison_exp
+}
+
+input Utxo_order_by {
+  address: order_by
+  value: order_by
+  index: order_by
+}
+
+type Uxto_avg_fields {
+  value: String
+}
+
+type Uxto_max_fields {
+  value: String
+}
+
+type Uxto_min_fields {
+  value: String
+}
+
+type Uxto_sum_fields {
+  value: String
+}
+
