@@ -21,7 +21,11 @@ const Search = (props: ISearchProps) => {
       ? styles.enlargedSearchContainer
       : styles.shrinkedSearchContainer;
   const searchContainerStyles = cx([styles.searchContainer, brandTypeStyle]);
-
+  const submitSearch = () => {
+    if (searchValue !== '') {
+      onSearch(searchValue);
+    }
+  };
   return (
     <div className={searchContainerStyles}>
       {title && <h2 className={styles.searchTitle}>{title}</h2>}
@@ -33,7 +37,7 @@ const Search = (props: ISearchProps) => {
           onChange={v => setSearchValue(v)}
           onKeyPress={e => {
             if (e.key === 'Enter') {
-              onSearch(searchValue);
+              submitSearch();
             }
           }}
         />
@@ -44,7 +48,7 @@ const Search = (props: ISearchProps) => {
               <div className={styles.searchButtonInner} />
             </div>
           }
-          onClick={() => onSearch(searchValue)}
+          onClick={submitSearch}
         />
       </div>
     </div>
