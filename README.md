@@ -17,10 +17,9 @@ See [.env.example](.env.example) for _optional_ config
 #### `yarn start-dependencies`
 
 - Starts the Cardano GraphQL Docker stack, including the seeded PostgreSQL and Hasura instances with an instance of the GraphQL Playground at http://localhost:3100
-- Generates a local copy of the Cardano GraphQL schema for IDE auto-completion.
-- Generates graphql typings from the schema and documents within the codebase.
-#### `yarn generate:graphql-typings --watch`
-- Any changes to graphql documents within the codebase will trigger the TypeScript generator.
+#### `yarn generate:graphql-typings`
+- Generates graphql typings from the referenced schema in `cardano-graphql-ts` and documents within the codebase.
+- Any changes to graphql documents will trigger the TypeScript generator.
 #### `yarn dev`
 - Starts the development version of the app by default at http://localhost:4000
 ### Stop
