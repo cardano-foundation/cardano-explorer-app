@@ -24,15 +24,14 @@ pipeline {
         sh 'yarn lint'
       }
     }
-    stage('Setup Service Dependencies') {
-      steps {
-        sh 'CI=true yarn run start-dependencies'
-      }
-    }
     stage('Build') {
       steps {
-        sh 'yarn build'
         sh 'yarn static:build'
+      }
+    }
+    stage('Setup Service Dependencies') {
+      steps {
+        sh 'docker-compose up -d'
       }
     }
     stage('Test') {
