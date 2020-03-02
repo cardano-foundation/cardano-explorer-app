@@ -44,16 +44,17 @@
   color: var(--solid-text-color);
   flex-direction: column;
   position: absolute;
-  top: 33px;
-  width: 100%;
+  top: 29px;
+  left: -1px;
+  width: calc(100% + 2px);
   display: none;
 
   &.isDropdownVisible {
     display: flex;
   }
 
-  @media (max-width: 768px) {
-    top: 29px;
+  @media (min-width: 768px) {
+    top: 33px;
   }
 
   li {
@@ -61,7 +62,14 @@
     font-size: 12px;
     font-weight: 300;
     letter-spacing: 0.6px;
-    padding: 8px 10px 7px 10px;
+    padding: 7.5px;
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      justify-content: initial;
+      padding: 8px 10px 7px 10px;
+    }
 
     &:last-child {
       border-bottom: none;
@@ -70,10 +78,6 @@
     &:hover {
       background-color: var(--footer-separator-color);
       cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      padding: 7.5px;
     }
   }
 }
@@ -107,6 +111,7 @@
 }
 
 .isMobileOnly {
+  text-transform: uppercase;
   @media (min-width: 768px) {
     display: none;
   }
