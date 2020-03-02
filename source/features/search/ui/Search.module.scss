@@ -22,51 +22,6 @@
     }
   }
 
-  &.shrinkedSearchContainer {
-    .searchTitle {
-      margin: 0;
-    }
-
-    .searchInput {
-      input {
-        font-size: 14px !important;
-        padding: 9px 0 8px;
-      }
-    }
-
-    .searchContent {
-      .searchButton {
-        background-color: transparent;
-        border: 1px solid var(--primary-highlight-color);
-
-        .searchButtonIcon {
-          border-bottom: 7px solid transparent;
-          border-left: 9px solid var(--primary-highlight-color);
-          border-top: 7px solid transparent;
-        }
-
-        .searchButtonInner {
-          border-bottom: 5px solid transparent;
-          border-left: 6px solid var(--header-background-color);
-          border-top: 5px solid transparent;
-          left: -8px;
-          position: relative;
-          top: -5px;
-        }
-
-        &:hover {
-          .searchButtonIcon {
-            border-left-color: var(--primary-bg-color);
-          }
-        }
-
-        &:active {
-          background-color: transparent;
-        }
-      }
-    }
-  }
-
   .searchTitle {
     color: var(--solid-text-color);
     font-family: ProximaNova, sans-serif;
@@ -122,63 +77,109 @@
         }
       }
     }
+  }
 
-    .searchButton {
-      align-items: center;
-      background-color: var(--primary-highlight-color);
-      border-radius: 2px;
-      display: flex;
-      height: 40px;
-      justify-content: center;
-      padding: 0;
-      width: 40px;
+  .searchButton {
+    align-items: center;
+    background-color: var(--primary-highlight-color);
+    border-radius: 2px;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    padding: 0;
+    width: 40px;
 
-      &:hover {
-        background-color: var(--primary-highlight-color-hover);
-      }
+    &:hover,
+    &:active {
+      background-color: var(--primary-highlight-color-hover);
+    }
 
-      @media (max-width: 575px) {
-        height: 30px;
-        width: 30px;
-      }
+    @media (max-width: 575px) {
+      height: 30px;
+      width: 30px;
+    }
 
-      .searchButtonIcon {
-        border-bottom: 7px solid transparent;
-        border-left: 9px solid var(--primary-bg-color);
-        border-top: 7px solid transparent;
-        height: 0;
-        width: 0;
-      }
+    .searchButtonIcon {
+      border-bottom: 7px solid transparent;
+      border-left: 9px solid var(--primary-bg-color);
+      border-top: 7px solid transparent;
+      height: 0;
+      width: 0;
+    }
+  }
+}
+
+.typeOfSearch {
+  align-items: center;
+  background-color: var(--secondary-highlight-color);
+  border-radius: 4px;
+  display: flex;
+  height: 24px;
+  justify-content: space-evenly;
+  position: absolute;
+  text-transform: capitalize;
+  width: 70.5px;
+  z-index: 10;
+
+  .typeOfSearchText {
+    color: var(--primary-bg-color);
+    font-family: ProximaNova, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    line-height: 1.77;
+  }
+
+  svg {
+    cursor: pointer;
+    height: 6px;
+    position: relative;
+    top: -1px;
+    width: 6px;
+  }
+}
+
+.shrinkedSearchContainer {
+  .searchTitle {
+    margin: 0;
+  }
+
+  .searchInput {
+    input {
+      font-size: 14px !important;
+      padding: 9px 0 8px;
     }
   }
 
-  .typeOfSearch {
-    align-items: center;
-    background-color: var(--secondary-highlight-color);
-    border-radius: 4px;
-    display: flex;
-    height: 24px;
-    justify-content: space-evenly;
-    position: absolute;
-    text-transform: capitalize;
-    width: 70.5px;
-    z-index: 10;
+  .searchContent {
+    .searchButton {
+      background-color: transparent;
+      border: 1px solid var(--primary-highlight-color);
 
-    .typeOfSearchText {
-      color: var(--primary-bg-color);
-      font-family: ProximaNova, sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.6px;
-      line-height: 1.77;
-    }
+      .searchButtonIcon {
+        border-bottom: 7px solid transparent;
+        border-left: 9px solid var(--primary-highlight-color);
+        border-top: 7px solid transparent;
+      }
 
-    svg {
-      cursor: pointer;
-      height: 6px;
-      position: relative;
-      top: -1px;
-      width: 6px;
+      .searchButtonInner {
+        border-bottom: 5px solid transparent;
+        border-left: 6px solid var(--header-background-color);
+        border-top: 5px solid transparent;
+        left: -8px;
+        position: relative;
+        top: -5px;
+      }
+
+      &:hover {
+        .searchButtonIcon {
+          border-left-color: var(--primary-bg-color);
+        }
+      }
+
+      &:active {
+        background-color: transparent;
+      }
     }
   }
 }

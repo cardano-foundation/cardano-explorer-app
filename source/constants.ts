@@ -1,5 +1,7 @@
 export const SCREEN_BREAKPOINTS = {
   XS: 576,
+  // tslint:disable-next-line:object-literal-sort-keys
+  MD: 768,
 };
 
 export enum BrandType {
