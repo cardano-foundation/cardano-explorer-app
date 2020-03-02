@@ -14,6 +14,7 @@ import { PageComponentWithStaticLayout } from '../lib/types';
 import '../styles/global/index.scss';
 import PolymorphThemeProvider from '../styles/theme/PolymorphThemeProvider';
 import LoadingSpinner from '../widgets/loading-spinner/LoadingSpinner';
+import styles from './_app.module.scss';
 
 const EmptyStaticLayout = (props: { children: React.ReactNode }) => (
   <>{props.children}</>
@@ -40,7 +41,13 @@ class CardanoExplorer extends App {
               <NavigationFeatureProvider>
                 <SearchFeatureProvider>
                   <StaticLayout>
-                    <NoSSR onSSR={<LoadingSpinner />}>
+                    <NoSSR
+                      onSSR={
+                        <LoadingSpinner
+                          className={styles.loadingSpinnerMargin}
+                        />
+                      }
+                    >
                       <BrowserUpdate />
                       <Component {...pageProps} />
                     </NoSSR>

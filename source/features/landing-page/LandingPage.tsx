@@ -17,19 +17,16 @@ const testNetHeaderImage = require('../../public/assets/images/header/testnet.pn
 import styles from './LandingPage.module.scss';
 
 export const LandingPage = () => (
-  <>
-    <SearchBar brandType={BrandType.ENLARGED} />
-    <BlocksFeatureProvider>
-      <div className={styles.epochList}>
-        <EpochsFeatureProvider>
-          <LatestEpochs />
-        </EpochsFeatureProvider>
-      </div>
-      <div className={styles.blockList}>
-        <LatestBlocks />
-      </div>
-    </BlocksFeatureProvider>
-  </>
+  <BlocksFeatureProvider>
+    <div className={styles.epochList}>
+      <EpochsFeatureProvider>
+        <LatestEpochs />
+      </EpochsFeatureProvider>
+    </div>
+    <div className={styles.blockList}>
+      <LatestBlocks />
+    </div>
+  </BlocksFeatureProvider>
 );
 
 const StaticLayout = (props: StaticLayoutProps) => {
@@ -47,6 +44,7 @@ const StaticLayout = (props: StaticLayoutProps) => {
       )}
       <Layout>
         <Header brandType={BrandType.ENLARGED} />
+        <SearchBar brandType={BrandType.ENLARGED} />
         {props.children}
         <Footer rootClassname={styles.footer} />
       </Layout>
