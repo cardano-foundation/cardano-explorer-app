@@ -26,7 +26,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'graphql-codegen'
+        sh 'yarn generate:graphql-typings'
         sh 'yarn build'
         sh 'yarn static:build'
       }

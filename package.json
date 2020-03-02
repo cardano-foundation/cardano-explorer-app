@@ -14,7 +14,7 @@
     "test": "jest",
     "test:e2e": "cypress run",
     "test:e2e:dev": "cypress open",
-    "generate:graphql-typings": "graphql-codegen --watch",
+    "generate:graphql-typings": "graphql-codegen",
     "export": "next export source --outdir build/static",
     "static:build": "NODE_ENV=production yarn build && yarn export",
     "static:serve": "serve -p 4001",
