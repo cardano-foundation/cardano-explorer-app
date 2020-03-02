@@ -26,8 +26,6 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'yarn generate:graphql-typings'
-        sh 'yarn build'
         sh 'yarn static:build'
       }
     }
