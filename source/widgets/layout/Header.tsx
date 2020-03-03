@@ -1,12 +1,16 @@
 import cx from 'classnames';
+import { without } from 'lodash';
 import { observer } from 'mobx-react-lite';
-import Link from 'next/link';
 import React from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
+import { SUPPORTED_LOCALES } from '../../features/i18n';
+import { useI18nFeature } from '../../features/i18n/context';
 import { useNavigationFeatureOptionally } from '../../features/navigation';
+import { LocalizedLink } from '../../features/navigation/ui/LocalizedLink';
 import { SearchBar } from '../../features/search/ui/SearchBar';
 import CardanoLogo from '../../public/assets/images/header/cardano-logo.svg';
+import LanguageSwitcher from '../language-switcher/LanguageSwitcher';
 import styles from './Header.module.scss';
 
 export interface IHeaderProps {
@@ -36,9 +40,9 @@ export const Header = observer((props: IHeaderProps) => {
     ) : null;
   const stakePoolLink =
     environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
-      <Link href="/stake-pools">
+      <LocalizedLink href="/stake-pools">
         <a className={stakePoolsClassName}>Stake Pools</a>
-      </Link>
+      </LocalizedLink>
     ) : null;
   const stakePoolTriangleStyle = stakePoolLink ? '' : styles.stakePoolTriangle;
   const triangleContainerStyles = cx([
@@ -50,30 +54,30 @@ export const Header = observer((props: IHeaderProps) => {
       <div className={styles.contentContainer}>
         <div className={styles.brandType}>
           <div className={styles.logoContainer}>
-            <Link href="/">
+            <LocalizedLink href="/">
               <a>
                 <CardanoLogo className={styles.logo} />
               </a>
-            </Link>
+            </LocalizedLink>
           </div>
           <div className={styles.titleContainer}>
-            <Link href="/">
+            <LocalizedLink href="/">
               <a>
                 <span className={styles.cardanoTitle}>Cardano</span>
                 <span className={styles.explorerTitle}>
                   Blockchain Explorer
                 </span>
               </a>
-            </Link>
+            </LocalizedLink>
             {testnetSubtitle}
           </div>
           {stakePoolLink && (
             <div className={styles.tabs}>
               <div className={styles.tabLeftLine} />
               <div className={styles.tabCircle} />
-              <Link href="/">
+              <LocalizedLink href="/">
                 <a className={indexClassName}>Epochs & Blocks</a>
-              </Link>
+              </LocalizedLink>
               <div className={styles.tabCircle} />
               {stakePoolLink}
               <div className={styles.tabCircle} />

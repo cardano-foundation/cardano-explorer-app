@@ -43,7 +43,7 @@ export const AddressSearchResult = () => {
             transactionsCount,
           } = addressSearchResult;
           return (
-            <Container>
+            <>
               <div className={styles.addressSummary}>
                 <AddressSummary
                   title="Address"
@@ -86,7 +86,7 @@ export const AddressSearchResult = () => {
                   transactions={transactions.store.browsedAddressTransactions}
                 />
               </div>
-            </Container>
+            </>
           );
         } else {
           return (

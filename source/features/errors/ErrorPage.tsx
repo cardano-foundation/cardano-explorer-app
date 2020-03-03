@@ -1,32 +1,43 @@
+import Head from 'next/head';
 import React from 'react';
 import { BrandType } from '../../constants';
+import { PageComponentWithStaticLayout } from '../../lib/types';
 import { Footer, Header, Layout } from '../../widgets/layout';
+import { useI18nFeature } from '../i18n/context';
 import styles from './ErrorPage.module.scss';
 import Error from './PageNotFoundError';
 const ContainerBackground = require('../../public/assets/images/error/hub-tripple.svg');
 
-const ErrorPage = () => (
-  <Error
-    notFoundTitle="Page not found"
-    notFoundText="The requested page cannot be found. It may have been removed or the link can be broken. If you entered a web address please check it was correct and try again."
-  />
-);
+const ErrorPage: PageComponentWithStaticLayout = () => {
+  const { translate } = useI18nFeature().store;
+  return (
+    <>
+      <Head>
+        <title>{translate('404:document.title')}</title>
+      </Head>
+      <Header brandType={BrandType.ENLARGED} />
+      <Error
+        notFoundTitle={translate('404:error.title')}
+        notFoundText={translate('404:error.description')}
+      />
+      <Footer />
+    </>
+  );
+};
 
-ErrorPage.getStaticLayout = (page: React.ReactNode) => (
-  <>
-    <div className={styles.topBackgroundContainer} />
-    <ContainerBackground className={styles.errorContainerBackground} />
-    <div className={styles.bottomBackgroundContainer} />
-    <Layout>
-      <div className={styles.errorContainerLayout}>
-        <Header brandType={BrandType.ENLARGED} />
-        {page}
-        <Footer />
-      </div>
-    </Layout>
-  </>
-);
+const StaticLayout = (props: { children?: React.ReactNode }) => {
+  return (
+    <>
+      <div className={styles.topBackgroundContainer} />
+      <ContainerBackground className={styles.errorContainerBackground} />
+      <div className={styles.bottomBackgroundContainer} />
+      <Layout>
+        <div className={styles.errorContainerLayout}>{props.children}</div>
+      </Layout>
+    </>
+  );
+};
 
-ErrorPage.pageTitle = 'Cardano Explorer | Error 404';
+ErrorPage.getStaticLayout = () => StaticLayout;
 
 export default ErrorPage;

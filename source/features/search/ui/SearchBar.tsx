@@ -4,6 +4,7 @@ import { ChainSettings } from 'cardano-js/dist/ChainSettings';
 import React from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../../constants';
 import { environment } from '../../../environment';
+import { useI18nFeature } from '../../i18n/context';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
 import Search from './Search';
@@ -13,6 +14,7 @@ export interface ISearchBarProps {
 }
 
 export const SearchBar = (props: ISearchBarProps) => {
+  const { translate } = useI18nFeature().store;
   const search = useSearchFeature();
   const networkInfo = useNetworkInfoFeature().store;
   const introspectQuery = (query: string) => {
@@ -53,11 +55,12 @@ export const SearchBar = (props: ISearchBarProps) => {
       search.actions.unknownSearchRequested.trigger({ query });
     }
   };
-
   return (
     <Search
       brandType={props.brandType}
       onSearch={query => introspectQuery(query)}
+      placeholder={translate('search.placeholder') as string}
+      title={translate('search.title') as string}
     />
   );
 };

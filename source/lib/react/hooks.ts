@@ -9,14 +9,19 @@ import { Store } from '../Store';
  * 2. Stops the store on unmount
  * @param feature
  */
-export const useFeature = (feature: { store: Store }) => {
+export const useFeature = (feature: { store: Store }, isIsomorphic = false) => {
+  if (isIsomorphic) {
+    feature.store.start();
+  } else if (environment.IS_CLIENT) {
+    useLayoutEffect(() => {
+      // Start feature store before first render is done
+      feature.store.start();
+    }, []);
+  }
+  // Don't use any effects on server-side
   if (environment.IS_SERVER) {
     return;
   }
-  useLayoutEffect(() => {
-    // Start feature store before first render is done
-    feature.store.start();
-  }, []);
   useEffect(() => {
     // Stop store on unmount
     return () => {

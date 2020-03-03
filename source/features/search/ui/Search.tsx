@@ -8,7 +8,7 @@ import styles from './Search.module.scss';
 
 export interface ISearchProps {
   placeholder?: string;
-  title?: string | boolean;
+  title?: string | boolean | null;
   brandType?: BrandType;
   onSearch: (value: string) => any;
 }
