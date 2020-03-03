@@ -35,7 +35,7 @@ export const AddressSearchResult = () => {
           !api.searchForAddressQuery.hasBeenExecutedAtLeastOnce ||
           store.isSearching
         ) {
-          return <LoadingSpinner />;
+          return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
         } else if (addressSearchResult) {
           const {
             address,

@@ -7,6 +7,7 @@ const SpinnerSmall = require('../../public/assets/images/spinner-dark.inline.svg
 
 export interface ILoadingSpinnerProps {
   big?: boolean;
+  className?: string;
   medium?: boolean;
 }
 
@@ -14,13 +15,14 @@ export default class LoadingSpinner extends Component<ILoadingSpinnerProps> {
   public root?: HTMLDivElement | any;
 
   public render() {
-    const { big, medium } = this.props;
+    const { big, className, medium } = this.props;
 
     const componentClasses = classnames([
       styles.component,
       big ? styles.big : null,
       medium ? styles.medium : null,
       !big && !medium ? styles.small : null,
+      className,
     ]);
 
     return (
