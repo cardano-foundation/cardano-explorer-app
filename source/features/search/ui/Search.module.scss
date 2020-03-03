@@ -193,6 +193,11 @@
     margin: 0;
     margin-left: 15px;
   }
+
+  @media (min-width: 770px) {
+    max-width: 872px;
+    padding: 0 50px 40px;
+  }
 }
 
 .searchSuggestionsContainer {
@@ -241,6 +246,16 @@
     @media (max-width: 768px) {
       margin-left: 0;
       margin-top: -10px;
+    }
+  }
+
+  @media (min-width: 770px) {
+    position: relative;
+    max-width: 300px;
+    min-width: 210px;
+
+    .searchSuggestionsContent {
+      margin-left: 0;
     }
   }
 }
