@@ -3,6 +3,7 @@ import { Observer } from 'mobx-react-lite';
 import React from 'react';
 import { useObservableEffect } from '../../../lib/mobx/react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
+import { BLOCK_SEARCH_RESULT_PATH } from '../../blocks/config';
 import BlockSummary from '../../blocks/ui/BlockSummary';
 import { useNavigationFeature } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
@@ -58,7 +59,7 @@ export const BlockSearchResult = () => {
                   }
                   onChangePage={page => {
                     navigation.actions.push.trigger({
-                      path: '/block',
+                      path: BLOCK_SEARCH_RESULT_PATH,
                       query: {
                         id: blockSearchResult.id,
                         page,

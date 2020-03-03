@@ -1,1 +1,1 @@
-export const ADDRESS_SEARCH_RESULT_PATH = '/address';
+export const ADDRESS_SEARCH_RESULT_PATH = '/address/';

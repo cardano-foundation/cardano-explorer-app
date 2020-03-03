@@ -2,7 +2,12 @@ import React, { useContext } from 'react';
 import Action from '../../lib/Action';
 import { debugActions } from '../../lib/logging';
 import { ensureContextExists } from '../../lib/react/hooks';
+import { I18nFeature } from '../i18n';
 import { NavigationStore } from './store';
+
+export interface INavigationPushQuery {
+  [key: string]: number | string | string[];
+}
 
 /**
  * Defines the actions that are supported by this feature
@@ -11,7 +16,7 @@ import { NavigationStore } from './store';
 export class NavigationActions {
   public push: Action<{
     path?: string;
-    query?: { [key: string]: number | string | string[] };
+    query?: INavigationPushQuery;
   }> = new Action();
 }
 
@@ -29,17 +34,19 @@ export interface INavigationFeature {
  * This is the minimal interface needed to interact with NextRouter
  */
 export interface INavigationRouterDependency {
+  asPath: string;
   events: {
     on: (type: string, callback: (url: string) => void) => void;
     off: (type: string, callback: (url: string) => void) => void;
   };
-  push: ({ pathname, query }: { pathname?: string; query?: object }) => void;
+  push: (url: string, as: string) => void;
 }
 
 /**
- * Declare our minimal router interface for easier mocking
+ * Declare dependencies of the navigation feature
  */
 export interface INavigationFeatureDependencies {
+  i18n: I18nFeature;
   router: INavigationRouterDependency;
 }
 
@@ -50,10 +57,11 @@ export interface INavigationFeatureDependencies {
  * configured and / or displayed multiple times on the same page.
  */
 export const createNavigationFeature = ({
+  i18n,
   router,
 }: INavigationFeatureDependencies): INavigationFeature => {
   const navigationActions = new NavigationActions();
-  const navigationStore = new NavigationStore(navigationActions, router);
+  const navigationStore = new NavigationStore(navigationActions, router, i18n);
 
   return {
     actions: navigationActions,

@@ -6,6 +6,7 @@ import { INavigationRouterDependency } from '../index';
  * of NextRouter for testing.
  */
 export class NavigationRouterMock implements INavigationRouterDependency {
+  public readonly asPath = '';
   public readonly pathname = '';
   public readonly query = {};
   public readonly events = {
@@ -20,10 +21,9 @@ export class NavigationRouterMock implements INavigationRouterDependency {
   };
   private eventType: string | null = null;
   private callback: ((url: string) => void) | null = null;
-  public push({ pathname, query }: { pathname?: string; query?: object }) {
+  public push(url: string, as: string) {
     if (this.callback && this.eventType === 'routeChangeComplete') {
-      const qs = querystring.stringify(query);
-      this.callback(`http://localhost:4000/${pathname}?${qs}`);
+      this.callback(`http://localhost:4000/${as}`);
     }
   }
 }

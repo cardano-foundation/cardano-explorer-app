@@ -9,7 +9,7 @@ import styles from './Search.module.scss';
 
 export interface ISearchProps {
   placeholder?: string;
-  title?: string | boolean;
+  title?: string | boolean | null;
   brandType?: BrandType;
   onSearch: (value: string) => any;
   onInputChange: (value: string) => any;
@@ -37,9 +37,13 @@ const Search = (props: ISearchProps) => {
       ? styles.type
       : '';
 
-  const searchContainerStyles = cx([styles.searchContainer, brandTypeStyle]);
   const searchInputStyles = cx([styles.searchInput, searchTypeStyle]);
-
+  const searchContainerStyles = cx([styles.searchContainer, brandTypeStyle]);
+  const submitSearch = () => {
+    if (searchValue !== '') {
+      onSearch(searchValue);
+    }
+  };
   return (
     <div className={searchContainerStyles}>
       {title && <h2 className={styles.searchTitle}>{title}</h2>}
@@ -72,7 +76,7 @@ const Search = (props: ISearchProps) => {
           }}
           onKeyPress={e => {
             if (e.key === 'Enter') {
-              onSearch(searchValue);
+              submitSearch();
             }
           }}
         />
@@ -83,7 +87,7 @@ const Search = (props: ISearchProps) => {
               <div className={styles.searchButtonInner} />
             </div>
           }
-          onClick={() => onSearch(searchValue)}
+          onClick={submitSearch}
         />
       </div>
     </div>

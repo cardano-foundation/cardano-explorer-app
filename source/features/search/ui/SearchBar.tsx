@@ -10,6 +10,7 @@ import {
   SearchType,
 } from '../../../constants';
 import { environment } from '../../../environment';
+import { useI18nFeature } from '../../i18n/context';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
 import Search from './Search';
@@ -21,6 +22,7 @@ export interface ISearchBarProps {
 }
 
 export const SearchBar = (props: ISearchBarProps) => {
+  const { translate } = useI18nFeature().store;
   const [searchValue, setSearchValue] = useState('');
   const [searchType, setSearchType] = useState('');
   const search = useSearchFeature();
@@ -85,6 +87,8 @@ export const SearchBar = (props: ISearchBarProps) => {
         onSearch={query => introspectQuery(query)}
         onRemoveSearchType={removeSearchType}
         searchType={searchType}
+        placeholder={translate('search.placeholder') as string}
+        title={translate('search.title') as string}
       />
       {isSearchValueValid && (
         <div className={styles.searchSuggestionsWrapper}>

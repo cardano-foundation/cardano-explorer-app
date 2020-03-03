@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import React, { Component } from 'react';
+import { LocalizedLink } from '../navigation/ui/LocalizedLink';
 import styles from './PageNotFoundError.module.scss';
 
 export interface IErrorProps {
@@ -34,9 +34,9 @@ export default class Error extends Component<IErrorProps> {
           </div>
           <p className={styles.bottomContainerText}>{notFoundText}</p>
           <div className={styles.bottomContainerLinks}>
-            <Link href="/">
+            <LocalizedLink href="/">
               <a className={styles.bottomContainerLink}>Blockchain Explorer</a>
-            </Link>
+            </LocalizedLink>
             <div className={styles.bottomContainerLinksSeparator} />
             <a
               href="https://help.cardano.org/"

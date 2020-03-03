@@ -8,7 +8,7 @@ export const BrowserUpdate = () => {
     if (browserUpdate) {
       browserUpdate({
         onshow: (infos: any) => {
-          navigation.actions.push.trigger({ path: '/outdated-browser' });
+          navigation.actions.push.trigger({ path: '/outdated-browser/' });
         },
 
         reminder: 24,

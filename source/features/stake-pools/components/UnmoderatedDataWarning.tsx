@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Container from '../../../widgets/container/Container';
+import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
 import { IUnmoderatedDataWarning } from '../types';
 import styles from './UnmoderatedDataWarning.module.scss';
 
@@ -21,9 +21,9 @@ export default ({ onAcceptUnmoderatedData }: IUnmoderatedDataWarning) => (
         <p>Do you want to see unmoderated content?</p>
       </div>
       <div className={styles.contentBottom}>
-        <Link href="/">
+        <LocalizedLink href="/">
           <a>Leave this page</a>
-        </Link>
+        </LocalizedLink>
         <button onClick={onAcceptUnmoderatedData}>
           Yes, show unmoderated content
         </button>
