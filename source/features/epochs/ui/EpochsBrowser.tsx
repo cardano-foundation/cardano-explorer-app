@@ -4,7 +4,7 @@ import { calculatePaging } from '../../../lib/paging';
 import NavigationPagination from '../../../widgets/browsing/NavigationPagination';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { useNavigationFeature } from '../../navigation';
-
+import { useI18nFeature } from '../../i18n/context';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import {
   EPOCHS_PER_PAGE_DEFAULT,
@@ -16,6 +16,7 @@ import EpochList from './EpochList';
 import styles from './EpochsBrowser.module.scss';
 
 const EpochsBrowser = () => {
+  const { translate } = useI18nFeature().store;
   const navigation = useNavigationFeature();
   // The network block height is required before doing any browsing
   const networkInfo = useNetworkInfoFeature();
@@ -53,7 +54,7 @@ const EpochsBrowser = () => {
       <EpochList
         currentEpoch={epochs.store.currentEpochNumber}
         isLoading={epochs.api.getEpochsInRangeQuery.isExecuting}
-        title="Browse Epochs"
+        title={translate('browseEpochs.epochsListTitle')}
         items={epochs.store.browsedEpochs}
       />
       <NavigationPagination

@@ -2,12 +2,12 @@ import dayjs from 'dayjs';
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
+import { useI18nFeature } from '../../i18n/context';
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../../transactions/types';
 import { BLOCK_SEARCH_RESULT_PATH } from '../config';
 import { IBlockDetailed } from '../types';
 import styles from './BlockSummary.module.scss';
-import { useI18nFeature } from '../../i18n/context';
 
 export type BlockSummaryProps = {
   navigation?: NavigationActions;

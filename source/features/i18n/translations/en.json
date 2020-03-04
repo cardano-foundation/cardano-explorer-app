@@ -2,34 +2,35 @@
   "address": {
     "pageTitle": "Address | $t(productTitle)",
     "summaryAddressLabel": "Address",
-    "summaryTransactionsLabel": "Transactions",
-    "summaryBalanceLabel": "Final Balance"
+    "summaryBalanceLabel": "Final Balance",
+    "summaryTransactionsLabel": "Transactions"
   },
   "block": {
     "pageTitle": "Block | $t(productTitle)"
   },
   "blockSummary": {
-    "id": "ID",
-    "epoch": "Epoch",
-    "block": "Block",
-    "confirmations": "Confirmations",
-    "size": "Size",
-    "transactions": "Transactions",
     "createdBy": "Created By",
-    "time": "Time",
-    "previousBlock": "Previous block",
+    "confirmations": "Confirmations",
+    "block": "Block",
+    "epoch": "Epoch",
+    "id": "ID",
+    "merkleRoot": "Merkle root",
     "nextBlock": "Next block",
-    "merkleRoot": "Merkle root"
+    "previousBlock": "Previous block",
+    "size": "Size",
+    "time": "Time",
+    "transactions": "Transactions"
   },
   "browseBlocks": {
     "pageTitle": "Browse Blocks | $t(productTitle)",
-    "stakePoolLabel": "Stake pool",
-    "slotsElectedLabel": "Slots elected",
     "performanceLabel": "Performance",
-    "sharedRewardsLabel": "Shared rewards"
+    "sharedRewardsLabel": "Shared rewards",
+    "slotsElectedLabel": "Slots elected",
+    "stakePoolLabel": "Stake pool"
   },
   "browseEpochs": {
-    "pageTitle": "Browse Epochs | $t(productTitle)"
+    "pageTitle": "Browse Epochs | $t(productTitle)",
+    "epochsListTitle": "Browse Epochs"
   },
   "epoch": {
     "pageTitle": "Epoch | $t(productTitle)"
@@ -39,6 +40,14 @@
   },
   "index": {
     "pageTitle": "$t(productTitle)"
+  },
+  "latestBlocks": {
+    "pageTitle": "Latest Blocks",
+    "showMore": "show more"
+  },
+  "latestEpochs": {
+    "pageTitle": "Latest Epochs",
+    "showMore": "show more"
   },
   "locales": {
     "de": "German",
