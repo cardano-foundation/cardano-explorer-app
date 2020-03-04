@@ -86,7 +86,7 @@ const EpochsSearchResult = () => {
     !api.searchForEpochByNumberQuery.hasBeenExecutedAtLeastOnce ||
     queryEpochNumber !== epochSearchResult?.number
   ) {
-    return <LoadingSpinner />;
+    return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
   } else if (epochSearchResult) {
     return (
       <div className={styles.container}>

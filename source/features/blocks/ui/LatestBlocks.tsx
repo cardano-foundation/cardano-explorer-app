@@ -6,6 +6,7 @@ import { useNavigationFeature } from '../../navigation';
 import { BLOCK_BROWSE_PATH } from '../config';
 import { useBlocksFeature } from '../context';
 import BlockList from './BlockList';
+import styles from './LatestBlocks.module.scss';
 
 export const LatestBlocks = () => {
   const { actions, store } = useBlocksFeature();
@@ -38,7 +39,9 @@ export const LatestBlocks = () => {
               items={latestBlocks}
               title="Latest Blocks"
             />
-            {store.isLoadingLatestBlocksFirstTime && <LoadingSpinner />}
+            {store.isLoadingLatestBlocksFirstTime && (
+              <LoadingSpinner className={styles.loadingSpinnerMargin} />
+            )}
           </ShowMoreButtonDecorator>
         );
       }}

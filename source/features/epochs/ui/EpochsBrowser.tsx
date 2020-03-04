@@ -13,6 +13,7 @@ import {
 } from '../config';
 import { useEpochsFeature } from '../context';
 import EpochList from './EpochList';
+import styles from './EpochsBrowser.module.scss';
 
 const EpochsBrowser = () => {
   const navigation = useNavigationFeature();
@@ -62,7 +63,7 @@ const EpochsBrowser = () => {
       />
     </>
   ) : (
-    <LoadingSpinner />
+    <LoadingSpinner className={styles.loadingSpinnerMargin} />
   );
 };
 
