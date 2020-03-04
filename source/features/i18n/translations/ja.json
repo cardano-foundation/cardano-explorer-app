@@ -1,6 +1,9 @@
 {
   "address": {
-    "pageTitle": "!!!Address | $t(productTitle)"
+    "pageTitle": "!!!Address | $t(productTitle)",
+    "summaryAddressLabel": "!!!Address",
+    "summaryTransactionsLabel": "!!!Transactions",
+    "summaryBalanceLabel": "!!!Final Balance"
   },
   "block": {
     "pageTitle": "!!!Block | $t(productTitle)"
