@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useI18nFeature } from '../i18n/context';
 import { LocalizedLink } from '../navigation/ui/LocalizedLink';
 import styles from './PageNotFoundError.module.scss';
 
@@ -9,12 +10,13 @@ export interface IErrorProps {
 
 export default class Error extends Component<IErrorProps> {
   public render() {
+    const { translate } = useI18nFeature().store;
     const { notFoundTitle, notFoundText } = this.props;
 
     return (
       <div className={styles.errorContainer}>
         <div className={styles.mainContainer}>
-          <div className={styles.errorCode}>Error code:</div>
+          <div className={styles.errorCode}>{translate('404:error.code')}</div>
           <div className={styles.errorCodeSeparator} />
           <div className={styles.errorCodeMessage}>404</div>
         </div>
@@ -35,14 +37,16 @@ export default class Error extends Component<IErrorProps> {
           <p className={styles.bottomContainerText}>{notFoundText}</p>
           <div className={styles.bottomContainerLinks}>
             <LocalizedLink href="/">
-              <a className={styles.bottomContainerLink}>Blockchain Explorer</a>
+              <a className={styles.bottomContainerLink}>
+                {translate('404:error.explorerTitle')}
+              </a>
             </LocalizedLink>
             <div className={styles.bottomContainerLinksSeparator} />
             <a
               href="https://help.cardano.org/"
               className={styles.bottomContainerLink}
             >
-              Contact Support
+              {translate('404:error.support')}
             </a>
           </div>
         </div>

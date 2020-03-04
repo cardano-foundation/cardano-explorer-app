@@ -35,6 +35,14 @@
   "epoch": {
     "pageTitle": "Epoche | $t(productTitle)"
   },
+  "epochSummary": {
+    "epoch": "!!!Epoch",
+    "lastBlockAt": "!!!Last Block at",
+    "numberOfBlocks": "!!!# of blocks",
+    "startedAt": "!!!Started at",
+    "totalOutput": "!!!Total output",
+    "transactions": "!!!Transactions"
+  },
   "error": {
     "pageTitle": "Fehler 404 | $t(productTitle)"
   },
@@ -54,10 +62,20 @@
     "en": "Englisch",
     "ja": "Japanisch"
   },
+  "outdatedBrowser": {
+    "pageTitle": "!!!Outdated browser",
+    "text": "!!!Your web browser is out of date",
+    "updateBrowserFirst": "!!!Update your",
+    "updateBrowserSecond": "!!!browser for more security, speed and the best experience on this site."
+  },
   "productTitle": "Cardano Explorer",
   "search": {
     "placeholder": "Suche nach Epochen, Blöcken, Addressen und Transaktionen",
     "title": "Suche"
+  },
+  "stakeDistribution": {
+    "slotsElected": "!!!Slots elected",
+    "stakePool": "!!!Stake pool"
   },
   "transaction": {
     "pageTitle": "Transaktion | $t(productTitle)"

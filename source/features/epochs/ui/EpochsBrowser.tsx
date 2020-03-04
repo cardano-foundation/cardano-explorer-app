@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { calculatePaging } from '../../../lib/paging';
 import NavigationPagination from '../../../widgets/browsing/NavigationPagination';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
-import { useNavigationFeature } from '../../navigation';
 import { useI18nFeature } from '../../i18n/context';
+import { useNavigationFeature } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import {
   EPOCHS_PER_PAGE_DEFAULT,

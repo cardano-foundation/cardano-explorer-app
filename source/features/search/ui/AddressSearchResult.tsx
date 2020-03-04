@@ -2,7 +2,6 @@ import { isString } from 'lodash';
 import { Observer } from 'mobx-react-lite';
 import React from 'react';
 import { useObservableEffect } from '../../../lib/mobx/react';
-import Container from '../../../widgets/container/Container';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import AddressSummary from '../../address/ui/AddressSummary';
 import { useNavigationFeature } from '../../navigation';
