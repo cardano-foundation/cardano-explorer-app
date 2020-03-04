@@ -8,8 +8,25 @@
   "block": {
     "pageTitle": "Block | $t(productTitle)"
   },
+  "blockSummary": {
+    "id": "ID",
+    "epoch": "Epoch",
+    "block": "Block",
+    "confirmations": "Confirmations",
+    "size": "Size",
+    "transactions": "Transactions",
+    "createdBy": "Created By",
+    "time": "Time",
+    "previousBlock": "Previous block",
+    "nextBlock": "Next block",
+    "merkleRoot": "Merkle root"
+  },
   "browseBlocks": {
-    "pageTitle": "Browse Blocks | $t(productTitle)"
+    "pageTitle": "Browse Blocks | $t(productTitle)",
+    "stakePoolLabel": "Stake pool",
+    "slotsElectedLabel": "Slots elected",
+    "performanceLabel": "Performance",
+    "sharedRewardsLabel": "Shared rewards"
   },
   "browseEpochs": {
     "pageTitle": "Browse Epochs | $t(productTitle)"
