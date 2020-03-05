@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 import { getColorFromRange } from '../../../lib/colors';
+import { useI18nFeature } from '../../i18n/context';
 import { IStakePoolTooltipProps } from '../types';
 import styles from './StakePoolTooltip.module.scss';
 
@@ -26,7 +27,7 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
     performance,
     retiring,
   } = stakePool;
-
+  const { translate } = useI18nFeature().store;
   const darken = 1;
   const alpha = 0.3;
   const reverse = true;
@@ -70,7 +71,7 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
         <div className={styles.ticker}>{ticker}</div>
         {retiring && (
           <div className={styles.retirement}>
-            Retiring in {retirementFromNow}
+            {translate('stakePools.retiring')} {retirementFromNow}
           </div>
         )}
         <div className={styles.description}>{description}</div>
@@ -79,7 +80,7 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
           <ExternalLinkIcon className={styles.urlIcon} />
         </a>
         <dl className={styles.table}>
-          <dt>Ranking</dt>
+          <dt>{translate('stakePools.ranking')}</dt>
           <dd className={styles.ranking}>
             <span
               style={{
@@ -89,7 +90,7 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
               {ranking}
             </span>
           </dd>
-          <dt>ControlledStake</dt>
+          <dt>{translate('stakePools.controlledStake')}</dt>
           <dd className={styles.controlledStake}>
             <span
               style={{
@@ -102,7 +103,7 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
               {controlledStake}%
             </span>
           </dd>
-          <dt>ProfitMargin</dt>
+          <dt>{translate('stakePools.profitMargin')}</dt>
           <dd className={styles.profitMargin}>
             <span
               style={{
@@ -116,7 +117,7 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
               {profitMargin}%
             </span>
           </dd>
-          <dt>Performance</dt>
+          <dt>{translate('stakePools.performance')}</dt>
           <dd className={styles.performance}>
             <span
               style={{

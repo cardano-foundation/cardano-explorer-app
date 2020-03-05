@@ -85,12 +85,33 @@
     "stakePool": "!!!Stake pool"
   },
   "stakePools": {
+    "controlledStake": "!!!Controlled Stake",
+    "performance": "!!!Performance",
+    "profitMargin": "!!!Profit Margin",
+    "ranking": "!!!Ranking",
+    "retiring": "!!!Retiring in",
     "stakePoolsSearch": "!!!Search for a specific stake pool",
-    "stakePoolsTitle": "!!!Stake Pools"
+    "stakePoolsTitle": "!!!Stake Pools",
+    "unmoderated": "!!!You have consented to view unmoderated stake pool data.",
+    "unmoderatedContent": "!!!Do you want to see unmoderated content?",
+    "unmoderatedEntitiesControl": "!!!This information is provided and hosted by stake pool operators and it is not in control of entities running this website.",
+    "unmoderatedLeave": "!!!Leave this page",
+    "unmoderatedPoolTickerSymbols": "!!!Stake pool ticker symbols, titles, descriptions and websites are not moderated and may contain inappropriate content.",
+    "unmoderatedStakePoolData": "!!!Stake pool data is not moderated",
+    "unmoderatedWarning": "!!!Warning:"
   },
   "transaction": {
+    "block": "!!!Block",
+    "confirmations": "!!!Confirmations",
+    "epoch": "!!!Epoch",
+    "fee": "!!!Transaction Fee",
+    "includedIn": "!!!Included In",
+    "noTransactions": "!!!No Transactions",
     "pageTitle": "!!!Transaction | $t(productTitle)",
+    "receivedTime": "!!!Received Time",
     "summary": "!!!Summary",
-    "transactionLabel": "!!!Transaction"
+    "totalOutput": "!!!Total Output",
+    "transactionLabel": "!!!Transaction",
+    "transactionsLabel": "!!!Transactions"
   }
 }
