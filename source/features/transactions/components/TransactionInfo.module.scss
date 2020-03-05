@@ -5,6 +5,11 @@ $medium-breakpoint: 780px;
   max-width: 872px;
   width: 100%;
 
+  a:link,
+  a:visited {
+    text-decoration: none;
+  }
+
   .header {
     margin-bottom: 41px;
   }
@@ -96,7 +101,6 @@ $medium-breakpoint: 780px;
         .output {
           align-items: center;
           color: var(--primary-highlight-color);
-          cursor: pointer;
           display: flex;
           font-family: ProximaNova, sans-serif;
           letter-spacing: 0.4px;
