@@ -5,7 +5,6 @@ import { calculatePaging } from '../../../lib/paging';
 import RouterPagination from '../../../widgets/browsing/NavigationPagination';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { useNavigationFeature } from '../../navigation';
-
 import { useNetworkInfoFeature } from '../../network-info/context';
 import {
   BLOCKS_PER_PAGE_DEFAULT,
@@ -14,6 +13,7 @@ import {
 } from '../config';
 import { useBlocksFeature } from '../context';
 import BlockList from './BlockList';
+import styles from './BlocksBrowser.module.scss';
 
 interface IBlocksBrowserProps {
   epoch?: number;
@@ -71,7 +71,7 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
 
   return !apiQuery.hasBeenExecutedAtLeastOnce ||
     apiQuery.isExecutingTheFirstTime ? (
-    <LoadingSpinner />
+    <LoadingSpinner className={styles.loadingSpinnerMargin} />
   ) : (
     <>
       <BlockList

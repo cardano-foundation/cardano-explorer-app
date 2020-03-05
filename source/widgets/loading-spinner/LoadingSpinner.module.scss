@@ -1,6 +1,13 @@
 .component {
-  display: table;
-  margin: 20px auto;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon path {
+    fill: var(--primary-highlight-color);
+  }
 
   &.big svg {
     height: 44px;
@@ -20,10 +27,6 @@
   &.small svg {
     height: 30px;
     width: 30px;
-  }
-
-  .icon path {
-    fill: var(--primary-highlight-color);
   }
 
   svg :global {

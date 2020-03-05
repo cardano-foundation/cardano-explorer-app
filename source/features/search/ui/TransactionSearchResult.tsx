@@ -33,7 +33,7 @@ export const TransactionSearchResult = () => {
           !search.api.searchByIdQuery.hasBeenExecutedAtLeastOnce ||
           search.store.isSearching
         ) {
-          return <LoadingSpinner />;
+          return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
         } else if (transactionSearchResult) {
           return (
             <>

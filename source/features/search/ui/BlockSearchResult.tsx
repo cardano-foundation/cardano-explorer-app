@@ -38,7 +38,7 @@ export const BlockSearchResult = () => {
           store.isSearching ||
           !networkInfo.store.blockHeight
         ) {
-          return <LoadingSpinner />;
+          return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
         } else if (blockSearchResult) {
           return (
             <>

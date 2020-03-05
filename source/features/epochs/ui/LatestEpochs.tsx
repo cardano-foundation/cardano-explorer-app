@@ -6,6 +6,7 @@ import { useNavigationFeature } from '../../navigation';
 import { EPOCH_BROWSE_PATH } from '../config';
 import { useEpochsFeature } from '../context';
 import EpochList from './EpochList';
+import styles from './LatestEpochs.module.scss';
 
 export const LatestEpochs = () => {
   const { actions, store } = useEpochsFeature();
@@ -39,7 +40,9 @@ export const LatestEpochs = () => {
               items={latestEpochs}
               isLoading={store.isLoadingLatestEpochsFirstTime}
             />
-            {store.isLoadingLatestEpochsFirstTime && <LoadingSpinner />}
+            {store.isLoadingLatestEpochsFirstTime && (
+              <LoadingSpinner className={styles.loadingSpinnerMargin} />
+            )}
           </ShowMoreButtonDecorator>
         );
       }}
