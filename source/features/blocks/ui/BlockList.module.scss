@@ -1,5 +1,15 @@
 .blockListContainer {
   position: relative;
+
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: var(--primary-highlight-color);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   :global {
     .epoch {
       width: 90px;

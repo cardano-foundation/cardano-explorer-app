@@ -9,7 +9,7 @@ export const LocalizedLink = (
   return (
     <Link
       {...props}
-      href={`/[locale]/${props.href}`}
+      href={`/[locale]${props.href}`}
       as={`/${i18n.store.locale}${props.href}`}
     >
       {props.children}
