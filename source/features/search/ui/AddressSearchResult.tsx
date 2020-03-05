@@ -4,6 +4,7 @@ import React from 'react';
 import { useObservableEffect } from '../../../lib/mobx/react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import AddressSummary from '../../address/ui/AddressSummary';
+import { useI18nFeature } from '../../i18n/context';
 import { useNavigationFeature } from '../../navigation';
 import TransactionBrowser, {
   TRANSACTIONS_PER_PAGE_DEFAULT,
@@ -15,6 +16,7 @@ import styles from './AddressSearchResult.module.scss';
 import NoSearchResult from './NoSearchResult';
 
 export const AddressSearchResult = () => {
+  const { translate } = useI18nFeature().store;
   const { actions, api, store } = useSearchFeature();
   const transactions = useTransactionsFeature();
   const navigation = useNavigationFeature();
@@ -45,7 +47,7 @@ export const AddressSearchResult = () => {
             <>
               <div className={styles.addressSummary}>
                 <AddressSummary
-                  title="Address"
+                  title={translate('address.addressLabel')}
                   address={address}
                   finalBalance={finalBalance}
                   transactionsCount={transactionsCount}

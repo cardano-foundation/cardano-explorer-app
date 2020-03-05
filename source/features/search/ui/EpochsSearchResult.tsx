@@ -6,6 +6,7 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlocksBrowser from '../../blocks/ui/BlocksBrowser';
 import EpochSummary from '../../epochs/ui/EpochSummary';
 import StakeDistribution from '../../epochs/ui/StakeDistribution';
+import { useI18nFeature } from '../../i18n/context';
 import { useNavigationFeature } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
@@ -47,6 +48,7 @@ const stakeDistribution = [
 ];
 
 const EpochsSearchResult = () => {
+  const { translate } = useI18nFeature().store;
   const { actions, api, store } = useSearchFeature();
   const networkInfo = useNetworkInfoFeature();
   const navigation = useNavigationFeature();
@@ -91,18 +93,21 @@ const EpochsSearchResult = () => {
     return (
       <div className={styles.container}>
         <div className={styles.epochSummary}>
-          <EpochSummary title="Epoch Summary" epoch={epochSearchResult} />
+          <EpochSummary
+            title={translate('epochSummary.epochSummaryTitle')}
+            epoch={epochSearchResult}
+          />
         </div>
         <BlocksBrowser
           epoch={epochSearchResult.number}
           perPageDefault={10}
-          title="Blocks"
+          title={translate('block.blocks')}
           totalItems={epochSearchResult?.blocksCount}
         />
         {environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
           <div className={styles.stakeDistribution}>
             <StakeDistribution
-              title="Stake Distribution"
+              title={translate('stakeDistribution.distribution')}
               items={stakeDistribution}
             />
           </div>

@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import { useI18nFeature } from '../../i18n/context';
 import { SearchType } from '../store';
 import styles from './NoSearchResult.module.scss';
 
@@ -10,10 +11,11 @@ const NoSearchResult = ({
   searchQuery: string;
   searchType: SearchType;
 }) => {
+  const { translate } = useI18nFeature().store;
   const message =
     SearchType.address === searchType
-      ? 'Address does not exist:'
-      : 'Sorry, we could not find any results matching:';
+      ? translate('search.notExist')
+      : translate('search.notFound');
   return (
     <div className={styles.noSearchResultContainer}>
       <div className={styles.header}>
@@ -33,8 +35,7 @@ const NoSearchResult = ({
               <div className={styles.errorDescriptionContainer}>
                 <div className={styles.errorDescriptionIcon} />
                 <p className={styles.errorDescriptionText}>
-                  Please enter a valid epoch id, block id, transaction id,
-                  address or epoch number and retry your search.
+                  {translate('search.description')}
                 </p>
               </div>
             )}

@@ -1,12 +1,15 @@
 {
   "address": {
+    "addressLabel": "Address",
     "pageTitle": "Address | $t(productTitle)",
     "summaryAddressLabel": "Address",
     "summaryBalanceLabel": "Final Balance",
     "summaryTransactionsLabel": "Transactions"
   },
   "block": {
-    "pageTitle": "Block | $t(productTitle)"
+    "blocks": "Blocks",
+    "pageTitle": "Block | $t(productTitle)",
+    "summary": "Block Summary"
   },
   "blockSummary": {
     "createdBy": "Created By",
@@ -37,6 +40,7 @@
   },
   "epochSummary": {
     "epoch": "Epoch",
+    "epochSummaryTitle": "Epoch Summary",
     "lastBlockAt": "Last Block at",
     "numberOfBlocks": "# of blocks",
     "startedAt": "Started at",
@@ -70,14 +74,23 @@
   },
   "productTitle": "Cardano Explorer",
   "search": {
+    "description": "Please enter a valid epoch id, block id, transaction id, address or epoch number and retry your search.",
+    "notExist": "Address does not exist:",
+    "notFound": "Sorry, we could not find any results matching:",
     "placeholder": "Search for epochs, blocks, addresses and transactions",
     "title": "Search"
   },
   "stakeDistribution": {
+    "distribution": "Stake Distribution",
     "slotsElected": "Slots elected",
     "stakePool": "Stake pool"
   },
+  "stakePools": {
+    "stakePoolsTitle": "Stake Pools"
+  },
   "transaction": {
-    "pageTitle": "Transaction | $t(productTitle)"
+    "pageTitle": "Transaction | $t(productTitle)",
+    "summary": "Summary",
+    "transactionLabel": "Transaction"
   }
 }
