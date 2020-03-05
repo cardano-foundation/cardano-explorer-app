@@ -1,6 +1,6 @@
 import classnames from 'classnames';
-import Link from 'next/link';
 import React from 'react';
+import { useI18nFeature } from '../../features/i18n/context';
 import styles from './Footer.module.scss';
 
 const iohkLogo = require('../../public/assets/images/iohk-logo.png');
@@ -14,6 +14,7 @@ interface IFooterProps {
   rootClassname?: string;
 }
 export const Footer = (props: IFooterProps) => {
+  const { translate } = useI18nFeature().store;
   return (
     <footer
       className={classnames([styles.footerContainer, props.rootClassname])}
@@ -36,7 +37,7 @@ export const Footer = (props: IFooterProps) => {
               <a href="#">
                 <img src={iohkLogo} className={styles.iohkLogo} />
               </a>
-              <p className={styles.iohkText}>IOHK Supported Project</p>
+              <p className={styles.iohkText}>{translate('footer.iohk')}</p>
             </div>
             <div className={styles.socialIcons}>
               <a href="https://twitter.com/inputoutputHK">
@@ -60,27 +61,24 @@ export const Footer = (props: IFooterProps) => {
         <div className={styles.footerBottomContainer}>
           <div className={styles.cardanoTextContainer}>
             <h5 className={styles.cardanoTextTitle}>
-              Cardano is an{' '}
+              {translate('footer.textTitle')}{' '}
               <a
                 className={styles.highlightedLink}
                 href="https://github.com/input-output-hk/cardano-sl"
               >
-                Open Source
+                {translate('footer.openSource')}
               </a>{' '}
-              project.
+              {translate('footer.project')}
             </h5>
             <div className={styles.cardanoText}>
-              Cardano is a software platform ONLY and does not conduct any
-              independent diligence on or substantive review of any blockchain ,
-              digital currency, cryptocurrency or associated technology. Your
-              use of this website and software is entirely at your own risk, and
-              this website is provided on an "as is" basis and for reference
-              only.
+              {translate('footer.cardanoText')}
             </div>
           </div>
           <div className={styles.footerMenusContainer}>
             <div className={styles.aboutCardanoMenuContainer}>
-              <h5 className={styles.aboutCardanoTitle}>More about Cardano</h5>
+              <h5 className={styles.aboutCardanoTitle}>
+                {translate('footer.moreAbout')}
+              </h5>
               <ul className={styles.aboutCardanoMenu}>
                 <li>
                   <a href={'https://shelleyexplorer.cardano.org/'}>
@@ -112,7 +110,7 @@ export const Footer = (props: IFooterProps) => {
             </div>
             <div className={styles.joinTheCommunityMenuContainer}>
               <h5 className={styles.joinTheCommunityTitle}>
-                Join the community
+                {translate('footer.joinCommunity')}
               </h5>
               <ul className={styles.joinTheCommunityMenu}>
                 <li>

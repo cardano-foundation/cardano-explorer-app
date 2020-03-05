@@ -1,16 +1,13 @@
 import cx from 'classnames';
-import { without } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
-import { SUPPORTED_LOCALES } from '../../features/i18n';
 import { useI18nFeature } from '../../features/i18n/context';
 import { useNavigationFeatureOptionally } from '../../features/navigation';
 import { LocalizedLink } from '../../features/navigation/ui/LocalizedLink';
 import { SearchBar } from '../../features/search/ui/SearchBar';
 import CardanoLogo from '../../public/assets/images/header/cardano-logo.svg';
-import LanguageSwitcher from '../language-switcher/LanguageSwitcher';
 import styles from './Header.module.scss';
 
 export interface IHeaderProps {
@@ -19,6 +16,7 @@ export interface IHeaderProps {
 }
 
 export const Header = observer((props: IHeaderProps) => {
+  const { translate } = useI18nFeature().store;
   const { brandType } = props;
   const navigation = useNavigationFeatureOptionally();
   const brandTypeStyle =
@@ -65,7 +63,7 @@ export const Header = observer((props: IHeaderProps) => {
               <a>
                 <span className={styles.cardanoTitle}>Cardano</span>
                 <span className={styles.explorerTitle}>
-                  Blockchain Explorer
+                  {translate('header.explorer')}
                 </span>
               </a>
             </LocalizedLink>
@@ -76,7 +74,9 @@ export const Header = observer((props: IHeaderProps) => {
               <div className={styles.tabLeftLine} />
               <div className={styles.tabCircle} />
               <LocalizedLink href="/">
-                <a className={indexClassName}>Epochs & Blocks</a>
+                <a className={indexClassName}>
+                  {translate('header.epochsBlocks')}
+                </a>
               </LocalizedLink>
               <div className={styles.tabCircle} />
               {stakePoolLink}

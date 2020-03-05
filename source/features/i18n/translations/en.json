@@ -50,6 +50,19 @@
   "error": {
     "pageTitle": "Error 404 | $t(productTitle)"
   },
+  "footer": {
+    "cardanoText": "Cardano is a software platform ONLY and does not conduct any independent diligence on or substantive review of any blockchain ,digital currency, cryptocurrency or associated technology. Your use of this website and software is entirely at your own risk, and this website is provided on an \"as is\" basis and for reference only.",
+    "iohk": "IOHK Supported Project",
+    "joinCommunity": "Join the community",
+    "moreAbout": "More about Cardano",
+    "openSource": "Open Source",
+    "project": "project.",
+    "textTitle": "Cardano is an"
+  },
+  "header": {
+    "epochsBlocks": "Epochs & Blocks",
+    "explorer": "Blockchain Explorer"
+  },
   "index": {
     "pageTitle": "$t(productTitle)"
   },
@@ -71,6 +84,9 @@
     "text": "Your web browser is out of date",
     "updateBrowserFirst": "Update your",
     "updateBrowserSecond": "browser for more security, speed and the best experience on this site."
+  },
+  "pagination": {
+    "of": "of"
   },
   "productTitle": "Cardano Explorer",
   "search": {
