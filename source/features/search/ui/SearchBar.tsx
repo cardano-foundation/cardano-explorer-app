@@ -1,8 +1,9 @@
 import { Address } from 'cardano-js';
 import { AddressGroup } from 'cardano-js/dist/Address/AddressGroup';
 import { ChainSettings } from 'cardano-js/dist/ChainSettings';
-import React from 'react';
+import cx from 'classnames';
 import { useState } from 'react';
+import React from 'react';
 import {
   BrandType,
   CardanoEra,
@@ -14,8 +15,8 @@ import { useI18nFeature } from '../../i18n/context';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
 import Search from './Search';
-import SearchSuggestions from './SearchSuggestions';
 import styles from './Search.module.scss';
+import SearchSuggestions from './SearchSuggestions';
 
 export interface ISearchBarProps {
   brandType?: BrandType;
@@ -79,6 +80,15 @@ export const SearchBar = (props: ISearchBarProps) => {
 
   const isSearchValueValid = searchValue && searchValue.length < 10;
 
+  const brandTypeStyle =
+    props.brandType === BrandType.SHRINKED
+      ? styles.shrinkedSearchSuggestionWrapper
+      : '';
+  const searchContainerStyles = cx([
+    styles.searchSuggestionsWrapper,
+    brandTypeStyle,
+  ]);
+
   return (
     <>
       <Search
@@ -91,7 +101,7 @@ export const SearchBar = (props: ISearchBarProps) => {
         title={translate('search.title') as string}
       />
       {isSearchValueValid && (
-        <div className={styles.searchSuggestionsWrapper}>
+        <div className={searchContainerStyles}>
           <SearchSuggestions
             value={searchValue}
             onSearchTypeSelect={value => searchTypeSelectQuery(value)}

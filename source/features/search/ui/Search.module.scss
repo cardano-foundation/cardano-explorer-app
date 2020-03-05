@@ -198,6 +198,19 @@
     max-width: 872px;
     padding: 0 50px 40px;
   }
+
+  &.shrinkedSearchSuggestionWrapper {
+    .searchSuggestionsContainer {
+      .searchSuggestionsContent {
+        margin-left: -50px;
+        margin-top: 10px;
+
+        @media (max-width: 768px) {
+          margin-left: -15px;
+        }
+      }
+    }
+  }
 }
 
 .searchSuggestionsContainer {
