@@ -1,13 +1,15 @@
 import { observer } from 'mobx-react-lite';
+import { useI18nFeature } from '../../i18n/context';
 import Search from '../../search/ui/Search';
 import { IStakePoolsSearchProps } from '../types';
 import styles from './StakePoolsSearch.module.scss';
 
-const StakePoolsSearch = ({ search, onSearch }: IStakePoolsSearchProps) => {
+const StakePoolsSearch = ({ onSearch }: IStakePoolsSearchProps) => {
+  const { translate } = useI18nFeature().store;
   return (
     <div className={styles.stakePoolsSearchContainer}>
       <Search
-        placeholder="Search for a specific stake pool"
+        placeholder={translate('stakePools.stakePoolsSearch')}
         onSearch={(v: string) => onSearch(v)}
         title={false}
       />

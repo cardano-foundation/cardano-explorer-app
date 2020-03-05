@@ -85,6 +85,7 @@
     "stakePool": "!!!Stake pool"
   },
   "stakePools": {
+    "stakePoolsSearch": "!!!Search for a specific stake pool",
     "stakePoolsTitle": "!!!Stake Pools"
   },
   "transaction": {
