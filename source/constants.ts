@@ -8,6 +8,11 @@ export enum BrandType {
   SHRINKED = 'shrinked',
 }
 
+export enum SearchType {
+  EPOCH = 'epoch',
+  BLOCK = 'block',
+}
+
 export enum CardanoNetwork {
   MAINNET = 'mainnet',
   TESTNET = 'testnet',

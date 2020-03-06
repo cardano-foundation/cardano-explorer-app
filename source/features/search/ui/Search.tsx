@@ -1,9 +1,10 @@
 import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
 import { Input } from 'react-polymorph/lib/components/Input';
-import { BrandType } from '../../../constants';
+import { BrandType, SearchType } from '../../../constants';
+const DeleteButton = require('../../../public/assets/images/delete.svg');
 import styles from './Search.module.scss';
 
 export interface ISearchProps {
@@ -11,15 +12,32 @@ export interface ISearchProps {
   title?: string | boolean | null;
   brandType?: BrandType;
   onSearch: (value: string) => any;
+  onInputChange: (value: string) => any;
+  onRemoveSearchType?: () => any;
+  searchType?: string;
 }
 
 const Search = (props: ISearchProps) => {
-  const { placeholder, brandType, onSearch, title } = props;
+  const {
+    placeholder,
+    brandType,
+    onSearch,
+    onInputChange,
+    onRemoveSearchType,
+    title,
+    searchType,
+  } = props;
   const [searchValue, setSearchValue] = useState('');
   const brandTypeStyle =
     brandType === BrandType.ENLARGED
       ? styles.enlargedSearchContainer
       : styles.shrinkedSearchContainer;
+  const searchTypeStyle =
+    searchType === SearchType.EPOCH || searchType === SearchType.BLOCK
+      ? styles.type
+      : '';
+
+  const searchInputStyles = cx([styles.searchInput, searchTypeStyle]);
   const searchContainerStyles = cx([styles.searchContainer, brandTypeStyle]);
   const submitSearch = () => {
     if (searchValue !== '') {
@@ -30,11 +48,32 @@ const Search = (props: ISearchProps) => {
     <div className={searchContainerStyles}>
       {title && <h2 className={styles.searchTitle}>{title}</h2>}
       <div className={styles.searchContent}>
+        {searchType && (
+          <div className={styles.typeOfSearch}>
+            <span className={styles.typeOfSearchText}>
+              {searchType}
+              {':'}
+            </span>
+            <span
+              onClick={() => {
+                setSearchValue('');
+                if (onRemoveSearchType) {
+                  onRemoveSearchType();
+                }
+              }}
+            >
+              <DeleteButton />
+            </span>
+          </div>
+        )}
         <Input
-          className={styles.searchInput}
+          className={searchInputStyles}
           placeholder={placeholder}
           value={searchValue}
-          onChange={v => setSearchValue(v)}
+          onChange={inputValue => {
+            setSearchValue(inputValue);
+            onInputChange(inputValue);
+          }}
           onKeyPress={e => {
             if (e.key === 'Enter') {
               submitSearch();
