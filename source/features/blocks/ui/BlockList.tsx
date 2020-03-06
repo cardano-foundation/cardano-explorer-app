@@ -11,7 +11,7 @@ import styles from './BlockList.module.scss';
 
 export interface IBlockListProps {
   ignoreLinksToEpoch?: number;
-  isLoading: boolean;
+  isLoading?: boolean;
   items: Array<IBlockOverview>;
   title: string;
 }

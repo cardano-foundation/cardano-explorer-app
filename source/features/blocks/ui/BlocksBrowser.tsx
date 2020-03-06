@@ -75,7 +75,6 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
   ) : (
     <>
       <BlockList
-        isLoading={false}
         title={props.title}
         items={
           isBrowsingInEpoch
