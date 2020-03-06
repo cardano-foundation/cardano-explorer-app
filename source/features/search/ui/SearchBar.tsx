@@ -78,7 +78,8 @@ export const SearchBar = (props: ISearchBarProps) => {
     setSearchValue('');
   };
 
-  const isSearchValueValid = searchValue && searchValue.length < 10;
+  const isSearchValueValid =
+    searchValue && searchValue.length < 10 && !searchType;
 
   const brandTypeStyle =
     props.brandType === BrandType.SHRINKED
