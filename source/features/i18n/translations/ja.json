@@ -7,8 +7,9 @@
     "summaryTransactionsLabel": "!!!Transactions"
   },
   "block": {
+    "blocks": "!!!Blocks",
     "pageTitle": "!!!Block | $t(productTitle)",
-    "summary": "Block Summary"
+    "summary": "!!!Block Summary"
   },
   "blockSummary": {
     "createdBy": "!!!Created By",
