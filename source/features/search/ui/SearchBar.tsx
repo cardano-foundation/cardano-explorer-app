@@ -1,13 +1,22 @@
 import { Address } from 'cardano-js';
 import { AddressGroup } from 'cardano-js/dist/Address/AddressGroup';
 import { ChainSettings } from 'cardano-js/dist/ChainSettings';
+import cx from 'classnames';
+import { useState } from 'react';
 import React from 'react';
-import { BrandType, CardanoEra, CardanoNetwork } from '../../../constants';
+import {
+  BrandType,
+  CardanoEra,
+  CardanoNetwork,
+  SearchType,
+} from '../../../constants';
 import { environment } from '../../../environment';
 import { useI18nFeature } from '../../i18n/context';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
 import Search from './Search';
+import styles from './Search.module.scss';
+import SearchSuggestions from './SearchSuggestions';
 
 export interface ISearchBarProps {
   brandType?: BrandType;
@@ -15,6 +24,8 @@ export interface ISearchBarProps {
 
 export const SearchBar = (props: ISearchBarProps) => {
   const { translate } = useI18nFeature().store;
+  const [searchValue, setSearchValue] = useState('');
+  const [searchType, setSearchType] = useState('');
   const search = useSearchFeature();
   const networkInfo = useNetworkInfoFeature().store;
   const introspectQuery = (query: string) => {
@@ -36,31 +47,68 @@ export const SearchBar = (props: ISearchBarProps) => {
       search.actions.idSearchRequested.trigger({ id: query });
     } else if (/^\d+$/.test(query)) {
       const searchNumber = parseInt(query, 10);
-      if (searchNumber > networkInfo.currentEpoch) {
-        if (searchNumber > networkInfo.blockHeight) {
-          search.actions.unknownSearchRequested.trigger({ query });
-        } else {
+      if (
+        searchNumber > networkInfo.currentEpoch &&
+        searchNumber > networkInfo.blockHeight
+      ) {
+        search.actions.unknownSearchRequested.trigger({ query });
+      } else {
+        if (searchType === SearchType.EPOCH) {
+          search.actions.epochNumberSearchRequested.trigger({
+            number: searchNumber,
+          });
+        } else if (searchType === SearchType.BLOCK) {
           search.actions.blockNumberSearchRequested.trigger({
             number: searchNumber,
           });
         }
-      } else {
-        // Todo: Ask user if wanting to search for block or epoch
-        // Until then, epoch is favoured
-        search.actions.epochNumberSearchRequested.trigger({
-          number: searchNumber,
-        });
       }
     } else {
       search.actions.unknownSearchRequested.trigger({ query });
     }
   };
+
+  const searchTypeSelectQuery = (value: string) => {
+    setSearchType(value);
+    setSearchValue('');
+  };
+
+  const removeSearchType = () => {
+    setSearchType('');
+    setSearchValue('');
+  };
+
+  const isSearchValueValid =
+    searchValue && searchValue.length < 10 && !searchType;
+
+  const brandTypeStyle =
+    props.brandType === BrandType.SHRINKED
+      ? styles.shrinkedSearchSuggestionWrapper
+      : '';
+  const searchContainerStyles = cx([
+    styles.searchSuggestionsWrapper,
+    brandTypeStyle,
+  ]);
+
   return (
-    <Search
-      brandType={props.brandType}
-      onSearch={query => introspectQuery(query)}
-      placeholder={translate('search.placeholder') as string}
-      title={translate('search.title') as string}
-    />
+    <>
+      <Search
+        brandType={props.brandType}
+        onInputChange={query => setSearchValue(query)}
+        onSearch={query => introspectQuery(query)}
+        onRemoveSearchType={removeSearchType}
+        searchType={searchType}
+        placeholder={translate('search.placeholder') as string}
+        title={translate('search.title') as string}
+      />
+      {isSearchValueValid && (
+        <div className={searchContainerStyles}>
+          <SearchSuggestions
+            value={searchValue}
+            onSearchTypeSelect={value => searchTypeSelectQuery(value)}
+          />
+        </div>
+      )}
+    </>
   );
 };

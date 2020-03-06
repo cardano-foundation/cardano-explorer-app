@@ -64,14 +64,21 @@
         line-height: 1.67;
 
         @media (max-width: 575px) {
-          font-size: 10px !important;
+          font-size: 12px !important;
           letter-spacing: 0.5px;
           line-height: 1.6;
           padding: 7px 0;
         }
       }
+
+      &.type {
+        input {
+          padding-left: 90px;
+        }
+      }
     }
   }
+
   .searchButton {
     align-items: center;
     background-color: var(--primary-highlight-color);
@@ -88,8 +95,7 @@
     }
 
     @media (max-width: 575px) {
-      height: 30px;
-      width: 30px;
+      margin-top: -10px;
     }
 
     .searchButtonIcon {
@@ -102,6 +108,36 @@
   }
 }
 
+.typeOfSearch {
+  align-items: center;
+  background-color: var(--secondary-highlight-color);
+  border-radius: 4px;
+  display: flex;
+  height: 24px;
+  justify-content: space-evenly;
+  position: absolute;
+  text-transform: capitalize;
+  width: 70.5px;
+  z-index: 10;
+
+  .typeOfSearchText {
+    color: var(--primary-bg-color);
+    font-family: ProximaNova, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    line-height: 1.77;
+  }
+
+  svg {
+    cursor: pointer;
+    height: 6px;
+    position: relative;
+    top: -2px;
+    width: 6px;
+  }
+}
+
 .shrinkedSearchContainer {
   .searchTitle {
     margin: 0;
@@ -109,36 +145,129 @@
 
   .searchInput {
     input {
-      font-size: 14px !important;
+      font-size: 12px !important;
       padding: 9px 0 8px;
     }
   }
 
-  .searchButton {
-    background-color: transparent;
-    border: 1px solid var(--primary-highlight-color);
+  .searchContent {
+    .searchButton {
+      background-color: transparent;
+      border: 1px solid var(--primary-highlight-color);
 
-    .searchButtonIcon {
-      border-bottom: 7px solid transparent;
-      border-left: 9px solid var(--primary-highlight-color);
-      border-top: 7px solid transparent;
-    }
-
-    .searchButtonInner {
-      border-bottom: 5px solid transparent;
-      border-left: 6px solid var(--header-background-color);
-      border-top: 5px solid transparent;
-      left: -8px;
-      position: relative;
-      top: -5px;
-    }
-
-    &:hover,
-    &:active {
-      background-color: var(--primary-highlight-color) !important;
       .searchButtonIcon {
-        border-left-color: var(--primary-bg-color) !important;
+        border-bottom: 7px solid transparent;
+        border-left: 9px solid var(--primary-highlight-color);
+        border-top: 7px solid transparent;
       }
+
+      .searchButtonInner {
+        border-bottom: 5px solid transparent;
+        border-left: 6px solid var(--header-background-color);
+        border-top: 5px solid transparent;
+        left: -8px;
+        position: relative;
+        top: -5px;
+      }
+
+      &:hover {
+        .searchButtonIcon {
+          border-left-color: var(--primary-bg-color);
+        }
+      }
+
+      &:active {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.searchSuggestionsWrapper {
+  margin: 0 auto;
+  max-width: 300px;
+  min-width: 210px;
+
+  @media (max-width: 768px) {
+    margin: 0;
+    margin-left: 15px;
+  }
+
+  @media (min-width: 770px) {
+    max-width: 872px;
+    padding: 0 50px 40px;
+  }
+
+  &.shrinkedSearchSuggestionWrapper {
+    .searchSuggestionsContainer {
+      .searchSuggestionsContent {
+        margin-left: -50px;
+        margin-top: 10px;
+
+        @media (max-width: 768px) {
+          margin-left: -15px;
+        }
+      }
+    }
+  }
+}
+
+.searchSuggestionsContainer {
+  .searchSuggestionsContent {
+    background-color: var(--primary-bg-color);
+    border-radius: 2px;
+    border: solid 1px var(--footer-text-color);
+    margin-left: -235px;
+    margin-top: -30px;
+    min-width: 210.5px;
+    position: absolute;
+    z-index: 600;
+
+    li {
+      align-items: center;
+      color: var(--solid-text-color);
+      display: flex;
+      font-family: ProximaNova, sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      justify-content: space-between;
+      letter-spacing: 0.7px;
+      line-height: 1.43;
+      padding: 10px 16px;
+
+      span {
+        font-weight: 600;
+        padding-right: 10px;
+      }
+
+      svg {
+        height: 8px;
+        width: 5px;
+      }
+
+      &:hover {
+        background-color: var(--footer-separator-color);
+        cursor: pointer;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0 8px 0 var(--footer-text-color);
+    }
+
+    @media (max-width: 768px) {
+      margin-left: 0;
+      margin-top: -10px;
+    }
+  }
+
+  @media (min-width: 770px) {
+    position: relative;
+    max-width: 300px;
+    min-width: 210px;
+
+    .searchSuggestionsContent {
+      margin-left: 0;
     }
   }
 }
