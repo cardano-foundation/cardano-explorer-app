@@ -82,28 +82,32 @@ export const Footer = (props: IFooterProps) => {
               <ul className={styles.aboutCardanoMenu}>
                 <li>
                   <a href={'https://shelleyexplorer.cardano.org/'}>
-                    Shelley Explorer
+                    {translate('footer.shellyExplorer')}
                   </a>
                 </li>
                 <li>
                   <a href={'https://cardanofoundation.org/'}>
-                    Cardano Foundation
+                    {translate('footer.cardanoFoundation')}
                   </a>
                 </li>
                 <li>
-                  <a href={'https://cardanodocs.com/'}>Documentation</a>
+                  <a href={'https://cardanodocs.com/'}>
+                    {translate('footer.documentation')}
+                  </a>
                 </li>
                 <li>
                   <a href={'https://github.com/input-output-hk/cardano-sl'}>
-                    Cardano SL Source
+                    {translate('footer.cardanoSL')}
                   </a>
                 </li>
                 <li>
-                  <a href={'https://whycardano.com/'}>Why Cardano</a>
+                  <a href={'https://whycardano.com/'}>
+                    {translate('footer.whyCardano')}
+                  </a>
                 </li>
                 <li>
                   <a href={'https://www.cardano.org/en/ouroboros/'}>
-                    Ouroboros Algorithm
+                    {translate('footer.ouroborosAlgorithm')}
                   </a>
                 </li>
               </ul>
@@ -115,20 +119,22 @@ export const Footer = (props: IFooterProps) => {
               <ul className={styles.joinTheCommunityMenu}>
                 <li>
                   <a href={'https://www.cardano.org/en/home/'}>
-                    Cardano Community
+                    {translate('footer.cardanoCommunity')}
                   </a>
                 </li>
                 <li>
                   <a href={'https://t.me/CardanoAnnouncements/'}>
-                    Cardano Chat
+                    {translate('footer.cardanoChat')}
                   </a>
                 </li>
                 <li>
-                  <a href={'https://forum.cardano.org/'}>Cardano Forum</a>
+                  <a href={'https://forum.cardano.org/'}>
+                    {translate('footer.cardanoForum')}
+                  </a>
                 </li>
                 <li>
                   <a href={'https://www.reddit.com/r/cardano/'}>
-                    Cardano Reddit
+                    {translate('footer.cardanoReddit')}
                   </a>
                 </li>
                 <li>
@@ -137,12 +143,12 @@ export const Footer = (props: IFooterProps) => {
                       'https://www.youtube.com/channel/UCbQ9vGfezru1YRI1zDCtTGg'
                     }
                   >
-                    Cardano Foundation Youtube
+                    {translate('footer.cardanoFoundationYoutube')}
                   </a>
                 </li>
                 <li>
                   <a href={'https://twitter.com/CardanoStiftung'}>
-                    Cardano Foundation Twitter
+                    {translate('footer.cardanoFoundationTwitter')}
                   </a>
                 </li>
               </ul>
