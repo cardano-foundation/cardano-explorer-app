@@ -38,7 +38,7 @@
 }
 
 .languagesMenu {
-  background-color: transparent;
+  background-color: var(--header-background-color);
   border: 1px solid var(--hint-text-color);
   border-radius: 1px;
   color: var(--solid-text-color);
