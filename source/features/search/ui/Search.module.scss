@@ -64,7 +64,7 @@
         line-height: 1.67;
 
         @media (max-width: 575px) {
-          font-size: 10px !important;
+          font-size: 12px !important;
           letter-spacing: 0.5px;
           line-height: 1.6;
           padding: 7px 0;
@@ -95,8 +95,7 @@
     }
 
     @media (max-width: 575px) {
-      height: 30px;
-      width: 30px;
+      margin-top: -10px;
     }
 
     .searchButtonIcon {
@@ -146,7 +145,7 @@
 
   .searchInput {
     input {
-      font-size: 14px !important;
+      font-size: 12px !important;
       padding: 9px 0 8px;
     }
   }
