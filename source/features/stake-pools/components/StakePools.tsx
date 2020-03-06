@@ -41,6 +41,9 @@ export default class StakePools extends Component<IStakePoolsProps, IState> {
   public handleSearch = (search: string) => {
     this.setState({ search });
   };
+  public handleInputChange = (search: string) => {
+    // @todo
+  };
   public render() {
     const { translate } = useI18nFeature().store;
     const { selectedPoolId, search } = this.state;
@@ -52,7 +55,11 @@ export default class StakePools extends Component<IStakePoolsProps, IState> {
     return (
       <div className={styles.stakePoolsContainer}>
         <DividerWithTitle title={translate('stakePools.stakePoolsTitle')} />
-        <StakePoolsSearch search={search} onSearch={this.handleSearch} />
+        <StakePoolsSearch
+          search={search}
+          onSearch={this.handleSearch}
+          onInputChange={this.handleInputChange}
+        />
         <StakePoolsList
           stakePoolsList={filteredStakePoolsList}
           selectedPoolId={selectedPoolId}
