@@ -6,6 +6,7 @@ import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../types';
 import styles from './TransactionSummary.module.scss';
+import { isNumber } from 'lodash';
 
 export interface ITransactionSummaryProps extends ITransactionDetails {
   navigation?: NavigationActions;
@@ -32,6 +33,7 @@ const TransactionSummary = (props: ITransactionSummaryProps) => {
       query: { id },
     });
   };
+  const epoch = props.block.epoch === '-' ? 0 : props.block.epoch;
   return (
     <div className={styles.transactionSummaryContainer}>
       <div className={styles.header}>
@@ -57,10 +59,8 @@ const TransactionSummary = (props: ITransactionSummaryProps) => {
             <div className={styles.infoLabel}>Included In</div>
             <div className={styles.infoValue}>
               Epoch{' '}
-              {props.block.epoch ? (
-                <span onClick={() => onEpochNumberClick(props.block.epoch)}>
-                  {props.block.epoch}
-                </span>
+              {isNumber(epoch) ? (
+                <span onClick={() => onEpochNumberClick(epoch)}>{epoch}</span>
               ) : (
                 '?'
               )}

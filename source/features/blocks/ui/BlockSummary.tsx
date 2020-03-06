@@ -7,6 +7,7 @@ import { ITransactionDetails } from '../../transactions/types';
 import { BLOCK_SEARCH_RESULT_PATH } from '../config';
 import { IBlockDetailed } from '../types';
 import styles from './BlockSummary.module.scss';
+import { isNumber } from 'lodash';
 
 export type BlockSummaryProps = {
   navigation?: NavigationActions;
@@ -18,7 +19,7 @@ const BlockSummary = (props: BlockSummaryProps) => {
   const onEpochNumberClick = (
     epoch: ITransactionDetails['block']['epoch']
   ) => () => {
-    if (epoch && epoch !== '-') {
+    if (isNumber(epoch)) {
       props.navigation?.push.trigger({
         path: EPOCH_SEARCH_RESULT_PATH,
         query: { number: epoch },
