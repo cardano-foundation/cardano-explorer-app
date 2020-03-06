@@ -22,9 +22,7 @@ const columns = (): Array<IColumnDefinition<IBlockOverview>> => [
     cellRender: (row: IBlockOverview) => {
       const content = `${row.epoch} / ${row.slotWithinEpoch}`;
       return isNumber(row.epoch) && isNumber(row.slotWithinEpoch) ? (
-        <LocalizedLink href={getEpochRoute(row.epoch)}>
-          <a>{content}</a>
-        </LocalizedLink>
+        <LocalizedLink href={getEpochRoute(row.epoch)}>{content}</LocalizedLink>
       ) : (
         <span>{content}</span>
       );
@@ -36,9 +34,7 @@ const columns = (): Array<IColumnDefinition<IBlockOverview>> => [
   },
   {
     cellRender: (row: IBlockOverview) => (
-      <LocalizedLink href={getBlockRoute(row.id)}>
-        <a>{row.number}</a>
-      </LocalizedLink>
+      <LocalizedLink href={getBlockRoute(row.id)}>{row.number}</LocalizedLink>
     ),
     cellValue: (row: IBlockOverview) => row,
     cssClass: 'blocksSlots',

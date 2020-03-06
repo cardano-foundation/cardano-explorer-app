@@ -15,7 +15,7 @@ const ShowMoreButtonDecorator = (props: IShowMoreButtonDecorator) => (
     {!props.isHidden && (
       <div className={styles.root}>
         <LocalizedLink href={props.href}>
-          <a className={styles.showMoreButton}>{props.label}</a>
+          <span className={styles.showMoreButton}>{props.label}</span>
         </LocalizedLink>
       </div>
     )}

@@ -39,9 +39,7 @@ const columns = (
           value.epoch
         );
       return (
-        <LocalizedLink href={getEpochRoute(value.epoch)}>
-          <a>{epoch}</a>
-        </LocalizedLink>
+        <LocalizedLink href={getEpochRoute(value.epoch)}>{epoch}</LocalizedLink>
       );
     },
     cellValue: (row: IEpochOverview) => ({

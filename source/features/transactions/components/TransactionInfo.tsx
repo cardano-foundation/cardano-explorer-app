@@ -53,9 +53,9 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
               <div className={styles.id}>{props.id}</div>
             ) : (
               <LocalizedLink href={getTransactionRoute(props.id)}>
-                <a className={classnames([styles.id, styles.linkedId])}>
+                <span className={classnames([styles.id, styles.linkedId])}>
                   {props.id}
-                </a>
+                </span>
               </LocalizedLink>
             )}
             <div className={styles.includedAt}>{includedAt}</div>
@@ -75,9 +75,9 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
                   </div>
                 ) : (
                   <LocalizedLink href={getAddressRoute(input.address)} key={i}>
-                    <a className={styles.input}>
+                    <span className={styles.input}>
                       <TransactionAddress address={input.address} />
-                    </a>
+                    </span>
                   </LocalizedLink>
                 )
               )}
@@ -99,9 +99,9 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
                   </div>
                 ) : (
                   <LocalizedLink href={getAddressRoute(output.address)} key={i}>
-                    <a className={styles.output}>
+                    <span className={styles.output}>
                       <TransactionAddress address={output.address} />
-                    </a>
+                    </span>
                   </LocalizedLink>
                 )
               )}
