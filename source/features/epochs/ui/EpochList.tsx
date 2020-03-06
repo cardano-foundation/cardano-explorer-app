@@ -47,21 +47,21 @@ const columns = (
       percentage: row.percentage,
     }),
     cssClass: 'epoch',
-    head: 'Epoch',
+    head: 'epoch.epochTitle',
     key: 'number',
   },
   {
     cellValue: (row: IEpochOverview) =>
       `${row.blocksCount} / ${row.slotsCount}`,
     cssClass: 'blocksSlots',
-    head: 'Blocks / Slots',
+    head: 'epoch.blocksSlotTitle',
     key: 'blocksSlots',
   },
   {
     cellValue: (row: IEpochOverview) =>
       dayjs(row.startedAt).format('YYYY/MM/DD HH:mm:ss'),
     cssClass: 'startedAt',
-    head: 'Started At',
+    head: 'epoch.startedAtTitle',
     key: 'startedAt',
   },
   {
@@ -71,17 +71,17 @@ const columns = (
       lastBlockAt: row.lastBlockAt,
     }),
     cssClass: 'lastBlockAt',
-    head: 'Last Block at',
+    head: 'epoch.lastBlockAtTitle',
     key: 'lastBlockAt',
   },
   {
     cssClass: 'transactions',
-    head: 'Transactions',
+    head: 'epoch.transactionsTitle',
     key: 'transactionsCount',
   },
   {
     cssClass: 'output',
-    head: 'Output (₳)',
+    head: 'epoch.outputTitle',
     key: 'output',
   },
 ];

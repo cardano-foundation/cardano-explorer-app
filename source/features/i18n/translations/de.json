@@ -8,8 +8,15 @@
   },
   "block": {
     "blocks": "!!!Blocks",
+    "blockTitle": "!!!Block",
+    "createdAtTitle": "!!!Created At",
+    "createdByTitle": "!!!Created By",
+    "epochSlotTitle": "!!!Epoch / Slot",
+    "outputTitle": "!!!Output (₳)",
     "pageTitle": "!!!Block | $t(productTitle)",
-    "summary": "!!!Block Summary"
+    "sizeTitle": "!!!Size (Bytes)",
+    "summary": "!!!Block Summary",
+    "transactionsTitle": "!!!Transactions"
   },
   "blockSummary": {
     "createdBy": "!!!Created By",
@@ -36,7 +43,14 @@
     "epochsListTitle": "Epochen Suchen"
   },
   "epoch": {
-    "pageTitle": "Epoche | $t(productTitle)"
+    "blocksSlotTitle": "!!!Blocks / Slots",
+    "createdByTitle": "!!!Created By",
+    "epochTitle": "Epoche",
+    "lastBlockAtTitle": "!!!Last Block at",
+    "outputTitle": "!!!Output (₳)",
+    "pageTitle": "Epoche | $t(productTitle)",
+    "startedAtTitle": "!!!Started At",
+    "transactionsTitle": "!!!Transactions"
   },
   "epochSummary": {
     "epoch": "!!!Epoch",
