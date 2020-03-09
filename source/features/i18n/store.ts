@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import i18next, { TFunctionKeys } from 'i18next';
 import { action, observable } from 'mobx';
 import { initReactI18next } from 'react-i18next';
@@ -73,6 +74,10 @@ export class I18nStore extends Store {
         }),
       },
     });
+
+    // Set locale for day.js
+    require(`dayjs/locale/${this.locale}`);
+    dayjs.locale(this.locale);
   }
 
   // ========== PUBLIC API ============
