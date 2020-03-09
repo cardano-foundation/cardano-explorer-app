@@ -1,104 +1,104 @@
 {
   "address": {
-    "addressLabel": "!!!Address",
-    "pageTitle": "Addresse | $t(productTitle)",
-    "summaryAddressLabel": "!!!Address",
-    "summaryBalanceLabel": "!!!Final Balance",
-    "summaryTransactionsLabel": "!!!Transactions"
+    "addressLabel": "Adresse",
+    "pageTitle": "$t(address.addressLabel) | $t(productTitle)",
+    "summaryAddressLabel": "$t(address.addressLabel)",
+    "summaryBalanceLabel": "Insgesamt",
+    "summaryTransactionsLabel": "Transaktionen"
   },
   "block": {
-    "blocks": "!!!Blocks",
-    "blockTitle": "!!!Block",
-    "createdAtTitle": "!!!Created At",
-    "createdByTitle": "!!!Created By",
-    "epochSlotTitle": "!!!Epoch / Slot",
-    "outputTitle": "!!!Output (₳)",
-    "pageTitle": "!!!Block | $t(productTitle)",
-    "sizeTitle": "!!!Size (Bytes)",
-    "summary": "!!!Block Summary",
-    "transactionsTitle": "!!!Transactions"
+    "blocks": "Blöcke",
+    "blockTitle": "Block",
+    "createdAtTitle": "Erzeugt",
+    "createdByTitle": "Erzeugt von",
+    "epochSlotTitle": "Epoche / Slot",
+    "outputTitle": "Output (₳)",
+    "pageTitle": "Block | $t(productTitle)",
+    "sizeTitle": "Größe (Bytes)",
+    "summary": "Block Übersicht",
+    "transactionsTitle": "Transaktionen"
   },
   "blockSummary": {
-    "createdBy": "!!!Created By",
-    "confirmations": "!!!Confirmations",
-    "block": "!!!Block",
-    "epoch": "!!!Epoch",
-    "id": "!!!ID",
-    "merkleRoot": "!!!Merkle root",
-    "nextBlock": "!!!Next block",
-    "previousBlock": "!!!Previous block",
-    "size": "!!!Size",
-    "time": "!!!Time",
-    "transactions": "!!!Transactions"
+    "createdBy": "Erzeugt von",
+    "confirmations": "Konfirmationen",
+    "block": "Block",
+    "epoch": "Epoche",
+    "id": "ID",
+    "merkleRoot": "Merkle root",
+    "nextBlock": "Nächster Block",
+    "previousBlock": "Voriger Block",
+    "size": "Größe",
+    "time": "Zeitpunkt",
+    "transactions": "Transaktionen"
   },
   "browseBlocks": {
     "pageTitle": "Blöcke Suchen | $t(productTitle)",
-    "performanceLabel": "!!!Performance",
-    "sharedRewardsLabel": "!!!Shared rewards",
-    "slotsElectedLabel": "!!!Slots elected",
-    "stakePoolLabel": "!!!Stake pool"
+    "performanceLabel": "Performance",
+    "sharedRewardsLabel": "Geteilte Belohnungen",
+    "slotsElectedLabel": "Slots gewählt",
+    "stakePoolLabel": "Stake Pool"
   },
   "browseEpochs": {
     "pageTitle": "Epochen Suchen | $t(productTitle)",
     "epochsListTitle": "Epochen Suchen"
   },
   "epoch": {
-    "blocksSlotTitle": "!!!Blocks / Slots",
-    "createdByTitle": "!!!Created By",
+    "blocksSlotTitle": "Blöcke / Slots",
+    "createdByTitle": "Erzeugt von",
     "epochTitle": "Epoche",
-    "lastBlockAtTitle": "!!!Last Block at",
-    "outputTitle": "!!!Output (₳)",
+    "lastBlockAtTitle": "Letzter Block",
+    "outputTitle": "Output (₳)",
     "pageTitle": "Epoche | $t(productTitle)",
-    "startedAtTitle": "!!!Started At",
-    "transactionsTitle": "!!!Transactions"
+    "startedAtTitle": "Gestartet",
+    "transactionsTitle": "Transaktionen"
   },
   "epochSummary": {
-    "epoch": "!!!Epoch",
-    "epochSummaryTitle": "!!!Epoch Summary",
-    "lastBlockAt": "!!!Last Block at",
-    "numberOfBlocks": "!!!# of blocks",
-    "startedAt": "!!!Started at",
-    "totalOutput": "!!!Total output",
-    "transactions": "!!!Transactions"
+    "epoch": "Epoche",
+    "epochSummaryTitle": "Epoche Übersicht",
+    "lastBlockAt": "Letzter Block",
+    "numberOfBlocks": "Anzahl an Blöcken",
+    "startedAt": "Gestartet",
+    "totalOutput": "Output insgesamt",
+    "transactions": "Transaktionen"
   },
   "error": {
     "pageTitle": "Fehler 404 | $t(productTitle)"
   },
   "footer": {
-    "cardanoChat": "!!!Cardano Chat",
-    "cardanoCommunity": "!!!Cardano Community",
-    "cardanoForum": "!!!Cardano Forum",
-    "cardanoFoundation": "!!!Cardano Foundation",
-    "cardanoFoundationTwitter": "!!!Cardano Foundation Twitter",
-    "cardanoFoundationYoutube": "!!!Cardano Foundation Youtube",
-    "cardanoReddit": "!!!Cardano Reddit",
+    "cardanoChat": "Cardano Chat",
+    "cardanoCommunity": "Cardano Community",
+    "cardanoForum": "Cardano Forum",
+    "cardanoFoundation": "Cardano Foundation",
+    "cardanoFoundationTwitter": "Cardano Foundation Twitter",
+    "cardanoFoundationYoutube": "Cardano Foundation Youtube",
+    "cardanoReddit": "Cardano Reddit",
     "cardanoText": "!!!Cardano is a software platform ONLY and does not conduct any independent diligence on or substantive review of any blockchain ,digital currency, cryptocurrency or associated technology. Your use of this website and software is entirely at your own risk, and this website is provided on an \"as is\" basis and for reference only.",
-    "cardanoSL": "!!!Cardano SL Source",
-    "documentation": "!!!Documentation",
-    "iohk": "!!!IOHK Supported Project",
-    "joinCommunity": "!!!Join the community",
-    "moreAbout": "!!!More about Cardano",
-    "openSource": "!!!Open Source",
-    "ouroborosAlgorithm": "!!!Ouroboros Algorithm",
-    "project": "!!!project.",
-    "shellyExplorer": "!!!Shelley Explorer",
-    "textTitle": "!!!Cardano is an",
-    "whyCardano": "!!!Why Cardano"
+    "cardanoSL": "!!!Cardano SL Source Code",
+    "documentation": "Dokumentation",
+    "iohk": "Unterstützt von IOHK",
+    "joinCommunity": "Werde Teil der Community",
+    "moreAbout": "Mehr über Cardano",
+    "openSource": "Open Source",
+    "ouroborosAlgorithm": "Ouroboros Algorythmus",
+    "project": "Projekt.",
+    "shellyExplorer": "Shelley Explorer",
+    "textTitle": "Cardano ist ein",
+    "whyCardano": "Warum Cardano"
   },
   "header": {
-    "epochsBlocks": "!!!Epochs & Blocks",
-    "explorer": "!!!Blockchain Explorer"
+    "epochsBlocks": "Epochen & Blöcke",
+    "explorer": "Blockchain Explorer"
   },
   "index": {
     "pageTitle": "$t(productTitle)"
   },
   "latestBlocks": {
-    "pageTitle": "!!!Latest Blocks",
-    "showMore": "!!!show more"
+    "pageTitle": "Aktuelle Blöcke",
+    "showMore": "mehr"
   },
   "latestEpochs": {
-    "pageTitle": "!!!Latest Epochs",
-    "showMore": "!!!show more"
+    "pageTitle": "Aktuelle Epochen",
+    "showMore": "mehr"
   },
   "locales": {
     "de": "Deutsch",
@@ -106,35 +106,35 @@
     "ja": "Japanisch"
   },
   "outdatedBrowser": {
-    "pageTitle": "!!!Outdated browser",
-    "text": "!!!Your web browser is out of date",
-    "updateBrowserFirst": "!!!Update your",
-    "updateBrowserSecond": "!!!browser for more security, speed and the best experience on this site."
+    "pageTitle": "Veralteter Browser",
+    "text": "Ihr Web-Browser ist veraltet.",
+    "updateBrowserFirst": "Aktualisieren sie",
+    "updateBrowserSecond": "Browser für bessere Sicherheit, Geschwindigkeit und Nutzungserfahrung dieser Seite."
   },
   "pagination": {
-    "of": "!!!of"
+    "of": "von"
   },
   "productTitle": "Cardano Explorer",
   "search": {
-    "description": "!!!Please enter a valid epoch id, block id, transaction id, address or epoch number and retry your search.",
-    "notExist": "!!!Address does not exist:",
-    "notFound": "!!!Sorry, we could not find any results matching:",
+    "description": "Bitte wiederholen sie ihre Suche mit einer gültigen Epochen-ID, Block-ID, Transaktions-ID, Adresse oder Epochen Nummer",
+    "notExist": "Adresse existiert nicht:",
+    "notFound": "Es tut uns Leid, wir konnten keine Ergebnisse finden zu:",
     "placeholder": "Suche nach Epochen, Blöcken, Addressen und Transaktionen",
     "title": "Suche"
   },
   "stakeDistribution": {
-    "distribution": "!!!Stake Distribution",
-    "slotsElected": "!!!Slots elected",
-    "stakePool": "!!!Stake pool"
+    "distribution": "Stake Verteilung",
+    "slotsElected": "Slots gewählt",
+    "stakePool": "Stake Pool"
   },
   "stakePools": {
-    "controlledStake": "!!!Controlled Stake",
-    "performance": "!!!Performance",
-    "profitMargin": "!!!Profit Margin",
-    "ranking": "!!!Ranking",
+    "controlledStake": "Kontrollierter Stake",
+    "performance": "Performance",
+    "profitMargin": "Gewinnspanne",
+    "ranking": "Rang",
     "retiring": "!!!Retiring in",
-    "stakePoolsSearch": "!!!Search for a specific stake pool",
-    "stakePoolsTitle": "!!!Stake Pools",
+    "stakePoolsSearch": "Nach einem bestimmten Stake Pool suchen",
+    "stakePoolsTitle": "Stake Pools",
     "unmoderated": "!!!You have consented to view unmoderated stake pool data.",
     "unmoderatedContent": "!!!Do you want to see unmoderated content?",
     "unmoderatedEntitiesControl": "!!!This information is provided and hosted by stake pool operators and it is not in control of entities running this website.",
@@ -144,17 +144,17 @@
     "unmoderatedWarning": "!!!Warning:"
   },
   "transaction": {
-    "block": "!!!Block",
-    "confirmations": "!!!Confirmations",
-    "epoch": "!!!Epoch",
-    "fee": "!!!Transaction Fee",
-    "includedIn": "!!!Included In",
-    "noTransactions": "!!!No Transactions",
+    "block": "Block",
+    "confirmations": "Konfirmationen",
+    "epoch": "Epoche",
+    "fee": "Transaktionsgebühr",
+    "includedIn": "Inkludiert in",
+    "noTransactions": "Keine Transaktionen",
     "pageTitle": "Transaktion | $t(productTitle)",
-    "receivedTime": "!!!Received Time",
-    "summary": "!!!Summary",
-    "totalOutput": "!!!Total Output",
+    "receivedTime": "Erhalten",
+    "summary": "Übersicht",
+    "totalOutput": "Output Insgesamt",
     "transactionLabel": "Transaktion",
-    "transactionsLabel": "!!!Transactions"
+    "transactionsLabel": "Transaktionen"
   }
 }

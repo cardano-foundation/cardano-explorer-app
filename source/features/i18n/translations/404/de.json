@@ -3,10 +3,10 @@
     "title": "Fehler 404 | Cardano Explorer"
   },
   "error": {
-    "code": "!!!Error code:",
-    "description": "!!!The requested page cannot be found. It may have been removed or the link can be broken. If you entered a web address please check it was correct and try again.",
-    "explorerTitle": "!!!Blockchain Explorer",
-    "support": "!!!Contact Support",
+    "code": "Fehler Code:",
+    "description": "Die gewünschte Seite existiert nicht. Vielleicht wurde sie gelöscht oder der Link war inkorrekt. Falls Sie direkt eine Adresse eingegeben haben, überprüfen Sie bitte ob diese korrekt war und versuchen sie es erneut.",
+    "explorerTitle": "Blockchain Explorer",
+    "support": "Support kontaktieren",
     "title": "Seite nicht gefunden"
   }
 }
