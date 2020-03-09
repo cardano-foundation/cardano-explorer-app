@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite';
 import Head from 'next/head';
 import React from 'react';
 import { BrandType } from '../../../../constants';
@@ -19,7 +20,7 @@ const NoSearchResultsPage = () => {
         <SearchBar brandType={BrandType.ENLARGED} />
       </SearchFeatureProvider>
       <NoSearchResult
-        searchQuery={navigation.store.query.id as string}
+        searchQuery={navigation.store.query.query as string}
         searchType={SearchType.unknown}
       />
     </>
@@ -43,4 +44,4 @@ const StaticLayout = (props: StaticLayoutProps) => {
 NoSearchResultsPage.getStaticLayout = () => StaticLayout;
 NoSearchResultsPage.getInitialProps = i18nInitialProps;
 
-export default NoSearchResultsPage;
+export default observer(NoSearchResultsPage);
