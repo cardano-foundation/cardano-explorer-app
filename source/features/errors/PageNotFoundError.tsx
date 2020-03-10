@@ -35,7 +35,9 @@ export default class Error extends Component<IErrorProps> {
           <p className={styles.bottomContainerText}>{notFoundText}</p>
           <div className={styles.bottomContainerLinks}>
             <LocalizedLink href="/">
-              <a className={styles.bottomContainerLink}>Blockchain Explorer</a>
+              <span className={styles.bottomContainerLink}>
+                Blockchain Explorer
+              </span>
             </LocalizedLink>
             <div className={styles.bottomContainerLinksSeparator} />
             <a
