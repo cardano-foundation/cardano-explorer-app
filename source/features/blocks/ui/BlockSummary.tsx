@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
@@ -7,7 +8,6 @@ import { ITransactionDetails } from '../../transactions/types';
 import { BLOCK_SEARCH_RESULT_PATH } from '../config';
 import { IBlockDetailed } from '../types';
 import styles from './BlockSummary.module.scss';
-import { isNumber } from 'lodash';
 
 export type BlockSummaryProps = {
   navigation?: NavigationActions;

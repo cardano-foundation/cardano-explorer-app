@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { BLOCK_SEARCH_RESULT_PATH } from '../../blocks/config';
@@ -6,7 +7,6 @@ import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
 import { NavigationActions } from '../../navigation';
 import { ITransactionDetails } from '../types';
 import styles from './TransactionSummary.module.scss';
-import { isNumber } from 'lodash';
 
 export interface ITransactionSummaryProps extends ITransactionDetails {
   navigation?: NavigationActions;
@@ -15,13 +15,13 @@ export interface ITransactionSummaryProps extends ITransactionDetails {
 }
 
 const TransactionSummary = (props: ITransactionSummaryProps) => {
-  const onEpochNumberClick = (epoch: ITransactionDetails['block']['epoch']) => {
-    if ((!epoch && epoch !== 0) || epoch === '-') {
+  const onEpochNumberClick = (e: ITransactionDetails['block']['epoch']) => {
+    if ((!e && e !== 0) || e === '-') {
       return;
     }
     props.navigation?.push.trigger({
       path: EPOCH_SEARCH_RESULT_PATH,
-      query: { number: epoch },
+      query: { number: e },
     });
   };
   const onBlockIdClick = (id: ITransactionDetails['block']['id']) => {
