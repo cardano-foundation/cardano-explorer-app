@@ -20,7 +20,7 @@ export default ({ onAcceptUnmoderatedData }: IUnmoderatedDataWarning) => {
         </div>
         <div className={styles.contentBottom}>
           <LocalizedLink href="/">
-            <a>{translate('stakePools.unmoderatedLeave')}</a>
+            <span>{translate('stakePools.unmoderatedLeave')}</span>
           </LocalizedLink>
           <button onClick={onAcceptUnmoderatedData}>
             {translate('stakePools.unmoderatedConfirmation')}

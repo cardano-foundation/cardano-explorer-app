@@ -6,8 +6,8 @@ import CircularProgress, {
 } from '../../../widgets/circular-progress/CircularProgress';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
-import { useNavigationFeatureOptionally } from '../../navigation';
-import { EPOCH_SEARCH_RESULT_PATH } from '../config';
+import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
+import { getEpochRoute } from '../helpers';
 import { IEpochOverview } from '../types';
 import styles from './EpochList.module.scss';
 
@@ -20,25 +20,26 @@ export interface IEpochListProps {
 
 interface IColumnsProps {
   currentEpoch: number;
-  onEpochNumberClicked: (epochNo: number) => void;
 }
 
 const columns = (
   props: IColumnsProps
 ): Array<IColumnDefinition<IEpochOverview>> => [
   {
-    cellOnClick: (row: IEpochOverview) =>
-      props.onEpochNumberClicked?.(row.number),
     cellRender: (value: any) => {
-      return props.currentEpoch === value.epoch ? (
-        <CircularProgress
-          percentage={value.percentage}
-          size={CircularProgressSize.SMALL}
-          showText
-          text={value.epoch}
-        />
-      ) : (
-        value.epoch
+      const epoch =
+        props.currentEpoch === value.epoch ? (
+          <CircularProgress
+            percentage={value.percentage}
+            size={CircularProgressSize.SMALL}
+            showText
+            text={value.epoch}
+          />
+        ) : (
+          value.epoch
+        );
+      return (
+        <LocalizedLink href={getEpochRoute(value.epoch)}>{epoch}</LocalizedLink>
       );
     },
     cellValue: (row: IEpochOverview) => ({
@@ -92,7 +93,6 @@ const EpochList: FC<IEpochListProps> = ({
   items,
   isLoading,
 }) => {
-  const navigation = useNavigationFeatureOptionally();
   const displaysItems = items.length > 0;
   return (
     <div className={styles.epochListContainer}>
@@ -103,16 +103,7 @@ const EpochList: FC<IEpochListProps> = ({
       )}
       <Table
         title={title}
-        columns={columns({
-          currentEpoch,
-          onEpochNumberClicked: epochNo =>
-            navigation?.actions.push.trigger({
-              path: EPOCH_SEARCH_RESULT_PATH,
-              query: {
-                number: epochNo,
-              },
-            }),
-        })}
+        columns={columns({ currentEpoch })}
         rows={items.map(i => Object.assign({}, i, { key: i.number }))}
         withoutHeaders={!displaysItems && isLoading}
       />

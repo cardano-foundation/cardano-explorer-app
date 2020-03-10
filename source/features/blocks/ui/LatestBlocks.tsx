@@ -27,13 +27,11 @@ export const LatestBlocks = () => {
         const { latestBlocks } = store;
         return (
           <ShowMoreButtonDecorator
+            href={BLOCK_BROWSE_PATH}
             label={translate('latestBlocks.showMore')}
             isHidden={
               store.isLoadingLatestBlocksFirstTime ||
               store.latestBlocks.length < 10
-            }
-            onClick={() =>
-              navigation.actions.push.trigger({ path: BLOCK_BROWSE_PATH })
             }
           >
             <BlockList

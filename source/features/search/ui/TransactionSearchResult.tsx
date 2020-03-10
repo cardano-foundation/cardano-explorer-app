@@ -48,7 +48,6 @@ export const TransactionSearchResult = () => {
               <div className={styles.transaction}>
                 <TransactionInfo
                   dontLinkToTransaction
-                  navigation={navigation?.actions}
                   title={translate('transaction.transactionLabel')}
                   {...transactionSearchResult}
                 />

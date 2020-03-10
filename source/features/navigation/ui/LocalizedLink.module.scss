@@ -1,0 +1,10 @@
+.link {
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: var(--primary-highlight-color);
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

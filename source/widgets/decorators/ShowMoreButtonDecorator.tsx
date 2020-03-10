@@ -1,11 +1,11 @@
 import React from 'react';
-import { Button } from 'react-polymorph/lib/components/Button';
+import { LocalizedLink } from '../../features/navigation/ui/LocalizedLink';
 import styles from './ShowMoreButtonDecorator.module.scss';
 
 export interface IShowMoreButtonDecorator {
+  href: string;
   label: string;
   isHidden?: boolean;
-  onClick?: (...params: any[]) => void;
   children: React.ReactNode;
 }
 
@@ -14,11 +14,9 @@ const ShowMoreButtonDecorator = (props: IShowMoreButtonDecorator) => (
     {props.children}
     {!props.isHidden && (
       <div className={styles.root}>
-        <Button
-          className={styles.showMoreButton}
-          label={props.label}
-          onClick={props.onClick}
-        />
+        <LocalizedLink href={props.href}>
+          <span className={styles.showMoreButton}>{props.label}</span>
+        </LocalizedLink>
       </div>
     )}
   </>

@@ -2,8 +2,10 @@ import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { CardanoEra } from '../../../constants';
 import { environment } from '../../../environment';
+import { useObservableEffect } from '../../../lib/mobx/react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import BlocksBrowser from '../../blocks/ui/BlocksBrowser';
+import { EPOCH_BLOCKS_PER_PAGE } from '../../epochs/config';
 import EpochSummary from '../../epochs/ui/EpochSummary';
 import StakeDistribution from '../../epochs/ui/StakeDistribution';
 import { useI18nFeature } from '../../i18n/context';
@@ -57,7 +59,7 @@ const EpochsSearchResult = () => {
   const queryEpochNumber = parseInt(query.number as string, 10);
 
   // Subscribe to epoch results on mounting
-  useEffect(() => {
+  useObservableEffect(() => {
     const { currentEpoch } = networkInfo.store;
     if (currentEpoch && query?.number) {
       if (!epochSearchResult || epochSearchResult.number !== queryEpochNumber) {
@@ -70,11 +72,7 @@ const EpochsSearchResult = () => {
         }
       }
     }
-  }, [
-    networkInfo.store.currentEpoch,
-    navigation.store.query,
-    store.epochSearchResult,
-  ]);
+  });
 
   // Unsubscribe from any epoch on unmounting
   useEffect(
@@ -100,7 +98,7 @@ const EpochsSearchResult = () => {
         </div>
         <BlocksBrowser
           epoch={epochSearchResult.number}
-          perPageDefault={10}
+          perPageDefault={EPOCH_BLOCKS_PER_PAGE}
           title={translate('block.blocks')}
           totalItems={epochSearchResult?.blocksCount}
         />

@@ -1,9 +1,12 @@
 import dayjs from 'dayjs';
+import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
 import { useI18nFeature } from '../../i18n/context';
+import { getEpochRoute } from '../../epochs/helpers';
 import { NavigationActions } from '../../navigation';
+import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
 import { ITransactionDetails } from '../../transactions/types';
 import { BLOCK_SEARCH_RESULT_PATH } from '../config';
 import { IBlockDetailed } from '../types';
@@ -55,9 +58,13 @@ const BlockSummary = (props: BlockSummaryProps) => {
               {translate('blockSummary.epoch')}
             </div>
             <div className={styles.infoValue}>
-              <span onClick={onEpochNumberClick(props.epoch)}>
-                {props.epoch}
-              </span>
+              {isNumber(props.epoch) ? (
+                <LocalizedLink href={getEpochRoute(props.epoch)}>
+                  {props.epoch}
+                </LocalizedLink>
+              ) : (
+                props.epoch
+              )}
             </div>
           </div>
           <div className={styles.infoRow}>
