@@ -1,42 +1,42 @@
 import dayjs from 'dayjs';
+import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import Table, { IColumnDefinition } from '../../../widgets/table/Table';
-import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
-import { useNavigationFeatureOptionally } from '../../navigation';
-import { BLOCK_SEARCH_RESULT_PATH } from '../config';
+import { getEpochRoute } from '../../epochs/helpers';
+import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
+import { getBlockRoute } from '../helpers';
 import { IBlockOverview } from '../types';
 import styles from './BlockList.module.scss';
 
 export interface IBlockListProps {
   ignoreLinksToEpoch?: number;
-  isLoading: boolean;
+  isLoading?: boolean;
   items: Array<IBlockOverview>;
   title: string;
 }
 
-interface IColumnsProps {
-  ignoreLinksToEpoch?: number;
-  onEpochNumberClicked: (epochNo: IBlockOverview['epoch']) => void;
-  onBlockNumberClicked: (id: IBlockOverview['id']) => void;
-}
-
-const columns = (
-  props: IColumnsProps
-): Array<IColumnDefinition<IBlockOverview>> => [
+const columns = (): Array<IColumnDefinition<IBlockOverview>> => [
   {
-    cellOnClick: (row: IBlockOverview) =>
-      props.onEpochNumberClicked?.(row.epoch),
-    cellValue: (row: IBlockOverview) => `${row.epoch} / ${row.slotWithinEpoch}`,
+    cellRender: (row: IBlockOverview) => {
+      const content = `${row.epoch} / ${row.slotWithinEpoch}`;
+      return isNumber(row.epoch) && isNumber(row.slotWithinEpoch) ? (
+        <LocalizedLink href={getEpochRoute(row.epoch)}>{content}</LocalizedLink>
+      ) : (
+        <span>{content}</span>
+      );
+    },
+    cellValue: (row: IBlockOverview) => row,
     cssClass: 'epoch',
     head: 'Epoch / Slot',
-    isCellClickable: (row: IBlockOverview) =>
-      props.ignoreLinksToEpoch !== row.epoch,
     key: 'epochsSlots',
   },
   {
-    cellOnClick: (row: IBlockOverview) => props.onBlockNumberClicked?.(row.id),
+    cellRender: (row: IBlockOverview) => (
+      <LocalizedLink href={getBlockRoute(row.id)}>{row.number}</LocalizedLink>
+    ),
+    cellValue: (row: IBlockOverview) => row,
     cssClass: 'blocksSlots',
     head: 'Block',
     key: 'number',
@@ -71,7 +71,6 @@ const columns = (
 ];
 
 const BlockList: FC<IBlockListProps> = props => {
-  const navigation = useNavigationFeatureOptionally();
   const displaysItems = props.items.length > 0;
   return (
     <div className={styles.blockListContainer}>
@@ -82,22 +81,7 @@ const BlockList: FC<IBlockListProps> = props => {
       )}
       <Table
         title={props.title}
-        columns={columns({
-          ignoreLinksToEpoch: props.ignoreLinksToEpoch,
-          onBlockNumberClicked: id =>
-            navigation?.actions.push.trigger({
-              path: BLOCK_SEARCH_RESULT_PATH,
-              query: { id },
-            }),
-          onEpochNumberClicked: epochNo => {
-            if (epochNo !== '-') {
-              navigation?.actions.push.trigger({
-                path: EPOCH_SEARCH_RESULT_PATH,
-                query: { number: epochNo },
-              });
-            }
-          },
-        })}
+        columns={columns()}
         rows={props.items.map(i => Object.assign({}, i, { key: i.id }))}
         withoutHeaders={!displaysItems && props.isLoading}
       />

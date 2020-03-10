@@ -101,10 +101,7 @@ storiesOf('Blocks|List', module)
     <BlockList title="Blocks" items={blocks.slice(0, 5)} isLoading={false} />
   ))
   .add('with show more button', () => (
-    <ShowMoreButtonDecorator
-      label={'show more'}
-      onClick={action('show more clicked')}
-    >
+    <ShowMoreButtonDecorator label={'show more'} href={''}>
       <BlockList title="Blocks" items={blocks.slice(0, 5)} isLoading={false} />
     </ShowMoreButtonDecorator>
   ))
