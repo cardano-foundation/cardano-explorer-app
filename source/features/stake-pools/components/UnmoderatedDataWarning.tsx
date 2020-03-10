@@ -21,9 +21,7 @@ export default ({ onAcceptUnmoderatedData }: IUnmoderatedDataWarning) => (
         <p>Do you want to see unmoderated content?</p>
       </div>
       <div className={styles.contentBottom}>
-        <LocalizedLink href="/">
-          <a>Leave this page</a>
-        </LocalizedLink>
+        <LocalizedLink href="/">Leave this page</LocalizedLink>
         <button onClick={onAcceptUnmoderatedData}>
           Yes, show unmoderated content
         </button>

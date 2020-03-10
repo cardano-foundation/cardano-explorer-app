@@ -41,7 +41,7 @@ export const Header = observer((props: IHeaderProps) => {
   const stakePoolLink =
     environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
       <LocalizedLink href="/stake-pools">
-        <a className={stakePoolsClassName}>Stake Pools</a>
+        <span className={stakePoolsClassName}>Stake Pools</span>
       </LocalizedLink>
     ) : null;
   const stakePoolTriangleStyle = stakePoolLink ? '' : styles.stakePoolTriangle;
@@ -55,19 +55,13 @@ export const Header = observer((props: IHeaderProps) => {
         <div className={styles.brandType}>
           <div className={styles.logoContainer}>
             <LocalizedLink href="/">
-              <a>
-                <CardanoLogo className={styles.logo} />
-              </a>
+              <CardanoLogo className={styles.logo} />
             </LocalizedLink>
           </div>
           <div className={styles.titleContainer}>
             <LocalizedLink href="/">
-              <a>
-                <span className={styles.cardanoTitle}>Cardano</span>
-                <span className={styles.explorerTitle}>
-                  Blockchain Explorer
-                </span>
-              </a>
+              <span className={styles.cardanoTitle}>Cardano</span>
+              <span className={styles.explorerTitle}>Blockchain Explorer</span>
             </LocalizedLink>
             {testnetSubtitle}
           </div>
@@ -76,7 +70,7 @@ export const Header = observer((props: IHeaderProps) => {
               <div className={styles.tabLeftLine} />
               <div className={styles.tabCircle} />
               <LocalizedLink href="/">
-                <a className={indexClassName}>Epochs & Blocks</a>
+                <span className={indexClassName}>Epochs & Blocks</span>
               </LocalizedLink>
               <div className={styles.tabCircle} />
               {stakePoolLink}
