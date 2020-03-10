@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
+import { useObservableEffect } from '../../../lib/mobx/react';
 import { calculatePaging } from '../../../lib/paging';
 import RouterPagination from '../../../widgets/browsing/NavigationPagination';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
@@ -25,48 +26,61 @@ interface IBlocksBrowserProps {
 
 const BlocksBrowser = (props: IBlocksBrowserProps) => {
   const navigation = useNavigationFeature();
-  // The network block height is required before doing any browsing
   const networkInfo = useNetworkInfoFeature();
-  const { blockHeight } = networkInfo.store;
-  const isBlockHeightAvailable = !!blockHeight;
   const blocks = useBlocksFeature();
+  const { browsedBlocks } = blocks.store;
+  const isBrowsingInEpoch = !!props.epoch;
 
-  const query =
+  const apiQuery =
     props.epoch != null
       ? blocks.api.getBlocksInEpochQuery
       : blocks.api.getBlocksInRangeQuery;
 
-  const paging = calculatePaging({
-    currentPage: navigation.store.query.page as string,
-    perPage: navigation.store.query.perPage as string,
-    perPageDefault: props.perPageDefault ?? BLOCKS_PER_PAGE_DEFAULT,
-    perPageMaximum: props.perPageMaximum ?? BLOCKS_PER_PAGE_MAXIMUM,
-    perPageMinimum: props.perPageMinimum ?? BLOCKS_PER_PAGE_MINIMUM,
-    totalItems: props.totalItems ?? blockHeight,
+  const [paging, setPaging] = useState({
+    currentPage: 0,
+    itemsPerPage: 0,
+    totalPages: 0,
   });
 
-  useEffect(() => {
-    if (!isBlockHeightAvailable) {
-      return;
+  useObservableEffect(
+    observedProps => {
+      const { blockHeight } = networkInfo.store;
+      const totalItems = observedProps?.totalItems ?? blockHeight;
+      if (!totalItems) {
+        return;
+      }
+      const p = calculatePaging({
+        currentPage: navigation.store.query.page as string,
+        perPage: navigation.store.query.perPage as string,
+        perPageDefault: props.perPageDefault ?? BLOCKS_PER_PAGE_DEFAULT,
+        perPageMaximum: props.perPageMaximum ?? BLOCKS_PER_PAGE_MAXIMUM,
+        perPageMinimum: props.perPageMinimum ?? BLOCKS_PER_PAGE_MINIMUM,
+        totalItems,
+      });
+      setPaging(p);
+      blocks.actions.browseBlocks.trigger({
+        epoch: props.epoch,
+        page: p.currentPage,
+        perPage: p.itemsPerPage,
+      });
+    },
+    {
+      totalItems: props.totalItems,
     }
-    blocks.actions.browseBlocks.trigger({
-      epoch: props.epoch,
-      page: paging.currentPage,
-      perPage: paging.itemsPerPage,
-    });
-  }, [
-    isBlockHeightAvailable,
-    props.totalItems,
-    navigation.store.query.page,
-    navigation.store.query.perPage,
-  ]);
+  );
 
-  return isBlockHeightAvailable && !query.isExecutingTheFirstTime ? (
+  return !apiQuery.hasBeenExecutedAtLeastOnce ||
+    apiQuery.isExecutingTheFirstTime ? (
+    <LoadingSpinner className={styles.loadingSpinnerMargin} />
+  ) : (
     <>
       <BlockList
-        isLoading={query.isExecuting}
         title={props.title}
-        items={blocks.store.browsedBlocks.slice().reverse()}
+        items={
+          isBrowsingInEpoch
+            ? browsedBlocks.slice().reverse()
+            : browsedBlocks.slice()
+        }
       />
       <RouterPagination
         currentPage={paging.currentPage}
@@ -74,8 +88,6 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
         totalPages={paging.totalPages}
       />
     </>
-  ) : (
-    <LoadingSpinner className={styles.loadingSpinnerMargin} />
   );
 };
 
