@@ -6,15 +6,17 @@
   @media (max-width: 575px) {
     justify-content: flex-start;
   }
+
   .showMoreButton {
-    align-items: center;
-    background-color: var(--primary-highlight-color);
-    border-radius: 2px;
+    text-decoration: none;
     color: var(--primary-bg-color);
-    display: flex;
     font-family: ProximaNova, sans-serif;
     font-size: 12px;
     font-weight: 600;
+    align-items: center;
+    background-color: var(--primary-highlight-color);
+    border-radius: 2px;
+    display: flex;
     height: 25px;
     justify-content: center;
     letter-spacing: 0.4px;

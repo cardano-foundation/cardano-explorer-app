@@ -25,13 +25,11 @@ export const LatestEpochs = () => {
         const { latestEpochs } = store;
         return (
           <ShowMoreButtonDecorator
+            href={EPOCH_BROWSE_PATH}
             label={'show more'}
             isHidden={
               store.isLoadingLatestEpochsFirstTime ||
               store.latestEpochs.length < 5
-            }
-            onClick={() =>
-              navigation.actions.push.trigger({ path: EPOCH_BROWSE_PATH })
             }
           >
             <EpochList

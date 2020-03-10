@@ -4,9 +4,9 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
-import { ADDRESS_SEARCH_RESULT_PATH } from '../../address/config';
-import { NavigationActions } from '../../navigation';
-import { TRANSACTION_SEARCH_RESULT_PATH } from '../config';
+import { getAddressRoute } from '../../address/helpers';
+import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
+import { getTransactionRoute } from '../helpers';
 import { ITransactionDetails } from '../types';
 import styles from './TransactionInfo.module.scss';
 
@@ -16,10 +16,20 @@ const SEVEN_DAYS = 7 * 24 * 3600000;
 
 export interface ITransactionInfoProps extends ITransactionDetails {
   highlightAddress?: string;
-  navigation?: NavigationActions;
   title?: string;
   dontLinkToTransaction?: boolean;
 }
+
+const TransactionAddress = (props: { address: string }) =>
+  props.address.length <= 34 ? (
+    <span>{props.address}</span>
+  ) : (
+    <>
+      <div>{props.address.toString().substring(0, 16)}</div>
+      {'...'}
+      <div>{props.address.toString().substring(props.address.length - 16)}</div>
+    </>
+  );
 
 const TransactionInfo = (props: ITransactionInfoProps) => {
   const duration = dayjs().diff(dayjs(props.includedAt));
@@ -29,24 +39,6 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
   } else {
     includedAt = dayjs().to(dayjs(props.includedAt));
   }
-  const onAddressClick = (address: string) => {
-    if (!address) {
-      return;
-    }
-    props.navigation?.push.trigger({
-      path: ADDRESS_SEARCH_RESULT_PATH,
-      query: { address },
-    });
-  };
-  const onIdClick = (id: ITransactionDetails['id']) => {
-    if (!id) {
-      return;
-    }
-    props.navigation?.push.trigger({
-      path: TRANSACTION_SEARCH_RESULT_PATH,
-      query: { id },
-    });
-  };
   return (
     <div className={styles.transactionInfoContainer}>
       {props.title && (
@@ -57,77 +49,62 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
       <div className={styles.transactionInfoRowContainer}>
         <div className={styles.addresses}>
           <div className={styles.infoRow}>
-            <div
-              className={classnames([
-                styles.id,
-                props.dontLinkToTransaction ? null : styles.linkedId,
-              ])}
-            >
-              <span
-                onClick={() =>
-                  !props.dontLinkToTransaction && onIdClick(props.id)
-                }
-              >
-                {props.id}
-              </span>
-            </div>
+            {props.dontLinkToTransaction ? (
+              <div className={styles.id}>{props.id}</div>
+            ) : (
+              <LocalizedLink href={getTransactionRoute(props.id)}>
+                <span className={classnames([styles.id, styles.linkedId])}>
+                  {props.id}
+                </span>
+              </LocalizedLink>
+            )}
             <div className={styles.includedAt}>{includedAt}</div>
           </div>
           <div className={styles.infoRow}>
             <div className={styles.inputs}>
-              {props.inputs.map((input, i) => (
-                <div
-                  key={i}
-                  className={
-                    input.address === props.highlightAddress
-                      ? styles.highlightAddress
-                      : styles.input
-                  }
-                  onClick={() => onAddressClick(input.address)}
-                >
-                  {input.address.length <= 34 ? (
-                    <span>{input.address}</span>
-                  ) : (
-                    <>
-                      <div>{input.address.substring(0, 16)}</div>
-                      {'...'}
-                      <div>
-                        {input.address.substring(input.address.length - 16)}
-                      </div>
-                    </>
-                  )}
-                </div>
-              ))}
+              {props.inputs.map((input, i) =>
+                input.address === props.highlightAddress ? (
+                  <div
+                    className={classnames([
+                      styles.input,
+                      styles.highlightAddress,
+                    ])}
+                    key={i}
+                  >
+                    <TransactionAddress address={input.address} />
+                  </div>
+                ) : (
+                  <LocalizedLink href={getAddressRoute(input.address)} key={i}>
+                    <span className={styles.input}>
+                      <TransactionAddress address={input.address} />
+                    </span>
+                  </LocalizedLink>
+                )
+              )}
             </div>
             <div className={styles.nextIcon}>
               <ArrowNext />
             </div>
             <div className={styles.outputs}>
-              {props.outputs.map((output, i) => (
-                <div
-                  key={i}
-                  className={
-                    output.address === props.highlightAddress
-                      ? styles.highlightAddress
-                      : styles.output
-                  }
-                  onClick={() => onAddressClick(output.address)}
-                >
-                  {output.address.length <= 34 ? (
-                    <span>{output.address}</span>
-                  ) : (
-                    <>
-                      <div>{output.address.toString().substring(0, 16)}</div>
-                      {'...'}
-                      <div>
-                        {output.address
-                          .toString()
-                          .substring(output.address.length - 16)}
-                      </div>
-                    </>
-                  )}
-                </div>
-              ))}
+              {props.outputs.map((output, i) =>
+                output.address === props.highlightAddress ? (
+                  <div
+                    className={classnames([
+                      styles.output,
+                      styles.highlightAddress,
+                    ])}
+                    key={i}
+                  >
+                    <TransactionAddress address={output.address} />
+                  </div>
+                ) : (
+                  <LocalizedLink href={getAddressRoute(output.address)} key={i}>
+                    <span className={styles.output}>
+                      <TransactionAddress address={output.address} />
+                    </span>
+                  </LocalizedLink>
+                )
+              )}
             </div>
           </div>
         </div>
