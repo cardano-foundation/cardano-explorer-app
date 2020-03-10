@@ -1,160 +1,160 @@
 {
   "address": {
-    "addressLabel": "!!!Address",
-    "pageTitle": "!!!Address | $t(productTitle)",
-    "summaryAddressLabel": "!!!Address",
-    "summaryBalanceLabel": "!!!Final Balance",
-    "summaryTransactionsLabel": "!!!Transactions"
+    "addressLabel": "アドレス",
+    "pageTitle": "アドレス | $t(productTitle)",
+    "summaryAddressLabel": "アドレス",
+    "summaryBalanceLabel": "最終残高",
+    "summaryTransactionsLabel": "トランザクション"
   },
   "block": {
-    "blocks": "!!!Blocks",
-    "blockTitle": "!!!Block",
-    "createdAtTitle": "!!!Created At",
-    "createdByTitle": "!!!Created By",
-    "epochSlotTitle": "!!!Epoch / Slot",
-    "outputTitle": "!!!Output (₳)",
-    "pageTitle": "!!!Block | $t(productTitle)",
-    "sizeTitle": "!!!Size (Bytes)",
-    "summary": "!!!Block Summary",
-    "transactionsTitle": "!!!Transactions"
+    "blocks": "ブロック",
+    "blockTitle": "ブロック",
+    "createdAtTitle": "生成時：",
+    "createdByTitle": "生成者：",
+    "epochSlotTitle": "エポック/スロット",
+    "outputTitle": "アウトプット (₳)",
+    "pageTitle": "ブロック | $t(productTitle)",
+    "sizeTitle": "サイズ（バイト）",
+    "summary": "ブロック概要",
+    "transactionsTitle": "トランザクション"
   },
   "blockSummary": {
-    "createdBy": "!!!Created By",
-    "confirmations": "!!!Confirmations",
-    "block": "!!!Block",
-    "epoch": "!!!Epoch",
+    "createdBy": "生成者：",
+    "confirmations": "確認",
+    "block": "ブロック",
+    "epoch": "エポック",
     "id": "!!!ID",
-    "merkleRoot": "!!!Merkle root",
-    "nextBlock": "!!!Next block",
-    "previousBlock": "!!!Previous block",
-    "size": "!!!Size",
-    "time": "!!!Time",
-    "transactions": "!!!Transactions"
+    "merkleRoot": "マークルルート",
+    "nextBlock": "次のブロック",
+    "previousBlock": "前のブロック",
+    "size": "サイズ",
+    "time": "時間",
+    "transactions": "!!!トランザクション"
   },
   "browseBlocks": {
-    "pageTitle": "!!!Browse Blocks | $t(productTitle)",
-    "performanceLabel": "!!!Performance",
-    "sharedRewardsLabel": "!!!Shared rewards",
-    "slotsElectedLabel": "!!!Slots elected",
-    "stakePoolLabel": "!!!Stake pool"
+    "pageTitle": "ブロックを閲覧する | $t(productTitle)",
+    "performanceLabel": "パフォーマンス",
+    "sharedRewardsLabel": "報酬の割当て",
+    "slotsElectedLabel": "選出されたスロット",
+    "stakePoolLabel": "ステークプール"
   },
   "browseEpochs": {
-    "pageTitle": "!!!Browse Epochs | $t(productTitle)",
-    "epochsListTitle": "!!!Browse Epochs"
+    "pageTitle": "エポックを閲覧する | $t(productTitle)",
+    "epochsListTitle": "エポックを閲覧する"
   },
   "epoch": {
-    "blocksSlotTitle": "!!!Blocks / Slots",
-    "createdByTitle": "!!!Created By",
-    "epochTitle": "!!!Epoch",
-    "lastBlockAtTitle": "!!!Last Block at",
-    "outputTitle": "!!!Output (₳)",
-    "pageTitle": "!!!Epoch | $t(productTitle)",
-    "startedAtTitle": "!!!Started At",
-    "transactionsTitle": "!!!Transactions"
+    "blocksSlotTitle": "ブロック/スロット",
+    "createdByTitle": "生成者：",
+    "epochTitle": "エポック",
+    "lastBlockAtTitle": "最終ブロック：",
+    "outputTitle": "アウトプット (₳)",
+    "pageTitle": "エポック | $t(productTitle)",
+    "startedAtTitle": "開始時間：",
+    "transactionsTitle": "!!!トランザクション"
   },
   "epochSummary": {
-    "epoch": "!!!Epoch",
-    "epochSummaryTitle": "!!!Epoch Summary",
-    "lastBlockAt": "!!!Last Block at",
-    "numberOfBlocks": "!!!# of blocks",
-    "startedAt": "!!!Started at",
-    "totalOutput": "!!!Total output",
-    "transactions": "!!!Transactions"
+    "epoch": "エポック",
+    "epochSummaryTitle": "エポック概要",
+    "lastBlockAt": "最終ブロック：",
+    "numberOfBlocks": "ブロック数",
+    "startedAt": "開始時間：",
+    "totalOutput": "総アウトプット",
+    "transactions": "!!!トランザクション"
   },
   "error": {
-    "pageTitle": "!!!Error 404 | $t(productTitle)"
+    "pageTitle": "Error 404 | $t(productTitle)"
   },
   "footer": {
-    "cardanoChat": "!!!Cardano Chat",
-    "cardanoCommunity": "!!!Cardano Community",
-    "cardanoForum": "!!!Cardano Forum",
-    "cardanoFoundation": "!!!Cardano Foundation",
-    "cardanoFoundationTwitter": "!!!Cardano Foundation Twitter",
-    "cardanoFoundationYoutube": "!!!Cardano Foundation Youtube",
-    "cardanoReddit": "!!!Cardano Reddit",
-    "cardanoText": "!!!Cardano is a software platform ONLY and does not conduct any independent diligence on or substantive review of any blockchain ,digital currency, cryptocurrency or associated technology. Your use of this website and software is entirely at your own risk, and this website is provided on an \"as is\" basis and for reference only.",
-    "cardanoSL": "!!!Cardano SL Source",
-    "documentation": "!!!Documentation",
-    "iohk": "!!!IOHK Supported Project",
-    "joinCommunity": "!!!Join the community",
-    "moreAbout": "!!!More about Cardano",
-    "openSource": "!!!Open Source",
-    "ouroborosAlgorithm": "!!!Ouroboros Algorithm",
-    "project": "!!!project.",
-    "shellyExplorer": "!!!Shelley Explorer",
-    "textTitle": "!!!Cardano is an",
-    "whyCardano": "!!!Why Cardano"
+    "cardanoChat": "Cardano Chat",
+    "cardanoCommunity": "Cardanoコミュニティ",
+    "cardanoForum": "Cardanoフォーラム",
+    "cardanoFoundation": "Cardano Foundation",
+    "cardanoFoundationTwitter": "Cardano Foundation Twitter",
+    "cardanoFoundationYoutube": "Cardano Foundation Youtube",
+    "cardanoReddit": "Cardano Reddit",
+    "cardanoText": "Cardanoはソフトウェアプラットフォームのみを提供します。いかなるブロックチェーン、デジタル通貨、暗号通貨または関連技術についても、独立したデューディリジェンスや実質的なレビューを行うことはありません。本ウェブサイトおよびソフトウェアの使用は完全にユーザー自身の責任で行われるものとし、本ウェブサイトは現状有り姿ベースで参照の便宜を目的としてのみ提供されます。",
+    "cardanoSL": "Cardano SLソース",
+    "documentation": "ドキュメンテーション",
+    "iohk": "IOHK Supported Project",
+    "joinCommunity": "コミュニティに参加する",
+    "moreAbout": "Cardanoについてもっと知る",
+    "openSource": "オープンソース",
+    "ouroborosAlgorithm": "Ouroborosアルゴリズム",
+    "project": "プロジェクトです",
+    "shellyExplorer": "Shelleyエクスプローラー",
+    "textTitle": "Cardanoは",
+    "whyCardano": "なぜCardanoを構築するのか"
   },
   "header": {
-    "epochsBlocks": "!!!Epochs & Blocks",
-    "explorer": "!!!Blockchain Explorer"
+    "epochsBlocks": "エポックおよびブロック",
+    "explorer": "ブロックチェーンエクスプローラー"
   },
   "index": {
-    "pageTitle": "!!!$t(productTitle)"
+    "pageTitle": "$t(productTitle)"
   },
   "latestBlocks": {
-    "pageTitle": "!!!Latest Blocks",
-    "showMore": "!!!show more"
+    "pageTitle": "最新のブロック",
+    "showMore": "もっと見る"
   },
   "latestEpochs": {
-    "pageTitle": "!!!Latest Epochs",
-    "showMore": "!!!show more"
+    "pageTitle": "最新のエポック",
+    "showMore": "もっと見る"
   },
   "locales": {
-    "de": "!!!German",
-    "en": "!!!English",
-    "ja": "!!!Japanese"
+    "de": "ドイツ語",
+    "en": "英語",
+    "ja": "日本語"
   },
   "outdatedBrowser": {
-    "pageTitle": "!!!Outdated browser",
-    "text": "!!!Your web browser is out of date",
-    "updateBrowserFirst": "!!!Update your",
-    "updateBrowserSecond": "!!!browser for more security, speed and the best experience on this site."
+    "pageTitle": "旧ブラウザー",
+    "text": "ご使用のウェブブラウザーは旧バージョンです",
+    "updateBrowserFirst": "安全性およびスピードを高めて本サイトを最高の状態で閲覧するために、ご使用の",
+    "updateBrowserSecond": "ブラウザーを更新してください。"
   },
   "pagination": {
-    "of": "!!!of"
+    "of": "of"
   },
   "productTitle": "!!!Cardano Explorer",
   "search": {
-    "description": "!!!Please enter a valid epoch id, block id, transaction id, address or epoch number and retry your search.",
-    "notExist": "!!!Address does not exist:",
-    "notFound": "!!!Sorry, we could not find any results matching:",
-    "placeholder": "!!!Search for epochs, blocks, addresses and transactions",
-    "title": "!!!Search"
+    "description": "有効なエポックID、ブロックID、トランザクションID、アドレス、またはエポック番号を入力して、もう一度検索してください。",
+    "notExist": "アドレスが見つかりません：",
+    "notFound": "一致する検索結果はありません：",
+    "placeholder": "エポック、ブロック、アドレス、トランザクションを検索する",
+    "title": "検索"
   },
   "stakeDistribution": {
-    "distribution": "!!!Stake Distribution",
-    "slotsElected": "!!!Slots elected",
-    "stakePool": "!!!Stake pool"
+    "distribution": "Sステークの分布状況",
+    "slotsElected": "選出されたスロット",
+    "stakePool": "ステークプール"
   },
   "stakePools": {
-    "controlledStake": "!!!Controlled Stake",
-    "performance": "!!!Performance",
-    "profitMargin": "!!!Profit Margin",
-    "ranking": "!!!Ranking",
-    "retiring": "!!!Retiring in",
-    "stakePoolsSearch": "!!!Search for a specific stake pool",
-    "stakePoolsTitle": "!!!Stake Pools",
-    "unmoderated": "!!!You have consented to view unmoderated stake pool data.",
-    "unmoderatedContent": "!!!Do you want to see unmoderated content?",
-    "unmoderatedEntitiesControl": "!!!This information is provided and hosted by stake pool operators and it is not in control of entities running this website.",
-    "unmoderatedLeave": "!!!Leave this page",
-    "unmoderatedPoolTickerSymbols": "!!!Stake pool ticker symbols, titles, descriptions and websites are not moderated and may contain inappropriate content.",
-    "unmoderatedStakePoolData": "!!!Stake pool data is not moderated",
-    "unmoderatedWarning": "!!!Warning:"
+    "controlledStake": "管理下のステーク",
+    "performance": "パフォーマンス",
+    "profitMargin": "マージン",
+    "ranking": "ランク：",
+    "retiring": "終了まで：",
+    "stakePoolsSearch": "特定のステークプールを検索する",
+    "stakePoolsTitle": "ステークプール",
+    "unmoderated": "あなたは管理されていないステークプールデータの表示に同意されています。",
+    "unmoderatedContent": "管理されていないコンテンツを表示しますか。",
+    "unmoderatedEntitiesControl": "この情報はステークプールオペレーターが提供、ホストしており、本ウェブサイトを運営している組織の管理下にはありません。",
+    "unmoderatedLeave": "このページを離れる",
+    "unmoderatedPoolTickerSymbols": "ステークプールティッカーシンボル、タイトル、説明、ウェブサイトは管理していないため、不適切なコンテンツが含まれている場合があります。",
+    "unmoderatedStakePoolData": "ステークプールデータは非管理です",
+    "unmoderatedWarning": "警告："
   },
   "transaction": {
-    "block": "!!!Block",
-    "confirmations": "!!!Confirmations",
-    "epoch": "!!!Epoch",
-    "fee": "!!!Transaction Fee",
-    "includedIn": "!!!Included In",
-    "noTransactions": "!!!No Transactions",
-    "pageTitle": "!!!Transaction | $t(productTitle)",
-    "receivedTime": "!!!Received Time",
-    "summary": "!!!Summary",
-    "totalOutput": "!!!Total Output",
-    "transactionLabel": "!!!Transaction",
-    "transactionsLabel": "!!!Transactions"
+    "block": "ブロック",
+    "confirmations": "確認",
+    "epoch": "エポック",
+    "fee": "トランザクション手数料",
+    "includedIn": "含まれるブロック：",
+    "noTransactions": "トランザクションはありません",
+    "pageTitle": "トランザクション | $t(productTitle)",
+    "receivedTime": "受信時間",
+    "summary": "概要",
+    "totalOutput": "総アウトプット",
+    "transactionLabel": "トランザクション",
+    "transactionsLabel": "トランザクション"
   }
 }
