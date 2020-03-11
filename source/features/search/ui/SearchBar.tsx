@@ -28,7 +28,8 @@ export const SearchBar = (props: ISearchBarProps) => {
   const [searchType, setSearchType] = useState('');
   const search = useSearchFeature();
   const networkInfo = useNetworkInfoFeature().store;
-  const introspectQuery = (query: string) => {
+  const introspectQuery = (query: string, type?: string) => {
+    const typeOfSearch = type ? type : searchType;
     const chainSettings =
       environment.CARDANO.NETWORK === CardanoNetwork.MAINNET
         ? ChainSettings.mainnet
@@ -53,11 +54,11 @@ export const SearchBar = (props: ISearchBarProps) => {
       ) {
         search.actions.unknownSearchRequested.trigger({ query });
       } else {
-        if (searchType === SearchType.EPOCH) {
+        if (typeOfSearch === SearchType.EPOCH) {
           search.actions.epochNumberSearchRequested.trigger({
             number: searchNumber,
           });
-        } else if (searchType === SearchType.BLOCK) {
+        } else if (typeOfSearch === SearchType.BLOCK) {
           search.actions.blockNumberSearchRequested.trigger({
             number: searchNumber,
           });
@@ -70,6 +71,7 @@ export const SearchBar = (props: ISearchBarProps) => {
 
   const searchTypeSelectQuery = (value: string) => {
     setSearchType(value);
+    introspectQuery(searchValue, value);
     setSearchValue('');
   };
 
@@ -97,7 +99,6 @@ export const SearchBar = (props: ISearchBarProps) => {
         onInputChange={query => setSearchValue(query)}
         onSearch={query => introspectQuery(query)}
         onRemoveSearchType={removeSearchType}
-        searchType={searchType}
         placeholder={translate('search.placeholder') as string}
         title={translate('search.title') as string}
       />
