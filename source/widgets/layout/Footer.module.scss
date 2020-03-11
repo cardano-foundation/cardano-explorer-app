@@ -105,6 +105,13 @@
           object-fit: contain;
           width: 14px;
         }
+
+        .twitterIcon:hover,
+        .facebookIcon:hover,
+        .youtubeIcon:hover,
+        .newsletterIcon:hover {
+          filter: invert(0.5);
+        }
       }
 
       @media (max-width: 768px) {
