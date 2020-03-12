@@ -8,6 +8,7 @@ import { BlocksApi } from './api';
 import { blockOverviewTransformer } from './api/transformers';
 import { BlocksActions, INetworkInfoFeatureDependency } from './index';
 import { IBlockOverview } from './types';
+import { isNumber } from 'lodash';
 
 export class BlocksStore extends Store {
   @observable public latestBlocks: IBlockOverview[] = [];
@@ -88,7 +89,7 @@ export class BlocksStore extends Store {
     let result: IBlockOverview[] | null = null;
     const offset = (params.page - 1) * params.perPage;
     const limit = params.perPage;
-    if (params.epoch) {
+    if (isNumber(params.epoch)) {
       result = await this.fetchBlocksInEpoch({
         epoch: params.epoch,
         limit,
