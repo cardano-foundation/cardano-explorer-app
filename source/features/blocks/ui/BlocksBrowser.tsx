@@ -62,6 +62,7 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
         epoch: props.epoch,
         page: p.currentPage,
         perPage: p.itemsPerPage,
+        total: totalItems,
       });
     },
     {

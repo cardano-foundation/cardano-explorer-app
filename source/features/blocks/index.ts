@@ -12,6 +12,7 @@ export class BlocksActions {
     epoch?: number;
     page: number;
     perPage: number;
+    total: number;
   }> = new Action();
   public fetchLatestBlocks: Action<void> = new Action();
   public startPollingLatestBlocks: Action<void> = new Action();

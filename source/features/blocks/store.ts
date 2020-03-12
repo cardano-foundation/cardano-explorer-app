@@ -86,7 +86,11 @@ export class BlocksStore extends Store {
     params: ActionProps<typeof BlocksActions.prototype.browseBlocks>
   ): Promise<void> => {
     let result: IBlockOverview[] | null = null;
-    const offset = (params.page - 1) * params.perPage;
+    const pageOffset = (params.page - 1) * params.perPage;
+    const delta = params.total - pageOffset;
+    const numberOfMissingItemsOnPage =
+      delta < params.perPage ? params.perPage - delta : 0;
+    const offset = pageOffset - numberOfMissingItemsOnPage;
     const limit = params.perPage;
     if (params.epoch) {
       result = await this.fetchBlocksInEpoch({
