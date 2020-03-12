@@ -1,3 +1,4 @@
+import { isNumber } from 'lodash';
 import { action, computed, observable, runInAction } from 'mobx';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import { GraphQLRequestVariables } from '../../lib/graphql/GraphQLRequest';
@@ -8,7 +9,6 @@ import { BlocksApi } from './api';
 import { blockOverviewTransformer } from './api/transformers';
 import { BlocksActions, INetworkInfoFeatureDependency } from './index';
 import { IBlockOverview } from './types';
-import { isNumber } from 'lodash';
 
 export class BlocksStore extends Store {
   @observable public latestBlocks: IBlockOverview[] = [];
