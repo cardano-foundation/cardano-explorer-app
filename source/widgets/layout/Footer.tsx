@@ -34,7 +34,7 @@ export const Footer = (props: IFooterProps) => {
           </div>
           <div className={styles.logos}>
             <div className={styles.logoText}>
-              <a href="#">
+              <a href="https://iohk.io/">
                 <img src={iohkLogo} className={styles.iohkLogo} />
               </a>
               <p className={styles.iohkText}>{translate('footer.iohk')}</p>
