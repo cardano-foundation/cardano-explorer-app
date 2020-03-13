@@ -29,7 +29,7 @@ const columns = (): Array<IColumnDefinition<IBlockOverview>> => [
     },
     cellValue: (row: IBlockOverview) => row,
     cssClass: 'epoch',
-    head: 'Epoch / Slot',
+    head: 'block.epochSlotTitle',
     key: 'epochsSlots',
   },
   {
@@ -38,34 +38,34 @@ const columns = (): Array<IColumnDefinition<IBlockOverview>> => [
     ),
     cellValue: (row: IBlockOverview) => row,
     cssClass: 'blocksSlots',
-    head: 'Block',
+    head: 'block.blockTitle',
     key: 'number',
   },
   {
     cellValue: (row: IBlockOverview) =>
       dayjs(row.createdAt).format('YYYY/MM/DD HH:mm:ss'),
     cssClass: 'createdAt',
-    head: 'Created At',
+    head: 'block.createdAtTitle',
     key: 'createdAt',
   },
   {
     cssClass: 'transactions',
-    head: 'Transactions',
+    head: 'block.transactionsTitle',
     key: 'transactionsCount',
   },
   {
     cssClass: 'output',
-    head: 'Output (A)',
+    head: 'block.outputTitle',
     key: 'output',
   },
   {
     cssClass: 'size',
-    head: 'Size (Bytes)',
+    head: 'block.sizeTitle',
     key: 'size',
   },
   {
     cssClass: 'createdBy',
-    head: 'Created By',
+    head: 'block.createdByTitle',
     key: 'createdBy',
   },
 ];

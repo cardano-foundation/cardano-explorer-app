@@ -1,36 +1,160 @@
 {
   "address": {
-    "pageTitle": "Addresse | $t(productTitle)"
+    "addressLabel": "Adresse",
+    "pageTitle": "$t(address.addressLabel) | $t(productTitle)",
+    "summaryAddressLabel": "$t(address.addressLabel)",
+    "summaryBalanceLabel": "Insgesamt",
+    "summaryTransactionsLabel": "Transaktionen"
   },
   "block": {
-    "pageTitle": "Block | $t(productTitle)"
+    "blocks": "Blöcke",
+    "blockTitle": "Block",
+    "createdAtTitle": "Erzeugt",
+    "createdByTitle": "Erzeugt von",
+    "epochSlotTitle": "Epoche / Slot",
+    "outputTitle": "Output (₳)",
+    "pageTitle": "Block | $t(productTitle)",
+    "sizeTitle": "Größe (Bytes)",
+    "summary": "Block Übersicht",
+    "transactionsTitle": "Transaktionen"
+  },
+  "blockSummary": {
+    "createdBy": "Erzeugt von",
+    "confirmations": "Konfirmationen",
+    "block": "Block",
+    "epoch": "Epoche",
+    "id": "ID",
+    "merkleRoot": "Merkle root",
+    "nextBlock": "Nächster Block",
+    "previousBlock": "Voriger Block",
+    "size": "Größe",
+    "time": "Zeitpunkt",
+    "transactions": "Transaktionen"
   },
   "browseBlocks": {
-    "pageTitle": "Blöcke Suchen | $t(productTitle)"
+    "pageTitle": "Blöcke Suchen | $t(productTitle)",
+    "performanceLabel": "Performance",
+    "sharedRewardsLabel": "Geteilte Belohnungen",
+    "slotsElectedLabel": "Slots gewählt",
+    "stakePoolLabel": "Stake Pool"
   },
   "browseEpochs": {
-    "pageTitle": "Epochen Suchen | $t(productTitle)"
+    "pageTitle": "Epochen Suchen | $t(productTitle)",
+    "epochsListTitle": "Epochen Suchen"
   },
   "epoch": {
-    "pageTitle": "Epoche | $t(productTitle)"
+    "blocksSlotTitle": "Blöcke / Slots",
+    "createdByTitle": "Erzeugt von",
+    "epochTitle": "Epoche",
+    "lastBlockAtTitle": "Letzter Block",
+    "outputTitle": "Output (₳)",
+    "pageTitle": "Epoche | $t(productTitle)",
+    "startedAtTitle": "Gestartet",
+    "transactionsTitle": "Transaktionen"
+  },
+  "epochSummary": {
+    "epoch": "Epoche",
+    "epochSummaryTitle": "Epoche Übersicht",
+    "lastBlockAt": "Letzter Block",
+    "numberOfBlocks": "Anzahl an Blöcken",
+    "startedAt": "Gestartet",
+    "totalOutput": "Output insgesamt",
+    "transactions": "Transaktionen"
   },
   "error": {
     "pageTitle": "Fehler 404 | $t(productTitle)"
   },
+  "footer": {
+    "cardanoChat": "Cardano Chat",
+    "cardanoCommunity": "Cardano Community",
+    "cardanoForum": "Cardano Forum",
+    "cardanoFoundation": "Cardano Foundation",
+    "cardanoFoundationTwitter": "Cardano Foundation Twitter",
+    "cardanoFoundationYoutube": "Cardano Foundation Youtube",
+    "cardanoReddit": "Cardano Reddit",
+    "cardanoText": "!!!Cardano is a software platform ONLY and does not conduct any independent diligence on or substantive review of any blockchain ,digital currency, cryptocurrency or associated technology. Your use of this website and software is entirely at your own risk, and this website is provided on an \"as is\" basis and for reference only.",
+    "cardanoSL": "!!!Cardano SL Source Code",
+    "documentation": "Dokumentation",
+    "iohk": "Unterstützt von IOHK",
+    "joinCommunity": "Werde Teil der Community",
+    "moreAbout": "Mehr über Cardano",
+    "openSource": "Open Source",
+    "ouroborosAlgorithm": "Ouroboros Algorythmus",
+    "project": "Projekt.",
+    "shellyExplorer": "Shelley Explorer",
+    "textTitle": "Cardano ist ein",
+    "whyCardano": "Warum Cardano"
+  },
+  "header": {
+    "epochsBlocks": "Epochen & Blöcke",
+    "explorer": "Blockchain Explorer"
+  },
   "index": {
     "pageTitle": "$t(productTitle)"
+  },
+  "latestBlocks": {
+    "pageTitle": "Aktuelle Blöcke",
+    "showMore": "mehr"
+  },
+  "latestEpochs": {
+    "pageTitle": "Aktuelle Epochen",
+    "showMore": "mehr"
   },
   "locales": {
     "de": "Deutsch",
     "en": "Englisch",
     "ja": "Japanisch"
   },
+  "outdatedBrowser": {
+    "pageTitle": "Veralteter Browser",
+    "text": "Ihr Web-Browser ist veraltet.",
+    "updateBrowserFirst": "Aktualisieren sie",
+    "updateBrowserSecond": "Browser für bessere Sicherheit, Geschwindigkeit und Nutzungserfahrung dieser Seite."
+  },
+  "pagination": {
+    "of": "von"
+  },
   "productTitle": "Cardano Explorer",
   "search": {
+    "description": "Bitte wiederholen sie ihre Suche mit einer gültigen Epochen-ID, Block-ID, Transaktions-ID, Adresse oder Epochen Nummer",
+    "notExist": "Adresse existiert nicht:",
+    "notFound": "Es tut uns Leid, wir konnten keine Ergebnisse finden zu:",
     "placeholder": "Suche nach Epochen, Blöcken, Addressen und Transaktionen",
     "title": "Suche"
   },
+  "stakeDistribution": {
+    "distribution": "Stake Verteilung",
+    "slotsElected": "Slots gewählt",
+    "stakePool": "Stake Pool"
+  },
+  "stakePools": {
+    "controlledStake": "Kontrollierter Stake",
+    "performance": "Performance",
+    "profitMargin": "Gewinnspanne",
+    "ranking": "Rang",
+    "retiring": "!!!Retiring in",
+    "stakePoolsSearch": "Nach einem bestimmten Stake Pool suchen",
+    "stakePoolsTitle": "Stake Pools",
+    "unmoderated": "!!!You have consented to view unmoderated stake pool data.",
+    "unmoderatedContent": "!!!Do you want to see unmoderated content?",
+    "unmoderatedEntitiesControl": "!!!This information is provided and hosted by stake pool operators and it is not in control of entities running this website.",
+    "unmoderatedLeave": "!!!Leave this page",
+    "unmoderatedPoolTickerSymbols": "!!!Stake pool ticker symbols, titles, descriptions and websites are not moderated and may contain inappropriate content.",
+    "unmoderatedStakePoolData": "!!!Stake pool data is not moderated",
+    "unmoderatedWarning": "!!!Warning:"
+  },
   "transaction": {
-    "pageTitle": "Transaktion | $t(productTitle)"
+    "block": "Block",
+    "confirmations": "Konfirmationen",
+    "epoch": "Epoche",
+    "fee": "Transaktionsgebühr",
+    "includedIn": "Inkludiert in",
+    "noTransactions": "Keine Transaktionen",
+    "pageTitle": "Transaktion | $t(productTitle)",
+    "receivedTime": "Erhalten",
+    "summary": "Übersicht",
+    "totalOutput": "Output Insgesamt",
+    "transactionLabel": "Transaktion",
+    "transactionsLabel": "Transaktionen"
   }
 }

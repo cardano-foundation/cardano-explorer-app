@@ -2,6 +2,7 @@ import { Observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import ShowMoreButtonDecorator from '../../../widgets/decorators/ShowMoreButtonDecorator';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
+import { useI18nFeature } from '../../i18n/context';
 import { useNavigationFeature } from '../../navigation';
 import { BLOCK_BROWSE_PATH } from '../config';
 import { useBlocksFeature } from '../context';
@@ -9,6 +10,7 @@ import BlockList from './BlockList';
 import styles from './LatestBlocks.module.scss';
 
 export const LatestBlocks = () => {
+  const { translate } = useI18nFeature().store;
   const { actions, store } = useBlocksFeature();
   const navigation = useNavigationFeature();
   useEffect(() => {
@@ -26,7 +28,7 @@ export const LatestBlocks = () => {
         return (
           <ShowMoreButtonDecorator
             href={BLOCK_BROWSE_PATH}
-            label={'show more'}
+            label={translate('latestBlocks.showMore')}
             isHidden={
               store.isLoadingLatestBlocksFirstTime ||
               store.latestBlocks.length < 10
@@ -35,7 +37,7 @@ export const LatestBlocks = () => {
             <BlockList
               isLoading={store.isLoadingLatestBlocksFirstTime}
               items={latestBlocks}
-              title="Latest Blocks"
+              title={translate('latestBlocks.pageTitle')}
             />
             {store.isLoadingLatestBlocksFirstTime && (
               <LoadingSpinner className={styles.loadingSpinnerMargin} />

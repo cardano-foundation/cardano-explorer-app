@@ -7,11 +7,14 @@ import { i18nInitialProps } from '../../../i18n/utils';
 import BlocksBrowser from '../BlocksBrowser';
 import { BlocksFeatureProvider } from '../BlocksFeatureProvider';
 
-export const BrowseBlocksPage = () => (
-  <BlocksFeatureProvider>
-    <BlocksBrowser title="Browse Blocks" />
-  </BlocksFeatureProvider>
-);
+export const BrowseBlocksPage = () => {
+  const { translate } = useI18nFeature().store;
+  return (
+    <BlocksFeatureProvider>
+      <BlocksBrowser title={translate('browseBlocks.pageTitle')} />
+    </BlocksFeatureProvider>
+  );
+};
 
 const StaticLayout = (props: StaticLayoutProps) => {
   const { translate } = useI18nFeature().store;

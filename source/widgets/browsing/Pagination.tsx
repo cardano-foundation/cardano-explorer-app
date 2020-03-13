@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
+import { useI18nFeature } from '../../features/i18n/context';
 import styles from './Pagination.module.scss';
 
 export interface IPaginationProps {
@@ -12,6 +13,7 @@ export interface IPaginationProps {
 
 const Pagination = (props: IPaginationProps) => {
   const { totalPages, onChangePage, currentPage } = props;
+  const { translate } = useI18nFeature().store;
   const isLeftButtonDisabled = currentPage <= 1;
   const isRightButtonDisabled = currentPage >= totalPages;
   return (
@@ -27,7 +29,7 @@ const Pagination = (props: IPaginationProps) => {
       />
       <div className={styles.pageInfo}>
         <span className={styles.pageNumber}>{currentPage}</span>
-        <span className={styles.pageOf}>of</span>
+        <span className={styles.pageOf}>{translate('pagination.of')}</span>
         <span className={styles.totalPagesNumber}>{totalPages}</span>
       </div>
       <Button

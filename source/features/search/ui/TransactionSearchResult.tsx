@@ -3,6 +3,7 @@ import { Observer } from 'mobx-react-lite';
 import React from 'react';
 import { useObservableEffect } from '../../../lib/mobx/react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
+import { useI18nFeature } from '../../i18n/context';
 import { useNavigationFeature } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import TransactionInfo from '../../transactions/components/TransactionInfo';
@@ -13,6 +14,7 @@ import NoSearchResult from './NoSearchResult';
 import styles from './TransactionSearchResult.module.scss';
 
 export const TransactionSearchResult = () => {
+  const { translate } = useI18nFeature().store;
   const search = useSearchFeature();
   const networkInfo = useNetworkInfoFeature();
   const navigation = useNavigationFeature();
@@ -40,13 +42,13 @@ export const TransactionSearchResult = () => {
               <TransactionSummary
                 navigation={navigation?.actions}
                 networkBlockHeight={networkInfo.store.blockHeight}
-                title="Summary"
+                title={translate('transaction.summary')}
                 {...transactionSearchResult}
               />
               <div className={styles.transaction}>
                 <TransactionInfo
                   dontLinkToTransaction
-                  title="Transaction"
+                  title={translate('transaction.transactionLabel')}
                   {...transactionSearchResult}
                 />
               </div>

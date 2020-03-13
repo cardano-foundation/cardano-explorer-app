@@ -1,6 +1,7 @@
 import { debounce } from 'lodash';
 import React, { Component } from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import { useI18nFeature } from '../../i18n/context';
 import { getFilteredStakePoolsList } from '../helpers';
 import { IStakePoolProps, IStakePoolsProps } from '../types';
 import styles from './StakePools.module.scss';
@@ -44,6 +45,7 @@ export default class StakePools extends Component<IStakePoolsProps, IState> {
     // @todo
   };
   public render() {
+    const { translate } = useI18nFeature().store;
     const { selectedPoolId, search } = this.state;
     const { stakePoolsList } = this.props;
     const filteredStakePoolsList: Array<IStakePoolProps> = getFilteredStakePoolsList(
@@ -52,7 +54,7 @@ export default class StakePools extends Component<IStakePoolsProps, IState> {
     );
     return (
       <div className={styles.stakePoolsContainer}>
-        <DividerWithTitle title="Stake pools" />
+        <DividerWithTitle title={translate('stakePools.stakePoolsTitle')} />
         <StakePoolsSearch
           search={search}
           onSearch={this.handleSearch}
