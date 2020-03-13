@@ -21,7 +21,7 @@ const BlockSummary = (props: BlockSummaryProps) => {
   const onEpochNumberClick = (
     epoch: ITransactionDetails['block']['epoch']
   ) => () => {
-    if (epoch && epoch !== '-') {
+    if (isNumber(epoch)) {
       props.navigation?.push.trigger({
         path: EPOCH_SEARCH_RESULT_PATH,
         query: { number: epoch },
