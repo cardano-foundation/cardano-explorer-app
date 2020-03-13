@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { calculatePaging, ICalculatePagingOutputs } from '../../../lib/paging';
 import Pagination from '../../../widgets/browsing/Pagination';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
+import { useI18nFeature } from '../../i18n/context';
 import { ITransactionDetails } from '../types';
 import TransactionList from './TransactionList';
 import styles from './TransactionsBrowser.module.scss';
@@ -23,6 +24,7 @@ interface ITransactionsBrowserProps {
 }
 
 const TransactionsBrowser = (props: ITransactionsBrowserProps) => {
+  const { translate } = useI18nFeature().store;
   const paging = calculatePaging({
     currentPage: props.currentPage,
     perPage: props.perPage,
@@ -40,7 +42,7 @@ const TransactionsBrowser = (props: ITransactionsBrowserProps) => {
         <>
           <TransactionList
             isLoading={props.isLoading}
-            title="Transactions"
+            title={translate('transaction.transactionsLabel')}
             items={props.transactions}
           />
           {paging.totalPages > 0 ? (
@@ -50,7 +52,9 @@ const TransactionsBrowser = (props: ITransactionsBrowserProps) => {
               totalPages={paging.totalPages}
             />
           ) : (
-            <div className={styles.noTransactions}>No Transactions</div>
+            <div className={styles.noTransactions}>
+              {translate('transaction.noTransactions')}
+            </div>
           )}
         </>
       ) : (

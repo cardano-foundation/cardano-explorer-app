@@ -1,36 +1,161 @@
 {
   "address": {
-    "pageTitle": "Address | $t(productTitle)"
+    "addressLabel": "Address",
+    "pageTitle": "Address | $t(productTitle)",
+    "summaryAddressLabel": "Address",
+    "summaryBalanceLabel": "Final Balance",
+    "summaryTransactionsLabel": "Transactions"
   },
   "block": {
-    "pageTitle": "Block | $t(productTitle)"
+    "blocks": "Blocks",
+    "blockTitle": "Block",
+    "createdAtTitle": "Created At",
+    "createdByTitle": "Created By",
+    "epochSlotTitle": "Epoch / Slot",
+    "outputTitle": "Output (₳)",
+    "pageTitle": "Block | $t(productTitle)",
+    "sizeTitle": "Size (Bytes)",
+    "summary": "Block Summary",
+    "transactionsTitle": "Transactions"
+  },
+  "blockSummary": {
+    "createdBy": "Created By",
+    "confirmations": "Confirmations",
+    "block": "Block",
+    "epoch": "Epoch",
+    "id": "ID",
+    "merkleRoot": "Merkle root",
+    "nextBlock": "Next block",
+    "previousBlock": "Previous block",
+    "size": "Size",
+    "time": "Time",
+    "transactions": "Transactions"
   },
   "browseBlocks": {
-    "pageTitle": "Browse Blocks | $t(productTitle)"
+    "pageTitle": "Browse Blocks | $t(productTitle)",
+    "performanceLabel": "Performance",
+    "sharedRewardsLabel": "Shared rewards",
+    "slotsElectedLabel": "Slots elected",
+    "stakePoolLabel": "Stake pool"
   },
   "browseEpochs": {
-    "pageTitle": "Browse Epochs | $t(productTitle)"
+    "pageTitle": "Browse Epochs | $t(productTitle)",
+    "epochsListTitle": "Browse Epochs"
   },
   "epoch": {
-    "pageTitle": "Epoch | $t(productTitle)"
+    "blocksSlotTitle": "Blocks / Slots",
+    "createdByTitle": "Created By",
+    "epochTitle": "Epoch",
+    "lastBlockAtTitle": "Last Block at",
+    "outputTitle": "Output (₳)",
+    "pageTitle": "Epoch | $t(productTitle)",
+    "startedAtTitle": "Started At",
+    "transactionsTitle": "Transactions"
+  },
+  "epochSummary": {
+    "epoch": "Epoch",
+    "epochSummaryTitle": "Epoch Summary",
+    "lastBlockAt": "Last Block at",
+    "numberOfBlocks": "# of blocks",
+    "startedAt": "Started at",
+    "totalOutput": "Total output",
+    "transactions": "Transactions"
   },
   "error": {
     "pageTitle": "Error 404 | $t(productTitle)"
   },
+  "footer": {
+    "cardanoChat": "Cardano Chat",
+    "cardanoCommunity": "Cardano Community",
+    "cardanoForum": "Cardano Forum",
+    "cardanoFoundation": "Cardano Foundation",
+    "cardanoFoundationTwitter": "Cardano Foundation Twitter",
+    "cardanoFoundationYoutube": "Cardano Foundation Youtube",
+    "cardanoReddit": "Cardano Reddit",
+    "cardanoText": "Cardano is a software platform ONLY and does not conduct any independent diligence on or substantive review of any blockchain ,digital currency, cryptocurrency or associated technology. Your use of this website and software is entirely at your own risk, and this website is provided on an \"as is\" basis and for reference only.",
+    "cardanoSL": "Cardano SL Source",
+    "documentation": "Documentation",
+    "iohk": "IOHK Supported Project",
+    "joinCommunity": "Join the community",
+    "moreAbout": "More about Cardano",
+    "openSource": "Open Source",
+    "ouroborosAlgorithm": "Ouroboros Algorithm",
+    "project": "project.",
+    "shellyExplorer": "Shelley Explorer",
+    "textTitle": "Cardano is an",
+    "whyCardano": "Why Cardano"
+  },
+  "header": {
+    "epochsBlocks": "Epochs & Blocks",
+    "explorer": "Blockchain Explorer"
+  },
   "index": {
     "pageTitle": "$t(productTitle)"
+  },
+  "latestBlocks": {
+    "pageTitle": "Latest Blocks",
+    "showMore": "show more"
+  },
+  "latestEpochs": {
+    "pageTitle": "Latest Epochs",
+    "showMore": "show more"
   },
   "locales": {
     "de": "German",
     "en": "English",
     "ja": "Japanese"
   },
+  "outdatedBrowser": {
+    "pageTitle": "Outdated browser",
+    "text": "Your web browser is out of date",
+    "updateBrowserFirst": "Update your",
+    "updateBrowserSecond": "browser for more security, speed and the best experience on this site."
+  },
+  "pagination": {
+    "of": "of"
+  },
   "productTitle": "Cardano Explorer",
   "search": {
+    "description": "Please enter a valid epoch id, block id, transaction id, address or epoch number and retry your search.",
+    "notExist": "Address does not exist:",
+    "notFound": "Sorry, we could not find any results matching:",
     "placeholder": "Search for epochs, blocks, addresses and transactions",
     "title": "Search"
   },
+  "stakeDistribution": {
+    "distribution": "Stake Distribution",
+    "slotsElected": "Slots elected",
+    "stakePool": "Stake pool"
+  },
+  "stakePools": {
+    "controlledStake": "Controlled Stake",
+    "performance": "Performance",
+    "profitMargin": "Profit Margin",
+    "ranking": "Ranking",
+    "retiring": "Retiring in",
+    "stakePoolsSearch": "Search for a specific stake pool",
+    "stakePoolsTitle": "Stake Pools",
+    "unmoderated": "You have consented to view unmoderated stake pool data.",
+    "unmoderatedConfirmation": "Yes, show unmoderated content",
+    "unmoderatedContent": "Do you want to see unmoderated content?",
+    "unmoderatedEntitiesControl": "This information is provided and hosted by stake pool operators and it is not in control of entities running this website.",
+    "unmoderatedLeave": "Leave this page",
+    "unmoderatedPoolTickerSymbols": "Stake pool ticker symbols, titles, descriptions and websites are not moderated and may contain inappropriate content.",
+    "unmoderatedStakePoolData": "Stake pool data is not moderated",
+    "unmoderatedWarning": "Warning:"
+  },
   "transaction": {
-    "pageTitle": "Transaction | $t(productTitle)"
+    "block": "Block",
+    "confirmations": "Confirmations",
+    "epoch": "Epoch",
+    "fee": "Transaction Fee",
+    "includedIn": "Included In",
+    "noTransactions": "No Transactions",
+    "pageTitle": "Transaction | $t(productTitle)",
+    "receivedTime": "Received Time",
+    "summary": "Summary",
+    "totalOutput": "Total Output",
+    "transactionLabel": "Transaction",
+    "transactionsLabel": "Transactions"
   }
 }

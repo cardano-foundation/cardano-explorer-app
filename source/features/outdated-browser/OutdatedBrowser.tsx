@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useI18nFeature } from '../i18n/context';
 import styles from './OutdatedBrowser.module.scss';
 
 const CardanoLogo = require('../../public/assets/images/header/cardano-logo.svg');
@@ -78,6 +79,7 @@ export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
   };
 
   public render() {
+    const { translate } = useI18nFeature().store;
     const { text, updateBrowserUrl } = this.props;
 
     const userBrowser = this.detectUserBrowser();
@@ -169,8 +171,9 @@ export default class OutdatedBrowser extends Component<IOutdatedBrowserProps> {
         </div>
         <div className={styles.bottomContainer}>
           <p className={styles.bottomContainerText}>
-            Update your {userBrowser && <span>({userBrowser})</span>} browser
-            for more security, speed and the best experience on this site.
+            {translate('outdatedBrowser.updateBrowserFirst')}{' '}
+            {userBrowser && <span>({userBrowser})</span>}{' '}
+            {translate('outdatedBrowser.updateBrowserSecond')}
           </p>
         </div>
       </div>

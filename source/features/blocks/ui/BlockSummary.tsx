@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
 import { getEpochRoute } from '../../epochs/helpers';
+import { useI18nFeature } from '../../i18n/context';
 import { NavigationActions } from '../../navigation';
 import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
 import { ITransactionDetails } from '../../transactions/types';
@@ -18,10 +19,11 @@ export type BlockSummaryProps = {
 } & IBlockDetailed;
 
 const BlockSummary = (props: BlockSummaryProps) => {
+  const { translate } = useI18nFeature().store;
   const onEpochNumberClick = (
     epoch: ITransactionDetails['block']['epoch']
   ) => () => {
-    if (epoch && epoch !== '-') {
+    if (isNumber(epoch)) {
       props.navigation?.push.trigger({
         path: EPOCH_SEARCH_RESULT_PATH,
         query: { number: epoch },
@@ -46,11 +48,15 @@ const BlockSummary = (props: BlockSummaryProps) => {
       <div className={styles.content}>
         <div className={styles.infoPanel}>
           <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>ID</div>
+            <div className={styles.infoLabel}>
+              {translate('blockSummary.id')}
+            </div>
             <div className={styles.infoValue}>{props.id}</div>
           </div>
           <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>Epoch</div>
+            <div className={styles.infoLabel}>
+              {translate('blockSummary.epoch')}
+            </div>
             <div className={styles.infoValue}>
               {isNumber(props.epoch) ? (
                 <LocalizedLink href={getEpochRoute(props.epoch)}>
@@ -62,33 +68,47 @@ const BlockSummary = (props: BlockSummaryProps) => {
             </div>
           </div>
           <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>Block</div>
+            <div className={styles.infoLabel}>
+              {translate('blockSummary.block')}
+            </div>
             <div className={styles.infoValue}>{props.number}</div>
           </div>
           <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>Confirmations</div>
+            <div className={styles.infoLabel}>
+              {translate('blockSummary.confirmations')}
+            </div>
             <div className={styles.infoValue}>{confirmations}</div>
           </div>
           <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>Size</div>
+            <div className={styles.infoLabel}>
+              {translate('blockSummary.size')}
+            </div>
             <div className={styles.infoValue}>{props.size} bytes</div>
           </div>
           <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>Transactions</div>
+            <div className={styles.infoLabel}>
+              {translate('blockSummary.transactions')}
+            </div>
             <div className={styles.infoValue}>{props.transactionsCount}</div>
           </div>
           <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>Created by</div>
+            <div className={styles.infoLabel}>
+              {translate('blockSummary.createdBy')}
+            </div>
             <div className={styles.infoValue}>{props.createdBy}</div>
           </div>
           <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>Time</div>
+            <div className={styles.infoLabel}>
+              {translate('blockSummary.time')}
+            </div>
             <div className={styles.infoValue}>
               {dayjs(props.createdAt).format('YYYY/MM/DD HH:mm:ss')}
             </div>
           </div>
           <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>Previous block</div>
+            <div className={styles.infoLabel}>
+              {translate('blockSummary.previousBlock')}
+            </div>
             <div className={styles.infoValue}>
               <span onClick={onBlockIdClick(props.prevBlock.id)}>
                 {props.prevBlock.number !== '-'
@@ -98,7 +118,9 @@ const BlockSummary = (props: BlockSummaryProps) => {
             </div>
           </div>
           <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>Next block</div>
+            <div className={styles.infoLabel}>
+              {translate('blockSummary.nextBlock')}
+            </div>
             <div className={styles.infoValue}>
               <span onClick={onBlockIdClick(props.nextBlock.id)}>
                 {props.nextBlock.number !== '-'
@@ -108,7 +130,9 @@ const BlockSummary = (props: BlockSummaryProps) => {
             </div>
           </div>
           <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>Merkle root</div>
+            <div className={styles.infoLabel}>
+              {translate('blockSummary.merkleRoot')}
+            </div>
             <div className={styles.infoValue}>{props.merkleRoot}</div>
           </div>
         </div>

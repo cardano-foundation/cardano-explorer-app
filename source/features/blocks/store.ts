@@ -1,3 +1,4 @@
+import { isNumber } from 'lodash';
 import { action, computed, observable, runInAction } from 'mobx';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import { GraphQLRequestVariables } from '../../lib/graphql/GraphQLRequest';
@@ -92,7 +93,7 @@ export class BlocksStore extends Store {
       delta < params.perPage ? params.perPage - delta : 0;
     const offset = pageOffset - numberOfMissingItemsOnPage;
     const limit = params.perPage;
-    if (params.epoch) {
+    if (isNumber(params.epoch)) {
       result = await this.fetchBlocksInEpoch({
         epoch: params.epoch,
         limit,

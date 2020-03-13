@@ -6,12 +6,15 @@ import { useI18nFeature } from '../i18n/context';
 import { i18nInitialProps } from '../i18n/utils';
 import OutdatedBrowser from './OutdatedBrowser';
 
-export const OutdatedBrowserPage = () => (
-  <OutdatedBrowser
-    text="Your web browser is out of date"
-    updateBrowserUrl="http://browser-update.org/update.html?force_outdated=true"
-  />
-);
+export const OutdatedBrowserPage = () => {
+  const { translate } = useI18nFeature().store;
+  return (
+    <OutdatedBrowser
+      text={translate('outdatedBrowser.text')}
+      updateBrowserUrl="http://browser-update.org/update.html?force_outdated=true"
+    />
+  );
+};
 
 const StaticLayout = (props: StaticLayoutProps) => {
   const { translate } = useI18nFeature().store;

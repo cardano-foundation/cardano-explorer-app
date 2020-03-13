@@ -8,6 +8,7 @@ import BlocksBrowser from '../../blocks/ui/BlocksBrowser';
 import { EPOCH_BLOCKS_PER_PAGE } from '../../epochs/config';
 import EpochSummary from '../../epochs/ui/EpochSummary';
 import StakeDistribution from '../../epochs/ui/StakeDistribution';
+import { useI18nFeature } from '../../i18n/context';
 import { useNavigationFeature } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
@@ -49,6 +50,7 @@ const stakeDistribution = [
 ];
 
 const EpochsSearchResult = () => {
+  const { translate } = useI18nFeature().store;
   const { actions, api, store } = useSearchFeature();
   const networkInfo = useNetworkInfoFeature();
   const navigation = useNavigationFeature();
@@ -59,7 +61,7 @@ const EpochsSearchResult = () => {
   // Subscribe to epoch results on mounting
   useObservableEffect(() => {
     const { currentEpoch } = networkInfo.store;
-    if (currentEpoch && query?.number) {
+    if (currentEpoch && queryEpochNumber != null) {
       if (!epochSearchResult || epochSearchResult.number !== queryEpochNumber) {
         if (currentEpoch === queryEpochNumber) {
           // Subscribe to current epoch data
@@ -89,18 +91,21 @@ const EpochsSearchResult = () => {
     return (
       <div className={styles.container}>
         <div className={styles.epochSummary}>
-          <EpochSummary title="Epoch Summary" epoch={epochSearchResult} />
+          <EpochSummary
+            title={translate('epochSummary.epochSummaryTitle')}
+            epoch={epochSearchResult}
+          />
         </div>
         <BlocksBrowser
           epoch={epochSearchResult.number}
           perPageDefault={EPOCH_BLOCKS_PER_PAGE}
-          title="Blocks"
+          title={translate('block.blocks')}
           totalItems={epochSearchResult?.blocksCount}
         />
         {environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
           <div className={styles.stakeDistribution}>
             <StakeDistribution
-              title="Stake Distribution"
+              title={translate('stakeDistribution.distribution')}
               items={stakeDistribution}
             />
           </div>
