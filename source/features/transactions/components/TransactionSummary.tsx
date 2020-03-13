@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { BLOCK_SEARCH_RESULT_PATH } from '../../blocks/config';
@@ -16,13 +17,13 @@ export interface ITransactionSummaryProps extends ITransactionDetails {
 
 const TransactionSummary = (props: ITransactionSummaryProps) => {
   const { translate } = useI18nFeature().store;
-  const onEpochNumberClick = (epoch: ITransactionDetails['block']['epoch']) => {
-    if ((!epoch && epoch !== 0) || epoch === '-') {
+  const onEpochNumberClick = (e: ITransactionDetails['block']['epoch']) => {
+    if ((!e && e !== 0) || e === '-') {
       return;
     }
     props.navigation?.push.trigger({
       path: EPOCH_SEARCH_RESULT_PATH,
-      query: { number: epoch },
+      query: { number: e },
     });
   };
   const onBlockIdClick = (id: ITransactionDetails['block']['id']) => {
@@ -34,6 +35,7 @@ const TransactionSummary = (props: ITransactionSummaryProps) => {
       query: { id },
     });
   };
+  const epoch = props.block.epoch === '-' ? 0 : props.block.epoch;
   return (
     <div className={styles.transactionSummaryContainer}>
       <div className={styles.header}>
@@ -65,10 +67,8 @@ const TransactionSummary = (props: ITransactionSummaryProps) => {
             </div>
             <div className={styles.infoValue}>
               {translate('transaction.epoch')}{' '}
-              {props.block.epoch ? (
-                <span onClick={() => onEpochNumberClick(props.block.epoch)}>
-                  {props.block.epoch}
-                </span>
+              {isNumber(epoch) ? (
+                <span onClick={() => onEpochNumberClick(epoch)}>{epoch}</span>
               ) : (
                 '?'
               )}

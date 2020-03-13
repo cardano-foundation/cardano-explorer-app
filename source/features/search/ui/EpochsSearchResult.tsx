@@ -61,7 +61,7 @@ const EpochsSearchResult = () => {
   // Subscribe to epoch results on mounting
   useObservableEffect(() => {
     const { currentEpoch } = networkInfo.store;
-    if (currentEpoch && query?.number) {
+    if (currentEpoch && queryEpochNumber != null) {
       if (!epochSearchResult || epochSearchResult.number !== queryEpochNumber) {
         if (currentEpoch === queryEpochNumber) {
           // Subscribe to current epoch data
