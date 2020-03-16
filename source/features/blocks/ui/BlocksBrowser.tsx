@@ -78,8 +78,8 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
         title={props.title}
         items={
           isBrowsingInEpoch
-            ? browsedBlocks.slice().reverse()
-            : browsedBlocks.slice()
+            ? browsedBlocks.slice()
+            : browsedBlocks.slice().reverse()
         }
       />
       <RouterPagination
