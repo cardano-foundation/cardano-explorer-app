@@ -42,6 +42,8 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
     totalPages: 0,
   });
 
+  const [isChangingPage, setIsChangingPage] = useState(false);
+
   useObservableEffect(
     observedProps => {
       const { blockHeight } = networkInfo.store;
@@ -69,6 +71,12 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
     }
   );
 
+  useObservableEffect(() => {
+    if (isChangingPage && !apiQuery.isExecuting) {
+      setIsChangingPage(false);
+    }
+  });
+
   return !apiQuery.hasBeenExecutedAtLeastOnce ||
     apiQuery.isExecutingTheFirstTime ? (
     <LoadingSpinner className={styles.loadingSpinnerMargin} />
@@ -76,6 +84,7 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
     <>
       <BlockList
         title={props.title}
+        isLoading={isChangingPage && apiQuery.isExecuting}
         items={
           isBrowsingInEpoch
             ? browsedBlocks.slice()
@@ -85,6 +94,7 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
       <RouterPagination
         currentPage={paging.currentPage}
         itemsPerPage={paging.itemsPerPage}
+        onChangePage={() => setIsChangingPage(true)}
         totalPages={paging.totalPages}
       />
     </>

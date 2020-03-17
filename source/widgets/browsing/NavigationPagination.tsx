@@ -6,6 +6,7 @@ import Pagination from './Pagination';
 export interface IPaginationProps {
   currentPage: number;
   itemsPerPage: number;
+  onChangePage?: (page: number) => void;
   totalPages: number;
 }
 
@@ -21,6 +22,7 @@ const NavigationPagination = (props: IPaginationProps) => {
         perPage: itemsPerPage,
       },
     });
+    props.onChangePage?.(page);
   };
   return (
     <Pagination
