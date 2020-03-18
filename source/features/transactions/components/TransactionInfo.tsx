@@ -31,6 +31,17 @@ const TransactionAddress = (props: { address: string }) =>
     </>
   );
 
+const TransactionAddressMobile = (props: { address: string }) =>
+  props.address.length <= 34 ? (
+    <span>{props.address}</span>
+  ) : (
+    <>
+      <div>{props.address.toString().substring(0, 19)}</div>
+      {'...'}
+      <div>{props.address.toString().substring(props.address.length - 19)}</div>
+    </>
+  );
+
 const TransactionInfo = (props: ITransactionInfoProps) => {
   const duration = dayjs().diff(dayjs(props.includedAt));
   let includedAt = null;
@@ -39,6 +50,9 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
   } else {
     includedAt = dayjs().to(dayjs(props.includedAt));
   }
+
+  const isMobile = window.innerWidth <= 768;
+
   return (
     <div className={styles.transactionInfoContainer}>
       {props.title && (
@@ -71,12 +85,22 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
                     ])}
                     key={i}
                   >
-                    <TransactionAddress address={input.address} />
+                    {!isMobile && (
+                      <TransactionAddress address={input.address} />
+                    )}
+                    {isMobile && (
+                      <TransactionAddressMobile address={input.address} />
+                    )}
                   </div>
                 ) : (
                   <LocalizedLink href={getAddressRoute(input.address)} key={i}>
                     <span className={styles.input}>
-                      <TransactionAddress address={input.address} />
+                      {!isMobile && (
+                        <TransactionAddress address={input.address} />
+                      )}
+                      {isMobile && (
+                        <TransactionAddressMobile address={input.address} />
+                      )}
                     </span>
                   </LocalizedLink>
                 )
@@ -95,12 +119,22 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
                     ])}
                     key={i}
                   >
-                    <TransactionAddress address={output.address} />
+                    {!isMobile && (
+                      <TransactionAddress address={output.address} />
+                    )}
+                    {isMobile && (
+                      <TransactionAddressMobile address={output.address} />
+                    )}
                   </div>
                 ) : (
                   <LocalizedLink href={getAddressRoute(output.address)} key={i}>
                     <span className={styles.output}>
-                      <TransactionAddress address={output.address} />
+                      {!isMobile && (
+                        <TransactionAddress address={output.address} />
+                      )}
+                      {isMobile && (
+                        <TransactionAddressMobile address={output.address} />
+                      )}
                     </span>
                   </LocalizedLink>
                 )
