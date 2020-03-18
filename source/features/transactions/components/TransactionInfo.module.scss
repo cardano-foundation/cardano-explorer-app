@@ -17,7 +17,6 @@ $medium-breakpoint: 780px;
     line-height: 1.33;
 
     @media (max-width: 768px) {
-      align-items: flex-start;
       flex-direction: column;
     }
 
@@ -73,6 +72,10 @@ $medium-breakpoint: 780px;
 
         .outputs {
           align-items: flex-end;
+
+          @media (max-width: $medium-breakpoint) {
+            align-items: flex-start;
+          }
         }
 
         .id {
@@ -127,8 +130,6 @@ $medium-breakpoint: 780px;
 
           @media (max-width: $medium-breakpoint) {
             margin: 10px 0;
-            transform: rotate(90deg);
-            width: 100%;
           }
 
           svg {
@@ -189,6 +190,10 @@ $medium-breakpoint: 780px;
 
           &:last-child {
             margin-bottom: 0;
+          }
+
+          @media (max-width: $medium-breakpoint) {
+            display: none;
           }
         }
       }
