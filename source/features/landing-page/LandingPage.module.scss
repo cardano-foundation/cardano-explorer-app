@@ -75,6 +75,10 @@
   top: -113px;
   width: 1100px;
 
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+
   @media (max-width: 768px) {
     display: none;
   }
