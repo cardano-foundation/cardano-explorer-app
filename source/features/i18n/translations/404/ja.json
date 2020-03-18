@@ -1,12 +1,12 @@
 {
   "document": {
-    "title": "Error 404 | Cardano Explorer"
+    "title": "エラー404 | Cardano ブロックチェーンエクスプローラー"
   },
   "error": {
-    "code": "Error code:",
-    "description": "The requested page cannot be found. It may have been removed or the link can be broken. If you entered a web address please check it was correct and try again.",
-    "explorerTitle": "Blockchain Explorer",
-    "support": "Contact Support",
-    "title": "Page not found"
+    "code": "エラーコード：",
+    "description": "要求されたページが見つかりません。 削除されたか、リンクが壊れている可能性があります。 Webアドレスを入力した場合は、それが正しいことを確認して、もう一度試してください。",
+    "explorerTitle": "ブロックチェーンエクスプローラー",
+    "support": "サポート問い合わせ先",
+    "title": "ページが見つかりません"
   }
 }
