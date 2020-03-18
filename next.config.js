@@ -14,15 +14,8 @@ module.exports = withPlugins(
     [
       withBundleAnalyzer,
       {
-        analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
-        analyzeBrowser: ['browser', 'both'].includes(
-          process.env.BUNDLE_ANALYZE
-        ),
+        analyzeBrowser: process.env.BUNDLE_ANALYZE === 'browser',
         bundleAnalyzerConfig: {
-          server: {
-            analyzerMode: 'static',
-            reportFilename: '../bundles/server.html',
-          },
           browser: {
             analyzerMode: 'static',
             reportFilename: '../bundles/client.html',
@@ -39,7 +32,7 @@ module.exports = withPlugins(
     [
       withImages,
       {
-        inlineImageLimit: 16384,
+        inlineImageLimit: 5000,
       },
     ],
   ],
@@ -49,11 +42,8 @@ module.exports = withPlugins(
     env: {
       DEBUG
     },
-    experimental: {
-      css: true,
-      scss: true
-    },
     webpack(config) {
+
       config.plugins.push(new LodashModuleReplacementPlugin());
 
       // Push DotEnv vars into client code
@@ -74,7 +64,31 @@ module.exports = withPlugins(
         ],
       });
 
+      // Preact optimizations
+      const splitChunks = config.optimization && config.optimization.splitChunks
+      if (splitChunks) {
+        const cacheGroups = splitChunks.cacheGroups;
+        const preactModules = /[\\/]node_modules[\\/](preact|preact-render-to-string)[\\/]/;
+        if (cacheGroups.framework) {
+          cacheGroups.preact = Object.assign({}, cacheGroups.framework, {
+            test: preactModules
+          });
+          cacheGroups.commons.name = 'framework';
+        }
+        else {
+          cacheGroups.preact = {
+            name: 'commons',
+            chunks: 'all',
+            test: preactModules
+          };
+        }
+      }
+
       return config;
+    },
+    experimental: {
+      modern: true,
+      polyfillsOptimization: true
     },
     exportTrailingSlash: true,
     /**
