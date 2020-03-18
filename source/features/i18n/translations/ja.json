@@ -62,7 +62,7 @@
     "transactions": "!!!トランザクション"
   },
   "error": {
-    "pageTitle": "Error 404 | $t(productTitle)"
+    "pageTitle": "エラー404 | $t(productTitle)"
   },
   "footer": {
     "cardanoChat": "Cardano Chat",
@@ -114,7 +114,7 @@
   "pagination": {
     "of": "of"
   },
-  "productTitle": "!!!Cardano Explorer",
+  "productTitle": "Cardano ブロックチェーンエクスプローラー",
   "search": {
     "description": "有効なエポックID、ブロックID、トランザクションID、アドレス、またはエポック番号を入力して、もう一度検索してください。",
     "notExist": "アドレスが見つかりません：",
