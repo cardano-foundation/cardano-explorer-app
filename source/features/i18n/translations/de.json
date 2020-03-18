@@ -105,6 +105,9 @@
     "en": "Englisch",
     "ja": "Japanisch"
   },
+  "noSearchResult": {
+    "pageTitle": "Keine Ergebnisse"
+  },
   "outdatedBrowser": {
     "pageTitle": "Veralteter Browser",
     "text": "Ihr Web-Browser ist veraltet.",
