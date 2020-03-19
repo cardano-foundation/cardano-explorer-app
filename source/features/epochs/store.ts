@@ -1,6 +1,9 @@
 import isNumber from 'lodash/isNumber';
 import { action, computed, observable, runInAction } from 'mobx';
-import { GetEpochsInRangeQuery } from '../../../generated/typings/graphql-schema';
+import {
+  EpochOverviewFragment,
+  GetEpochsInRangeQuery,
+} from '../../../generated/typings/graphql-schema';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import { GraphQLRequestVariables } from '../../lib/graphql/GraphQLRequest';
 import Reaction, { createReactions } from '../../lib/mobx/Reaction';
@@ -132,7 +135,9 @@ export class EpochsStore extends Store {
     return (
       result?.epochs
         .filter(isNotNull)
-        .map(e => epochOverviewTransformer(e, this.networkInfo.store)) ?? null
+        .map((e: EpochOverviewFragment) =>
+          epochOverviewTransformer(e, this.networkInfo.store)
+        ) ?? null
     );
   };
 
@@ -195,6 +200,8 @@ export class EpochsStore extends Store {
   ): IEpochOverview[] => {
     return epochs
       .filter(isNotNull)
-      .map(e => epochOverviewTransformer(e, this.networkInfo.store));
+      .map((e: EpochOverviewFragment) =>
+        epochOverviewTransformer(e, this.networkInfo.store)
+      );
   };
 }

@@ -91,7 +91,7 @@
 
     &:hover,
     &:active {
-      background-color: var(--primary-highlight-color-hover);
+      background-color: var(--primary-highlight-color-hover) !important;
     }
 
     @media (max-width: 575px) {

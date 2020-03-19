@@ -104,7 +104,9 @@ const EpochList: FC<IEpochListProps> = ({
       <Table
         title={title}
         columns={columns({ currentEpoch })}
-        rows={items.map(i => Object.assign({}, i, { key: i.number }))}
+        rows={items.map(i =>
+          Object.assign({}, i, { key: 'epoch-' + i.number })
+        )}
         withoutHeaders={!displaysItems && isLoading}
       />
     </div>
