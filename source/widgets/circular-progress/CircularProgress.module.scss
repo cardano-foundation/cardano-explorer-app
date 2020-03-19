@@ -6,9 +6,6 @@
 
     .spinnerCircle {
       animation: rotate 1s linear infinite;
-      -webkit-animation: rotate 1s linear infinite;
-      -moz-animation: rotate 1s linear infinite;
-      -o-animation: rotate 1s linear infinite;
       background-image: var(--epoch-progress-spinner-color);
       border-radius: 50%;
       left: 0;
@@ -47,38 +44,10 @@
       position: absolute;
       top: 0.5px;
       width: 21.4px;
-
       :global(.outer-ring) {
         fill: var(--primary-highlight-color);
       }
     }
-  }
-}
-
-@-webkit-keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@-moz-keyframes rotate {
-  from {
-    -moz-transform: rotate(0deg);
-  }
-  to {
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@-o-keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
 
