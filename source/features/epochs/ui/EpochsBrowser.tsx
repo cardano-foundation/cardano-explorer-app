@@ -55,7 +55,7 @@ const EpochsBrowser = () => {
         currentEpoch={epochs.store.currentEpochNumber}
         isLoading={epochs.api.getEpochsInRangeQuery.isExecuting}
         title={translate('browseEpochs.epochsListTitle')}
-        items={epochs.store.browsedEpochs}
+        items={epochs.store.browsedEpochs.reverse()}
       />
       <NavigationPagination
         currentPage={paging.currentPage}
