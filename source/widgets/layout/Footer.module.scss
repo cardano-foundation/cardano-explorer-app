@@ -241,4 +241,8 @@
       flex-direction: column;
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 0 0 32px;
+  }
 }

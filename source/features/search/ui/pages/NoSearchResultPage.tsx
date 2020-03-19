@@ -28,11 +28,11 @@ const NoSearchResultsPage = () => {
 };
 
 const StaticLayout = (props: StaticLayoutProps) => {
-  const i18n = useI18nFeature();
+  const i18n = useI18nFeature().store;
   return (
     <Layout>
       <Head>
-        <title>{i18n.store.translate('noSearchResult.pageTitle')}</title>
+        <title>{i18n.translate('noSearchResult.pageTitle')}</title>
       </Head>
       <Header brandType={BrandType.ENLARGED} />
       {props.children}

@@ -221,6 +221,10 @@
       max-width: 936px;
       width: 100%;
     }
+
+    @media (max-width: 768px) {
+      width: calc(100% - 16px * 2);
+    }
   }
 }
 
