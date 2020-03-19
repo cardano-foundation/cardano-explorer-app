@@ -105,6 +105,9 @@
     "en": "English",
     "ja": "Japanese"
   },
+  "noSearchResult": {
+    "pageTitle": "No results"
+  },
   "outdatedBrowser": {
     "pageTitle": "Outdated browser",
     "text": "Your web browser is out of date",
