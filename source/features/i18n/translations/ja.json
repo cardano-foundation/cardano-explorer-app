@@ -105,6 +105,9 @@
     "en": "英語",
     "ja": "日本語"
   },
+  "noSearchResult": {
+    "pageTitle": "結果がありません"
+  },
   "outdatedBrowser": {
     "pageTitle": "旧ブラウザー",
     "text": "ご使用のウェブブラウザーは旧バージョンです",
