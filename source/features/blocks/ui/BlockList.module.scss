@@ -3,7 +3,7 @@
 
   :global {
     .epoch {
-      width: 90px;
+      width: 120px;
     }
 
     .blocksSlots {
@@ -16,7 +16,7 @@
 
     .createdBy {
       text-align: right;
-      width: 120px;
+      width: 132px;
     }
 
     .transactions {
@@ -35,7 +35,7 @@
 
     @media (max-width: 991px) and (min-width: 768px) {
       .createdAt {
-        width: 130px;
+        width: 140px;
       }
     }
 
@@ -52,7 +52,7 @@
     @media (max-width: 575px) {
       .epoch {
         text-align: center;
-        width: 60px;
+        width: 166px;
       }
 
       .blocksSlots {
@@ -61,7 +61,7 @@
 
       .createdAt {
         text-align: center;
-        width: 160px;
+        width: 198px;
       }
 
       .transactions {
