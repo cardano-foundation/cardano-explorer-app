@@ -9,8 +9,8 @@
   "block": {
     "blocks": "ブロック",
     "blockTitle": "ブロック",
-    "createdAtTitle": "生成時：",
-    "createdByTitle": "生成者：",
+    "createdAtTitle": "生成時",
+    "createdByTitle": "生成者",
     "epochSlotTitle": "エポック/スロット",
     "outputTitle": "アウトプット (₳)",
     "pageTitle": "ブロック | $t(productTitle)",
@@ -19,17 +19,17 @@
     "transactionsTitle": "トランザクション"
   },
   "blockSummary": {
-    "createdBy": "生成者：",
+    "createdBy": "生成者",
     "confirmations": "確認",
     "block": "ブロック",
     "epoch": "エポック",
-    "id": "!!!ID",
+    "id": "ID",
     "merkleRoot": "マークルルート",
     "nextBlock": "次のブロック",
     "previousBlock": "前のブロック",
     "size": "サイズ",
     "time": "時間",
-    "transactions": "!!!トランザクション"
+    "transactions": "トランザクション"
   },
   "browseBlocks": {
     "pageTitle": "ブロックを閲覧する | $t(productTitle)",
@@ -44,25 +44,25 @@
   },
   "epoch": {
     "blocksSlotTitle": "ブロック/スロット",
-    "createdByTitle": "生成者：",
+    "createdByTitle": "生成者",
     "epochTitle": "エポック",
-    "lastBlockAtTitle": "最終ブロック：",
+    "lastBlockAtTitle": "最終ブロック",
     "outputTitle": "アウトプット (₳)",
     "pageTitle": "エポック | $t(productTitle)",
-    "startedAtTitle": "開始時間：",
-    "transactionsTitle": "!!!トランザクション"
+    "startedAtTitle": "開始時間",
+    "transactionsTitle": "トランザクション"
   },
   "epochSummary": {
     "epoch": "エポック",
     "epochSummaryTitle": "エポック概要",
-    "lastBlockAt": "最終ブロック：",
+    "lastBlockAt": "最終ブロック",
     "numberOfBlocks": "ブロック数",
-    "startedAt": "開始時間：",
+    "startedAt": "開始時間",
     "totalOutput": "総アウトプット",
-    "transactions": "!!!トランザクション"
+    "transactions": "トランザクション"
   },
   "error": {
-    "pageTitle": "Error 404 | $t(productTitle)"
+    "pageTitle": "エラー404 | $t(productTitle)"
   },
   "footer": {
     "cardanoChat": "Cardano Chat",
@@ -117,11 +117,11 @@
   "pagination": {
     "of": "of"
   },
-  "productTitle": "!!!Cardano Explorer",
+  "productTitle": "Cardano ブロックチェーンエクスプローラー",
   "search": {
     "description": "有効なエポックID、ブロックID、トランザクションID、アドレス、またはエポック番号を入力して、もう一度検索してください。",
-    "notExist": "アドレスが見つかりません：",
-    "notFound": "一致する検索結果はありません：",
+    "notExist": "アドレスが見つかりません",
+    "notFound": "一致する検索結果はありません",
     "placeholder": "エポック、ブロック、アドレス、トランザクションを検索する",
     "title": "検索"
   },
@@ -134,8 +134,8 @@
     "controlledStake": "管理下のステーク",
     "performance": "パフォーマンス",
     "profitMargin": "マージン",
-    "ranking": "ランク：",
-    "retiring": "終了まで：",
+    "ranking": "ランク",
+    "retiring": "終了まで",
     "stakePoolsSearch": "特定のステークプールを検索する",
     "stakePoolsTitle": "ステークプール",
     "unmoderated": "あなたは管理されていないステークプールデータの表示に同意されています。",
@@ -144,14 +144,14 @@
     "unmoderatedLeave": "このページを離れる",
     "unmoderatedPoolTickerSymbols": "ステークプールティッカーシンボル、タイトル、説明、ウェブサイトは管理していないため、不適切なコンテンツが含まれている場合があります。",
     "unmoderatedStakePoolData": "ステークプールデータは非管理です",
-    "unmoderatedWarning": "警告："
+    "unmoderatedWarning": "警告"
   },
   "transaction": {
     "block": "ブロック",
     "confirmations": "確認",
     "epoch": "エポック",
     "fee": "トランザクション手数料",
-    "includedIn": "含まれるブロック：",
+    "includedIn": "含まれるブロック",
     "noTransactions": "トランザクションはありません",
     "pageTitle": "トランザクション | $t(productTitle)",
     "receivedTime": "受信時間",
