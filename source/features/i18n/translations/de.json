@@ -102,8 +102,8 @@
   },
   "locales": {
     "de": "Deutsch",
-    "en": "Englisch",
-    "ja": "Japanisch"
+    "en": "English",
+    "ja": "日本語"
   },
   "noSearchResult": {
     "pageTitle": "Keine Ergebnisse"

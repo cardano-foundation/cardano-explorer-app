@@ -101,9 +101,9 @@
     "showMore": "show more"
   },
   "locales": {
-    "de": "German",
+    "de": "Deutsch",
     "en": "English",
-    "ja": "Japanese"
+    "ja": "日本語"
   },
   "noSearchResult": {
     "pageTitle": "No results"
