@@ -1,4 +1,3 @@
-import chroma from 'chroma-js';
 import { CSSProperties } from 'react';
 import { IDENTIFIERS } from 'react-polymorph/lib/components';
 import SimpleButton from 'react-polymorph/lib/themes/simple/SimpleButton.module.scss';
@@ -13,6 +12,7 @@ export const reactPolymorphTheme = {
 
 interface IGenerateThemeConfig {
   dottedSeparatorColor: string;
+  epochProgressSpinnerBg: string;
   errorColor: string;
   errorPageBottomContainerBgColor: string;
   errorPageTopContainerBgColor: string;
@@ -39,15 +39,7 @@ interface IGenerateThemeConfig {
 
 export const generateTheme = (config: IGenerateThemeConfig): CSSProperties => ({
   ['--dotted-separator-color' as any]: config.dottedSeparatorColor,
-  ['--epoch-progress-spinner-color' as any]: `
-    conic-gradient(
-      rgba(0, 0, 0, 0),
-      ${chroma(config.primaryHighlightColor).alpha(0.2)} 21%,
-      ${config.primaryHighlightColor} 52%,
-      ${chroma(config.primaryHighlightColor).alpha(0.3)} 57%,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0)
-    )`,
+  ['--epoch-progress-spinner-color' as any]: config.epochProgressSpinnerBg,
   ['--error-color' as any]: config.errorColor,
   ['--error-bottom-container-bg-color' as any]: config.errorPageBottomContainerBgColor,
   ['--error-top-container-bg-color' as any]: config.errorPageTopContainerBgColor,
@@ -99,6 +91,8 @@ const commonThemeProps = {
 export const mainnetTheme = generateTheme({
   ...commonThemeProps,
   dottedSeparatorColor: '#36395d',
+  epochProgressSpinnerBg:
+    'url(/assets/images/epoch/ouroboros-spinning-gradient.png)',
   errorColor: '#eb2256',
   footerTextColor: 'rgba(31, 193, 195, 0.5)',
   primaryHighlightColor: '#1fc1c3',
