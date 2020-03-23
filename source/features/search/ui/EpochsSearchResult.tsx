@@ -83,11 +83,15 @@ const EpochsSearchResult = () => {
   );
 
   if (
-    !api.searchForEpochByNumberQuery.hasBeenExecutedAtLeastOnce ||
-    queryEpochNumber !== epochSearchResult?.number
+    (!api.searchForEpochByNumberQuery.hasBeenExecutedAtLeastOnce &&
+      api.searchForEpochByNumberQuery.isExecuting) ||
+    (epochSearchResult && queryEpochNumber !== epochSearchResult?.number)
   ) {
     return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
-  } else if (epochSearchResult) {
+  } else if (
+    epochSearchResult &&
+    !api.searchForEpochByNumberQuery.isExecuting
+  ) {
     return (
       <div className={styles.container}>
         <div className={styles.epochSummary}>
