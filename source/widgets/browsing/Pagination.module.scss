@@ -35,6 +35,7 @@
     opacity: 0.3;
 
     &:not(.disabled):hover {
+      background-color: transparent;
       border-right-color: var(--primary-highlight-color);
       opacity: 1;
     }
@@ -46,12 +47,14 @@
     opacity: 0.3;
 
     &:not(.disabled):hover {
+      background-color: transparent;
       border-left-color: var(--primary-highlight-color);
       opacity: 1;
     }
   }
 
   .pageInfo {
+    display: flex;
     font-family: ProximaNova, sans-serif;
     font-size: 12px;
     letter-spacing: 1.2px;
@@ -60,6 +63,21 @@
     .pageNumber {
       color: var(--solid-text-color);
       margin-right: 10px;
+
+      .paginationInputStyles {
+        input {
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid var(--hint-text-color);
+          color: var(--solid-text-color);
+          font-family: ProximaNova, sans-serif;
+          font-size: 12px !important;
+          letter-spacing: 1.2px;
+          line-height: 1.67;
+          padding: 0 2px;
+          width: 30px;
+        }
+      }
     }
 
     .pageOf {
