@@ -29,6 +29,18 @@
     }
   }
 
+  .firstArrow {
+    right: 14px;
+    position: relative;
+    width: 14px;
+    z-index: 0;
+
+    svg > path {
+      fill: var(--secondary-highlight-color);
+      opacity: 0.3;
+    }
+  }
+
   .leftArrow {
     border-right: 9px solid var(--secondary-highlight-color);
     margin-right: 12px;
@@ -38,6 +50,27 @@
       background-color: transparent;
       border-right-color: var(--primary-highlight-color);
       opacity: 1;
+    }
+
+    &.firstLeftArrow {
+      border: none !important;
+      height: 14px;
+      margin-right: 0;
+      width: 14px;
+      z-index: 1;
+
+      &:hover + .firstArrow {
+        path {
+          fill: var(--primary-highlight-color) !important;
+        }
+      }
+    }
+
+    &.disabledFirstLeftArrow {
+      border: none !important;
+      height: 14px;
+      width: 14px;
+      z-index: 1;
     }
   }
 
@@ -50,6 +83,38 @@
       background-color: transparent;
       border-left-color: var(--primary-highlight-color);
       opacity: 1;
+    }
+
+    &.secondRightArrow {
+      border: none !important;
+      height: 14px;
+      width: 14px;
+      z-index: 1;
+
+      &:hover + .lastArrow {
+        path {
+          fill: var(--primary-highlight-color) !important;
+        }
+      }
+    }
+
+    &.disabledSecondRightArrow {
+      border: none !important;
+      height: 14px;
+      width: 14px;
+      z-index: 1;
+    }
+  }
+
+  .lastArrow {
+    right: 14px;
+    position: relative;
+    width: 14px;
+    z-index: 0;
+
+    svg > path {
+      fill: var(--secondary-highlight-color);
+      opacity: 0.3;
     }
   }
 
@@ -65,18 +130,17 @@
       margin-right: 10px;
 
       .paginationInputStyles {
-        input {
-          background-color: transparent;
-          border: none;
-          border-bottom: 1px solid var(--hint-text-color);
-          color: var(--solid-text-color);
-          font-family: ProximaNova, sans-serif;
-          font-size: 12px !important;
-          letter-spacing: 1.2px;
-          line-height: 1.67;
-          padding: 0 2px;
-          width: 30px;
-        }
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid var(--hint-text-color);
+        color: var(--solid-text-color);
+        font-family: ProximaNova, sans-serif;
+        font-size: 12px !important;
+        max-width: 50px;
+        letter-spacing: 1.2px;
+        line-height: 1.67;
+        outline: none;
+        padding: 0 2px;
       }
     }
 
