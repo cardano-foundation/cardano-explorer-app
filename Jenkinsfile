@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Setup Service Dependencies') {
       steps {
-        sh 'docker-compose up -d'
+        sh 'yarn start-dependencies -d'
       }
     }
     stage('Test') {

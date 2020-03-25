@@ -26,8 +26,8 @@
     "prettier:fix-staged": "pretty-quick --staged",
     "storybook": "start-storybook -s ./source/public -p 6006",
     "storybook:build": "build-storybook -o build/storybook",
-    "start-dependencies": "API_PORT=${API_PORT} docker-compose up",
-    "stop-dependencies": "docker-compose down -v",
+    "start-dependencies": "API_PORT=${API_PORT} docker-compose -f ./cardano-graphql/test/docker-compose.test.db-sample.yml up",
+    "stop-dependencies": "docker-compose -f ./cardano-graphql/test/docker-compose.test.db-sample.yml down -v",
     "deploy:byron:mainnet": "node deploy/byron_mainnet",
     "deploy:byron:testnet": "node deploy/byron_testnet"
   },
