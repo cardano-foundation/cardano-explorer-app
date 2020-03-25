@@ -10,13 +10,13 @@ import * as React from 'react';
  * Inspired by official recipe: https://mobx-react.js.org/recipes-effects
  *
  * @param effect
- * @param props
+ * @param observed
  */
 export function useObservableEffect<TProps>(
-  effect: (props: TProps | undefined) => void,
-  props?: TProps
+  effect: (observed: TProps) => void,
+  observed: TProps = {} as any
 ) {
-  const observableProps = props ? useAsObservableSource(props) : undefined;
+  const observableProps = useAsObservableSource(observed);
   React.useEffect(
     () => autorun(() => effect(observableProps)),
     [] // note empty dependencies
