@@ -2,13 +2,14 @@ import { DocumentNode } from 'graphql';
 import { GraphQLClient } from 'graphql-request';
 import { print } from 'graphql/language/printer';
 import { action, computed, observable, runInAction } from 'mobx';
+import { AbortablePromise } from '../AbortablePromise';
 
 export class GraphQLRequest<TResult, TVariables> {
   @observable public result: TResult | null = null;
   @observable public isExecuting: boolean = false;
   @observable public hasBeenExecutedAtLeastOnce: boolean = false;
   @observable public error: Error | null = null;
-  @observable public execution: Promise<TResult> | null = null;
+  @observable public execution: AbortablePromise<TResult, any> | null = null;
 
   @computed public get isExecutingTheFirstTime() {
     return this.isExecuting && !this.hasBeenExecutedAtLeastOnce;
@@ -24,12 +25,12 @@ export class GraphQLRequest<TResult, TVariables> {
 
   @action public execute(variables: TVariables): Promise<TResult> {
     if (this.isExecuting) {
-      throw new Error(
-        `Request is already executing with: ${JSON.stringify(variables)}`
-      );
+      this.execution?.abort();
     }
     this.isExecuting = true;
-    this.execution = this.client.request(print(this.query), variables);
+    this.execution = new AbortablePromise(
+      this.client.request(print(this.query), variables)
+    );
     return this.execution
       .then(result => {
         runInAction(() => {
@@ -39,10 +40,12 @@ export class GraphQLRequest<TResult, TVariables> {
         return result;
       })
       .catch(error => {
-        runInAction(() => {
-          this.result = null;
-          this.error = error;
-        });
+        if (error !== AbortablePromise.ABORT_ERROR) {
+          runInAction(() => {
+            this.result = null;
+            this.error = error;
+          });
+        }
         throw error;
       })
       .finally(
