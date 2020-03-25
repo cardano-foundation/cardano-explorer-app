@@ -11,67 +11,77 @@ import { IBlockOverview } from '../types';
 import styles from './BlockList.module.scss';
 
 export interface IBlockListProps {
-  ignoreLinksToEpoch?: number;
+  ignoreLinksToEpoch?: boolean;
   isLoading?: boolean;
   items: Array<IBlockOverview>;
   title: string;
 }
 
-const columns = (): Array<IColumnDefinition<IBlockOverview>> => [
-  {
-    cellRender: (row: IBlockOverview) => {
-      const content = `${row.epoch} / ${row.slotWithinEpoch}`;
-      return isNumber(row.epoch) && isNumber(row.slotWithinEpoch) ? (
-        <LocalizedLink href={getEpochRoute(row.epoch)}>{content}</LocalizedLink>
-      ) : (
-        <span>{content}</span>
-      );
+const columns = (
+  ignoreLinksToEpoch?: boolean
+): Array<IColumnDefinition<IBlockOverview>> => {
+  const linksDisabled = ignoreLinksToEpoch;
+  return [
+    {
+      cellRender: (row: IBlockOverview) => {
+        const content = `${row.epoch} / ${row.slotWithinEpoch}`;
+        return isNumber(row.epoch) &&
+          isNumber(row.slotWithinEpoch) &&
+          !linksDisabled ? (
+          <LocalizedLink href={getEpochRoute(row.epoch)}>
+            {content}
+          </LocalizedLink>
+        ) : (
+          <span>{content}</span>
+        );
+      },
+      cellValue: (row: IBlockOverview) => row,
+      cssClass: 'epoch',
+      head: 'block.epochSlotTitle',
+      key: 'epochsSlots',
     },
-    cellValue: (row: IBlockOverview) => row,
-    cssClass: 'epoch',
-    head: 'block.epochSlotTitle',
-    key: 'epochsSlots',
-  },
-  {
-    cellRender: (row: IBlockOverview) => (
-      <LocalizedLink href={getBlockRoute(row.id)}>{row.number}</LocalizedLink>
-    ),
-    cellValue: (row: IBlockOverview) => row,
-    cssClass: 'blocksSlots',
-    head: 'block.blockTitle',
-    key: 'number',
-  },
-  {
-    cellValue: (row: IBlockOverview) =>
-      dayjs(row.createdAt).format('YYYY/MM/DD HH:mm:ss'),
-    cssClass: 'createdAt',
-    head: 'block.createdAtTitle',
-    key: 'createdAt',
-  },
-  {
-    cssClass: 'transactions',
-    head: 'block.transactionsTitle',
-    key: 'transactionsCount',
-  },
-  {
-    cssClass: 'output',
-    head: 'block.outputTitle',
-    key: 'output',
-  },
-  {
-    cssClass: 'size',
-    head: 'block.sizeTitle',
-    key: 'size',
-  },
-  {
-    cssClass: 'createdBy',
-    head: 'block.createdByTitle',
-    key: 'createdBy',
-  },
-];
+    {
+      cellRender: (row: IBlockOverview) => (
+        <LocalizedLink href={getBlockRoute(row.id)}>{row.number}</LocalizedLink>
+      ),
+      cellValue: (row: IBlockOverview) => row,
+      cssClass: 'blocksSlots',
+      head: 'block.blockTitle',
+      key: 'number',
+    },
+    {
+      cellValue: (row: IBlockOverview) =>
+        dayjs(row.createdAt).format('YYYY/MM/DD HH:mm:ss'),
+      cssClass: 'createdAt',
+      head: 'block.createdAtTitle',
+      key: 'createdAt',
+    },
+    {
+      cssClass: 'transactions',
+      head: 'block.transactionsTitle',
+      key: 'transactionsCount',
+    },
+    {
+      cssClass: 'output',
+      head: 'block.outputTitle',
+      key: 'output',
+    },
+    {
+      cssClass: 'size',
+      head: 'block.sizeTitle',
+      key: 'size',
+    },
+    {
+      cssClass: 'createdBy',
+      head: 'block.createdByTitle',
+      key: 'createdBy',
+    },
+  ];
+};
 
 const BlockList: FC<IBlockListProps> = props => {
   const displaysItems = props.items.length > 0;
+  const ignoreLinksToEpoch = props.ignoreLinksToEpoch;
   return (
     <div className={styles.blockListContainer}>
       {displaysItems && props.isLoading && (
@@ -81,7 +91,7 @@ const BlockList: FC<IBlockListProps> = props => {
       )}
       <Table
         title={props.title}
-        columns={columns()}
+        columns={columns(ignoreLinksToEpoch)}
         rows={props.items.map(i => Object.assign({}, i, { key: i.id }))}
         withoutHeaders={!displaysItems && props.isLoading}
       />

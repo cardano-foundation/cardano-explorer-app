@@ -90,6 +90,7 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
             ? browsedBlocks.slice()
             : browsedBlocks.slice().reverse()
         }
+        ignoreLinksToEpoch={isBrowsingInEpoch}
       />
       <RouterPagination
         currentPage={paging.currentPage}
