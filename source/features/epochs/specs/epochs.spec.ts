@@ -50,7 +50,7 @@ describe('Epochs feature', () => {
       await waitForExpect(() => {
         expect(epochs.store.latestEpochs.length).toBe(4);
         expect(epochs.store.latestEpochs[0].number).toBe(3);
-        expect(epochs.store.latestEpochs[0].blocksCount).toBe(5432);
+        expect(epochs.store.latestEpochs[0].blocksCount).toBe(5302);
         expect(epochs.store.latestEpochs[1].number).toBe(2);
       });
       expect(epochs.store.isLoadingLatestEpochsFirstTime).toBe(false);

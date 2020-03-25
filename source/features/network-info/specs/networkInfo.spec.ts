@@ -25,14 +25,8 @@ describe('Network information', () => {
     await waitForExpect(() => {
       expect(networkInfo.store.slotDuration).toBe(20000);
       expect(networkInfo.store.protocolConst).toBe(2160);
-      expect(networkInfo.store.startTime).toStrictEqual(
-        new Date('2017-09-23T21:44:51')
-      );
-      expect(networkInfo.store.blockHeight).toBe(70205);
+      expect(networkInfo.store.blockHeight).toBe(70075);
       expect(networkInfo.store.currentEpoch).toBe(3);
-      expect(networkInfo.store.lastBlockTime).toStrictEqual(
-        new Date('2017-10-10T03:54:31')
-      );
     });
   });
 });

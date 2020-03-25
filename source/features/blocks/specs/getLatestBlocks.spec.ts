@@ -34,10 +34,10 @@ describe('Blocks feature', () => {
       // Access the observable result provided by the store
       await waitForExpect(() => {
         expect(blocks.store.latestBlocks.length).toBe(10);
-        expect(blocks.store.latestBlocks[0].number).toBe(70205);
-        expect(blocks.store.latestBlocks[0].slotWithinEpoch).toBe(5432);
-        expect(blocks.store.latestBlocks[4].transactionsCount).toBe('0');
-        expect(blocks.store.latestBlocks[1].number).toBe(70204);
+        expect(blocks.store.latestBlocks[0].number).toBe(70075);
+        expect(blocks.store.latestBlocks[0].slotWithinEpoch).toBe(5302);
+        expect(blocks.store.latestBlocks[4].transactionsCount).toBe('1');
+        expect(blocks.store.latestBlocks[1].number).toBe(70074);
       });
       expect(blocks.store.isLoadingLatestBlocksFirstTime).toBe(false);
     });
