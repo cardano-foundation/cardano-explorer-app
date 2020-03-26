@@ -3,7 +3,7 @@ import {
   BlockDetailsFragment,
   BlockOverviewFragment,
 } from '../../../../generated/typings/graphql-schema';
-import { isNotNull } from '../../../lib/types';
+import { isDefined } from '../../../lib/types';
 import { transactionDetailsTransformer } from '../../transactions/api/transformers';
 import { IBlockDetailed, IBlockOverview } from '../types';
 
@@ -44,7 +44,7 @@ export const blockDetailsTransformer = (
     number: b.previousBlock?.number || '-',
   },
   transactions: b.transactions
-    .filter(isNotNull)
+    .filter(isDefined)
     .map(transactionDetailsTransformer),
 });
 

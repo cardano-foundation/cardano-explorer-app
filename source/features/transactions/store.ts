@@ -1,7 +1,7 @@
 import { action, observable, runInAction } from 'mobx';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
-import { isNotNull } from '../../lib/types';
+import { isDefined } from '../../lib/types';
 import { TransactionsApi } from './api';
 import { transactionDetailsTransformer } from './api/transformers';
 import { TransactionsActions } from './index';
@@ -45,7 +45,7 @@ export class TransactionsStore extends Store {
     if (result) {
       runInAction(() => {
         this.browsedAddressTransactions = result.transactions
-          .filter(isNotNull)
+          .filter(isDefined)
           .map(transactionDetailsTransformer);
       });
     }
@@ -64,7 +64,7 @@ export class TransactionsStore extends Store {
     if (result) {
       runInAction(() => {
         this.browsedBlockTransactions = result.transactions
-          .filter(isNotNull)
+          .filter(isDefined)
           .map(transactionDetailsTransformer);
       });
     }
