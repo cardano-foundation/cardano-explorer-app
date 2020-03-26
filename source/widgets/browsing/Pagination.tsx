@@ -70,11 +70,14 @@ export default class Pagination extends Component<IPaginationProps> {
               className={styles.paginationInputStyles}
               onKeyPress={(e: any) => {
                 const targetEl = e.target;
-                if (!(/^\d+$/.test(e.key))) {
+                if (!/^\d+$/.test(e.key)) {
                   e.preventDefault();
                   e.stopPropagation();
                   if (e.key === 'Enter') {
-                    if (targetEl.value.length === 1 || targetEl.value.length === 2) {
+                    if (
+                      targetEl.value.length === 1 ||
+                      targetEl.value.length === 2
+                    ) {
                       targetEl.style.width = '20px';
                     } else if (targetEl.value.length === 3) {
                       targetEl.style.width = '30px';
