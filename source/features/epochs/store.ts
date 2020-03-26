@@ -8,7 +8,7 @@ import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import { GraphQLRequestVariables } from '../../lib/graphql/GraphQLRequest';
 import Reaction, { createReactions } from '../../lib/mobx/Reaction';
 import { Store } from '../../lib/Store';
-import { isNotNull } from '../../lib/types';
+import { isDefined } from '../../lib/types';
 import { EpochsApi } from './api';
 import { epochOverviewTransformer } from './api/transformers';
 import {
@@ -134,7 +134,7 @@ export class EpochsStore extends Store {
     const { result } = this.epochsApi.getEpochsInRangeQuery;
     return (
       result?.epochs
-        .filter(isNotNull)
+        .filter(isDefined)
         .map((e: EpochOverviewFragment) =>
           epochOverviewTransformer(e, this.networkInfo.store)
         ) ?? null
@@ -188,10 +188,6 @@ export class EpochsStore extends Store {
     >
   ): Promise<GetEpochsInRangeQuery | null> => {
     const { getEpochsInRangeQuery } = this.epochsApi;
-    // Wait for potential current execution (only supports one queued query)
-    if (getEpochsInRangeQuery.isExecuting) {
-      return null;
-    }
     return getEpochsInRangeQuery.execute(params);
   };
 
@@ -199,7 +195,7 @@ export class EpochsStore extends Store {
     epochs: GetEpochsInRangeQuery['epochs']
   ): IEpochOverview[] => {
     return epochs
-      .filter(isNotNull)
+      .filter(isDefined)
       .map((e: EpochOverviewFragment) =>
         epochOverviewTransformer(e, this.networkInfo.store)
       );

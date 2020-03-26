@@ -23,37 +23,41 @@ export class GraphQLRequest<TResult, TVariables> {
     this.query = query;
   }
 
-  @action public execute(variables: TVariables): Promise<TResult> {
-    if (this.isExecuting) {
+  @action public async execute(variables: TVariables): Promise<TResult | null> {
+    if (this.execution?.isExecuting) {
       this.execution?.abort();
     }
     this.isExecuting = true;
     this.execution = new AbortablePromise(
       this.client.request(print(this.query), variables)
     );
-    return this.execution
-      .then(result => {
+    try {
+      const result = await this.execution;
+      runInAction(() => {
+        this.result = result;
+        this.error = null;
+      });
+      return result;
+    } catch (error) {
+      if (error === AbortablePromise.ABORT_ERROR) {
         runInAction(() => {
-          this.result = result;
+          this.result = null;
           this.error = null;
         });
-        return result;
-      })
-      .catch(error => {
-        if (error !== AbortablePromise.ABORT_ERROR) {
-          runInAction(() => {
-            this.result = null;
-            this.error = error;
-          });
-        }
+        return null;
+      } else {
+        runInAction(() => {
+          this.result = null;
+          this.error = error;
+        });
         throw error;
-      })
-      .finally(
-        action(() => {
-          this.isExecuting = false;
-          this.hasBeenExecutedAtLeastOnce = true;
-        })
-      );
+      }
+    } finally {
+      runInAction(() => {
+        this.isExecuting = false;
+        this.hasBeenExecutedAtLeastOnce = true;
+      });
+    }
   }
 }
 

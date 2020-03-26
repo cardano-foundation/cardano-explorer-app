@@ -2,22 +2,42 @@ export class AbortablePromise<TResult, TError> implements Promise<TResult> {
   public static ABORT_ERROR = 'AbortError';
 
   public readonly [Symbol.toStringTag]: string;
-  private isPending = true;
+  private isPending: boolean;
+  private isAborted: boolean;
   private promise: Promise<TResult>;
   private resolve: (result: TResult) => void;
   private reject: (error: any) => void;
 
   constructor(promise: Promise<TResult>) {
+    this.isPending = true;
+    this.isAborted = false;
     this.promise = new Promise<TResult>((resolve, reject) => {
       this.resolve = resolve;
       this.reject = reject;
+      // Prevent normal Promise flow when aborted
       promise
-        .then(resolve)
-        .catch(reject)
-        .finally(() => {
-          this.isPending = false;
+        .then(result => {
+          if (this.isAborted) {
+            reject(AbortablePromise.ABORT_ERROR);
+          } else {
+            resolve(result);
+          }
+        })
+        .catch(error => {
+          if (!this.isAborted) {
+            reject(error);
+          }
         });
     });
+    this.promise
+      .finally(() => {
+        this.isPending = false;
+      })
+      .catch(error => {
+        if (error !== AbortablePromise.ABORT_ERROR) {
+          throw error;
+        }
+      });
   }
 
   public then<TResult1 = TResult, TResult2 = never>(
@@ -47,6 +67,8 @@ export class AbortablePromise<TResult, TError> implements Promise<TResult> {
   }
 
   public abort() {
+    this.isAborted = true;
+    this.isPending = false;
     this.reject(AbortablePromise.ABORT_ERROR);
   }
 

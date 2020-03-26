@@ -4,7 +4,7 @@ import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import { GraphQLRequestVariables } from '../../lib/graphql/GraphQLRequest';
 import Reaction, { createReactions } from '../../lib/mobx/Reaction';
 import { Store } from '../../lib/Store';
-import { isNotNull } from '../../lib/types';
+import { isDefined } from '../../lib/types';
 import { BlocksApi } from './api';
 import { blockOverviewTransformer } from './api/transformers';
 import { BlocksActions, INetworkInfoFeatureDependency } from './index';
@@ -83,10 +83,10 @@ export class BlocksStore extends Store {
   /**
    * Fetches the blocks in given range.
    */
-  @action public browseBlocks = async (
+  public browseBlocks = async (
     params: ActionProps<typeof BlocksActions.prototype.browseBlocks>
   ): Promise<void> => {
-    let result: IBlockOverview[] | null = null;
+    let result: IBlockOverview[] | null;
     const offset = (params.page - 1) * params.perPage;
     const limit = params.perPage;
     if (isNumber(params.epoch)) {
@@ -149,13 +149,14 @@ export class BlocksStore extends Store {
     >
   ): Promise<IBlockOverview[] | null> => {
     const { getBlocksInRangeQuery } = this.blocksApi;
-    if (getBlocksInRangeQuery.isExecuting) {
+    try {
+      const result = await getBlocksInRangeQuery.execute(params);
+      return (
+        result?.blocks.filter(isDefined).map(blockOverviewTransformer) ?? null
+      );
+    } catch (error) {
       return null;
     }
-    const result = await getBlocksInRangeQuery.execute(params);
-    return (
-      result?.blocks.filter(isNotNull).map(blockOverviewTransformer) ?? null
-    );
   };
 
   /**
@@ -167,12 +168,13 @@ export class BlocksStore extends Store {
     >
   ): Promise<IBlockOverview[] | null> => {
     const { getBlocksInEpochQuery } = this.blocksApi;
-    if (getBlocksInEpochQuery.isExecuting) {
+    try {
+      const result = await getBlocksInEpochQuery.execute(params);
+      return (
+        result?.blocks.filter(isDefined).map(blockOverviewTransformer) ?? null
+      );
+    } catch (error) {
       return null;
     }
-    const result = await getBlocksInEpochQuery.execute(params);
-    return (
-      result?.blocks.filter(isNotNull).map(blockOverviewTransformer) ?? null
-    );
   };
 }
