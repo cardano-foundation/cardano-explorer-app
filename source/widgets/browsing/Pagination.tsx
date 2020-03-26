@@ -1,6 +1,7 @@
 import classnames from 'classnames';
-import React, { Component, RefObject, useRef } from 'react';
+import React, { Component, useRef } from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
+import { Input } from 'react-polymorph/lib/components/Input';
 import { useI18nFeature } from '../../features/i18n/context';
 import styles from './Pagination.module.scss';
 
@@ -16,12 +17,17 @@ export interface IPaginationProps {
 export default class Pagination extends Component<IPaginationProps> {
   public inputPageNode: any = useRef<HTMLSpanElement>();
 
-  public componentDidUpdate(prev: IPaginationProps) {
-    const page = prev.currentPage.toString();
-    if (page !== this.inputPageNode.current.innerHTML) {
-      this.inputPageNode.current.innerHTML = page;
+  public componentDidMount() {
+    const inputNodeElement = this.inputPageNode.current.inputElement.current;
+    if (inputNodeElement) {
+      const offsetWidth = inputNodeElement.offsetWidth;
+      const numberOfChars = inputNodeElement.value.length;
+      if (numberOfChars === 3) {
+        inputNodeElement.style.width = offsetWidth + 10 + 'px';
+      } else if (numberOfChars === 4) {
+        inputNodeElement.style.width = offsetWidth + 20 + 'px';
+      }
     }
-    this.inputPageNode.current.blur();
   }
 
   public render() {
@@ -58,23 +64,41 @@ export default class Pagination extends Component<IPaginationProps> {
         />
         <div className={styles.pageInfo}>
           <span className={styles.pageNumber}>
-            <span
+            <Input
               ref={this.inputPageNode}
-              contentEditable={true}
+              value={currentPage.toString()}
               className={styles.paginationInputStyles}
               onKeyPress={(e: any) => {
-                if (e.key === 'Enter') {
-                  if (e.target.innerHTML) {
-                    const page = parseInt(e.target.innerHTML, 0);
-                    onChangePage(page);
-                    e.preventDefault();
-                    e.stopPropagation();
+                const targetEl = e.target;
+                if (!(/^\d+$/.test(e.key))) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (e.key === 'Enter') {
+                    if (targetEl.value.length === 1 || targetEl.value.length === 2) {
+                      targetEl.style.width = '20px';
+                    } else if (targetEl.value.length === 3) {
+                      targetEl.style.width = '30px';
+                    } else if (targetEl.value.length === 4) {
+                      targetEl.style.width = '40px';
+                    }
+                    if (targetEl.value && targetEl.value !== '0') {
+                      const page = parseInt(targetEl.value, 0);
+                      onChangePage(page);
+                    } else {
+                      onChangePage(currentPage);
+                    }
+                  }
+                } else {
+                  if (parseInt(targetEl.value + e.key, 0) > totalPages) {
+                    targetEl.value = targetEl.value.slice(0, -1);
+                  } else {
+                    if ((targetEl.value + e.key).length > 2) {
+                      targetEl.style.width = targetEl.offsetWidth + 10 + 'px';
+                    }
                   }
                 }
               }}
-            >
-              {currentPage}
-            </span>
+            />
           </span>
           <span className={styles.pageOf}>{translate('pagination.of')}</span>
           <span className={styles.totalPagesNumber}>{totalPages}</span>
