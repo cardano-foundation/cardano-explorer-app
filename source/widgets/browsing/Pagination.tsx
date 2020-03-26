@@ -17,15 +17,16 @@ export interface IPaginationProps {
 export default class Pagination extends Component<IPaginationProps> {
   public inputPageNode: any = useRef<HTMLSpanElement>();
 
-  public componentDidMount() {
+  public componentDidUpdate() {
     const inputNodeElement = this.inputPageNode.current.inputElement.current;
     if (inputNodeElement) {
-      const offsetWidth = inputNodeElement.offsetWidth;
       const numberOfChars = inputNodeElement.value.length;
-      if (numberOfChars === 3) {
-        inputNodeElement.style.width = offsetWidth + 10 + 'px';
+      if (numberOfChars <= 2) {
+        inputNodeElement.style.width = '20px';
+      } else if (numberOfChars === 3) {
+        inputNodeElement.style.width = '30px';
       } else if (numberOfChars === 4) {
-        inputNodeElement.style.width = offsetWidth + 20 + 'px';
+        inputNodeElement.style.width = '40px';
       }
     }
   }
@@ -74,10 +75,7 @@ export default class Pagination extends Component<IPaginationProps> {
                   e.preventDefault();
                   e.stopPropagation();
                   if (e.key === 'Enter') {
-                    if (
-                      targetEl.value.length === 1 ||
-                      targetEl.value.length === 2
-                    ) {
+                    if (targetEl.value.length <= 2) {
                       targetEl.style.width = '20px';
                     } else if (targetEl.value.length === 3) {
                       targetEl.style.width = '30px';
