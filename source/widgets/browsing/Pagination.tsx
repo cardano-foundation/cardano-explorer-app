@@ -61,9 +61,12 @@ export const Pagination = (props: IPaginationProps) => {
                 e.preventDefault();
                 e.stopPropagation();
                 if (e.key === 'Enter') {
-                  if (targetEl.value && targetEl.value !== '0') {
-                    onChangePage(parseInt(targetEl.value));
-                  }
+                  const page = Math.max(
+                    1,
+                    Math.min(parseInt(targetEl.value), totalPages)
+                  );
+                  setPageInput(page.toString());
+                  onChangePage(page);
                 }
               }
             }}
