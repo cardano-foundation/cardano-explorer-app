@@ -1,7 +1,6 @@
 import classnames from 'classnames';
-import React, { Component, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-polymorph/lib/components/Button';
-import { Input } from 'react-polymorph/lib/components/Input';
 import { useI18nFeature } from '../../features/i18n/context';
 import styles from './Pagination.module.scss';
 
