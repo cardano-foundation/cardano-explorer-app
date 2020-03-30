@@ -130,22 +130,17 @@
       margin-right: 10px;
 
       .paginationInputStyles {
-        input {
-          background-color: transparent;
-          border: none;
-          border-bottom: 1px solid var(--hint-text-color);
-          border-radius: 0;
-          color: var(--solid-text-color);
-          font-family: ProximaNova, sans-serif;
-          font-size: 12px !important;
-          max-width: 40px;
-          letter-spacing: 1.2px;
-          line-height: 1.67;
-          outline: none;
-          padding: 0 2px;
-          text-align: center;
-          width: 20px;
-        }
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid var(--hint-text-color);
+        border-radius: 0;
+        color: var(--solid-text-color);
+        font-family: ProximaNova, sans-serif;
+        font-size: 12px !important;
+        letter-spacing: 1.2px;
+        line-height: 1.67;
+        outline: none;
+        text-align: center;
       }
     }
 
