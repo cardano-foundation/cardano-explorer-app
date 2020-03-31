@@ -126,7 +126,6 @@
     line-height: 1.67;
 
     .pageNumber {
-      color: var(--solid-text-color);
       margin-right: 10px;
 
       .paginationInputStyles {
@@ -138,7 +137,6 @@
         font-family: ProximaNova, sans-serif;
         font-size: 12px !important;
         letter-spacing: 1.2px;
-        line-height: 1.67;
         outline: none;
         text-align: center;
       }
@@ -147,10 +145,12 @@
     .pageOf {
       color: var(--hint-text-color);
       margin-right: 10px;
+      vertical-align: middle !important;
     }
 
     .totalPagesNumber {
       color: var(--hint-text-color);
+      vertical-align: middle !important;
     }
   }
 }

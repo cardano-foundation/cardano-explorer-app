@@ -15,7 +15,6 @@ export interface IPaginationProps {
 
 export const Pagination = (props: IPaginationProps) => {
   const { totalPages, onChangePage, currentPage } = props;
-  const [pageInput, setPageInput] = useState(currentPage.toString());
   const { translate } = useI18nFeature().store;
   const isFirstButtonDisabled = currentPage === 1;
   const isLastButtonDisabled = currentPage >= totalPages;
@@ -49,11 +48,8 @@ export const Pagination = (props: IPaginationProps) => {
       <div className={styles.pageInfo}>
         <span className={styles.pageNumber}>
           <input
-            value={pageInput}
+            value={currentPage}
             className={styles.paginationInputStyles}
-            onChange={e => {
-              setPageInput(e.currentTarget.value);
-            }}
             onKeyPress={e => {
               const targetEl = e.currentTarget;
               const isNumericKey = /^\d+$/.test(e.key);
@@ -65,12 +61,11 @@ export const Pagination = (props: IPaginationProps) => {
                     1,
                     Math.min(parseInt(targetEl.value), totalPages)
                   );
-                  setPageInput(page.toString());
                   onChangePage(page);
                 }
               }
             }}
-            size={pageInput.length + 1}
+            size={currentPage.toString().length + 1}
             maxLength={totalPages.toString().length}
           />
         </span>
