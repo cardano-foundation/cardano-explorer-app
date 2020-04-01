@@ -29,14 +29,48 @@
     }
   }
 
+  .firstArrow {
+    right: 14px;
+    position: relative;
+    width: 14px;
+    z-index: 0;
+
+    svg > path {
+      fill: var(--secondary-highlight-color);
+      opacity: 0.3;
+    }
+  }
+
   .leftArrow {
     border-right: 9px solid var(--secondary-highlight-color);
     margin-right: 12px;
     opacity: 0.3;
 
     &:not(.disabled):hover {
+      background-color: transparent;
       border-right-color: var(--primary-highlight-color);
       opacity: 1;
+    }
+
+    &.firstLeftArrow {
+      border: none !important;
+      height: 14px;
+      margin-right: 0;
+      width: 14px;
+      z-index: 1;
+
+      &:hover + .firstArrow {
+        path {
+          fill: var(--primary-highlight-color) !important;
+        }
+      }
+    }
+
+    &.disabledFirstLeftArrow {
+      border: none !important;
+      height: 14px;
+      width: 14px;
+      z-index: 1;
     }
   }
 
@@ -46,29 +80,77 @@
     opacity: 0.3;
 
     &:not(.disabled):hover {
+      background-color: transparent;
       border-left-color: var(--primary-highlight-color);
       opacity: 1;
+    }
+
+    &.secondRightArrow {
+      border: none !important;
+      height: 14px;
+      width: 14px;
+      z-index: 1;
+
+      &:hover + .lastArrow {
+        path {
+          fill: var(--primary-highlight-color) !important;
+        }
+      }
+    }
+
+    &.disabledSecondRightArrow {
+      border: none !important;
+      height: 14px;
+      width: 14px;
+      z-index: 1;
+    }
+  }
+
+  .lastArrow {
+    right: 14px;
+    position: relative;
+    width: 14px;
+    z-index: 0;
+
+    svg > path {
+      fill: var(--secondary-highlight-color);
+      opacity: 0.3;
     }
   }
 
   .pageInfo {
+    display: flex;
     font-family: ProximaNova, sans-serif;
     font-size: 12px;
     letter-spacing: 1.2px;
     line-height: 1.67;
 
     .pageNumber {
-      color: var(--solid-text-color);
       margin-right: 10px;
+
+      .paginationInputStyles {
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid var(--hint-text-color);
+        border-radius: 0;
+        color: var(--solid-text-color);
+        font-family: ProximaNova, sans-serif;
+        font-size: 12px !important;
+        letter-spacing: 1.2px;
+        outline: none;
+        text-align: center;
+      }
     }
 
     .pageOf {
       color: var(--hint-text-color);
       margin-right: 10px;
+      vertical-align: middle !important;
     }
 
     .totalPagesNumber {
       color: var(--hint-text-color);
+      vertical-align: middle !important;
     }
   }
 }

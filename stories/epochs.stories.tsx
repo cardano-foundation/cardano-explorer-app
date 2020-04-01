@@ -43,7 +43,6 @@ const stakeDistribution = [
 ];
 
 storiesOf('Epochs|List', module)
-  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Epoch List', () => (
     <EpochList
       currentEpoch={epochs[0].number}

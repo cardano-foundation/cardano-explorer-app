@@ -11,7 +11,7 @@ export interface ILocaleProps {
 export interface ILanguageSwitcherParams {
   currentLanguage: ILocaleProps;
   languageOptions: Array<ILocaleProps>;
-  onLanguageSwitch: (locale: SupportedLocale) => void;
+  onLanguageSwitch?: (locale: SupportedLocale) => void;
 }
 
 interface IState {
@@ -66,7 +66,7 @@ export default class LanguageSwitcher extends Component<
               <li
                 key={lang.code}
                 onClick={() => {
-                  this.props.onLanguageSwitch(lang.code);
+                  this.props.onLanguageSwitch?.(lang.code);
                 }}
               >
                 <span className={styles.isMobileOnly}>{lang.code}</span>
