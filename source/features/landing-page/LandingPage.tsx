@@ -31,10 +31,34 @@ export const LandingPage = () => (
 
 const StaticLayout = (props: StaticLayoutProps) => {
   const { translate } = useI18nFeature().store;
+
+  const injectGA = () => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    // @ts-ignore
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      // @ts-ignore
+      window.dataLayer.push(arguments);
+    }
+    // @ts-ignore
+    gtag('js', new Date());
+    // @ts-ignore
+    gtag('config', 'UA-119953429-17');
+    return null;
+  };
+
   return (
     <>
       <Head>
         <title>{translate('index.pageTitle')}</title>
+        {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET && (
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119953429-17"/>
+        )}
+        {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET && (
+          <script>{injectGA()}</script>
+        )}
       </Head>
       {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET && (
         <img src={mainNetHeaderImage} className={styles.mainNetHeaderImage} />
