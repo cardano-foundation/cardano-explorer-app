@@ -7,6 +7,6 @@ describe('Homepage data feeds', () => {
 
   it('shows the latest epochs', () => {
     cy.visit('http://localhost:4000/en');
-    cy.get('.LandingPage_epochList__2KM8z .TableBodyRow_row__1ECSK', { timeout: 20000 }).should('have.length', 4);
+    cy.get('.LandingPage_epochList__2KM8z .TableBodyRow_row__1ECSK', { timeout: 20000 }).should('have.length', 5);
   });
 });

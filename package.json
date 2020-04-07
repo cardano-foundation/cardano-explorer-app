@@ -5,8 +5,7 @@
   "author": "Daedalus Team @ Input Output HK",
   "license": "Apache-2.0",
   "scripts": {
-    "dev": "next dev source -p 4000",
-    "dev:mainnet": "CARDANO_NETWORK=mainnet GRAPHQL_API_PROTOCOL=https GRAPHQL_API_HOST=cardano-graphql-mainnet.daedalus-operations.com GRAPHQL_API_PORT=443 yarn dev",
+    "dev": "yarn generate:graphql-typings && next dev source -p 4000",
     "build": "yarn generate:graphql-typings && next build source",
     "build:check": "yarn prettier:check && yarn lint && yarn test && yarn build && yarn storybook:build",
     "build:clean": "rm -rf ./build",
@@ -26,8 +25,6 @@
     "prettier:fix-staged": "pretty-quick --staged",
     "storybook": "start-storybook -s ./source/public -p 6006",
     "storybook:build": "build-storybook -o build/storybook",
-    "start-dependencies": "API_PORT=${API_PORT} docker-compose up",
-    "stop-dependencies": "docker-compose down -v",
     "deploy:byron:mainnet": "node deploy/byron_mainnet",
     "deploy:byron:testnet": "node deploy/byron_testnet"
   },
@@ -39,7 +36,7 @@
   "dependencies": {
     "@types/react-addons-css-transition-group": "15.0.5",
     "browser-update": "3.3.9",
-    "cardano-graphql-ts": "^1.0.0-rc.2",
+    "cardano-graphql-ts": "1.0.0-rc.7",
     "cardano-js": "0.3.0",
     "chroma-js": "2.1.0",
     "classnames": "2.2.6",
