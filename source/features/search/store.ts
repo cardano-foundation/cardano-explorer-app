@@ -2,7 +2,7 @@ import { action, computed, observable, runInAction } from 'mobx';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import Reaction, { createReactions } from '../../lib/mobx/Reaction';
 import { Store } from '../../lib/Store';
-import { isNotNull } from '../../lib/types';
+import { isDefined } from '../../lib/types';
 import { addressDetailTransformer } from '../address/api/transformers';
 import { ADDRESS_SEARCH_RESULT_PATH } from '../address/config';
 import { IAddressSummary } from '../address/types';
@@ -130,9 +130,9 @@ export class SearchStore extends Store {
     const result = await this.searchApi.searchByIdQuery.execute({
       id,
     });
-    if (result?.blocks.length > 0) {
+    if (result && result?.blocks.length > 0) {
       const blockData = result.blocks[0];
-      if (isNotNull(blockData)) {
+      if (isDefined(blockData)) {
         runInAction(() => {
           this.blockSearchResult = blockDetailsTransformer(blockData);
         });
@@ -141,9 +141,9 @@ export class SearchStore extends Store {
           query: { id },
         });
       }
-    } else if (result?.transactions.length > 0) {
+    } else if (result && result?.transactions.length > 0) {
       const txSearchResult = result.transactions[0];
-      if (isNotNull(txSearchResult)) {
+      if (isDefined(txSearchResult)) {
         runInAction(() => {
           this.transactionSearchResult = transactionDetailsTransformer(
             txSearchResult
@@ -205,7 +205,7 @@ export class SearchStore extends Store {
     const result = await this.searchApi.searchForAddressQuery.execute({
       address,
     });
-    if (isNotNull(result)) {
+    if (isDefined(result)) {
       runInAction(() => {
         this.addressSearchResult = addressDetailTransformer(address, result);
       });
@@ -242,7 +242,7 @@ export class SearchStore extends Store {
     );
     if (result) {
       const blockData = result.blocks[0];
-      if (isNotNull(blockData)) {
+      if (isDefined(blockData)) {
         runInAction(() => {
           this.blockSearchResult = blockDetailsTransformer(blockData);
         });
@@ -262,7 +262,7 @@ export class SearchStore extends Store {
     );
     if (result) {
       const epochData = result.epochs[0];
-      if (isNotNull(epochData)) {
+      if (isDefined(epochData)) {
         runInAction(() => {
           this.epochSearchResult = epochOverviewTransformer(
             epochData,

@@ -4,7 +4,7 @@ import {
 } from 'next/dist/next-server/lib/utils';
 import React from 'react';
 
-export function isNotNull<T>(b: T | null): b is T {
+export function isDefined<T>(b: T | null | undefined): b is T {
   return b != null;
 }
 
