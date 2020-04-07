@@ -1,6 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
-import {CardanoNetwork} from '../constants';
+import { CardanoNetwork } from '../constants';
 import { environment } from '../environment';
 import { DEFAULT_LOCALE } from '../features/i18n';
 import { cardanoExplorerTheme } from '../styles/theme/theme';
@@ -31,10 +31,13 @@ class CardanoExplorerDocument extends Document {
       <Html style={cardanoExplorerTheme} lang={lang}>
         <Head />
         {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET && (
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119953429-17"/>
-        )}
-        {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET && (
-          <script>{injectGA()}</script>
+          <>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=UA-119953429-17"
+            />
+            <script>{injectGA()}</script>
+          </>
         )}
         <body>
           <Main />
