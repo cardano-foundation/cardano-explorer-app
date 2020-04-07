@@ -1,28 +1,24 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import { SupportedLocale } from '../source/features/i18n/types';
 import LanguageSwitcher from '../source/widgets/language-switcher/LanguageSwitcher';
-import { Layout } from '../source/widgets/layout';
-import { PaddingDecorator } from './support/PaddingDecorator';
 
 const currentLanguage = {
-  code: 'EN',
+  code: SupportedLocale.EN,
   title: 'English',
 };
 
 const languages = [
-  { code: 'EN', title: 'English' },
-  { code: 'JP', title: 'Japanese' },
+  { code: SupportedLocale.EN, title: 'English' },
+  { code: SupportedLocale.JA, title: 'Japanese' },
 ];
 
-storiesOf('Language Switcher Component', module)
-  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
-  .add('Language Switcher', () => (
-    <Layout>
-      <div>
-        <LanguageSwitcher
-          currentLanguage={currentLanguage}
-          languages={languages}
-        />
-      </div>
-    </Layout>
-  ));
+storiesOf('Language Switcher Component', module).add(
+  'Language Switcher',
+  () => (
+    <LanguageSwitcher
+      currentLanguage={currentLanguage}
+      languageOptions={languages}
+    />
+  )
+);

@@ -1,7 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import AddressSummary from '../source/features/address/ui/AddressSummary';
-import { PaddingDecorator } from './support/PaddingDecorator';
 
 const addressSummary = {
   address:
@@ -11,6 +10,6 @@ const addressSummary = {
   transactionsCount: '2',
 };
 
-storiesOf('Address Summary', module)
-  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
-  .add('Address Summary', () => <AddressSummary {...addressSummary} />);
+storiesOf('Address Summary', module).add('Address Summary', () => (
+  <AddressSummary {...addressSummary} />
+));

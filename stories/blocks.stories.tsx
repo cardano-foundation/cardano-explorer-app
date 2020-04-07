@@ -96,7 +96,6 @@ const blockCreation = [
 ];
 
 storiesOf('Blocks|List', module)
-  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('plain', () => (
     <BlockList title="Blocks" items={blocks.slice(0, 5)} isLoading={false} />
   ))

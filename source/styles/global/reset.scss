@@ -151,7 +151,7 @@ body,
   position: relative;
 }
 body {
-  background-color: var(--primary-bg-color);
+  background-color: var(--primary-bg-color, #121326);
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
