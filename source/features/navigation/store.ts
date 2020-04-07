@@ -61,6 +61,20 @@ export class NavigationStore extends Store {
     );
   }
 
+  private updateGAEvents() {
+    try {
+      // @ts-ignore
+      window.gtag('config', 'UA-119953429-17', {
+        hitType: 'pageview',
+        page_location: location.pathname,
+        title: document.title,
+      });
+    } catch (error) {
+      // silences the error in dev mode
+      // and/or if gtag fails to load
+    }
+  }
+
   // ========= PRIVATE ACTION HANDLERS ==========
 
   @action private push = (
@@ -77,6 +91,7 @@ export class NavigationStore extends Store {
     if (!parsedUrl.pathname) {
       return;
     }
+    this.updateGAEvents();
     // Extract locale from the URL to normalize the paths internally
     this.path = parsedUrl.pathname.substring(3);
     if (parsedUrl.query) {
