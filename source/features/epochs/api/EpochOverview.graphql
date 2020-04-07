@@ -1,14 +1,5 @@
 fragment EpochOverview on Epoch {
-  blocks_aggregate (
-    where: {
-      slotNo: {
-        _is_null: false
-      }
-    }) {
-    aggregate {
-      count
-    }
-  }
+  blocksCount
   lastBlockTime
   number
   startedAt

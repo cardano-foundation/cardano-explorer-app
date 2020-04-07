@@ -100,7 +100,7 @@ const EpochsSearchResult = () => {
           epoch={epochSearchResult.number}
           perPageDefault={EPOCH_BLOCKS_PER_PAGE}
           title={translate('block.blocks')}
-          totalItems={epochSearchResult?.blocksCount}
+          totalItems={parseInt(epochSearchResult?.blocksCount,10)}
         />
         {environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
           <div className={styles.stakeDistribution}>

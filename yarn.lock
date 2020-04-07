@@ -5545,10 +5545,10 @@ capture-stack-trace@^1.0.0:
   resolved "https://registry.yarnpkg.com/capture-stack-trace/-/capture-stack-trace-1.0.1.tgz#a6c0bbe1f38f3aa0b92238ecb6ff42c344d4135d"
   integrity sha512-mYQLZnx5Qt1JgB1WEiMCf2647plpGeQ2NMR/5L0HNZzGQo4fuSPnK+wjfPnKZV0aiJDgzmWqqkV/g7JD+DW0qw==
 
-cardano-graphql-ts@1.0.0-rc.5:
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/cardano-graphql-ts/-/cardano-graphql-ts-1.0.0-rc.5.tgz#f29aef3174d5aeb3cf22264c1bea54c7ffcbfb21"
-  integrity sha512-12oN+WF/+xr29UhTC+aZyJwrQtRHIthT0kuFWHbdGtaaFxAFUQSkxGVl0FX+6EZORr6vg12X/zAfgAolw4hWaA==
+cardano-graphql-ts@1.0.0-rc.7:
+  version "1.0.0-rc.7"
+  resolved "https://registry.yarnpkg.com/cardano-graphql-ts/-/cardano-graphql-ts-1.0.0-rc.7.tgz#1ea9f94379d609f7a6ef97d2e4438c497c7325bb"
+  integrity sha512-lQW/rZAeIyXfE9SNRbJDqiEAcRr1bcZzDNTAJsm34N1NS+FxnXAjfM+LecV5oqRc0V1XnlQqrKORZKB38pj3aA==
 
 cardano-js@0.3.0:
   version "0.3.0"

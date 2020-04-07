@@ -7,12 +7,6 @@ pipeline {
     AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
   }
 
-  // Lock concurrent builds due to the docker dependency
-  options {
-    lock resource: 'DockerJob'
-    disableConcurrentBuilds()
-  }
-
   stages {
     stage('Install') {
       steps {
@@ -29,21 +23,11 @@ pipeline {
         sh 'yarn static:build'
       }
     }
-    stage('Setup Service Dependencies') {
-      steps {
-        sh 'yarn start-dependencies -d'
-      }
-    }
     stage('Test') {
       steps {
         sh 'yarn test'
         sh 'npx serve -p 4000 &'
         sh 'yarn test:e2e'
-      }
-      post {
-        always {
-          sh 'yarn stop-dependencies'
-        }
       }
     }
     stage('S3 Deployment') {
