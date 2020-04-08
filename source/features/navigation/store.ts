@@ -63,8 +63,8 @@ export class NavigationStore extends Store {
 
   private updateGAEvents() {
     try {
-      // @ts-ignore
-      window.gtag('config', environment.GA_TRACKING_ID, {
+      const windowObject: Window | any = window;
+      windowObject.gtag('config', environment.GA_TRACKING_ID, {
         hitType: 'pageview',
         page_location: location.pathname,
         title: document.title,

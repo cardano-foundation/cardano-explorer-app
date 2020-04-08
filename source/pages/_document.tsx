@@ -14,15 +14,12 @@ class CardanoExplorerDocument extends Document {
       if (typeof window === 'undefined') {
         return;
       }
-      // @ts-ignore
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        // @ts-ignore
-        window.dataLayer.push(arguments);
+      const windowObject: Window | any = window;
+      windowObject.dataLayer = windowObject.dataLayer || [];
+      function gtag(param: string, value: any, config?: any) {
+        windowObject.dataLayer.push({ param, value });
       }
-      // @ts-ignore
       gtag('js', new Date());
-      // @ts-ignore
       gtag('config', environment.GA_TRACKING_ID);
       return null;
     };
@@ -30,15 +27,16 @@ class CardanoExplorerDocument extends Document {
     return (
       <Html style={cardanoExplorerTheme} lang={lang}>
         <Head />
-        {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET && environment.GA_TRACKING_ID && (
-          <>
-            <script
-              async
-              src="https://www.googletagmanager.com/gtag/js?id=UA-119953429-17"
-            />
-            <script>{injectGA()}</script>
-          </>
-        )}
+        {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET &&
+          environment.GA_TRACKING_ID && (
+            <>
+              <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=UA-119953429-17"
+              />
+              <script>{injectGA()}</script>
+            </>
+          )}
         <body>
           <Main />
           <NextScript />
