@@ -9,7 +9,6 @@ export const epochOverviewTransformer = (
 ): IEpochOverview => {
   return {
     ...e,
-    blocksCount: parseInt(e.blocks_aggregate?.aggregate?.count ?? '0', 10),
     lastBlockAt: new Date(e.lastBlockTime),
     output: Currency.Util.lovelacesToAda(e.output),
     percentage:
