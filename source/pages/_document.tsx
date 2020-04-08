@@ -23,14 +23,14 @@ class CardanoExplorerDocument extends Document {
       // @ts-ignore
       gtag('js', new Date());
       // @ts-ignore
-      gtag('config', 'UA-119953429-17');
+      gtag('config', environment.GA_TRACKING_ID);
       return null;
     };
 
     return (
       <Html style={cardanoExplorerTheme} lang={lang}>
         <Head />
-        {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET && (
+        {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET && environment.GA_TRACKING_ID && (
           <>
             <script
               async

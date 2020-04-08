@@ -3,8 +3,8 @@ import { action, observable, runInAction } from 'mobx';
 import { ParsedUrlQuery } from 'querystring';
 import * as querystring from 'querystring';
 import URL from 'url';
+import { environment } from '../../environment';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
-import { createReactions } from '../../lib/mobx/Reaction';
 import { Store } from '../../lib/Store';
 import { I18nActions, I18nFeature } from '../i18n';
 import { SupportedLocale } from '../i18n/types';
@@ -64,7 +64,7 @@ export class NavigationStore extends Store {
   private updateGAEvents() {
     try {
       // @ts-ignore
-      window.gtag('config', 'UA-119953429-17', {
+      window.gtag('config', environment.GA_TRACKING_ID, {
         hitType: 'pageview',
         page_location: location.pathname,
         title: document.title,
@@ -91,7 +91,9 @@ export class NavigationStore extends Store {
     if (!parsedUrl.pathname) {
       return;
     }
-    this.updateGAEvents();
+    if (environment.GA_TRACKING_ID) {
+      this.updateGAEvents();
+    }
     // Extract locale from the URL to normalize the paths internally
     this.path = parsedUrl.pathname.substring(3);
     if (parsedUrl.query) {

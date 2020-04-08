@@ -18,6 +18,7 @@ export const environment = {
   IS_CLIENT: isNavigatorDefined,
   IS_SERVER: !isNavigatorDefined,
   REAL_TIME_FACTOR: Number(process.env.REAL_TIME_FACTOR || '1.5'),
+  GA_TRACKING_ID: 'UA-119953429-17'
 };
 
 if (environment.DEBUG) {
