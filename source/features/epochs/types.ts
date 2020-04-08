@@ -1,4 +1,3 @@
-
 export interface IEpochOverview {
   blocksCount: string;
   number: number;
