@@ -5,6 +5,12 @@ import { environment } from '../environment';
 import { DEFAULT_LOCALE } from '../features/i18n';
 import { cardanoExplorerTheme } from '../styles/theme/theme';
 
+interface IMyWindow extends Window {
+  dataLayer: any[],
+}
+
+declare var window: IMyWindow;
+
 class CardanoExplorerDocument extends Document {
   public render() {
     const lang =
@@ -14,10 +20,9 @@ class CardanoExplorerDocument extends Document {
       if (typeof window === 'undefined') {
         return;
       }
-      const windowObject: Window | any = window;
-      windowObject.dataLayer = windowObject.dataLayer || [];
-      function gtag(param: string, value: any, config?: any) {
-        windowObject.dataLayer.push({ param, value });
+      window.dataLayer = window.dataLayer || [];
+      function gtag(param: string, value: any) {
+        window.dataLayer.push({ param, value });
       }
       gtag('js', new Date());
       gtag('config', environment.GA_TRACKING_ID);
@@ -32,7 +37,7 @@ class CardanoExplorerDocument extends Document {
             <>
               <script
                 async
-                src="https://www.googletagmanager.com/gtag/js?id=UA-119953429-17"
+                src="https://www.googletagmanager.com/gtag/js?id=environment.GA_TRACKING_ID"
               />
               <script>{injectGA()}</script>
             </>

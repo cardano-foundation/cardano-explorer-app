@@ -14,6 +14,16 @@ import {
   NavigationActions,
 } from './index';
 
+interface IMyWindow extends Window {
+  gtag(param: string, value: string | undefined, config: {
+    hitType: string,
+    page_location: string,
+    title: string,
+    }): void;
+}
+
+declare var window: IMyWindow;
+
 /**
  * Router abstraction layer and mobx based route state
  */
@@ -62,16 +72,12 @@ export class NavigationStore extends Store {
   }
 
   private updateGAEvents() {
-    try {
-      const windowObject: Window | any = window;
-      windowObject.gtag('config', environment.GA_TRACKING_ID, {
+    if (window && window.gtag) {
+      window.gtag('config', environment.GA_TRACKING_ID, {
         hitType: 'pageview',
         page_location: location.pathname,
         title: document.title,
       });
-    } catch (error) {
-      // silences the error in dev mode
-      // and/or if gtag fails to load
     }
   }
 
