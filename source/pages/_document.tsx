@@ -6,7 +6,7 @@ import { DEFAULT_LOCALE } from '../features/i18n';
 import { cardanoExplorerTheme } from '../styles/theme/theme';
 
 interface IMyWindow extends Window {
-  dataLayer: any[],
+  dataLayer: any[];
 }
 
 declare var window: IMyWindow;

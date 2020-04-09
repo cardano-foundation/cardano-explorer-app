@@ -15,11 +15,15 @@ import {
 } from './index';
 
 interface IMyWindow extends Window {
-  gtag(param: string, value: string | undefined, config: {
-    hitType: string,
-    page_location: string,
-    title: string,
-    }): void;
+  gtag(
+    param: string,
+    value: string | undefined,
+    config: {
+      hitType: string;
+      page_location: string;
+      title: string;
+    }
+  ): void;
 }
 
 declare var window: IMyWindow;
