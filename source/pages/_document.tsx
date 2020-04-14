@@ -32,8 +32,7 @@ class CardanoExplorerDocument extends Document {
     return (
       <Html style={cardanoExplorerTheme} lang={lang}>
         <Head />
-        {environment.CARDANO.NETWORK === CardanoNetwork.MAINNET &&
-          environment.GA_MEASUREMENT_ID && (
+        {environment.GA_MEASUREMENT_ID && (
             <>
               <script
                 async
