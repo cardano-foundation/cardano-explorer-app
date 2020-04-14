@@ -37,7 +37,7 @@ class CardanoExplorerDocument extends Document {
             <>
               <script
                 async
-                src="https://www.googletagmanager.com/gtag/js?id=environment.GA_MEASUREMENT_ID"
+                src={`https://www.googletagmanager.com/gtag/js?id=${environment.GA_MEASUREMENT_ID}`}
               />
               <script>{injectGA()}</script>
             </>
