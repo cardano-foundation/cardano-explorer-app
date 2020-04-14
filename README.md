@@ -35,7 +35,7 @@ A simple [Node.js program](deploy/index.js) is available for deploying to an AWS
 \* optional
 #### `CARDANO_ERA`: `byron | shelley`
 #### `CARDANO_NETWORK`: `mainnet | testnet`
-#### `GRAPHQL_API_PROTOCOL` : `https | http`z
+#### `GRAPHQL_API_PROTOCOL` : `https | http`
 #### `GRAPHQL_API_HOST`
 #### `GRAPHQL_API_PORT`
 #### * `GA_MEASUREMENT_ID`
