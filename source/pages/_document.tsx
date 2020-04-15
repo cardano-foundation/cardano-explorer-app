@@ -25,18 +25,18 @@ class CardanoExplorerDocument extends Document {
         window.dataLayer.push({ param, value });
       }
       gtag('js', new Date());
-      gtag('config', environment.GA_MEASUREMENT_ID);
+      gtag('config', environment.GA_TRACKING_ID);
       return null;
     };
 
     return (
       <Html style={cardanoExplorerTheme} lang={lang}>
         <Head />
-        {environment.GA_MEASUREMENT_ID && (
+        {environment.GA_TRACKING_ID && (
             <>
               <script
                 async
-                src={`https://www.googletagmanager.com/gtag/js?id=${environment.GA_MEASUREMENT_ID}`}
+                src={`https://www.googletagmanager.com/gtag/js?id=${environment.GA_TRACKING_ID}`}
               />
               <script>{injectGA()}</script>
             </>

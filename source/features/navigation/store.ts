@@ -77,7 +77,7 @@ export class NavigationStore extends Store {
 
   private updateGAEvents() {
     if (window && window.gtag) {
-      window.gtag('config', environment.GA_MEASUREMENT_ID, {
+      window.gtag('config', environment.GA_TRACKING_ID, {
         hitType: 'pageview',
         page_location: location.pathname,
         title: document.title,
@@ -101,7 +101,7 @@ export class NavigationStore extends Store {
     if (!parsedUrl.pathname) {
       return;
     }
-    if (environment.GA_MEASUREMENT_ID) {
+    if (environment.GA_TRACKING_ID) {
       this.updateGAEvents();
     }
     // Extract locale from the URL to normalize the paths internally
