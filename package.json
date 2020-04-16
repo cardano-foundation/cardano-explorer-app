@@ -16,17 +16,15 @@
     "generate:graphql-typings": "graphql-codegen",
     "export": "next export source --outdir build/static",
     "static:build": "NODE_ENV=production yarn build && yarn export",
-    "static:serve": "serve -p 4001",
-    "static:preview": "yarn static:build && yarn static:serve",
+    "static:serve": "serve ./build/static",
+    "static:preview": "yarn static:build && yarn static:serve -l 4001",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "prettier": "./node_modules/.bin/prettier \"**/*.*\"",
     "prettier:check": "yarn prettier --check",
     "prettier:format": "yarn prettier --write --loglevel warn",
     "prettier:fix-staged": "pretty-quick --staged",
     "storybook": "start-storybook -s ./source/public -p 6006",
-    "storybook:build": "build-storybook -o build/storybook",
-    "deploy:byron:mainnet": "node deploy/byron_mainnet",
-    "deploy:byron:testnet": "node deploy/byron_testnet"
+    "storybook:build": "build-storybook -o build/storybook"
   },
   "husky": {
     "hooks": {
@@ -139,6 +137,6 @@
     "webpack": "4.27.1"
   },
   "engines": {
-    "node": "10.x.x"
+    "node": "^10 || ^12"
   }
 }
