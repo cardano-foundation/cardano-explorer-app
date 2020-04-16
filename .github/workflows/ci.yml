@@ -28,7 +28,7 @@ jobs:
       - run: yarn lint
       - run: yarn static:build
       - run: yarn test
-      - run: yarn static:serve -l 4000
+      - run: yarn static:serve -l 4000 &
       - run: yarn test:e2e
         env:
           CI: true
