@@ -1,6 +1,6 @@
 Cardano Explorer App
 ====================
-[![Build Status](https://jenkins.daedalus-operations.com/buildStatus/icon?job=cardano-explorer-app%2Fdevelop)](https://jenkins.daedalus-operations.com/blue/organizations/jenkins/cardano-explorer-app/)
+[![Tests](https://github.com/input-output-hk/cardano-explorer-app/workflows/Tests/badge.svg)](https://github.com/input-output-hk/cardano-explorer-app/actions?query=workflow%3ATests)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 A React app with GraphQL client interfacing with [Cardano GraphQL](https://github.com/input-output-hk/cardano-graphql).
