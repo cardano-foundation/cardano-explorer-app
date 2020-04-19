@@ -120,7 +120,7 @@
     "mime-types": "2.1.24",
     "next-compose-plugins": "2.1.1",
     "nodemon": "1.19.0",
-    "prettier": "prettier/prettier#master",
+    "prettier": "2.0.4",
     "pretty-quick": "1.11.1",
     "promise-exponential-retry": "1.0.3",
     "recursive-readdir": "2.2.2",
