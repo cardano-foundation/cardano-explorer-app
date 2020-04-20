@@ -16,7 +16,7 @@ import {
 } from './index';
 
 if (environment.GA_TRACKING_ID) {
-  ReactGA.initialize(environment.GA_TRACKING_ID, { debug: true });
+  ReactGA.initialize(environment.GA_TRACKING_ID);
 }
 
 /**
