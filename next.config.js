@@ -44,6 +44,10 @@ module.exports = withPlugins(
     },
     webpack(config, options) {
 
+      if (options.isServer) {
+        config.externals = ['react', 'react-dom', 'react-ssr-prepass', ...config.externals]
+      }
+
       // Alias react with Preact
       config.resolve.alias = {
         ...config.resolve.alias,
