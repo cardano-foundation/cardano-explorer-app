@@ -1,7 +1,8 @@
 import { isEmpty } from 'lodash';
-import { action, observable, runInAction } from 'mobx';
+import { action, observable } from 'mobx';
 import { ParsedUrlQuery } from 'querystring';
 import * as querystring from 'querystring';
+import ReactGA from 'react-ga';
 import URL from 'url';
 import { environment } from '../../environment';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
@@ -14,19 +15,9 @@ import {
   NavigationActions,
 } from './index';
 
-interface IMyWindow extends Window {
-  gtag(
-    param: string,
-    value: string | undefined,
-    config: {
-      hitType: string;
-      page_location: string;
-      title: string;
-    }
-  ): void;
+if (environment.GA_TRACKING_ID) {
+  ReactGA.initialize(environment.GA_TRACKING_ID, { debug: true });
 }
-
-declare var window: IMyWindow;
 
 /**
  * Router abstraction layer and mobx based route state
@@ -76,13 +67,7 @@ export class NavigationStore extends Store {
   }
 
   private updateGAEvents() {
-    if (window && window.gtag) {
-      window.gtag('config', environment.GA_TRACKING_ID, {
-        hitType: 'pageview',
-        page_location: location.pathname,
-        title: document.title,
-      });
-    }
+    ReactGA.pageview(location.pathname);
   }
 
   // ========= PRIVATE ACTION HANDLERS ==========
