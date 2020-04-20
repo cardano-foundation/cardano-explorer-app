@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+import React from 'react';
 import { DEFAULT_LOCALE } from '../features/i18n';
 import { cardanoExplorerTheme } from '../styles/theme/theme';
 

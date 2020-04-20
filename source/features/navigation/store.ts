@@ -1,10 +1,11 @@
 import { isEmpty } from 'lodash';
-import { action, observable, runInAction } from 'mobx';
+import { action, observable } from 'mobx';
 import { ParsedUrlQuery } from 'querystring';
 import * as querystring from 'querystring';
+import ReactGA from 'react-ga';
 import URL from 'url';
+import { environment } from '../../environment';
 import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
-import { createReactions } from '../../lib/mobx/Reaction';
 import { Store } from '../../lib/Store';
 import { I18nActions, I18nFeature } from '../i18n';
 import { SupportedLocale } from '../i18n/types';
@@ -13,6 +14,10 @@ import {
   INavigationRouterDependency,
   NavigationActions,
 } from './index';
+
+if (environment.GA_TRACKING_ID) {
+  ReactGA.initialize(environment.GA_TRACKING_ID);
+}
 
 /**
  * Router abstraction layer and mobx based route state
@@ -85,6 +90,9 @@ export class NavigationStore extends Store {
       this.query = {};
     }
     this.url = url;
+    if (environment.GA_TRACKING_ID) {
+      ReactGA.pageview(url);
+    }
   };
 
   @action private updateRouteOnLocaleChange = (
