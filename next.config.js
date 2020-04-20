@@ -49,6 +49,7 @@ module.exports = withPlugins(
         ...config.resolve.alias,
         'react': "preact/compat",
         "react-dom": "preact/compat",
+        "react-ssr-prepass": "preact-ssr-prepass",
       };
 
       config.plugins.push(new LodashModuleReplacementPlugin());
