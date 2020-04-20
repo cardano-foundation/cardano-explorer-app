@@ -66,10 +66,6 @@ export class NavigationStore extends Store {
     );
   }
 
-  private updateGAEvents() {
-    ReactGA.pageview(location.pathname);
-  }
-
   // ========= PRIVATE ACTION HANDLERS ==========
 
   @action private push = (
@@ -86,9 +82,6 @@ export class NavigationStore extends Store {
     if (!parsedUrl.pathname) {
       return;
     }
-    if (environment.GA_TRACKING_ID) {
-      this.updateGAEvents();
-    }
     // Extract locale from the URL to normalize the paths internally
     this.path = parsedUrl.pathname.substring(3);
     if (parsedUrl.query) {
@@ -97,6 +90,9 @@ export class NavigationStore extends Store {
       this.query = {};
     }
     this.url = url;
+    if (environment.GA_TRACKING_ID) {
+      ReactGA.pageview(url);
+    }
   };
 
   @action private updateRouteOnLocaleChange = (
