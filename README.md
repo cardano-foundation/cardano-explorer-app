@@ -15,17 +15,28 @@ See [.env.example](.env.example)
 - Generates graphql typings from the referenced schema in `cardano-graphql-ts` and documents within the codebase.
 - Any changes to graphql documents will trigger the TypeScript generator.
 
-## Storybook
+###  Storybook
 
 All visual components should be developed in Storybook first.
 
 ### `yarn storybook`
 
-## Continuous Delivery for testing
+### Continuous Deployment
+The `develop` and PR branches are deployed continuously for the purpose of testing and development:
+#### [Mainnet](https://cardano-explorer-mainnet.netlify.app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/09492acb-61fd-4745-8b0e-60c8886f60d1/deploy-status)](https://app.netlify.com/sites/cardano-explorer-mainnet/deploys)
+#### [Testnet](https://cardano-explorer-testnet.netlify.app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/16628b5d-b1f2-429b-a707-bbdec0564fe9/deploy-status)](https://app.netlify.com/sites/cardano-explorer-testnet/deploys)
 
-When code is merged into `develop`, Jenkins pushes builds to S3 buckets for immediate access & testing. This process can be extended to cover production deployments, with load-balancing and SSL termination.
+## Deployment
+A simple [Node.js program](deploy/index.js) is available for deploying to an AWS S3 bucket.
 
-| Era | Network | Data Provider | URL |
-| --- | --- | --- | --- |
-| Byron | Mainnet | cardano-node-explorer | http://byron-mainnet-develop-explorer.s3-website-ap-southeast-2.amazonaws.com |
-| Byron | Testnet | cardano-node-explorer | http://byron-testnet-develop-explorer.s3-website-ap-southeast-2.amazonaws.com |
+### ENVs
+\* optional
+#### `CARDANO_ERA`: `byron | shelley`
+#### `CARDANO_NETWORK`: `mainnet | testnet`
+#### `GRAPHQL_API_PROTOCOL` : `https | http`
+#### `GRAPHQL_API_HOST`
+#### `GRAPHQL_API_PORT`
+#### * `GA_TRACKING_ID`
+https://support.google.com/analytics/answer/7372977?hl=en
