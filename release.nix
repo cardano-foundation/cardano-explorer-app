@@ -16,9 +16,9 @@ let
 in
 
 pkgs.lib.fix (self: {
-  inherit ( import ./default.nix ) cardano-explorer-app;
+  inherit ( import ./. {} ) static yarn-static;
   required = pkgs.releaseTools.aggregate {
     name = "required";
-    constituents = [ self.cardano-explorer-app ];
+    constituents = [ self.static ];
   };
 })

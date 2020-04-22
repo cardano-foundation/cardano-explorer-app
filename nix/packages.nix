@@ -1,48 +1,40 @@
-{ mkYarnPackage, stdenv, lib, python, nodejs }:
+{ lib, pkgs }:
 
 let
   src = lib.cleanSourceWith {
     filter = lib.cleanSourceFilter;
     src = lib.cleanSourceWith {
-      filter = name: type:
-        !( lib.hasSuffix ".nix" name
-        || (type == "directory" && (baseNameOf name) == "node_modules" )
-        || (type == "directory" && (baseNameOf name) == "generated" ))
-        ;
+      filter = name: type: let
+        baseName = baseNameOf (toString name);
+        sansPrefix = lib.removePrefix (toString ../.) name;
+        in_blacklist =
+          lib.hasPrefix "/node_modules" sansPrefix ||
+          lib.hasPrefix "/build" sansPrefix;
+        in_whitelist =
+          (type == "directory") ||
+          (lib.hasSuffix ".yml" name) ||
+          #(lib.hasSuffix ".js" name) ||
+          (lib.hasSuffix ".ts" name) ||
+          #(lib.hasSuffix ".tsx" name) ||
+          (lib.hasSuffix ".json" name) ||
+          #(lib.hasSuffix ".graphql" name) ||
+          #(lib.hasPrefix "/source/public/assets" sansPrefix) ||
+          (lib.hasPrefix "/source" sansPrefix) ||
+          baseName == ".babelrc" ||
+          baseName == "package.json" ||
+          baseName == "next.config.js" ||
+          baseName == "yarn.lock" ||
+          (lib.hasPrefix "/deploy" sansPrefix);
+      in (
+        (!in_blacklist) && in_whitelist
+      );
       src = ../.;
     };
   };
-  package = builtins.fromJSON (builtins.readFile ../package.json);
-in {
-  cardano-explorer-app = mkYarnPackage {
-    pname = package.name;
-    version = package.version;
-    packageJSON = ../package.json;
-    yarnLock = ../yarn.lock;
-    src = src;
-    yarnPreBuild = ''
-      mkdir -p $HOME/.node-gyp/${nodejs.version}
-      echo 9 > $HOME/.node-gyp/${nodejs.version}/installVersion
-      ln -sfv ${nodejs}/include $HOME/.node-gyp/${nodejs.version}
-    '';
-
-    installPhase = ''
-      sed -i 's@schema: ./node_modules@schema: ../../node_modules@' deps/cardano-explorer-app/codegen.yml
-
-      export PATH="$PATH:$node_modules/.bin"
-      yarn --offline run build
-      cp -r ../deps/cardano-explorer-app/dist $out
-      mkdir -p $out/bin
-      cat <<EOF > $out/bin/cardano-explorer-app
-      #!${stdenv.shell}
-      exec ${nodejs}/bin/node $out/index.js
-      EOF
-      chmod +x $out/bin/cardano-explorer-app
-      ln -s $node_modules $out/node_modules
-    '';
-
-    distPhase = ''
-      cp -r . $out
-    '';
+  packages = self: {
+    inherit src;
+    static = self.callPackage ./static.nix {};
+    yarn-static = self.callPackage ./yarn2nix.nix {};
+    inherit (self.yarn-static.passthru) offlinecache;
   };
-}
+in pkgs.lib.makeScope pkgs.newScope packages
