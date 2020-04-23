@@ -11780,7 +11780,7 @@ parse-json@^5.0.0:
 
 parse-srcset@ikatyang/parse-srcset#54eb9c1cb21db5c62b4d0e275d7249516df6f0ee:
   version "1.0.2"
-  resolved "https://codeload.github.com/ikatyang/parse-srcset/tar.gz/54eb9c1cb21db5c62b4d0e275d7249516df6f0ee"
+  resolved "https://codeload.github.com/ikatyang/parse-srcset/tar.gz/54eb9c1cb21db5c62b4d0e275d7249516df6f0ee#d5b016a3a9e89927abbd71a3948d97cf048dd241"
 
 parse5@4.0.0:
   version "4.0.0"
@@ -12542,7 +12542,7 @@ prettier@1.17.1:
 
 prettier@prettier/prettier#master:
   version "1.18.2"
-  resolved "https://codeload.github.com/prettier/prettier/tar.gz/91c5235a3f083719cd60f3c1005f6be14b488c6c"
+  resolved "https://codeload.github.com/prettier/prettier/tar.gz/91c5235a3f083719cd60f3c1005f6be14b488c6c#57e65104e36ac1ec23ec70ffead28059e836fd00"
   dependencies:
     "@angular/compiler" "8.2.13"
     "@babel/code-frame" "7.5.5"
@@ -13164,7 +13164,7 @@ react-no-ssr@1.1.0:
 
 react-polymorph@input-output-hk/react-polymorph#c1596377a968658aba92133c0645b82f91cd7685:
   version "0.9.1"
-  resolved "https://codeload.github.com/input-output-hk/react-polymorph/tar.gz/c1596377a968658aba92133c0645b82f91cd7685"
+  resolved "https://iohk-nodejs-tarballs.s3.eu-central-1.amazonaws.com/react-polymorph-c1596377a968658aba92133c0645b82f91cd7685.tar.gz#c587467e49423472762cf58ada929f2a80cd9f31"
   dependencies:
     create-react-context "0.2.2"
     create-react-ref "0.1.0"
