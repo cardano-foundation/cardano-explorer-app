@@ -147,9 +147,9 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
             <div className={styles.totalOutput}>{props.totalOutput} ADA</div>
           </div>
           <div className={styles.infoRow}>
-            {props.outputs.map((output, i) => (
+            {props.inputs.map((input, i) => (
               <div key={i} className={styles.value}>
-                {output.value} ADA
+                {input.value} ADA
               </div>
             ))}
           </div>
