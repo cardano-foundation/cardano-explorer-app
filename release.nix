@@ -16,9 +16,9 @@ let
 in
 
 pkgs.lib.fix (self: {
-  inherit ( import ./. {} ) static yarn-static;
+  inherit ( import ./. {} ) static yarn-static whitelist;
   required = pkgs.releaseTools.aggregate {
     name = "required";
-    constituents = [ self.static ];
+    constituents = [ self.static self.whitelist ];
   };
 })

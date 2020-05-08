@@ -31,8 +31,12 @@ let
       src = ../.;
     };
   };
+  nodePackages = import ./node-packages {};
   packages = self: {
     inherit src;
+    whitelist = pkgs.runCommand "whitelist.json" { buildInputs = [ nodePackages.persistgraphql ]; } ''
+        persistgraphql ${src} $out
+    '';
     static = self.callPackage ./static.nix {};
     yarn-static = self.callPackage ./yarn2nix.nix {};
     inherit (self.yarn-static.passthru) offlinecache;
