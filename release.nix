@@ -6,6 +6,9 @@
 # them to all supported build platforms.
 #
 ############################################################################
+{
+  rev ? null
+}:
 
 let
   sources = import ./nix/sources.nix;
@@ -17,8 +20,9 @@ in
 
 pkgs.lib.fix (self: {
   inherit ( import ./. {} ) static yarn-static whitelist;
+  build-version = pkgs.writeText "version.json" (builtins.toJSON { inherit rev; });
   required = pkgs.releaseTools.aggregate {
     name = "required";
-    constituents = [ self.static self.whitelist ];
+    constituents = with self; [ static whitelist build-version ];
   };
 })

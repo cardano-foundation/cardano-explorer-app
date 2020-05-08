@@ -31,7 +31,7 @@ let
       src = ../.;
     };
   };
-  nodePackages = import ./node-packages {};
+  nodePackages = pkgs.callPackage ./node-packages {};
   packages = self: {
     inherit src;
     whitelist = pkgs.runCommand "whitelist.json" { buildInputs = [ nodePackages.persistgraphql ]; } ''
