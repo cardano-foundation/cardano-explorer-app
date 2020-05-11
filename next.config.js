@@ -44,11 +44,18 @@ module.exports = withPlugins(
     },
     webpack(config, options) {
 
+      if (options.isServer) {
+        config.externals = ['react', 'react-dom', 'react-ssr-prepass', ...config.externals]
+      }
+
       // Alias react with Preact
       config.resolve.alias = {
         ...config.resolve.alias,
         'react': "preact/compat",
+        'react$': "preact/compat",
         "react-dom": "preact/compat",
+        'react-dom$': 'preact/compat',
+        "react-ssr-prepass": "preact-ssr-prepass",
       };
 
       config.plugins.push(new LodashModuleReplacementPlugin());
