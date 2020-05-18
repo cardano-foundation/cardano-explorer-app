@@ -23,10 +23,10 @@ All visual components should be developed in Storybook first.
 
 ### Continuous Deployment
 The `develop` and PR branches are deployed continuously for the purpose of testing and development:
-#### [Mainnet](https://cardano-explorer-mainnet.netlify.app)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/09492acb-61fd-4745-8b0e-60c8886f60d1/deploy-status)](https://app.netlify.com/sites/cardano-explorer-mainnet/deploys)
-#### [Testnet](https://cardano-explorer-testnet.netlify.app)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/16628b5d-b1f2-429b-a707-bbdec0564fe9/deploy-status)](https://app.netlify.com/sites/cardano-explorer-testnet/deploys)
+#### Mainnet
+[![Netlify Status](https://api.netlify.com/api/v1/badges/09492acb-61fd-4745-8b0e-60c8886f60d1/deploy-status)](https://cardano-explorer-mainnet.netlify.app)
+#### Testnet
+[![Netlify Status](https://api.netlify.com/api/v1/badges/16628b5d-b1f2-429b-a707-bbdec0564fe9/deploy-status)](https://cardano-explorer-testnet.netlify.app)
 
 ## Deployment
 A simple [Node.js program](deploy/index.js) is available for deploying to an AWS S3 bucket.
