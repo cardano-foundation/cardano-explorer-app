@@ -31,7 +31,7 @@ The `develop` and PR branches are deployed continuously for the purpose of testi
 ## Deployment
 A simple [Node.js program](deploy/index.js) is available for deploying to an AWS S3 bucket.
 
-### ENVsdrop the links
+### ENVs
 \* optional
 #### `CARDANO_ERA`: `byron | shelley`
 #### `CARDANO_NETWORK`: `mainnet | testnet`
