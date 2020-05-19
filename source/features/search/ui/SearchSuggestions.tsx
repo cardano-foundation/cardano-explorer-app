@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
+import { useI18nFeature } from '../../i18n/context';
 import styles from './Search.module.scss';
 const ArrowRight = require('../../../public/assets/images/arrow-right.svg');
 
@@ -9,6 +10,7 @@ export interface ISearchSuggestionsProps {
 }
 
 const SearchSuggestions = (props: ISearchSuggestionsProps) => {
+  const { translate } = useI18nFeature().store;
   const { value, onSearchTypeSelect } = props;
 
   return (
@@ -16,13 +18,13 @@ const SearchSuggestions = (props: ISearchSuggestionsProps) => {
       <ul className={styles.searchSuggestionsContent}>
         <li onClick={() => onSearchTypeSelect('epoch')}>
           <div>
-            Search for an epoch <span>{value}</span>
+            {translate('search.suggestion_epoch')} <span>{value}</span>
           </div>
           <ArrowRight />
         </li>
         <li onClick={() => onSearchTypeSelect('block')}>
           <div>
-            Search for a block <span>{value}</span>
+            {translate('search.suggestion_block')} <span>{value}</span>
           </div>
           <ArrowRight />
         </li>
