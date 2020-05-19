@@ -123,8 +123,8 @@
     "notExist": "Adresse existiert nicht:",
     "notFound": "Es tut uns Leid, wir konnten keine Ergebnisse finden zu:",
     "placeholder": "Suche nach Epochen, Blöcken, Addressen und Transaktionen",
-    "suggestion_block": "Search for a blöcken",
-    "suggestion_epoch": "Suche nach einer epoche",
+    "suggestion_block": "Suche nach einem Block",
+    "suggestion_epoch": "Suche nach einer Epoche",
     "title": "Suche"
   },
   "stakeDistribution": {
