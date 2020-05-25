@@ -5,7 +5,7 @@ query searchForTransactionById(
 ) {
   transactions(
     where: {
-      id: {
+      hash: {
         _eq: $id
       }
     }
