@@ -6,7 +6,7 @@ query searchById(
 ) {
   blocks(
     where: {
-     id: {
+     hash: {
        _eq: $id
      }
     }
@@ -15,7 +15,7 @@ query searchById(
   }
   transactions(
     where: {
-      id: {
+      hash: {
         _eq: $id
       }
     }

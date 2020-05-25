@@ -1,16 +1,16 @@
 fragment TransactionDetails on Transaction {
   block {
     epochNo
-    id,
+    hash,
     number,
     slotWithinEpoch,
   }
   fee,
-  id,
+  hash,
   includedAt,
   inputs {
     address,
-    sourceTxId
+    sourceTxHash
     sourceTxIndex
     value,
   },
