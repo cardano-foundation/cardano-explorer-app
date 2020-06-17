@@ -123,6 +123,8 @@
     "notExist": "Address does not exist:",
     "notFound": "Sorry, we could not find any results matching:",
     "placeholder": "Search for epochs, blocks, addresses and transactions",
+    "suggestion_block": "Search for a block",
+    "suggestion_epoch": "Search for an epoch",
     "title": "Search"
   },
   "stakeDistribution": {

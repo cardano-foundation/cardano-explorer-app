@@ -7,14 +7,15 @@ export const transactionDetailsTransformer = (
 ): ITransactionDetails => ({
   block: {
     epoch: tx.block?.epochNo || '-',
-    id: tx.block?.id,
+    id: tx.block?.hash,
     number: tx.block?.number,
   },
   fee: Currency.Util.lovelacesToAda(tx.fee),
-  id: tx.id,
+  id: tx.hash,
   includedAt: new Date(tx.includedAt),
   inputs: tx.inputs.map(i => ({
     ...i,
+    sourceTxId: i.sourceTxHash,
     value: Currency.Util.lovelacesToAda(i.value),
   })),
   outputs: tx.outputs.map(i => ({

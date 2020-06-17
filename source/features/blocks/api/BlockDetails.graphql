@@ -3,13 +3,13 @@
 
 fragment BlockDetails on Block {
   ...BlockOverview
-  merkelRootHash
+  merkelRoot
   nextBlock {
-    id
+    hash
     number
   }
   previousBlock {
-    id
+    hash
     number
   }
   transactions(

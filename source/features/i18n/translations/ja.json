@@ -123,6 +123,8 @@
     "notExist": "アドレスが見つかりません",
     "notFound": "一致する検索結果はありません",
     "placeholder": "エポック、ブロック、アドレス、トランザクションを検索する",
+    "suggestion_block": "ブロックを検索",
+    "suggestion_epoch": "エポックを検索",
     "title": "検索"
   },
   "stakeDistribution": {

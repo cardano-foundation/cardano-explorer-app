@@ -20,6 +20,7 @@ export const blockOverviewTransformer = (
     ...b,
     createdBy: formatCreatedBy(b.createdBy),
     epoch,
+    id: b.hash,
     number: b.number || '-',
     output: Currency.Util.lovelacesToAda(
       b.transactions_aggregate?.aggregate?.sum?.totalOutput || '0'
@@ -34,13 +35,13 @@ export const blockDetailsTransformer = (
   b: BlockDetailsFragment
 ): IBlockDetailed => ({
   ...blockOverviewTransformer(b),
-  merkleRoot: b.merkelRootHash || '',
+  merkleRoot: b.merkelRoot || '',
   nextBlock: {
-    id: b.nextBlock?.id || '',
+    id: b.nextBlock?.hash || '',
     number: b.nextBlock?.number || '-',
   },
   prevBlock: {
-    id: b.previousBlock?.id || '',
+    id: b.previousBlock?.hash || '',
     number: b.previousBlock?.number || '-',
   },
   transactions: b.transactions
