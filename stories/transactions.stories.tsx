@@ -121,7 +121,7 @@ export const transactions: ITransactionDetails[] = [
 ];
 
 storiesOf('Transactions', module)
-  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
+  .addDecorator((story) => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Transaction Info', () => (
     <TransactionInfo
       highlightAddress={currentAddress}
@@ -140,7 +140,7 @@ storiesOf('Transactions', module)
     <TransactionList
       title="Transactions"
       isLoading={false}
-      items={transactions.map(t => ({
+      items={transactions.map((t) => ({
         ...t,
         currentAddress,
         networkBlockHeight: 11044 + 100,
