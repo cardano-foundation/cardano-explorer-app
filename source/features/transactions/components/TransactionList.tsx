@@ -25,7 +25,10 @@ const TransactionList = (props: ITransactionListProps) => {
       </div>
       {props.items.map((item, index) => (
         <div key={`transaction_${index}`} className={styles.transactionListRow}>
-          <TransactionInfo {...item} />
+          <TransactionInfo
+            {...item}
+            hasSeparator={index < props.items.length - 1}
+          />
         </div>
       ))}
     </div>

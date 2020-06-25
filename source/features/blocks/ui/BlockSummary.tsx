@@ -102,7 +102,7 @@ const BlockSummary = (props: BlockSummaryProps) => {
               {translate('blockSummary.time')}
             </div>
             <div className={styles.infoValue}>
-              {dayjs(props.createdAt).format('YYYY/MM/DD HH:mm:ss')}
+              {dayjs(props.createdAt).format('YYYY/MM/DD HH:mm:ss')} UTC
             </div>
           </div>
           <div className={styles.infoRow}>
