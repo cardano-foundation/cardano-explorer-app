@@ -1,202 +1,113 @@
-$medium-breakpoint: 780px;
+$medium-breakpoint: 480px;
+$wide-breakpoint: 768px;
 
-.transactionInfoContainer {
+.root {
   margin: 0 auto;
   max-width: 872px;
   width: 100%;
+}
 
-  .header {
-    margin-bottom: 41px;
+.header {
+  margin-bottom: 41px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  line-height: 1.33;
+  margin-bottom: 20px;
+  color: var(--info-text-color);
+
+  @media (min-width: $wide-breakpoint) {
+    flex-direction: row;
+    margin-bottom: 10px;
   }
+}
 
-  .transactionInfoRowContainer {
-    display: flex;
-    font-size: 12px;
-    justify-content: space-between;
-    letter-spacing: 0.4px;
-    line-height: 1.33;
+.label {
+  font-family: ProximaNova, sans-serif;
+  font-weight: 600;
+  width: 160px;
+  position: relative;
+}
 
-    @media (max-width: 768px) {
-      flex-direction: column;
+.value {
+  font-family: ProximaNova, sans-serif;
+  font-weight: 300;
+}
+
+.idRow {
+  word-break: break-all;
+  @media (min-width: $wide-breakpoint) {
+    word-break: normal;
+  }
+}
+
+.fromRow {
+  margin-bottom: 0;
+}
+
+.io {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  &:last-child {
+    margin-bottom: 6px;
+    @media (min-width: $wide-breakpoint) {
+      margin-bottom: 30px;
     }
+  }
+  @media (min-width: $medium-breakpoint) {
+    min-width: 445px;
+  }
+  @media (min-width: $wide-breakpoint) {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+}
 
-    .addresses {
-      margin-bottom: 10px;
-      flex-grow: 1;
-      padding-right: 0;
-      min-width: 100%;
+.amount {
+  display: none;
+  @media (min-width: $medium-breakpoint) {
+    display: block;
+  }
+}
 
-      @media (min-width: $medium-breakpoint) {
-        max-width: 680px;
-        min-width: 580px;
-        padding-right: 20px;
-      }
+.address {
+  display: flex;
+}
 
-      .infoRow {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
+.arrowMobile,
+.arrowDesktop {
+  margin-left: 38px;
+  svg {
+    transform: rotate(90deg);
+    height: 10px;
+    object-fit: contain;
+    width: 14px;
+  }
+}
 
-        @media (max-width: $medium-breakpoint) {
-          align-items: flex-start;
-          flex-direction: column;
-        }
+.arrowMobile {
+  margin-bottom: 8px;
+  @media (min-width: $wide-breakpoint) {
+    display: none;
+  }
+}
 
-        &:last-child {
-          margin-bottom: 0;
-        }
+.arrowDesktop {
+  position: absolute;
+  top: calc(50% + 2px);
+  display: none;
+  @media (min-width: $wide-breakpoint) {
+    display: block;
+  }
+}
 
-        .highlightAddress {
-          align-items: center;
-          color: var(--info-text-color);
-          display: flex;
-          font-family: ProximaNova, sans-serif;
-          width: 100%;
-        }
-
-        .inputs,
-        .outputs {
-          display: flex;
-          flex-direction: column;
-          width: calc(50% - 27px);
-
-          @media (max-width: $medium-breakpoint) {
-            width: 100%;
-          }
-        }
-
-        .inputs {
-          align-items: flex-start;
-        }
-
-        .outputs {
-          align-items: flex-end;
-
-          @media (max-width: $medium-breakpoint) {
-            align-items: flex-start;
-          }
-        }
-
-        .id {
-          color: var(--info-text-color);
-          font-family: ProximaNova, sans-serif;
-          font-weight: 600;
-          letter-spacing: 0.6px;
-          line-height: 1.33;
-
-          @media (max-width: $medium-breakpoint) {
-            word-break: break-all;
-          }
-        }
-
-        .linkedId {
-          color: var(--primary-highlight-color);
-          cursor: pointer;
-
-          @media (max-width: $medium-breakpoint) {
-            word-break: break-all;
-          }
-        }
-
-        .input,
-        .output {
-          align-items: center;
-          color: var(--primary-highlight-color);
-          display: flex;
-          font-family: ProximaNova, sans-serif;
-          letter-spacing: 0.4px;
-          line-height: 1.33;
-          margin-bottom: 5px;
-          max-width: 244px;
-          width: 100%;
-        }
-
-        .includedAt {
-          color: var(--info-text-color);
-          font-family: ProximaNova, sans-serif;
-          font-weight: 300;
-          letter-spacing: 0.4px;
-          line-height: 1.33;
-
-          @media (max-width: $medium-breakpoint) {
-            margin-top: 10px;
-          }
-        }
-
-        .nextIcon {
-          display: flex;
-          justify-content: center;
-
-          @media (max-width: $medium-breakpoint) {
-            margin: 10px 0;
-          }
-
-          svg {
-            height: 10px;
-            object-fit: contain;
-            width: 14px;
-          }
-        }
-      }
-    }
-
-    .values {
-      flex: 1;
-      margin-top: -5px;
-
-      @media (max-width: 992px) {
-        max-width: 20%;
-      }
-
-      @media (max-width: $medium-breakpoint) {
-        margin-left: -5px;
-        max-width: initial;
-      }
-
-      .infoRow {
-        align-items: flex-end;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 5px;
-
-        @media (max-width: $medium-breakpoint) {
-          margin-top: 5px;
-        }
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-
-        .value,
-        .totalOutput {
-          color: var(--solid-text-color);
-          white-space: nowrap;
-          letter-spacing: 0.4px;
-          font-family: ProximaNova, sans-serif;
-          line-height: 1.33;
-          font-weight: 300;
-        }
-
-        .totalOutput {
-          background-color: var(--highlighted-dark-area-bg-color);
-          border-radius: 1px;
-          padding: 5px 10px;
-        }
-
-        .value {
-          margin-bottom: 5px;
-          padding: 0 10px;
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-
-          @media (max-width: $medium-breakpoint) {
-            display: none;
-          }
-        }
-      }
-    }
+.txSeparator {
+  svg {
+    width: 100%;
   }
 }

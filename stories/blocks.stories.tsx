@@ -116,13 +116,13 @@ storiesOf('Blocks|List', module)
   ));
 
 storiesOf('Blocks|Summary', module)
-  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
+  .addDecorator((story) => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Summary', () => (
     <BlockSummary networkBlockHeight={11044 + 100} {...blockSummary} />
   ));
 
 storiesOf('Blocks|Creation', module)
-  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
+  .addDecorator((story) => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Creation', () => (
     <BlockCreation title="Block Creation" items={blockCreation} />
   ));

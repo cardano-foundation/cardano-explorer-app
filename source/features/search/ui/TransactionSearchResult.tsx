@@ -7,7 +7,6 @@ import { useI18nFeature } from '../../i18n/context';
 import { useNavigationFeature } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import TransactionInfo from '../../transactions/components/TransactionInfo';
-import TransactionSummary from '../../transactions/components/TransactionSummary';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
 import NoSearchResult from './NoSearchResult';
@@ -38,21 +37,14 @@ export const TransactionSearchResult = () => {
           return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
         } else if (transactionSearchResult) {
           return (
-            <>
-              <TransactionSummary
-                navigation={navigation?.actions}
-                networkBlockHeight={networkInfo.store.blockHeight}
-                title={translate('transaction.summary')}
-                {...transactionSearchResult}
-              />
-              <div className={styles.transaction}>
-                <TransactionInfo
-                  dontLinkToTransaction
-                  title={translate('transaction.transactionLabel')}
-                  {...transactionSearchResult}
-                />
-              </div>
-            </>
+            <TransactionInfo
+              dontLinkToTransaction
+              navigation={navigation?.actions}
+              networkBlockHeight={networkInfo.store.blockHeight}
+              title={translate('transaction.transactionLabel')}
+              showDetails
+              {...transactionSearchResult}
+            />
           );
         } else {
           return (
