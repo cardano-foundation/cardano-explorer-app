@@ -1,3 +1,4 @@
+import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect, useState } from 'react';
 import { CardanoEra } from '../../../constants';
@@ -15,7 +16,6 @@ import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
 import styles from './EpochsSearchResult.module.scss';
 import NoSearchResult from './NoSearchResult';
-import { isNumber } from 'lodash';
 
 const stakeDistribution = [
   {
