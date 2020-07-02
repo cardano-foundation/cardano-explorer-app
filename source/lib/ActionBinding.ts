@@ -31,4 +31,4 @@ export type ActionProps<A> = A extends Action<infer P> ? P : never;
 
 export const createActionBindings = (
   actions: Array<[Action<any>, (props: any) => void]>
-): ActionBinding<any>[] => actions.map(a => new ActionBinding(a[0], a[1]));
+): ActionBinding<any>[] => actions.map((a) => new ActionBinding(a[0], a[1]));

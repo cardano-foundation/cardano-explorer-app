@@ -16,14 +16,14 @@ export class AbortablePromise<TResult, TError> implements Promise<TResult> {
       this.reject = reject;
       // Prevent normal Promise flow when aborted
       promise
-        .then(result => {
+        .then((result) => {
           if (this.isAborted) {
             reject(AbortablePromise.ABORT_ERROR);
           } else {
             resolve(result);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           if (!this.isAborted) {
             reject(error);
           }
@@ -33,7 +33,7 @@ export class AbortablePromise<TResult, TError> implements Promise<TResult> {
       .finally(() => {
         this.isPending = false;
       })
-      .catch(error => {
+      .catch((error) => {
         if (error !== AbortablePromise.ABORT_ERROR) {
           throw error;
         }

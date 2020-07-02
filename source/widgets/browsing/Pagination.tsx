@@ -50,7 +50,7 @@ export const Pagination = (props: IPaginationProps) => {
           <input
             value={currentPage}
             className={styles.paginationInputStyles}
-            onKeyPress={e => {
+            onKeyPress={(e) => {
               const targetEl = e.currentTarget;
               const isNumericKey = /^\d+$/.test(e.key);
               if (!isNumericKey) {

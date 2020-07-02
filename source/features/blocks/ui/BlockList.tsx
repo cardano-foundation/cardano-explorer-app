@@ -79,7 +79,7 @@ const columns = (
   ];
 };
 
-const BlockList: FC<IBlockListProps> = props => {
+const BlockList: FC<IBlockListProps> = (props) => {
   const displaysItems = props.items.length > 0;
   const ignoreLinksToEpoch = props.ignoreLinksToEpoch;
   return (
@@ -92,7 +92,7 @@ const BlockList: FC<IBlockListProps> = props => {
       <Table
         title={props.title}
         columns={columns(ignoreLinksToEpoch)}
-        rows={props.items.map(i => Object.assign({}, i, { key: i.id }))}
+        rows={props.items.map((i) => Object.assign({}, i, { key: i.id }))}
         withoutHeaders={!displaysItems && props.isLoading}
       />
     </div>
