@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CardanoEra } from '../../../constants';
 import { environment } from '../../../environment';
 import { useObservableEffect } from '../../../lib/mobx/react';
@@ -15,6 +15,7 @@ import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
 import styles from './EpochsSearchResult.module.scss';
 import NoSearchResult from './NoSearchResult';
+import { isNumber } from 'lodash';
 
 const stakeDistribution = [
   {
@@ -54,21 +55,26 @@ const EpochsSearchResult = () => {
   const { actions, api, store } = useSearchFeature();
   const networkInfo = useNetworkInfoFeature();
   const navigation = useNavigationFeature();
+  const [queryEpochNumber, setQueryEpochNumber] = useState();
   const { epochSearchResult } = store;
-  const { query } = navigation.store;
-  const queryEpochNumber = parseInt(query.number as string, 10);
 
   // Subscribe to epoch results on mounting
   useObservableEffect(() => {
     const { currentEpoch } = networkInfo.store;
-    if (currentEpoch && queryEpochNumber != null) {
-      if (!epochSearchResult || epochSearchResult.number !== queryEpochNumber) {
-        if (currentEpoch === queryEpochNumber) {
+    const { query } = navigation.store;
+    if (query.number == null) {
+      return;
+    }
+    const queryNumber = parseInt(query.number as string, 10);
+    setQueryEpochNumber(queryNumber);
+    if (currentEpoch && isNumber(queryNumber)) {
+      if (!epochSearchResult || epochSearchResult.number !== queryNumber) {
+        if (currentEpoch === queryNumber) {
           // Subscribe to current epoch data
-          actions.subscribeToEpoch.trigger({ number: queryEpochNumber });
+          actions.subscribeToEpoch.trigger({ number: queryNumber });
         } else {
           // Fetch completed epochs only once
-          actions.searchForEpochByNumber.trigger({ number: queryEpochNumber });
+          actions.searchForEpochByNumber.trigger({ number: queryNumber });
         }
       }
     }
