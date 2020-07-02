@@ -81,11 +81,6 @@ export const Footer = (props: IFooterProps) => {
               </h5>
               <ul className={styles.aboutCardanoMenu}>
                 <li>
-                  <a href={'https://shelleyexplorer.cardano.org/'}>
-                    {translate('footer.shellyExplorer')}
-                  </a>
-                </li>
-                <li>
                   <a href={'https://cardanofoundation.org/'}>
                     {translate('footer.cardanoFoundation')}
                   </a>
@@ -96,7 +91,7 @@ export const Footer = (props: IFooterProps) => {
                   </a>
                 </li>
                 <li>
-                  <a href={'https://github.com/input-output-hk/cardano-sl'}>
+                  <a href={'https://github.com/input-output-hk'}>
                     {translate('footer.cardanoSL')}
                   </a>
                 </li>
