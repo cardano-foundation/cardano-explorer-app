@@ -52,12 +52,12 @@ export const Header = observer((props: IHeaderProps) => {
       <div className={styles.contentContainer}>
         <div className={styles.brandType}>
           <div className={styles.logoContainer}>
-            <LocalizedLink href="/">
+            <LocalizedLink href="">
               <CardanoLogo className={styles.logo} />
             </LocalizedLink>
           </div>
           <div className={styles.titleContainer}>
-            <LocalizedLink href="/">
+            <LocalizedLink href="">
               <span className={styles.cardanoTitle}>Cardano</span>
               <span className={styles.explorerTitle}>
                 {translate('header.explorer')}
@@ -69,7 +69,7 @@ export const Header = observer((props: IHeaderProps) => {
             <div className={styles.tabs}>
               <div className={styles.tabLeftLine} />
               <div className={styles.tabCircle} />
-              <LocalizedLink href="/">
+              <LocalizedLink href="">
                 <span className={indexClassName}>
                   {translate('header.epochsBlocks')}
                 </span>
