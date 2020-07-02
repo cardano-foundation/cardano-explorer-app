@@ -63,11 +63,11 @@ const SearchWithValue = (props: ISearchProps) =>
             className={searchInputStyles}
             placeholder={placeholder}
             value={searchValue}
-            onChange={inputValue => {
+            onChange={(inputValue) => {
               setSearchValue(inputValue);
               onInputChange(inputValue);
             }}
-            onKeyPress={e => {
+            onKeyPress={(e) => {
               if (e.key === 'Enter') {
                 onSearch(searchValue);
               }
@@ -135,11 +135,11 @@ const SearchWithValueSuggestion = (props: ISearchProps) =>
             className={searchInputStyles}
             placeholder={placeholder}
             value={searchValue}
-            onChange={inputValue => {
+            onChange={(inputValue) => {
               setSearchValue(inputValue);
               onInputChange(inputValue);
             }}
-            onKeyPress={e => {
+            onKeyPress={(e) => {
               if (e.key === 'Enter') {
                 onSearch(searchValue);
               }
@@ -188,7 +188,7 @@ const SearchWithSuggestions = (props: ISearchSuggestionsProps) =>
   });
 
 storiesOf('Search|Search Bar', module)
-  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
+  .addDecorator((story) => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Search without value', () => (
     <Search onInputChange={noop} onSearch={noop} />
   ))
@@ -229,7 +229,7 @@ storiesOf('Search|Search Bar', module)
   ));
 
 storiesOf('Search|No Result', module)
-  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
+  .addDecorator((story) => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Address', () => (
     <NoSearchResult
       searchQuery="Ae2tdPwUPEZBZTsRj7nGdvWQDTkqD9KLpCPpuZvjA1roL7KLDDVgkPU5S8g"
