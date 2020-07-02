@@ -136,7 +136,7 @@
     "tslint-config-prettier": "1.17.0",
     "typescript": "3.9.6",
     "wait-for-expect": "3.0.1",
-    "webpack": "4.27.1"
+    "webpack": "4.43.0"
   },
   "engines": {
     "node": "^12"

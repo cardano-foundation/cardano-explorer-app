@@ -84,7 +84,6 @@ module.exports = withPlugins(
     },
     experimental: {
       modern: true,
-      polyfillsOptimization: true
     },
     exportTrailingSlash: true,
     /**

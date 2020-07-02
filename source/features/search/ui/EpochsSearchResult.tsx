@@ -55,7 +55,7 @@ const EpochsSearchResult = () => {
   const { actions, api, store } = useSearchFeature();
   const networkInfo = useNetworkInfoFeature();
   const navigation = useNavigationFeature();
-  const [queryEpochNumber, setQueryEpochNumber] = useState();
+  const [queryEpochNumber, setQueryEpochNumber] = useState<number>();
   const { epochSearchResult } = store;
 
   // Subscribe to epoch results on mounting
