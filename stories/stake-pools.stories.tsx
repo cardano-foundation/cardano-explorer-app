@@ -16,7 +16,7 @@ const ListWrapper = (story: any) =>
     const onClose = () => onSelect('');
     return (
       <Fragment>
-        {Children.map(story(), child =>
+        {Children.map(story(), (child) =>
           cloneElement(child, { selectedPoolId, onSelect, onClose })
         )}
       </Fragment>

@@ -31,11 +31,11 @@ export class Store {
   }
 
   protected startActions(actions = this.actionBindings) {
-    actions.forEach(a => a.start());
+    actions.forEach((a) => a.start());
   }
 
   protected stopActions(actions = this.actionBindings) {
-    actions.forEach(a => a.stop());
+    actions.forEach((a) => a.stop());
   }
 
   // REACTIONS
@@ -49,10 +49,10 @@ export class Store {
   }
 
   protected startReactions(reactions = this.reactions) {
-    reactions.forEach(r => r.start());
+    reactions.forEach((r) => r.start());
   }
 
   protected stopReactions(reactions = this.reactions) {
-    reactions.forEach(r => r.stop());
+    reactions.forEach((r) => r.stop());
   }
 }

@@ -20,7 +20,7 @@ export function debugActions(namespace: string) {
       constructor(...rest: any[]) {
         super();
         const debug = createDebugger(namespace);
-        Reflect.ownKeys(this).forEach(key => {
+        Reflect.ownKeys(this).forEach((key) => {
           const action = this[key as string] as Action<any>;
           action.onAction((props: any) => {
             debug(key, props);

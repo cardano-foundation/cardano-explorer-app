@@ -70,11 +70,11 @@ const Search = (props: ISearchProps) => {
           className={searchInputStyles}
           placeholder={placeholder}
           value={searchValue}
-          onChange={inputValue => {
+          onChange={(inputValue) => {
             setSearchValue(inputValue);
             onInputChange(inputValue);
           }}
-          onKeyPress={e => {
+          onKeyPress={(e) => {
             if (e.key === 'Enter') {
               submitSearch();
             }
