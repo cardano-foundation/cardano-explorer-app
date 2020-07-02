@@ -56,7 +56,7 @@ storiesOf('Epochs|List', module)
   ));
 
 storiesOf('Epochs|Summary', module)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <div style={mainnetTheme}>
       <PaddingDecorator>{story()}</PaddingDecorator>
     </div>

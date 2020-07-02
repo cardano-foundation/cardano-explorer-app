@@ -8,7 +8,7 @@ type Listener<P> = (params: P) => any;
  */
 export default class Action<Params> {
   public static resetAllActions() {
-    Action.actions.forEach(action => action.removeAll());
+    Action.actions.forEach((action) => action.removeAll());
   }
 
   /**
@@ -28,7 +28,7 @@ export default class Action<Params> {
   };
 
   public trigger = (params: Params) => {
-    this.listeners.forEach(listener => listener(params));
+    this.listeners.forEach((listener) => listener(params));
   };
 
   public remove = (listener: Listener<Params>) => {

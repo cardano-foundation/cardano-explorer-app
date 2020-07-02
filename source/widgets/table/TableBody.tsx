@@ -17,7 +17,7 @@ const TableBody: FC<ITableBodyProps> = ({ columns, rows }) => (
       transitionEnterTimeout={500}
       transitionLeave={false}
     >
-      {rows.map(row => (
+      {rows.map((row) => (
         <TableBodyRow key={row.key} columns={columns} row={row} />
       ))}
     </ReactCSSTransitionGroup>

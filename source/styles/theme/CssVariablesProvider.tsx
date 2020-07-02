@@ -14,7 +14,7 @@ export const CssVariablesProvider = ({
   const root: React.RefObject<HTMLDivElement> = React.createRef();
   useEffect(() => {
     // Apply css variables to root element
-    Object.keys(variables).forEach(key => {
+    Object.keys(variables).forEach((key) => {
       if (root.current) {
         root.current.style.setProperty(key, variables[key]);
       }

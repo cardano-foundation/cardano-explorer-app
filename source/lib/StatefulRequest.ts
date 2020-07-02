@@ -28,7 +28,7 @@ export default class StatefulRequest<Args, Result, Error> {
 
     this.promise = new Promise((resolve, reject) => {
       this.method(args)
-        .then(result => {
+        .then((result) => {
           setTimeout(
             action('StatefulRequest::execute/then', () => {
               if (

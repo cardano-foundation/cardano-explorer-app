@@ -13,12 +13,12 @@ export const transactionDetailsTransformer = (
   fee: Currency.Util.lovelacesToAda(tx.fee),
   id: tx.hash,
   includedAt: new Date(tx.includedAt),
-  inputs: tx.inputs.map(i => ({
+  inputs: tx.inputs.map((i) => ({
     ...i,
     sourceTxId: i.sourceTxHash,
     value: Currency.Util.lovelacesToAda(i.value),
   })),
-  outputs: tx.outputs.map(i => ({
+  outputs: tx.outputs.map((i) => ({
     ...i,
     value: Currency.Util.lovelacesToAda(i.value),
   })),
