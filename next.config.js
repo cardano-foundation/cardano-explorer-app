@@ -85,7 +85,7 @@ module.exports = withPlugins(
     experimental: {
       modern: true,
     },
-    exportTrailingSlash: true,
+    exportTrailingSlash: false,
     /**
      * Generate language specific pages under /[locale]/... paths e.g:
      * /de/ leads to the the German landing page
