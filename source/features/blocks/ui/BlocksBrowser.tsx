@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useEffect, useState } from 'react';
 import { useObservableEffect } from '../../../lib/mobx/react';
 import { calculatePaging, ICalculatePagingOutputs } from '../../../lib/paging';
-import RouterPagination from '../../../widgets/browsing/NavigationPagination';
+import NavigationPagination from '../../../widgets/browsing/NavigationPagination';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { useNavigationFeature } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
@@ -112,7 +112,7 @@ const BlocksBrowser = (props: IBlocksBrowserProps) => {
         }
         ignoreLinksToEpoch={isBrowsingInEpoch}
       />
-      <RouterPagination
+      <NavigationPagination
         currentPage={paging.currentPage}
         itemsPerPage={paging.itemsPerPage}
         onChangePage={() => setIsChangingPage(true)}
