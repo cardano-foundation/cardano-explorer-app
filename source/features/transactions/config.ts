@@ -1,1 +1,1 @@
-export const TRANSACTION_SEARCH_RESULT_PATH = '/transaction/';
+export const TRANSACTION_SEARCH_RESULT_PATH = '/transaction';
