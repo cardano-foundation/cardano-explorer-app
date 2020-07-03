@@ -64,7 +64,7 @@ export const Footer = (props: IFooterProps) => {
               {translate('footer.textTitle')}{' '}
               <a
                 className={styles.highlightedLink}
-                href="https://github.com/input-output-hk/cardano-sl"
+                href="https://github.com/input-output-hk"
               >
                 {translate('footer.openSource')}
               </a>{' '}
@@ -92,7 +92,7 @@ export const Footer = (props: IFooterProps) => {
                 </li>
                 <li>
                   <a href={'https://github.com/input-output-hk'}>
-                    {translate('footer.cardanoSL')}
+                    {translate('footer.cardanoSource')}
                   </a>
                 </li>
                 <li>
