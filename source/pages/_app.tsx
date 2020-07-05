@@ -3,7 +3,7 @@ if (process.env.NODE_ENV === 'development') {
   // to exist at the top of a file.
   require('preact/debug');
 }
-import App from 'next/app';
+import { AppProps } from 'next/app';
 import React from 'react';
 import NoSSR from 'react-no-ssr';
 import '../config/mobx.config';
@@ -25,46 +25,40 @@ const EmptyStaticLayout = (props: { children: React.ReactNode }) => (
   <>{props.children}</>
 );
 
-class CardanoExplorer extends App {
-  public render() {
-    const { pageProps } = this.props;
-    const { locale, statusCode } = pageProps;
-    let Component = this.props.Component as PageComponentWithStaticLayout;
+export default function CardanoExplorer({ Component, pageProps }: AppProps) {
+  const { locale, statusCode } = pageProps;
+  let PageWithOptionalLayout = Component as PageComponentWithStaticLayout;
 
-    // Next.js doesn't know that we only want sub-paths for supported languages
-    // so we need to check ourselves:
-    if ((locale && !isSupportedLocale(locale)) || statusCode === 404) {
-      Component = ErrorPage;
-    }
-    const StaticLayout = Component.getStaticLayout?.() ?? EmptyStaticLayout;
-    // Provide global app features that must survive page navigation:
-    return (
-      <I18nFeatureProvider locale={locale}>
-        <GraphQLProvider>
-          <PolymorphThemeProvider>
-            <NetworkInfoFeatureProvider>
-              <NavigationFeatureProvider>
-                <SearchFeatureProvider>
-                  <StaticLayout>
-                    <NoSSR
-                      onSSR={
-                        <LoadingSpinner
-                          className={styles.loadingSpinnerMargin}
-                        />
-                      }
-                    >
-                      <BrowserUpdate />
-                      <Component {...pageProps} />
-                    </NoSSR>
-                  </StaticLayout>
-                </SearchFeatureProvider>
-              </NavigationFeatureProvider>
-            </NetworkInfoFeatureProvider>
-          </PolymorphThemeProvider>
-        </GraphQLProvider>
-      </I18nFeatureProvider>
-    );
+  // Next.js doesn't know that we only want sub-paths for supported languages
+  // so we need to check ourselves:
+  if ((locale && !isSupportedLocale(locale)) || statusCode === 404) {
+    PageWithOptionalLayout = ErrorPage;
   }
+  const StaticLayout =
+    PageWithOptionalLayout.getStaticLayout?.() ?? EmptyStaticLayout;
+  // Provide global app features that must survive page navigation:
+  return (
+    <I18nFeatureProvider locale={locale}>
+      <GraphQLProvider>
+        <PolymorphThemeProvider>
+          <NetworkInfoFeatureProvider>
+            <NavigationFeatureProvider>
+              <SearchFeatureProvider>
+                <StaticLayout>
+                  <NoSSR
+                    onSSR={
+                      <LoadingSpinner className={styles.loadingSpinnerMargin} />
+                    }
+                  >
+                    <BrowserUpdate />
+                    <Component {...pageProps} />
+                  </NoSSR>
+                </StaticLayout>
+              </SearchFeatureProvider>
+            </NavigationFeatureProvider>
+          </NetworkInfoFeatureProvider>
+        </PolymorphThemeProvider>
+      </GraphQLProvider>
+    </I18nFeatureProvider>
+  );
 }
-
-export default CardanoExplorer;

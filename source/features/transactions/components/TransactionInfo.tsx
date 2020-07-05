@@ -136,7 +136,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
           {translate('transaction.receivedTime')}
         </div>
         <div className={styles.value}>
-          > {dayjs().utc().to(includedAtUtc)} (
+          &gt; {dayjs().utc().to(includedAtUtc)} (
           {includedAtUtc.format('YYYY-MM-DD HH:mm:ss')} UTC)
         </div>
       </div>

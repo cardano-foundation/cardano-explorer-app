@@ -5,7 +5,7 @@ import { ensureContextExists } from '../../lib/react/hooks';
 import { I18nFeature } from '../i18n';
 import { NavigationStore } from './store';
 
-export interface INavigationPushQuery {
+export interface INavigationQueryParams {
   [key: string]: number | string | string[];
 }
 
@@ -16,7 +16,7 @@ export interface INavigationPushQuery {
 export class NavigationActions {
   public push: Action<{
     path?: string;
-    query?: INavigationPushQuery;
+    query?: INavigationQueryParams;
   }> = new Action();
 }
 

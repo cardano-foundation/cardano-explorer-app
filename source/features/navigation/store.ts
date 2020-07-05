@@ -10,7 +10,7 @@ import { Store } from '../../lib/Store';
 import { I18nActions, I18nFeature } from '../i18n';
 import { SupportedLocale } from '../i18n/types';
 import {
-  INavigationPushQuery,
+  INavigationQueryParams,
   INavigationRouterDependency,
   NavigationActions,
 } from './index';
@@ -25,7 +25,7 @@ if (environment.GA_TRACKING_ID) {
 export class NavigationStore extends Store {
   @observable public path: string = '';
   @observable public url: string = '';
-  @observable public query: ParsedUrlQuery = {};
+  @observable public query: INavigationQueryParams = {};
 
   private readonly navigationActions: NavigationActions;
   private readonly router: INavigationRouterDependency;
@@ -55,11 +55,11 @@ export class NavigationStore extends Store {
   public async start(): Promise<void> {
     this.updateStateOnRouteChange(this.router.asPath);
     this.router.events.on('routeChangeComplete', this.updateStateOnRouteChange);
-    super.start();
+    await super.start();
   }
 
   public async stop(): Promise<void> {
-    super.stop();
+    await super.stop();
     this.router.events.off(
       'routeChangeComplete',
       this.updateStateOnRouteChange
@@ -71,10 +71,10 @@ export class NavigationStore extends Store {
   @action private push = (
     props: ActionProps<typeof NavigationActions.prototype.push>
   ) => {
-    const path = props.path ?? this.path;
-    const query = props.query ?? this.query;
+    this.path = props.path ?? this.path;
+    this.query = props.query ?? this.query;
     const { locale } = this.i18n.store;
-    this.pushRoute(this.buildUrl(path, query), locale);
+    this.pushRoute(this.buildUrl(this.path, this.query), locale);
   };
 
   @action private updateStateOnRouteChange = (url: string) => {
@@ -103,7 +103,7 @@ export class NavigationStore extends Store {
 
   // ========= PRIVATE HELPERS ==========
 
-  private buildUrl = (path: string, query: INavigationPushQuery) =>
+  private buildUrl = (path: string, query: INavigationQueryParams) =>
     isEmpty(query) ? path : `${path}?${querystring.stringify(query)}`;
 
   private pushRoute = (
