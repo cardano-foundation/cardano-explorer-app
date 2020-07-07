@@ -32,9 +32,9 @@
     }
   },
   "dependencies": {
+    "@cardano-graphql/client-ts": "^1.0.0-rc.13",
     "@types/react-addons-css-transition-group": "15.0.5",
     "browser-update": "3.3.9",
-    "cardano-graphql-ts": "1.0.0-rc.12",
     "cardano-js": "0.3.0",
     "chroma-js": "2.1.0",
     "classnames": "2.2.6",

@@ -24,7 +24,7 @@ describe('Network information', () => {
     // 3. Access the observable search result provided by the store
     await waitForExpect(() => {
       expect(networkInfo.store.slotDuration).toBe(20000);
-      expect(networkInfo.store.protocolConst).toBe(2160);
+      expect(networkInfo.store.slotsPerEpoch).toBe(21600);
       expect(networkInfo.store.blockHeight).toBeGreaterThan(4000893);
       expect(networkInfo.store.currentEpoch).toBeGreaterThan(184);
     });

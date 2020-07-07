@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc'
 import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
@@ -9,6 +10,8 @@ import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
 import { getBlockRoute } from '../helpers';
 import { IBlockOverview } from '../types';
 import styles from './BlockList.module.scss';
+
+dayjs.extend(utc)
 
 export interface IBlockListProps {
   ignoreLinksToEpoch?: boolean;
@@ -51,7 +54,7 @@ const columns = (
     },
     {
       cellValue: (row: IBlockOverview) =>
-        dayjs(row.createdAt).format('YYYY/MM/DD HH:mm:ss'),
+        dayjs.utc(row.createdAt).format('YYYY/MM/DD HH:mm:ss'),
       cssClass: 'createdAt',
       head: 'block.createdAtTitle',
       key: 'createdAt',
