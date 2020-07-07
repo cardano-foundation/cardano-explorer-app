@@ -1438,6 +1438,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@cardano-graphql/client-ts@^1.0.0-rc.13":
+  version "1.0.0-rc.13"
+  resolved "https://registry.yarnpkg.com/@cardano-graphql/client-ts/-/client-ts-1.0.0-rc.13.tgz#bf3bafc9b9b314a5c389dbbce6261ed09abbf91c"
+  integrity sha512-FEqNpUV7AzchsM4WooyEb9nNrgcDariLJiM+JXV/WyoLa4WKb6md1IttKuub+XrHixRcB7ZwmaFm+nhUV2kmcg==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -4622,11 +4627,6 @@ capture-stack-trace@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/capture-stack-trace/-/capture-stack-trace-1.0.1.tgz#a6c0bbe1f38f3aa0b92238ecb6ff42c344d4135d"
   integrity sha512-mYQLZnx5Qt1JgB1WEiMCf2647plpGeQ2NMR/5L0HNZzGQo4fuSPnK+wjfPnKZV0aiJDgzmWqqkV/g7JD+DW0qw==
-
-cardano-graphql-ts@1.0.0-rc.12:
-  version "1.0.0-rc.12"
-  resolved "https://registry.yarnpkg.com/cardano-graphql-ts/-/cardano-graphql-ts-1.0.0-rc.12.tgz#943292f4c0b3f650d5199146d725a239e3dc0788"
-  integrity sha512-qZ5MhgssL+dz50IB/UjYHzreHnQcS3pgTHaMTtXTG0xGBYuBoJchMK6tgrP2SLNFqnb5j93mAVMQor8+sWOhKQ==
 
 cardano-js@0.3.0:
   version "0.3.0"

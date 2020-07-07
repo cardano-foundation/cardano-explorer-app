@@ -98,9 +98,7 @@ export interface ITransactionInfoProps extends ITransactionDetails {
 const TransactionInfo = (props: ITransactionInfoProps) => {
   const { translate } = useI18nFeature().store;
   const isMobile = window.innerWidth <= 768;
-  const includedAtUtc = dayjs.utc(
-    dayjs(props.includedAt).format('YYYY-MM-DD HH:mm:ss')
-  );
+  const includedAtUtc = dayjs.utc(props.includedAt)
   const onEpochNumberClick = (e: ITransactionDetails['block']['epoch']) => {
     if ((!e && e !== 0) || e === '-') {
       return;

@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc'
 import { observer } from 'mobx-react-lite';
 import CircularProgress, {
   CircularProgressSize,
@@ -7,6 +8,8 @@ import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTit
 import { useI18nFeature } from '../../i18n/context';
 import { IEpochOverview } from '../types';
 import styles from './EpochSummary.module.scss';
+
+dayjs.extend(utc)
 
 export interface IEpochSummaryProps {
   title: string;
@@ -48,7 +51,7 @@ const EpochSummary = ({ title, epoch }: IEpochSummaryProps) => {
               {translate('epochSummary.startedAt')}
             </div>
             <div className={styles.infoValue}>
-              {dayjs(epoch.startedAt).format('YYYY/MM/DD HH:mm:ss')}
+              {dayjs.utc(epoch.startedAt).format('YYYY/MM/DD HH:mm:ss')}
             </div>
           </div>
           <div className={styles.infoRow}>
@@ -56,7 +59,7 @@ const EpochSummary = ({ title, epoch }: IEpochSummaryProps) => {
               {translate('epochSummary.lastBlockAt')}
             </div>
             <div className={styles.infoValue}>
-              {dayjs(epoch.lastBlockAt).format('YYYY/MM/DD HH:mm:ss')}
+              {dayjs.utc(epoch.lastBlockAt).format('YYYY/MM/DD HH:mm:ss')}
             </div>
           </div>
           <div className={styles.infoRow}>
