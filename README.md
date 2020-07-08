@@ -49,7 +49,7 @@ All visual components should be developed in Storybook first.
 ### `yarn storybook`
 
 ### Continuous Deployment
-The `develop` and PR branches are deployed continuously for the purpose of testing and development:
+The `master` and `develop` branches are continuously deployed, with PRs creating merge previews to assist with review:
 #### Mainnet
 [![Netlify Status](https://api.netlify.com/api/v1/badges/09492acb-61fd-4745-8b0e-60c8886f60d1/deploy-status)](https://cardano-explorer-mainnet.netlify.app)
 #### Testnet
