@@ -55,7 +55,7 @@ export class I18nStore extends Store {
 
     // Load all translations for the 404 page since there won't
     // be a pre-translated static page for this feature!
-    SUPPORTED_LOCALES.forEach(l => {
+    SUPPORTED_LOCALES.forEach((l) => {
       resources[l] = {
         '404': require(`./translations/404/${l}`),
       };

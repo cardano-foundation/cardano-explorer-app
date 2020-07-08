@@ -96,8 +96,8 @@ export const SearchBar = (props: ISearchBarProps) => {
     <>
       <Search
         brandType={props.brandType}
-        onInputChange={query => setSearchValue(query)}
-        onSearch={query => introspectQuery(query)}
+        onInputChange={(query) => setSearchValue(query)}
+        onSearch={(query) => introspectQuery(query)}
         onRemoveSearchType={removeSearchType}
         placeholder={translate('search.placeholder') as string}
         title={translate('search.title') as string}
@@ -106,7 +106,7 @@ export const SearchBar = (props: ISearchBarProps) => {
         <div className={searchContainerStyles}>
           <SearchSuggestions
             value={searchValue}
-            onSearchTypeSelect={value => searchTypeSelectQuery(value)}
+            onSearchTypeSelect={(value) => searchTypeSelectQuery(value)}
           />
         </div>
       )}

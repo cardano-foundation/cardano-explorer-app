@@ -35,7 +35,7 @@ export default (props: IErrorProps) => {
         </div>
         <p className={styles.bottomContainerText}>{notFoundText}</p>
         <div className={styles.bottomContainerLinks}>
-          <LocalizedLink href="/">
+          <LocalizedLink href="">
             <span className={styles.bottomContainerLink}>
               {translate('404:error.explorerTitle')}
             </span>

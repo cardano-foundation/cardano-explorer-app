@@ -2,7 +2,6 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import TransactionInfo from '../source/features/transactions/components/TransactionInfo';
 import TransactionList from '../source/features/transactions/components/TransactionList';
-import TransactionSummary from '../source/features/transactions/components/TransactionSummary';
 import { ITransactionDetails } from '../source/features/transactions/types';
 import { PaddingDecorator } from './support/PaddingDecorator';
 
@@ -121,7 +120,7 @@ export const transactions: ITransactionDetails[] = [
 ];
 
 storiesOf('Transactions', module)
-  .addDecorator(story => <PaddingDecorator>{story()}</PaddingDecorator>)
+  .addDecorator((story) => <PaddingDecorator>{story()}</PaddingDecorator>)
   .add('Transaction Info', () => (
     <TransactionInfo
       highlightAddress={currentAddress}
@@ -129,10 +128,11 @@ storiesOf('Transactions', module)
       {...transactions[0]}
     />
   ))
-  .add('Transaction Summary', () => (
-    <TransactionSummary
-      networkBlockHeight={11044 + 100}
-      title="Transaction Summary"
+  .add('Transaction Info (Details)', () => (
+    <TransactionInfo
+      highlightAddress={currentAddress}
+      title="Transaction"
+      showDetails
       {...transactions[0]}
     />
   ))
@@ -140,7 +140,7 @@ storiesOf('Transactions', module)
     <TransactionList
       title="Transactions"
       isLoading={false}
-      items={transactions.map(t => ({
+      items={transactions.map((t) => ({
         ...t,
         currentAddress,
         networkBlockHeight: 11044 + 100,

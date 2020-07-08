@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -16,10 +16,7 @@
     "sourceMap": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "target": "esnext",
-    "paths": {
-      "*": ["*"]
-    }
+    "target": "esnext"
   },
   "include": ["source/**/*", "generated/**/*", "stories/**/*"],
   "exclude": ["node_modules", "build"]

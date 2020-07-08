@@ -64,7 +64,7 @@ export const Footer = (props: IFooterProps) => {
               {translate('footer.textTitle')}{' '}
               <a
                 className={styles.highlightedLink}
-                href="https://github.com/input-output-hk/cardano-sl"
+                href="https://github.com/input-output-hk"
               >
                 {translate('footer.openSource')}
               </a>{' '}
@@ -81,11 +81,6 @@ export const Footer = (props: IFooterProps) => {
               </h5>
               <ul className={styles.aboutCardanoMenu}>
                 <li>
-                  <a href={'https://shelleyexplorer.cardano.org/'}>
-                    {translate('footer.shellyExplorer')}
-                  </a>
-                </li>
-                <li>
                   <a href={'https://cardanofoundation.org/'}>
                     {translate('footer.cardanoFoundation')}
                   </a>
@@ -96,8 +91,8 @@ export const Footer = (props: IFooterProps) => {
                   </a>
                 </li>
                 <li>
-                  <a href={'https://github.com/input-output-hk/cardano-sl'}>
-                    {translate('footer.cardanoSL')}
+                  <a href={'https://github.com/input-output-hk'}>
+                    {translate('footer.cardanoSource')}
                   </a>
                 </li>
                 <li>

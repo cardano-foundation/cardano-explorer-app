@@ -21,11 +21,13 @@ export const Layout = ({ children, header }: IProps) => {
           code: locale,
           title: translate(`locales.${locale}`),
         }}
-        languageOptions={without(SUPPORTED_LOCALES, locale).map(l => ({
+        languageOptions={without(SUPPORTED_LOCALES, locale).map((l) => ({
           code: l,
           title: translate(`locales.${l}`),
         }))}
-        onLanguageSwitch={l => i18n.actions.switchLocale.trigger({ locale: l })}
+        onLanguageSwitch={(l) =>
+          i18n.actions.switchLocale.trigger({ locale: l })
+        }
       />
       <div className={styles.content}>
         {header}

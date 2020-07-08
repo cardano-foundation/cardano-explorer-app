@@ -59,7 +59,7 @@ export const BlockSearchResult = () => {
                     transactions.api.getBlockTransactionsQuery
                       .isExecutingTheFirstTime
                   }
-                  onChangePage={page => {
+                  onChangePage={(page) => {
                     navigation.actions.push.trigger({
                       path: BLOCK_SEARCH_RESULT_PATH,
                       query: {
@@ -71,7 +71,7 @@ export const BlockSearchResult = () => {
                       },
                     });
                   }}
-                  onPagingCalculated={paging => {
+                  onPagingCalculated={(paging) => {
                     transactions.actions.browseBlocksTransactions.trigger({
                       blockId: blockSearchResult.id,
                       limit: paging.itemsPerPage,

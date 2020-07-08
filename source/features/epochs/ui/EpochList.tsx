@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc'
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import CircularProgress, {
@@ -10,6 +11,8 @@ import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
 import { getEpochRoute } from '../helpers';
 import { IEpochOverview } from '../types';
 import styles from './EpochList.module.scss';
+
+dayjs.extend(utc)
 
 export interface IEpochListProps {
   currentEpoch: number;
@@ -60,14 +63,14 @@ const columns = (
   },
   {
     cellValue: (row: IEpochOverview) =>
-      dayjs(row.startedAt).format('YYYY/MM/DD HH:mm:ss'),
+      dayjs.utc(row.startedAt).format('YYYY/MM/DD HH:mm:ss'),
     cssClass: 'startedAt',
     head: 'epoch.startedAtTitle',
     key: 'startedAt',
   },
   {
     cellRender: (value: any) =>
-      dayjs(value.lastBlockAt).format('YYYY/MM/DD HH:mm:ss'),
+      dayjs.utc(value.lastBlockAt).format('YYYY/MM/DD HH:mm:ss'),
     cellValue: (row: IEpochOverview) => ({
       lastBlockAt: row.lastBlockAt,
     }),
@@ -104,7 +107,7 @@ const EpochList: FC<IEpochListProps> = ({
       <Table
         title={title}
         columns={columns({ currentEpoch })}
-        rows={items.map(i =>
+        rows={items.map((i) =>
           Object.assign({}, i, { key: 'epoch-' + i.number })
         )}
         withoutHeaders={!displaysItems && isLoading}

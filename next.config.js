@@ -2,6 +2,7 @@ const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 const withFonts = require('next-fonts');
 const withImages = require('next-images');
+const withPrefresh = require('@prefresh/next');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 require('dotenv').config();
@@ -35,6 +36,7 @@ module.exports = withPlugins(
         inlineImageLimit: 5000,
       },
     ],
+    [withPrefresh]
   ],
   {
     // Further customizations of webpack config:
@@ -82,9 +84,8 @@ module.exports = withPlugins(
     },
     experimental: {
       modern: true,
-      polyfillsOptimization: true
     },
-    exportTrailingSlash: true,
+    exportTrailingSlash: false,
     /**
      * Generate language specific pages under /[locale]/... paths e.g:
      * /de/ leads to the the German landing page

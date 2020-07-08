@@ -34,7 +34,7 @@ function detectUserBrowser() {
   const isSafari =
     // @ts-ignore
     /constructor/i.test(window.HTMLElement) ||
-    (p => {
+    ((p) => {
       return p.toString() === '[object SafariRemoteNotification]';
       // @ts-ignore
     })(

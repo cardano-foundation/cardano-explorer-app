@@ -1,24 +1,29 @@
 import classnames from 'classnames';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import utc from 'dayjs/plugin/utc';
+import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { getAddressRoute } from '../../address/helpers';
+import { BLOCK_SEARCH_RESULT_PATH } from '../../blocks/config';
+import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
+import { useI18nFeature } from '../../i18n/context';
+import { NavigationActions } from '../../navigation';
 import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
-import { getTransactionRoute } from '../helpers';
-import { ITransactionDetails } from '../types';
+import { getBlockRoute, getEpochRoute, getTransactionRoute } from '../helpers';
+import {
+  ITransactionDetails,
+  ITransactionInput,
+  ITransactionOutput,
+} from '../types';
 import styles from './TransactionInfo.module.scss';
 
 dayjs.extend(relativeTime);
-const ArrowNext = require('../../../public/assets/images/arrow-next.svg');
-const SEVEN_DAYS = 7 * 24 * 3600000;
+dayjs.extend(utc);
 
-export interface ITransactionInfoProps extends ITransactionDetails {
-  highlightAddress?: string;
-  title?: string;
-  dontLinkToTransaction?: boolean;
-}
+const ArrowNext = require('../../../public/assets/images/arrow-next.svg');
 
 const TransactionAddress = (props: { address: string }) =>
   props.address.length <= 34 ? (
@@ -42,119 +47,221 @@ const TransactionAddressMobile = (props: { address: string }) =>
     </>
   );
 
-const TransactionInfo = (props: ITransactionInfoProps) => {
-  const duration = dayjs().diff(dayjs(props.includedAt));
-  let includedAt = null;
-  if (Math.abs(duration) > SEVEN_DAYS) {
-    includedAt = dayjs(props.includedAt).format('YYYY-MM-DD HH:mm');
-  } else {
-    includedAt = dayjs().to(dayjs(props.includedAt));
-  }
+type AddressInputOutput = ITransactionInput | ITransactionOutput;
 
+interface IAddressesRowProps {
+  addresses: Array<AddressInputOutput>;
+  highlightedAddress?: string;
+  isMobile: boolean;
+}
+
+const AddressesRow = ({
+  addresses,
+  highlightedAddress,
+  isMobile,
+}: IAddressesRowProps) => (
+  <>
+    {addresses.map((io, index) => (
+      <div className={styles.io}>
+        {io.address === highlightedAddress ? (
+          <div
+            className={classnames([styles.address, styles.highlightAddress])}
+            key={index}
+          >
+            {!isMobile && <TransactionAddress address={io.address} />}
+            {isMobile && <TransactionAddressMobile address={io.address} />}
+          </div>
+        ) : (
+          <LocalizedLink href={getAddressRoute(io.address)} key={index}>
+            <span className={styles.address}>
+              {!isMobile && <TransactionAddress address={io.address} />}
+              {isMobile && <TransactionAddressMobile address={io.address} />}
+            </span>
+          </LocalizedLink>
+        )}
+        <div className={styles.amount}>{io.value} ADA</div>
+      </div>
+    ))}
+  </>
+);
+
+export interface ITransactionInfoProps extends ITransactionDetails {
+  dontLinkToTransaction?: boolean;
+  hasSeparator?: boolean;
+  highlightAddress?: string;
+  navigation?: NavigationActions;
+  networkBlockHeight?: number;
+  showDetails?: boolean;
+  title?: string;
+}
+
+const TransactionInfo = (props: ITransactionInfoProps) => {
+  const { translate } = useI18nFeature().store;
   const isMobile = window.innerWidth <= 768;
+  const includedAtUtc = dayjs.utc(props.includedAt)
+  const onEpochNumberClick = (e: ITransactionDetails['block']['epoch']) => {
+    if ((!e && e !== 0) || e === '-') {
+      return;
+    }
+    props.navigation?.push.trigger({
+      path: EPOCH_SEARCH_RESULT_PATH,
+      query: { number: e },
+    });
+  };
+  const onBlockIdClick = (id: ITransactionDetails['block']['id']) => {
+    if (!id) {
+      return;
+    }
+    props.navigation?.push.trigger({
+      path: BLOCK_SEARCH_RESULT_PATH,
+      query: { id },
+    });
+  };
+  const epoch = props.block.epoch === '-' ? 0 : props.block.epoch;
 
   return (
-    <div className={styles.transactionInfoContainer}>
+    <div className={styles.root}>
       {props.title && (
         <div className={styles.header}>
           <DividerWithTitle title={props.title} />
         </div>
       )}
-      <div className={styles.transactionInfoRowContainer}>
-        <div className={styles.addresses}>
-          <div className={styles.infoRow}>
-            {props.dontLinkToTransaction ? (
-              <div className={styles.id}>{props.id}</div>
-            ) : (
-              <LocalizedLink href={getTransactionRoute(props.id)}>
-                <span className={classnames([styles.id, styles.linkedId])}>
-                  {props.id}
-                </span>
-              </LocalizedLink>
-            )}
-            <div className={styles.includedAt}>{includedAt}</div>
-          </div>
-          <div className={styles.infoRow}>
-            <div className={styles.inputs}>
-              {props.inputs.map((input, i) =>
-                input.address === props.highlightAddress ? (
-                  <div
-                    className={classnames([
-                      styles.input,
-                      styles.highlightAddress,
-                    ])}
-                    key={i}
-                  >
-                    {!isMobile && (
-                      <TransactionAddress address={input.address} />
-                    )}
-                    {isMobile && (
-                      <TransactionAddressMobile address={input.address} />
-                    )}
-                  </div>
-                ) : (
-                  <LocalizedLink href={getAddressRoute(input.address)} key={i}>
-                    <span className={styles.input}>
-                      {!isMobile && (
-                        <TransactionAddress address={input.address} />
-                      )}
-                      {isMobile && (
-                        <TransactionAddressMobile address={input.address} />
-                      )}
-                    </span>
-                  </LocalizedLink>
-                )
-              )}
-            </div>
-            <div className={styles.nextIcon}>
-              <ArrowNext />
-            </div>
-            <div className={styles.outputs}>
-              {props.outputs.map((output, i) =>
-                output.address === props.highlightAddress ? (
-                  <div
-                    className={classnames([
-                      styles.output,
-                      styles.highlightAddress,
-                    ])}
-                    key={i}
-                  >
-                    {!isMobile && (
-                      <TransactionAddress address={output.address} />
-                    )}
-                    {isMobile && (
-                      <TransactionAddressMobile address={output.address} />
-                    )}
-                  </div>
-                ) : (
-                  <LocalizedLink href={getAddressRoute(output.address)} key={i}>
-                    <span className={styles.output}>
-                      {!isMobile && (
-                        <TransactionAddress address={output.address} />
-                      )}
-                      {isMobile && (
-                        <TransactionAddressMobile address={output.address} />
-                      )}
-                    </span>
-                  </LocalizedLink>
-                )
-              )}
-            </div>
-          </div>
+
+      {/* ===== RECEIVED TIME ===== */}
+
+      <div className={styles.row}>
+        <div className={styles.label}>
+          {translate('transaction.receivedTime')}
         </div>
-        <div className={styles.values}>
-          <div className={styles.infoRow}>
-            <div className={styles.totalOutput}>{props.totalOutput} ADA</div>
-          </div>
-          <div className={styles.infoRow}>
-            {props.inputs.map((input, i) => (
-              <div key={i} className={styles.value}>
-                {input.value} ADA
-              </div>
-            ))}
-          </div>
+        <div className={styles.value}>
+          &gt; {dayjs().utc().to(includedAtUtc)} (
+          {includedAtUtc.format('YYYY-MM-DD HH:mm:ss')} UTC)
         </div>
       </div>
+
+      {/* ===== INCLUDED IN ===== */}
+
+      {props.showDetails && (
+        <div className={styles.row}>
+          <div className={styles.label}>
+            {translate('transaction.includedIn')}
+          </div>
+          <div className={styles.value}>
+            {translate('transaction.epoch')}{' '}
+            {isNumber(epoch) ? (
+              <LocalizedLink href={getEpochRoute(epoch)}>{epoch}</LocalizedLink>
+            ) : (
+              '?'
+            )}
+            , {translate('transaction.block')}{' '}
+            <LocalizedLink href={getBlockRoute(props.block.id)}>
+              {props.block.number ?? props.block.id}
+            </LocalizedLink>
+          </div>
+        </div>
+      )}
+
+      {/* ===== CONFIRMATIONS ===== */}
+
+      {props.showDetails && (
+        <div className={styles.row}>
+          <div className={styles.label}>
+            {translate('transaction.confirmations')}
+          </div>
+          <div className={styles.value}>
+            {props.block?.number && props.networkBlockHeight
+              ? props.networkBlockHeight - props.block.number + 1
+              : 0}
+          </div>
+        </div>
+      )}
+
+      {/* ===== TRANSACTION ID ===== */}
+
+      <div className={classnames([styles.idRow, styles.row])}>
+        <div className={styles.label}>{translate('transaction.id')}</div>
+        <div className={styles.value}>
+          {props.dontLinkToTransaction ? (
+            <div className={styles.id}>{props.id}</div>
+          ) : (
+            <LocalizedLink href={getTransactionRoute(props.id)}>
+              {props.id}
+            </LocalizedLink>
+          )}
+        </div>
+      </div>
+
+      {/* ===== FROM ADDRESSES ===== */}
+
+      <div className={classnames([styles.fromRow, styles.row])}>
+        <div className={styles.label}>
+          {translate('transaction.from')}
+          <div className={styles.arrowDesktop}>
+            <ArrowNext />
+          </div>
+        </div>
+        <div className={styles.value}>
+          <AddressesRow
+            addresses={props.inputs}
+            highlightedAddress={props.highlightAddress}
+            isMobile={isMobile}
+          />
+        </div>
+      </div>
+
+      <div className={styles.arrowMobile}>
+        <ArrowNext />
+      </div>
+
+      {/* ===== TO ADDRESSES ===== */}
+
+      <div className={styles.row}>
+        <div className={styles.label}>{translate('transaction.to')}</div>
+        <div className={styles.value}>
+          <AddressesRow
+            addresses={props.outputs}
+            highlightedAddress={props.highlightAddress}
+            isMobile={isMobile}
+          />
+        </div>
+      </div>
+
+      {/* ===== TOTAL OUTPUT ===== */}
+
+      <div className={styles.row}>
+        <div className={styles.label}>
+          {translate('transaction.totalOutput')}
+        </div>
+        <div className={styles.value}>{props.totalOutput} ADA</div>
+      </div>
+
+      {/* ===== CONFIRMATIONS ===== */}
+
+      {props.showDetails && (
+        <div className={styles.row}>
+          <div className={styles.label}>{translate('transaction.fee')}</div>
+          <div className={styles.value}>{props.fee} ADA</div>
+        </div>
+      )}
+
+      {/* ===== DOTTED LINE SEPARATOR ===== */}
+
+      {props.hasSeparator && (
+        <div className={styles.txSeparator}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="3px">
+            <line
+              x1="1px"
+              x2="100%"
+              y1="1px"
+              y2="1px"
+              stroke="#36395d"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeDasharray="1px, 6px"
+            />
+          </svg>
+        </div>
+      )}
     </div>
   );
 };

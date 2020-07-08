@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc'
 import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
@@ -11,6 +12,8 @@ import { ITransactionDetails } from '../../transactions/types';
 import { BLOCK_SEARCH_RESULT_PATH } from '../config';
 import { IBlockDetailed } from '../types';
 import styles from './BlockSummary.module.scss';
+
+dayjs.extend(utc)
 
 export type BlockSummaryProps = {
   navigation?: NavigationActions;
@@ -102,7 +105,7 @@ const BlockSummary = (props: BlockSummaryProps) => {
               {translate('blockSummary.time')}
             </div>
             <div className={styles.infoValue}>
-              {dayjs(props.createdAt).format('YYYY/MM/DD HH:mm:ss')}
+              {dayjs.utc(props.createdAt).format('YYYY/MM/DD HH:mm:ss')} UTC
             </div>
           </div>
           <div className={styles.infoRow}>

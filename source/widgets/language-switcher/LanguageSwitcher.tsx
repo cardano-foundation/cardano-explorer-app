@@ -42,7 +42,7 @@ const LanguageSwitcher = (props: ILanguageSwitcherParams) => {
             isDropdownVisible ? styles.isDropdownVisible : null,
           ])}
         >
-          {languageOptions.map(lang => (
+          {languageOptions.map((lang) => (
             <li
               key={lang.code}
               onClick={() => {

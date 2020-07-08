@@ -12,7 +12,9 @@ beforeAll(async () => {
       return graphqlClient.request(
         `query {
             cardano {
-              blockHeight
+              tip {
+                number
+              }
             }
           }
         `

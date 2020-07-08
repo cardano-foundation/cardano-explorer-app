@@ -4,7 +4,8 @@ export const exampleAddressData = {
   transactions: [
     {
       block: {
-        hash: '5f20df933584822601f9e3f8c024eb5eb252fe8cefb24d1317dc3d432e940ebb',
+        hash:
+          '5f20df933584822601f9e3f8c024eb5eb252fe8cefb24d1317dc3d432e940ebb',
       },
       fee: '0',
       hash: '927edb96f3386ab91b5f5d85d84cb4253c65b1c2f65fa7df25f81fab1d62987a',

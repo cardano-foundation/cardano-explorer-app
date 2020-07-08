@@ -62,7 +62,7 @@ export const AddressSearchResult = () => {
                     transactions.api.getAddressTransactionsQuery
                       .isExecutingTheFirstTime
                   }
-                  onChangePage={page => {
+                  onChangePage={(page) => {
                     navigation.actions.push.trigger({
                       path: '/address',
                       query: {
@@ -74,7 +74,7 @@ export const AddressSearchResult = () => {
                       },
                     });
                   }}
-                  onPagingCalculated={paging => {
+                  onPagingCalculated={(paging) => {
                     transactions.actions.browseAddressTransactions.trigger({
                       address,
                       limit: paging.itemsPerPage,
