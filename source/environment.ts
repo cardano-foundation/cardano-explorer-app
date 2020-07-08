@@ -18,6 +18,7 @@ export const environment = {
       (process.env.CARDANO_NETWORK as CardanoNetwork) || CardanoNetwork.MAINNET,
   },
   DEBUG: process.env.DEBUG,
+  // https://support.google.com/analytics/answer/7372977?hl=en
   GA_TRACKING_ID: process.env.GA_TRACKING_ID,
   IS_CLIENT: isNavigatorDefined,
   IS_SERVER: !isNavigatorDefined,
