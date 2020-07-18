@@ -8,7 +8,7 @@ import { NetworkInfoActions } from './index';
 export class NetworkInfoStore extends Store {
   @observable public blockHeight: number;
   @observable public currentEpoch: number;
-  @observable public currentSlot: number;
+  @observable public lastSlotFilled: number;
   @observable public lastBlockTime: Date;
   @observable public startTime: Date;
   @observable public slotsPerEpoch: number;
@@ -59,7 +59,7 @@ export class NetworkInfoStore extends Store {
   }
 
   @computed get currentEpochPercentageComplete() {
-    return (this.currentSlot / this.slotsPerEpoch) * 100;
+    return (this.lastSlotFilled / this.slotsPerEpoch) * 100;
   }
 
   @action private fetchDynamicInfo = async () => {
@@ -70,7 +70,7 @@ export class NetworkInfoStore extends Store {
       runInAction(() => {
         this.blockHeight = tip.number || 0;
         this.currentEpoch = currentEpoch.number;
-        this.currentSlot = tip.slotWithinEpoch || 0;
+        this.lastSlotFilled = tip.slotWithinEpoch || 0;
         this.lastBlockTime = new Date(tip.createdAt);
       });
     }
