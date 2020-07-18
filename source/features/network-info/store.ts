@@ -11,7 +11,6 @@ export class NetworkInfoStore extends Store {
   @observable public currentSlot: number;
   @observable public lastBlockTime: Date;
   @observable public startTime: Date;
-  @observable public slotDuration: number;
   @observable public slotsPerEpoch: number;
 
   private readonly networkInfoApi: NetworkInfoApi;
@@ -42,7 +41,7 @@ export class NetworkInfoStore extends Store {
     // Poll for updates
     this.pollingInterval = setInterval(
       this.fetchDynamicInfo,
-      this.slotDuration / (environment.REAL_TIME_FACTOR || 1.5)
+      environment.POLLING_INTERVAL
     );
   }
 
@@ -89,7 +88,6 @@ export class NetworkInfoStore extends Store {
       runInAction(() => {
         this.slotsPerEpoch = cardano.slotsPerEpoch;
         this.startTime = new Date(cardano.startTime);
-        this.slotDuration = cardano.slotDuration;
       });
     }
   };
