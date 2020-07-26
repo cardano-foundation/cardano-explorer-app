@@ -3,7 +3,7 @@ fragment TransactionDetails on Transaction {
     epochNo
     hash,
     number,
-    slotWithinEpoch,
+    slotNo,
   }
   fee,
   hash,

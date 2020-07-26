@@ -1,11 +1,13 @@
 fragment BlockOverview on Block {
-  createdAt
-  createdBy
+  forgedAt
+  slotLeader {
+    description
+  }
   epochNo,
   hash
   number
   size
-  slotWithinEpoch
+  slotNo
   transactions_aggregate {
     aggregate {
       count

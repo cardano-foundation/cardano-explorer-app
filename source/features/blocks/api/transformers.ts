@@ -18,14 +18,15 @@ export const blockOverviewTransformer = (
   }
   return {
     ...b,
-    createdBy: formatCreatedBy(b.createdBy),
+    createdAt: b.forgedAt,
+    createdBy: formatCreatedBy(b.slotLeader.description),
     epoch,
     id: b.hash,
     number: b.number || '-',
     output: Currency.Util.lovelacesToAda(
       b.transactions_aggregate?.aggregate?.sum?.totalOutput || '0'
     ),
-    slotWithinEpoch: formatSlotWithinEpoch(b.slotWithinEpoch),
+    slotWithinEpoch: formatSlotWithinEpoch(b.slotNo),
     transactionsCount:
       b.transactions_aggregate?.aggregate?.count.toString() || '0',
   };
@@ -50,12 +51,12 @@ export const blockDetailsTransformer = (
 });
 
 function formatCreatedBy(value: IBlockOverview['createdBy']): string {
-  switch (value.substring(0, 11)) {
-    case 'SlotLeader-':
-      return value.substring(11, 18);
-    case 'Epoch bound':
+  switch (value.substring(0, 13)) {
+    case 'ByronGenesis-':
+      return value.substring(13, 21);
+    case 'Epoch boundar':
       return 'EBB';
-    case 'Genesis slo':
+    case 'Genesis slot ':
       return 'Genesis';
     default:
       throw new Error('Unexpected IBlockOverview.createdBy value');
@@ -63,7 +64,7 @@ function formatCreatedBy(value: IBlockOverview['createdBy']): string {
 }
 
 function formatSlotWithinEpoch(
-  value: BlockOverviewFragment['slotWithinEpoch']
+  value: BlockOverviewFragment['slotNo']
 ): IBlockOverview['slotWithinEpoch'] {
   switch (value) {
     case 0:

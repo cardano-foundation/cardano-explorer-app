@@ -1,8 +1,9 @@
 
 query cardanoStatic {
-  cardano {
-    networkName
-    startTime
-    slotsPerEpoch
+  genesis {
+    shelley {
+      epochLength
+      systemStart
+    }
   }
 }

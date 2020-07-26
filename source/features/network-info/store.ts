@@ -8,6 +8,7 @@ import { NetworkInfoActions } from './index';
 export class NetworkInfoStore extends Store {
   @observable public blockHeight: number;
   @observable public currentEpoch: number;
+  @observable public isShelleyEra: boolean;
   @observable public lastSlotFilled: number;
   @observable public lastBlockTime: Date;
   @observable public startTime: Date;
@@ -65,13 +66,15 @@ export class NetworkInfoStore extends Store {
   @action private fetchDynamicInfo = async () => {
     const result = await this.networkInfoApi.fetchDynamic.execute({});
     if (result) {
-      const { cardano } = result;
+      const { cardano, genesis } = result;
       const { currentEpoch, tip } = cardano;
       runInAction(() => {
+        this.isShelleyEra = !!tip.vrfKey
+        this.slotsPerEpoch = this.isShelleyEra ? genesis.shelley?.epochLength || genesis.byron?.protocolConsts.k || 21600 : 21600;
         this.blockHeight = tip.number || 0;
         this.currentEpoch = currentEpoch.number;
-        this.lastSlotFilled = tip.slotWithinEpoch || 0;
-        this.lastBlockTime = new Date(tip.createdAt);
+        this.lastSlotFilled =  (tip.slotNo || 0 ) - (this.slotsPerEpoch * currentEpoch.number);
+        this.lastBlockTime = new Date(tip.forgedAt);
       });
     }
   };
@@ -79,15 +82,14 @@ export class NetworkInfoStore extends Store {
   @action private fetchStaticInfo = async () => {
     const result = await this.networkInfoApi.fetchStatic.execute({});
     if (result) {
-      const { cardano } = result;
-      if (cardano.networkName !== environment.CARDANO.NETWORK) {
-        throw new Error(
-          `Cardano GraphQL is connected to ${cardano.networkName}, whereas the web app is expecting ${environment.CARDANO.NETWORK}. The instance of Cardano GraphQL needs to be configured to match our expected environment.`
-        );
-      }
+      const { genesis } = result;
+      // if (genesis.networkName !== environment.CARDANO.NETWORK) {
+      //   throw new Error(
+      //     `Cardano GraphQL is connected to ${cardano.networkName}, whereas the web app is expecting ${environment.CARDANO.NETWORK}. The instance of Cardano GraphQL needs to be configured to match our expected environment.`
+      //   );
+      // }
       runInAction(() => {
-        this.slotsPerEpoch = cardano.slotsPerEpoch;
-        this.startTime = new Date(cardano.startTime);
+        this.startTime = new Date(genesis.shelley?.systemStart || 1506203091);
       });
     }
   };
