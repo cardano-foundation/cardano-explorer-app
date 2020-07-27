@@ -51,15 +51,18 @@ export const blockDetailsTransformer = (
 });
 
 function formatCreatedBy(value: IBlockOverview['createdBy']): string {
-  switch (value.substring(0, 13)) {
-    case 'ByronGenesis-':
-      return value.substring(13, 21);
-    case 'Epoch boundar':
-      return 'EBB';
-    case 'Genesis slot ':
+
+  switch (value) {
+    case 'Genesis slot leader':
       return 'Genesis';
+    case 'Epoch boundary slot leader':
+      return 'EBB';
     default:
-      throw new Error('Unexpected IBlockOverview.createdBy value');
+      const selection =  value.split('-');
+      if (!Array.isArray(selection)) {
+        return ''
+      }
+      return selection[1].substring(0,7)
   }
 }
 
