@@ -1,0 +1,17 @@
+fragment StakePoolOverivew on StakePool {
+  fixedCost
+  hash
+  margin
+  metadataHash
+  owners
+  pledge,
+  relays
+  retirement {
+    announcedIn
+    retirement
+  }
+  rewardAddress
+  updatedIn
+  url
+  withdrawals
+}
