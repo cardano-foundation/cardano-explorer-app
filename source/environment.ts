@@ -9,7 +9,7 @@ export const environment = {
     GRAPHQL: {
       HTTP_URL: `${process.env.GRAPHQL_API_PROTOCOL || 'https'}://${
         process.env.GRAPHQL_API_HOST ||
-        'cardano-graphql-mainnet.daedalus-operations.com'
+        'cardano-graphql-mainnet-candidate.daedalus-operations.com'
       }:${process.env.GRAPHQL_API_PORT || '443'}/${
         process.env.GRAPHQL_API_PATH || ''
       }`,
