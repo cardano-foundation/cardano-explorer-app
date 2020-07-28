@@ -1,0 +1,16 @@
+fragment StakePoolBool on StakePool_bool_exp {
+  _and
+  _not
+  _o
+  hash
+  margin
+  metadataHash
+  owners
+  pledge
+  registrationTransaction
+  relays
+  retirement
+  rewardAddress
+  url
+  withdrawals
+}

@@ -1,0 +1,8 @@
+fragment StakePoolOrder on StakePool_order_by {
+  fixedCost
+  hash
+  margin
+  pledge
+  updatedIn
+  url
+}
