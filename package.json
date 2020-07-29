@@ -24,7 +24,8 @@
     "prettier:format": "yarn prettier --write --loglevel warn",
     "prettier:fix-staged": "pretty-quick --staged",
     "storybook": "start-storybook -s ./source/public -p 6006",
-    "storybook:build": "build-storybook -o build/storybook"
+    "storybook:build": "build-storybook -o build/storybook",
+    "next": "next dev source -p 4000"
   },
   "husky": {
     "hooks": {
