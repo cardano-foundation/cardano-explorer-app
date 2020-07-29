@@ -3,11 +3,22 @@ query cardanoDynamic {
   cardano {
     tip {
       number
-      slotWithinEpoch
-      createdAt
+      slotInEpoch
+      forgedAt
+      protocolVersion
     }
     currentEpoch {
       number
+    }
+  }
+  genesis {
+    byron {
+      protocolConsts {
+        k
+      }
+    }
+    shelley {
+      epochLength
     }
   }
 }

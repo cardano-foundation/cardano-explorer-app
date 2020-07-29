@@ -13,7 +13,7 @@ See [environment](source/environment.ts) for defaults.
 - `GRAPHQL_API_HOST`
 - `GRAPHQL_API_PORT`
 - `GRAPHQL_API_PATH`
-- `REAL_TIME_FACTOR`
+- `POLLING_INTERVAL`
 - `GA_TRACKING_ID`
 - `DEBUG`
 

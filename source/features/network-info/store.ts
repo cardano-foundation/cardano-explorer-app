@@ -8,11 +8,12 @@ import { NetworkInfoActions } from './index';
 export class NetworkInfoStore extends Store {
   @observable public blockHeight: number;
   @observable public currentEpoch: number;
-  @observable public currentSlot: number;
+  @observable public shelleyEpochLength: number;
+  @observable public isShelleyEra: boolean;
+  @observable public lastSlotFilled: number;
   @observable public lastBlockTime: Date;
   @observable public startTime: Date;
-  @observable public slotDuration: number;
-  @observable public slotsPerEpoch: number;
+  @observable public slotsPerPresentEpoch: number;
 
   private readonly networkInfoApi: NetworkInfoApi;
   private readonly networkInfoActions: NetworkInfoActions;
@@ -42,7 +43,7 @@ export class NetworkInfoStore extends Store {
     // Poll for updates
     this.pollingInterval = setInterval(
       this.fetchDynamicInfo,
-      this.slotDuration / (environment.REAL_TIME_FACTOR || 1.5)
+      environment.POLLING_INTERVAL
     );
   }
 
@@ -60,7 +61,7 @@ export class NetworkInfoStore extends Store {
   }
 
   @computed get currentEpochPercentageComplete() {
-    return (this.currentSlot / this.slotsPerEpoch) * 100;
+    return (this.lastSlotFilled / this.slotsPerPresentEpoch) * 100;
   }
 
   @action private fetchDynamicInfo = async () => {
@@ -68,11 +69,14 @@ export class NetworkInfoStore extends Store {
     if (result) {
       const { cardano } = result;
       const { currentEpoch, tip } = cardano;
+      const fallbackslotsPerPresentEpoch = 21600;
       runInAction(() => {
+        this.isShelleyEra = !!tip.protocolVersion;
+        this.slotsPerPresentEpoch = this.isShelleyEra ? this.shelleyEpochLength || fallbackslotsPerPresentEpoch : fallbackslotsPerPresentEpoch;
         this.blockHeight = tip.number || 0;
         this.currentEpoch = currentEpoch.number;
-        this.currentSlot = tip.slotWithinEpoch || 0;
-        this.lastBlockTime = new Date(tip.createdAt);
+        this.lastSlotFilled =  tip.slotInEpoch || 0;
+        this.lastBlockTime = new Date(tip.forgedAt);
       });
     }
   };
@@ -80,16 +84,15 @@ export class NetworkInfoStore extends Store {
   @action private fetchStaticInfo = async () => {
     const result = await this.networkInfoApi.fetchStatic.execute({});
     if (result) {
-      const { cardano } = result;
-      if (cardano.networkName !== environment.CARDANO.NETWORK) {
-        throw new Error(
-          `Cardano GraphQL is connected to ${cardano.networkName}, whereas the web app is expecting ${environment.CARDANO.NETWORK}. The instance of Cardano GraphQL needs to be configured to match our expected environment.`
-        );
-      }
+      const { genesis } = result;
+      this.shelleyEpochLength = genesis.shelley?.epochLength || 21600
+      // if (genesis.networkName !== environment.CARDANO.NETWORK) {
+      //   throw new Error(
+      //     `Cardano GraphQL is connected to ${cardano.networkName}, whereas the web app is expecting ${environment.CARDANO.NETWORK}. The instance of Cardano GraphQL needs to be configured to match our expected environment.`
+      //   );
+      // }
       runInAction(() => {
-        this.slotsPerEpoch = cardano.slotsPerEpoch;
-        this.startTime = new Date(cardano.startTime);
-        this.slotDuration = cardano.slotDuration;
+        this.startTime = new Date(genesis.shelley?.systemStart || 1506203091);
       });
     }
   };
