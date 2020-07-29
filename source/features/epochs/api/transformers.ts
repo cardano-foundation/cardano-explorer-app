@@ -5,7 +5,7 @@ import { IEpochOverview } from '../types';
 
 export const epochOverviewTransformer = (
   e: EpochOverviewFragment,
-  n: NetworkInfoStore
+  n: NetworkInfoStore,
 ): IEpochOverview => {
   return {
     ...e,
@@ -13,7 +13,7 @@ export const epochOverviewTransformer = (
     output: Currency.Util.lovelacesToAda(e.output),
     percentage:
       e.number === n.currentEpoch ? n.currentEpochPercentageComplete : 100,
-    slotsCount: n.slotsPerEpoch,
+    slotsCount: !!e.blocks[0].protocolVersion ? n.shelleyEpochLength : 21600,
     startedAt: new Date(e.startedAt),
   };
 };

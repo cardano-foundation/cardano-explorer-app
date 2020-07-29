@@ -8,11 +8,12 @@ import { NetworkInfoActions } from './index';
 export class NetworkInfoStore extends Store {
   @observable public blockHeight: number;
   @observable public currentEpoch: number;
+  @observable public shelleyEpochLength: number;
   @observable public isShelleyEra: boolean;
   @observable public lastSlotFilled: number;
   @observable public lastBlockTime: Date;
   @observable public startTime: Date;
-  @observable public slotsPerEpoch: number;
+  @observable public slotsPerPresentEpoch: number;
 
   private readonly networkInfoApi: NetworkInfoApi;
   private readonly networkInfoActions: NetworkInfoActions;
@@ -60,18 +61,18 @@ export class NetworkInfoStore extends Store {
   }
 
   @computed get currentEpochPercentageComplete() {
-    return (this.lastSlotFilled / this.slotsPerEpoch) * 100;
+    return (this.lastSlotFilled / this.slotsPerPresentEpoch) * 100;
   }
 
   @action private fetchDynamicInfo = async () => {
     const result = await this.networkInfoApi.fetchDynamic.execute({});
     if (result) {
-      const { cardano, genesis } = result;
+      const { cardano } = result;
       const { currentEpoch, tip } = cardano;
-      const fallbackSlotsPerEpoch = 21600;
+      const fallbackslotsPerPresentEpoch = 21600;
       runInAction(() => {
         this.isShelleyEra = !!tip.protocolVersion;
-        this.slotsPerEpoch = this.isShelleyEra ? genesis.shelley?.epochLength || fallbackSlotsPerEpoch : fallbackSlotsPerEpoch;
+        this.slotsPerPresentEpoch = this.isShelleyEra ? this.shelleyEpochLength || fallbackslotsPerPresentEpoch : fallbackslotsPerPresentEpoch;
         this.blockHeight = tip.number || 0;
         this.currentEpoch = currentEpoch.number;
         this.lastSlotFilled =  tip.slotInEpoch || 0;
@@ -84,6 +85,7 @@ export class NetworkInfoStore extends Store {
     const result = await this.networkInfoApi.fetchStatic.execute({});
     if (result) {
       const { genesis } = result;
+      this.shelleyEpochLength = genesis.shelley?.epochLength || 21600
       // if (genesis.networkName !== environment.CARDANO.NETWORK) {
       //   throw new Error(
       //     `Cardano GraphQL is connected to ${cardano.networkName}, whereas the web app is expecting ${environment.CARDANO.NETWORK}. The instance of Cardano GraphQL needs to be configured to match our expected environment.`
