@@ -24,6 +24,6 @@ export interface ITransactionDetails {
   id: string;
   includedAt: Date;
   inputs: ITransactionInput[];
-  outputs: ITransactionOutput[];
+  outputs?: ITransactionOutput[];
   totalOutput: string;
 }

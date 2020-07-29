@@ -1,5 +1,6 @@
 import { Currency } from 'cardano-js';
 import { TransactionDetailsFragment } from '../../../../generated/typings/graphql-schema';
+import { isDefined } from '../../../lib/types';
 import { ITransactionDetails } from '../types';
 
 export const transactionDetailsTransformer = (
@@ -18,7 +19,7 @@ export const transactionDetailsTransformer = (
     sourceTxId: i.sourceTxHash,
     value: Currency.Util.lovelacesToAda(i.value),
   })),
-  outputs: tx.outputs.map((i) => ({
+  outputs: tx.outputs?.filter(isDefined).map((i) => ({
     ...i,
     value: Currency.Util.lovelacesToAda(i.value),
   })),

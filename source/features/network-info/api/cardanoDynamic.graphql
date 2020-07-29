@@ -3,9 +3,9 @@ query cardanoDynamic {
   cardano {
     tip {
       number
-      slotNo
+      slotInEpoch
       forgedAt
-      vrfKey
+      protocolVersion
     }
     currentEpoch {
       number

@@ -1,6 +1,6 @@
 {
   "name": "cardano-explorer-app",
-  "version": "1.0.0-rc.3",
+  "version": "1.0.1",
   "description": "Cardano Explorer App",
   "author": "Daedalus Team @ Input Output HK",
   "license": "Apache-2.0",
@@ -32,7 +32,7 @@
     }
   },
   "dependencies": {
-    "@cardano-graphql/client-ts": "2.0.0-beta.0",
+    "@cardano-graphql/client-ts": "2.0.0",
     "@types/react-addons-css-transition-group": "15.0.5",
     "browser-update": "3.3.9",
     "cardano-js": "0.3.0",

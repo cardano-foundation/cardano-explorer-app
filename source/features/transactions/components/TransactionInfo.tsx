@@ -5,6 +5,7 @@ import utc from 'dayjs/plugin/utc';
 import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
+import { isDefined } from '../../../lib/types';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { getAddressRoute } from '../../address/helpers';
 import { BLOCK_SEARCH_RESULT_PATH } from '../../blocks/config';
@@ -50,7 +51,7 @@ const TransactionAddressMobile = (props: { address: string }) =>
 type AddressInputOutput = ITransactionInput | ITransactionOutput;
 
 interface IAddressesRowProps {
-  addresses: Array<AddressInputOutput>;
+  addresses?: Array<AddressInputOutput>;
   highlightedAddress?: string;
   isMobile: boolean;
 }
@@ -61,7 +62,7 @@ const AddressesRow = ({
   isMobile,
 }: IAddressesRowProps) => (
   <>
-    {addresses.map((io, index) => (
+    {addresses?.filter(isDefined).map((io, index) => (
       <div className={styles.io}>
         {io.address === highlightedAddress ? (
           <div
