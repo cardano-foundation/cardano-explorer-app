@@ -26,7 +26,7 @@ export const blockOverviewTransformer = (
     output: Currency.Util.lovelacesToAda(
       b.transactions_aggregate?.aggregate?.sum?.totalOutput || '0'
     ),
-    slotWithinEpoch: formatSlotWithinEpoch(b.slotNo),
+    slotWithinEpoch: formatSlotWithinEpoch(b.slotInEpoch),
     transactionsCount:
       b.transactions_aggregate?.aggregate?.count.toString() || '0',
   };
@@ -67,7 +67,7 @@ function formatCreatedBy(value: IBlockOverview['createdBy']): string {
 }
 
 function formatSlotWithinEpoch(
-  value: BlockOverviewFragment['slotNo']
+  value: BlockOverviewFragment['slotInEpoch']
 ): IBlockOverview['slotWithinEpoch'] {
   switch (value) {
     case 0:

@@ -68,12 +68,13 @@ export class NetworkInfoStore extends Store {
     if (result) {
       const { cardano, genesis } = result;
       const { currentEpoch, tip } = cardano;
+      const fallbackSlotsPerEpoch = 21600;
       runInAction(() => {
-        this.isShelleyEra = !!tip.vrfKey
-        this.slotsPerEpoch = this.isShelleyEra ? genesis.shelley?.epochLength || genesis.byron?.protocolConsts.k || 21600 : 21600;
+        this.isShelleyEra = !!tip.protocolVersion;
+        this.slotsPerEpoch = this.isShelleyEra ? genesis.shelley?.epochLength || fallbackSlotsPerEpoch : fallbackSlotsPerEpoch;
         this.blockHeight = tip.number || 0;
         this.currentEpoch = currentEpoch.number;
-        this.lastSlotFilled =  (tip.slotNo || 0 ) - (this.slotsPerEpoch * currentEpoch.number);
+        this.lastSlotFilled =  tip.slotInEpoch || 0;
         this.lastBlockTime = new Date(tip.forgedAt);
       });
     }
