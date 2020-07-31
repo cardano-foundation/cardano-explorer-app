@@ -13,10 +13,7 @@ export const epochOverviewTransformer = (
     output: Currency.Util.lovelacesToAda(e.output),
     percentage:
       e.number === n.currentEpoch ? n.currentEpochPercentageComplete : 100,
-    slotsCount:
-      (!!e.blocks[0].protocolVersion
-        ? n.shelleyEpochLength
-        : n.byronSlotsPerEpoch) || 21600,
+    slotsCount: !!e.blocks[0].protocolVersion ? n.shelleyEpochLength : 21600,
     startedAt: new Date(e.startedAt),
   };
 };
