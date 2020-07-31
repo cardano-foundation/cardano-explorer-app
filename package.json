@@ -13,7 +13,7 @@
     "test": "jest",
     "test:e2e": "cypress run",
     "test:e2e:dev": "cypress open",
-    "generate:graphql-schema": "node utils/generateGraphQLSchema.js",
+    "generate:graphql-schema": "node ./utils/generateGraphQLSchema.js",
     "generate:graphql-typings": "yarn generate:graphql-schema && graphql-codegen",
     "export": "next export source --outdir build/static",
     "static:build": "NODE_ENV=production yarn build && yarn export",
