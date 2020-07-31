@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc'
+import utc from 'dayjs/plugin/utc';
 import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
@@ -11,7 +11,7 @@ import { getBlockRoute } from '../helpers';
 import { IBlockOverview } from '../types';
 import styles from './BlockList.module.scss';
 
-dayjs.extend(utc)
+dayjs.extend(utc);
 
 export interface IBlockListProps {
   ignoreLinksToEpoch?: boolean;
