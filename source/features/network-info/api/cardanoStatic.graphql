@@ -1,6 +1,10 @@
-
 query cardanoStatic {
   genesis {
+    byron {
+      protocolConsts {
+        k
+      }
+    }
     shelley {
       epochLength
       systemStart

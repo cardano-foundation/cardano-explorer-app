@@ -11,14 +11,4 @@ query cardanoDynamic {
       number
     }
   }
-  genesis {
-    byron {
-      protocolConsts {
-        k
-      }
-    }
-    shelley {
-      epochLength
-    }
-  }
 }
