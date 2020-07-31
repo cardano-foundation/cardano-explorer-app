@@ -1,4 +1,3 @@
-
 query cardanoDynamic {
   cardano {
     tip {

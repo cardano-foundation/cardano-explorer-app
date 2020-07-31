@@ -1,22 +1,4 @@
 {
-  "name": "Cardano GraphQL - Cardano DB Hasura Schema",
-  "schemaPath": "./schema.graphql",
-  "extensions": {
-    "endpoints": {
-      "Mainnet GraphQL Endpoint": {
-        "url": "https://cardano-graphql-mainnet.daedalus-operations.com/v1/graphql",
-        "headers": {
-          "user-agent": "JS GraphQL"
-        },
-        "introspect": false
-      },
-      "Testnet GraphQL Endpoint": {
-        "url": "https://cardano-graphql-testnet.daedalus-operations.com/v1/graphql",
-        "headers": {
-          "user-agent": "JS GraphQL"
-        },
-        "introspect": false
-      }
-    }
-  }
+  "name": "Cardano GraphQL Schema",
+  "schemaPath": "./schema.graphql"
 }
