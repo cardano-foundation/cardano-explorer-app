@@ -5,7 +5,7 @@ import { IEpochOverview } from '../types';
 
 export const epochOverviewTransformer = (
   e: EpochOverviewFragment,
-  n: NetworkInfoStore,
+  n: NetworkInfoStore
 ): IEpochOverview => {
   return {
     ...e,
