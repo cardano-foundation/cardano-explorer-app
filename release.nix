@@ -19,10 +19,10 @@ let
 in
 
 pkgs.lib.fix (self: {
-  inherit ( import ./. {} ) static yarn-static whitelist;
+  inherit ( import ./. {} ) static yarn-static allowList;
   build-version = pkgs.writeText "version.json" (builtins.toJSON { inherit rev; });
   required = pkgs.releaseTools.aggregate {
     name = "required";
-    constituents = with self; [ static whitelist build-version ];
+    constituents = with self; [ static allowList build-version ];
   };
 })

@@ -7,10 +7,10 @@ let
       filter = name: type: let
         baseName = baseNameOf (toString name);
         sansPrefix = lib.removePrefix (toString ../.) name;
-        in_blacklist =
+        excludeList =
           lib.hasPrefix "/node_modules" sansPrefix ||
           lib.hasPrefix "/build" sansPrefix;
-        in_whitelist =
+        includeList =
           (type == "directory") ||
           (lib.hasSuffix ".yml" name) ||
           #(lib.hasSuffix ".js" name) ||
@@ -26,7 +26,7 @@ let
           baseName == "yarn.lock" ||
           (lib.hasPrefix "/deploy" sansPrefix);
       in (
-        (!in_blacklist) && in_whitelist
+        (!excludeList) && includeList
       );
       src = ../.;
     };
@@ -34,7 +34,7 @@ let
   nodePackages = pkgs.callPackage ./node-packages {};
   packages = self: {
     inherit src;
-    whitelist = pkgs.runCommand "whitelist.json" { buildInputs = [ nodePackages.persistgraphql ]; } ''
+    allowList = pkgs.runCommand "allowList.json" { buildInputs = [ nodePackages.persistgraphql ]; } ''
         persistgraphql ${src} $out
     '';
     static = self.callPackage ./static.nix {};
