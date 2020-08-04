@@ -1,4 +1,3 @@
-
 query cardanoDynamic {
   cardano {
     tip {
@@ -9,16 +8,6 @@ query cardanoDynamic {
     }
     currentEpoch {
       number
-    }
-  }
-  genesis {
-    byron {
-      protocolConsts {
-        k
-      }
-    }
-    shelley {
-      epochLength
     }
   }
 }
