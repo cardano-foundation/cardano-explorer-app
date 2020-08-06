@@ -210,7 +210,9 @@ export class SearchStore extends Store {
         result.transactions_aggregate.aggregate?.count === '0' &&
         result.utxos_aggregate.aggregate?.sum.value === null
       ) {
-        return this.searchActions.unknownSearchRequested.trigger({ query: address })
+        return this.searchActions.unknownSearchRequested.trigger({
+          query: address,
+        });
       }
       runInAction(() => {
         this.addressSearchResult = addressDetailTransformer(address, result);

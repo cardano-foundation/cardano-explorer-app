@@ -1,10 +1,7 @@
 import cx from 'classnames';
-import { useState } from 'react';
 import React from 'react';
-import {
-  BrandType,
-  SearchType,
-} from '../../../constants';
+import { useState } from 'react';
+import { BrandType, SearchType } from '../../../constants';
 import { useI18nFeature } from '../../i18n/context';
 import { useNetworkInfoFeature } from '../../network-info/context';
 import { useSearchFeature } from '../context';
@@ -63,7 +60,10 @@ export const SearchBar = (props: ISearchBarProps) => {
   };
 
   const isSearchValueValid =
-    searchValue && searchValue.length < 10 && !searchType;
+    searchValue &&
+    searchValue.length < 10 &&
+    /^\d+$/.test(searchValue) &&
+    !searchType;
 
   const brandTypeStyle =
     props.brandType === BrandType.SHRINKED
