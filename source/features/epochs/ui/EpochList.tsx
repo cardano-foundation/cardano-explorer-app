@@ -55,11 +55,16 @@ const columns = (
     key: 'number',
   },
   {
-    cellValue: (row: IEpochOverview) =>
-      `${row.blocksCount} / ${row.slotsCount}`,
-    cssClass: 'blocksSlots',
-    head: 'epoch.blocksSlotTitle',
-    key: 'blocksSlots',
+    cellValue: (row: IEpochOverview) => row.slotsCount,
+    cssClass: 'slots',
+    head: 'epoch.slotsTitle',
+    key: 'slots',
+  },
+  {
+    cellValue: (row: IEpochOverview) => row.blocksCount,
+    cssClass: 'blocks',
+    head: 'epoch.blocksTitle',
+    key: 'blocks',
   },
   {
     cellValue: (row: IEpochOverview) =>

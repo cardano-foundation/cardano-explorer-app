@@ -43,7 +43,8 @@
     "epochsListTitle": "エポックを閲覧する"
   },
   "epoch": {
-    "blocksSlotTitle": "ブロック/スロット",
+    "blocksTitle": "ブロック",
+    "slotsTitle": "スロット",
     "createdByTitle": "生成者",
     "epochTitle": "エポック",
     "lastBlockAtTitle": "最終ブロック",
