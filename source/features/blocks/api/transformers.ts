@@ -51,18 +51,17 @@ export const blockDetailsTransformer = (
 });
 
 function formatCreatedBy(value: IBlockOverview['createdBy']): string {
-
   switch (value) {
     case 'Genesis slot leader':
       return 'Genesis';
     case 'Epoch boundary slot leader':
       return 'EBB';
     default:
-      const selection =  value.split('-');
+      const selection = value.split('-');
       if (!Array.isArray(selection)) {
-        return ''
+        return '';
       }
-      return selection[1].substring(0,7)
+      return selection[1].substring(0, 7);
   }
 }
 

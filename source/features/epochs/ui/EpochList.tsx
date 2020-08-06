@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc'
+import utc from 'dayjs/plugin/utc';
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import CircularProgress, {
@@ -12,7 +12,7 @@ import { getEpochRoute } from '../helpers';
 import { IEpochOverview } from '../types';
 import styles from './EpochList.module.scss';
 
-dayjs.extend(utc)
+dayjs.extend(utc);
 
 export interface IEpochListProps {
   currentEpoch: number;
