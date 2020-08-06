@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc'
+import utc from 'dayjs/plugin/utc';
 import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
@@ -13,7 +13,7 @@ import { BLOCK_SEARCH_RESULT_PATH } from '../config';
 import { IBlockDetailed } from '../types';
 import styles from './BlockSummary.module.scss';
 
-dayjs.extend(utc)
+dayjs.extend(utc);
 
 export type BlockSummaryProps = {
   navigation?: NavigationActions;

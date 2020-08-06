@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import utc from 'dayjs/plugin/utc'
+import utc from 'dayjs/plugin/utc';
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 import { getColorFromRange } from '../../../lib/colors';
 import { useI18nFeature } from '../../i18n/context';

@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc'
+import utc from 'dayjs/plugin/utc';
 import { observer } from 'mobx-react-lite';
 import CircularProgress, {
   CircularProgressSize,
@@ -9,7 +9,7 @@ import { useI18nFeature } from '../../i18n/context';
 import { IEpochOverview } from '../types';
 import styles from './EpochSummary.module.scss';
 
-dayjs.extend(utc)
+dayjs.extend(utc);
 
 export interface IEpochSummaryProps {
   title: string;
