@@ -43,7 +43,8 @@
     "epochsListTitle": "Epochen Suchen"
   },
   "epoch": {
-    "blocksSlotTitle": "Blöcke / Slots",
+    "blocksTitle": "Blöcke",
+    "slotsTitle": "Slots",
     "createdByTitle": "Erzeugt von",
     "epochTitle": "Epoche",
     "lastBlockAtTitle": "Letzter Block",
