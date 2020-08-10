@@ -29,19 +29,23 @@
       align-items: center;
       display: flex;
       justify-content: space-between;
-      max-width: 155px;
+      max-width: 200px;
       width: 100%;
 
       @media (max-width: 768px) {
         padding-bottom: 10px;
       }
 
-      .copyright {
+      p {
         @include footerText(var(--solid-text-color), ProximaNova, 12px, 300);
         letter-spacing: 1.2px;
         line-height: 1.5;
         opacity: 0.5;
         text-transform: uppercase;
+      }
+
+      .copyright {
+        padding-right: 3px;
       }
 
       .gitLink {

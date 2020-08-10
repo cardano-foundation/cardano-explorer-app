@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import React from 'react';
+import { environment } from '../../environment';
 import { useI18nFeature } from '../../features/i18n/context';
 import styles from './Footer.module.scss';
 
@@ -26,11 +27,14 @@ export const Footer = (props: IFooterProps) => {
               © IOHK 2015 - {new Date().getFullYear()}
             </p>
             <a
-              href="https://github.com/input-output-hk/cardano-explorer-app/"
+              href={environment.PACKAGE.HOMEPAGE}
               className={styles.gitLink}
             >
               <GitIcon className={styles.gitIcon} />
             </a>
+            <p>
+              {environment.PACKAGE.VERSION}
+            </p>
           </div>
           <div className={styles.logos}>
             <div className={styles.logoText}>
