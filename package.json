@@ -27,6 +27,7 @@
     "storybook": "start-storybook -s ./source/public -p 6006",
     "storybook:build": "build-storybook -o build/storybook"
   },
+  "homepage": "https://github.com/input-output-hk/cardano-explorer-app",
   "husky": {
     "hooks": {
       "pre-commit": "yarn prettier:fix-staged"

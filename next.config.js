@@ -5,9 +5,11 @@ const withImages = require('next-images');
 const withPrefresh = require('@prefresh/next');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const DefinePlugin = require('webpack').DefinePlugin;
 require('dotenv').config();
 
 const DEBUG = process.env.DEBUG;
+const packageJson = require('./package.json');
 const SUPPORTED_LOCALES = ['en', 'de', 'ja'];
 
 module.exports = withPlugins(
@@ -68,6 +70,14 @@ module.exports = withPlugins(
           systemvars: true,
         })
       );
+
+      config.plugins.push(
+        new DefinePlugin({
+        'process.env': {
+          PACKAGE_HOMEPAGE: `"${packageJson.homepage}"`,
+          PACKAGE_VERSION: `"${packageJson.version}"`
+        }
+      }));
 
       // Support GraphQL literals
       config.module.rules.push({
