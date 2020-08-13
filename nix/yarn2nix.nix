@@ -8,9 +8,6 @@ in mkYarnPackage {
   packageJSON = ../package.json;
   yarnLock = ../yarn.lock;
   src = src;
-  extraBuildInputs = [
-    #breakpointHook strace bashInteractive
-  ];
   yarnPreBuild = ''
     mkdir -p $HOME/.node-gyp/${nodejs.version}
     echo 9 > $HOME/.node-gyp/${nodejs.version}/installVersion
@@ -24,7 +21,6 @@ in mkYarnPackage {
 
     yarn --offline run build
     yarn run next export source --outdir $out
-    #ln -s $node_modules $out/node_modules
 
     yarn export
     ls -lh deps/cardano-explorer-app/build/static
