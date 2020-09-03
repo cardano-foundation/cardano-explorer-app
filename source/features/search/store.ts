@@ -206,6 +206,14 @@ export class SearchStore extends Store {
       address,
     });
     if (isDefined(result)) {
+      if (
+        result.transactions_aggregate.aggregate?.count === '0' &&
+        result.utxos_aggregate.aggregate?.sum.value === null
+      ) {
+        return this.searchActions.unknownSearchRequested.trigger({
+          query: address,
+        });
+      }
       runInAction(() => {
         this.addressSearchResult = addressDetailTransformer(address, result);
       });

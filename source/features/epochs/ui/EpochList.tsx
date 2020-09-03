@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc'
+import utc from 'dayjs/plugin/utc';
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import CircularProgress, {
@@ -12,7 +12,7 @@ import { getEpochRoute } from '../helpers';
 import { IEpochOverview } from '../types';
 import styles from './EpochList.module.scss';
 
-dayjs.extend(utc)
+dayjs.extend(utc);
 
 export interface IEpochListProps {
   currentEpoch: number;
@@ -55,11 +55,16 @@ const columns = (
     key: 'number',
   },
   {
-    cellValue: (row: IEpochOverview) =>
-      `${row.blocksCount} / ${row.slotsCount}`,
-    cssClass: 'blocksSlots',
-    head: 'epoch.blocksSlotTitle',
-    key: 'blocksSlots',
+    cellValue: (row: IEpochOverview) => row.slotsCount,
+    cssClass: 'slots',
+    head: 'epoch.slotsTitle',
+    key: 'slots',
+  },
+  {
+    cellValue: (row: IEpochOverview) => row.blocksCount,
+    cssClass: 'blocks',
+    head: 'epoch.blocksTitle',
+    key: 'blocks',
   },
   {
     cellValue: (row: IEpochOverview) =>

@@ -43,7 +43,8 @@
     "epochsListTitle": "Browse Epochs"
   },
   "epoch": {
-    "blocksSlotTitle": "Blocks / Slots",
+    "blocksTitle": "Blocks",
+    "slotsTitle": "Slots",
     "createdByTitle": "Created By",
     "epochTitle": "Epoch",
     "lastBlockAtTitle": "Last Block at",
