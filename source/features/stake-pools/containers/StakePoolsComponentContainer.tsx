@@ -16,11 +16,7 @@ export const StakePoolsComponentContainerRaw = () => {
       />
     );
   }
-  return (
-    <Container>
-      <StakePools stakePoolsList={stakePoolsList} />
-    </Container>
-  );
+  return <StakePools stakePoolsList={stakePoolsList} />;
 };
 export const StakePoolsComponentContainer = observer(
   StakePoolsComponentContainerRaw

@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
+import { BrandType, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
 import { useI18nFeature } from '../../features/i18n/context';
 import { useNavigationFeatureOptionally } from '../../features/navigation';
@@ -36,12 +36,11 @@ export const Header = observer((props: IHeaderProps) => {
         {environment.CARDANO.NETWORK.replace(/-/g, ' ')}
       </div>
     ) : null;
-  const stakePoolLink =
-    environment.CARDANO.ERA === CardanoEra.SHELLEY ? (
-      <LocalizedLink href="/stake-pools">
-        <span className={stakePoolsClassName}>Stake Pools</span>
-      </LocalizedLink>
-    ) : null;
+  const stakePoolLink = (
+    <LocalizedLink href="/stake-pools">
+      <span className={stakePoolsClassName}>Stake Pools</span>
+    </LocalizedLink>
+  );
   const stakePoolTriangleStyle = stakePoolLink ? '' : styles.stakePoolTriangle;
   const triangleContainerStyles = cx([
     styles.triangleSign,

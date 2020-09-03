@@ -1,0 +1,24 @@
+.progressTextContent {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.progressTextLabel {
+  color: var(--info-text-color);
+  font-family: ProximaNova, sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  margin-bottom: 5px;
+}
+
+.progressTextValue {
+  color: var(--solid-text-color);
+  font-family: ProximaNova, sans-serif;
+  font-size: 46px;
+  font-weight: 300;
+  letter-spacing: 2.3px;
+}

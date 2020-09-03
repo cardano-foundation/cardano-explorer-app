@@ -1,0 +1,16 @@
+@import '../../../styles/mixins/info-panel';
+
+.header {
+  margin-bottom: 41px;
+}
+
+.content {
+  align-items: center;
+  display: flex;
+
+  @include info-panel($label-width: 260px);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
