@@ -3,15 +3,15 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import utc from 'dayjs/plugin/utc';
 import React, { FC, useCallback, useEffect, useRef } from 'react';
-import { getColorFromRange } from '../../../lib/colors';
-import { useI18nFeature } from '../../i18n/context';
-import { IStakePoolTooltipProps } from '../types';
+import { getColorFromRange } from '../../../../lib/colors';
+import { useI18nFeature } from '../../../i18n/context';
+import { IStakePoolTooltipProps } from '../../types';
 import styles from './StakePoolTooltip.module.scss';
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
-const CloseCrossIcon = require('../../../public/assets/images/stake-pools/close-cross.svg');
-const ExternalLinkIcon = require('../../../public/assets/images/stake-pools/link-ic.svg');
+const CloseCrossIcon = require('../../../../public/assets/images/stake-pools/close-cross.svg');
+const ExternalLinkIcon = require('../../../../public/assets/images/stake-pools/link-ic.svg');
 
 const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
   stakePool,

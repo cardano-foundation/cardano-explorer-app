@@ -1,11 +1,11 @@
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React, { Children, cloneElement, Fragment, useState } from 'react';
-import StakePoolsList from '../source/features/stake-pools/components/StakePoolsList';
-import StakePoolThumbnail from '../source/features/stake-pools/components/StakePoolThumbnail';
-import StakePoolTooltip from '../source/features/stake-pools/components/StakePoolTooltip';
-import UnmoderatedDataConsented from '../source/features/stake-pools/components/UnmoderatedDataConsented';
-import UnmoderatedDataWarning from '../source/features/stake-pools/components/UnmoderatedDataWarning';
+import StakePoolsList from '../source/features/stake-pools/ui/list/StakePoolsList';
+import StakePoolThumbnail from '../source/features/stake-pools/ui/list/StakePoolThumbnail';
+import StakePoolTooltip from '../source/features/stake-pools/ui/list/StakePoolTooltip';
+import UnmoderatedDataConsented from '../source/features/stake-pools/ui/consent/UnmoderatedDataConsented';
+import UnmoderatedDataWarning from '../source/features/stake-pools/ui/consent/UnmoderatedDataWarning';
 import { getColorFromRange } from '../source/lib/colors';
 
 const DUMMY_DATA = require('../source/features/stake-pools/stakingStakePools.dummy.json');
