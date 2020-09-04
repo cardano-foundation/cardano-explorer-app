@@ -13,7 +13,7 @@ import { StakePoolsStatistics } from './statistics/StakePoolStatistics';
 export const StakePoolsPage = () => (
   <StakePoolsFeatureProvider>
     <UnmoderatedDataConsentedContainer />
-    <div className={styles.epochSummary}>
+    <div className={styles.statistics}>
       <StakePoolsStatistics />
     </div>
     <StakePoolsContainer />
