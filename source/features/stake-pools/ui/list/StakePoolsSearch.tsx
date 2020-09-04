@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import { BrandType } from '../../../constants';
-import { useI18nFeature } from '../../i18n/context';
-import Search from '../../search/ui/Search';
-import { IStakePoolsSearchProps } from '../types';
+import { BrandType } from '../../../../constants';
+import { useI18nFeature } from '../../../i18n/context';
+import Search from '../../../search/ui/Search';
+import { IStakePoolsSearchProps } from '../../types';
 import styles from './StakePoolsSearch.module.scss';
 
 const StakePoolsSearch = ({

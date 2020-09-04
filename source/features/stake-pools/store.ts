@@ -2,12 +2,12 @@ import { action, computed, observable } from 'mobx';
 import storage from 'store';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
-import { StakePoolsActions } from './actions';
 import { StakePoolsApi } from './api';
 import {
   UNMODERATED_WARNING_PERIOD,
   UNMODERATED_WARNING_STORAGE_KEY,
 } from './constants';
+import { StakePoolsActions } from './index';
 import DUMMY_DATA from './stakingStakePools.dummy.json';
 
 export class StakePoolsStore extends Store {

@@ -1,7 +1,7 @@
 import React from 'react';
-import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
-import { EpochSummaryProgress } from '../../epochs/ui/EpochSummaryProgress';
-import styles from './StakePoolStatistics.module.scss';
+import DividerWithTitle from '../../../../widgets/divider-with-title/DividerWithTitle';
+import { EpochSummaryProgress } from '../../../epochs/ui/EpochSummaryProgress';
+import styles from './StakePoolStatisticsPanel.module.scss';
 
 interface IStakePoolStatisticsProps {
   numberOfStakePools: number;
@@ -10,7 +10,7 @@ interface IStakePoolStatisticsProps {
   stakeControlledPercentage: number;
 }
 
-export const StakePoolStatistics = (props: IStakePoolStatisticsProps) => (
+export const StakePoolStatisticsPanel = (props: IStakePoolStatisticsProps) => (
   <div className={styles.root}>
     <div className={styles.header}>
       <DividerWithTitle title={'Statistics'} />
