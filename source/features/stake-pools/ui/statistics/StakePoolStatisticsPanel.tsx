@@ -8,6 +8,8 @@ interface IStakePoolStatisticsProps {
   rewardsPreviousEpoch: number;
   rewardsTotal: number;
   stakeControlledPercentage: number;
+  epochNumber: number;
+  epochProgressPercentage: number;
 }
 
 export const StakePoolStatisticsPanel = (props: IStakePoolStatisticsProps) => (
@@ -17,8 +19,8 @@ export const StakePoolStatisticsPanel = (props: IStakePoolStatisticsProps) => (
     </div>
     <div className={styles.content}>
       <EpochSummaryProgress
-        epochNumber={135}
-        percentage={53}
+        epochNumber={props.epochNumber}
+        percentage={props.epochProgressPercentage}
         title={'Current epoch'}
       />
       <div className={styles.infoPanel}>
