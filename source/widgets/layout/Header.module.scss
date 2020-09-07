@@ -180,8 +180,11 @@
         text-transform: uppercase;
       }
 
-      .activeTab {
+      .activeTab a {
         color: var(--solid-text-color);
+        &:hover {
+          cursor: default;
+        }
       }
 
       .tabLeftLine {
