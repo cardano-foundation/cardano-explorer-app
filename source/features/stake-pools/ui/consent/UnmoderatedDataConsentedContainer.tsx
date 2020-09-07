@@ -1,21 +1,15 @@
-import React, { useState } from 'react';
-import { useObservableEffect } from '../../../../lib/mobx/react';
+import { Observer } from 'mobx-react-lite';
+import React from 'react';
 import { useStakePools } from '../../context';
 import UnmoderatedDataConsented from './UnmoderatedDataConsented';
 
 export const UnmoderatedDataConsentedContainer = () => {
   const { store } = useStakePools();
-  const [showUnmoderatedData, setShowUnmoderatedData] = useState(
-    store.showUnmoderatedData
+  return (
+    <Observer>
+      {() =>
+        store.showUnmoderatedData ? <UnmoderatedDataConsented /> : <span />
+      }
+    </Observer>
   );
-
-  // Observe and update consent flag
-  useObservableEffect(() => {
-    setShowUnmoderatedData(store.showUnmoderatedData);
-  });
-
-  if (showUnmoderatedData) {
-    return <UnmoderatedDataConsented />;
-  }
-  return null;
 };
