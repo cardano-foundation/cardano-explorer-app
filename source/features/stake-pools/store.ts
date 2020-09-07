@@ -8,6 +8,7 @@ import {
   UNMODERATED_WARNING_STORAGE_KEY,
 } from './constants';
 import { StakePoolsActions } from './index';
+import DUMMY_DATA from './stakingStakePools.dummy.json';
 
 export class StakePoolsStore extends Store {
   private readonly stakePoolsApi: StakePoolsApi;
@@ -29,10 +30,10 @@ export class StakePoolsStore extends Store {
         ],
       ])
     );
-    this.stakePoolsApi.getStakePoolsQuery.execute({
-      limit: 10,
-      offset: 0,
-    });
+    // this.stakePoolsApi.getStakePoolsQuery.execute({
+    //   limit: 10,
+    //   offset: 0,
+    // });
   }
   @computed get showUnmoderatedData() {
     const { showUnmoderatedDataStorage } = this;
@@ -43,7 +44,7 @@ export class StakePoolsStore extends Store {
     return showUnmoderatedDataStorage - now <= UNMODERATED_WARNING_PERIOD;
   }
   @computed get stakePoolsList() {
-    return this.stakePoolsApi.getStakePoolsQuery.result;
+    return DUMMY_DATA; // this.stakePoolsApi.getStakePoolsQuery.result;
   }
   @action private handleAcceptUnmoderatedData = () => {
     const now: number = new Date().getTime();
