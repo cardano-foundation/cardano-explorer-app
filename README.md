@@ -18,8 +18,9 @@ See [environment](source/environment.ts) for defaults.
 - `DEBUG`
 
 ## Build
+This project uses an offline package cache to enable reproducible builds.
 ```console
-yarn && yarn static:build
+yarn --offline && yarn static:build
 ```
 ## Deploy
 The static bundle can be deployed using a standard web server. A simple [Node.js program](deploy/index.js) 

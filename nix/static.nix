@@ -1,4 +1,4 @@
-{ stdenv, yarn, nodejs, fixup_yarn_lock, offlinecache
+{ stdenv, yarn, nodejs, offlinecache
 , cardanoEra ? "byron"
 , cardanoNetwork ? "mainnet"
 , graphqlApiProtocol ? "https"
@@ -22,16 +22,14 @@ stdenv.mkDerivation {
   GA_TRACKING_ID = gaTrackingId;
   buildCommand = ''
     export HOME=$PWD/yarn_home
-
     unpackPhase
     cd $sourceRoot
-
-    ${fixup_yarn_lock}/bin/fixup_yarn_lock yarn.lock
-    yarn config --offline set yarn-offline-mirror ${offlinecache}
+    export CYPRESS_INSTALL_BINARY=0
+    yarn config set yarn-offline-mirror ${offlinecache}
     yarn install --offline --frozen-lockfile --ignore-engines --ignore-scripts
     export PATH="$PATH:node_modules/.bin"
     patchShebangs node_modules/
     NODE_ENV=production yarn --offline run build
-    yarn --offline run next export source --outdir $out
+    yarn run next export source --outdir $out
   '';
 }
