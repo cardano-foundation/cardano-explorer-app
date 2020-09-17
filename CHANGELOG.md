@@ -1,6 +1,14 @@
 Changelog
 =========
 
+## 1.1.0
+### Features
+- [Split slots & blocks into separate columns](https://github.com/input-output-hk/cardano-explorer-app/pull/338)
+- [Add package.json version to footer](https://github.com/input-output-hk/cardano-explorer-app/pull/348)
+### Chores
+- [Dynamically calc Byron epochs length](https://github.com/input-output-hk/cardano-explorer-app/pull/334)
+- [Update to latest react-polymorph](https://github.com/input-output-hk/cardano-explorer-app/pull/351)
+- [yarn offline cache](https://github.com/input-output-hk/cardano-explorer-app/pull/356)
 ## 1.0.2
 ### Fixes
 - [#334](https://github.com/input-output-hk/cardano-explorer-app/issues/334)
