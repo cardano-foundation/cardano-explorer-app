@@ -11,6 +11,7 @@ export const transactionDetailsTransformer = (
     id: tx.block?.hash,
     number: tx.block?.number,
   },
+  deposit: Currency.Util.lovelacesToAda(tx.deposit),
   fee: Currency.Util.lovelacesToAda(tx.fee),
   id: tx.hash,
   includedAt: new Date(tx.includedAt),

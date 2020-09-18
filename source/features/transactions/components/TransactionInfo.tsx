@@ -119,7 +119,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
     });
   };
   const epoch = props.block.epoch === '-' ? 0 : props.block.epoch;
-
+  const depositLabel = parseInt(props.deposit) >= 0 ? 'transaction.deposit' : 'transaction.depositReclaim'
   return (
     <div className={styles.root}>
       {props.title && (
@@ -226,6 +226,16 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
           />
         </div>
       </div>
+
+      {/* ===== DEPOSIT ===== */}
+      {props.deposit !== '0' && (
+        <div className={styles.row}>
+          <div className={styles.label}>
+            {translate(depositLabel)}
+          </div>
+          <div className={styles.value}>{Math.abs(parseInt(props.deposit))} ADA</div>
+        </div>
+      )}
 
       {/* ===== TOTAL OUTPUT ===== */}
 

@@ -152,6 +152,8 @@
   "transaction": {
     "block": "Block",
     "confirmations": "Konfirmationen",
+    "deposit": "Kaution",
+    "depositReclaim": "Kautionsrückforderung",
     "epoch": "Epoche",
     "fee": "Transaktionsgebühr",
     "from": "Input-Adressen",

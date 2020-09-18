@@ -152,6 +152,8 @@
   "transaction": {
     "block": "ブロック",
     "confirmations": "確認",
+    "deposit": "デポジット",
+    "depositReclaim": "デポジットの返還",
     "epoch": "エポック",
     "fee": "トランザクション手数料",
     "from": "送信元",
