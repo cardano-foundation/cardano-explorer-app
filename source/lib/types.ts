@@ -4,8 +4,8 @@ import {
 } from 'next/dist/next-server/lib/utils';
 import React from 'react';
 
-export function isDefined<T>(b: T | null | undefined): b is T {
-  return b != null;
+export function isDefined<T>(v: T | null | undefined): v is T {
+  return v !== undefined && v !== null;
 }
 
 export type PageComponentWithStaticLayout = NextComponentType<

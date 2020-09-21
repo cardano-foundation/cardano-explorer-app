@@ -5,9 +5,9 @@ import styles from './StakePoolStatisticsPanel.module.scss';
 
 interface IStakePoolStatisticsProps {
   numberOfStakePools: number;
-  rewardsPreviousEpoch: number;
-  rewardsTotal: number;
-  stakeControlledPercentage: number;
+  // rewardsPreviousEpoch: number;
+  // rewardsTotal: number;
+  // stakeControlledPercentage: number;
   epochNumber: number;
   epochProgressPercentage: number;
 }
@@ -29,28 +29,28 @@ export const StakePoolStatisticsPanel = (props: IStakePoolStatisticsProps) => (
           <div className={styles.infoValue}>{props.numberOfStakePools}</div>
         </div>
 
-        <div className={styles.infoRow}>
-          <div className={styles.infoLabel}>
-            Rewards earned in previous epoch:
-          </div>
-          <div className={styles.infoValue}>
-            {props.rewardsPreviousEpoch} ADA
-          </div>
-        </div>
+        {/*<div className={styles.infoRow}>*/}
+        {/*  <div className={styles.infoLabel}>*/}
+        {/*    Rewards earned in previous epoch:*/}
+        {/*  </div>*/}
+        {/*  <div className={styles.infoValue}>*/}
+        {/*    {props.rewardsPreviousEpoch} ADA*/}
+        {/*  </div>*/}
+        {/*</div>*/}
 
-        <div className={styles.infoRow}>
-          <div className={styles.infoLabel}>Rewards earned in total:</div>
-          <div className={styles.infoValue}>{props.rewardsTotal} ADA</div>
-        </div>
+        {/*<div className={styles.infoRow}>*/}
+        {/*  <div className={styles.infoLabel}>Rewards earned in total:</div>*/}
+        {/*  <div className={styles.infoValue}>{props.rewardsTotal} ADA</div>*/}
+        {/*</div>*/}
 
-        <div className={styles.infoRow}>
-          <div className={styles.infoLabel}>
-            Stake controlled by stake pools:
-          </div>
-          <div className={styles.infoValue}>
-            {props.stakeControlledPercentage}%
-          </div>
-        </div>
+        {/*<div className={styles.infoRow}>*/}
+        {/*  <div className={styles.infoLabel}>*/}
+        {/*    Stake controlled by stake pools:*/}
+        {/*  </div>*/}
+        {/*  <div className={styles.infoValue}>*/}
+        {/*    {props.stakeControlledPercentage}%*/}
+        {/*  </div>*/}
+        {/*</div>*/}
       </div>
     </div>
   </div>

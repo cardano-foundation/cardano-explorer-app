@@ -3,12 +3,14 @@ import storage from 'store';
 import { createActionBindings } from '../../lib/ActionBinding';
 import { Store } from '../../lib/Store';
 import { StakePoolsApi } from './api';
+import { transformStakePoolOverviews } from './api/transformers';
 import {
   UNMODERATED_WARNING_PERIOD,
   UNMODERATED_WARNING_STORAGE_KEY,
 } from './constants';
 import { StakePoolsActions } from './index';
 import DUMMY_DATA from './stakingStakePools.dummy.json';
+import { IStakePoolProps, IStakePoolsProps } from './types';
 
 export class StakePoolsStore extends Store {
   private readonly stakePoolsApi: StakePoolsApi;
@@ -30,10 +32,11 @@ export class StakePoolsStore extends Store {
         ],
       ])
     );
-    // this.stakePoolsApi.getStakePoolsQuery.execute({
-    //   limit: 10,
-    //   offset: 0,
-    // });
+    this.stakePoolsApi.getStakePoolsAggregateQuery.execute({});
+    this.stakePoolsApi.getStakePoolsQuery.execute({
+      limit: 10,
+      offset: 0,
+    });
   }
   @computed get showUnmoderatedData() {
     const { showUnmoderatedDataStorage } = this;
@@ -43,8 +46,20 @@ export class StakePoolsStore extends Store {
     const now: number = new Date().getTime();
     return showUnmoderatedDataStorage - now <= UNMODERATED_WARNING_PERIOD;
   }
-  @computed get stakePoolsList() {
-    return DUMMY_DATA; // this.stakePoolsApi.getStakePoolsQuery.result;
+  @computed get stakePoolsStatistics() {
+    const { result } = this.stakePoolsApi.getStakePoolsAggregateQuery;
+    if (result?.stakePools_aggregate) {
+      return result.stakePools_aggregate.aggregate;
+    }
+    return null;
+  }
+
+  @computed get stakePoolsList(): IStakePoolProps[] {
+    const { result } = this.stakePoolsApi.getStakePoolsQuery;
+    if (result && result.stakePools) {
+      return transformStakePoolOverviews(result.stakePools);
+    }
+    return [];
   }
   @action private handleAcceptUnmoderatedData = () => {
     const now: number = new Date().getTime();

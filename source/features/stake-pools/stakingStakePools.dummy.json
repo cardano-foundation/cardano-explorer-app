@@ -10,8 +10,7 @@
     "profitMargin": 10,
     "performance": 12,
     "created_at": "2019-08-19T21:27:33.575Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 2,
@@ -38,8 +37,7 @@
     "profitMargin": 60,
     "performance": 35,
     "created_at": "2019-08-19T21:59:32.264Z",
-    "retiring": "2019-08-19T21:59:32.264Z",
-    "isCharity": true
+    "retiring": "2019-08-19T21:59:32.264Z"
   },
   {
     "ranking": 4,
@@ -80,8 +78,7 @@
     "profitMargin": 64,
     "performance": 65,
     "created_at": "2019-08-20T00:16:10.786Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 7,
@@ -94,8 +91,7 @@
     "profitMargin": 45,
     "performance": 62,
     "created_at": "2019-08-19T17:19:22.875Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 8,
@@ -108,8 +104,7 @@
     "profitMargin": 63,
     "performance": 25,
     "created_at": "2019-08-20T06:14:55.433Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 9,
@@ -150,8 +145,7 @@
     "profitMargin": 73,
     "performance": 84,
     "created_at": "2019-08-20T01:37:47.022Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 12,
@@ -192,8 +186,7 @@
     "profitMargin": 38,
     "performance": 45,
     "created_at": "2019-08-20T00:06:43.804Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 15,
@@ -234,8 +227,7 @@
     "profitMargin": 26,
     "performance": 1,
     "created_at": "2019-08-19T12:11:23.469Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 18,
@@ -248,8 +240,7 @@
     "profitMargin": 0,
     "performance": 93,
     "created_at": "2019-08-19T13:54:47.008Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 19,
@@ -262,8 +253,7 @@
     "profitMargin": 4,
     "performance": 70,
     "created_at": "2019-08-20T03:43:09.620Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 20,
@@ -318,8 +308,7 @@
     "profitMargin": 61,
     "performance": 73,
     "created_at": "2019-08-19T20:20:49.820Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 24,
@@ -346,8 +335,7 @@
     "profitMargin": 27,
     "performance": 26,
     "created_at": "2019-08-20T01:29:01.597Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 26,
@@ -360,8 +348,7 @@
     "profitMargin": 48,
     "performance": 13,
     "created_at": "2019-08-19T09:50:37.952Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 27,
@@ -388,8 +375,7 @@
     "profitMargin": 92,
     "performance": 90,
     "created_at": "2019-08-20T05:53:12.263Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 29,
@@ -402,8 +388,7 @@
     "profitMargin": 46,
     "performance": 79,
     "created_at": "2019-08-19T19:38:02.406Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 30,
@@ -416,8 +401,7 @@
     "profitMargin": 90,
     "performance": 30,
     "created_at": "2019-08-20T08:57:55.934Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 31,
@@ -430,8 +414,7 @@
     "profitMargin": 34,
     "performance": 89,
     "created_at": "2019-08-19T10:42:17.989Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 32,
@@ -458,8 +441,7 @@
     "profitMargin": 95,
     "performance": 42,
     "created_at": "2019-08-19T18:51:05.157Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 34,
@@ -486,8 +468,7 @@
     "profitMargin": 49,
     "performance": 29,
     "created_at": "2019-08-19T17:18:02.986Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 36,
@@ -528,8 +509,7 @@
     "profitMargin": 67,
     "performance": 93,
     "created_at": "2019-08-19T22:33:47.016Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 39,
@@ -570,8 +550,7 @@
     "profitMargin": 13,
     "performance": 47,
     "created_at": "2019-08-19T15:22:37.247Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 42,
@@ -584,8 +563,7 @@
     "profitMargin": 26,
     "performance": 92,
     "created_at": "2019-08-20T00:41:28.791Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 43,
@@ -598,8 +576,7 @@
     "profitMargin": 82,
     "performance": 82,
     "created_at": "2019-08-19T18:59:03.253Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 44,
@@ -626,8 +603,7 @@
     "profitMargin": 64,
     "performance": 59,
     "created_at": "2019-08-20T04:15:27.753Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 46,
@@ -654,8 +630,7 @@
     "profitMargin": 69,
     "performance": 90,
     "created_at": "2019-08-20T09:07:33.322Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 48,
@@ -668,8 +643,7 @@
     "profitMargin": 76,
     "performance": 97,
     "created_at": "2019-08-20T01:29:29.786Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 49,
@@ -682,8 +656,7 @@
     "profitMargin": 39,
     "performance": 48,
     "created_at": "2019-08-20T03:13:19.568Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 50,
@@ -724,8 +697,7 @@
     "profitMargin": 11,
     "performance": 8,
     "created_at": "2019-08-19T21:01:28.198Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 53,
@@ -738,8 +710,7 @@
     "profitMargin": 30,
     "performance": 99,
     "created_at": "2019-08-20T07:47:19.081Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 54,
@@ -752,8 +723,7 @@
     "profitMargin": 37,
     "performance": 19,
     "created_at": "2019-08-19T11:17:53.610Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 55,
@@ -766,8 +736,7 @@
     "profitMargin": 10,
     "performance": 82,
     "created_at": "2019-08-20T06:21:19.779Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 56,
@@ -780,8 +749,7 @@
     "profitMargin": 86,
     "performance": 70,
     "created_at": "2019-08-19T12:12:35.016Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 57,
@@ -836,8 +804,7 @@
     "profitMargin": 57,
     "performance": 45,
     "created_at": "2019-08-20T03:37:21.785Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 61,
@@ -878,8 +845,7 @@
     "profitMargin": 30,
     "performance": 61,
     "created_at": "2019-08-19T17:50:01.616Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 64,
@@ -892,8 +858,7 @@
     "profitMargin": 44,
     "performance": 20,
     "created_at": "2019-08-19T18:38:10.512Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 65,
@@ -906,8 +871,7 @@
     "profitMargin": 26,
     "performance": 49,
     "created_at": "2019-08-19T21:29:33.634Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 66,
@@ -934,8 +898,7 @@
     "profitMargin": 2,
     "performance": 25,
     "created_at": "2019-08-20T08:49:01.858Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 68,
@@ -948,8 +911,7 @@
     "profitMargin": 90,
     "performance": 80,
     "created_at": "2019-08-19T11:52:41.804Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 69,
@@ -962,8 +924,7 @@
     "profitMargin": 52,
     "performance": 53,
     "created_at": "2019-08-19T18:00:04.310Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 70,
@@ -990,8 +951,7 @@
     "profitMargin": 10,
     "performance": 91,
     "created_at": "2019-08-20T04:55:09.950Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 72,
@@ -1032,8 +992,7 @@
     "profitMargin": 37,
     "performance": 33,
     "created_at": "2019-08-19T09:43:28.027Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 75,
@@ -1046,8 +1005,7 @@
     "profitMargin": 39,
     "performance": 6,
     "created_at": "2019-08-19T15:39:44.637Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 76,
@@ -1074,8 +1032,7 @@
     "profitMargin": 42,
     "performance": 51,
     "created_at": "2019-08-20T07:36:17.833Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 78,
@@ -1116,8 +1073,7 @@
     "profitMargin": 68,
     "performance": 86,
     "created_at": "2019-08-19T17:58:14.382Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 81,
@@ -1144,8 +1100,7 @@
     "profitMargin": 83,
     "performance": 29,
     "created_at": "2019-08-19T11:20:48.966Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 83,
@@ -1158,8 +1113,7 @@
     "profitMargin": 69,
     "performance": 44,
     "created_at": "2019-08-19T12:30:23.173Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 84,
@@ -1172,8 +1126,7 @@
     "profitMargin": 54,
     "performance": 49,
     "created_at": "2019-08-19T10:33:09.311Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 85,
@@ -1186,8 +1139,7 @@
     "profitMargin": 1,
     "performance": 44,
     "created_at": "2019-08-19T13:14:27.800Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 86,
@@ -1228,8 +1180,7 @@
     "profitMargin": 95,
     "performance": 47,
     "created_at": "2019-08-20T05:46:30.909Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 89,
@@ -1256,8 +1207,7 @@
     "profitMargin": 61,
     "performance": 54,
     "created_at": "2019-08-20T08:46:50.936Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 91,
@@ -1340,8 +1290,7 @@
     "profitMargin": 42,
     "performance": 29,
     "created_at": "2019-08-19T10:45:28.112Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 97,
@@ -1368,8 +1317,7 @@
     "profitMargin": 48,
     "performance": 92,
     "created_at": "2019-08-19T17:46:44.100Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 99,
@@ -1382,8 +1330,7 @@
     "profitMargin": 74,
     "performance": 55,
     "created_at": "2019-08-19T14:19:28.312Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 100,
@@ -1396,8 +1343,7 @@
     "profitMargin": 75,
     "performance": 69,
     "created_at": "2019-08-20T01:48:36.779Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 101,
@@ -1452,8 +1398,7 @@
     "profitMargin": 43,
     "performance": 2,
     "created_at": "2019-08-19T18:00:33.752Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 105,
@@ -1480,8 +1425,7 @@
     "profitMargin": 52,
     "performance": 51,
     "created_at": "2019-08-19T11:35:29.144Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 107,
@@ -1494,8 +1438,7 @@
     "profitMargin": 95,
     "performance": 14,
     "created_at": "2019-08-20T02:35:07.804Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 108,
@@ -1522,8 +1465,7 @@
     "profitMargin": 39,
     "performance": 6,
     "created_at": "2019-08-20T01:39:38.603Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 110,
@@ -1536,8 +1478,7 @@
     "profitMargin": 55,
     "performance": 71,
     "created_at": "2019-08-20T02:19:40.063Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 111,
@@ -1578,8 +1519,7 @@
     "profitMargin": 74,
     "performance": 67,
     "created_at": "2019-08-20T08:17:42.342Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 114,
@@ -1592,8 +1532,7 @@
     "profitMargin": 32,
     "performance": 0,
     "created_at": "2019-08-19T11:12:45.721Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 115,
@@ -1634,8 +1573,7 @@
     "profitMargin": 11,
     "performance": 96,
     "created_at": "2019-08-20T04:59:05.678Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 118,
@@ -1648,8 +1586,7 @@
     "profitMargin": 55,
     "performance": 2,
     "created_at": "2019-08-19T16:13:50.461Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 119,
@@ -1662,8 +1599,7 @@
     "profitMargin": 68,
     "performance": 23,
     "created_at": "2019-08-19T16:04:01.006Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 120,
@@ -1676,8 +1612,7 @@
     "profitMargin": 4,
     "performance": 12,
     "created_at": "2019-08-20T05:46:19.623Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 121,
@@ -1704,8 +1639,7 @@
     "profitMargin": 78,
     "performance": 6,
     "created_at": "2019-08-20T03:20:49.633Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 123,
@@ -1732,8 +1666,7 @@
     "profitMargin": 54,
     "performance": 53,
     "created_at": "2019-08-20T07:56:15.623Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 125,
@@ -1760,8 +1693,7 @@
     "profitMargin": 35,
     "performance": 75,
     "created_at": "2019-08-19T22:03:46.131Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 127,
@@ -1816,8 +1748,7 @@
     "profitMargin": 60,
     "performance": 83,
     "created_at": "2019-08-19T20:51:36.136Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 131,
@@ -1844,8 +1775,7 @@
     "profitMargin": 61,
     "performance": 18,
     "created_at": "2019-08-20T01:10:56.299Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 133,
@@ -1872,8 +1802,7 @@
     "profitMargin": 1,
     "performance": 83,
     "created_at": "2019-08-19T09:43:54.320Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 135,
@@ -1886,8 +1815,7 @@
     "profitMargin": 24,
     "performance": 27,
     "created_at": "2019-08-19T18:49:40.559Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 136,
@@ -1900,8 +1828,7 @@
     "profitMargin": 88,
     "performance": 67,
     "created_at": "2019-08-19T22:05:29.824Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 137,
@@ -1914,8 +1841,7 @@
     "profitMargin": 89,
     "performance": 25,
     "created_at": "2019-08-19T12:07:08.938Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 138,
@@ -1928,8 +1854,7 @@
     "profitMargin": 43,
     "performance": 87,
     "created_at": "2019-08-20T00:36:13.813Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 139,
@@ -1970,8 +1895,7 @@
     "profitMargin": 40,
     "performance": 42,
     "created_at": "2019-08-19T13:45:05.389Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 142,
@@ -2012,8 +1936,7 @@
     "profitMargin": 94,
     "performance": 6,
     "created_at": "2019-08-20T03:57:15.958Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 145,
@@ -2054,8 +1977,7 @@
     "profitMargin": 66,
     "performance": 23,
     "created_at": "2019-08-19T21:54:06.925Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 148,
@@ -2082,8 +2004,7 @@
     "profitMargin": 84,
     "performance": 42,
     "created_at": "2019-08-19T19:18:26.843Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 150,
@@ -2110,8 +2031,7 @@
     "profitMargin": 56,
     "performance": 23,
     "created_at": "2019-08-19T20:37:18.709Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 152,
@@ -2124,8 +2044,7 @@
     "profitMargin": 83,
     "performance": 71,
     "created_at": "2019-08-19T22:33:56.932Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 153,
@@ -2152,8 +2071,7 @@
     "profitMargin": 51,
     "performance": 24,
     "created_at": "2019-08-19T11:16:46.784Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 155,
@@ -2166,8 +2084,7 @@
     "profitMargin": 95,
     "performance": 26,
     "created_at": "2019-08-20T07:12:10.106Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 156,
@@ -2180,8 +2097,7 @@
     "profitMargin": 63,
     "performance": 55,
     "created_at": "2019-08-19T10:13:36.854Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 157,
@@ -2222,8 +2138,7 @@
     "profitMargin": 24,
     "performance": 53,
     "created_at": "2019-08-20T03:33:31.656Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 160,
@@ -2236,8 +2151,7 @@
     "profitMargin": 3,
     "performance": 94,
     "created_at": "2019-08-19T17:39:09.045Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 161,
@@ -2264,8 +2178,7 @@
     "profitMargin": 42,
     "performance": 95,
     "created_at": "2019-08-19T21:16:36.532Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 163,
@@ -2278,8 +2191,7 @@
     "profitMargin": 61,
     "performance": 31,
     "created_at": "2019-08-20T01:57:26.122Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 164,
@@ -2306,8 +2218,7 @@
     "profitMargin": 71,
     "performance": 16,
     "created_at": "2019-08-19T12:00:08.337Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 166,
@@ -2320,8 +2231,7 @@
     "profitMargin": 19,
     "performance": 18,
     "created_at": "2019-08-19T13:24:31.962Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 167,
@@ -2334,8 +2244,7 @@
     "profitMargin": 100,
     "performance": 33,
     "created_at": "2019-08-20T04:19:07.772Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 168,
@@ -2390,8 +2299,7 @@
     "profitMargin": 61,
     "performance": 52,
     "created_at": "2019-08-20T07:16:07.172Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 172,
@@ -2418,8 +2326,7 @@
     "profitMargin": 79,
     "performance": 32,
     "created_at": "2019-08-20T05:25:23.939Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 174,
@@ -2432,8 +2339,7 @@
     "profitMargin": 89,
     "performance": 61,
     "created_at": "2019-08-19T15:24:00.257Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 175,
@@ -2488,8 +2394,7 @@
     "profitMargin": 21,
     "performance": 61,
     "created_at": "2019-08-20T05:31:56.421Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 179,
@@ -2516,8 +2421,7 @@
     "profitMargin": 2,
     "performance": 44,
     "created_at": "2019-08-20T08:32:29.800Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 181,
@@ -2530,8 +2434,7 @@
     "profitMargin": 20,
     "performance": 76,
     "created_at": "2019-08-19T10:51:13.940Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 182,
@@ -2572,8 +2475,7 @@
     "profitMargin": 3,
     "performance": 26,
     "created_at": "2019-08-20T03:04:04.041Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 185,
@@ -2586,8 +2488,7 @@
     "profitMargin": 95,
     "performance": 47,
     "created_at": "2019-08-19T19:36:55.627Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 186,
@@ -2628,8 +2529,7 @@
     "profitMargin": 44,
     "performance": 97,
     "created_at": "2019-08-19T23:14:11.190Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 189,
@@ -2642,8 +2542,7 @@
     "profitMargin": 72,
     "performance": 44,
     "created_at": "2019-08-19T17:29:45.721Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 190,
@@ -2656,8 +2555,7 @@
     "profitMargin": 82,
     "performance": 92,
     "created_at": "2019-08-19T11:41:45.859Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 191,
@@ -2670,8 +2568,7 @@
     "profitMargin": 82,
     "performance": 63,
     "created_at": "2019-08-20T04:23:25.515Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 192,
@@ -2684,8 +2581,7 @@
     "profitMargin": 62,
     "performance": 76,
     "created_at": "2019-08-19T16:10:58.342Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 193,
@@ -2726,8 +2622,7 @@
     "profitMargin": 35,
     "performance": 65,
     "created_at": "2019-08-19T20:52:03.674Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 196,
@@ -2782,8 +2677,7 @@
     "profitMargin": 0,
     "performance": 53,
     "created_at": "2019-08-19T12:08:35.281Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 200,
@@ -2810,8 +2704,7 @@
     "profitMargin": 76,
     "performance": 79,
     "created_at": "2019-08-20T01:52:48.018Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 202,
@@ -2824,8 +2717,7 @@
     "profitMargin": 71,
     "performance": 77,
     "created_at": "2019-08-19T22:25:37.274Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 203,
@@ -2866,8 +2758,7 @@
     "profitMargin": 50,
     "performance": 51,
     "created_at": "2019-08-20T03:19:44.787Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 206,
@@ -2880,8 +2771,7 @@
     "profitMargin": 47,
     "performance": 84,
     "created_at": "2019-08-19T12:23:03.123Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 207,
@@ -2908,8 +2798,7 @@
     "profitMargin": 52,
     "performance": 13,
     "created_at": "2019-08-19T21:23:46.573Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 209,
@@ -2922,8 +2811,7 @@
     "profitMargin": 100,
     "performance": 48,
     "created_at": "2019-08-19T14:16:47.862Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 210,
@@ -2964,8 +2852,7 @@
     "profitMargin": 100,
     "performance": 8,
     "created_at": "2019-08-19T12:03:21.265Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 213,
@@ -3020,8 +2907,7 @@
     "profitMargin": 1,
     "performance": 79,
     "created_at": "2019-08-19T18:05:55.008Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 217,
@@ -3076,8 +2962,7 @@
     "profitMargin": 86,
     "performance": 32,
     "created_at": "2019-08-19T23:27:23.394Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 221,
@@ -3104,8 +2989,7 @@
     "profitMargin": 47,
     "performance": 38,
     "created_at": "2019-08-19T23:52:28.161Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 223,
@@ -3132,8 +3016,7 @@
     "profitMargin": 48,
     "performance": 34,
     "created_at": "2019-08-20T02:04:48.885Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 225,
@@ -3146,8 +3029,7 @@
     "profitMargin": 97,
     "performance": 1,
     "created_at": "2019-08-19T10:55:26.171Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 226,
@@ -3174,8 +3056,7 @@
     "profitMargin": 53,
     "performance": 28,
     "created_at": "2019-08-20T05:35:23.396Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 228,
@@ -3202,8 +3083,7 @@
     "profitMargin": 35,
     "performance": 34,
     "created_at": "2019-08-19T15:07:55.825Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 230,
@@ -3216,8 +3096,7 @@
     "profitMargin": 47,
     "performance": 1,
     "created_at": "2019-08-19T11:02:32.890Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 231,
@@ -3230,8 +3109,7 @@
     "profitMargin": 99,
     "performance": 95,
     "created_at": "2019-08-20T01:54:29.849Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 232,
@@ -3244,8 +3122,7 @@
     "profitMargin": 6,
     "performance": 60,
     "created_at": "2019-08-20T07:42:19.416Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 233,
@@ -3272,8 +3149,7 @@
     "profitMargin": 99,
     "performance": 23,
     "created_at": "2019-08-19T23:02:58.783Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 235,
@@ -3300,8 +3176,7 @@
     "profitMargin": 34,
     "performance": 53,
     "created_at": "2019-08-20T00:54:35.333Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 237,
@@ -3356,8 +3231,7 @@
     "profitMargin": 97,
     "performance": 5,
     "created_at": "2019-08-20T09:08:41.966Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 241,
@@ -3426,8 +3300,7 @@
     "profitMargin": 86,
     "performance": 39,
     "created_at": "2019-08-20T08:03:04.439Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 246,
@@ -3496,8 +3369,7 @@
     "profitMargin": 43,
     "performance": 100,
     "created_at": "2019-08-19T11:02:12.731Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 251,
@@ -3510,8 +3382,7 @@
     "profitMargin": 53,
     "performance": 4,
     "created_at": "2019-08-19T16:30:46.728Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 252,
@@ -3524,8 +3395,7 @@
     "profitMargin": 58,
     "performance": 76,
     "created_at": "2019-08-19T10:30:25.127Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 253,
@@ -3552,8 +3422,7 @@
     "profitMargin": 66,
     "performance": 92,
     "created_at": "2019-08-19T16:11:56.072Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 255,
@@ -3566,8 +3435,7 @@
     "profitMargin": 58,
     "performance": 24,
     "created_at": "2019-08-19T23:18:57.343Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 256,
@@ -3608,8 +3476,7 @@
     "profitMargin": 93,
     "performance": 53,
     "created_at": "2019-08-19T22:17:55.230Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 259,
@@ -3622,8 +3489,7 @@
     "profitMargin": 80,
     "performance": 87,
     "created_at": "2019-08-20T07:04:07.031Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 260,
@@ -3636,8 +3502,7 @@
     "profitMargin": 91,
     "performance": 88,
     "created_at": "2019-08-19T11:31:14.549Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 261,
@@ -3650,8 +3515,7 @@
     "profitMargin": 41,
     "performance": 3,
     "created_at": "2019-08-19T20:16:19.045Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 262,
@@ -3692,8 +3556,7 @@
     "profitMargin": 3,
     "performance": 100,
     "created_at": "2019-08-20T06:09:19.302Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 265,
@@ -3748,8 +3611,7 @@
     "profitMargin": 75,
     "performance": 69,
     "created_at": "2019-08-20T07:36:29.031Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 269,
@@ -3776,8 +3638,7 @@
     "profitMargin": 45,
     "performance": 81,
     "created_at": "2019-08-19T15:27:05.114Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 271,
@@ -3790,8 +3651,7 @@
     "profitMargin": 27,
     "performance": 62,
     "created_at": "2019-08-20T05:45:54.900Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 272,
@@ -3804,8 +3664,7 @@
     "profitMargin": 83,
     "performance": 77,
     "created_at": "2019-08-20T07:15:57.725Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 273,
@@ -3832,8 +3691,7 @@
     "profitMargin": 78,
     "performance": 14,
     "created_at": "2019-08-19T12:38:00.138Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 275,
@@ -3902,8 +3760,7 @@
     "profitMargin": 82,
     "performance": 21,
     "created_at": "2019-08-20T04:07:51.613Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 280,
@@ -3916,8 +3773,7 @@
     "profitMargin": 55,
     "performance": 4,
     "created_at": "2019-08-20T03:15:52.475Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 281,
@@ -3930,8 +3786,7 @@
     "profitMargin": 32,
     "performance": 18,
     "created_at": "2019-08-19T16:05:52.790Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 282,
@@ -3944,8 +3799,7 @@
     "profitMargin": 22,
     "performance": 24,
     "created_at": "2019-08-19T22:50:31.810Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 283,
@@ -3958,8 +3812,7 @@
     "profitMargin": 5,
     "performance": 51,
     "created_at": "2019-08-20T09:17:32.850Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 284,
@@ -3972,8 +3825,7 @@
     "profitMargin": 97,
     "performance": 1,
     "created_at": "2019-08-19T15:40:36.747Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 285,
@@ -3986,8 +3838,7 @@
     "profitMargin": 83,
     "performance": 2,
     "created_at": "2019-08-20T04:56:27.897Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 286,
@@ -4028,8 +3879,7 @@
     "profitMargin": 48,
     "performance": 24,
     "created_at": "2019-08-20T02:35:43.835Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 289,
@@ -4042,8 +3892,7 @@
     "profitMargin": 84,
     "performance": 89,
     "created_at": "2019-08-19T10:25:57.142Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 290,
@@ -4070,8 +3919,7 @@
     "profitMargin": 23,
     "performance": 13,
     "created_at": "2019-08-19T09:50:10.286Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 292,
@@ -4084,8 +3932,7 @@
     "profitMargin": 19,
     "performance": 21,
     "created_at": "2019-08-19T15:52:39.333Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 293,
@@ -4168,8 +4015,7 @@
     "profitMargin": 15,
     "performance": 37,
     "created_at": "2019-08-20T02:50:29.808Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 299,
@@ -4182,8 +4028,7 @@
     "profitMargin": 1,
     "performance": 71,
     "created_at": "2019-08-20T09:20:34.198Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   },
   {
     "ranking": 300,
@@ -4196,7 +4041,6 @@
     "profitMargin": 85,
     "performance": 44,
     "created_at": "2019-08-19T23:11:06.774Z",
-    "retiring": null,
-    "isCharity": true
+    "retiring": null
   }
 ]

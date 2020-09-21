@@ -7,14 +7,11 @@ fragment StakePoolOverview on StakePool {
     hash
   }
   pledge,
-  retirement {
+  retirements {
     announcedIn {
       includedAt
     }
-    inEffectFrom {
-      number
-      startedAt
-    }
+    inEffectFrom
   }
   rewardAddress
   url

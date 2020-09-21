@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
-import { useObservableEffect } from '../../../../lib/mobx/react';
+import { Observer } from 'mobx-react-lite';
+import React from 'react';
 import { useStakePools } from '../../context';
 import UnmoderatedDataWarning from '../consent/UnmoderatedDataWarning';
 import StakePools from './StakePools';
 
 export const StakePoolsContainer = () => {
-  const { store, actions } = useStakePools();
-  const { stakePoolsList } = store;
-  const { handleAcceptUnmoderatedData } = actions;
-  const [showUnmoderatedData, setShowUnmoderatedData] = useState(
-    store.showUnmoderatedData
+  const stakePools = useStakePools();
+  const { handleAcceptUnmoderatedData } = stakePools.actions;
+
+  return (
+    <Observer>
+      {() =>
+        stakePools.store.showUnmoderatedData ? (
+          <StakePools stakePoolsList={stakePools.store.stakePoolsList} />
+        ) : (
+          <UnmoderatedDataWarning
+            onAcceptUnmoderatedData={handleAcceptUnmoderatedData.trigger}
+          />
+        )
+      }
+    </Observer>
   );
-
-  // Observe and update consent flag
-  useObservableEffect(() => {
-    setShowUnmoderatedData(store.showUnmoderatedData);
-  });
-
-  if (!showUnmoderatedData) {
-    return (
-      <UnmoderatedDataWarning
-        onAcceptUnmoderatedData={handleAcceptUnmoderatedData.trigger}
-      />
-    );
-  }
-  return <StakePools stakePoolsList={stakePoolsList} />;
 };
