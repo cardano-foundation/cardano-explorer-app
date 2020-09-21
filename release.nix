@@ -7,22 +7,23 @@
 #
 ############################################################################
 {
-  rev ? null
+  cardano-explorer-app ? { rev = null; }
 }:
 
 let
-  sources = import ./nix/sources.nix;
-  pkgs = import sources.nixpkgs {
-    config = {}; overlays = [];
-  };
+  pkgs = import ./nix/pkgs.nix {};
 
 in
 
 pkgs.lib.fix (self: {
-  inherit ( import ./. {} ) static yarn-static allowList;
-  build-version = pkgs.writeText "version.json" (builtins.toJSON { inherit rev; });
+  inherit ( import ./. ) allowList cardano-explorer-app static;
+  build-version = pkgs.writeText "version.json" (builtins.toJSON { inherit (cardano-explorer-app) rev; });
   required = pkgs.releaseTools.aggregate {
     name = "required";
-    constituents = with self; [ static allowList build-version ];
+    constituents = with self; [
+      allowList
+      build-version
+      static
+    ];
   };
 })
