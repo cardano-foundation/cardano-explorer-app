@@ -153,6 +153,8 @@
   "transaction": {
     "block": "Block",
     "confirmations": "Confirmations",
+    "deposit": "Deposit",
+    "depositReclaim": "Deposit Reclaim",
     "epoch": "Epoch",
     "fee": "Transaction Fee",
     "from": "From addresses",

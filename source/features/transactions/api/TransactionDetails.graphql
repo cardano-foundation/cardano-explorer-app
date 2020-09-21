@@ -5,6 +5,7 @@ fragment TransactionDetails on Transaction {
     number,
     slotNo,
   }
+  deposit,
   fee,
   hash,
   includedAt,

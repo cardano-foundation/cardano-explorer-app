@@ -20,6 +20,7 @@ export interface ITransactionDetails {
     number?: number | null;
     slot?: number | null;
   };
+  deposit: string;
   fee: string;
   id: string;
   includedAt: Date;
