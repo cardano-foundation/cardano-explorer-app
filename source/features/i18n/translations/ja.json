@@ -4,7 +4,8 @@
     "pageTitle": "アドレス | $t(productTitle)",
     "summaryAddressLabel": "アドレス",
     "summaryBalanceLabel": "最終残高",
-    "summaryTransactionsLabel": "トランザクション"
+    "summaryTransactionsLabel": "トランザクション",
+    "totalWithdrawn": "全額引き出し"
   },
   "block": {
     "blocks": "ブロック",
@@ -166,7 +167,7 @@
     "summary": "概要",
     "totalOutput": "総アウトプット",
     "transactionLabel": "トランザクション",
-    "transactionsLabel": "トランザクション",
-    "withdrawals": "!!withdrawals"
-  }
+    "transactionsLabel": "トランザクション"
+  },
+  "withdrawals": "引き出し"
 }

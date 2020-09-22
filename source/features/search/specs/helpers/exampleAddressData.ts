@@ -1,4 +1,4 @@
-export const exampleAddressData = {
+export const examplePaymentAddressData = {
   address: 'Ae2tdPwUPEZBZTsRj7nGvvWQDTkqD9KLpCPpuZvjA1roL7KLDDVgkPU5S8j',
   finalBalance: '0',
   transactions: [
@@ -24,4 +24,10 @@ export const exampleAddressData = {
     },
   ],
   transactionsCount: '2',
+};
+
+export const exampleStakeAddressData = {
+  address: 'stake1u8gu2vzsk2nc6hsphudhl3p6aum7nd59ajqjg9zp00uvxcqwsdray',
+  totalWithdrawn: '1563.774139',
+  transactionsCount: '1',
 };
