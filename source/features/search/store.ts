@@ -3,9 +3,12 @@ import { ActionProps, createActionBindings } from '../../lib/ActionBinding';
 import Reaction, { createReactions } from '../../lib/mobx/Reaction';
 import { Store } from '../../lib/Store';
 import { isDefined } from '../../lib/types';
-import { addressDetailTransformer } from '../address/api/transformers';
+import {
+  paymentAddressDetailTransformer,
+  stakeAddressDetailTransformer
+} from '../address/api/transformers';
 import { ADDRESS_SEARCH_RESULT_PATH } from '../address/config';
-import { IAddressSummary } from '../address/types';
+import { IAddressSummary, IPaymentAddressSummary, IStakeAddressSummary } from '../address/types';
 import { blockDetailsTransformer } from '../blocks/api/transformers';
 import { BLOCK_SEARCH_RESULT_PATH } from '../blocks/config';
 import { IBlockDetailed } from '../blocks/types';
@@ -31,9 +34,10 @@ export enum SearchType {
 }
 
 export class SearchStore extends Store {
-  @observable public addressSearchResult: IAddressSummary | null = null;
   @observable public blockSearchResult: IBlockDetailed | null = null;
   @observable public epochSearchResult: IEpochOverview | null = null;
+  @observable public paymentAddressSearchResult: IPaymentAddressSummary | null = null;
+  @observable public stakeAddressSearchResult: IStakeAddressSummary | null = null;
   @observable public transactionSearchResult: ITransactionDetails | null = null;
 
   private readonly searchApi: SearchApi;
@@ -71,7 +75,8 @@ export class SearchStore extends Store {
           this.onSearchByEpochNumberRequested,
         ],
         [this.searchActions.searchById, this.searchById],
-        [this.searchActions.searchForAddress, this.searchForAddress],
+        [this.searchActions.searchForPaymentAddress, this.searchForPaymentAddress],
+        [this.searchActions.searchForStakeAddress, this.searchForStakeAddress],
         [
           this.searchActions.searchForBlockByNumber,
           this.searchForBlockByNumber,
@@ -98,11 +103,12 @@ export class SearchStore extends Store {
 
   @computed get isSearching() {
     return (
-      this.searchApi.searchForAddressQuery.isExecuting ||
-      this.searchApi.searchForBlockByNumberQuery.isExecuting ||
       this.searchApi.searchByIdQuery.isExecuting ||
       this.searchApi.searchForBlockByNumberQuery.isExecuting ||
-      this.searchApi.searchForEpochByNumberQuery.isExecuting
+      this.searchApi.searchForBlockByNumberQuery.isExecuting ||
+      this.searchApi.searchForEpochByNumberQuery.isExecuting ||
+      this.searchApi.searchForPaymentAddressQuery.isExecuting ||
+      this.searchApi.searchForStakeAddressQuery.isExecuting
     );
   }
 
@@ -189,20 +195,20 @@ export class SearchStore extends Store {
     });
   };
 
-  @action private searchForAddress = async ({
-    address,
+  @action private searchForPaymentAddress = async ({
+    address
   }: {
     address: string;
   }) => {
     // Do not execute queries more than necessary!
     if (
-      this.searchApi.searchForAddressQuery.isExecuting ||
-      this.addressSearchResult?.address === address
+      this.searchApi.searchForPaymentAddressQuery.isExecuting ||
+      this.paymentAddressSearchResult?.address === address
     ) {
       return;
     }
-    this.addressSearchResult = null;
-    const result = await this.searchApi.searchForAddressQuery.execute({
+    this.paymentAddressSearchResult = null;
+    const result = await this.searchApi.searchForPaymentAddressQuery.execute({
       address,
     });
     if (isDefined(result)) {
@@ -215,7 +221,35 @@ export class SearchStore extends Store {
         });
       }
       runInAction(() => {
-        this.addressSearchResult = addressDetailTransformer(address, result);
+        this.paymentAddressSearchResult = paymentAddressDetailTransformer(address, result);
+      });
+    }
+  };
+
+  @action private searchForStakeAddress = async ({
+    address,
+  }: {
+    address: string;
+  }) => {
+    // Do not execute queries more than necessary!
+    if (
+      this.searchApi.searchForStakeAddressQuery.isExecuting ||
+      this.stakeAddressSearchResult?.address === address
+    ) {
+      return;
+    }
+    this.stakeAddressSearchResult = null;
+    const result = await this.searchApi.searchForStakeAddressQuery.execute({
+      address,
+    });
+    if (isDefined(result)) {
+      if (result.withdrawals_aggregate?.aggregate?.count === '0') {
+        return this.searchActions.unknownSearchRequested.trigger({
+          query: address,
+        });
+      }
+      runInAction(() => {
+        this.stakeAddressSearchResult = stakeAddressDetailTransformer(address, result);
       });
     }
   };

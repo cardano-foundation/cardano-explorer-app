@@ -4,7 +4,8 @@
     "pageTitle": "$t(address.addressLabel) | $t(productTitle)",
     "summaryAddressLabel": "$t(address.addressLabel)",
     "summaryBalanceLabel": "Insgesamt",
-    "summaryTransactionsLabel": "Transaktionen"
+    "summaryTransactionsLabel": "Transaktionen",
+    "totalWithdrawn": "Insgesamt Ausbezahlt"
   },
   "block": {
     "blocks": "Blöcke",
@@ -167,5 +168,6 @@
     "totalOutput": "Output Insgesamt",
     "transactionLabel": "Transaktion",
     "transactionsLabel": "Transaktionen"
-  }
+  },
+  "withdrawals": "Abhebungen"
 }

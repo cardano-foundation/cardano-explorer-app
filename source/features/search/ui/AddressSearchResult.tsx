@@ -25,36 +25,49 @@ export const AddressSearchResult = () => {
     const { query } = navigation.store;
     const { address } = query;
     if (isString(address)) {
-      actions.searchForAddress.trigger({ address });
+      if (address.substring(0, 5) === 'stake') {
+        actions.searchForStakeAddress.trigger({ address });
+      } else {
+        actions.searchForPaymentAddress.trigger({ address });
+      }
     }
   });
   return (
     <Observer>
       {() => {
-        const { addressSearchResult } = store;
+        const { paymentAddressSearchResult, stakeAddressSearchResult } = store;
+        const address = paymentAddressSearchResult?.address || stakeAddressSearchResult?.address || null;
+        const transactionsCount = paymentAddressSearchResult?.transactionsCount || stakeAddressSearchResult?.transactionsCount;
         if (
-          !api.searchForAddressQuery.hasBeenExecutedAtLeastOnce ||
+          ( paymentAddressSearchResult && !api.searchForPaymentAddressQuery.hasBeenExecutedAtLeastOnce ) ||
+          ( stakeAddressSearchResult && !api.searchForStakeAddressQuery.hasBeenExecutedAtLeastOnce ) ||
           store.isSearching
         ) {
           return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
-        } else if (addressSearchResult) {
-          const {
-            address,
-            finalBalance,
-            transactionsCount,
-          } = addressSearchResult;
+        } else if (address !== null && transactionsCount !== null) {
           return (
             <>
               <div className={styles.addressSummary}>
-                <AddressSummary
-                  title={translate('address.addressLabel')}
-                  address={address}
-                  finalBalance={finalBalance}
-                  transactionsCount={transactionsCount}
-                />
+                { paymentAddressSearchResult && (
+                  <AddressSummary
+                    title={translate('address.addressLabel')}
+                    address={paymentAddressSearchResult.address}
+                    finalBalance={paymentAddressSearchResult.finalBalance}
+                    transactionsCount={paymentAddressSearchResult.transactionsCount}
+                  />
+                )}
+                { stakeAddressSearchResult && (
+                  <AddressSummary
+                    title={translate('address.addressLabel')}
+                    address={stakeAddressSearchResult.address}
+                    transactionsCount={stakeAddressSearchResult.transactionsCount}
+                    totalWithdrawals={stakeAddressSearchResult.totalWithdrawals}
+                    totalWithdrawn={stakeAddressSearchResult.totalWithdrawn}
+                  />
+                )}
               </div>
               <div className={styles.transactionList}>
-                <TransactionBrowser
+                {<TransactionBrowser
                   isLoading={
                     transactions.api.getAddressTransactionsQuery.isExecuting
                   }
@@ -83,9 +96,9 @@ export const AddressSearchResult = () => {
                   }}
                   perPage={navigation.store.query.perPage as string}
                   currentPage={(navigation.store.query.page as string) ?? 1}
-                  total={parseInt(transactionsCount, 10)}
+                  total={parseInt(paymentAddressSearchResult?.transactionsCount || stakeAddressSearchResult?.transactionsCount || '0', 10)}
                   transactions={transactions.store.browsedAddressTransactions}
-                />
+                />}
               </div>
             </>
           );

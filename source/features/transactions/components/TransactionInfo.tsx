@@ -18,6 +18,7 @@ import {
   ITransactionDetails,
   ITransactionInput,
   ITransactionOutput,
+  IWithdrawal,
 } from '../types';
 import styles from './TransactionInfo.module.scss';
 
@@ -48,7 +49,7 @@ const TransactionAddressMobile = (props: { address: string }) =>
     </>
   );
 
-type AddressInputOutput = ITransactionInput | ITransactionOutput;
+type AddressInputOutput = ITransactionInput | IWithdrawal | ITransactionOutput;
 
 interface IAddressesRowProps {
   addresses?: Array<AddressInputOutput>;
@@ -203,7 +204,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
         </div>
         <div className={styles.value}>
           <AddressesRow
-            addresses={props.inputs}
+            addresses={[...props.inputs, ...props.withdrawals]}
             highlightedAddress={props.highlightAddress}
             isMobile={isMobile}
           />

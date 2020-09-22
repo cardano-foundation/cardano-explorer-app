@@ -10,16 +10,18 @@ import { SearchStore } from './store';
  * Defines the actions that are supported by this feature
  */
 export class SearchActions {
+  public addressNotFound: Action<{ address: string }> = new Action();
   public addressSearchRequested: Action<{ address: string }> = new Action();
   public blockNumberSearchRequested: Action<{ number: number }> = new Action();
   public epochNumberSearchRequested: Action<{ number: number }> = new Action();
   public idSearchRequested: Action<{ id: string }> = new Action();
-  public unknownSearchRequested: Action<{ query: string }> = new Action();
   public searchById: Action<{ id: string }> = new Action();
-  public searchForAddress: Action<{ address: string }> = new Action();
+  public searchForPaymentAddress: Action<{ address: string }> = new Action();
+  public searchForStakeAddress: Action<{ address: string }> = new Action();
   public searchForBlockByNumber: Action<{ number: number }> = new Action();
   public searchForEpochByNumber: Action<{ number: number }> = new Action();
   public subscribeToEpoch: Action<{ number: number }> = new Action();
+  public unknownSearchRequested: Action<{ query: string }> = new Action();
   public unsubscribeFromEpoch: Action<void> = new Action();
 }
 
