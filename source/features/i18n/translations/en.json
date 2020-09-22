@@ -167,6 +167,7 @@
     "summary": "Summary",
     "totalOutput": "Total Output",
     "transactionLabel": "Transaction",
-    "transactionsLabel": "Transactions"
+    "transactionsLabel": "Transactions",
+    "withdrawals": "Withdrawals"
   }
 }

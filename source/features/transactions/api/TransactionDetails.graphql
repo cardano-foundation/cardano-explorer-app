@@ -21,4 +21,8 @@ fragment TransactionDetails on Transaction {
     value
   },
   totalOutput
+  withdrawals {
+    address
+    amount
+  }
 }

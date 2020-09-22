@@ -166,6 +166,7 @@
     "summary": "概要",
     "totalOutput": "総アウトプット",
     "transactionLabel": "トランザクション",
-    "transactionsLabel": "トランザクション"
+    "transactionsLabel": "トランザクション",
+    "withdrawals": "!!withdrawals"
   }
 }

@@ -13,6 +13,10 @@ export interface ITransactionOutput extends ICoin {
   index: number;
 }
 
+export interface IWithdrawal extends ICoin {
+  address: string;
+}
+
 export interface ITransactionDetails {
   block: {
     epoch?: number | '-';
@@ -27,4 +31,5 @@ export interface ITransactionDetails {
   inputs: ITransactionInput[];
   outputs?: ITransactionOutput[];
   totalOutput: string;
+  withdrawals: IWithdrawal[];
 }

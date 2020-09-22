@@ -166,6 +166,7 @@
     "summary": "Übersicht",
     "totalOutput": "Output Insgesamt",
     "transactionLabel": "Transaktion",
-    "transactionsLabel": "Transaktionen"
+    "transactionsLabel": "Transaktionen",
+    "withdrawals": "Abhebungen"
   }
 }
