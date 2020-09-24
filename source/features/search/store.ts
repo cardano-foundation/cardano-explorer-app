@@ -208,6 +208,7 @@ export class SearchStore extends Store {
       return;
     }
     this.paymentAddressSearchResult = null;
+    this.stakeAddressSearchResult = null;
     const result = await this.searchApi.searchForPaymentAddressQuery.execute({
       address,
     });
@@ -239,6 +240,7 @@ export class SearchStore extends Store {
       return;
     }
     this.stakeAddressSearchResult = null;
+    this.paymentAddressSearchResult = null;
     const result = await this.searchApi.searchForStakeAddressQuery.execute({
       address,
     });
