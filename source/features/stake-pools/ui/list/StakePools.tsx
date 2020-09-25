@@ -38,12 +38,12 @@ const StakePools = (props: IStakePoolsProps) => {
 
   return (
     <div className={styles.stakePoolsContainer}>
-      <DividerWithTitle title={translate('stakePools.stakePoolsTitle')} />
-      <StakePoolsSearch
-        search={search}
-        onSearch={setSearch}
-        onInputChange={handleInputChange}
-      />
+      {/*<DividerWithTitle title={translate('stakePools.stakePoolsTitle')} />*/}
+      {/*<StakePoolsSearch*/}
+      {/*  search={search}*/}
+      {/*  onSearch={setSearch}*/}
+      {/*  onInputChange={handleInputChange}*/}
+      {/*/>*/}
       <StakePoolsList
         stakePoolsList={filteredStakePoolsList}
         selectedPoolId={selectedPoolId}
