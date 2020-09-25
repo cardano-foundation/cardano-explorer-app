@@ -3,22 +3,30 @@ import { GraphQLRequest } from '../../../lib/graphql/GraphQLRequest';
 import {
   SearchByIdQuery,
   SearchByIdQueryVariables,
-  SearchForAddressQuery,
-  SearchForAddressQueryVariables,
   SearchForBlockByNumberQuery,
   SearchForBlockByNumberQueryVariables,
   SearchForEpochByNumberQuery,
   SearchForEpochByNumberQueryVariables,
+  SearchForPaymentAddressQuery,
+  SearchForPaymentAddressQueryVariables,
+  SearchForStakeAddressQuery,
+  SearchForStakeAddressQueryVariables
 } from '../../../typings/graphql-schema';
 import searchByIdQuery from './searchById.graphql';
-import searchForAddressQuery from './searchForAddress.graphql';
 import searchForBlockByNumberQuery from './searchForBlockByNumber.graphql';
 import searchForEpochByNumberQuery from './searchForEpochByNumber.graphql';
+import searchForPaymentAddressQuery from './searchForPaymentAddress.graphql';
+import searchForStakeAddressQuery from './searchForStakeAddress.graphql';
 
 export class SearchApi {
-  public searchForAddressQuery: GraphQLRequest<
-    SearchForAddressQuery,
-    SearchForAddressQueryVariables
+  public searchForPaymentAddressQuery: GraphQLRequest<
+    SearchForPaymentAddressQuery,
+    SearchForPaymentAddressQueryVariables
+  >;
+
+  public searchForStakeAddressQuery: GraphQLRequest<
+    SearchForStakeAddressQuery,
+    SearchForStakeAddressQueryVariables
   >;
 
   public searchByIdQuery: GraphQLRequest<
@@ -37,9 +45,13 @@ export class SearchApi {
   >;
 
   constructor(client: GraphQLClient) {
-    this.searchForAddressQuery = new GraphQLRequest(
+    this.searchForPaymentAddressQuery = new GraphQLRequest(
       client,
-      searchForAddressQuery
+      searchForPaymentAddressQuery
+    );
+    this.searchForStakeAddressQuery = new GraphQLRequest(
+      client,
+      searchForStakeAddressQuery
     );
     this.searchByIdQuery = new GraphQLRequest(client, searchByIdQuery);
     this.searchForBlockByNumberQuery = new GraphQLRequest(

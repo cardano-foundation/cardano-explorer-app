@@ -6,12 +6,30 @@ import styles from './AddressSummary.module.scss';
 
 export interface IAddressSummaryProps {
   address: string;
-  finalBalance: string;
   title: string;
   transactionsCount: string;
 }
 
-const AddressSummary = (props: IAddressSummaryProps) => {
+export interface IPaymentAddressSummaryProps extends IAddressSummaryProps {
+  finalBalance: string;
+}
+
+export interface IStakeAddressSummaryProps extends IAddressSummaryProps {
+  totalWithdrawn: string;
+  totalWithdrawals: string;
+}
+
+type AddressSummaryProps = IPaymentAddressSummaryProps | IStakeAddressSummaryProps
+
+function isPaymentAddress (props: AddressSummaryProps): props is IPaymentAddressSummaryProps {
+  return (props as IPaymentAddressSummaryProps).finalBalance !== undefined;
+}
+
+function isStakeAddress (props: AddressSummaryProps): props is IStakeAddressSummaryProps {
+  return (props as IStakeAddressSummaryProps).totalWithdrawn !== undefined;
+}
+
+const AddressSummary = (props: AddressSummaryProps) => {
   const { translate } = useI18nFeature().store;
   return (
     <div className={styles.addressSummaryContainer}>
@@ -32,12 +50,30 @@ const AddressSummary = (props: IAddressSummaryProps) => {
             </div>
             <div className={styles.infoValue}>{props.transactionsCount}</div>
           </div>
-          <div className={styles.infoRow}>
-            <div className={styles.infoLabel}>
-              {translate('address.summaryBalanceLabel')}
+          {isPaymentAddress(props) && (
+            <div className={styles.infoRow}>
+              <div className={styles.infoLabel}>
+                {translate('address.summaryBalanceLabel')}
+              </div>
+              <div className={styles.infoValue}>{props.finalBalance} ADA</div>
             </div>
-            <div className={styles.infoValue}>{props.finalBalance} ADA</div>
-          </div>
+          )}
+          {isStakeAddress(props) && (
+            <>
+              <div className={styles.infoRow}>
+                <div className={styles.infoLabel}>
+                  {translate('withdrawals')}
+                </div>
+                <div className={styles.infoValue}>{props.totalWithdrawals}</div>
+              </div>
+              <div className={styles.infoRow}>
+                <div className={styles.infoLabel}>
+                  {translate('address.totalWithdrawn')}
+                </div>
+                <div className={styles.infoValue}>{props.totalWithdrawn} ADA</div>
+              </div>
+            </>
+          )}
         </div>
         <div className={styles.qrcode}>
           <QRCode

@@ -4,7 +4,8 @@
     "pageTitle": "Address | $t(productTitle)",
     "summaryAddressLabel": "Address",
     "summaryBalanceLabel": "Final Balance",
-    "summaryTransactionsLabel": "Transactions"
+    "summaryTransactionsLabel": "Transactions",
+    "totalWithdrawn": "Total Withdrawn"
   },
   "block": {
     "blocks": "Blocks",
@@ -153,6 +154,8 @@
   "transaction": {
     "block": "Block",
     "confirmations": "Confirmations",
+    "deposit": "Deposit",
+    "depositReclaim": "Deposit Reclaim",
     "epoch": "Epoch",
     "fee": "Transaction Fee",
     "from": "From addresses",
@@ -166,5 +169,6 @@
     "totalOutput": "Total Output",
     "transactionLabel": "Transaction",
     "transactionsLabel": "Transactions"
-  }
+  },
+  "withdrawals": "Withdrawals"
 }
