@@ -1,9 +1,9 @@
 import { debounce } from 'lodash';
 import React, { useEffect, useState } from 'react';
-import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
-import { useI18nFeature } from '../../i18n/context';
-import { getFilteredStakePoolsList } from '../helpers';
-import { IStakePoolProps, IStakePoolsProps } from '../types';
+import DividerWithTitle from '../../../../widgets/divider-with-title/DividerWithTitle';
+import { useI18nFeature } from '../../../i18n/context';
+import { getFilteredStakePoolsList } from '../../helpers';
+import { IStakePoolProps, IStakePoolsProps } from '../../types';
 import styles from './StakePools.module.scss';
 import StakePoolsList from './StakePoolsList';
 import StakePoolsSearch from './StakePoolsSearch';
@@ -38,12 +38,12 @@ const StakePools = (props: IStakePoolsProps) => {
 
   return (
     <div className={styles.stakePoolsContainer}>
-      <DividerWithTitle title={translate('stakePools.stakePoolsTitle')} />
-      <StakePoolsSearch
-        search={search}
-        onSearch={setSearch}
-        onInputChange={handleInputChange}
-      />
+      {/*<DividerWithTitle title={translate('stakePools.stakePoolsTitle')} />*/}
+      {/*<StakePoolsSearch*/}
+      {/*  search={search}*/}
+      {/*  onSearch={setSearch}*/}
+      {/*  onInputChange={handleInputChange}*/}
+      {/*/>*/}
       <StakePoolsList
         stakePoolsList={filteredStakePoolsList}
         selectedPoolId={selectedPoolId}

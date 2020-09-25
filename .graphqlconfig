@@ -1,4 +1,4 @@
 {
   "name": "Cardano GraphQL Schema",
-  "schemaPath": "./schema.graphql"
+  "schemaPath": "./node_modules/@cardano-graphql/client-ts/api/schema.graphql"
 }

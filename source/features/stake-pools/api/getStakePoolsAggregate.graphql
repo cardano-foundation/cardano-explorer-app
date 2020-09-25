@@ -1,0 +1,7 @@
+query getStakePoolsAggregate {
+  stakePools_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

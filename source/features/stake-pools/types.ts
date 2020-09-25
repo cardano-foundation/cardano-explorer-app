@@ -1,7 +1,4 @@
 import { MouseEvent } from 'react';
-import { StakePoolsActions } from './actions';
-import { StakePoolsApi } from './api';
-import { StakePoolsStore } from './store';
 
 type GenericArgFn = (arg: string) => void;
 type GenericFn = () => void;
@@ -23,17 +20,16 @@ export interface IStakePoolsListProps {
   onClose: GenericFn;
 }
 export interface IStakePoolProps {
-  controlledStake: number;
-  created_at: string;
-  description: string;
+  // controlledStake: number;
+  // created_at: string;
+  // description: string;
   id: string;
-  isCharity: boolean;
-  name: string;
-  performance: number;
+  // name: string;
+  // performance: number;
   profitMargin: number;
   ranking: number;
   retiring: string | null;
-  ticker: string;
+  // ticker: string;
   url: string;
 }
 export interface IStakePoolTooltipPositionProps {
@@ -46,11 +42,7 @@ export interface IStakePoolTooltipProps {
   color: string;
   onClose: GenericFn;
 }
-export interface IStakePoolsContext {
-  actions: StakePoolsActions;
-  api: StakePoolsApi;
-  store: StakePoolsStore;
-}
+
 export interface IStakePoolThumbnailProps {
   stakePool: IStakePoolProps;
   children?: any;
@@ -58,6 +50,7 @@ export interface IStakePoolThumbnailProps {
   isSelected: boolean;
   onSelect(event: MouseEvent<HTMLElement>): void;
 }
+
 export interface IUnmoderatedDataWarning {
   onAcceptUnmoderatedData: (arg0: any) => void;
 }

@@ -1,0 +1,17 @@
+#import "./StakePoolOverview.graphql"
+
+query getStakePools(
+  $limit: Int!
+  $order: [StakePool_order_by!]
+  $offset: Int!
+  $where: StakePool_bool_exp
+) {
+  stakePools(
+    limit: $limit
+    order_by: $order
+    where: $where
+    offset: $offset
+  ) {
+    ...StakePoolOverview
+  }
+}

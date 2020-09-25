@@ -1,4 +1,4 @@
-import { useI18nFeature } from '../../i18n/context';
+import { useI18nFeature } from '../../../i18n/context';
 import styles from './UnmoderatedDataConsented.module.scss';
 
 export default () => {

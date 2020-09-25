@@ -1,3 +1,3 @@
-import { StakePoolsPage } from '../../features/stake-pools/ui/pages/StakePoolsPage';
+import { StakePoolsPage } from '../../features/stake-pools/ui/StakePoolsPage';
 
 export default StakePoolsPage;

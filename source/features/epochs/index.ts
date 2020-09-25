@@ -60,10 +60,10 @@ export const createEpochsFeature = (
     api: epochsApi,
     store: epochsStore,
     start() {
-      epochsStore.start();
+      return epochsStore.start();
     },
     stop() {
-      epochsStore.stop();
+      return epochsStore.stop();
     },
   };
 };

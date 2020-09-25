@@ -3,15 +3,15 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import utc from 'dayjs/plugin/utc';
 import React, { FC, useCallback, useEffect, useRef } from 'react';
-import { getColorFromRange } from '../../../lib/colors';
-import { useI18nFeature } from '../../i18n/context';
-import { IStakePoolTooltipProps } from '../types';
+import { getColorFromRange } from '../../../../lib/colors';
+import { useI18nFeature } from '../../../i18n/context';
+import { IStakePoolTooltipProps } from '../../types';
 import styles from './StakePoolTooltip.module.scss';
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
-const CloseCrossIcon = require('../../../public/assets/images/stake-pools/close-cross.svg');
-const ExternalLinkIcon = require('../../../public/assets/images/stake-pools/link-ic.svg');
+const CloseCrossIcon = require('../../../../public/assets/images/stake-pools/close-cross.svg');
+const ExternalLinkIcon = require('../../../../public/assets/images/stake-pools/link-ic.svg');
 
 const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
   stakePool,
@@ -19,14 +19,15 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
   position,
 }) => {
   const {
-    name,
-    description,
-    ticker,
+    // name,
+    // description,
+    // ticker,
+    id,
     url,
     ranking,
-    controlledStake,
+    // controlledStake,
     profitMargin,
-    performance,
+    // performance,
     retiring,
   } = stakePool;
   const { translate } = useI18nFeature().store;
@@ -66,17 +67,17 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
     <div className={stakePoolTooltipStyles} ref={tooltipNode}>
       <div className={styles.colorBand} style={colorBandStyle} />
       <div className={styles.container}>
-        <h3 className={styles.name}>{name}</h3>
+        <h3 className={styles.name}>{id}</h3>
         <button className={styles.closeButton} onClick={() => onClose()}>
           <CloseCrossIcon />
         </button>
-        <div className={styles.ticker}>{ticker}</div>
+        {/*<div className={styles.ticker}>{ticker}</div>*/}
         {retiring && (
           <div className={styles.retirement}>
             {translate('stakePools.retiring')} {retirementFromNow}
           </div>
         )}
-        <div className={styles.description}>{description}</div>
+        {/*<div className={styles.description}>{description}</div>*/}
         <a className={styles.url} href={url} target="_blank">
           <span className={styles.urlContent}>{url}</span>
           <ExternalLinkIcon className={styles.urlIcon} />
@@ -92,19 +93,19 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
               {ranking}
             </span>
           </dd>
-          <dt>{translate('stakePools.controlledStake')}</dt>
-          <dd className={styles.controlledStake}>
-            <span
-              style={{
-                background: getColorFromRange(controlledStake, {
-                  alpha,
-                  darken,
-                }),
-              }}
-            >
-              {controlledStake}%
-            </span>
-          </dd>
+          {/*<dt>{translate('stakePools.controlledStake')}</dt>*/}
+          {/*<dd className={styles.controlledStake}>*/}
+          {/*  <span*/}
+          {/*    style={{*/}
+          {/*      background: getColorFromRange(controlledStake, {*/}
+          {/*        alpha,*/}
+          {/*        darken,*/}
+          {/*      }),*/}
+          {/*    }}*/}
+          {/*  >*/}
+          {/*    {controlledStake}%*/}
+          {/*  </span>*/}
+          {/*</dd>*/}
           <dt>{translate('stakePools.profitMargin')}</dt>
           <dd className={styles.profitMargin}>
             <span
@@ -119,20 +120,20 @@ const StakePoolTooltip: FC<IStakePoolTooltipProps> = ({
               {profitMargin}%
             </span>
           </dd>
-          <dt>{translate('stakePools.performance')}</dt>
-          <dd className={styles.performance}>
-            <span
-              style={{
-                background: getColorFromRange(performance, {
-                  alpha,
-                  darken,
-                  reverse,
-                }),
-              }}
-            >
-              {performance}%
-            </span>
-          </dd>
+          {/*<dt>{translate('stakePools.performance')}</dt>*/}
+          {/*<dd className={styles.performance}>*/}
+          {/*  <span*/}
+          {/*    style={{*/}
+          {/*      background: getColorFromRange(performance, {*/}
+          {/*        alpha,*/}
+          {/*        darken,*/}
+          {/*        reverse,*/}
+          {/*      }),*/}
+          {/*    }}*/}
+          {/*  >*/}
+          {/*    {performance}%*/}
+          {/*  </span>*/}
+          {/*</dd>*/}
         </dl>
       </div>
     </div>

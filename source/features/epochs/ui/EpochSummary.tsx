@@ -1,13 +1,12 @@
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { observer } from 'mobx-react-lite';
-import CircularProgress, {
-  CircularProgressSize,
-} from '../../../widgets/circular-progress/CircularProgress';
+import React from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { useI18nFeature } from '../../i18n/context';
 import { IEpochOverview } from '../types';
 import styles from './EpochSummary.module.scss';
+import { EpochSummaryProgress } from './EpochSummaryProgress';
 
 dayjs.extend(utc);
 
@@ -24,18 +23,10 @@ const EpochSummary = ({ title, epoch }: IEpochSummaryProps) => {
         <DividerWithTitle title={title} />
       </div>
       <div className={styles.content}>
-        <CircularProgress
+        <EpochSummaryProgress
+          epochNumber={epoch.number}
           percentage={epoch.percentage}
-          size={CircularProgressSize.BIG}
-          showText
-          text={
-            <div className={styles.progressTextContent}>
-              <div className={styles.progressTextLabel}>
-                {translate('epochSummary.epoch')}
-              </div>
-              <div className={styles.progressTextValue}>{epoch.number}</div>
-            </div>
-          }
+          title={translate('epochSummary.epoch')}
         />
         <div className={styles.infoPanel}>
           <div className={styles.infoRow}>

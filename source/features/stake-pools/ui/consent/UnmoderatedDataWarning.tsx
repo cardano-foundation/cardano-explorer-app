@@ -1,7 +1,7 @@
-import Container from '../../../widgets/container/Container';
-import { useI18nFeature } from '../../i18n/context';
-import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
-import { IUnmoderatedDataWarning } from '../types';
+import Container from '../../../../widgets/container/Container';
+import { useI18nFeature } from '../../../i18n/context';
+import { LocalizedLink } from '../../../navigation/ui/LocalizedLink';
+import { IUnmoderatedDataWarning } from '../../types';
 import styles from './UnmoderatedDataWarning.module.scss';
 
 export default ({ onAcceptUnmoderatedData }: IUnmoderatedDataWarning) => {

@@ -1,0 +1,18 @@
+fragment StakePoolOverview on StakePool {
+  fixedCost
+  hash
+  margin
+  metadataHash
+  owners {
+    hash
+  }
+  pledge,
+  retirements {
+    announcedIn {
+      includedAt
+    }
+    inEffectFrom
+  }
+  rewardAddress
+  url
+}

@@ -106,9 +106,11 @@ $horizontal: 77px;
   display: inline-block;
   font-size: 14px;
   line-height: 1.36;
+  width: 200px;
   margin-bottom: 9px;
   opacity: 0.6;
   vertical-align: middle;
+  word-break: break-all;
 }
 
 .retirement {
@@ -140,10 +142,12 @@ $horizontal: 77px;
   font-size: 12px;
   line-height: 1.36;
   max-width: 100%;
+  display: inline-block;
+  margin-bottom: 10px;
 
   .urlContent {
     display: inline-block;
-    max-width: calc(100% - 14px);
+    max-width: calc(100% - 15px);
     overflow: hidden;
     text-overflow: ellipsis;
     vertical-align: middle;

@@ -9,9 +9,9 @@ export const environment = {
     GRAPHQL: {
       HTTP_URL: `${process.env.GRAPHQL_API_PROTOCOL || 'https'}://${
         process.env.GRAPHQL_API_HOST ||
-        'cardano-graphql-mainnet.daedalus-operations.com'
+        `explorer.cardano-${process.env.CARDANO_NETWORK || 'mainnet'}.iohk.io`
       }:${process.env.GRAPHQL_API_PORT || '443'}/${
-        process.env.GRAPHQL_API_PATH || ''
+        process.env.GRAPHQL_API_PATH || 'graphql'
       }`,
     },
     NETWORK:
@@ -24,7 +24,7 @@ export const environment = {
   IS_SERVER: !isNavigatorDefined,
   PACKAGE: {
     HOMEPAGE: process.env.PACKAGE_HOMEPAGE,
-    VERSION: process.env.PACKAGE_VERSION
+    VERSION: process.env.PACKAGE_VERSION,
   },
   POLLING_INTERVAL: Number(process.env.POLLING_INTERVAL) || 10000,
 };
