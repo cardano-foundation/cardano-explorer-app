@@ -4,7 +4,8 @@
     "pageTitle": "アドレス | $t(productTitle)",
     "summaryAddressLabel": "アドレス",
     "summaryBalanceLabel": "最終残高",
-    "summaryTransactionsLabel": "トランザクション"
+    "summaryTransactionsLabel": "トランザクション",
+    "totalWithdrawn": "全額引き出し"
   },
   "block": {
     "blocks": "ブロック",
@@ -152,6 +153,8 @@
   "transaction": {
     "block": "ブロック",
     "confirmations": "確認",
+    "deposit": "デポジット",
+    "depositReclaim": "デポジットの返還",
     "epoch": "エポック",
     "fee": "トランザクション手数料",
     "from": "送信元",
@@ -165,5 +168,6 @@
     "totalOutput": "総アウトプット",
     "transactionLabel": "トランザクション",
     "transactionsLabel": "トランザクション"
-  }
+  },
+  "withdrawals": "引き出し"
 }

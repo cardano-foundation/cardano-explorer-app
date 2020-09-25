@@ -2,6 +2,9 @@ fragment BlockOverview on Block {
   forgedAt
   slotLeader {
     description
+    stakePool {
+      hash
+    }
   }
   epochNo,
   hash

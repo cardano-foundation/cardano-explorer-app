@@ -1443,10 +1443,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cardano-graphql/client-ts@2.2.0-beta":
-  version "2.2.0-beta"
-  resolved "https://registry.yarnpkg.com/@cardano-graphql/client-ts/-/client-ts-2.2.0-beta.tgz#1dd59ccd5b4369e9f1806364df5012967345cb1f"
-  integrity sha512-YkXykkEe5oQ7kuol2dXBskhVx8CCl8D7VOrkuka98GcqMXaJml2q0XK0/L8frHVIw/GX6AgWX0Ue/+AR0BR4ag==
+"@cardano-graphql/client-ts@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@cardano-graphql/client-ts/-/client-ts-2.2.0.tgz#a8f725ab642a9605f9c4aee3b78d2a637f568675"
+  integrity sha512-1ob9UboUijZxXllSlaYtsoOWM4EXcmPlKyhm1o5+kY2qkD7lRzOs6TBpJegrU4xQX+TGhLALawP+l6lNiHIsTg==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
