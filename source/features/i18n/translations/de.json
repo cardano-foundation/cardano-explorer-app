@@ -4,7 +4,8 @@
     "pageTitle": "$t(address.addressLabel) | $t(productTitle)",
     "summaryAddressLabel": "$t(address.addressLabel)",
     "summaryBalanceLabel": "Insgesamt",
-    "summaryTransactionsLabel": "Transaktionen"
+    "summaryTransactionsLabel": "Transaktionen",
+    "totalWithdrawn": "Insgesamt Ausbezahlt"
   },
   "block": {
     "blocks": "Blöcke",
@@ -152,6 +153,8 @@
   "transaction": {
     "block": "Block",
     "confirmations": "Konfirmationen",
+    "deposit": "Kaution",
+    "depositReclaim": "Kautionsrückforderung",
     "epoch": "Epoche",
     "fee": "Transaktionsgebühr",
     "from": "Input-Adressen",
@@ -165,5 +168,6 @@
     "totalOutput": "Output Insgesamt",
     "transactionLabel": "Transaktion",
     "transactionsLabel": "Transaktionen"
-  }
+  },
+  "withdrawals": "Abhebungen"
 }

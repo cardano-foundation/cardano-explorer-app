@@ -18,6 +18,7 @@ import {
   ITransactionDetails,
   ITransactionInput,
   ITransactionOutput,
+  IWithdrawal,
 } from '../types';
 import styles from './TransactionInfo.module.scss';
 
@@ -48,7 +49,7 @@ const TransactionAddressMobile = (props: { address: string }) =>
     </>
   );
 
-type AddressInputOutput = ITransactionInput | ITransactionOutput;
+type AddressInputOutput = ITransactionInput | IWithdrawal | ITransactionOutput;
 
 interface IAddressesRowProps {
   addresses?: Array<AddressInputOutput>;
@@ -119,7 +120,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
     });
   };
   const epoch = props.block.epoch === '-' ? 0 : props.block.epoch;
-
+  const depositLabel = parseInt(props.deposit) >= 0 ? 'transaction.deposit' : 'transaction.depositReclaim'
   return (
     <div className={styles.root}>
       {props.title && (
@@ -203,7 +204,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
         </div>
         <div className={styles.value}>
           <AddressesRow
-            addresses={props.inputs}
+            addresses={[...props.inputs, ...props.withdrawals]}
             highlightedAddress={props.highlightAddress}
             isMobile={isMobile}
           />
@@ -226,6 +227,16 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
           />
         </div>
       </div>
+
+      {/* ===== DEPOSIT ===== */}
+      {props.deposit !== '0' && (
+        <div className={styles.row}>
+          <div className={styles.label}>
+            {translate(depositLabel)}
+          </div>
+          <div className={styles.value}>{Math.abs(parseInt(props.deposit))} ADA</div>
+        </div>
+      )}
 
       {/* ===== TOTAL OUTPUT ===== */}
 

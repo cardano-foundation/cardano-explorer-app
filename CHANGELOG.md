@@ -1,9 +1,23 @@
 Changelog
 =========
 
+## 1.2.0
+
+### Compatible with:
+
+- [`cardano-graphql`: `2.2.0`](https://github.com/input-output-hk/cardano-graphql/releases/tag/2.2.0)
+
+### Features
+- [show deposits and reclaims when present in transaction](https://github.com/input-output-hk/cardano-explorer-app/pull/361)
+- [add withdrawals to TransactionInfo](https://github.com/input-output-hk/cardano-explorer-app/pull/363)
+- [resolve stake address searches based on withdrawals](https://github.com/input-output-hk/cardano-explorer-app/pull/363)
+- [use stake pool hash over slot leader reference](https://github.com/input-output-hk/cardano-explorer-app/pull/364)
+### Chores
+- [use new combined cardano-graphql schema from client package, removing local build step](https://github.com/input-output-hk/cardano-explorer-app/pull/362)
+
 ## 1.1.0
 ### Features
-- [Split slots & blocks into separate columns](https://github.com/input-output-hk/cardano-explorer-app/pull/338)
+- [Split slots & blocks into separate columns](https://github.com/input-output-hk/cardano-explorer-app/pull/347)
 - [Add package.json version to footer](https://github.com/input-output-hk/cardano-explorer-app/pull/348)
 ### Chores
 - [Dynamically calc Byron epochs length](https://github.com/input-output-hk/cardano-explorer-app/pull/334)

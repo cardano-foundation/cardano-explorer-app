@@ -1,5 +1,5 @@
 overwrite: true
-schema: schema.graphql
+schema: node_modules/@cardano-graphql/client-ts/api/schema.graphql
 documents: "source/**/*.graphql"
 generates:
   generated/typings/graphql-schema.d.ts:

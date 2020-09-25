@@ -11,6 +11,7 @@ export const transactionDetailsTransformer = (
     id: tx.block?.hash,
     number: tx.block?.number,
   },
+  deposit: Currency.Util.lovelacesToAda(tx.deposit),
   fee: Currency.Util.lovelacesToAda(tx.fee),
   id: tx.hash,
   includedAt: new Date(tx.includedAt),
@@ -24,4 +25,8 @@ export const transactionDetailsTransformer = (
     value: Currency.Util.lovelacesToAda(i.value),
   })),
   totalOutput: Currency.Util.lovelacesToAda(tx.totalOutput),
+  withdrawals: tx.withdrawals?.filter(isDefined).map((i) => ({
+    address: i.address,
+    value: Currency.Util.lovelacesToAda(i.amount)
+  })) || []
 });
