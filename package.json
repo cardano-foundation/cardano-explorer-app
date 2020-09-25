@@ -1,6 +1,6 @@
 {
   "name": "cardano-explorer-app",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Cardano Explorer App",
   "author": "Daedalus Team @ Input Output HK",
   "license": "Apache-2.0",
@@ -71,7 +71,7 @@
     "@babel/plugin-transform-react-display-name": "7.8.3",
     "@babel/plugin-transform-react-jsx-self": "7.9.0",
     "@babel/plugin-transform-react-jsx-source": "7.9.0",
-    "@cardano-graphql/client-ts": "2.2.0-beta",
+    "@cardano-graphql/client-ts": "2.2.0",
     "@cypress/webpack-preprocessor": "4.1.1",
     "@graphql-codegen/cli": "1.2.0",
     "@graphql-codegen/typescript": "1.2.0",
