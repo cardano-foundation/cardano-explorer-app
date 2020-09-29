@@ -11,7 +11,6 @@ Changelog
 - [show deposits and reclaims when present in transaction](https://github.com/input-output-hk/cardano-explorer-app/pull/361)
 - [add withdrawals to TransactionInfo](https://github.com/input-output-hk/cardano-explorer-app/pull/363)
 - [resolve stake address searches based on withdrawals](https://github.com/input-output-hk/cardano-explorer-app/pull/363)
-- [use stake pool hash over slot leader reference](https://github.com/input-output-hk/cardano-explorer-app/pull/364)
 ### Chores
 - [use new combined cardano-graphql schema from client package, removing local build step](https://github.com/input-output-hk/cardano-explorer-app/pull/362)
 
