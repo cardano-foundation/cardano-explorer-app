@@ -16,13 +16,10 @@ export const blockOverviewTransformer = (
   } else {
     epoch = b.epochNo;
   }
-  const createdBy = b.slotLeader.stakePool?.hash !== undefined ?
-    shortenCreatedBy(b.slotLeader.stakePool.hash) :
-    formatSlotLeaderDescription(b.slotLeader.description)
   return {
     ...b,
     createdAt: b.forgedAt,
-    createdBy,
+    createdBy: formatCreatedBy(b.slotLeader.description),
     epoch,
     id: b.hash,
     number: b.number || '-',
@@ -53,11 +50,7 @@ export const blockDetailsTransformer = (
     .map(transactionDetailsTransformer),
 });
 
-function shortenCreatedBy (createdBy: string) {
-  return createdBy.substring(0, 7)
-}
-
-function formatSlotLeaderDescription (value: IBlockOverview['createdBy']): string {
+function formatCreatedBy(value: IBlockOverview['createdBy']): string {
   switch (value) {
     case 'Genesis slot leader':
       return 'Genesis';
@@ -68,7 +61,7 @@ function formatSlotLeaderDescription (value: IBlockOverview['createdBy']): strin
       if (!Array.isArray(selection)) {
         return '';
       }
-      return shortenCreatedBy(selection[1]);
+      return selection[1].substring(0, 7);
   }
 }
 
