@@ -1,7 +1,7 @@
 #import "./TransactionDetails.graphql"
 
 query getBlockTransactions(
-  $blockId: Hash32HexString!
+  $blockId: Hash32Hex!
   $offset: Int!
   $limit: Int!
 ) {
