@@ -2,7 +2,7 @@
 #import "../../transactions/api/TransactionDetails.graphql"
 
 query searchById(
-  $id: Hash32HexString!
+  $id: Hash32Hex!
 ) {
   blocks(
     where: {

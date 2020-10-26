@@ -1,7 +1,7 @@
 #import "../../transactions/api/TransactionDetails.graphql"
 
 query searchForStakeAddress(
-  $address: String!
+  $address: StakeAddress!
 ) {
   transactions_aggregate (
     where: {

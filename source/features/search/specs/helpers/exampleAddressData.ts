@@ -28,6 +28,6 @@ export const examplePaymentAddressData = {
 
 export const exampleStakeAddressData = {
   address: 'stake1u8gu2vzsk2nc6hsphudhl3p6aum7nd59ajqjg9zp00uvxcqwsdray',
-  totalWithdrawn: '1563.774139',
-  transactionsCount: '1',
+  totalWithdrawn: 1563.774139,
+  transactionsCount: 1,
 };
