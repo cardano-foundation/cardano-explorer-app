@@ -91,7 +91,8 @@ storiesOf('Stake Pools|Components', module)
   ))
   .add('UnmoderatedDataWarning', () => (
     <UnmoderatedDataWarning
+      type="stakePools"
       onAcceptUnmoderatedData={action('onAcceptUnmoderatedData')}
     />
   ))
-  .add('UnmoderatedDataConsented', () => <UnmoderatedDataConsented />);
+  .add('UnmoderatedDataConsented', () => <UnmoderatedDataConsented type="stakePools" />);

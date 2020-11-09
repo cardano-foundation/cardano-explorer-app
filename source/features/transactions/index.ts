@@ -17,6 +17,7 @@ export class TransactionsActions {
     offset: number;
     limit: number;
   }> = new Action();
+  public handleAcceptUnmoderatedData: Action<any> = new Action();
 }
 
 /**

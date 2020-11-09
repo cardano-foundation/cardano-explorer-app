@@ -1,5 +1,8 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import UnmoderatedDataConsented from '../source/features/stake-pools/components/UnmoderatedDataConsented';
+import UnmoderatedDataWarning from '../source/features/stake-pools/components/UnmoderatedDataWarning';
 import TransactionInfo from '../source/features/transactions/components/TransactionInfo';
 import TransactionList from '../source/features/transactions/components/TransactionList';
 import { ITransactionDetails } from '../source/features/transactions/types';
@@ -168,4 +171,11 @@ storiesOf('Transactions', module)
         title: 'Transaction',
       }))}
     />
-  ));
+  ))
+  .add('UnmoderatedDataWarning', () => (
+    <UnmoderatedDataWarning
+      type="transactions"
+      onAcceptUnmoderatedData={action('onAcceptUnmoderatedData')}
+    />
+  ))
+  .add('UnmoderatedDataConsented', () => <UnmoderatedDataConsented type="transaction" />);
