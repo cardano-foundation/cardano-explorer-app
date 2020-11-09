@@ -16,6 +16,7 @@ export const transactions: ITransactionDetails[] = [
       number: 11044,
       slot: 11044,
     },
+    deposit: '171246',
     fee: '171246',
     id: 'b81c5239789f54e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196',
     includedAt: new Date(1570095392000),
@@ -44,6 +45,12 @@ export const transactions: ITransactionDetails[] = [
       },
     ],
     totalOutput: '224909.277897',
+    withdrawals: [
+      {
+        address: 'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
+        value: '6510253',
+      }
+    ],
   },
   {
     block: {
@@ -52,6 +59,7 @@ export const transactions: ITransactionDetails[] = [
       number: 11044,
       slot: 11044,
     },
+    deposit: '171246',
     fee: '171246',
     id: '4e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196b81c5239789f5',
     includedAt: new Date(1570095392000),
@@ -80,6 +88,12 @@ export const transactions: ITransactionDetails[] = [
       },
     ],
     totalOutput: '224909.277897',
+    withdrawals: [
+      {
+        address: 'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
+        value: '6510253',
+      }
+    ],
   },
   {
     block: {
@@ -88,6 +102,7 @@ export const transactions: ITransactionDetails[] = [
       number: 11044,
       slot: 11044,
     },
+    deposit: '171246',
     fee: '171246',
     id: '4e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196b81c5239789f6',
     includedAt: new Date(1570095392000),
@@ -116,6 +131,12 @@ export const transactions: ITransactionDetails[] = [
       },
     ],
     totalOutput: '24613897277',
+    withdrawals: [
+      {
+        address: 'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
+        value: '6510253',
+      }
+    ],
   },
 ];
 
