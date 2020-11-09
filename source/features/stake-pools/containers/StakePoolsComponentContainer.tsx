@@ -12,6 +12,7 @@ export const StakePoolsComponentContainerRaw = () => {
   if (!showUnmoderatedData) {
     return (
       <UnmoderatedDataWarning
+        type="stakePools"
         onAcceptUnmoderatedData={handleAcceptUnmoderatedData.trigger}
       />
     );

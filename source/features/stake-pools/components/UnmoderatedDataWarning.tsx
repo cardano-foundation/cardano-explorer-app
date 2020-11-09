@@ -4,26 +4,26 @@ import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
 import { IUnmoderatedDataWarning } from '../types';
 import styles from './UnmoderatedDataWarning.module.scss';
 
-export default ({ onAcceptUnmoderatedData }: IUnmoderatedDataWarning) => {
+export default ({ onAcceptUnmoderatedData, type }: IUnmoderatedDataWarning) => {
   const { translate } = useI18nFeature().store;
   return (
     <div className={styles.unmoderatedDataWarningContainer}>
       <Container>
         <div className={styles.contentTop}>
           <h2>
-            <b>{translate('stakePools.unmoderatedWarning')}</b>{' '}
-            {translate('stakePools.unmoderatedStakePoolData')}
+            <b>{type === 'stakePools' ? translate('stakePools.unmoderatedWarning') : translate('transaction.unmoderatedWarning')}</b>{' '}
+            {type === 'stakePools' ? translate('stakePools.unmoderatedStakePoolData') : translate('transaction.unmoderatedTransactionData')}
           </h2>
-          <p>{translate('stakePools.unmoderatedPoolTickerSymbols')}</p>
-          <p>{translate('stakePools.unmoderatedEntitiesControl')}</p>
-          <p>{translate('stakePools.unmoderatedContent')}</p>
+          <p>{type === 'stakePools' ? translate('stakePools.unmoderatedPoolTickerSymbols') : translate('transaction.unmoderatedPoolTickerSymbols')}</p>
+          <p>{type === 'stakePools' ? translate('stakePools.unmoderatedEntitiesControl') : translate('transaction.unmoderatedEntitiesControl')}</p>
+          <p>{type === 'stakePools' ? translate('stakePools.unmoderatedContent') : translate('transaction.unmoderatedContent')}</p>
         </div>
         <div className={styles.contentBottom}>
           <LocalizedLink href="">
-            <span>{translate('stakePools.unmoderatedLeave')}</span>
+            <span>{type === 'stakePools' ? translate('stakePools.unmoderatedLeave') : translate('transaction.unmoderatedLeave')}</span>
           </LocalizedLink>
           <button onClick={onAcceptUnmoderatedData}>
-            {translate('stakePools.unmoderatedConfirmation')}
+            {type === 'stakePools' ? translate('stakePools.unmoderatedConfirmation') : translate('transaction.unmoderatedConfirmation')}
           </button>
         </div>
       </Container>
