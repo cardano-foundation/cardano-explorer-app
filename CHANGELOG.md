@@ -11,6 +11,7 @@ Compatibility upgrade
 
 ### Fixes
 - scope withdrawals query to address ([cad9e3f](https://github.com/input-output-hk/cardano-explorer-app/commit/cad9e3f48948cbe6bfb6f6adb795a6bc06fde2fb))
+- check search strings for shelley-era addresses, to avoid clash with testnet stake addresses and hashes ([58c004a](https://github.com/input-output-hk/cardano-explorer-app/commit/58c004a4422c01aef320802bb780361a93334a27))
 
 ## 1.2.0
 
