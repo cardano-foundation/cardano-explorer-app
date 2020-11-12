@@ -1,15 +1,15 @@
 #import "./TransactionDetails.graphql"
 
-query getBlockTransactions(
-  $blockId: Hash32Hex!
+query getStakeAddressTransactions(
+  $address: StakeAddress!
   $offset: Int!
   $limit: Int!
 ) {
   transactions(
     where: {
-      block: {
-        hash: {
-          _eq: $blockId
+      withdrawals: {
+        address: {
+          _eq: $address
         }
       }
     }
