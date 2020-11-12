@@ -16,7 +16,13 @@ query searchForStakeAddress(
       count
     }
   }
-  withdrawals {
+  withdrawals (
+    where: {
+      address: {
+        _eq: $address
+      }
+    }
+  ) {
     transaction {
       ...TransactionDetails
     }
