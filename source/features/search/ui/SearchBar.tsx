@@ -21,7 +21,11 @@ export const SearchBar = (props: ISearchBarProps) => {
   const networkInfo = useNetworkInfoFeature().store;
   const introspectQuery = (query: string, type?: string) => {
     const typeOfSearch = type ? type : searchType;
-    if (query?.length === 64) {
+    if (query.substring(0, 4) === 'addr' || query.substring(0, 5) === 'stake') {
+      search.actions.addressSearchRequested.trigger({
+        address: query,
+      });
+    } else if (query?.length === 64) {
       search.actions.idSearchRequested.trigger({ id: query });
     } else if (/^\d+$/.test(query)) {
       const searchNumber = parseInt(query, 10);
@@ -42,6 +46,7 @@ export const SearchBar = (props: ISearchBarProps) => {
         }
       }
     } else {
+      // Byron-era addresses have no prefix or standard length
       search.actions.addressSearchRequested.trigger({
         address: query,
       });
