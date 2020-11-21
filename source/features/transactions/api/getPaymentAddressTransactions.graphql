@@ -1,6 +1,6 @@
 #import "./TransactionDetails.graphql"
 
-query getAddressTransactions(
+query getPaymentAddressTransactions(
   $address: String!
   $offset: Int!
   $limit: Int!
@@ -8,12 +8,6 @@ query getAddressTransactions(
   transactions(
     where: {
       _or: [{
-        withdrawals: {
-          address: {
-            _eq: $address
-          }
-        }
-      }, {
         inputs: {
           address: {
             _eq: $address

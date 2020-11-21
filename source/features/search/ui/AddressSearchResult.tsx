@@ -36,8 +36,11 @@ export const AddressSearchResult = () => {
     <Observer>
       {() => {
         const { paymentAddressSearchResult, stakeAddressSearchResult } = store;
-        const address = paymentAddressSearchResult?.address || stakeAddressSearchResult?.address || null;
-        const transactionsCount = paymentAddressSearchResult?.transactionsCount || stakeAddressSearchResult?.transactionsCount;
+        const address = paymentAddressSearchResult?.address ||
+          stakeAddressSearchResult?.address ||
+          null;
+        const transactionsCount = paymentAddressSearchResult?.transactionsCount ||
+          stakeAddressSearchResult?.transactionsCount;
         if (
           ( paymentAddressSearchResult && !api.searchForPaymentAddressQuery.hasBeenExecutedAtLeastOnce ) ||
           ( stakeAddressSearchResult && !api.searchForStakeAddressQuery.hasBeenExecutedAtLeastOnce ) ||
@@ -69,10 +72,13 @@ export const AddressSearchResult = () => {
               <div className={styles.transactionList}>
                 {<TransactionBrowser
                   isLoading={
-                    transactions.api.getAddressTransactionsQuery.isExecuting
+                    transactions.api.getPaymentAddressTransactionsQuery.isExecuting ||
+                    transactions.api.getStakeAddressTransactionsQuery.isExecuting
                   }
                   isLoadingFirstTime={
-                    transactions.api.getAddressTransactionsQuery
+                    transactions.api.getPaymentAddressTransactionsQuery
+                      .isExecutingTheFirstTime ||
+                    transactions.api.getStakeAddressTransactionsQuery
                       .isExecutingTheFirstTime
                   }
                   onChangePage={(page) => {
@@ -96,7 +102,8 @@ export const AddressSearchResult = () => {
                   }}
                   perPage={navigation.store.query.perPage as string}
                   currentPage={(navigation.store.query.page as string) ?? 1}
-                  total={parseInt(paymentAddressSearchResult?.transactionsCount || stakeAddressSearchResult?.transactionsCount || '0', 10)}
+                  total={parseInt(paymentAddressSearchResult?.transactionsCount ||
+                    stakeAddressSearchResult?.transactionsCount || '0', 10)}
                   transactions={transactions.store.browsedAddressTransactions}
                 />}
               </div>

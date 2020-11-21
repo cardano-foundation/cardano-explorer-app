@@ -58,17 +58,32 @@ export class TransactionsStore extends Store {
       typeof TransactionsActions.prototype.browseAddressTransactions
     >
   ): Promise<void> => {
-    // Do not execute queries multiple times!
-    if (this.api.getAddressTransactionsQuery.isExecuting) {
-      return;
-    }
-    const result = await this.api.getAddressTransactionsQuery.execute(params);
-    if (result) {
-      runInAction(() => {
-        this.browsedAddressTransactions = result.transactions
-          .filter(isDefined)
-          .map(transactionDetailsTransformer);
-      });
+    if (params.address.substring(0, 5) === 'stake') {
+      // Do not execute queries multiple times!
+      if (this.api.getStakeAddressTransactionsQuery.isExecuting) {
+        return;
+      }
+      const result = await this.api.getStakeAddressTransactionsQuery.execute(params);
+      if (result) {
+        runInAction(() => {
+          this.browsedAddressTransactions = result.transactions
+            .filter(isDefined)
+            .map(transactionDetailsTransformer);
+        });
+      }
+    } else {
+      // Do not execute queries multiple times!
+      if (this.api.getPaymentAddressTransactionsQuery.isExecuting) {
+        return;
+      }
+      const result = await this.api.getPaymentAddressTransactionsQuery.execute(params);
+      if (result) {
+        runInAction(() => {
+          this.browsedAddressTransactions = result.transactions
+            .filter(isDefined)
+            .map(transactionDetailsTransformer);
+        });
+      }
     }
   };
 
