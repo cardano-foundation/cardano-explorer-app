@@ -71,7 +71,7 @@
     "@babel/plugin-transform-react-display-name": "7.8.3",
     "@babel/plugin-transform-react-jsx-self": "7.9.0",
     "@babel/plugin-transform-react-jsx-source": "7.9.0",
-    "@cardano-graphql/client-ts": "3.0.0-beta.1",
+    "@cardano-graphql/client-ts": "3.0.0",
     "@cypress/webpack-preprocessor": "4.1.1",
     "@graphql-codegen/cli": "1.2.0",
     "@graphql-codegen/typescript": "1.2.0",

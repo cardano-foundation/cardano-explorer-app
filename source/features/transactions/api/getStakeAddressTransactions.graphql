@@ -1,0 +1,21 @@
+#import "./TransactionDetails.graphql"
+
+query getStakeAddressTransactions(
+  $address: StakeAddress!
+  $offset: Int!
+  $limit: Int!
+) {
+  transactions(
+    where: {
+      withdrawals: {
+        address: {
+          _eq: $address
+        }
+      }
+    }
+    offset: $offset
+    limit: $limit
+  ) {
+    ...TransactionDetails
+  }
+}
