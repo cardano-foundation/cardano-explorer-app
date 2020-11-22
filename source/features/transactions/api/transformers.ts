@@ -26,8 +26,9 @@ export const transactionDetailsTransformer = (
     value: Currency.Util.lovelacesToAda(i.value),
   })),
   totalOutput: Currency.Util.lovelacesToAda(tx.totalOutput),
-  withdrawals: tx.withdrawals?.filter(isDefined).map((i) => ({
-    address: i.address,
-    value: Currency.Util.lovelacesToAda(i.amount)
-  })) || []
+  withdrawals:
+    tx.withdrawals?.filter(isDefined).map((i) => ({
+      address: i.address,
+      value: Currency.Util.lovelacesToAda(i.amount),
+    })) || [],
 });

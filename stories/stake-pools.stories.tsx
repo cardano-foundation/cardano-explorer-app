@@ -95,4 +95,6 @@ storiesOf('Stake Pools|Components', module)
       onAcceptUnmoderatedData={action('onAcceptUnmoderatedData')}
     />
   ))
-  .add('UnmoderatedDataConsented', () => <UnmoderatedDataConsented type="stakePools" />);
+  .add('UnmoderatedDataConsented', () => (
+    <UnmoderatedDataConsented type="stakePools" />
+  ));

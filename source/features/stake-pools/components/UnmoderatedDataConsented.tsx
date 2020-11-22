@@ -6,7 +6,9 @@ export default ({ type }: IUnmoderatedDataConsented) => {
   const { translate } = useI18nFeature().store;
   return (
     <div className={styles.unmoderatedDataConsentedContainer}>
-      {type ==='stakePools' ? translate('stakePools.unmoderated') : translate('transaction.unmoderated')}
+      {type === 'stakePools'
+        ? translate('stakePools.unmoderated')
+        : translate('transaction.unmoderated')}
     </div>
   );
 };

@@ -24,7 +24,7 @@ export const environment = {
   IS_SERVER: !isNavigatorDefined,
   PACKAGE: {
     HOMEPAGE: process.env.PACKAGE_HOMEPAGE,
-    VERSION: process.env.PACKAGE_VERSION
+    VERSION: process.env.PACKAGE_VERSION,
   },
   POLLING_INTERVAL: Number(process.env.POLLING_INTERVAL) || 10000,
 };

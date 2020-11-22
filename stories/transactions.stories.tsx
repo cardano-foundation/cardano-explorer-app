@@ -50,9 +50,10 @@ export const transactions: ITransactionDetails[] = [
     totalOutput: '224909.277897',
     withdrawals: [
       {
-        address: 'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
+        address:
+          'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
         value: '6510253',
-      }
+      },
     ],
   },
   {
@@ -93,9 +94,10 @@ export const transactions: ITransactionDetails[] = [
     totalOutput: '224909.277897',
     withdrawals: [
       {
-        address: 'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
+        address:
+          'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
         value: '6510253',
-      }
+      },
     ],
   },
   {
@@ -136,9 +138,10 @@ export const transactions: ITransactionDetails[] = [
     totalOutput: '24613897277',
     withdrawals: [
       {
-        address: 'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
+        address:
+          'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
         value: '6510253',
-      }
+      },
     ],
   },
 ];
@@ -178,4 +181,6 @@ storiesOf('Transactions', module)
       onAcceptUnmoderatedData={action('onAcceptUnmoderatedData')}
     />
   ))
-  .add('UnmoderatedDataConsented', () => <UnmoderatedDataConsented type="transaction" />);
+  .add('UnmoderatedDataConsented', () => (
+    <UnmoderatedDataConsented type="transaction" />
+  ));
