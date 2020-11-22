@@ -20,6 +20,7 @@ export const transactionDetailsTransformer = (
     sourceTxId: i.sourceTxHash,
     value: Currency.Util.lovelacesToAda(i.value),
   })),
+  metadata: tx.metadata,
   outputs: tx.outputs?.filter(isDefined).map((i) => ({
     ...i,
     value: Currency.Util.lovelacesToAda(i.value),

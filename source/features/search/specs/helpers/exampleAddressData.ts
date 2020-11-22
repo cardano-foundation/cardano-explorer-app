@@ -10,6 +10,7 @@ export const examplePaymentAddressData = {
       fee: '0',
       hash: '927edb96f3386ab91b5f5d85d84cb4253c65b1c2f65fa7df25f81fab1d62987a',
       inputs: [],
+      metadata: [],
       outputs: [
         {
           address:
