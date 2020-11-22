@@ -6,7 +6,9 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { useI18nFeature } from '../../i18n/context';
 import { useNavigationFeature } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
+import UnmoderatedDataWarning from '../../stake-pools/components/UnmoderatedDataWarning';
 import TransactionInfo from '../../transactions/components/TransactionInfo';
+import { useTransactionsFeature } from '../../transactions/context';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
 import NoSearchResult from './NoSearchResult';
@@ -16,6 +18,10 @@ export const TransactionSearchResult = () => {
   const { translate } = useI18nFeature().store;
   const search = useSearchFeature();
   const networkInfo = useNetworkInfoFeature();
+  const transactions = useTransactionsFeature();
+  const { store, actions } = transactions;
+  const { showUnmoderatedData } = store;
+  const { handleAcceptUnmoderatedData } = actions;
   const navigation = useNavigationFeature();
 
   useObservableEffect(() => {
@@ -36,8 +42,17 @@ export const TransactionSearchResult = () => {
         ) {
           return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
         } else if (transactionSearchResult) {
+          if (!showUnmoderatedData) {
+            return (
+              <UnmoderatedDataWarning
+                type="transactions"
+                onAcceptUnmoderatedData={handleAcceptUnmoderatedData.trigger}
+              />
+            );
+          }
           return (
             <TransactionInfo
+              showUnmoderatedData={showUnmoderatedData}
               dontLinkToTransaction
               navigation={navigation?.actions}
               networkBlockHeight={networkInfo.store.blockHeight}

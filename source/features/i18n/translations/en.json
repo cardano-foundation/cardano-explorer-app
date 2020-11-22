@@ -162,6 +162,7 @@
     "to": "To addresses",
     "id": "Transaction ID",
     "includedIn": "Included In",
+    "metadata": "Metadata",
     "noTransactions": "No Transactions",
     "pageTitle": "Transaction | $t(productTitle)",
     "receivedTime": "Received Time",

@@ -161,6 +161,7 @@
     "to": "送信先",
     "id": "トランザクションID",
     "includedIn": "含まれるブロック",
+    "metadata": "メタデータ",
     "noTransactions": "トランザクションはありません",
     "pageTitle": "トランザクション | $t(productTitle)",
     "receivedTime": "受信時間",

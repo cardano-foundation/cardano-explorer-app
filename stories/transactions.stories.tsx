@@ -33,6 +33,12 @@ export const transactions: ITransactionDetails[] = [
         value: '224251742344',
       },
     ],
+    metadata: [
+      {
+        key: 'meta',
+        value: 'Test metadata',
+      },
+    ],
     outputs: [
       {
         address:
@@ -77,6 +83,12 @@ export const transactions: ITransactionDetails[] = [
         value: '224251742344',
       },
     ],
+    metadata: [
+      {
+        key: 'meta',
+        value: 'Test metadata',
+      },
+    ],
     outputs: [
       {
         address:
@@ -119,6 +131,12 @@ export const transactions: ITransactionDetails[] = [
           'b81c5239789f54e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196',
         sourceTxIndex: 2,
         value: '224251742344',
+      },
+    ],
+    metadata: [
+      {
+        key: 'meta',
+        value: 'Test metadata',
       },
     ],
     outputs: [

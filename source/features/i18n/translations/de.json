@@ -161,6 +161,7 @@
     "to": "Output-Adressen",
     "id": "Transaktions-ID",
     "includedIn": "Inkludiert in",
+    "metadata": "Metadata",
     "noTransactions": "Keine Transaktionen",
     "pageTitle": "Transaktion | $t(productTitle)",
     "receivedTime": "Erhalten",
