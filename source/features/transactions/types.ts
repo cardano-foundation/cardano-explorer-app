@@ -33,7 +33,7 @@ export interface ITransactionDetails {
   id: string;
   includedAt: Date;
   inputs: ITransactionInput[];
-  metadata: ITransactionMetadata[];
+  metadata?: ITransactionMetadata[];
   outputs?: ITransactionOutput[];
   totalOutput: string;
   withdrawals: IWithdrawal[];
