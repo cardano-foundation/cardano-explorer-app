@@ -52,7 +52,6 @@ export const TransactionSearchResult = () => {
           }
           return (
             <TransactionInfo
-              showUnmoderatedData={showUnmoderatedData}
               dontLinkToTransaction
               navigation={navigation?.actions}
               networkBlockHeight={networkInfo.store.blockHeight}
