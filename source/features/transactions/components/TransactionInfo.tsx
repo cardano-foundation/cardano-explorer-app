@@ -243,7 +243,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
 
       {/* ===== METADATA ===== */}
 
-      {props.metadata && props.metadata.length > 0 && (
+      {props.metadata && (
         <div className={styles.row}>
           <div className={styles.label}>
             {translate('transaction.metadata')}
