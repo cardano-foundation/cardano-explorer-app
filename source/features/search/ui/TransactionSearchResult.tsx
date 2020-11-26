@@ -20,7 +20,6 @@ export const TransactionSearchResult = () => {
   const networkInfo = useNetworkInfoFeature();
   const transactions = useTransactionsFeature();
   const { store, actions } = transactions;
-  const { showUnmoderatedData } = store;
   const { handleAcceptUnmoderatedData } = actions;
   const navigation = useNavigationFeature();
 
@@ -36,6 +35,7 @@ export const TransactionSearchResult = () => {
     <Observer>
       {() => {
         const { transactionSearchResult } = search.store;
+        const { showUnmoderatedData } = store;
         if (
           !search.api.searchByIdQuery.hasBeenExecutedAtLeastOnce ||
           search.store.isSearching

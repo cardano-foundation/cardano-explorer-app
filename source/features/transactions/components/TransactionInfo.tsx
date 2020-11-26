@@ -101,24 +101,6 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
   const { translate } = useI18nFeature().store;
   const isMobile = window.innerWidth <= 768;
   const includedAtUtc = dayjs.utc(props.includedAt);
-  const onEpochNumberClick = (e: ITransactionDetails['block']['epoch']) => {
-    if ((!e && e !== 0) || e === '-') {
-      return;
-    }
-    props.navigation?.push.trigger({
-      path: EPOCH_SEARCH_RESULT_PATH,
-      query: { number: e },
-    });
-  };
-  const onBlockIdClick = (id: ITransactionDetails['block']['id']) => {
-    if (!id) {
-      return;
-    }
-    props.navigation?.push.trigger({
-      path: BLOCK_SEARCH_RESULT_PATH,
-      query: { id },
-    });
-  };
   const epoch = props.block.epoch === '-' ? 0 : props.block.epoch;
   const depositLabel =
     parseInt(props.deposit) >= 0
@@ -261,7 +243,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
 
       {/* ===== METADATA ===== */}
 
-      {props.metadata && props.metadata.length && (
+      {props.metadata && props.metadata.length > 0 && (
         <div className={styles.row}>
           <div className={styles.label}>
             {translate('transaction.metadata')}

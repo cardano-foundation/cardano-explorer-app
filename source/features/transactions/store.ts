@@ -46,14 +46,10 @@ export class TransactionsStore extends Store {
 
   @computed get showUnmoderatedData() {
     const { showUnmoderatedDataStorage } = this;
-    if (!showUnmoderatedDataStorage) {
-      return false;
-    }
-    const now: number = new Date().getTime();
-    if (showUnmoderatedDataStorage - now > UNMODERATED_WARNING_PERIOD) {
-      return false;
-    }
-    return true;
+    return (
+      showUnmoderatedDataStorage != null &&
+      Date.now() - showUnmoderatedDataStorage < UNMODERATED_WARNING_PERIOD
+    );
   }
 
   @action public browseAddressTransactions = async (
