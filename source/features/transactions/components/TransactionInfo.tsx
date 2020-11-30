@@ -8,8 +8,6 @@ import React from 'react';
 import { isDefined } from '../../../lib/types';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { getAddressRoute } from '../../address/helpers';
-import { BLOCK_SEARCH_RESULT_PATH } from '../../blocks/config';
-import { EPOCH_SEARCH_RESULT_PATH } from '../../epochs/config';
 import { useI18nFeature } from '../../i18n/context';
 import { NavigationActions } from '../../navigation';
 import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
@@ -243,14 +241,18 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
 
       {/* ===== METADATA ===== */}
 
-      {props.metadata && (
+      {props.metadata && props.metadata.length && (
         <div className={styles.row}>
           <div className={styles.label}>
             {translate('transaction.metadata')}
           </div>
           <div className={styles.value}>
-            {props.metadata.map((item) => {
-              return <span>{item.value}</span>;
+            {props.metadata.map(item => {
+              return (
+                <div>
+                  {JSON.stringify(item.value)}
+                </div>
+              )
             })}
           </div>
         </div>

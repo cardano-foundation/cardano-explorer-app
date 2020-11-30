@@ -35,7 +35,7 @@ export const TransactionSearchResult = () => {
     <Observer>
       {() => {
         const { transactionSearchResult } = search.store;
-        const { showUnmoderatedData } = store;
+        const { showUnmoderatedData } = transactions.store;
         if (
           !search.api.searchByIdQuery.hasBeenExecutedAtLeastOnce ||
           search.store.isSearching
