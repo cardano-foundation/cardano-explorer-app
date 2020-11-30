@@ -29,6 +29,10 @@ $wide-breakpoint: 768px;
     .label {
       min-width: 160px;
     }
+
+    .value > div {
+      line-height: 2;
+    }
   }
 }
 
