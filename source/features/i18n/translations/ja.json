@@ -143,6 +143,7 @@
     "stakePoolsSearch": "特定のステークプールを検索する",
     "stakePoolsTitle": "ステークプール",
     "unmoderated": "あなたは管理されていないステークプールデータの表示に同意されています。",
+    "unmoderatedConfirmation": "はい、モデレートされていないコンテンツを表示します",
     "unmoderatedContent": "管理されていないコンテンツを表示しますか。",
     "unmoderatedEntitiesControl": "この情報はステークプールオペレーターが提供、ホストしており、本ウェブサイトを運営している組織の管理下にはありません。",
     "unmoderatedLeave": "このページを離れる",
@@ -169,14 +170,14 @@
     "totalOutput": "総アウトプット",
     "transactionLabel": "トランザクション",
     "transactionsLabel": "トランザクション",
-    "unmoderated": "!!!You have consented to view unmoderated transaction data.",
-    "unmoderatedConfirmation": "!!!Yes, show unmoderated content",
-    "unmoderatedContent": "!!!Do you want to see unmoderated content?",
-    "unmoderatedEntitiesControl": "!!!This information is provided and hosted by stake pool operators and it is not in control of entities running this website.",
-    "unmoderatedLeave": "!!!Leave this page",
-    "unmoderatedPoolTickerSymbols": "!!!Transaction metadata is not moderated and may contain inappropriate content.",
-    "unmoderatedTransactionData": "!!!Transaction metadata data is not moderated",
-    "unmoderatedWarning": "!!!Warning:"
+    "unmoderated": "モデレートされていないトランザクションデータを表示することに同意しました。",
+    "unmoderatedConfirmation": "はい、モデレートされていないコンテンツを表示します",
+    "unmoderatedContent": "管理されていないコンテンツを表示しますか。",
+    "unmoderatedEntitiesControl": "この情報はステークプールオペレーターが提供、ホストしており、本ウェブサイトを運営している組織の管理下にはありません。",
+    "unmoderatedLeave": "このページを離れる",
+    "unmoderatedPoolTickerSymbols": "トランザクションメタデータはモデレートされておらず、不適切なコンテンツが含まれている可能性があります。",
+    "unmoderatedTransactionData": "トランザクションメタデータデータはモデレートされません",
+    "unmoderatedWarning": "警告"
   },
   "withdrawals": "引き出し"
 }
