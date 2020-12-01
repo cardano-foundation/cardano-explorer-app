@@ -42,7 +42,11 @@ export const TransactionSearchResult = () => {
         ) {
           return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
         } else if (transactionSearchResult) {
-          if (!showUnmoderatedData) {
+          if (
+            !showUnmoderatedData &&
+            transactionSearchResult.metadata &&
+            transactionSearchResult.metadata.length
+          ) {
             return (
               <UnmoderatedDataWarning
                 type="transactions"
