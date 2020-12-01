@@ -248,7 +248,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
           </div>
           <div className={styles.value}>
             {props.metadata.map((item) => {
-              return <div>{JSON.stringify(item.value)}</div>;
+              return <div>{JSON.stringify(item.value, undefined, 2)}</div>;
             })}
           </div>
         </div>
