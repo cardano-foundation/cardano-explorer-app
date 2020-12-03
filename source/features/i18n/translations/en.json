@@ -171,12 +171,12 @@
     "transactionLabel": "Transaction",
     "transactionsLabel": "Transactions",
     "unmoderated": "You have consented to view unmoderated transaction data.",
-    "unmoderatedConfirmation": "Yes, show unmoderated content",
+    "unmoderatedConfirmation": "Show unmoderated content",
     "unmoderatedContent": "Do you want to see unmoderated content?",
     "unmoderatedEntitiesControl": "This information is provided and hosted by stake pool operators and it is not in control of entities running this website.",
     "unmoderatedLeave": "Leave this page",
-    "unmoderatedPoolTickerSymbols": "Transaction metadata is not moderated and may contain inappropriate content.",
-    "unmoderatedTransactionData": "Transaction metadata data is not moderated",
+    "unmoderatedPoolTickerSymbols": "Transaction metadata is not moderated, and it may contain inappropriate content. The creator of the transaction provides this information and is not in control of this website's operator. Do you want to see the unmoderated content?",
+    "unmoderatedTransactionData": "Unmoderated content",
     "unmoderatedWarning": "Warning:"
   },
   "withdrawals": "Withdrawals"
