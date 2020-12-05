@@ -42,27 +42,25 @@ export const TransactionSearchResult = () => {
         ) {
           return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
         } else if (transactionSearchResult) {
-          if (
-            !showUnmoderatedData &&
-            transactionSearchResult.metadata &&
-            transactionSearchResult.metadata.length
-          ) {
-            return (
-              <UnmoderatedDataWarning
-                type="transactions"
-                onAcceptUnmoderatedData={handleAcceptUnmoderatedData.trigger}
-              />
-            );
-          }
           return (
-            <TransactionInfo
-              dontLinkToTransaction
-              navigation={navigation?.actions}
-              networkBlockHeight={networkInfo.store.blockHeight}
-              title={translate('transaction.transactionLabel')}
-              showDetails
-              {...transactionSearchResult}
-            />
+            <>
+              {!showUnmoderatedData &&
+              transactionSearchResult.metadata &&
+              transactionSearchResult.metadata.length && (
+                <UnmoderatedDataWarning
+                  type="transactions"
+                  onAcceptUnmoderatedData={handleAcceptUnmoderatedData.trigger}
+                />
+              )}
+              <TransactionInfo
+                dontLinkToTransaction
+                navigation={navigation?.actions}
+                networkBlockHeight={networkInfo.store.blockHeight}
+                title={translate('transaction.transactionLabel')}
+                showDetails
+                {...transactionSearchResult}
+              />
+            </>
           );
         } else {
           return (
