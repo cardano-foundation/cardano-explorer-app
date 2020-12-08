@@ -6,9 +6,7 @@ import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { useI18nFeature } from '../../i18n/context';
 import { useNavigationFeature } from '../../navigation';
 import { useNetworkInfoFeature } from '../../network-info/context';
-import UnmoderatedDataWarning from '../../stake-pools/components/UnmoderatedDataWarning';
 import TransactionInfo from '../../transactions/components/TransactionInfo';
-import { useTransactionsFeature } from '../../transactions/context';
 import { useSearchFeature } from '../context';
 import { SearchType } from '../store';
 import NoSearchResult from './NoSearchResult';
@@ -41,20 +39,13 @@ export const TransactionSearchResult = () => {
         } else if (transactionSearchResult) {
           return (
             <>
-              {isShowingUnmoderatedData &&
-              transactionSearchResult.metadata &&
-              transactionSearchResult.metadata.length && (
-                <UnmoderatedDataWarning
-                  type="transactions"
-                  onAcceptUnmoderatedData={() => setisShowingUnmoderatedData(false)}
-                />
-              )}
               <TransactionInfo
                 dontLinkToTransaction
                 navigation={navigation?.actions}
                 networkBlockHeight={networkInfo.store.blockHeight}
                 title={translate('transaction.transactionLabel')}
-                isShowingUnmoderatedData
+                isShowingUnmoderatedData={isShowingUnmoderatedData}
+                handleAcceptUnmoderatedData={() => setisShowingUnmoderatedData(false)}
                 showDetails
                 {...transactionSearchResult}
               />

@@ -11,6 +11,7 @@ import { getAddressRoute } from '../../address/helpers';
 import { useI18nFeature } from '../../i18n/context';
 import { NavigationActions } from '../../navigation';
 import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
+import UnmoderatedDataWarning from '../../stake-pools/components/UnmoderatedDataWarning';
 import { getBlockRoute, getEpochRoute, getTransactionRoute } from '../helpers';
 import {
   ITransactionDetails,
@@ -93,6 +94,7 @@ export interface ITransactionInfoProps extends ITransactionDetails {
   networkBlockHeight?: number;
   showDetails?: boolean;
   isShowingUnmoderatedData?: boolean;
+  handleAcceptUnmoderatedData?: any;
   title?: string;
 }
 
@@ -106,174 +108,184 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
       ? 'transaction.deposit'
       : 'transaction.depositReclaim';
   return (
-    <div className={styles.root}>
-      {props.title && (
-        <div className={styles.header}>
-          <DividerWithTitle title={props.title} />
-        </div>
+    <>
+      {props.isShowingUnmoderatedData &&
+      props.metadata &&
+      props.metadata.length && (
+        <UnmoderatedDataWarning
+          type="transactions"
+          onAcceptUnmoderatedData={props.handleAcceptUnmoderatedData}
+        />
       )}
+      <div className={styles.root}>
+        {props.title && (
+          <div className={styles.header}>
+            <DividerWithTitle title={props.title} />
+          </div>
+        )}
 
-      {/* ===== RECEIVED TIME ===== */}
+        {/* ===== RECEIVED TIME ===== */}
 
-      <div className={styles.row}>
-        <div className={styles.label}>
-          {translate('transaction.receivedTime')}
-        </div>
-        <div className={styles.value}>
-          &gt; {dayjs().utc().to(includedAtUtc)} (
-          {includedAtUtc.format('YYYY-MM-DD HH:mm:ss')} UTC)
-        </div>
-      </div>
-
-      {/* ===== INCLUDED IN ===== */}
-
-      {props.showDetails && (
         <div className={styles.row}>
           <div className={styles.label}>
-            {translate('transaction.includedIn')}
+            {translate('transaction.receivedTime')}
           </div>
           <div className={styles.value}>
-            {translate('transaction.epoch')}{' '}
-            {isNumber(epoch) ? (
-              <LocalizedLink href={getEpochRoute(epoch)}>{epoch}</LocalizedLink>
+            &gt; {dayjs().utc().to(includedAtUtc)} (
+            {includedAtUtc.format('YYYY-MM-DD HH:mm:ss')} UTC)
+          </div>
+        </div>
+
+        {/* ===== INCLUDED IN ===== */}
+
+        {props.showDetails && (
+          <div className={styles.row}>
+            <div className={styles.label}>
+              {translate('transaction.includedIn')}
+            </div>
+            <div className={styles.value}>
+              {translate('transaction.epoch')}{' '}
+              {isNumber(epoch) ? (
+                <LocalizedLink href={getEpochRoute(epoch)}>{epoch}</LocalizedLink>
+              ) : (
+                '?'
+              )}
+              , {translate('transaction.block')}{' '}
+              <LocalizedLink href={getBlockRoute(props.block.id)}>
+                {props.block.number ?? props.block.id}
+              </LocalizedLink>
+            </div>
+          </div>
+        )}
+
+        {/* ===== CONFIRMATIONS ===== */}
+
+        {props.showDetails && (
+          <div className={styles.row}>
+            <div className={styles.label}>
+              {translate('transaction.confirmations')}
+            </div>
+            <div className={styles.value}>
+              {props.block?.number && props.networkBlockHeight
+                ? props.networkBlockHeight - props.block.number + 1
+                : 0}
+            </div>
+          </div>
+        )}
+
+        {/* ===== TRANSACTION ID ===== */}
+
+        <div className={classnames([styles.idRow, styles.row])}>
+          <div className={styles.label}>{translate('transaction.id')}</div>
+          <div className={styles.value}>
+            {props.dontLinkToTransaction ? (
+              <div className={styles.id}>{props.id}</div>
             ) : (
-              '?'
+              <LocalizedLink href={getTransactionRoute(props.id)}>
+                {props.id}
+              </LocalizedLink>
             )}
-            , {translate('transaction.block')}{' '}
-            <LocalizedLink href={getBlockRoute(props.block.id)}>
-              {props.block.number ?? props.block.id}
-            </LocalizedLink>
           </div>
         </div>
-      )}
 
-      {/* ===== CONFIRMATIONS ===== */}
+        {/* ===== FROM ADDRESSES ===== */}
 
-      {props.showDetails && (
-        <div className={styles.row}>
+        <div className={classnames([styles.fromRow, styles.row])}>
           <div className={styles.label}>
-            {translate('transaction.confirmations')}
+            {translate('transaction.from')}
+            <div className={styles.arrowDesktop}>
+              <ArrowNext />
+            </div>
           </div>
           <div className={styles.value}>
-            {props.block?.number && props.networkBlockHeight
-              ? props.networkBlockHeight - props.block.number + 1
-              : 0}
-          </div>
-        </div>
-      )}
-
-      {/* ===== TRANSACTION ID ===== */}
-
-      <div className={classnames([styles.idRow, styles.row])}>
-        <div className={styles.label}>{translate('transaction.id')}</div>
-        <div className={styles.value}>
-          {props.dontLinkToTransaction ? (
-            <div className={styles.id}>{props.id}</div>
-          ) : (
-            <LocalizedLink href={getTransactionRoute(props.id)}>
-              {props.id}
-            </LocalizedLink>
-          )}
-        </div>
-      </div>
-
-      {/* ===== FROM ADDRESSES ===== */}
-
-      <div className={classnames([styles.fromRow, styles.row])}>
-        <div className={styles.label}>
-          {translate('transaction.from')}
-          <div className={styles.arrowDesktop}>
-            <ArrowNext />
-          </div>
-        </div>
-        <div className={styles.value}>
-          <AddressesRow
-            addresses={[...props.inputs, ...props.withdrawals]}
-            highlightedAddress={props.highlightAddress}
-            isMobile={isMobile}
-          />
-        </div>
-      </div>
-
-      <div className={styles.arrowMobile}>
-        <ArrowNext />
-      </div>
-
-      {/* ===== TO ADDRESSES ===== */}
-
-      <div className={styles.row}>
-        <div className={styles.label}>{translate('transaction.to')}</div>
-        <div className={styles.value}>
-          <AddressesRow
-            addresses={props.outputs}
-            highlightedAddress={props.highlightAddress}
-            isMobile={isMobile}
-          />
-        </div>
-      </div>
-
-      {/* ===== DEPOSIT ===== */}
-      {props.deposit !== '0' && (
-        <div className={styles.row}>
-          <div className={styles.label}>{translate(depositLabel)}</div>
-          <div className={styles.value}>
-            {Math.abs(parseInt(props.deposit))} ADA
-          </div>
-        </div>
-      )}
-
-      {/* ===== TOTAL OUTPUT ===== */}
-
-      <div className={styles.row}>
-        <div className={styles.label}>
-          {translate('transaction.totalOutput')}
-        </div>
-        <div className={styles.value}>{props.totalOutput} ADA</div>
-      </div>
-
-      {/* ===== CONFIRMATIONS ===== */}
-
-      {props.showDetails && (
-        <div className={styles.row}>
-          <div className={styles.label}>{translate('transaction.fee')}</div>
-          <div className={styles.value}>{props.fee} ADA</div>
-        </div>
-      )}
-
-      {/* ===== METADATA ===== */}
-
-      {!props.isShowingUnmoderatedData && props.metadata && props.metadata.length && (
-        <div className={styles.row}>
-          <div className={styles.label}>
-            {translate('transaction.metadata')}
-          </div>
-          <div className={styles.value}>
-            {props.metadata.map((item) => {
-              return <div>{JSON.stringify(item.value, undefined, 2)}</div>;
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* ===== DOTTED LINE SEPARATOR ===== */}
-
-      {props.hasSeparator && (
-        <div className={styles.txSeparator}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="3px">
-            <line
-              x1="1px"
-              x2="100%"
-              y1="1px"
-              y2="1px"
-              stroke="#36395d"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeDasharray="1px, 6px"
+            <AddressesRow
+              addresses={[...props.inputs, ...props.withdrawals]}
+              highlightedAddress={props.highlightAddress}
+              isMobile={isMobile}
             />
-          </svg>
+          </div>
         </div>
-      )}
-    </div>
+
+        <div className={styles.arrowMobile}>
+          <ArrowNext />
+        </div>
+
+        {/* ===== TO ADDRESSES ===== */}
+
+        <div className={styles.row}>
+          <div className={styles.label}>{translate('transaction.to')}</div>
+          <div className={styles.value}>
+            <AddressesRow
+              addresses={props.outputs}
+              highlightedAddress={props.highlightAddress}
+              isMobile={isMobile}
+            />
+          </div>
+        </div>
+
+        {/* ===== DEPOSIT ===== */}
+        {props.deposit !== '0' && (
+          <div className={styles.row}>
+            <div className={styles.label}>{translate(depositLabel)}</div>
+            <div className={styles.value}>
+              {Math.abs(parseInt(props.deposit))} ADA
+            </div>
+          </div>
+        )}
+
+        {/* ===== TOTAL OUTPUT ===== */}
+
+        <div className={styles.row}>
+          <div className={styles.label}>
+            {translate('transaction.totalOutput')}
+          </div>
+          <div className={styles.value}>{props.totalOutput} ADA</div>
+        </div>
+
+        {/* ===== CONFIRMATIONS ===== */}
+
+        {props.showDetails && (
+          <div className={styles.row}>
+            <div className={styles.label}>{translate('transaction.fee')}</div>
+            <div className={styles.value}>{props.fee} ADA</div>
+          </div>
+        )}
+
+        {/* ===== METADATA ===== */}
+
+        {!props.isShowingUnmoderatedData && props.metadata && props.metadata.length && (
+          <div className={styles.row}>
+            <div className={styles.label}>
+              {translate('transaction.metadata')}
+            </div>
+            <div className={styles.value}>
+              {props.metadata.map((item) => {
+                return <div>{JSON.stringify(item.value, undefined, 2)}</div>;
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* ===== DOTTED LINE SEPARATOR ===== */}
+
+        {props.hasSeparator && (
+          <div className={styles.txSeparator}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="3px">
+              <line
+                x1="1px"
+                x2="100%"
+                y1="1px"
+                y2="1px"
+                stroke="#36395d"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeDasharray="1px, 6px"
+              />
+            </svg>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

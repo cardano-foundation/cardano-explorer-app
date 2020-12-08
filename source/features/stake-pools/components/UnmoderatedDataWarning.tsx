@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import Container from '../../../widgets/container/Container';
 import { useI18nFeature } from '../../i18n/context';
 import { LocalizedLink } from '../../navigation/ui/LocalizedLink';
@@ -6,8 +7,9 @@ import styles from './UnmoderatedDataWarning.module.scss';
 
 export default ({ onAcceptUnmoderatedData, type }: IUnmoderatedDataWarning) => {
   const { translate } = useI18nFeature().store;
+  const containerStyles = cx([styles.unmoderatedDataWarningContainer, type === 'transactions' ? styles.transactionsWarning : null]);
   return (
-    <div className={styles.unmoderatedDataWarningContainer}>
+    <div className={containerStyles}>
       <Container>
         <div className={styles.contentTop}>
           <h2>
