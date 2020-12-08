@@ -1,6 +1,6 @@
 import { isString } from 'lodash';
 import { Observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useState } from 'react';
 import { useObservableEffect } from '../../../lib/mobx/react';
 import LoadingSpinner from '../../../widgets/loading-spinner/LoadingSpinner';
 import { useI18nFeature } from '../../i18n/context';
@@ -18,10 +18,8 @@ export const TransactionSearchResult = () => {
   const { translate } = useI18nFeature().store;
   const search = useSearchFeature();
   const networkInfo = useNetworkInfoFeature();
-  const transactions = useTransactionsFeature();
-  const { store, actions } = transactions;
-  const { handleAcceptUnmoderatedData } = actions;
   const navigation = useNavigationFeature();
+  const [isShowingUnmoderatedData, setisShowingUnmoderatedData] = useState(true);
 
   useObservableEffect(() => {
     const { query } = navigation.store;
@@ -35,7 +33,6 @@ export const TransactionSearchResult = () => {
     <Observer>
       {() => {
         const { transactionSearchResult } = search.store;
-        const { showUnmoderatedData } = transactions.store;
         if (
           !search.api.searchByIdQuery.hasBeenExecutedAtLeastOnce ||
           search.store.isSearching
@@ -44,12 +41,12 @@ export const TransactionSearchResult = () => {
         } else if (transactionSearchResult) {
           return (
             <>
-              {!showUnmoderatedData &&
+              {isShowingUnmoderatedData &&
               transactionSearchResult.metadata &&
               transactionSearchResult.metadata.length && (
                 <UnmoderatedDataWarning
                   type="transactions"
-                  onAcceptUnmoderatedData={handleAcceptUnmoderatedData.trigger}
+                  onAcceptUnmoderatedData={() => setisShowingUnmoderatedData(false)}
                 />
               )}
               <TransactionInfo
@@ -57,6 +54,7 @@ export const TransactionSearchResult = () => {
                 navigation={navigation?.actions}
                 networkBlockHeight={networkInfo.store.blockHeight}
                 title={translate('transaction.transactionLabel')}
+                isShowingUnmoderatedData
                 showDetails
                 {...transactionSearchResult}
               />

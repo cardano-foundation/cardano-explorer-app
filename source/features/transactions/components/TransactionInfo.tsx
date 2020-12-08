@@ -92,6 +92,7 @@ export interface ITransactionInfoProps extends ITransactionDetails {
   navigation?: NavigationActions;
   networkBlockHeight?: number;
   showDetails?: boolean;
+  isShowingUnmoderatedData?: boolean;
   title?: string;
 }
 
@@ -241,7 +242,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
 
       {/* ===== METADATA ===== */}
 
-      {props.metadata && props.metadata.length && (
+      {!props.isShowingUnmoderatedData && props.metadata && props.metadata.length && (
         <div className={styles.row}>
           <div className={styles.label}>
             {translate('transaction.metadata')}
