@@ -17,7 +17,9 @@ export const TransactionSearchResult = () => {
   const search = useSearchFeature();
   const networkInfo = useNetworkInfoFeature();
   const navigation = useNavigationFeature();
-  const [isShowingUnmoderatedData, setisShowingUnmoderatedData] = useState(true);
+  const [isShowingUnmoderatedData, setisShowingUnmoderatedData] = useState(
+    true
+  );
 
   useObservableEffect(() => {
     const { query } = navigation.store;
@@ -45,7 +47,9 @@ export const TransactionSearchResult = () => {
                 networkBlockHeight={networkInfo.store.blockHeight}
                 title={translate('transaction.transactionLabel')}
                 isShowingUnmoderatedData={isShowingUnmoderatedData}
-                handleAcceptUnmoderatedData={() => setisShowingUnmoderatedData(false)}
+                handleAcceptUnmoderatedData={() =>
+                  setisShowingUnmoderatedData(false)
+                }
                 showDetails
                 {...transactionSearchResult}
               />

@@ -110,13 +110,13 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
   return (
     <>
       {props.isShowingUnmoderatedData &&
-      props.metadata &&
-      props.metadata.length && (
-        <UnmoderatedDataWarning
-          type="transactions"
-          onAcceptUnmoderatedData={props.handleAcceptUnmoderatedData}
-        />
-      )}
+        props.metadata &&
+        props.metadata.length && (
+          <UnmoderatedDataWarning
+            type="transactions"
+            onAcceptUnmoderatedData={props.handleAcceptUnmoderatedData}
+          />
+        )}
       <div className={styles.root}>
         {props.title && (
           <div className={styles.header}>
@@ -146,7 +146,9 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
             <div className={styles.value}>
               {translate('transaction.epoch')}{' '}
               {isNumber(epoch) ? (
-                <LocalizedLink href={getEpochRoute(epoch)}>{epoch}</LocalizedLink>
+                <LocalizedLink href={getEpochRoute(epoch)}>
+                  {epoch}
+                </LocalizedLink>
               ) : (
                 '?'
               )}
@@ -253,18 +255,20 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
 
         {/* ===== METADATA ===== */}
 
-        {!props.isShowingUnmoderatedData && props.metadata && props.metadata.length && (
-          <div className={styles.row}>
-            <div className={styles.label}>
-              {translate('transaction.metadata')}
+        {!props.isShowingUnmoderatedData &&
+          props.metadata &&
+          props.metadata.length && (
+            <div className={styles.row}>
+              <div className={styles.label}>
+                {translate('transaction.metadata')}
+              </div>
+              <div className={styles.value}>
+                {props.metadata.map((item) => {
+                  return <div>{JSON.stringify(item.value, undefined, 2)}</div>;
+                })}
+              </div>
             </div>
-            <div className={styles.value}>
-              {props.metadata.map((item) => {
-                return <div>{JSON.stringify(item.value, undefined, 2)}</div>;
-              })}
-            </div>
-          </div>
-        )}
+          )}
 
         {/* ===== DOTTED LINE SEPARATOR ===== */}
 

@@ -7,7 +7,10 @@ import styles from './UnmoderatedDataWarning.module.scss';
 
 export default ({ onAcceptUnmoderatedData, type }: IUnmoderatedDataWarning) => {
   const { translate } = useI18nFeature().store;
-  const containerStyles = cx([styles.unmoderatedDataWarningContainer, type === 'transactions' ? styles.transactionsWarning : null]);
+  const containerStyles = cx([
+    styles.unmoderatedDataWarningContainer,
+    type === 'transactions' ? styles.transactionsWarning : null,
+  ]);
   return (
     <div className={containerStyles}>
       <Container>
