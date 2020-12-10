@@ -40,20 +40,18 @@ export const TransactionSearchResult = () => {
           return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
         } else if (transactionSearchResult) {
           return (
-            <>
-              <TransactionInfo
-                dontLinkToTransaction
-                navigation={navigation?.actions}
-                networkBlockHeight={networkInfo.store.blockHeight}
-                title={translate('transaction.transactionLabel')}
-                isShowingUnmoderatedData={isShowingUnmoderatedData}
-                handleAcceptUnmoderatedData={() =>
-                  setisShowingUnmoderatedData(false)
-                }
-                showDetails
-                {...transactionSearchResult}
-              />
-            </>
+            <TransactionInfo
+              dontLinkToTransaction
+              navigation={navigation?.actions}
+              networkBlockHeight={networkInfo.store.blockHeight}
+              title={translate('transaction.transactionLabel')}
+              isShowingUnmoderatedData={isShowingUnmoderatedData}
+              handleAcceptUnmoderatedData={() =>
+                setisShowingUnmoderatedData(false)
+              }
+              showDetails
+              {...transactionSearchResult}
+            />
           );
         } else {
           return (
