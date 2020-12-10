@@ -4,7 +4,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import utc from 'dayjs/plugin/utc';
 import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useState } from 'react';
 import { isDefined } from '../../../lib/types';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { getAddressRoute } from '../../address/helpers';
@@ -93,13 +93,15 @@ export interface ITransactionInfoProps extends ITransactionDetails {
   navigation?: NavigationActions;
   networkBlockHeight?: number;
   showDetails?: boolean;
-  isShowingUnmoderatedData?: boolean;
   handleAcceptUnmoderatedData?: any;
   title?: string;
 }
 
 const TransactionInfo = (props: ITransactionInfoProps) => {
   const { translate } = useI18nFeature().store;
+  const [isShowingUnmoderatedData, setisShowingUnmoderatedData] = useState(
+    true
+  );
   const isMobile = window.innerWidth <= 768;
   const includedAtUtc = dayjs.utc(props.includedAt);
   const epoch = props.block.epoch === '-' ? 0 : props.block.epoch;
@@ -109,14 +111,6 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
       : 'transaction.depositReclaim';
   return (
     <>
-      {props.isShowingUnmoderatedData &&
-        props.metadata &&
-        props.metadata.length && (
-          <UnmoderatedDataWarning
-            type="transactions"
-            onAcceptUnmoderatedData={props.handleAcceptUnmoderatedData}
-          />
-        )}
       <div className={styles.root}>
         {props.title && (
           <div className={styles.header}>
@@ -255,7 +249,16 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
 
         {/* ===== METADATA ===== */}
 
-        {!props.isShowingUnmoderatedData &&
+        {isShowingUnmoderatedData &&
+        props.metadata &&
+        props.metadata.length && (
+          <UnmoderatedDataWarning
+            type="transactions"
+            onAcceptUnmoderatedData={() => setisShowingUnmoderatedData(false)}
+          />
+        )}
+
+        {!isShowingUnmoderatedData &&
           props.metadata &&
           props.metadata.length && (
             <div className={styles.row}>

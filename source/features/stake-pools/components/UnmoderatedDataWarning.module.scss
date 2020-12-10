@@ -6,8 +6,6 @@
 
   &.transactionsWarning {
     max-width: 872px;
-    position: absolute;
-    top: -100px;
     z-index: 600;
 
     @media (max-width: 872px) {
