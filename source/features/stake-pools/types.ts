@@ -60,4 +60,8 @@ export interface IStakePoolThumbnailProps {
 }
 export interface IUnmoderatedDataWarning {
   onAcceptUnmoderatedData: (arg0: any) => void;
+  type: string;
+}
+export interface IUnmoderatedDataConsented {
+  type: string;
 }

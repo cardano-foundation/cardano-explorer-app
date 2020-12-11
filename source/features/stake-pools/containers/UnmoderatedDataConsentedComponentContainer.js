@@ -8,7 +8,7 @@ export const UnmoderatedDataConsentedComponentContainerRaw = () => {
   const { showUnmoderatedData } = store;
   if (showUnmoderatedData) {
     return (
-      <UnmoderatedDataConsented />
+      <UnmoderatedDataConsented type="stakePools"/>
     );
   }
   return null;

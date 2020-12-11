@@ -20,13 +20,18 @@ export const transactionDetailsTransformer = (
     sourceTxId: i.sourceTxHash,
     value: Currency.Util.lovelacesToAda(i.value),
   })),
+  metadata: tx.metadata?.filter(isDefined).map((i) => ({
+    key: i.key,
+    value: i.value,
+  })),
   outputs: tx.outputs?.filter(isDefined).map((i) => ({
     ...i,
     value: Currency.Util.lovelacesToAda(i.value),
   })),
   totalOutput: Currency.Util.lovelacesToAda(tx.totalOutput),
-  withdrawals: tx.withdrawals?.filter(isDefined).map((i) => ({
-    address: i.address,
-    value: Currency.Util.lovelacesToAda(i.amount)
-  })) || []
+  withdrawals:
+    tx.withdrawals?.filter(isDefined).map((i) => ({
+      address: i.address,
+      value: Currency.Util.lovelacesToAda(i.amount),
+    })) || [],
 });

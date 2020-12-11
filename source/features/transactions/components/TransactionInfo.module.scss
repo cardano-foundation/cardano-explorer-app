@@ -24,6 +24,17 @@ $wide-breakpoint: 768px;
     flex-direction: row;
     margin-bottom: 10px;
   }
+
+  &:last-child {
+    .label {
+      min-width: 160px;
+    }
+
+    .value > div {
+      line-height: 1.5;
+      white-space: pre;
+    }
+  }
 }
 
 .label {

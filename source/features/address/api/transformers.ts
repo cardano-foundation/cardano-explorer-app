@@ -15,8 +15,8 @@ export const paymentAddressDetailTransformer = (
       s.utxos_aggregate?.aggregate?.sum?.value || '0'
     ),
     transactionsCount:
-      s.transactions_aggregate?.aggregate?.count.toString() || '0'
-  }
+      s.transactions_aggregate?.aggregate?.count.toString() || '0',
+  };
 };
 
 export const stakeAddressDetailTransformer = (
@@ -31,6 +31,6 @@ export const stakeAddressDetailTransformer = (
       s.withdrawals_aggregate?.aggregate?.sum?.amount || '0'
     ),
     transactionsCount:
-      s.transactions_aggregate?.aggregate?.count.toString() || '0'
-  }
+      s.transactions_aggregate?.aggregate?.count.toString() || '0',
+  };
 };

@@ -24,15 +24,15 @@ describe('Searching for a stake address summary', () => {
     // 3. Access the observable search result provided by the store
     await waitForExpect(() => {
       expect(
-        parseFloat(search.store?.stakeAddressSearchResult?.totalWithdrawn as string)
-      ).toBeGreaterThanOrEqual(
-        exampleStakeAddressData.totalWithdrawn
-      );
+        parseFloat(
+          search.store?.stakeAddressSearchResult?.totalWithdrawn as string
+        )
+      ).toBeGreaterThanOrEqual(exampleStakeAddressData.totalWithdrawn);
       expect(
-        parseInt(search.store?.stakeAddressSearchResult?.transactionsCount as string)
-      ).toBeGreaterThanOrEqual(
-        exampleStakeAddressData.transactionsCount
-      );
+        parseInt(
+          search.store?.stakeAddressSearchResult?.transactionsCount as string
+        )
+      ).toBeGreaterThanOrEqual(exampleStakeAddressData.transactionsCount);
     });
   });
 });

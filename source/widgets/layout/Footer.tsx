@@ -26,15 +26,10 @@ export const Footer = (props: IFooterProps) => {
             <p className={styles.copyright}>
               © IOHK 2015 - {new Date().getFullYear()}
             </p>
-            <a
-              href={environment.PACKAGE.HOMEPAGE}
-              className={styles.gitLink}
-            >
+            <a href={environment.PACKAGE.HOMEPAGE} className={styles.gitLink}>
               <GitIcon className={styles.gitIcon} />
             </a>
-            <p>
-              {environment.PACKAGE.VERSION}
-            </p>
+            <p>{environment.PACKAGE.VERSION}</p>
           </div>
           <div className={styles.logos}>
             <div className={styles.logoText}>
