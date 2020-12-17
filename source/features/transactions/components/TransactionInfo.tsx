@@ -251,14 +251,14 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
 
         {isShowingUnmoderatedData &&
           props.metadata &&
-          props.metadata.length && (
+          props.metadata[0] && (
             <UnmoderatedDataWarning
               type="transactions"
               onAcceptUnmoderatedData={() => setisShowingUnmoderatedData(false)}
             />
-          )}
+        )}
 
-        {!isShowingUnmoderatedData && props.metadata && props.metadata.length && (
+        {!isShowingUnmoderatedData && props.metadata && (
           <div className={styles.row}>
             <div className={styles.label}>
               {translate('transaction.metadata')}
