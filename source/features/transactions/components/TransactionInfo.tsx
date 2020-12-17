@@ -256,7 +256,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
               type="transactions"
               onAcceptUnmoderatedData={() => setisShowingUnmoderatedData(false)}
             />
-        )}
+          )}
 
         {!isShowingUnmoderatedData && props.metadata && (
           <div className={styles.row}>
