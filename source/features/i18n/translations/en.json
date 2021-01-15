@@ -177,7 +177,9 @@
     "unmoderatedLeave": "Leave this page",
     "unmoderatedPoolTickerSymbols": "Transaction metadata is not moderated, and it may contain inappropriate content. The creator of the transaction provides this information and is not in control of this website's operator. Do you want to see the unmoderated content?",
     "unmoderatedTransactionData": "Unmoderated content",
-    "unmoderatedWarning": "Warning:"
+    "unmoderatedWarning": "Warning:",
+    "minted": "Minted tokens",
+    "burned": "Burned tokens"
   },
   "withdrawals": "Withdrawals"
 }

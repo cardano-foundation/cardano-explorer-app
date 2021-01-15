@@ -40,4 +40,18 @@ export const transactionDetailsTransformer = (
       address: i.address,
       value: Currency.Util.lovelacesToAda(i.amount),
     })) || [],
+  mint:
+    tx.mint
+      ?.filter((m) => m.quantity > '0')
+      .map((i) => ({
+        quantity: i.quantity || '-',
+        assetName: i.assetName || '-',
+      })) || [],
+  burn:
+    tx.mint
+      ?.filter((m) => m.quantity < '0')
+      .map((i) => ({
+        quantity: i.quantity.substring(1) || '-',
+        assetName: i.assetName || '-',
+      })) || [],
 });

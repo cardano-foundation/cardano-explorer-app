@@ -199,6 +199,40 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
           </div>
         </div>
 
+        {/* ===== MINTED TOKENS ===== */}
+        {!isEmpty(props.mint) && (
+          <div className={classnames([styles.idRow, styles.row])}>
+            <div className={styles.label}>
+              {/* TODO: add DE and JA translation*/}
+              {translate('transaction.minted')}
+            </div>
+            <div className={styles.value}>
+              <div className={styles.tokenList}>
+                {props.mint.map((m) => (
+                  <span>{`${m.quantity} ${m.assetName}`}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ===== BURNED TOKENS ===== */}
+        {!isEmpty(props.burn) && (
+          <div className={classnames([styles.idRow, styles.row])}>
+            <div className={styles.label}>
+              {/* TODO: add DE and JA translation*/}
+              {translate('transaction.burned')}
+            </div>
+            <div className={styles.value}>
+              <div className={styles.tokenList}>
+                {props.burn.map((b) => (
+                  <span>{`${b.quantity} ${b.assetName}`}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* ===== FROM ADDRESSES ===== */}
 
         <div className={classnames([styles.fromRow, styles.row])}>

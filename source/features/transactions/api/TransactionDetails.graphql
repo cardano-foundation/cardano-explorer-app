@@ -9,6 +9,10 @@ fragment TransactionDetails on Transaction {
   fee,
   hash,
   includedAt,
+  mint {
+    assetName
+    quantity
+  }
   inputs {
     address
     sourceTxHash

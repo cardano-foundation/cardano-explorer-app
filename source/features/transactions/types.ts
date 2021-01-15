@@ -43,4 +43,6 @@ export interface ITransactionDetails {
   outputs?: ITransactionOutput[];
   totalOutput: string;
   withdrawals: IWithdrawal[];
+  mint: IToken[];
+  burn: IToken[];
 }
