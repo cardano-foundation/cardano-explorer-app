@@ -1,6 +1,7 @@
 query searchForPaymentAddress(
   $address: String!
 ) {
+#this aggregation is not necessary anymore, the ada balance can be get from the paymentAddresses query
     utxos_aggregate (
         where: {
             address: {
@@ -33,6 +34,15 @@ query searchForPaymentAddress(
     ) {
         aggregate {
             count
+        }
+    }
+    paymentAddresses(addresses: [$address]) {
+        summary {
+            assetBalances {
+                assetName
+                quantity
+                policyId
+            }
         }
     }
 }

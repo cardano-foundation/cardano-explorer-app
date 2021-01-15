@@ -12,6 +12,7 @@ fragment TransactionDetails on Transaction {
   mint {
     assetName
     quantity
+    policyId
   }
   inputs {
     address
@@ -21,6 +22,7 @@ fragment TransactionDetails on Transaction {
     tokens {
       assetName
       quantity
+      policyId
     }
   },
   metadata {
@@ -34,6 +36,7 @@ fragment TransactionDetails on Transaction {
     tokens {
       quantity
       assetName
+      policyId
     }
   },
   totalOutput

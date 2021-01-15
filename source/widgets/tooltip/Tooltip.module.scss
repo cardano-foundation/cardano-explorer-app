@@ -1,0 +1,102 @@
+@mixin text($font-size, $font-weight, $color, $letter-spacing) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+  line-height: calc(#{$font-size} + 10px);
+  letter-spacing: $letter-spacing;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.tooltip .translateCenter {
+  @include text(10px, 600, var(--solid-text-color), 1.3px);
+  visibility: hidden;
+  text-align: left;
+  padding: 5px 10px;
+  background: #121326;
+  border: 1px solid var(--dotted-separator-color);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.45);
+  border-radius: 3px;
+  position: absolute;
+  top: 0em;
+  left: 0;
+  transform: translate(0%, -100%);
+  z-index: 9999000;
+  opacity: 1 !important;
+  width: 200px;
+}
+.tooltip .translateEnd {
+  @include text(10px, 600, var(--solid-text-color), 1.3px);
+  visibility: hidden;
+  text-align: left;
+  padding: 5px 10px;
+  background: #121326;
+  border: 1px solid var(--dotted-separator-color);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.45);
+  border-radius: 3px;
+  position: absolute;
+  top: 0em;
+  right: 0;
+  transform: translate(0%, -100%);
+  z-index: 9999000;
+  opacity: 1 !important;
+  width: 200px;
+}
+.tooltip .titleTooltip {
+  @include text(10px, 600, var(--solid-text-color), 1.3px);
+  visibility: hidden;
+  text-align: left;
+  padding: 5px 10px;
+  background: #121326;
+  border: 1px solid var(--dotted-separator-color);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.45);
+  border-radius: 3px;
+  position: absolute;
+  top: 0em;
+  left: 0;
+  transform: translate(-50%, -100%);
+  z-index: 9999000;
+  opacity: 1 !important;
+  width: 200px;
+}
+.tooltip .BottomTooltip {
+  @include text(10px, 600, var(--solid-text-color), 1.3px);
+  visibility: hidden;
+  text-align: center;
+  padding: 1em;
+  background: #121326;
+  border: 1px solid #36395d;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  position: absolute;
+  top: 2em;
+  z-index: 300;
+  opacity: 1 !important;
+}
+
+.tooltip:hover .titleTooltip {
+  visibility: visible;
+}
+.tooltip:hover .BottomTooltip {
+  visibility: visible;
+}
+.tooltip:hover .translateCenter {
+  visibility: visible;
+}
+.tooltip:hover .translateEnd {
+  visibility: visible;
+}
+
+.contentContainer {
+  .label {
+    font-weight: 600;
+  }
+  .body {
+    color: var(--info-text-color);
+    font-weight: 400;
+  }
+}

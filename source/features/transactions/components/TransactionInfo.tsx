@@ -8,6 +8,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
 import { isDefined } from '../../../lib/types';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
+import Tooltip, { ContentContainer } from '../../../widgets/tooltip/Tooltip';
 import { getAddressRoute } from '../../address/helpers';
 import { useI18nFeature } from '../../i18n/context';
 import { NavigationActions } from '../../navigation';
@@ -50,12 +51,25 @@ const TransactionAddressMobile = (props: { address: string }) =>
     </>
   );
 
-const TokenList = (props: { tokens: IToken[]; value: string }) => (
+const TokenList = (props: {
+  tokens: IToken[];
+  value: string;
+  tooltipLabel?: string;
+}) => (
   <div className={styles.tokenList}>
     {/* use "ada" asset instead of input/output value? */}
     <div className={styles.amount}>{props.value} ADA</div>
     {props.tokens.map((t) => (
-      <span className={styles.token}>{`${t.quantity} ${t.assetName}`}</span>
+      <Tooltip
+        content={
+          <ContentContainer
+            label={props.tooltipLabel || '-'}
+            body={t.policyId}
+          />
+        }
+      >
+        <span className={styles.token}>{`${t.quantity} ${t.assetName}`}</span>
+      </Tooltip>
     ))}
   </div>
 );
@@ -66,12 +80,14 @@ interface IAddressesRowProps {
   addresses?: Array<AddressInputOutput>;
   highlightedAddress?: string;
   isMobile: boolean;
+  tooltipLabel?: string;
 }
 
 const AddressesRow = ({
   addresses,
   highlightedAddress,
   isMobile,
+  tooltipLabel,
 }: IAddressesRowProps) => (
   <>
     {addresses?.filter(isDefined).map((io, index) => (
@@ -96,7 +112,11 @@ const AddressesRow = ({
           //use "ada" asset instead of input/output value?
           <div className={styles.amount}>{io.value} ADA</div>
         ) : (
-          <TokenList tokens={io.tokens!} value={io.value} />
+          <TokenList
+            tokens={io.tokens!}
+            value={io.value}
+            tooltipLabel={tooltipLabel}
+          />
         )}
       </div>
     ))}
@@ -211,8 +231,19 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
             </div>
             <div className={styles.value}>
               <div className={styles.tokenList}>
-                {props.mint.map((m) => (
-                  <span>{`${m.quantity} ${m.assetName}`}</span>
+                {props.mint!.map((m) => (
+                  <div>
+                    <Tooltip
+                      content={
+                        <ContentContainer
+                          label={translate('transaction.policyId')}
+                          body={m.policyId}
+                        />
+                      }
+                    >
+                      <span>{`${m.quantity} ${m.assetName}`}</span>
+                    </Tooltip>
+                  </div>
                 ))}
               </div>
             </div>
@@ -229,8 +260,17 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
             </div>
             <div className={styles.value}>
               <div className={styles.tokenList}>
-                {props.burn.map((b) => (
-                  <span>{`${b.quantity} ${b.assetName}`}</span>
+                {props.burn!.map((b) => (
+                  <Tooltip
+                    content={
+                      <ContentContainer
+                        label={translate('transaction.policyId')}
+                        body={b.policyId}
+                      />
+                    }
+                  >
+                    <span>{`${b.quantity} ${b.assetName}`}</span>
+                  </Tooltip>
                 ))}
               </div>
             </div>
@@ -251,6 +291,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
               addresses={[...props.inputs, ...props.withdrawals]}
               highlightedAddress={props.highlightAddress}
               isMobile={isMobile}
+              tooltipLabel={translate('transaction.policyId')}
             />
           </div>
         </div>
@@ -268,6 +309,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
               addresses={props.outputs}
               highlightedAddress={props.highlightAddress}
               isMobile={isMobile}
+              tooltipLabel={translate('transaction.policyId')}
             />
           </div>
         </div>

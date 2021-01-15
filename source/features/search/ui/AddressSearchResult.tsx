@@ -63,6 +63,7 @@ export const AddressSearchResult = () => {
                     transactionsCount={
                       paymentAddressSearchResult.transactionsCount
                     }
+                    tokensBalance={paymentAddressSearchResult.tokensBalance}
                   />
                 )}
                 {stakeAddressSearchResult && (

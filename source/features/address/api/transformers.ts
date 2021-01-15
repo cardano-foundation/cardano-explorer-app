@@ -1,4 +1,5 @@
 import { Currency } from 'cardano-js';
+import { isDefined } from '../../../lib/types';
 import {
   SearchForPaymentAddressQuery,
   SearchForStakeAddressQuery,
@@ -16,6 +17,10 @@ export const paymentAddressDetailTransformer = (
     ),
     transactionsCount:
       s.transactions_aggregate?.aggregate?.count.toString() || '0',
+    tokensBalance:
+      s
+        .paymentAddresses![0]?.summary?.assetBalances?.filter(isDefined)
+        .filter(({ assetName }) => assetName !== 'ada') || [],
   };
 };
 

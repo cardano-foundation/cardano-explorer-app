@@ -5,7 +5,10 @@
     "summaryAddressLabel": "Address",
     "summaryBalanceLabel": "Final Balance",
     "summaryTransactionsLabel": "Transactions",
-    "totalWithdrawn": "Total Withdrawn"
+    "totalWithdrawn": "Total Withdrawn",
+    "adaBalance": "Ada Balance",
+    "tokensBalance": "Tokens balance",
+    "policyId": "Policy ID"
   },
   "block": {
     "blocks": "Blocks",
@@ -179,7 +182,8 @@
     "unmoderatedTransactionData": "Unmoderated content",
     "unmoderatedWarning": "Warning:",
     "minted": "Minted tokens",
-    "burned": "Burned tokens"
+    "burned": "Burned tokens",
+    "policyId": "Policy ID"
   },
   "withdrawals": "Withdrawals"
 }

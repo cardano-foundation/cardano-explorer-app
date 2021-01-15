@@ -57,6 +57,7 @@ export const transactionDetailsTransformer = (
     tx.mint
       ?.filter((m) => m.quantity < '0')
       .map((i) => ({
+        ...i,
         quantity: i.quantity.substring(1),
         assetName: i.assetName || '-',
       })) || [],

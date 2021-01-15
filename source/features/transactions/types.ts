@@ -1,6 +1,7 @@
 export interface IToken {
   quantity: string;
   assetName: string;
+  policyId: string;
 }
 
 export interface ICoin {
@@ -43,6 +44,6 @@ export interface ITransactionDetails {
   outputs?: ITransactionOutput[];
   totalOutput: string;
   withdrawals: IWithdrawal[];
-  mint: IToken[];
-  burn: IToken[];
+  mint?: IToken[];
+  burn?: IToken[];
 }

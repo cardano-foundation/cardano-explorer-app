@@ -42,6 +42,16 @@
           flex: 1;
           font-weight: 300;
           word-break: break-all;
+
+          .tokenList {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .token {
+              margin-top: 5px;
+            }
+          }
         }
       }
     }

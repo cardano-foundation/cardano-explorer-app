@@ -130,6 +130,7 @@ $wide-breakpoint: 768px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    word-break: break-all;
   }
 
   .token {
