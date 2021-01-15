@@ -82,6 +82,7 @@ $wide-breakpoint: 768px;
 .amount {
   display: none;
   @media (min-width: $medium-breakpoint) {
+    color: var(--solid-text-color);
     display: block;
   }
 }
@@ -120,5 +121,18 @@ $wide-breakpoint: 768px;
 .txSeparator {
   svg {
     width: 100%;
+  }
+}
+
+.tokenList {
+  display: none;
+  @media (min-width: $medium-breakpoint) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .token {
+    margin-top: 5px;
   }
 }

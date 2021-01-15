@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import dayjs from 'dayjs';
+import { isEmpty } from 'lodash';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import utc from 'dayjs/plugin/utc';
 import { isNumber } from 'lodash';
@@ -17,6 +18,7 @@ import {
   ITransactionDetails,
   ITransactionInput,
   ITransactionOutput,
+  IToken,
   IWithdrawal,
 } from '../types';
 import styles from './TransactionInfo.module.scss';
@@ -47,6 +49,15 @@ const TransactionAddressMobile = (props: { address: string }) =>
       <div>{props.address.toString().substring(props.address.length - 19)}</div>
     </>
   );
+
+const TokenList = (props: { tokens: IToken[]; value: string }) => (
+  <div className={styles.tokenList}>
+    <div className={styles.amount}>{props.value} ADA</div>
+    {props.tokens.map((t) => (
+      <span className={styles.token}>{`${t.quantity} ${t.assetName}`}</span>
+    ))}
+  </div>
+);
 
 type AddressInputOutput = ITransactionInput | IWithdrawal | ITransactionOutput;
 
@@ -80,7 +91,11 @@ const AddressesRow = ({
             </span>
           </LocalizedLink>
         )}
-        <div className={styles.amount}>{io.value} ADA</div>
+        {isEmpty(io.tokens) ? (
+          <div className={styles.amount}>{io.value} ADA</div>
+        ) : (
+          <TokenList tokens={io.tokens!} value={io.value} />
+        )}
       </div>
     ))}
   </>
@@ -258,18 +273,20 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
             />
           )}
 
-        {!isShowingUnmoderatedData && props.metadata && props.metadata.length > 0 && (
-          <div className={styles.row}>
-            <div className={styles.label}>
-              {translate('transaction.metadata')}
+        {!isShowingUnmoderatedData &&
+          props.metadata &&
+          props.metadata.length > 0 && (
+            <div className={styles.row}>
+              <div className={styles.label}>
+                {translate('transaction.metadata')}
+              </div>
+              <div className={styles.value}>
+                {props.metadata.map((item) => {
+                  return <div>{JSON.stringify(item.value, undefined, 2)}</div>;
+                })}
+              </div>
             </div>
-            <div className={styles.value}>
-              {props.metadata.map((item) => {
-                return <div>{JSON.stringify(item.value, undefined, 2)}</div>;
-              })}
-            </div>
-          </div>
-        )}
+          )}
 
         {/* ===== DOTTED LINE SEPARATOR ===== */}
 

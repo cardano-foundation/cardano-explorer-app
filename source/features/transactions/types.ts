@@ -1,5 +1,11 @@
+export interface IToken {
+  quantity: string;
+  assetName: string;
+}
+
 export interface ICoin {
   value: string;
+  tokens?: IToken[];
 }
 
 export interface ITransactionInput extends ICoin {
