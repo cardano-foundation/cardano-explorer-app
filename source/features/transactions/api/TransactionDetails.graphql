@@ -18,6 +18,10 @@ fragment TransactionDetails on Transaction {
     sourceTxHash
     sourceTxIndex
     value
+    tokens {
+      assetName
+      quantity
+    }
   },
   metadata {
     key

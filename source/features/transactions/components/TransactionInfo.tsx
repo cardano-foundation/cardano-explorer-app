@@ -52,6 +52,7 @@ const TransactionAddressMobile = (props: { address: string }) =>
 
 const TokenList = (props: { tokens: IToken[]; value: string }) => (
   <div className={styles.tokenList}>
+    {/* use "ada" asset instead of input/output value? */}
     <div className={styles.amount}>{props.value} ADA</div>
     {props.tokens.map((t) => (
       <span className={styles.token}>{`${t.quantity} ${t.assetName}`}</span>
@@ -92,6 +93,7 @@ const AddressesRow = ({
           </LocalizedLink>
         )}
         {isEmpty(io.tokens) ? (
+          //use "ada" asset instead of input/output value?
           <div className={styles.amount}>{io.value} ADA</div>
         ) : (
           <TokenList tokens={io.tokens!} value={io.value} />
@@ -200,6 +202,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
         </div>
 
         {/* ===== MINTED TOKENS ===== */}
+
         {!isEmpty(props.mint) && (
           <div className={classnames([styles.idRow, styles.row])}>
             <div className={styles.label}>
@@ -217,6 +220,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
         )}
 
         {/* ===== BURNED TOKENS ===== */}
+
         {!isEmpty(props.burn) && (
           <div className={classnames([styles.idRow, styles.row])}>
             <div className={styles.label}>

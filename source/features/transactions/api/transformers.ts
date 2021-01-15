@@ -19,6 +19,12 @@ export const transactionDetailsTransformer = (
     ...i,
     sourceTxId: i.sourceTxHash,
     value: Currency.Util.lovelacesToAda(i.value),
+    tokens: i.tokens
+      .filter(({ assetName }) => assetName !== 'ada')
+      .map((t) => ({
+        ...t,
+        assetName: t.assetName || '-',
+      })),
   })),
   metadata: tx.metadata?.filter(isDefined).map((i) => ({
     key: i.key,
@@ -28,7 +34,7 @@ export const transactionDetailsTransformer = (
     ...i,
     value: Currency.Util.lovelacesToAda(i.value),
     tokens: i.tokens
-      .filter((i) => i.assetName !== 'ada')
+      .filter(({ assetName }) => assetName !== 'ada')
       .map((t) => ({
         ...t,
         assetName: t.assetName || '-',
@@ -44,14 +50,14 @@ export const transactionDetailsTransformer = (
     tx.mint
       ?.filter((m) => m.quantity > '0')
       .map((i) => ({
-        quantity: i.quantity || '-',
+        ...i,
         assetName: i.assetName || '-',
       })) || [],
   burn:
     tx.mint
       ?.filter((m) => m.quantity < '0')
       .map((i) => ({
-        quantity: i.quantity.substring(1) || '-',
+        quantity: i.quantity.substring(1),
         assetName: i.assetName || '-',
       })) || [],
 });
