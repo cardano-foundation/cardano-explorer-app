@@ -5,6 +5,7 @@ import {
   SearchForStakeAddressQuery,
 } from '../../../../generated/typings/graphql-schema';
 import { IPaymentAddressSummary, IStakeAddressSummary } from '../types';
+import { sortTokensDesc } from '../../../lib/arrays';
 
 export const paymentAddressDetailTransformer = (
   address: string,
@@ -20,7 +21,8 @@ export const paymentAddressDetailTransformer = (
     tokensBalance:
       s
         .paymentAddresses![0]?.summary?.assetBalances?.filter(isDefined)
-        .filter(({ assetName }) => assetName !== 'ada') || [],
+        .filter(({ assetName }) => assetName !== 'ada')
+        .sort(sortTokensDesc) || [],
   };
 };
 

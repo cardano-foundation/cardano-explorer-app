@@ -69,13 +69,14 @@ const AddressSummary = (props: AddressSummaryProps) => {
                 </div>
                 <div className={styles.infoValue}>{props.finalBalance} ADA</div>
               </div>
-              {!isEmpty(props.tokensBalance) && (
-                <div className={styles.infoRow}>
-                  <div className={styles.infoLabel}>
-                    {/* TODO: add DE and JA translation*/}
-                    {translate('address.tokensBalance')}
-                  </div>
-                  <div className={styles.infoValue}>
+              <div className={styles.infoRow}>
+                <div className={styles.infoLabel}>
+                  {/* TODO: add DE and JA translation*/}
+                  {translate('address.tokensBalance')}
+                </div>
+
+                <div className={styles.infoValue}>
+                  {!isEmpty(props.tokensBalance) ? (
                     <div className={styles.tokenList}>
                       {props.tokensBalance!.map((b) => (
                         <span className={styles.token}>
@@ -92,9 +93,11 @@ const AddressSummary = (props: AddressSummaryProps) => {
                         </span>
                       ))}
                     </div>
-                  </div>
+                  ) : (
+                    translate('address.noTokensAvailable')
+                  )}
                 </div>
-              )}
+              </div>
             </>
           )}
           {isStakeAddress(props) && (

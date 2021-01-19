@@ -8,7 +8,8 @@
     "totalWithdrawn": "Total Withdrawn",
     "adaBalance": "Ada Balance",
     "tokensBalance": "Tokens balance",
-    "policyId": "Policy ID"
+    "policyId": "Policy ID",
+    "noTokensAvailable": "This address has no tokens"
   },
   "block": {
     "blocks": "Blocks",

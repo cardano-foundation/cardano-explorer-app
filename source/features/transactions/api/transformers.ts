@@ -1,6 +1,7 @@
 import { Currency } from 'cardano-js';
 import { TransactionDetailsFragment } from '../../../../generated/typings/graphql-schema';
 import { isDefined } from '../../../lib/types';
+import { sortTokensDesc } from '../../../lib/arrays';
 import { ITransactionDetails } from '../types';
 
 export const transactionDetailsTransformer = (
@@ -24,7 +25,8 @@ export const transactionDetailsTransformer = (
       .map((t) => ({
         ...t,
         assetName: t.assetName || '-',
-      })),
+      }))
+      .sort(sortTokensDesc),
   })),
   metadata: tx.metadata?.filter(isDefined).map((i) => ({
     key: i.key,
@@ -38,7 +40,8 @@ export const transactionDetailsTransformer = (
       .map((t) => ({
         ...t,
         assetName: t.assetName || '-',
-      })),
+      }))
+      .sort(sortTokensDesc),
   })),
   totalOutput: Currency.Util.lovelacesToAda(tx.totalOutput),
   withdrawals:
@@ -52,7 +55,8 @@ export const transactionDetailsTransformer = (
       .map((i) => ({
         ...i,
         assetName: i.assetName || '-',
-      })) || [],
+      }))
+      .sort(sortTokensDesc) || [],
   burn:
     tx.mint
       ?.filter((m) => m.quantity < '0')
@@ -60,5 +64,6 @@ export const transactionDetailsTransformer = (
         ...i,
         quantity: i.quantity.substring(1),
         assetName: i.assetName || '-',
-      })) || [],
+      }))
+      .sort(sortTokensDesc) || [],
 });
