@@ -1,4 +1,5 @@
 import { observer } from 'mobx-react-lite';
+import { useState } from 'react';
 import QRCode from 'qrcode.react';
 import { isEmpty } from 'lodash';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
@@ -6,6 +7,7 @@ import { useI18nFeature } from '../../i18n/context';
 import styles from './AddressSummary.module.scss';
 import { IToken } from '../../transactions/types';
 import Tooltip, { ContentContainer } from '../../../widgets/tooltip/Tooltip';
+import TokenList from '../../transactions/components/TransactionTokenList';
 
 export interface IAddressSummaryProps {
   address: string;
@@ -40,7 +42,20 @@ function isStakeAddress(
 }
 
 const AddressSummary = (props: AddressSummaryProps) => {
+  const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
   const { translate } = useI18nFeature().store;
+
+  const handleMouseOver = (
+    event: React.MouseEvent<HTMLSpanElement, MouseEvent>
+  ) => {
+    const { offsetTop, offsetLeft, offsetWidth } = event.currentTarget;
+    setTooltipPosition((prevState) => ({
+      ...prevState,
+      top: offsetTop,
+      left: offsetLeft + offsetWidth,
+    }));
+  };
+
   return (
     <div className={styles.addressSummaryContainer}>
       <div className={styles.header}>
@@ -77,22 +92,10 @@ const AddressSummary = (props: AddressSummaryProps) => {
 
                 <div className={styles.infoValue}>
                   {!isEmpty(props.tokensBalance) ? (
-                    <div className={styles.tokenList}>
-                      {props.tokensBalance!.map((b) => (
-                        <span className={styles.token}>
-                          <Tooltip
-                            content={
-                              <ContentContainer
-                                label={translate('address.policyId')}
-                                body={b.policyId}
-                              />
-                            }
-                          >
-                            {`${b.quantity} ${b.assetName}`}
-                          </Tooltip>
-                        </span>
-                      ))}
-                    </div>
+                    <TokenList
+                      tokens={props.tokensBalance!}
+                      tooltipLabel={translate('address.policyId')}
+                    />
                   ) : (
                     translate('address.noTokensAvailable')
                   )}

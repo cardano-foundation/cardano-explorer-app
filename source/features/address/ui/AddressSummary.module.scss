@@ -43,7 +43,8 @@
           font-weight: 300;
           word-break: break-all;
 
-          .tokenList {
+          .tokenList,
+          .scrollableTokenList {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -51,6 +52,12 @@
             .token {
               margin-top: 5px;
             }
+          }
+
+          .scrollableTokenList {
+            height: 120px;
+            overflow-y: scroll;
+            overflow-x: hidden;
           }
         }
       }

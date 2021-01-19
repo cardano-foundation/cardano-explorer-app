@@ -5,7 +5,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import utc from 'dayjs/plugin/utc';
 import { isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { isDefined } from '../../../lib/types';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import Tooltip, { ContentContainer } from '../../../widgets/tooltip/Tooltip';
@@ -19,9 +19,9 @@ import {
   ITransactionDetails,
   ITransactionInput,
   ITransactionOutput,
-  IToken,
   IWithdrawal,
 } from '../types';
+import TokenList from './TransactionTokenList';
 import styles from './TransactionInfo.module.scss';
 
 dayjs.extend(relativeTime);
@@ -50,29 +50,6 @@ const TransactionAddressMobile = (props: { address: string }) =>
       <div>{props.address.toString().substring(props.address.length - 19)}</div>
     </>
   );
-
-const TokenList = (props: {
-  tokens: IToken[];
-  value: string;
-  tooltipLabel?: string;
-}) => (
-  <div className={styles.tokenList}>
-    {/* use "ada" asset instead of input/output value? */}
-    <div className={styles.amount}>{props.value} ADA</div>
-    {props.tokens.map((t) => (
-      <Tooltip
-        content={
-          <ContentContainer
-            label={props.tooltipLabel || '-'}
-            body={t.policyId}
-          />
-        }
-      >
-        <span className={styles.token}>{`${t.quantity} ${t.assetName}`}</span>
-      </Tooltip>
-    ))}
-  </div>
-);
 
 type AddressInputOutput = ITransactionInput | IWithdrawal | ITransactionOutput;
 
@@ -112,11 +89,10 @@ const AddressesRow = ({
           //use "ada" asset instead of input/output value?
           <div className={styles.amount}>{io.value} ADA</div>
         ) : (
-          <TokenList
-            tokens={io.tokens!}
-            value={io.value}
-            tooltipLabel={tooltipLabel}
-          />
+          <div className={styles.listContainer}>
+            <div className={styles.amount}>{io.value} ADA</div>
+            <TokenList tokens={io.tokens!} tooltipLabel={tooltipLabel} />
+          </div>
         )}
       </div>
     ))}
@@ -230,22 +206,10 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
               {translate('transaction.minted')}
             </div>
             <div className={styles.value}>
-              <div className={styles.tokenList}>
-                {props.mint!.map((m) => (
-                  <div>
-                    <Tooltip
-                      content={
-                        <ContentContainer
-                          label={translate('transaction.policyId')}
-                          body={m.policyId}
-                        />
-                      }
-                    >
-                      <span>{`${m.quantity} ${m.assetName}`}</span>
-                    </Tooltip>
-                  </div>
-                ))}
-              </div>
+              <TokenList
+                tokens={props.mint!}
+                tooltipLabel={translate('transaction.policyId')}
+              />
             </div>
           </div>
         )}
@@ -259,20 +223,10 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
               {translate('transaction.burned')}
             </div>
             <div className={styles.value}>
-              <div className={styles.tokenList}>
-                {props.burn!.map((b) => (
-                  <Tooltip
-                    content={
-                      <ContentContainer
-                        label={translate('transaction.policyId')}
-                        body={b.policyId}
-                      />
-                    }
-                  >
-                    <span>{`${b.quantity} ${b.assetName}`}</span>
-                  </Tooltip>
-                ))}
-              </div>
+              <TokenList
+                tokens={props.burn!}
+                tooltipLabel={translate('transaction.policyId')}
+              />
             </div>
           </div>
         )}

@@ -5,6 +5,7 @@ interface ITooltipProps {
   content: string | React.ReactElement;
   theme?: string;
   themeClass?: string;
+  style?: object;
 }
 
 export const ContentContainer = (props: { label: string; body: string }) => (
@@ -14,9 +15,17 @@ export const ContentContainer = (props: { label: string; body: string }) => (
   </div>
 );
 
-const Tooltip = ({ children, theme, themeClass, content }: ITooltipProps) => (
+const Tooltip = ({
+  children,
+  theme,
+  themeClass,
+  content,
+  style,
+}: ITooltipProps) => (
   <div className={styles[theme ?? 'tooltip']}>
-    <span className={styles[themeClass || 'translateCenter']}>{content}</span>
+    <span style={style} className={styles[themeClass || 'translateCenter']}>
+      {content}
+    </span>
     {children}
   </div>
 );

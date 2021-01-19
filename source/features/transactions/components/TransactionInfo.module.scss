@@ -79,14 +79,6 @@ $wide-breakpoint: 768px;
   }
 }
 
-.amount {
-  display: none;
-  @media (min-width: $medium-breakpoint) {
-    color: var(--solid-text-color);
-    display: block;
-  }
-}
-
 .address {
   display: flex;
 }
@@ -124,16 +116,18 @@ $wide-breakpoint: 768px;
   }
 }
 
-.tokenList {
-  display: none;
-  @media (min-width: $medium-breakpoint) {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    word-break: break-all;
-  }
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 
-  .token {
-    margin-top: 5px;
+  .amount {
+    display: none;
+    @media (min-width: $medium-breakpoint) {
+      color: var(--solid-text-color);
+      display: block;
+      margin-right: 10px;
+      margin-bottom: 5px;
+    }
   }
 }
