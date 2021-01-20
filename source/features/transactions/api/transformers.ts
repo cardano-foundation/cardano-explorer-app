@@ -2,6 +2,7 @@ import { Currency } from 'cardano-js';
 import { TransactionDetailsFragment } from '../../../../generated/typings/graphql-schema';
 import { isDefined } from '../../../lib/types';
 import { sortTokensDesc } from '../../../lib/arrays';
+import { decodeHex } from '../../../lib/decodeHex';
 import { ITransactionDetails } from '../types';
 
 export const transactionDetailsTransformer = (
@@ -21,11 +22,11 @@ export const transactionDetailsTransformer = (
     sourceTxId: i.sourceTxHash,
     value: Currency.Util.lovelacesToAda(i.value),
     tokens: i.tokens
-      .filter(({ assetName }) => assetName !== 'ada')
       .map((t) => ({
         ...t,
-        assetName: t.assetName || '-',
+        assetName: decodeHex(t.assetName!.substr(2)) || '-',
       }))
+      .filter(({ assetName }) => assetName !== 'ada')
       .sort(sortTokensDesc),
   })),
   metadata: tx.metadata?.filter(isDefined).map((i) => ({
@@ -36,11 +37,11 @@ export const transactionDetailsTransformer = (
     ...i,
     value: Currency.Util.lovelacesToAda(i.value),
     tokens: i.tokens
-      .filter(({ assetName }) => assetName !== 'ada')
       .map((t) => ({
         ...t,
-        assetName: t.assetName || '-',
+        assetName: decodeHex(t.assetName!.substr(2)) || '-',
       }))
+      .filter(({ assetName }) => assetName !== 'ada')
       .sort(sortTokensDesc),
   })),
   totalOutput: Currency.Util.lovelacesToAda(tx.totalOutput),
@@ -54,7 +55,7 @@ export const transactionDetailsTransformer = (
       ?.filter((m) => m.quantity > '0')
       .map((i) => ({
         ...i,
-        assetName: i.assetName || '-',
+        assetName: decodeHex(i.assetName!.substr(2)) || '-',
       }))
       .sort(sortTokensDesc) || [],
   burn:
@@ -63,7 +64,7 @@ export const transactionDetailsTransformer = (
       .map((i) => ({
         ...i,
         quantity: i.quantity.substring(1),
-        assetName: i.assetName || '-',
+        assetName: decodeHex(i.assetName!.substr(2)) || '-',
       }))
       .sort(sortTokensDesc) || [],
 });

@@ -6,6 +6,7 @@ import {
 } from '../../../../generated/typings/graphql-schema';
 import { IPaymentAddressSummary, IStakeAddressSummary } from '../types';
 import { sortTokensDesc } from '../../../lib/arrays';
+import { decodeHex } from '../../../lib/decodeHex';
 
 export const paymentAddressDetailTransformer = (
   address: string,
@@ -21,6 +22,7 @@ export const paymentAddressDetailTransformer = (
     tokensBalance:
       s
         .paymentAddresses![0]?.summary?.assetBalances?.filter(isDefined)
+        .map((t) => ({ ...t, assetName: decodeHex(t.assetName.substr(2)) }))
         .filter(({ assetName }) => assetName !== 'ada')
         .sort(sortTokensDesc) || [],
   };

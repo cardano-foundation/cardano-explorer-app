@@ -64,6 +64,16 @@ $wide-breakpoint: 768px;
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
+
+  .amount {
+    display: none;
+    @media (min-width: $medium-breakpoint) {
+      color: var(--solid-text-color);
+      display: block;
+      margin-right: 10px;
+      margin-bottom: 5px;
+    }
+  }
   &:last-child {
     margin-bottom: 6px;
     @media (min-width: $wide-breakpoint) {
