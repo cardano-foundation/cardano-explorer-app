@@ -19,13 +19,19 @@ export interface IStakeAddressSummaryProps extends IAddressSummaryProps {
   totalWithdrawals: string;
 }
 
-type AddressSummaryProps = IPaymentAddressSummaryProps | IStakeAddressSummaryProps
+type AddressSummaryProps =
+  | IPaymentAddressSummaryProps
+  | IStakeAddressSummaryProps;
 
-function isPaymentAddress (props: AddressSummaryProps): props is IPaymentAddressSummaryProps {
+function isPaymentAddress(
+  props: AddressSummaryProps
+): props is IPaymentAddressSummaryProps {
   return (props as IPaymentAddressSummaryProps).finalBalance !== undefined;
 }
 
-function isStakeAddress (props: AddressSummaryProps): props is IStakeAddressSummaryProps {
+function isStakeAddress(
+  props: AddressSummaryProps
+): props is IStakeAddressSummaryProps {
   return (props as IStakeAddressSummaryProps).totalWithdrawn !== undefined;
 }
 
@@ -70,7 +76,9 @@ const AddressSummary = (props: AddressSummaryProps) => {
                 <div className={styles.infoLabel}>
                   {translate('address.totalWithdrawn')}
                 </div>
-                <div className={styles.infoValue}>{props.totalWithdrawn} ADA</div>
+                <div className={styles.infoValue}>
+                  {props.totalWithdrawn} ADA
+                </div>
               </div>
             </>
           )}

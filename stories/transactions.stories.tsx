@@ -1,5 +1,8 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import UnmoderatedDataConsented from '../source/features/stake-pools/components/UnmoderatedDataConsented';
+import UnmoderatedDataWarning from '../source/features/stake-pools/components/UnmoderatedDataWarning';
 import TransactionInfo from '../source/features/transactions/components/TransactionInfo';
 import TransactionList from '../source/features/transactions/components/TransactionList';
 import { ITransactionDetails } from '../source/features/transactions/types';
@@ -16,6 +19,7 @@ export const transactions: ITransactionDetails[] = [
       number: 11044,
       slot: 11044,
     },
+    deposit: '171246',
     fee: '171246',
     id: 'b81c5239789f54e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196',
     includedAt: new Date(1570095392000),
@@ -27,6 +31,12 @@ export const transactions: ITransactionDetails[] = [
           'b81c5239789f54e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196',
         sourceTxIndex: 0,
         value: '224251742344',
+      },
+    ],
+    metadata: [
+      {
+        key: 'meta',
+        value: 'Test metadata',
       },
     ],
     outputs: [
@@ -44,6 +54,13 @@ export const transactions: ITransactionDetails[] = [
       },
     ],
     totalOutput: '224909.277897',
+    withdrawals: [
+      {
+        address:
+          'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
+        value: '6510253',
+      },
+    ],
   },
   {
     block: {
@@ -52,6 +69,7 @@ export const transactions: ITransactionDetails[] = [
       number: 11044,
       slot: 11044,
     },
+    deposit: '171246',
     fee: '171246',
     id: '4e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196b81c5239789f5',
     includedAt: new Date(1570095392000),
@@ -63,6 +81,12 @@ export const transactions: ITransactionDetails[] = [
           'b81c5239789f54e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196',
         sourceTxIndex: 1,
         value: '224251742344',
+      },
+    ],
+    metadata: [
+      {
+        key: 'meta',
+        value: 'Test metadata',
       },
     ],
     outputs: [
@@ -80,6 +104,13 @@ export const transactions: ITransactionDetails[] = [
       },
     ],
     totalOutput: '224909.277897',
+    withdrawals: [
+      {
+        address:
+          'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
+        value: '6510253',
+      },
+    ],
   },
   {
     block: {
@@ -88,6 +119,7 @@ export const transactions: ITransactionDetails[] = [
       number: 11044,
       slot: 11044,
     },
+    deposit: '171246',
     fee: '171246',
     id: '4e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196b81c5239789f6',
     includedAt: new Date(1570095392000),
@@ -99,6 +131,12 @@ export const transactions: ITransactionDetails[] = [
           'b81c5239789f54e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196',
         sourceTxIndex: 2,
         value: '224251742344',
+      },
+    ],
+    metadata: [
+      {
+        key: 'meta',
+        value: 'Test metadata',
       },
     ],
     outputs: [
@@ -116,6 +154,13 @@ export const transactions: ITransactionDetails[] = [
       },
     ],
     totalOutput: '24613897277',
+    withdrawals: [
+      {
+        address:
+          'DdzFFzlCqrhsktcrocpQugfgfgfgfgfhdfklfjsjflsjfldsjfjdsljfdsljfdjsRBprA4cWim7yuigXuc5QEw',
+        value: '6510253',
+      },
+    ],
   },
 ];
 
@@ -147,4 +192,13 @@ storiesOf('Transactions', module)
         title: 'Transaction',
       }))}
     />
+  ))
+  .add('UnmoderatedDataWarning', () => (
+    <UnmoderatedDataWarning
+      type="transactions"
+      onAcceptUnmoderatedData={action('onAcceptUnmoderatedData')}
+    />
+  ))
+  .add('UnmoderatedDataConsented', () => (
+    <UnmoderatedDataConsented type="transaction" />
   ));

@@ -5,10 +5,14 @@ import { Store } from '../../lib/Store';
 import { isDefined } from '../../lib/types';
 import {
   paymentAddressDetailTransformer,
-  stakeAddressDetailTransformer
+  stakeAddressDetailTransformer,
 } from '../address/api/transformers';
 import { ADDRESS_SEARCH_RESULT_PATH } from '../address/config';
-import { IAddressSummary, IPaymentAddressSummary, IStakeAddressSummary } from '../address/types';
+import {
+  IAddressSummary,
+  IPaymentAddressSummary,
+  IStakeAddressSummary,
+} from '../address/types';
 import { blockDetailsTransformer } from '../blocks/api/transformers';
 import { BLOCK_SEARCH_RESULT_PATH } from '../blocks/config';
 import { IBlockDetailed } from '../blocks/types';
@@ -36,8 +40,10 @@ export enum SearchType {
 export class SearchStore extends Store {
   @observable public blockSearchResult: IBlockDetailed | null = null;
   @observable public epochSearchResult: IEpochOverview | null = null;
-  @observable public paymentAddressSearchResult: IPaymentAddressSummary | null = null;
-  @observable public stakeAddressSearchResult: IStakeAddressSummary | null = null;
+  @observable
+  public paymentAddressSearchResult: IPaymentAddressSummary | null = null;
+  @observable
+  public stakeAddressSearchResult: IStakeAddressSummary | null = null;
   @observable public transactionSearchResult: ITransactionDetails | null = null;
 
   private readonly searchApi: SearchApi;
@@ -75,7 +81,10 @@ export class SearchStore extends Store {
           this.onSearchByEpochNumberRequested,
         ],
         [this.searchActions.searchById, this.searchById],
-        [this.searchActions.searchForPaymentAddress, this.searchForPaymentAddress],
+        [
+          this.searchActions.searchForPaymentAddress,
+          this.searchForPaymentAddress,
+        ],
         [this.searchActions.searchForStakeAddress, this.searchForStakeAddress],
         [
           this.searchActions.searchForBlockByNumber,
@@ -196,7 +205,7 @@ export class SearchStore extends Store {
   };
 
   @action private searchForPaymentAddress = async ({
-    address
+    address,
   }: {
     address: string;
   }) => {
@@ -222,7 +231,10 @@ export class SearchStore extends Store {
         });
       }
       runInAction(() => {
-        this.paymentAddressSearchResult = paymentAddressDetailTransformer(address, result);
+        this.paymentAddressSearchResult = paymentAddressDetailTransformer(
+          address,
+          result
+        );
       });
     }
   };
@@ -251,7 +263,10 @@ export class SearchStore extends Store {
         });
       }
       runInAction(() => {
-        this.stakeAddressSearchResult = stakeAddressDetailTransformer(address, result);
+        this.stakeAddressSearchResult = stakeAddressDetailTransformer(
+          address,
+          result
+        );
       });
     }
   };

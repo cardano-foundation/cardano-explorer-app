@@ -36,14 +36,18 @@ export const AddressSearchResult = () => {
     <Observer>
       {() => {
         const { paymentAddressSearchResult, stakeAddressSearchResult } = store;
-        const address = paymentAddressSearchResult?.address ||
+        const address =
+          paymentAddressSearchResult?.address ||
           stakeAddressSearchResult?.address ||
           null;
-        const transactionsCount = paymentAddressSearchResult?.transactionsCount ||
+        const transactionsCount =
+          paymentAddressSearchResult?.transactionsCount ||
           stakeAddressSearchResult?.transactionsCount;
         if (
-          ( paymentAddressSearchResult && !api.searchForPaymentAddressQuery.hasBeenExecutedAtLeastOnce ) ||
-          ( stakeAddressSearchResult && !api.searchForStakeAddressQuery.hasBeenExecutedAtLeastOnce ) ||
+          (paymentAddressSearchResult &&
+            !api.searchForPaymentAddressQuery.hasBeenExecutedAtLeastOnce) ||
+          (stakeAddressSearchResult &&
+            !api.searchForStakeAddressQuery.hasBeenExecutedAtLeastOnce) ||
           store.isSearching
         ) {
           return <LoadingSpinner className={styles.loadingSpinnerMargin} />;
@@ -51,61 +55,73 @@ export const AddressSearchResult = () => {
           return (
             <>
               <div className={styles.addressSummary}>
-                { paymentAddressSearchResult && (
+                {paymentAddressSearchResult && (
                   <AddressSummary
                     title={translate('address.addressLabel')}
                     address={paymentAddressSearchResult.address}
                     finalBalance={paymentAddressSearchResult.finalBalance}
-                    transactionsCount={paymentAddressSearchResult.transactionsCount}
+                    transactionsCount={
+                      paymentAddressSearchResult.transactionsCount
+                    }
                   />
                 )}
-                { stakeAddressSearchResult && (
+                {stakeAddressSearchResult && (
                   <AddressSummary
                     title={translate('address.addressLabel')}
                     address={stakeAddressSearchResult.address}
-                    transactionsCount={stakeAddressSearchResult.transactionsCount}
+                    transactionsCount={
+                      stakeAddressSearchResult.transactionsCount
+                    }
                     totalWithdrawals={stakeAddressSearchResult.totalWithdrawals}
                     totalWithdrawn={stakeAddressSearchResult.totalWithdrawn}
                   />
                 )}
               </div>
               <div className={styles.transactionList}>
-                {<TransactionBrowser
-                  isLoading={
-                    transactions.api.getPaymentAddressTransactionsQuery.isExecuting ||
-                    transactions.api.getStakeAddressTransactionsQuery.isExecuting
-                  }
-                  isLoadingFirstTime={
-                    transactions.api.getPaymentAddressTransactionsQuery
-                      .isExecutingTheFirstTime ||
-                    transactions.api.getStakeAddressTransactionsQuery
-                      .isExecutingTheFirstTime
-                  }
-                  onChangePage={(page) => {
-                    navigation.actions.push.trigger({
-                      path: '/address',
-                      query: {
+                {
+                  <TransactionBrowser
+                    isLoading={
+                      transactions.api.getPaymentAddressTransactionsQuery
+                        .isExecuting ||
+                      transactions.api.getStakeAddressTransactionsQuery
+                        .isExecuting
+                    }
+                    isLoadingFirstTime={
+                      transactions.api.getPaymentAddressTransactionsQuery
+                        .isExecutingTheFirstTime ||
+                      transactions.api.getStakeAddressTransactionsQuery
+                        .isExecutingTheFirstTime
+                    }
+                    onChangePage={(page) => {
+                      navigation.actions.push.trigger({
+                        path: '/address',
+                        query: {
+                          address,
+                          page,
+                          perPage:
+                            navigation.store.query.perPage ??
+                            TRANSACTIONS_PER_PAGE_DEFAULT,
+                        },
+                      });
+                    }}
+                    onPagingCalculated={(paging) => {
+                      transactions.actions.browseAddressTransactions.trigger({
                         address,
-                        page,
-                        perPage:
-                          navigation.store.query.perPage ??
-                          TRANSACTIONS_PER_PAGE_DEFAULT,
-                      },
-                    });
-                  }}
-                  onPagingCalculated={(paging) => {
-                    transactions.actions.browseAddressTransactions.trigger({
-                      address,
-                      limit: paging.itemsPerPage,
-                      offset: (paging.currentPage - 1) * paging.itemsPerPage,
-                    });
-                  }}
-                  perPage={navigation.store.query.perPage as string}
-                  currentPage={(navigation.store.query.page as string) ?? 1}
-                  total={parseInt(paymentAddressSearchResult?.transactionsCount ||
-                    stakeAddressSearchResult?.transactionsCount || '0', 10)}
-                  transactions={transactions.store.browsedAddressTransactions}
-                />}
+                        limit: paging.itemsPerPage,
+                        offset: (paging.currentPage - 1) * paging.itemsPerPage,
+                      });
+                    }}
+                    perPage={navigation.store.query.perPage as string}
+                    currentPage={(navigation.store.query.page as string) ?? 1}
+                    total={parseInt(
+                      paymentAddressSearchResult?.transactionsCount ||
+                        stakeAddressSearchResult?.transactionsCount ||
+                        '0',
+                      10
+                    )}
+                    transactions={transactions.store.browsedAddressTransactions}
+                  />
+                }
               </div>
             </>
           );

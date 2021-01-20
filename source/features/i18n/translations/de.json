@@ -143,6 +143,7 @@
     "stakePoolsSearch": "Nach einem bestimmten Stake Pool suchen",
     "stakePoolsTitle": "Stake Pools",
     "unmoderated": "Sie haben zugestimmt, nicht moderierte Stake-Pool Daten anzuzeigen.",
+    "unmoderatedConfirmation": "Ja, nicht moderierten Inhalt anzeigen",
     "unmoderatedContent": "Möchten Sie nicht moderierten Inhalt sehen?",
     "unmoderatedEntitiesControl": "Diese Informationen werden von Stake-Pool-Betreibern bereitgestellt und gehostet und unterliegen nicht der Kontrolle der Unternehmen, die diese Website betreiben.",
     "unmoderatedLeave": "Verlasse diese Seite",
@@ -161,13 +162,22 @@
     "to": "Output-Adressen",
     "id": "Transaktions-ID",
     "includedIn": "Inkludiert in",
+    "metadata": "Metadata",
     "noTransactions": "Keine Transaktionen",
     "pageTitle": "Transaktion | $t(productTitle)",
     "receivedTime": "Erhalten",
     "summary": "Übersicht",
     "totalOutput": "Output Insgesamt",
     "transactionLabel": "Transaktion",
-    "transactionsLabel": "Transaktionen"
+    "transactionsLabel": "Transaktionen",
+    "unmoderated": "Sie haben zugestimmt, nicht moderierte Transaktion Daten anzuzeigen.",
+    "unmoderatedConfirmation": "Ja, nicht moderierten Inhalt anzeigen",
+    "unmoderatedContent": "Möchten Sie nicht moderierten Inhalt sehen?",
+    "unmoderatedEntitiesControl": "Diese Informationen werden von Stake-Pool-Betreibern bereitgestellt und gehostet und unterliegen nicht der Kontrolle der Unternehmen, die diese Website betreiben.",
+    "unmoderatedLeave": "Verlasse diese Seite",
+    "unmoderatedPoolTickerSymbols": "Transaktionen metadaten werden nicht moderiert und enthalten möglicherweise unangemessenen Inhalt.",
+    "unmoderatedTransactionData": "Transaktionen metadaten werden nicht moderiert",
+    "unmoderatedWarning": "Warnung:"
   },
   "withdrawals": "Abhebungen"
 }

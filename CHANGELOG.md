@@ -1,6 +1,19 @@
 Changelog
 =========
 
+## 1.3.0
+
+### Compatible with:
+
+- [`cardano-graphql`: `3.1.1`](https://github.com/input-output-hk/cardano-graphql/releases/tag/3.1.1)
+
+### Features
+- transaction metadata ([6c3baa8](https://github.com/input-output-hk/cardano-explorer-app/commit/6c3baa84de89c3b84df3240e10b9c5141635064f))
+
+### Fixes
+- only show merkel root if present ([98f8e5d](https://github.com/input-output-hk/cardano-explorer-app/commit/98f8e5d93a69101e89f496041a06b4d49295b5f8))
+- "0" displayed on a line after Transaction Fee / Total Output ([4f49075](https://github.com/input-output-hk/cardano-explorer-app/commit/4f49075776c8370b80ece6bdc9c3e491746cf9b5))
+
 ## 1.2.1
 
 ### Compatible with:

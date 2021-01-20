@@ -10,7 +10,7 @@ import {
   SearchForPaymentAddressQuery,
   SearchForPaymentAddressQueryVariables,
   SearchForStakeAddressQuery,
-  SearchForStakeAddressQueryVariables
+  SearchForStakeAddressQueryVariables,
 } from '../../../typings/graphql-schema';
 import searchByIdQuery from './searchById.graphql';
 import searchForBlockByNumberQuery from './searchForBlockByNumber.graphql';

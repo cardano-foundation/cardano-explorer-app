@@ -1,23 +1,27 @@
 fragment TransactionDetails on Transaction {
   block {
     epochNo
-    hash,
-    number,
-    slotNo,
+    hash
+    number
+    slotNo
   }
   deposit,
   fee,
   hash,
   includedAt,
   inputs {
-    address,
+    address
     sourceTxHash
     sourceTxIndex
-    value,
+    value
+  },
+  metadata {
+    key
+    value
   },
   outputs {
-    address,
-    index,
+    address
+    index
     value
   },
   totalOutput

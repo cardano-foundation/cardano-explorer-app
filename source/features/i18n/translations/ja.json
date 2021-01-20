@@ -143,6 +143,7 @@
     "stakePoolsSearch": "特定のステークプールを検索する",
     "stakePoolsTitle": "ステークプール",
     "unmoderated": "あなたは管理されていないステークプールデータの表示に同意されています。",
+    "unmoderatedConfirmation": "はい、モデレートされていないコンテンツを表示します",
     "unmoderatedContent": "管理されていないコンテンツを表示しますか。",
     "unmoderatedEntitiesControl": "この情報はステークプールオペレーターが提供、ホストしており、本ウェブサイトを運営している組織の管理下にはありません。",
     "unmoderatedLeave": "このページを離れる",
@@ -161,13 +162,22 @@
     "to": "送信先",
     "id": "トランザクションID",
     "includedIn": "含まれるブロック",
+    "metadata": "メタデータ",
     "noTransactions": "トランザクションはありません",
     "pageTitle": "トランザクション | $t(productTitle)",
     "receivedTime": "受信時間",
     "summary": "概要",
     "totalOutput": "総アウトプット",
     "transactionLabel": "トランザクション",
-    "transactionsLabel": "トランザクション"
+    "transactionsLabel": "トランザクション",
+    "unmoderated": "モデレートされていないトランザクションデータを表示することに同意しました。",
+    "unmoderatedConfirmation": "管理されていないコンテンツを表示する",
+    "unmoderatedContent": "管理されていないコンテンツを表示しますか。",
+    "unmoderatedEntitiesControl": "この情報はステークプールオペレーターが提供、ホストしており、本ウェブサイトを運営している組織の管理下にはありません。",
+    "unmoderatedLeave": "このページを離れる",
+    "unmoderatedPoolTickerSymbols": "トランザクションメタデータは承認制ではなく、不適切な内容を含む場合があります。この情報はトランザクションの作成者が提供するもので、ウェブサイト管理者の管理下にはありません。管理されていないコンテンツを表示しますか。",
+    "unmoderatedTransactionData": "非承認制コンテンツ",
+    "unmoderatedWarning": "警告:"
   },
   "withdrawals": "引き出し"
 }

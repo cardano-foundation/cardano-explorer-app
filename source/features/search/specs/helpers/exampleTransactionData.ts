@@ -5,6 +5,7 @@ export const exampleTransactionData = {
   fee: '0',
   id: '927edb96f3386ab91b5f5d85d84cb4253c65b1c2f65fa7df25f81fab1d62987a',
   inputs: [],
+  metadata: [],
   outputs: [
     {
       address: 'Ae2tdPwUPEZ9vtyppa1FdJzvqJZkEcXgdHxVYAzTWcPaoNycVq5rc36LC1S',
