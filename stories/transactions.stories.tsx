@@ -171,24 +171,17 @@ const transactionMA: ITransactionDetails = {
     number: 274992,
     slot: 5612100,
   },
+  burn: [
+    {
+      assetName: 'ACL',
+      policyId: '58e05d50b54013dbf6c9e3469bbfac817f3580d4daf4f4b593b7b185',
+      quantity: '1000',
+    },
+  ],
   deposit: '0',
   fee: '185345',
   id: 'b81c5239789f54e10a3ef736e0981ff07318b2868f77143ea5ffae306c6a9196',
   includedAt: new Date(1570095392000),
-  mint: [
-    {
-      assetName: 'machtl2coin',
-      quantity: '5',
-      policyId: '58e05d50b54013dbf6c9e3469bbfac817f3580d4daf4f4b593b7b185',
-    },
-  ],
-  burn: [
-    {
-      assetName: 'ACL',
-      quantity: '1000',
-      policyId: '58e05d50b54013dbf6c9e3469bbfac817f3580d4daf4f4b593b7b185',
-    },
-  ],
   inputs: [
     {
       address:
@@ -196,39 +189,39 @@ const transactionMA: ITransactionDetails = {
       sourceTxId:
         '139bce85b28b94bef98c306867010f30ea60540088c2ec82bf65bd660d3a32fc',
       sourceTxIndex: 0,
-      value: '491313019',
       tokens: [
         {
           assetName: 'machtl2coin',
-          quantity: '490',
           policyId: 'ecd07b4ef62f37a68d145de8efd60c53d288dd5ffc641215120cc3db',
+          quantity: '490',
         },
         {
           assetName: 'machtlcoin',
-          quantity: '2000',
           policyId: '34250edd1e9836f5378702fbf9416b709bc140e04f668cc355208518',
+          quantity: '2000',
         },
         {
           assetName: 'ATADAcoin',
-          quantity: '9900',
           policyId: '34250edd1e9836f5378702fbf9416b709bc140e04f668cc355208518',
+          quantity: '9900',
         },
         {
           assetName: 'ANQACOINS',
-          quantity: '10',
           policyId: 'd5837e82ebbcdfb37b5aea45ba78330244aabb045b7472c8bb791045',
+          quantity: '10',
         },
         {
           assetName: 'adosia',
-          quantity: '7999999300',
           policyId: '34250edd1e9836f5378702fbf9416b709bc140e04f668cc355208518',
+          quantity: '7999999300',
         },
         {
           assetName: 'ACL',
-          quantity: '1000000000000',
           policyId: '202e0181ea963e2fcd206b1a794ce160afbe120dad5fd30a181d3a24',
+          quantity: '1000000000000',
         },
       ],
+      value: '491313019',
     },
   ],
   metadata: [
@@ -237,12 +230,18 @@ const transactionMA: ITransactionDetails = {
       value: 'Test metadata',
     },
   ],
+  mint: [
+    {
+      assetName: 'machtl2coin',
+      policyId: '58e05d50b54013dbf6c9e3469bbfac817f3580d4daf4f4b593b7b185',
+      quantity: '5',
+    },
+  ],
   outputs: [
     {
       address:
         'addr_test1vplgcajn3d922znzumlqzhwmtz5hkgf3c6a3tlqt3mhl6wse6xkt5',
       index: 0,
-      value: '2000000',
       tokens: [
         {
           assetName: 'ATADAcoin',
@@ -250,12 +249,12 @@ const transactionMA: ITransactionDetails = {
           quantity: '10',
         },
       ],
+      value: '2000000',
     },
     {
       address:
         'ddr_test1qzyh0zdfjmk997fkdrgcm4xmuhcqqd4qgphkmgm3shryrjhkjhp4qfyx33xada55u94c300knphrrgr577gdw5jpc39srpfmlp',
       index: 1,
-      value: '489127674',
       tokens: [
         {
           assetName: 'ACL',
@@ -288,6 +287,7 @@ const transactionMA: ITransactionDetails = {
           quantity: '7999999300',
         },
       ],
+      value: '489127674',
     },
   ],
   totalOutput: '491127674',

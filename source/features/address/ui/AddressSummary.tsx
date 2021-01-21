@@ -1,13 +1,12 @@
-import { observer } from 'mobx-react-lite';
-import { useState } from 'react';
-import QRCode from 'qrcode.react';
 import { isEmpty } from 'lodash';
+import { observer } from 'mobx-react-lite';
+import QRCode from 'qrcode.react';
+import { useState } from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { useI18nFeature } from '../../i18n/context';
-import styles from './AddressSummary.module.scss';
-import { IToken } from '../../transactions/types';
-import Tooltip, { ContentContainer } from '../../../widgets/tooltip/Tooltip';
 import TokenList from '../../transactions/components/TransactionTokenList';
+import { IToken } from '../../transactions/types';
+import styles from './AddressSummary.module.scss';
 
 export interface IAddressSummaryProps {
   address: string;
@@ -51,8 +50,8 @@ const AddressSummary = (props: AddressSummaryProps) => {
     const { offsetTop, offsetLeft, offsetWidth } = event.currentTarget;
     setTooltipPosition((prevState) => ({
       ...prevState,
-      top: offsetTop,
       left: offsetLeft + offsetWidth,
+      top: offsetTop,
     }));
   };
 

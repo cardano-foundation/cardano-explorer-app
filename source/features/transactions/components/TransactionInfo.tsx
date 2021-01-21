@@ -1,14 +1,12 @@
 import classnames from 'classnames';
 import dayjs from 'dayjs';
-import { isEmpty } from 'lodash';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import utc from 'dayjs/plugin/utc';
-import { isNumber } from 'lodash';
+import { isEmpty, isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { isDefined } from '../../../lib/types';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
-import Tooltip, { ContentContainer } from '../../../widgets/tooltip/Tooltip';
 import { getAddressRoute } from '../../address/helpers';
 import { useI18nFeature } from '../../i18n/context';
 import { NavigationActions } from '../../navigation';
@@ -21,8 +19,8 @@ import {
   ITransactionOutput,
   IWithdrawal,
 } from '../types';
-import TokenList from './TransactionTokenList';
 import styles from './TransactionInfo.module.scss';
+import TokenList from './TransactionTokenList';
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
@@ -86,7 +84,7 @@ const AddressesRow = ({
           </LocalizedLink>
         )}
         {isEmpty(io.tokens) ? (
-          //use "ada" asset instead of input/output value?
+          // use "ada" asset instead of input/output value?
           <div className={styles.amount}>{io.value} ADA</div>
         ) : (
           <div className={styles.listContainer}>

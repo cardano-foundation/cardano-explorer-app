@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
-import { IToken } from '../types';
+import React, { useRef, useState } from 'react';
 import Tooltip, { ContentContainer } from '../../../widgets/tooltip/Tooltip';
 import { TOKEN_LENGTH_TO_SCROLL } from '../constants';
+import { IToken } from '../types';
 import styles from './TransactionTokenList.module.scss';
 
 const TokenList = (props: { tokens: IToken[]; tooltipLabel?: string }) => {
@@ -17,8 +17,8 @@ const TokenList = (props: { tokens: IToken[]; tooltipLabel?: string }) => {
     const { offsetLeft } = event.currentTarget;
     setTooltipPosition((prevState) => ({
       ...prevState,
-      top: containerRef.current?.offsetTop! + 75,
       left: offsetLeft + 120 * 0.75,
+      top: containerRef.current?.offsetTop! + 75,
     }));
     setPolicy(policyId), setIsVisible(true);
   };
