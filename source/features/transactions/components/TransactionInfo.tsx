@@ -84,7 +84,6 @@ const AddressesRow = ({
           </LocalizedLink>
         )}
         {isEmpty(io.tokens) ? (
-          // use "ada" asset instead of input/output value?
           <div className={styles.amount}>{io.value} ADA</div>
         ) : (
           <div className={styles.listContainer}>
