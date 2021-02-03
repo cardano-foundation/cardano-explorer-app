@@ -1,0 +1,9 @@
+{
+  ada {
+    supply {
+      circulating
+      max
+      total
+    }
+  }
+}

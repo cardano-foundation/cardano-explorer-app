@@ -1,0 +1,8 @@
+{
+  ada {
+    supply {
+      max
+      total
+    }
+  }
+}
