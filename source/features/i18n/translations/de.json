@@ -6,10 +6,10 @@
     "summaryBalanceLabel": "Insgesamt",
     "summaryTransactionsLabel": "Transaktionen",
     "totalWithdrawn": "Insgesamt Ausbezahlt",
-    "adaBalance": "Ada Balance",
-    "tokensBalance": "Tokens balance",
-    "policyId": "Policy ID",
-    "noTokensAvailable": "This address has no tokens"
+    "adaBalance": "Ada Saldo",
+    "tokensBalance": "Saldo aller Tokens",
+    "policyId": "Richtlinien-ID",
+    "noTokensAvailable": "Diese Adresse hat keine Tokens"
   },
   "block": {
     "blocks": "Blöcke",
@@ -182,9 +182,9 @@
     "unmoderatedPoolTickerSymbols": "Transaktionen metadaten werden nicht moderiert und enthalten möglicherweise unangemessenen Inhalt.",
     "unmoderatedTransactionData": "Transaktionen metadaten werden nicht moderiert",
     "unmoderatedWarning": "Warnung:",
-    "minted": "Minted tokens",
-    "burned": "Burned tokens",
-    "policyId": "Policy ID"
+    "minted": "Gemintete Tokens",
+    "burned": "Verbrannte Tokens",
+    "policyId": "Richtlinien-ID"
   },
   "withdrawals": "Abhebungen"
 }
