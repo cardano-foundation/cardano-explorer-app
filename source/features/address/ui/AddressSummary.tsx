@@ -78,14 +78,12 @@ const AddressSummary = (props: AddressSummaryProps) => {
             <>
               <div className={styles.infoRow}>
                 <div className={styles.infoLabel}>
-                  {/* TODO: add DE and JA translation*/}
                   {translate('address.adaBalance')}
                 </div>
                 <div className={styles.infoValue}>{props.finalBalance} ADA</div>
               </div>
               <div className={styles.infoRow}>
                 <div className={styles.infoLabel}>
-                  {/* TODO: add DE and JA translation*/}
                   {translate('address.tokensBalance')}
                 </div>
 

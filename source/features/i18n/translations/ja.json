@@ -5,7 +5,11 @@
     "summaryAddressLabel": "アドレス",
     "summaryBalanceLabel": "最終残高",
     "summaryTransactionsLabel": "トランザクション",
-    "totalWithdrawn": "全額引き出し"
+    "totalWithdrawn": "全額引き出し",
+    "adaBalance": "ADA残高",
+    "tokensBalance": "トークン残高",
+    "policyId": "ポリシーID",
+    "noTokensAvailable": "このアドレスにはトークンがありません"
   },
   "block": {
     "blocks": "ブロック",
@@ -177,7 +181,10 @@
     "unmoderatedLeave": "このページを離れる",
     "unmoderatedPoolTickerSymbols": "トランザクションメタデータは承認制ではなく、不適切な内容を含む場合があります。この情報はトランザクションの作成者が提供するもので、ウェブサイト管理者の管理下にはありません。管理されていないコンテンツを表示しますか。",
     "unmoderatedTransactionData": "非承認制コンテンツ",
-    "unmoderatedWarning": "警告:"
+    "unmoderatedWarning": "警告:",
+    "minted": "鋳造済みトークン",
+    "burned": "バーン済みトークン",
+    "policyId": "ポリシーID"
   },
   "withdrawals": "引き出し"
 }

@@ -199,7 +199,6 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
         {!isEmpty(props.mint) && (
           <div className={classnames([styles.idRow, styles.row])}>
             <div className={styles.label}>
-              {/* TODO: add DE and JA translation*/}
               {translate('transaction.minted')}
             </div>
             <div className={styles.value}>
@@ -216,7 +215,6 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
         {!isEmpty(props.burn) && (
           <div className={classnames([styles.idRow, styles.row])}>
             <div className={styles.label}>
-              {/* TODO: add DE and JA translation*/}
               {translate('transaction.burned')}
             </div>
             <div className={styles.value}>
