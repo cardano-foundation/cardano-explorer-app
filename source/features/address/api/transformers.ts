@@ -15,7 +15,7 @@ export const paymentAddressDetailTransformer = (
   return {
     address,
     finalBalance: Currency.Util.lovelacesToAda(
-      s.utxos_aggregate?.aggregate?.sum?.value || '0'
+      s.paymentAddresses![0]?.summary?.assetBalances[0]?.quantity || '0'
     ),
     tokensBalance:
       s
