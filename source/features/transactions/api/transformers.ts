@@ -34,7 +34,6 @@ export const transactionDetailsTransformer = (
         ...t,
         assetName: decodeHex(t.assetName!.substr(2)) || '-',
       }))
-      .filter(({ assetName }) => assetName !== 'ada')
       .sort(sortTokensDesc),
     value: Currency.Util.lovelacesToAda(i.value),
   })),
@@ -57,7 +56,6 @@ export const transactionDetailsTransformer = (
         ...t,
         assetName: decodeHex(t.assetName!.substr(2)) || '-',
       }))
-      .filter(({ assetName }) => assetName !== 'ada')
       .sort(sortTokensDesc),
     value: Currency.Util.lovelacesToAda(i.value),
   })),
