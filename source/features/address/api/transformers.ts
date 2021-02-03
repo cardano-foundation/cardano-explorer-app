@@ -20,8 +20,8 @@ export const paymentAddressDetailTransformer = (
     tokensBalance:
       s
         .paymentAddresses![0]?.summary?.assetBalances?.filter(isDefined)
-        .map((t) => ({ ...t, assetName: decodeHex(t.assetName.substr(2)) }))
         .filter(({ assetName }) => assetName !== 'ada')
+        .map((t) => ({ ...t, assetName: decodeHex(t.assetName.substr(2)) }))
         .sort(sortTokensDesc) || [],
     transactionsCount:
       s.transactions_aggregate?.aggregate?.count.toString() || '0',
