@@ -82,22 +82,19 @@ const AddressSummary = (props: AddressSummaryProps) => {
                 </div>
                 <div className={styles.infoValue}>{props.finalBalance} ADA</div>
               </div>
-              <div className={styles.infoRow}>
-                <div className={styles.infoLabel}>
-                  {translate('address.tokensBalance')}
-                </div>
-
-                <div className={styles.infoValue}>
-                  {!isEmpty(props.tokensBalance) ? (
+              {!isEmpty(props.tokensBalance) && (
+                <div className={styles.infoRow}>
+                  <div className={styles.infoLabel}>
+                    {translate('address.tokensBalance')}
+                  </div>
+                  <div className={styles.infoValue}>
                     <TokenList
                       tokens={props.tokensBalance!}
                       tooltipLabel={translate('address.policyId')}
                     />
-                  ) : (
-                    translate('address.noTokensAvailable')
-                  )}
+                  </div>
                 </div>
-              </div>
+              )}
             </>
           )}
           {isStakeAddress(props) && (
