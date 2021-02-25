@@ -1,18 +1,19 @@
 import React, { useRef, useState } from 'react';
+import { addEllipsis } from '../../../lib/addEllipsis';
 import Tooltip, { ContentContainer } from '../../../widgets/tooltip/Tooltip';
 import { TOKEN_LENGTH_TO_SCROLL } from '../constants';
-import { IToken } from '../types';
+import { IAsset, IToken } from '../types';
 import styles from './TransactionTokenList.module.scss';
 
-const TokenList = (props: { tokens: IToken[]; tooltipLabel?: string }) => {
+const TokenList = (props: { tokens: IToken[]; }) => {
   const [tooltipPosition, setTooltipPosition] = useState({});
   const containerRef = useRef<HTMLDivElement>(null);
-  const [policy, setPolicy] = useState('test');
+  const [fingerprint, setFingerprint] = useState('test');
   const [isVisible, setIsVisible] = useState(false);
 
   const handleMouseOver = (
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>,
-    policyId: string
+    value: IAsset['fingerprint']
   ) => {
     const { offsetLeft } = event.currentTarget;
     setTooltipPosition((prevState) => ({
@@ -20,14 +21,15 @@ const TokenList = (props: { tokens: IToken[]; tooltipLabel?: string }) => {
       left: offsetLeft + 120 * 0.75,
       top: containerRef.current?.offsetTop! + 75,
     }));
-    setPolicy(policyId), setIsVisible(true);
+    setFingerprint(value);
+    setIsVisible(true);
   };
 
   return (
     <>
       {isVisible && (
         <div style={tooltipPosition} className={styles.tooltip}>
-          <ContentContainer label={props.tooltipLabel || '-'} body={policy} />
+          <ContentContainer label={fingerprint} />
         </div>
       )}
 
@@ -35,13 +37,13 @@ const TokenList = (props: { tokens: IToken[]; tooltipLabel?: string }) => {
         <div ref={containerRef} className={styles.scrollableTokenList}>
           {props.tokens.map((t) => (
             <span
-              onMouseEnter={(event) => handleMouseOver(event, t.policyId)}
+              onMouseEnter={(event) => handleMouseOver(event, t.asset.fingerprint)}
               onMouseOut={() => {
                 setIsVisible(false);
               }}
               className={styles.token}
-            >
-              {`${t.quantity} ${t.assetName}`}{' '}
+            >`
+              {`${t.quantity} ${addEllipsis(t.asset.fingerprint, 9, 4)}`}{' '}
             </span>
           ))}
         </div>
@@ -52,12 +54,11 @@ const TokenList = (props: { tokens: IToken[]; tooltipLabel?: string }) => {
               <Tooltip
                 content={
                   <ContentContainer
-                    label={props.tooltipLabel || '-'}
-                    body={t.policyId}
+                    label={t.asset.fingerprint}
                   />
                 }
               >
-                {`${t.quantity} ${t.assetName}`}
+                {`${t.quantity} ${addEllipsis(t.asset.fingerprint, 9, 4)}`}
               </Tooltip>
             </span>
           ))}

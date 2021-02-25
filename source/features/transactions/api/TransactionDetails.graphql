@@ -11,8 +11,8 @@ fragment TransactionDetails on Transaction {
   includedAt,
   mint {
     assetName
-    quantity
     policyId
+    quantity
   }
   inputs {
     address
@@ -21,8 +21,8 @@ fragment TransactionDetails on Transaction {
     value
     tokens {
       assetName
-      quantity
       policyId
+      quantity
     }
   },
   metadata {
@@ -34,9 +34,9 @@ fragment TransactionDetails on Transaction {
     index
     value
     tokens {
-      quantity
       assetName
       policyId
+      quantity
     }
   },
   totalOutput

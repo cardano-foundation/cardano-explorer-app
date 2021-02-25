@@ -26,8 +26,8 @@ query searchForPaymentAddress(
         summary {
             assetBalances {
                 assetName
-                quantity
                 policyId
+                quantity
             }
         }
     }

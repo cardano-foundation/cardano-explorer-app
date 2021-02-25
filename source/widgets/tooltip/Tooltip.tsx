@@ -8,10 +8,10 @@ interface ITooltipProps {
   style?: object;
 }
 
-export const ContentContainer = (props: { label: string; body: string }) => (
+export const ContentContainer = (props: { label: string; body?: string }) => (
   <div className={styles.contentContainer}>
     <div className={styles.label}>{props.label}</div>
-    <div className={styles.body}>{props.body}</div>
+    { props.body ?? <div className={styles.body}>{props.body}</div> }
   </div>
 );
 

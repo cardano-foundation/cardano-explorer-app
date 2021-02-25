@@ -1,8 +1,8 @@
 import { Currency } from 'cardano-js';
-import { TransactionDetailsFragment } from '../../../../generated/typings/graphql-schema';
+import { Token, TransactionDetailsFragment } from '../../../../generated/typings/graphql-schema';
 import { sortTokensDesc } from '../../../lib/arrays';
-import { decodeHex } from '../../../lib/decodeHex';
 import { isDefined } from '../../../lib/types';
+import { assetFingerprintFromToken } from '../helpers';
 import { ITransactionDetails } from '../types';
 
 export const transactionDetailsTransformer = (
@@ -16,10 +16,12 @@ export const transactionDetailsTransformer = (
   burn:
     tx.mint
       ?.filter((m) => m.quantity < '0')
-      .map((i) => ({
-        ...i,
-        assetName: decodeHex(i.assetName!.substr(2)) || '-',
-        quantity: i.quantity.substring(1),
+      .map((t) => ({
+        ...t,
+        asset: {
+          fingerprint: assetFingerprintFromToken(t as Token)
+        },
+        quantity: t.quantity.substring(1),
       }))
       .sort(sortTokensDesc) || [],
   deposit: Currency.Util.lovelacesToAda(tx.deposit),
@@ -32,7 +34,9 @@ export const transactionDetailsTransformer = (
     tokens: i.tokens
       .map((t) => ({
         ...t,
-        assetName: decodeHex(t.assetName!.substr(2)) || '-',
+        asset: {
+          fingerprint: assetFingerprintFromToken(t as Token)
+        }
       }))
       .sort(sortTokensDesc),
     value: Currency.Util.lovelacesToAda(i.value),
@@ -44,9 +48,11 @@ export const transactionDetailsTransformer = (
   mint:
     tx.mint
       ?.filter((m) => m.quantity > '0')
-      .map((i) => ({
-        ...i,
-        assetName: decodeHex(i.assetName!.substr(2)) || '-',
+      .map((t) => ({
+        ...t,
+        asset: {
+          fingerprint: assetFingerprintFromToken(t as Token)
+        }
       }))
       .sort(sortTokensDesc) || [],
   outputs: tx.outputs?.filter(isDefined).map((i) => ({
@@ -54,7 +60,9 @@ export const transactionDetailsTransformer = (
     tokens: i.tokens
       .map((t) => ({
         ...t,
-        assetName: decodeHex(t.assetName!.substr(2)) || '-',
+        asset: {
+          fingerprint: assetFingerprintFromToken(t as Token)
+        }
       }))
       .sort(sortTokensDesc),
     value: Currency.Util.lovelacesToAda(i.value),

@@ -8,7 +8,6 @@
     "totalWithdrawn": "Insgesamt Ausbezahlt",
     "adaBalance": "Ada Saldo",
     "tokensBalance": "Saldo aller Tokens",
-    "policyId": "Richtlinien-ID",
     "noTokensAvailable": "Diese Adresse hat keine Tokens"
   },
   "block": {
@@ -183,8 +182,7 @@
     "unmoderatedTransactionData": "Transaktionen metadaten werden nicht moderiert",
     "unmoderatedWarning": "Warnung:",
     "minted": "Gemintete Tokens",
-    "burned": "Verbrannte Tokens",
-    "policyId": "Richtlinien-ID"
+    "burned": "Verbrannte Tokens"
   },
   "withdrawals": "Abhebungen"
 }

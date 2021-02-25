@@ -8,7 +8,6 @@
     "totalWithdrawn": "全額引き出し",
     "adaBalance": "ADA残高",
     "tokensBalance": "トークン残高",
-    "policyId": "ポリシーID",
     "noTokensAvailable": "このアドレスにはトークンがありません"
   },
   "block": {
@@ -183,8 +182,7 @@
     "unmoderatedTransactionData": "非承認制コンテンツ",
     "unmoderatedWarning": "警告:",
     "minted": "鋳造済みトークン",
-    "burned": "バーン済みトークン",
-    "policyId": "ポリシーID"
+    "burned": "バーン済みトークン"
   },
   "withdrawals": "引き出し"
 }

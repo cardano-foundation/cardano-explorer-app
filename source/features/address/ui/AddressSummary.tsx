@@ -90,7 +90,6 @@ const AddressSummary = (props: AddressSummaryProps) => {
                   <div className={styles.infoValue}>
                     <TokenList
                       tokens={props.tokensBalance!}
-                      tooltipLabel={translate('address.policyId')}
                     />
                   </div>
                 </div>
