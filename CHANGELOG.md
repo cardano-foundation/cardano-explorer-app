@@ -1,6 +1,15 @@
 Changelog
 =========
 
+## 1.4.0
+
+### Compatible with:
+
+- [`cardano-graphql`: `3.2.0`](https://github.com/input-output-hk/cardano-graphql/releases/tag/3.2.0)
+
+### Features
+- foundational multi-asset support ([3c94cee](https://github.com/input-output-hk/cardano-explorer-app/commit/3c94ceec8337d58b095f1bd389cd8fc983a0cfd5))
+
 ## 1.3.0
 
 ### Compatible with:
