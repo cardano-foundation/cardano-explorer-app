@@ -224,7 +224,7 @@ export class SearchStore extends Store {
     if (isDefined(result)) {
       if (
         result.transactions_aggregate.aggregate?.count === '0' &&
-        result.utxos_aggregate.aggregate?.sum.value === null
+        result.paymentAddresses![0]?.summary!.assetBalances?.length === 0
       ) {
         return this.searchActions.unknownSearchRequested.trigger({
           query: address,

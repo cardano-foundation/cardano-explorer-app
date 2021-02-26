@@ -5,7 +5,10 @@
     "summaryAddressLabel": "$t(address.addressLabel)",
     "summaryBalanceLabel": "Insgesamt",
     "summaryTransactionsLabel": "Transaktionen",
-    "totalWithdrawn": "Insgesamt Ausbezahlt"
+    "totalWithdrawn": "Insgesamt Ausbezahlt",
+    "adaBalance": "Ada Saldo",
+    "tokensBalance": "Saldo aller Tokens",
+    "noTokensAvailable": "Diese Adresse hat keine Tokens"
   },
   "block": {
     "blocks": "Blöcke",
@@ -177,7 +180,9 @@
     "unmoderatedLeave": "Verlasse diese Seite",
     "unmoderatedPoolTickerSymbols": "Transaktionen metadaten werden nicht moderiert und enthalten möglicherweise unangemessenen Inhalt.",
     "unmoderatedTransactionData": "Transaktionen metadaten werden nicht moderiert",
-    "unmoderatedWarning": "Warnung:"
+    "unmoderatedWarning": "Warnung:",
+    "minted": "Gemintete Tokens",
+    "burned": "Verbrannte Tokens"
   },
   "withdrawals": "Abhebungen"
 }

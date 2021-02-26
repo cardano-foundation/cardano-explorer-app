@@ -1,19 +1,6 @@
 query searchForPaymentAddress(
   $address: String!
 ) {
-    utxos_aggregate (
-        where: {
-            address: {
-                _eq: $address
-            }
-        }
-    ) {
-        aggregate {
-            sum {
-                value
-            }
-        }
-    }
     transactions_aggregate (
         where: {
             _or: [{
@@ -33,6 +20,15 @@ query searchForPaymentAddress(
     ) {
         aggregate {
             count
+        }
+    }
+    paymentAddresses(addresses: [$address]) {
+        summary {
+            assetBalances {
+                assetName
+                policyId
+                quantity
+            }
         }
     }
 }
