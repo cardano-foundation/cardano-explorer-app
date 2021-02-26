@@ -2,9 +2,10 @@ import classnames from 'classnames';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import utc from 'dayjs/plugin/utc';
-import { isNumber } from 'lodash';
+import { isEmpty, isNumber } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
+import { addEllipsis } from '../../../lib/addEllipsis';
 import { isDefined } from '../../../lib/types';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { getAddressRoute } from '../../address/helpers';
@@ -20,6 +21,7 @@ import {
   IWithdrawal,
 } from '../types';
 import styles from './TransactionInfo.module.scss';
+import TokenList from './TransactionTokenList';
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
@@ -30,22 +32,14 @@ const TransactionAddress = (props: { address: string }) =>
   props.address.length <= 34 ? (
     <span>{props.address}</span>
   ) : (
-    <>
-      <div>{props.address.toString().substring(0, 16)}</div>
-      {'...'}
-      <div>{props.address.toString().substring(props.address.length - 16)}</div>
-    </>
+    <div>{addEllipsis(props.address.toString(), 16, 16)}</div>
   );
 
 const TransactionAddressMobile = (props: { address: string }) =>
   props.address.length <= 34 ? (
     <span>{props.address}</span>
   ) : (
-    <>
-      <div>{props.address.toString().substring(0, 19)}</div>
-      {'...'}
-      <div>{props.address.toString().substring(props.address.length - 19)}</div>
-    </>
+    <div>{addEllipsis(props.address.toString(), 19, 19)}</div>
   );
 
 type AddressInputOutput = ITransactionInput | IWithdrawal | ITransactionOutput;
@@ -54,12 +48,13 @@ interface IAddressesRowProps {
   addresses?: Array<AddressInputOutput>;
   highlightedAddress?: string;
   isMobile: boolean;
+  tooltipLabel?: string;
 }
 
 const AddressesRow = ({
   addresses,
   highlightedAddress,
-  isMobile,
+  isMobile
 }: IAddressesRowProps) => (
   <>
     {addresses?.filter(isDefined).map((io, index) => (
@@ -80,7 +75,14 @@ const AddressesRow = ({
             </span>
           </LocalizedLink>
         )}
-        <div className={styles.amount}>{io.value} ADA</div>
+        {isEmpty(io.tokens) ? (
+          <div className={styles.amount}>{io.value} ADA</div>
+        ) : (
+          <div className={styles.listContainer}>
+            <div className={styles.amount}>{io.value} ADA</div>
+            <TokenList tokens={io.tokens!} />
+          </div>
+        )}
       </div>
     ))}
   </>
@@ -184,6 +186,36 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
           </div>
         </div>
 
+        {/* ===== MINTED TOKENS ===== */}
+
+        {!isEmpty(props.mint) && (
+          <div className={classnames([styles.idRow, styles.row])}>
+            <div className={styles.label}>
+              {translate('transaction.minted')}
+            </div>
+            <div className={styles.value}>
+              <TokenList
+                tokens={props.mint!}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* ===== BURNED TOKENS ===== */}
+
+        {!isEmpty(props.burn) && (
+          <div className={classnames([styles.idRow, styles.row])}>
+            <div className={styles.label}>
+              {translate('transaction.burned')}
+            </div>
+            <div className={styles.value}>
+              <TokenList
+                tokens={props.burn!}
+              />
+            </div>
+          </div>
+        )}
+
         {/* ===== FROM ADDRESSES ===== */}
 
         <div className={classnames([styles.fromRow, styles.row])}>
@@ -258,18 +290,20 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
             />
           )}
 
-        {!isShowingUnmoderatedData && props.metadata && props.metadata.length > 0 && (
-          <div className={styles.row}>
-            <div className={styles.label}>
-              {translate('transaction.metadata')}
+        {!isShowingUnmoderatedData &&
+          props.metadata &&
+          props.metadata.length > 0 && (
+            <div className={styles.row}>
+              <div className={styles.label}>
+                {translate('transaction.metadata')}
+              </div>
+              <div className={styles.value}>
+                {props.metadata.map((item) => {
+                  return <div>{JSON.stringify(item.value, undefined, 2)}</div>;
+                })}
+              </div>
             </div>
-            <div className={styles.value}>
-              {props.metadata.map((item) => {
-                return <div>{JSON.stringify(item.value, undefined, 2)}</div>;
-              })}
-            </div>
-          </div>
-        )}
+          )}
 
         {/* ===== DOTTED LINE SEPARATOR ===== */}
 

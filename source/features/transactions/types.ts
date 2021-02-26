@@ -1,5 +1,15 @@
+export interface IAsset {
+  fingerprint: string;
+}
+
+export interface IToken {
+  quantity: string;
+  asset: IAsset;
+}
+
 export interface ICoin {
   value: string;
+  tokens?: IToken[];
 }
 
 export interface ITransactionInput extends ICoin {
@@ -37,4 +47,6 @@ export interface ITransactionDetails {
   outputs?: ITransactionOutput[];
   totalOutput: string;
   withdrawals: IWithdrawal[];
+  mint?: IToken[];
+  burn?: IToken[];
 }

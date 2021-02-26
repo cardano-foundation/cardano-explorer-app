@@ -1,0 +1,44 @@
+@mixin text($font-size, $font-weight, $color, $letter-spacing) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+  line-height: calc(#{$font-size} + 10px);
+  letter-spacing: $letter-spacing;
+}
+
+.tooltip {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+.tooltip .translateCenter {
+  @include text(10px, 600, var(--solid-text-color), 1.3px);
+  visibility: hidden;
+  text-align: left;
+  padding: 5px 10px;
+  background: #121326;
+  border: 1px solid var(--dotted-separator-color);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.45);
+  border-radius: 3px;
+  position: absolute;
+  transform: translate(0%, -100%);
+  z-index: 9999000;
+  opacity: 1 !important;
+  width: 200px;
+  top: -5px;
+  left: 100px;
+}
+
+.tooltip:hover .translateCenter {
+  visibility: visible;
+}
+
+.contentContainer {
+  .label {
+    font-weight: 600;
+  }
+  .body {
+    color: var(--info-text-color);
+    font-weight: 400;
+  }
+}

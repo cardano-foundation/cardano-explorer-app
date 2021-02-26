@@ -9,11 +9,21 @@ fragment TransactionDetails on Transaction {
   fee,
   hash,
   includedAt,
+  mint {
+    assetName
+    policyId
+    quantity
+  }
   inputs {
     address
     sourceTxHash
     sourceTxIndex
     value
+    tokens {
+      assetName
+      policyId
+      quantity
+    }
   },
   metadata {
     key
@@ -23,6 +33,11 @@ fragment TransactionDetails on Transaction {
     address
     index
     value
+    tokens {
+      assetName
+      policyId
+      quantity
+    }
   },
   totalOutput
   withdrawals {

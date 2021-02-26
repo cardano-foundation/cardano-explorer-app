@@ -1,7 +1,11 @@
+import { isEmpty } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import QRCode from 'qrcode.react';
+import { useState } from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { useI18nFeature } from '../../i18n/context';
+import TokenList from '../../transactions/components/TransactionTokenList';
+import { IToken } from '../../transactions/types';
 import styles from './AddressSummary.module.scss';
 
 export interface IAddressSummaryProps {
@@ -12,6 +16,7 @@ export interface IAddressSummaryProps {
 
 export interface IPaymentAddressSummaryProps extends IAddressSummaryProps {
   finalBalance: string;
+  tokensBalance?: IToken[];
 }
 
 export interface IStakeAddressSummaryProps extends IAddressSummaryProps {
@@ -36,7 +41,20 @@ function isStakeAddress(
 }
 
 const AddressSummary = (props: AddressSummaryProps) => {
+  const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
   const { translate } = useI18nFeature().store;
+
+  const handleMouseOver = (
+    event: React.MouseEvent<HTMLSpanElement, MouseEvent>
+  ) => {
+    const { offsetTop, offsetLeft, offsetWidth } = event.currentTarget;
+    setTooltipPosition((prevState) => ({
+      ...prevState,
+      left: offsetLeft + offsetWidth,
+      top: offsetTop,
+    }));
+  };
+
   return (
     <div className={styles.addressSummaryContainer}>
       <div className={styles.header}>
@@ -57,12 +75,26 @@ const AddressSummary = (props: AddressSummaryProps) => {
             <div className={styles.infoValue}>{props.transactionsCount}</div>
           </div>
           {isPaymentAddress(props) && (
-            <div className={styles.infoRow}>
-              <div className={styles.infoLabel}>
-                {translate('address.summaryBalanceLabel')}
+            <>
+              <div className={styles.infoRow}>
+                <div className={styles.infoLabel}>
+                  {translate('address.adaBalance')}
+                </div>
+                <div className={styles.infoValue}>{props.finalBalance} ADA</div>
               </div>
-              <div className={styles.infoValue}>{props.finalBalance} ADA</div>
-            </div>
+              {!isEmpty(props.tokensBalance) && (
+                <div className={styles.infoRow}>
+                  <div className={styles.infoLabel}>
+                    {translate('address.tokensBalance')}
+                  </div>
+                  <div className={styles.infoValue}>
+                    <TokenList
+                      tokens={props.tokensBalance!}
+                    />
+                  </div>
+                </div>
+              )}
+            </>
           )}
           {isStakeAddress(props) && (
             <>
