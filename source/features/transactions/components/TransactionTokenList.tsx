@@ -42,7 +42,7 @@ const TokenList = (props: { tokens: IToken[]; }) => {
                 setIsVisible(false);
               }}
               className={styles.token}
-            >`
+            >
               {`${t.quantity} ${addEllipsis(t.asset.fingerprint, 9, 4)}`}{' '}
             </span>
           ))}
