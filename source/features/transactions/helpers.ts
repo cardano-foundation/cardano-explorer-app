@@ -15,6 +15,6 @@ export const getBlockRoute = (blockId: string) =>
 
 export const assetFingerprintFromToken = (token: Token) =>
   new AssetFingerprint(
-    Buffer.from(token.policyId, 'hex'),
-    token.assetName ? Buffer.from(token.assetName.substr(2), 'hex') : undefined)
+    Buffer.from(token.asset.policyId, 'hex'),
+    token.asset.assetName ? Buffer.from(token.asset.assetName.substr(2), 'hex') : undefined)
     .fingerprint()

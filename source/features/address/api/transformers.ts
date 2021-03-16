@@ -20,7 +20,7 @@ export const paymentAddressDetailTransformer = (
     tokensBalance:
       s
         .paymentAddresses![0]?.summary?.assetBalances?.filter(isDefined)
-        .filter(({ assetName }) => assetName !== 'ada')
+        .filter(({ asset }) => asset.assetName !== 'ada')
         .map((t) => ({
           ...t,
           asset: {
