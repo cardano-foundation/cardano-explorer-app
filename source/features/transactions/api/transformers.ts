@@ -1,8 +1,7 @@
 import { Currency } from 'cardano-js';
-import { Token, TransactionDetailsFragment } from '../../../../generated/typings/graphql-schema';
+import { TransactionDetailsFragment } from '../../../../generated/typings/graphql-schema';
 import { sortTokensDesc } from '../../../lib/arrays';
 import { isDefined } from '../../../lib/types';
-import { assetFingerprintFromToken } from '../helpers';
 import { ITransactionDetails } from '../types';
 
 export const transactionDetailsTransformer = (
@@ -19,7 +18,7 @@ export const transactionDetailsTransformer = (
       .map((t) => ({
         ...t,
         asset: {
-          fingerprint: assetFingerprintFromToken(t as Token)
+          fingerprint: t.asset.fingerprint
         },
         quantity: t.quantity.substring(1),
       }))
@@ -35,7 +34,7 @@ export const transactionDetailsTransformer = (
       .map((t) => ({
         ...t,
         asset: {
-          fingerprint: assetFingerprintFromToken(t as Token)
+          fingerprint: t.asset.fingerprint
         }
       }))
       .sort(sortTokensDesc),
@@ -51,7 +50,7 @@ export const transactionDetailsTransformer = (
       .map((t) => ({
         ...t,
         asset: {
-          fingerprint: assetFingerprintFromToken(t as Token)
+          fingerprint: t.asset.fingerprint
         }
       }))
       .sort(sortTokensDesc) || [],
@@ -61,7 +60,7 @@ export const transactionDetailsTransformer = (
       .map((t) => ({
         ...t,
         asset: {
-          fingerprint: assetFingerprintFromToken(t as Token)
+          fingerprint: t.asset.fingerprint
         }
       }))
       .sort(sortTokensDesc),

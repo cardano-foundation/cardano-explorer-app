@@ -5,7 +5,6 @@ import {
 } from '../../../../generated/typings/graphql-schema';
 import { sortTokensDesc } from '../../../lib/arrays';
 import { isDefined } from '../../../lib/types';
-import { assetFingerprintFromToken } from '../../transactions/helpers';
 import { IPaymentAddressSummary, IStakeAddressSummary } from '../types';
 
 export const paymentAddressDetailTransformer = (
@@ -24,7 +23,7 @@ export const paymentAddressDetailTransformer = (
         .map((t) => ({
           ...t,
           asset: {
-            fingerprint: assetFingerprintFromToken(t as Token),
+            fingerprint: t.asset.fingerprint,
           }
         }))
         .sort(sortTokensDesc) || [],

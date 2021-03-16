@@ -12,6 +12,7 @@ fragment TransactionDetails on Transaction {
   mint {
     asset {
       assetName
+      fingerprint
       policyId
     }
     quantity
@@ -24,6 +25,7 @@ fragment TransactionDetails on Transaction {
     tokens {
       asset {
         assetName
+        fingerprint
         policyId
       }
       quantity
@@ -40,6 +42,7 @@ fragment TransactionDetails on Transaction {
     tokens {
       asset {
         assetName
+        fingerprint
         policyId
       }
       quantity

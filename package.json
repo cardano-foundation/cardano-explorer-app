@@ -33,7 +33,6 @@
     }
   },
   "dependencies": {
-    "@emurgo/cip14-js": "^2.0.0",
     "@types/react-addons-css-transition-group": "15.0.5",
     "bignumber.js": "9.0.1",
     "browser-update": "3.3.9",

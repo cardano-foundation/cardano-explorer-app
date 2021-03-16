@@ -27,6 +27,7 @@ query searchForPaymentAddress(
             assetBalances {
                 asset {
                   assetName
+                  fingerprint
                   policyId
                 }
                 quantity
