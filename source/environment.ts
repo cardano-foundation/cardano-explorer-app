@@ -7,10 +7,10 @@ export const environment = {
   CARDANO: {
     ERA: (process.env.CARDANO_ERA as CardanoEra) || CardanoEra.BYRON,
     GRAPHQL: {
-      HTTP_URL: `${process.env.GRAPHQL_API_PROTOCOL || 'https'}://${
+      HTTP_URL: `${process.env.GRAPHQL_API_PROTOCOL || 'http'}://${
         process.env.GRAPHQL_API_HOST ||
-        'cardano-graphql-mainnet.daedalus-operations.com'
-      }:${process.env.GRAPHQL_API_PORT || '443'}/${
+        'localhost'
+      }:${process.env.GRAPHQL_API_PORT || '3100'}/${
         process.env.GRAPHQL_API_PATH || ''
       }`,
     },
