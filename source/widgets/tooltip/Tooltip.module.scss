@@ -12,7 +12,7 @@
   position: relative;
 }
 .tooltip .translateCenter {
-  @include text(10px, 600, var(--solid-text-color), 1.3px);
+  @include text(11px, 300, var(--solid-text-color), 1.3px);
   visibility: hidden;
   text-align: left;
   padding: 5px 10px;
@@ -24,9 +24,10 @@
   transform: translate(0%, -100%);
   z-index: 9999000;
   opacity: 1 !important;
-  width: 200px;
+  width: 300px;
   top: -5px;
   left: 100px;
+  transition-delay: 0.2s;
 }
 
 .tooltip:hover .translateCenter {
@@ -39,6 +40,5 @@
   }
   .body {
     color: var(--info-text-color);
-    font-weight: 400;
   }
 }

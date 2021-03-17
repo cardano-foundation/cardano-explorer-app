@@ -12,8 +12,11 @@ fragment TransactionDetails on Transaction {
   mint {
     asset {
       assetName
+      description
       fingerprint
+      name
       policyId
+      ticker
     }
     quantity
   }
@@ -25,8 +28,11 @@ fragment TransactionDetails on Transaction {
     tokens {
       asset {
         assetName
+        description
         fingerprint
+        name
         policyId
+        ticker
       }
       quantity
     }
@@ -42,8 +48,11 @@ fragment TransactionDetails on Transaction {
     tokens {
       asset {
         assetName
+        description
         fingerprint
+        name
         policyId
+        ticker
       }
       quantity
     }

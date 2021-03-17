@@ -27,8 +27,11 @@ query searchForPaymentAddress(
             assetBalances {
                 asset {
                   assetName
+                  description
                   fingerprint
+                  name
                   policyId
+                  ticker
                 }
                 quantity
             }

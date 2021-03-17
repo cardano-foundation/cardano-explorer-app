@@ -1,7 +1,9 @@
+import BigNumber from 'bignumber.js';
 import { Currency } from 'cardano-js';
-import { TransactionDetailsFragment } from '../../../../generated/typings/graphql-schema';
+import { Asset, TransactionDetailsFragment } from '../../../../generated/typings/graphql-schema';
 import { sortTokensDesc } from '../../../lib/arrays';
 import { isDefined } from '../../../lib/types';
+import { assetTransformer } from '../../assets/api/transformers';
 import { ITransactionDetails } from '../types';
 
 export const transactionDetailsTransformer = (
@@ -14,12 +16,10 @@ export const transactionDetailsTransformer = (
   },
   burn:
     tx.mint
-      ?.filter((m) => m.quantity < '0')
+      ?.filter((m) => new BigNumber(m.quantity).isLessThan(0))
       .map((t) => ({
         ...t,
-        asset: {
-          fingerprint: t.asset.fingerprint
-        },
+        asset: assetTransformer(t.asset as Asset),
         quantity: t.quantity.substring(1),
       }))
       .sort(sortTokensDesc) || [],
@@ -33,9 +33,7 @@ export const transactionDetailsTransformer = (
     tokens: i.tokens
       .map((t) => ({
         ...t,
-        asset: {
-          fingerprint: t.asset.fingerprint
-        }
+        asset: assetTransformer(t.asset as Asset)
       }))
       .sort(sortTokensDesc),
     value: Currency.Util.lovelacesToAda(i.value),
@@ -46,12 +44,10 @@ export const transactionDetailsTransformer = (
   })),
   mint:
     tx.mint
-      ?.filter((m) => m.quantity > '0')
+      ?.filter((m) => new BigNumber(m.quantity).isGreaterThan(0))
       .map((t) => ({
         ...t,
-        asset: {
-          fingerprint: t.asset.fingerprint
-        }
+        asset: assetTransformer(t.asset as Asset)
       }))
       .sort(sortTokensDesc) || [],
   outputs: tx.outputs?.filter(isDefined).map((i) => ({
@@ -59,9 +55,7 @@ export const transactionDetailsTransformer = (
     tokens: i.tokens
       .map((t) => ({
         ...t,
-        asset: {
-          fingerprint: t.asset.fingerprint
-        }
+        asset: assetTransformer(t.asset as Asset)
       }))
       .sort(sortTokensDesc),
     value: Currency.Util.lovelacesToAda(i.value),
