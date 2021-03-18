@@ -19,8 +19,15 @@ See [environment](source/environment.ts) for defaults.
 
 ## Build
 This project uses an offline package cache to enable reproducible builds.
+
+### yarn
 ```console
 yarn --offline && yarn static:build
+```
+
+### nix
+``` console
+nix-build -A cardano-explorer-app
 ```
 ## Deploy
 The static bundle can be deployed using a standard web server. A simple [Node.js program](deploy/index.js) 
@@ -55,4 +62,3 @@ The `master` and `develop` branches are continuously deployed, with PRs creating
 [![Netlify Status](https://api.netlify.com/api/v1/badges/09492acb-61fd-4745-8b0e-60c8886f60d1/deploy-status)](https://cardano-explorer-mainnet.netlify.app)
 #### Testnet
 [![Netlify Status](https://api.netlify.com/api/v1/badges/16628b5d-b1f2-429b-a707-bbdec0564fe9/deploy-status)](https://cardano-explorer-testnet.netlify.app)
-
