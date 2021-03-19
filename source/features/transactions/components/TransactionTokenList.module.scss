@@ -19,14 +19,11 @@ $wide-breakpoint: 768px;
 
 .tokenList,
 .scrollableTokenList {
-  display: none;
-  @media (min-width: $medium-breakpoint) {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    word-break: break-all;
-    margin-bottom: 5px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  word-break: break-all;
+  margin-bottom: 5px;
 
   .token {
     margin-top: 1px;
