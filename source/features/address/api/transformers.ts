@@ -1,11 +1,12 @@
 import { Currency } from 'cardano-js';
 import {
+  Asset,
   SearchForPaymentAddressQuery,
-  SearchForStakeAddressQuery, Token,
+  SearchForStakeAddressQuery,
 } from '../../../../generated/typings/graphql-schema';
 import { sortTokensDesc } from '../../../lib/arrays';
 import { isDefined } from '../../../lib/types';
-import { assetFingerprintFromToken } from '../../transactions/helpers';
+import { assetTransformer } from '../../assets/api/transformers';
 import { IPaymentAddressSummary, IStakeAddressSummary } from '../types';
 
 export const paymentAddressDetailTransformer = (
@@ -20,12 +21,10 @@ export const paymentAddressDetailTransformer = (
     tokensBalance:
       s
         .paymentAddresses![0]?.summary?.assetBalances?.filter(isDefined)
-        .filter(({ assetName }) => assetName !== 'ada')
+        .filter(({ asset }) => asset.assetName !== 'ada')
         .map((t) => ({
           ...t,
-          asset: {
-            fingerprint: assetFingerprintFromToken(t as Token),
-          }
+          asset: assetTransformer(t.asset as Asset)
         }))
         .sort(sortTokensDesc) || [],
     transactionsCount:

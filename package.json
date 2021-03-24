@@ -33,7 +33,6 @@
     }
   },
   "dependencies": {
-    "@emurgo/cip14-js": "^2.0.0",
     "@types/react-addons-css-transition-group": "15.0.5",
     "bignumber.js": "9.0.1",
     "browser-update": "3.3.9",
@@ -73,7 +72,7 @@
     "@babel/plugin-transform-react-display-name": "7.8.3",
     "@babel/plugin-transform-react-jsx-self": "7.9.0",
     "@babel/plugin-transform-react-jsx-source": "7.9.0",
-    "@cardano-graphql/client-ts": "3.2.0",
+    "@cardano-graphql/client-ts": "^4.0.0-rc1",
     "@cypress/webpack-preprocessor": "4.1.1",
     "@graphql-codegen/cli": "1.2.0",
     "@graphql-codegen/typescript": "1.2.0",

@@ -8,12 +8,17 @@ import styles from './TransactionTokenList.module.scss';
 const TokenList = (props: { tokens: IToken[]; }) => {
   const [tooltipPosition, setTooltipPosition] = useState({});
   const containerRef = useRef<HTMLDivElement>(null);
-  const [fingerprint, setFingerprint] = useState('test');
+  const [asset, setAsset] = useState<IAsset>({
+    assetName: '',
+    description: '',
+    fingerprint: '',
+    policyId: ''
+  });
   const [isVisible, setIsVisible] = useState(false);
 
   const handleMouseOver = (
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>,
-    value: IAsset['fingerprint']
+    item: IAsset
   ) => {
     const { offsetLeft } = event.currentTarget;
     setTooltipPosition((prevState) => ({
@@ -21,7 +26,7 @@ const TokenList = (props: { tokens: IToken[]; }) => {
       left: offsetLeft + 120 * 0.75,
       top: containerRef.current?.offsetTop! + 75,
     }));
-    setFingerprint(value);
+    setAsset(item);
     setIsVisible(true);
   };
 
@@ -29,7 +34,17 @@ const TokenList = (props: { tokens: IToken[]; }) => {
     <>
       {isVisible && (
         <div style={tooltipPosition} className={styles.tooltip}>
-          <ContentContainer label={fingerprint} />
+          <ContentContainer
+            label={asset.fingerprint}
+            body={
+              <ul>
+                <li><strong>Ticker</strong>: {asset.ticker}</li>
+                <li><strong>Name</strong>: {asset.name}</li>
+                <li><strong>Description</strong>: {asset.description}</li>
+                <li><strong>Policy ID</strong>: {asset.policyId}</li>
+                <li><strong>Asset Name</strong>: {asset.assetName}</li>
+            </ul>}
+          />
         </div>
       )}
 
@@ -37,31 +52,41 @@ const TokenList = (props: { tokens: IToken[]; }) => {
         <div ref={containerRef} className={styles.scrollableTokenList}>
           {props.tokens.map((t) => (
             <span
-              onMouseEnter={(event) => handleMouseOver(event, t.asset.fingerprint)}
+              onMouseEnter={(event) => handleMouseOver(event, t.asset)}
               onMouseOut={() => {
                 setIsVisible(false);
               }}
               className={styles.token}
             >
-              {`${t.quantity} ${addEllipsis(t.asset.fingerprint, 9, 4)}`}{' '}
+              {`${t.quantity} ${t.asset.ticker || addEllipsis(t.asset.fingerprint, 9, 4)}`}{' '}
             </span>
           ))}
         </div>
       ) : (
         <div ref={containerRef} className={styles.tokenList}>
           {props.tokens.map((t) => (
-            <span className={styles.token}>
+              <span className={styles.token}>
               <Tooltip
                 content={
                   <ContentContainer
                     label={t.asset.fingerprint}
+                    body={<>
+                      <ul>
+                        <li><strong>Ticker</strong>: {t.asset.ticker}</li>
+                        <li><strong>Name</strong>: {t.asset.name}</li>
+                        <li><strong>Description</strong>: {t.asset.description}</li>
+                        <li><strong>Policy ID</strong>: {t.asset.policyId}</li>
+                        <li><strong>Asset Name</strong>: {t.asset.assetName}</li>
+                      </ul>
+                    </>}
                   />
                 }
               >
-                {`${t.quantity} ${addEllipsis(t.asset.fingerprint, 9, 4)}`}
+                {`${t.quantity} ${t.asset.ticker || addEllipsis(t.asset.fingerprint, 9, 4)}`}
               </Tooltip>
             </span>
-          ))}
+            )
+          )}
         </div>
       )}
     </>

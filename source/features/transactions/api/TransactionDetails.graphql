@@ -10,8 +10,14 @@ fragment TransactionDetails on Transaction {
   hash,
   includedAt,
   mint {
-    assetName
-    policyId
+    asset {
+      assetName
+      description
+      fingerprint
+      name
+      policyId
+      ticker
+    }
     quantity
   }
   inputs {
@@ -20,8 +26,14 @@ fragment TransactionDetails on Transaction {
     sourceTxIndex
     value
     tokens {
-      assetName
-      policyId
+      asset {
+        assetName
+        description
+        fingerprint
+        name
+        policyId
+        ticker
+      }
       quantity
     }
   },
@@ -34,8 +46,14 @@ fragment TransactionDetails on Transaction {
     index
     value
     tokens {
-      assetName
-      policyId
+      asset {
+        assetName
+        description
+        fingerprint
+        name
+        policyId
+        ticker
+      }
       quantity
     }
   },
