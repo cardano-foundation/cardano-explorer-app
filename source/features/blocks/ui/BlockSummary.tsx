@@ -78,6 +78,12 @@ const BlockSummary = (props: BlockSummaryProps) => {
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>
+              {translate('blockSummary.slot')}
+            </div>
+            <div className={styles.infoValue}>{props.slotNo}</div>
+          </div>
+          <div className={styles.infoRow}>
+            <div className={styles.infoLabel}>
               {translate('blockSummary.confirmations')}
             </div>
             <div className={styles.infoValue}>{confirmations}</div>

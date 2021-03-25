@@ -19,7 +19,9 @@ export class SearchActions {
   public searchForPaymentAddress: Action<{ address: string }> = new Action();
   public searchForStakeAddress: Action<{ address: string }> = new Action();
   public searchForBlockByNumber: Action<{ number: number }> = new Action();
+  public searchForBlockBySlotNumber: Action<{ slotNo: number }> = new Action();
   public searchForEpochByNumber: Action<{ number: number }> = new Action();
+  public slotNumberSearchRequested: Action<{ slotNo: number }> = new Action();
   public subscribeToEpoch: Action<{ number: number }> = new Action();
   public unknownSearchRequested: Action<{ query: string }> = new Action();
   public unsubscribeFromEpoch: Action<void> = new Action();

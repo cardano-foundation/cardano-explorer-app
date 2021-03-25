@@ -15,10 +15,11 @@
     "blockTitle": "ブロック",
     "createdAtTitle": "生成時",
     "createdByTitle": "生成者",
-    "epochSlotTitle": "エポック/スロット",
+    "epochTitle": "エポック",
     "outputTitle": "アウトプット (₳)",
     "pageTitle": "ブロック | $t(productTitle)",
     "sizeTitle": "サイズ（バイト）",
+    "slot": "スロット",
     "summary": "ブロック概要",
     "transactionsTitle": "トランザクション"
   },
@@ -32,6 +33,7 @@
     "nextBlock": "次のブロック",
     "previousBlock": "前のブロック",
     "size": "サイズ",
+    "slot": "スロット",
     "time": "時間",
     "transactions": "トランザクション"
   },
@@ -62,6 +64,7 @@
     "epochSummaryTitle": "エポック概要",
     "lastBlockAt": "最終ブロック",
     "numberOfBlocks": "ブロック数",
+    "numberOfSlots": "スロット数",
     "startedAt": "開始時間",
     "totalOutput": "総アウトプット",
     "transactions": "トランザクション"
@@ -87,6 +90,7 @@
     "ouroborosAlgorithm": "Ouroborosアルゴリズム",
     "project": "プロジェクトです",
     "shellyExplorer": "Shelleyエクスプローラー",
+    "submitASupportRequest": "サポートリクエストを送信する",
     "textTitle": "Cardanoは",
     "whyCardano": "なぜCardanoを構築するのか"
   },
@@ -128,7 +132,8 @@
     "notExist": "アドレスが見つかりません",
     "notFound": "一致する検索結果はありません",
     "placeholder": "エポック、ブロック、アドレス、トランザクションを検索する",
-    "suggestion_block": "ブロックを検索",
+    "suggestion_block_by_number": "ブロックを番号で検索する",
+    "suggestion_block_by_slot": "ブロックをスロット番号で検索する",
     "suggestion_epoch": "エポックを検索",
     "title": "検索"
   },

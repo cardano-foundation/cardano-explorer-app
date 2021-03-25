@@ -5,6 +5,8 @@ import {
   SearchByIdQueryVariables,
   SearchForBlockByNumberQuery,
   SearchForBlockByNumberQueryVariables,
+  SearchForBlockBySlotNumberQuery,
+  SearchForBlockBySlotNumberQueryVariables,
   SearchForEpochByNumberQuery,
   SearchForEpochByNumberQueryVariables,
   SearchForPaymentAddressQuery,
@@ -14,6 +16,7 @@ import {
 } from '../../../typings/graphql-schema';
 import searchByIdQuery from './searchById.graphql';
 import searchForBlockByNumberQuery from './searchForBlockByNumber.graphql';
+import searchForBlockBySlotNumberQuery from './searchForBlockBySlotNumber.graphql';
 import searchForEpochByNumberQuery from './searchForEpochByNumber.graphql';
 import searchForPaymentAddressQuery from './searchForPaymentAddress.graphql';
 import searchForStakeAddressQuery from './searchForStakeAddress.graphql';
@@ -39,6 +42,11 @@ export class SearchApi {
     SearchForBlockByNumberQueryVariables
   >;
 
+  public searchForBlockBySlotNumberQuery: GraphQLRequest<
+    SearchForBlockBySlotNumberQuery,
+    SearchForBlockBySlotNumberQueryVariables
+  >;
+
   public searchForEpochByNumberQuery: GraphQLRequest<
     SearchForEpochByNumberQuery,
     SearchForEpochByNumberQueryVariables
@@ -57,6 +65,10 @@ export class SearchApi {
     this.searchForBlockByNumberQuery = new GraphQLRequest(
       client,
       searchForBlockByNumberQuery
+    );
+    this.searchForBlockBySlotNumberQuery = new GraphQLRequest(
+      client,
+      searchForBlockBySlotNumberQuery
     );
     this.searchForEpochByNumberQuery = new GraphQLRequest(
       client,

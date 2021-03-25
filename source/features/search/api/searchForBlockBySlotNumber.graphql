@@ -1,0 +1,15 @@
+#import "../../blocks/api/BlockDetails.graphql"
+
+query searchForBlockBySlotNumber(
+  $slotNo: Int!
+) {
+  blocks(
+    where: {
+      slotNo: {
+        _eq: $slotNo
+      }
+    }
+  ) {
+    ...BlockDetails
+  }
+}

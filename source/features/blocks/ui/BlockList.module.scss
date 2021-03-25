@@ -3,11 +3,15 @@
 
   :global {
     .epoch {
-      width: 120px;
+      width: 40px;
+    }
+
+    .slotNo {
+      width: 80px;
     }
 
     .blocksSlots {
-      width: 100px;
+      width: 80px;
     }
 
     .createdAt {

@@ -10,7 +10,8 @@ export enum BrandType {
 
 export enum SearchType {
   EPOCH = 'epoch',
-  BLOCK = 'block',
+  BLOCK_BY_NUMBER = 'blockByNumber',
+  BLOCK_BY_SLOT_NUMBER = 'blockBySlotNumber',
 }
 
 export enum CardanoNetwork {

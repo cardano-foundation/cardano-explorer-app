@@ -22,9 +22,15 @@ const SearchSuggestions = (props: ISearchSuggestionsProps) => {
           </div>
           <ArrowRight />
         </li>
-        <li onClick={() => onSearchTypeSelect('block')}>
+        <li onClick={() => onSearchTypeSelect('blockByNumber')}>
           <div>
-            {translate('search.suggestion_block')} <span>{value}</span>
+            {translate('search.suggestion_block_by_number')} <span>{value}</span>
+          </div>
+          <ArrowRight />
+        </li>
+        <li onClick={() => onSearchTypeSelect('blockBySlotNumber')}>
+          <div>
+            {translate('search.suggestion_block_by_slot')} <span>{value}</span>
           </div>
           <ArrowRight />
         </li>
