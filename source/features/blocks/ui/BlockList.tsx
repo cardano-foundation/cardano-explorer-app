@@ -54,7 +54,7 @@ const columns = (
       },
       cellValue: (row: IBlockOverview) => row,
       cssClass: 'slotNo',
-      head: 'block.slot',
+      head: 'block.slotNo',
       key: 'slot',
     },
     {
