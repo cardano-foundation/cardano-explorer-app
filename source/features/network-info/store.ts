@@ -16,6 +16,7 @@ export class NetworkInfoStore extends Store {
   @observable public byronSlotsPerEpoch?: number;
   @observable public shelleyEpochLength?: number;
   @observable public slotsPerPresentEpoch: number;
+  @observable public slotNo: number;
 
   private readonly networkInfoApi: NetworkInfoApi;
   private readonly networkInfoActions: NetworkInfoActions;
@@ -81,6 +82,7 @@ export class NetworkInfoStore extends Store {
         this.currentEpoch = currentEpoch.number;
         this.lastSlotFilled = tip.slotInEpoch || 0;
         this.lastBlockTime = new Date(tip.forgedAt);
+        this.slotNo = tip.slotNo || 0;
       });
     }
   };

@@ -15,10 +15,11 @@
     "blockTitle": "Block",
     "createdAtTitle": "Created At",
     "createdByTitle": "Created By",
-    "epochSlotTitle": "Epoch / Slot",
+    "epochTitle": "Epoch",
     "outputTitle": "Output (₳)",
     "pageTitle": "Block | $t(productTitle)",
     "sizeTitle": "Size (Bytes)",
+    "slotNo": "Slot",
     "summary": "Block Summary",
     "transactionsTitle": "Transactions"
   },
@@ -32,6 +33,7 @@
     "nextBlock": "Next block",
     "previousBlock": "Previous block",
     "size": "Size",
+    "slot": "Slot",
     "time": "Time",
     "transactions": "Transactions"
   },
@@ -62,6 +64,7 @@
     "epochSummaryTitle": "Epoch Summary",
     "lastBlockAt": "Last Block at",
     "numberOfBlocks": "# of blocks",
+    "numberOfSlots": "# of slots",
     "startedAt": "Started at",
     "totalOutput": "Total output",
     "transactions": "Transactions"
@@ -87,6 +90,7 @@
     "ouroborosAlgorithm": "Ouroboros Algorithm",
     "project": "project.",
     "shellyExplorer": "Shelley Explorer",
+    "submitASupportRequest": "Submit a Support Request",
     "textTitle": "Cardano is an",
     "whyCardano": "Why Cardano"
   },
@@ -128,7 +132,8 @@
     "notExist": "Address does not exist:",
     "notFound": "Sorry, we could not find any results matching:",
     "placeholder": "Search for epochs, blocks, addresses and transactions",
-    "suggestion_block": "Search for a block",
+    "suggestion_block_by_number": "Search for a block by number",
+    "suggestion_block_by_slot": "Search for a block by slot",
     "suggestion_epoch": "Search for an epoch",
     "title": "Search"
   },

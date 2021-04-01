@@ -1,5 +1,10 @@
 export interface IAsset {
+  assetName: string;
+  description?: string;
   fingerprint: string;
+  name?: string;
+  policyId: string;
+  ticker?: string;
 }
 
 export interface IToken {

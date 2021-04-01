@@ -8,7 +8,7 @@ interface ITooltipProps {
   style?: object;
 }
 
-export const ContentContainer = (props: { label: string; body?: string }) => (
+export const ContentContainer = (props: { label: string; body?: React.ReactNode }) => (
   <div className={styles.contentContainer}>
     <div className={styles.label}>{props.label}</div>
     { props.body ?? <div className={styles.body}>{props.body}</div> }

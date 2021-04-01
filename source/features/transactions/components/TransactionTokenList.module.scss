@@ -19,14 +19,11 @@ $wide-breakpoint: 768px;
 
 .tokenList,
 .scrollableTokenList {
-  display: none;
-  @media (min-width: $medium-breakpoint) {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    word-break: break-all;
-    margin-bottom: 5px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  word-break: break-all;
+  margin-bottom: 5px;
 
   .token {
     margin-top: 1px;
@@ -38,7 +35,6 @@ $wide-breakpoint: 768px;
 .tooltip {
   word-break: break-all;
   font-size: 10px;
-  font-weight: 600;
   color: var(--solid-text-color);
   line-height: calc(10px + 10px);
   letter-spacing: 1.3px;

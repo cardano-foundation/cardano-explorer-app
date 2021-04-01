@@ -36,7 +36,8 @@ export const BlockSearchResult = () => {
       {() => {
         const { blockSearchResult } = store;
         if (
-          !api.searchByIdQuery.hasBeenExecutedAtLeastOnce ||
+          (!api.searchForBlockByNumberQuery.hasBeenExecutedAtLeastOnce &&
+            !api.searchByIdQuery.hasBeenExecutedAtLeastOnce) ||
           store.isSearching ||
           !networkInfo.store.blockHeight
         ) {

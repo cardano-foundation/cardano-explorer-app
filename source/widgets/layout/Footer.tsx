@@ -104,6 +104,11 @@ export const Footer = (props: IFooterProps) => {
                     {translate('footer.ouroborosAlgorithm')}
                   </a>
                 </li>
+                <li>
+                  <a href={'https://iohk.zendesk.com/hc/en-us/requests/new'}>
+                    {translate('footer.submitASupportRequest')}
+                  </a>
+                </li>
               </ul>
             </div>
             <div className={styles.joinTheCommunityMenuContainer}>

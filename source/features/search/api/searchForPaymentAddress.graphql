@@ -25,8 +25,14 @@ query searchForPaymentAddress(
     paymentAddresses(addresses: [$address]) {
         summary {
             assetBalances {
-                assetName
-                policyId
+                asset {
+                  assetName
+                  description
+                  fingerprint
+                  name
+                  policyId
+                  ticker
+                }
                 quantity
             }
         }

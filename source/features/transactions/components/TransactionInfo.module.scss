@@ -64,6 +64,9 @@ $wide-breakpoint: 768px;
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
+  @media (max-width: $medium-breakpoint) {
+    flex-direction: column;
+  }
 
   .amount {
     display: none;

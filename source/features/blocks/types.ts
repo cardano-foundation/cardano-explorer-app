@@ -8,7 +8,7 @@ export interface IBlockOverview {
   number: number | '-';
   output: string;
   size: number;
-  slotWithinEpoch: number | '-';
+  slotNo: number | '-';
   transactionsCount: string;
 }
 

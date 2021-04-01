@@ -26,7 +26,7 @@ export const blockOverviewTransformer = (
     output: Currency.Util.lovelacesToAda(
       b.transactions_aggregate?.aggregate?.sum?.totalOutput || '0'
     ),
-    slotWithinEpoch: formatSlotWithinEpoch(b.slotInEpoch),
+    slotNo: formatSlot(b.slotNo),
     transactionsCount:
       b.transactions_aggregate?.aggregate?.count.toString() || '0',
   };
@@ -36,7 +36,7 @@ export const blockDetailsTransformer = (
   b: BlockDetailsFragment
 ): IBlockDetailed => ({
   ...blockOverviewTransformer(b),
-  merkleRoot: b.merkelRoot || '',
+  merkleRoot: b.merkleRoot || '',
   nextBlock: {
     id: b.nextBlock?.hash || '',
     number: b.nextBlock?.number || '-',
@@ -65,9 +65,9 @@ function formatCreatedBy(value: IBlockOverview['createdBy']): string {
   }
 }
 
-function formatSlotWithinEpoch(
-  value: BlockOverviewFragment['slotInEpoch']
-): IBlockOverview['slotWithinEpoch'] {
+function formatSlot(
+  value: BlockOverviewFragment['slotNo']
+): IBlockOverview['slotNo'] {
   switch (value) {
     case 0:
       return value;

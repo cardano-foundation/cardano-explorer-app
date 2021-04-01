@@ -1,0 +1,18 @@
+query transactionMetadata(
+  $hashes: [Hash32Hex!]!
+) {
+  transactions(
+    where: {
+      hash: {
+        _in: $hashes
+      }
+    }
+  ) {
+    hash
+    metadata {
+      key
+      value
+    }
+  }
+}
+
