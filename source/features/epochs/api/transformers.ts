@@ -14,7 +14,7 @@ export const epochOverviewTransformer = (
     percentage:
       e.number === n.currentEpoch ? n.currentEpochPercentageComplete : 100,
     slotsCount:
-      (!!e.blocks[0].protocolVersion
+      (e.blocks[0].protocolVersion.major > 1
         ? n.shelleyEpochLength
         : n.byronSlotsPerEpoch) || 21600,
     startedAt: new Date(e.startedAt),

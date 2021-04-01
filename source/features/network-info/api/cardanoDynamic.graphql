@@ -3,6 +3,7 @@ query cardanoDynamic {
     tip {
       number
       slotInEpoch
+      slotNo
       forgedAt
       protocolVersion
     }

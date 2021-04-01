@@ -91,8 +91,16 @@ export class SearchStore extends Store {
           this.searchForBlockByNumber,
         ],
         [
+          this.searchActions.searchForBlockBySlotNumber,
+          this.searchForBlockBySlotNumber,
+        ],
+        [
           this.searchActions.searchForEpochByNumber,
           this.searchForEpochByNumber,
+        ],
+        [
+          this.searchActions.slotNumberSearchRequested,
+          this.onSearchBySlotNumberRequested,
         ],
         [
           this.searchActions.unknownSearchRequested,
@@ -113,7 +121,6 @@ export class SearchStore extends Store {
   @computed get isSearching() {
     return (
       this.searchApi.searchByIdQuery.isExecuting ||
-      this.searchApi.searchForBlockByNumberQuery.isExecuting ||
       this.searchApi.searchForBlockByNumberQuery.isExecuting ||
       this.searchApi.searchForEpochByNumberQuery.isExecuting ||
       this.searchApi.searchForPaymentAddressQuery.isExecuting ||
@@ -178,6 +185,18 @@ export class SearchStore extends Store {
     number: number;
   }) => {
     await this.searchForBlockByNumber({ number: params.number });
+    if (this.blockSearchResult?.id) {
+      this.navigation.actions.push.trigger({
+        path: BLOCK_SEARCH_RESULT_PATH,
+        query: { id: this.blockSearchResult?.id },
+      });
+    }
+  };
+
+  @action private onSearchBySlotNumberRequested = async (params: {
+    slotNo: number;
+  }) => {
+    await this.searchForBlockBySlotNumber({ slotNo: params.slotNo });
     if (this.blockSearchResult?.id) {
       this.navigation.actions.push.trigger({
         path: BLOCK_SEARCH_RESULT_PATH,
@@ -297,6 +316,30 @@ export class SearchStore extends Store {
     }
     this.blockSearchResult = null;
     const result = await this.searchApi.searchForBlockByNumberQuery.execute(
+      params
+    );
+    if (result) {
+      const blockData = result.blocks[0];
+      if (isDefined(blockData)) {
+        runInAction(() => {
+          this.blockSearchResult = blockDetailsTransformer(blockData);
+        });
+      }
+    }
+  };
+
+  @action private searchForBlockBySlotNumber = async (params: {
+    slotNo: number;
+  }) => {
+    // Do not trigger another search if we already have the requested data!
+    if (
+      this.searchApi.searchForBlockByNumberQuery.isExecuting ||
+      this.blockSearchResult?.slotNo === params.slotNo
+    ) {
+      return;
+    }
+    this.blockSearchResult = null;
+    const result = await this.searchApi.searchForBlockBySlotNumberQuery.execute(
       params
     );
     if (result) {

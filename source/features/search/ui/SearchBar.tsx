@@ -31,7 +31,8 @@ export const SearchBar = (props: ISearchBarProps) => {
       const searchNumber = parseInt(query, 10);
       if (
         searchNumber > networkInfo.currentEpoch &&
-        searchNumber > networkInfo.blockHeight
+        searchNumber > networkInfo.blockHeight &&
+        searchNumber > networkInfo.slotNo
       ) {
         search.actions.unknownSearchRequested.trigger({ query });
       } else {
@@ -39,9 +40,13 @@ export const SearchBar = (props: ISearchBarProps) => {
           search.actions.epochNumberSearchRequested.trigger({
             number: searchNumber,
           });
-        } else if (typeOfSearch === SearchType.BLOCK) {
+        } else if (typeOfSearch === SearchType.BLOCK_BY_NUMBER) {
           search.actions.blockNumberSearchRequested.trigger({
             number: searchNumber,
+          });
+        } else if (typeOfSearch === SearchType.BLOCK_BY_SLOT_NUMBER) {
+          search.actions.slotNumberSearchRequested.trigger({
+            slotNo: searchNumber,
           });
         }
       }

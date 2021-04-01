@@ -42,9 +42,13 @@ const EpochSummary = ({ title, epoch }: IEpochSummaryProps) => {
             <div className={styles.infoLabel}>
               {translate('epochSummary.numberOfBlocks')}
             </div>
-            <div className={styles.infoValue}>
-              {epoch.blocksCount} / {epoch.slotsCount}
+            <div className={styles.infoValue}>{epoch.blocksCount}</div>
+          </div>
+          <div className={styles.infoRow}>
+            <div className={styles.infoLabel}>
+              {translate('epochSummary.numberOfSlots')}
             </div>
+            <div className={styles.infoValue}>{epoch.slotsCount}</div>
           </div>
           <div className={styles.infoRow}>
             <div className={styles.infoLabel}>

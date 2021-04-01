@@ -27,21 +27,35 @@ const columns = (
   return [
     {
       cellRender: (row: IBlockOverview) => {
-        const content = `${row.epoch} / ${row.slotWithinEpoch}`;
         return isNumber(row.epoch) &&
-          isNumber(row.slotWithinEpoch) &&
           !linksDisabled ? (
           <LocalizedLink href={getEpochRoute(row.epoch)}>
-            {content}
+            {row.epoch}
           </LocalizedLink>
         ) : (
-          <span>{content}</span>
+          <span>{row.epoch}</span>
         );
       },
       cellValue: (row: IBlockOverview) => row,
       cssClass: 'epoch',
-      head: 'block.epochSlotTitle',
-      key: 'epochsSlots',
+      head: 'block.epochTitle',
+      key: 'epoch',
+    },
+    {
+      cellRender: (row: IBlockOverview) => {
+        return isNumber(row.slotNo) &&
+          !linksDisabled ? (
+          <LocalizedLink href={getBlockRoute(row.id)}>
+            {row.slotNo}
+          </LocalizedLink>
+        ) : (
+          <span>{row.slotNo}</span>
+        );
+      },
+      cellValue: (row: IBlockOverview) => row,
+      cssClass: 'slotNo',
+      head: 'block.slotNo',
+      key: 'slot',
     },
     {
       cellRender: (row: IBlockOverview) => (

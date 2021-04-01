@@ -33,7 +33,9 @@ const Search = (props: ISearchProps) => {
       ? styles.enlargedSearchContainer
       : styles.shrinkedSearchContainer;
   const searchTypeStyle =
-    searchType === SearchType.EPOCH || searchType === SearchType.BLOCK
+    searchType === SearchType.EPOCH ||
+    searchType === SearchType.BLOCK_BY_NUMBER ||
+    searchType === SearchType.BLOCK_BY_SLOT_NUMBER
       ? styles.type
       : '';
 
