@@ -1,6 +1,27 @@
 Changelog
 =========
 
+## 1.5.0
+
+### Compatible with:
+
+- [`cardano-graphql`: `4.0.0`](https://github.com/input-output-hk/cardano-graphql/releases/tag/4.0.0)
+
+### Features
+- add query to support fetching transaction metadata ([d5f4344](https://github.com/input-output-hk/cardano-explorer-app/commit/d5f4344959be2f0bdd4e59426e915c5d85283c0c)
+- asset metadata in tooltip ([e44a98d](https://github.com/input-output-hk/cardano-explorer-app/commit/e44a98dd0a229601abd527fef77cb85f96d3964d)
+- add global slot number support ([65c4a32](https://github.com/input-output-hk/cardano-explorer-app/commit/65c4a3279b0517f4d0e07f3d5b6188239130a0bb)
+- add support link to footer ([957b3ad](https://github.com/input-output-hk/cardano-explorer-app/commit/957b3ad1378de2f3206b391e55cf4f923278452d)
+- allow rewards query ([30b0c68](https://github.com/input-output-hk/cardano-explorer-app/commit/30b0c68d249c05ec1d50e2fd972056cb2641e0b4)
+
+### Fixes
+- remove stray acute character ([c67279a](https://github.com/input-output-hk/cardano-explorer-app/commit/c67279a3108595c6633932d670e442fef1a22ed6)
+- infinite loading after block search ([b782199](https://github.com/input-output-hk/cardano-explorer-app/commit/b782199da40707a39932f3d4f5dc55e2b4da000d)
+- use protocolVersion.major comparison to determine epoch slot count ([4c676d7](https://github.com/input-output-hk/cardano-explorer-app/commit/4c676d744eb2ca534b82635df7703d69722d966d)
+
+### Refactorings
+- replace use fingerprint from API ([2b5ca7c](https://github.com/input-output-hk/cardano-explorer-app/commit/2b5ca7c66a85bbac8a8fdead277bcd33d28ba13e)
+
 ## 1.4.0
 
 ### Compatible with:
