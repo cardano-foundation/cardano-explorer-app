@@ -24,10 +24,10 @@ const TokenList = (props: {
     item: IAsset
   ) => {
     const { offsetLeft } = event.currentTarget;
-    console.log(offsetLeft - 120 * 1.75);
+
     setTooltipPosition((prevState) => ({
       ...prevState,
-      left: offsetLeft - 120 * 1.75,
+      left: offsetLeft + 120 * 0.75,
       top: containerRef.current?.offsetTop! + 75,
     }));
     setAsset(item);
