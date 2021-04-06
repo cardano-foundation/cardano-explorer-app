@@ -1,4 +1,5 @@
 import styles from './Tooltip.module.scss';
+import { useState } from 'react';
 
 interface ITooltipProps {
   children: React.ReactNode;
@@ -8,26 +9,40 @@ interface ITooltipProps {
   style?: object;
 }
 
-export const ContentContainer = (props: { label: string; body?: React.ReactNode }) => (
+export const ContentContainer = (props: {
+  label: string;
+  body?: React.ReactNode;
+}) => (
   <div className={styles.contentContainer}>
     <div className={styles.label}>{props.label}</div>
-    { props.body ?? <div className={styles.body}>{props.body}</div> }
+    {props.body ?? <div className={styles.body}>{props.body}</div>}
   </div>
 );
 
 const Tooltip = ({
   children,
-  theme,
-  themeClass,
+  theme = 'tooltip',
+  themeClass = 'translateCenter',
   content,
   style,
-}: ITooltipProps) => (
-  <div className={styles[theme ?? 'tooltip']}>
-    <span style={style} className={styles[themeClass || 'translateCenter']}>
-      {content}
-    </span>
-    {children}
-  </div>
-);
+}: ITooltipProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const isMobile = window.innerWidth <= 768;
+
+  return isMobile ? (
+    <div className={styles[theme]}>
+      {isVisible && <span className={styles[themeClass]}>{content}</span>}
+
+      <div onClick={() => setIsVisible(!isVisible)}>{children}</div>
+    </div>
+  ) : (
+    <div className={styles[theme]}>
+      <span style={style} className={styles[themeClass]}>
+        {content}
+      </span>
+      {children}
+    </div>
+  );
+};
 
 export default Tooltip;
