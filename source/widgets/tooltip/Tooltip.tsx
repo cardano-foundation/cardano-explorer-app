@@ -1,5 +1,5 @@
-import styles from './Tooltip.module.scss';
 import { useState, useRef, useEffect } from 'react';
+import styles from './Tooltip.module.scss';
 
 interface ITooltipProps {
   children: React.ReactNode;

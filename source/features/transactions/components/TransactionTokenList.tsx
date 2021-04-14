@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { addEllipsis } from '../../../lib/addEllipsis';
 import Tooltip, { ContentContainer } from '../../../widgets/tooltip/Tooltip';
 import { TOKEN_LENGTH_TO_SCROLL } from '../constants';
@@ -9,8 +9,9 @@ const TokenList = (props: {
   tokens: IToken[];
   tooltipPositioning?: string;
 }) => {
-  const [tooltipPosition, setTooltipPosition] = useState({});
+  const [tooltipPosition, setTooltipPosition] = useState<object>();
   const containerRef = useRef<HTMLDivElement>(null);
+
   const [asset, setAsset] = useState<IAsset>({
     assetName: '',
     description: '',
@@ -23,12 +24,8 @@ const TokenList = (props: {
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>,
     item: IAsset
   ) => {
-    const { offsetLeft } = event.currentTarget;
-
-    setTooltipPosition((prevState) => ({
-      ...prevState,
-      left: offsetLeft + 120 * 0.75,
-      top: containerRef.current?.offsetTop! + 75,
+    setTooltipPosition(() => ({
+      top: containerRef.current?.offsetTop! - 5,
     }));
     setAsset(item);
     setIsVisible(true);
@@ -80,7 +77,7 @@ const TokenList = (props: {
           ))}
         </div>
       ) : (
-        <div ref={containerRef} className={styles.tokenList}>
+        <div className={styles.tokenList}>
           {props.tokens.map((t) => (
             <span className={styles.token}>
               <Tooltip
