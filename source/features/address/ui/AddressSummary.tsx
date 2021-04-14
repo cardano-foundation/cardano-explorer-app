@@ -1,7 +1,6 @@
 import { isEmpty } from 'lodash';
 import { observer } from 'mobx-react-lite';
 import QRCode from 'qrcode.react';
-import { useState } from 'react';
 import DividerWithTitle from '../../../widgets/divider-with-title/DividerWithTitle';
 import { useI18nFeature } from '../../i18n/context';
 import TokenList from '../../transactions/components/TransactionTokenList';
@@ -41,19 +40,7 @@ function isStakeAddress(
 }
 
 const AddressSummary = (props: AddressSummaryProps) => {
-  const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
   const { translate } = useI18nFeature().store;
-
-  const handleMouseOver = (
-    event: React.MouseEvent<HTMLSpanElement, MouseEvent>
-  ) => {
-    const { offsetTop, offsetLeft, offsetWidth } = event.currentTarget;
-    setTooltipPosition((prevState) => ({
-      ...prevState,
-      left: offsetLeft + offsetWidth,
-      top: offsetTop,
-    }));
-  };
 
   return (
     <div className={styles.addressSummaryContainer}>
@@ -88,9 +75,7 @@ const AddressSummary = (props: AddressSummaryProps) => {
                     {translate('address.tokensBalance')}
                   </div>
                   <div className={styles.infoValue}>
-                    <TokenList
-                      tokens={props.tokensBalance!}
-                    />
+                    <TokenList tokens={props.tokensBalance!} />
                   </div>
                 </div>
               )}

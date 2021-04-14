@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { addEllipsis } from '../../../lib/addEllipsis';
 import Tooltip, { ContentContainer } from '../../../widgets/tooltip/Tooltip';
 import { TOKEN_LENGTH_TO_SCROLL } from '../constants';
