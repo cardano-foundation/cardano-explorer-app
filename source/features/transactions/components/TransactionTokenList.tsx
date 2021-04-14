@@ -92,7 +92,7 @@ const TokenList = (props: {
                       <>
                         <ul>
                           <li>
-                            <strong>Ticker</strong>:asda {t.asset.ticker}
+                            <strong>Ticker</strong>: {t.asset.ticker}
                           </li>
                           <li>
                             <strong>Name</strong>: {t.asset.name}
