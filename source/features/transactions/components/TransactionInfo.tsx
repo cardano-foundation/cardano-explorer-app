@@ -194,10 +194,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
               {translate('transaction.minted')}
             </div>
             <div className={styles.value}>
-              <TokenList
-                tokens={props.mint!}
-                tooltipPositioning="translateCenter"
-              />
+              <TokenList tokens={props.mint!} />
             </div>
           </div>
         )}
@@ -210,10 +207,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
               {translate('transaction.burned')}
             </div>
             <div className={styles.value}>
-              <TokenList
-                tokens={props.burn!}
-                tooltipPositioning="translateCenter"
-              />
+              <TokenList tokens={props.burn!} />
             </div>
           </div>
         )}

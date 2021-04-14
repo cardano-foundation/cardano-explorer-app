@@ -1,5 +1,5 @@
 import styles from './Tooltip.module.scss';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface ITooltipProps {
   children: React.ReactNode;
@@ -26,18 +26,39 @@ const Tooltip = ({
   content,
   style,
 }: ITooltipProps) => {
+  const tooltipRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const isMobile = window.innerWidth <= 768;
 
+  const [positioning, setPositioning] = useState<object>();
+
+  useEffect(() => {
+    const distanceFromRight = tooltipRef.current?.getBoundingClientRect()
+      .right!;
+
+    if (distanceFromRight > window.innerWidth) {
+      const x = window.innerWidth - distanceFromRight - 10;
+      setPositioning({ left: x });
+    }
+  }, [isVisible]);
+
   return isMobile ? (
     <div className={styles[theme]}>
-      {isVisible && <span className={styles[themeClass]}>{content}</span>}
+      {isVisible && (
+        <span
+          style={positioning}
+          ref={tooltipRef}
+          className={styles[themeClass]}
+        >
+          {content}
+        </span>
+      )}
 
       <div onClick={() => setIsVisible(!isVisible)}>{children}</div>
     </div>
   ) : (
     <div className={styles[theme]}>
-      <span style={style} className={styles[themeClass]}>
+      <span style={positioning} ref={tooltipRef} className={styles[themeClass]}>
         {content}
       </span>
       {children}

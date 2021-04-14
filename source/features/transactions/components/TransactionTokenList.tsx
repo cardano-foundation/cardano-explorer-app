@@ -84,7 +84,6 @@ const TokenList = (props: {
           {props.tokens.map((t) => (
             <span className={styles.token}>
               <Tooltip
-                themeClass={props.tooltipPositioning || 'translateRightTop'}
                 content={
                   <ContentContainer
                     label={t.asset.fingerprint}
