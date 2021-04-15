@@ -27,6 +27,7 @@ const Tooltip = ({
   style,
 }: ITooltipProps) => {
   const tooltipRef = useRef<HTMLDivElement>(null);
+  const windowWidth = useRef(window.innerWidth);
   const [isVisible, setIsVisible] = useState(false);
   const isMobile = window.innerWidth <= 768;
 
@@ -36,8 +37,8 @@ const Tooltip = ({
     const distanceFromRight = tooltipRef.current?.getBoundingClientRect()
       .right!;
 
-    if (distanceFromRight > window.innerWidth) {
-      const x = window.innerWidth - distanceFromRight - 10;
+    if (distanceFromRight > windowWidth.current) {
+      const x = windowWidth.current - distanceFromRight - 10;
       setPositioning({ left: x });
     }
   }, [isVisible]);
