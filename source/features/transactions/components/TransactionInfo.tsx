@@ -54,7 +54,7 @@ interface IAddressesRowProps {
 const AddressesRow = ({
   addresses,
   highlightedAddress,
-  isMobile
+  isMobile,
 }: IAddressesRowProps) => (
   <>
     {addresses?.filter(isDefined).map((io, index) => (
@@ -194,9 +194,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
               {translate('transaction.minted')}
             </div>
             <div className={styles.value}>
-              <TokenList
-                tokens={props.mint!}
-              />
+              <TokenList tokens={props.mint!} />
             </div>
           </div>
         )}
@@ -209,9 +207,7 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
               {translate('transaction.burned')}
             </div>
             <div className={styles.value}>
-              <TokenList
-                tokens={props.burn!}
-              />
+              <TokenList tokens={props.burn!} />
             </div>
           </div>
         )}

@@ -5,14 +5,18 @@ import { TOKEN_LENGTH_TO_SCROLL } from '../constants';
 import { IAsset, IToken } from '../types';
 import styles from './TransactionTokenList.module.scss';
 
-const TokenList = (props: { tokens: IToken[]; }) => {
-  const [tooltipPosition, setTooltipPosition] = useState({});
+const TokenList = (props: {
+  tokens: IToken[];
+  tooltipPositioning?: string;
+}) => {
+  const [tooltipPosition, setTooltipPosition] = useState<object>();
   const containerRef = useRef<HTMLDivElement>(null);
+
   const [asset, setAsset] = useState<IAsset>({
     assetName: '',
     description: '',
     fingerprint: '',
-    policyId: ''
+    policyId: '',
   });
   const [isVisible, setIsVisible] = useState(false);
 
@@ -20,11 +24,8 @@ const TokenList = (props: { tokens: IToken[]; }) => {
     event: React.MouseEvent<HTMLSpanElement, MouseEvent>,
     item: IAsset
   ) => {
-    const { offsetLeft } = event.currentTarget;
-    setTooltipPosition((prevState) => ({
-      ...prevState,
-      left: offsetLeft + 120 * 0.75,
-      top: containerRef.current?.offsetTop! + 75,
+    setTooltipPosition(() => ({
+      top: containerRef.current?.offsetTop! - 5,
     }));
     setAsset(item);
     setIsVisible(true);
@@ -38,12 +39,23 @@ const TokenList = (props: { tokens: IToken[]; }) => {
             label={asset.fingerprint}
             body={
               <ul>
-                <li><strong>Ticker</strong>: {asset.ticker}</li>
-                <li><strong>Name</strong>: {asset.name}</li>
-                <li><strong>Description</strong>: {asset.description}</li>
-                <li><strong>Policy ID</strong>: {asset.policyId}</li>
-                <li><strong>Asset Name</strong>: {asset.assetName}</li>
-            </ul>}
+                <li>
+                  <strong>Ticker</strong>: {asset.ticker}
+                </li>
+                <li>
+                  <strong>Name</strong>: {asset.name}
+                </li>
+                <li>
+                  <strong>Description</strong>: {asset.description}
+                </li>
+                <li>
+                  <strong>Policy ID</strong>: {asset.policyId}
+                </li>
+                <li>
+                  <strong>Asset Name</strong>: {asset.assetName}
+                </li>
+              </ul>
+            }
           />
         </div>
       )}
@@ -58,35 +70,50 @@ const TokenList = (props: { tokens: IToken[]; }) => {
               }}
               className={styles.token}
             >
-              {`${t.quantity} ${t.asset.ticker || addEllipsis(t.asset.fingerprint, 9, 4)}`}{' '}
+              {`${t.quantity} ${
+                t.asset.ticker || addEllipsis(t.asset.fingerprint, 9, 4)
+              }`}{' '}
             </span>
           ))}
         </div>
       ) : (
-        <div ref={containerRef} className={styles.tokenList}>
+        <div className={styles.tokenList}>
           {props.tokens.map((t) => (
-              <span className={styles.token}>
+            <span className={styles.token}>
               <Tooltip
                 content={
                   <ContentContainer
                     label={t.asset.fingerprint}
-                    body={<>
-                      <ul>
-                        <li><strong>Ticker</strong>: {t.asset.ticker}</li>
-                        <li><strong>Name</strong>: {t.asset.name}</li>
-                        <li><strong>Description</strong>: {t.asset.description}</li>
-                        <li><strong>Policy ID</strong>: {t.asset.policyId}</li>
-                        <li><strong>Asset Name</strong>: {t.asset.assetName}</li>
-                      </ul>
-                    </>}
+                    body={
+                      <>
+                        <ul>
+                          <li>
+                            <strong>Ticker</strong>: {t.asset.ticker}
+                          </li>
+                          <li>
+                            <strong>Name</strong>: {t.asset.name}
+                          </li>
+                          <li>
+                            <strong>Description</strong>: {t.asset.description}
+                          </li>
+                          <li>
+                            <strong>Policy ID</strong>: {t.asset.policyId}
+                          </li>
+                          <li>
+                            <strong>Asset Name</strong>: {t.asset.assetName}
+                          </li>
+                        </ul>
+                      </>
+                    }
                   />
                 }
               >
-                {`${t.quantity} ${t.asset.ticker || addEllipsis(t.asset.fingerprint, 9, 4)}`}
+                {`${t.quantity} ${
+                  t.asset.ticker || addEllipsis(t.asset.fingerprint, 9, 4)
+                }`}
               </Tooltip>
             </span>
-            )
-          )}
+          ))}
         </div>
       )}
     </>

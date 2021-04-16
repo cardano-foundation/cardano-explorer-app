@@ -11,9 +11,10 @@
   cursor: pointer;
   position: relative;
 }
-.tooltip .translateCenter {
+
+.tooltip .translateCenter,
+.tooltip .translateRightTop {
   @include text(11px, 300, var(--solid-text-color), 1.3px);
-  visibility: hidden;
   text-align: left;
   padding: 5px 10px;
   background: #121326;
@@ -25,12 +26,23 @@
   z-index: 9999000;
   opacity: 1 !important;
   width: 300px;
-  top: -5px;
-  left: 100px;
   transition-delay: 0.2s;
+  @media (min-width: 768px) {
+    visibility: hidden;
+  }
 }
 
-.tooltip:hover .translateCenter {
+.tooltip .translateCenter {
+  top: -5px;
+}
+
+.tooltip .translateRightTop {
+  top: -5px;
+  right: -15px;
+}
+
+.tooltip:hover .translateCenter,
+.tooltip:hover .translateRightTop {
   visibility: visible;
 }
 
