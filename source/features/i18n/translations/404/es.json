@@ -1,0 +1,12 @@
+{
+  "document": {
+    "title": "Error 404 | Cardano Explorer"
+  },
+  "error": {
+    "code": "Código de error:",
+    "description": "La página solicitada no se encuentra. Es posible que haya sido eliminada o que el enlace esté roto. Si ha introducido una dirección web, compruebe que es correcta y vuelva a intentarlo.",
+    "explorerTitle": "Explorador de Blockchain",
+    "support": "Contacto con soporte",
+    "title": "Página no encontrada"
+  }
+}
