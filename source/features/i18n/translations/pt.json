@@ -15,11 +15,11 @@
     "blockTitle": "Bloco",
     "createdAtTitle": "Criado Em",
     "createdByTitle": "Criado Por",
-    "epochTitle": "Epoch", // ???
-    "outputTitle": "Output (₳)", // resultado ou saida?
+    "epochTitle": "Época",
+    "outputTitle": "Resultado (₳)",
     "pageTitle": "Bloco | $t(productTitle)",
     "sizeTitle": "Tamanho (Bytes)",
-    "slotNo": "Slot", // ???
+    "slotNo": "Slot",
     "summary": "Resumo do Bloco",
     "transactionsTitle": "Transações"
   },
@@ -27,26 +27,26 @@
     "createdBy": "Criado Por",
     "confirmations": "Confirmações",
     "block": "Bloco",
-    "epoch": "Epoch", // ???
+    "epoch": "Época",
     "id": "ID",
-    "merkleRoot": "Merkle root", // ???
+    "merkleRoot": "Raiz Merkle",
     "nextBlock": "Próximo bloco",
     "previousBlock": "Bloco anterior",
     "size": "Tamanho",
-    "slot": "Slot", // ???
-    "time": "Time", // Tempo, momento ou duração
+    "slot": "Slot",
+    "time": "Tempo",
     "transactions": "Transações"
   },
   "browseBlocks": {
     "pageTitle": "Procurar Blocos | $t(productTitle)",
     "performanceLabel": "Desempenho",
     "sharedRewardsLabel": "Recompensas compartilhadas",
-    "slotsElectedLabel": "Slots elected", // ???
-    "stakePoolLabel": "Grupo de participação" // pool=grupo?
+    "slotsElectedLabel": "Slots eleitos",
+    "stakePoolLabel": "Stake pool"
   },
   "browseEpochs": {
-    "pageTitle": "Procurar Epochs | $t(productTitle)", // ???
-    "epochsListTitle": "Procurar Epochs" // ???
+    "pageTitle": "Procurar Épocas | $t(productTitle)",
+    "epochsListTitle": "Procurar Épocas"
   },
   "epoch": {
     "blocksTitle": "Blocks",
@@ -60,13 +60,13 @@
     "transactionsTitle": "Transações"
   },
   "epochSummary": {
-    "epoch": "Epoch", // ???
-    "epochSummaryTitle": "Epoch Summary", // ???
+    "epoch": "Época",
+    "epochSummaryTitle": "Resumo da Época",
     "lastBlockAt": "Último bloco em",
     "numberOfBlocks": "# de blocos",
-    "numberOfSlots": "# of slots", // ???
+    "numberOfSlots": "# de slots",
     "startedAt": "Iniciado em",
-    "totalOutput": "Total output", // Saída ou resultado?
+    "totalOutput": "Resultado total",
     "transactions": "Transações"
   },
   "error": {
@@ -84,19 +84,19 @@
     "cardanoSource": "Fonte do Cardano",
     "documentation": "Documentação",
     "iohk": "Projeto Suportado pela IOHK",
-    "joinCommunity": "Jute-se a comunidade",
+    "joinCommunity": "Jute-se à comunidade",
     "moreAbout": "Mais sobre Cardano",
-    "openSource": "Open Source",
+    "openSource": "Código Aberto",
     "ouroborosAlgorithm": "Algoritmo Ouroboros",
-    "project": "projeto.",
+    "project": ".",
     "shellyExplorer": "Explorador Shelley",
-    "submitASupportRequest": "Envie uma Requisição de Suporte",
-    "textTitle": "Cardano é um",
+    "submitASupportRequest": "Envie uma requisição de suporte",
+    "textTitle": "Cardano é um projeto de",
     "whyCardano": "Por que Cardano"
   },
   "header": {
-    "epochsBlocks": "Epochs & Blocos", // ???
-    "explorer": "Explorador Blockchain"
+    "epochsBlocks": "Épocas & Blocos",
+    "explorer": "Explorador do Blockchain"
   },
   "index": {
     "pageTitle": "$t(productTitle)"
@@ -106,7 +106,7 @@
     "showMore": "mostrar mais"
   },
   "latestEpochs": {
-    "pageTitle": "Latest Epochs", // ???
+    "pageTitle": "Últimos Épocas",
     "showMore": "mostrar mais"
   },
   "locales": {
@@ -129,19 +129,19 @@
   },
   "productTitle": "Explorador Cardano",
   "search": {
-    "description": "Por favor, informe o id válido de um epoch, bloco, transação ou endereço, ou número de epoch e tente novamente a sua pesquisa.", // ???
-    "notExist": "Endereço não existe:",
+    "description": "Por favor, informe o id válido de um epoch, bloco, transação ou endereço, ou número de época e tente novamente a sua pesquisa.",
+    "notExist": "Este endereço não existe:",
     "notFound": "Desculpe, não conseguimos encontrar nenhum resultado baseado em:",
-    "placeholder": "Procurar por epochs, blocos, endereços e transações", //???
+    "placeholder": "Procurar por épocas, blocos, endereços e transações",
     "suggestion_block_by_number": "Procurar por um bloco usando um número",
-    "suggestion_block_by_slot": "Procurar por um bloco usando um slot", //???
-    "suggestion_epoch": "Procurar por um epoch", //???
+    "suggestion_block_by_slot": "Procurar por um bloco usando um slot",
+    "suggestion_epoch": "Procurar por uma época",
     "title": "Procurar"
   },
   "stakeDistribution": {
     "distribution": "Distribuição de Participação",
-    "slotsElected": "Slots elected", //???
-    "stakePool": "Grupo de participação"
+    "slotsElected": "Slots eleitos",
+    "stakePool": "Stake pool"
   },
   "stakePools": {
     "controlledStake": "Participação controlada",
@@ -149,15 +149,15 @@
     "profitMargin": "Margem de Lucro",
     "ranking": "Posição",
     "retiring": "Aposentando em",
-    "stakePoolsSearch": "Procurar por um grupo de participação específico",
-    "stakePoolsTitle": "Grupos de participação",
-    "unmoderated": "Você concordou em ver dados não moderados sobre grupos de participação.",
+    "stakePoolsSearch": "Procurar por um stake pool específico",
+    "stakePoolsTitle": "Stake Pools",
+    "unmoderated": "Você concordou em ver dados não moderados sobre stake pools.",
     "unmoderatedConfirmation": "Sim, mostre conteúdo não moderado",
     "unmoderatedContent": "Você quer ver conteúdo não moderado?",
-    "unmoderatedEntitiesControl": "Esta informação é disponibilizada e hospedada por operadores de grupos de participação e não é controlada pelas entidades operando este website.",
+    "unmoderatedEntitiesControl": "Esta informação é disponibilizada e hospedada por operadores de stake pools e não é controlada pelas entidades operando este website.",
     "unmoderatedLeave": "Sair desta página",
-    "unmoderatedPoolTickerSymbols": "Símbolos ticker de grupos de participação, títulos, descrições e websites não são moderados e podem conter conteúdo inapropriado.", // ticker = registro?
-    "unmoderatedStakePoolData": "Informaçoes sobre grupos de participação não são moderadas",
+    "unmoderatedPoolTickerSymbols": "Símbolos de stake pools, títulos, descrições e websites não são moderados e podem conter conteúdo inapropriado.",
+    "unmoderatedStakePoolData": "Informaçoes sobre stake pools não são moderadas",
     "unmoderatedWarning": "Cuidado:"
   },
   "transaction": {
@@ -165,7 +165,7 @@
     "confirmations": "Confirmações",
     "deposit": "Depósito",
     "depositReclaim": "Recuperar Depósito",
-    "epoch": "Epoch", //???
+    "epoch": "Época",
     "fee": "Taxa de Transação",
     "from": "Endereço de origem",
     "to": "Endereço de destino",
@@ -174,21 +174,21 @@
     "metadata": "Metadados",
     "noTransactions": "Sem transações",
     "pageTitle": "Transação | $t(productTitle)",
-    "receivedTime": "Recebido em", // momento, horario?
+    "receivedTime": "Recebido em",
     "summary": "Sumário",
-    "totalOutput": "Resultado Total", // resultado, saída?
+    "totalOutput": "Resultado Total",
     "transactionLabel": "Transação",
     "transactionsLabel": "Transações",
     "unmoderated": "Você concordou em ver dados não moderados.",
     "unmoderatedConfirmation": "Mostre conteúdo não moderado",
     "unmoderatedContent": "Você quer ver conteúdo não moderado?",
-    "unmoderatedEntitiesControl": "Esta informação é disponibilizada e hospedada por operadores de grupos de participação e não é controlada pelas entidades operando este website.",
+    "unmoderatedEntitiesControl": "Esta informação é disponibilizada e hospedada por operadores de stake pools e não é controlada pelas entidades operando este website.",
     "unmoderatedLeave": "Sair desta página",
     "unmoderatedPoolTickerSymbols": "Metadados da Transação não são moderados e podem conter conteúdo inapropriado. O criados da transação disponibiliza esta informação e não tem controle sobre o operador deste website. Você quer ver conteúdo não moderado?",
     "unmoderatedTransactionData": "Conteúdo não moderado",
     "unmoderatedWarning": "Cuidado:",
-    "minted": "Minted tokens", //???
-    "burned": "Burned tokens" //???
+    "minted": "Tokens gerados",
+    "burned": "Tokens cancelados"
   },
   "withdrawals": "Saques"
 }
