@@ -11,6 +11,7 @@ const currentLanguage = {
 const languages = [
   { code: SupportedLocale.EN, title: 'English' },
   { code: SupportedLocale.JA, title: 'Japanese' },
+  { code: SupportedLocale.PT, title: 'Português' },
 ];
 
 storiesOf('Language Switcher Component', module).add(
