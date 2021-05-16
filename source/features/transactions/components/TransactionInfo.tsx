@@ -122,19 +122,13 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
         )}
 
         {/* ===== RECEIVED TIME ===== */}
-
-        <div className={styles.row}>
-          <div className={styles.label}>
-            {translate('transaction.receivedTime')}
-          </div>
-          <div className={styles.value}>
-            &gt; {dayjs().utc().to(includedAtUtc)} (
-            {includedAtUtc.format('YYYY-MM-DD HH:mm:ss')} UTC)
-          </div>
-        </div>
+        <TransactionInfoRow
+          label={translate('transaction.receivedTime')}
+          value={`> ${dayjs().utc().to(includedAtUtc)}
+          (${includedAtUtc.format('YYYY-MM-DD HH:mm:ss')} UTC)`}
+        />
 
         {/* ===== INCLUDED IN ===== */}
-
         {props.showDetails && (
           <div className={styles.row}>
             <div className={styles.label}>
