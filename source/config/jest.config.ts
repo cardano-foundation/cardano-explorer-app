@@ -7,23 +7,23 @@ import './mobx.config';
 
 configure({ adapter: new Adapter() });
 
-// beforeAll(async () => {
-//   jest.setTimeout(15000);
-//   waitForExpect.defaults.timeout = 9000;
-//   await RetryPromise.retryPromise(
-//     'Checking Cardano GraphQL server is available',
-//     () => {
-//       return graphqlClient.request(
-//         `query {
-//             cardano {
-//               tip {
-//                 number
-//               }
-//             }
-//           }
-//         `
-//       );
-//     },
-//     40
-//   );
-// }, 60000);
+beforeAll(async () => {
+  jest.setTimeout(15000);
+  waitForExpect.defaults.timeout = 9000;
+  await RetryPromise.retryPromise(
+    'Checking Cardano GraphQL server is available',
+    () => {
+      return graphqlClient.request(
+        `query {
+            cardano {
+              tip {
+                number
+              }
+            }
+          }
+        `
+      );
+    },
+    40
+  );
+}, 60000);
