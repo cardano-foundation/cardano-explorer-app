@@ -49,11 +49,11 @@
     "epochsListTitle": "Procurar Epochs"
   },
   "epoch": {
-    "blocksTitle": "Blocks",
+    "blocksTitle": "Blocos",
     "slotsTitle": "Slots",
     "createdByTitle": "Criado Por",
     "epochTitle": "Epoch",
-    "lastBlockAtTitle": "Last Block at",
+    "lastBlockAtTitle": "Último Bloco em",
     "outputTitle": "Resultado (₳)",
     "pageTitle": "Epoch | $t(productTitle)",
     "startedAtTitle": "Iniciado em",
