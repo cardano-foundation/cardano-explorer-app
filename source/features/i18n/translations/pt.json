@@ -15,7 +15,7 @@
     "blockTitle": "Bloco",
     "createdAtTitle": "Criado Em",
     "createdByTitle": "Criado Por",
-    "epochTitle": "Epoch",
+    "epochTitle": "Época",
     "outputTitle": "Resultado (₳)",
     "pageTitle": "Bloco | $t(productTitle)",
     "sizeTitle": "Tamanho (Bytes)",
@@ -27,7 +27,7 @@
     "createdBy": "Criado Por",
     "confirmations": "Confirmações",
     "block": "Bloco",
-    "epoch": "Epoch",
+    "epoch": "Época",
     "id": "ID",
     "merkleRoot": "Raiz Merkle",
     "nextBlock": "Próximo bloco",
@@ -45,23 +45,23 @@
     "stakePoolLabel": "Stake pool"
   },
   "browseEpochs": {
-    "pageTitle": "Procurar Epochs | $t(productTitle)",
-    "epochsListTitle": "Procurar Epochs"
+    "pageTitle": "Procurar Épocas | $t(productTitle)",
+    "epochsListTitle": "Procurar Épocas"
   },
   "epoch": {
     "blocksTitle": "Blocos",
     "slotsTitle": "Slots",
     "createdByTitle": "Criado Por",
-    "epochTitle": "Epoch",
+    "epochTitle": "Época",
     "lastBlockAtTitle": "Último Bloco em",
     "outputTitle": "Resultado (₳)",
-    "pageTitle": "Epoch | $t(productTitle)",
+    "pageTitle": "Época | $t(productTitle)",
     "startedAtTitle": "Iniciado em",
     "transactionsTitle": "Transações"
   },
   "epochSummary": {
-    "epoch": "Epoch",
-    "epochSummaryTitle": "Resumo do Epoch",
+    "epoch": "Época",
+    "epochSummaryTitle": "Resumo da Época",
     "lastBlockAt": "Último bloco em",
     "numberOfBlocks": "# de blocos",
     "numberOfSlots": "# de slots",
@@ -95,7 +95,7 @@
     "whyCardano": "Por que Cardano"
   },
   "header": {
-    "epochsBlocks": "Epochs & Blocos",
+    "epochsBlocks": "Épocas & Blocos",
     "explorer": "Explorador do Blockchain"
   },
   "index": {
@@ -106,7 +106,7 @@
     "showMore": "mostrar mais"
   },
   "latestEpochs": {
-    "pageTitle": "Últimos Epochs",
+    "pageTitle": "Últimas Épocas",
     "showMore": "mostrar mais"
   },
   "locales": {
@@ -129,13 +129,13 @@
   },
   "productTitle": "Explorador Cardano",
   "search": {
-    "description": "Por favor, informe o id válido de um epoch, bloco, transação ou endereço, ou número de epoch e tente novamente a sua pesquisa.",
+    "description": "Por favor, informe o id válido de uma época, bloco, transação ou endereço, ou número de época e tente novamente a sua pesquisa.",
     "notExist": "Este endereço não existe:",
     "notFound": "Desculpe, não conseguimos encontrar nenhum resultado baseado em:",
-    "placeholder": "Procurar por epochs, blocos, endereços e transações",
+    "placeholder": "Procurar por épocas, blocos, endereços e transações",
     "suggestion_block_by_number": "Procurar por um bloco usando um número",
     "suggestion_block_by_slot": "Procurar por um bloco usando um slot",
-    "suggestion_epoch": "Procurar por um epoch",
+    "suggestion_epoch": "Procurar por uma época",
     "title": "Procurar"
   },
   "stakeDistribution": {
@@ -165,7 +165,7 @@
     "confirmations": "Confirmações",
     "deposit": "Depósito",
     "depositReclaim": "Recuperar Depósito",
-    "epoch": "Epoch",
+    "epoch": "Época",
     "fee": "Taxa de Transação",
     "from": "Endereço de origem",
     "to": "Endereço de destino",
