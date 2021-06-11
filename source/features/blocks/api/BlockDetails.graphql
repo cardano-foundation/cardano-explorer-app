@@ -3,7 +3,6 @@
 
 fragment BlockDetails on Block {
   ...BlockOverview
-  merkleRoot
   nextBlock {
     hash
     number

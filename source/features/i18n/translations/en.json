@@ -29,7 +29,6 @@
     "block": "Block",
     "epoch": "Epoch",
     "id": "ID",
-    "merkleRoot": "Merkle root",
     "nextBlock": "Next block",
     "previousBlock": "Previous block",
     "size": "Size",
