@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { addEllipsis } from '../../../lib/addEllipsis';
+import { tokenQty } from '../../../lib/tokenQty';
 import Tooltip, { ContentContainer } from '../../../widgets/tooltip/Tooltip';
 import { TOKEN_LENGTH_TO_SCROLL } from '../constants';
 import { IAsset, IToken } from '../types';
@@ -108,7 +109,7 @@ const TokenList = (props: {
                   />
                 }
               >
-                {`${t.quantity} ${
+                {`${tokenQty(t)} ${
                   t.asset.ticker || addEllipsis(t.asset.fingerprint, 9, 4)
                 }`}
               </Tooltip>

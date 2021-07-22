@@ -1,0 +1,9 @@
+fragment AssetDetails on Asset {
+    assetName
+    decimals
+    description
+    fingerprint
+    name
+    policyId
+    ticker
+}
