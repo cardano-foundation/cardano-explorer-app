@@ -36,7 +36,6 @@ export const blockDetailsTransformer = (
   b: BlockDetailsFragment
 ): IBlockDetailed => ({
   ...blockOverviewTransformer(b),
-  merkleRoot: b.merkleRoot || '',
   nextBlock: {
     id: b.nextBlock?.hash || '',
     number: b.nextBlock?.number || '-',

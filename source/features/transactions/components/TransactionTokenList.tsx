@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { addEllipsis } from '../../../lib/addEllipsis';
+import { tokenQty } from '../../../lib/tokenQty';
 import Tooltip, { ContentContainer } from '../../../widgets/tooltip/Tooltip';
 import { TOKEN_LENGTH_TO_SCROLL } from '../constants';
 import { IAsset, IToken } from '../types';
@@ -14,9 +15,11 @@ const TokenList = (props: {
 
   const [asset, setAsset] = useState<IAsset>({
     assetName: '',
+    decimals: 0,
     description: '',
     fingerprint: '',
     policyId: '',
+    ticker: ''
   });
   const [isVisible, setIsVisible] = useState(false);
 
@@ -70,7 +73,7 @@ const TokenList = (props: {
               }}
               className={styles.token}
             >
-              {`${t.quantity} ${
+              {`${tokenQty(t)} ${
                 t.asset.ticker || addEllipsis(t.asset.fingerprint, 9, 4)
               }`}{' '}
             </span>
@@ -108,7 +111,7 @@ const TokenList = (props: {
                   />
                 }
               >
-                {`${t.quantity} ${
+               {`${tokenQty(t)} ${
                   t.asset.ticker || addEllipsis(t.asset.fingerprint, 9, 4)
                 }`}
               </Tooltip>

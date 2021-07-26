@@ -1,5 +1,6 @@
 export interface IAsset {
   assetName: string;
+  decimals?: number;
   description?: string;
   fingerprint: string;
   name?: string;

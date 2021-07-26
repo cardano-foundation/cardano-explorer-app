@@ -138,14 +138,6 @@ const BlockSummary = (props: BlockSummaryProps) => {
               </span>
             </div>
           </div>
-          {props.merkleRoot &&
-            <div className={styles.infoRow}>
-              <div className={styles.infoLabel}>
-                {translate('blockSummary.merkleRoot')}
-              </div>
-              <div className={styles.infoValue}>{props.merkleRoot}</div>
-            </div>
-          }
         </div>
       </div>
     </div>
