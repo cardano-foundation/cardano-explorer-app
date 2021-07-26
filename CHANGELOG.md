@@ -8,7 +8,7 @@ Changelog
 - [`cardano-graphql`: `5.0.0`](https://github.com/input-output-hk/cardano-graphql/releases/tag/5.0.0)
 
 ### Features
--  Use `Asset.decimals` to present token qty with the correct factor ([86bf4fd](https://github.com/input-output-hk/cardano-explorer-app/commit/86bf4fd5b64d53d28dec61306eb19ab7cfb507a9))
+-  Use `Asset.decimals` to present token qty with the correct factor ([4d475fe](https://github.com/input-output-hk/cardano-explorer-app/commit/4d475fe3749f3f8495b2ee33d93995b09391fe94))
 
 ### Fixes
 - tooltip position on small screen size ([213f5c3](https://github.com/input-output-hk/cardano-explorer-app/commit/213f5c316d6195f6dd714630a8906f530abe4119))
