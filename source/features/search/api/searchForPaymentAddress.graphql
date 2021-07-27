@@ -1,4 +1,3 @@
-#import "../../assets/api/AssetDetails.graphql"
 
 query searchForPaymentAddress(
   $address: String!
@@ -28,7 +27,13 @@ query searchForPaymentAddress(
         summary {
             assetBalances {
                 asset {
-                  ...AssetDetails
+                  assetName
+                  decimals
+                  description
+                  fingerprint
+                  name
+                  policyId
+                  ticker
                 }
                 quantity
             }

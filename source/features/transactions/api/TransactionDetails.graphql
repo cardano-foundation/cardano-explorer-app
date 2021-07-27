@@ -1,5 +1,3 @@
-#import "../../assets/api/AssetDetails.graphql"
-
 fragment TransactionDetails on Transaction {
   block {
     epochNo
@@ -13,7 +11,13 @@ fragment TransactionDetails on Transaction {
   includedAt,
   mint {
     asset {
-      ...AssetDetails
+      assetName
+      decimals
+      description
+      fingerprint
+      name
+      policyId
+      ticker
     }
     quantity
   }
@@ -24,7 +28,13 @@ fragment TransactionDetails on Transaction {
     value
     tokens {
       asset {
-        ...AssetDetails
+        assetName
+        decimals
+        description
+        fingerprint
+        name
+        policyId
+        ticker
       }
       quantity
     }
@@ -39,7 +49,13 @@ fragment TransactionDetails on Transaction {
     value
     tokens {
       asset {
-        ...AssetDetails
+        assetName
+        decimals
+        description
+        fingerprint
+        name
+        policyId
+        ticker
       }
       quantity
     }
