@@ -146,7 +146,7 @@ export const Footer = (props: IFooterProps) => {
                   </a>
                 </li>
                 <li>
-                  <a href={'https://twitter.com/CardanoStiftung'}>
+                  <a href={'https://twitter.com/Cardano_CF'}>
                     {translate('footer.cardanoFoundationTwitter')}
                   </a>
                 </li>
