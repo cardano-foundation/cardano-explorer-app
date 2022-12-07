@@ -7,16 +7,16 @@
 #
 ############################################################################
 {
-  cardano-explorer-app ? { rev = null; }
+  cardano-explorer-app ? { rev = null; },
+  system ? builtins.currentSystem,
 }:
 
 let
-  pkgs = import ./nix/pkgs.nix {};
-
+  pkgs = import ./nix/pkgs.nix { inherit system; };
 in
 
 pkgs.lib.fix (self: {
-  inherit ( import ./. ) allowList cardano-explorer-app static;
+  inherit ( import ./. { inherit system; } ) allowList cardano-explorer-app static;
   build-version = pkgs.writeText "version.json" (builtins.toJSON { inherit (cardano-explorer-app) rev; });
   required = pkgs.releaseTools.aggregate {
     name = "required";
