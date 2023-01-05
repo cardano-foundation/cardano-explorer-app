@@ -1,1 +1,3 @@
-(import ./nix/pkgs.nix {}).packages
+{ system ? builtins.currentSystem }:
+
+(import ./nix/pkgs.nix { inherit system; }).packages
