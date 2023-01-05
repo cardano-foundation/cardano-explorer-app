@@ -15,4 +15,7 @@ module.exports = {
     '\\.graphql$': 'jest-transform-graphql',
     '\\.spec.ts?$': 'ts-jest'
   },
+  moduleNameMapper: {
+    "\\.(css|less|scss)$": "<rootDir>/source/__mocks__/styleMock.js"
+  }
 };

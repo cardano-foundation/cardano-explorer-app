@@ -21,6 +21,7 @@ import {
   IWithdrawal,
 } from '../types';
 import styles from './TransactionInfo.module.scss';
+import { TransactionInfoRow } from './TransactionInfoRow/TransactionInfoRow';
 import TokenList from './TransactionTokenList';
 
 dayjs.extend(relativeTime);
@@ -121,19 +122,13 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
         )}
 
         {/* ===== RECEIVED TIME ===== */}
-
-        <div className={styles.row}>
-          <div className={styles.label}>
-            {translate('transaction.receivedTime')}
-          </div>
-          <div className={styles.value}>
-            &gt; {dayjs().utc().to(includedAtUtc)} (
-            {includedAtUtc.format('YYYY-MM-DD HH:mm:ss')} UTC)
-          </div>
-        </div>
+        <TransactionInfoRow
+          label={translate('transaction.receivedTime')}
+          value={`> ${dayjs().utc().to(includedAtUtc)}
+          (${includedAtUtc.format('YYYY-MM-DD HH:mm:ss')} UTC)`}
+        />
 
         {/* ===== INCLUDED IN ===== */}
-
         {props.showDetails && (
           <div className={styles.row}>
             <div className={styles.label}>
@@ -248,26 +243,18 @@ const TransactionInfo = (props: ITransactionInfoProps) => {
         </div>
 
         {/* ===== DEPOSIT ===== */}
-        {props.deposit !== '0' && (
-          <div className={styles.row}>
-            <div className={styles.label}>{translate(depositLabel)}</div>
-            <div className={styles.value}>
-              {Math.abs(parseInt(props.deposit))} ADA
-            </div>
-          </div>
-        )}
+        <TransactionInfoRow
+          label={translate(depositLabel)}
+          value={`${Math.abs(parseInt(props.deposit))} ADA`}
+        />
 
         {/* ===== TOTAL OUTPUT ===== */}
-
-        <div className={styles.row}>
-          <div className={styles.label}>
-            {translate('transaction.totalOutput')}
-          </div>
-          <div className={styles.value}>{props.totalOutput} ADA</div>
-        </div>
+        <TransactionInfoRow
+          label={translate('transaction.totalOutput')}
+          value={`${props.totalOutput} ADA`}
+        />
 
         {/* ===== CONFIRMATIONS ===== */}
-
         {props.showDetails && (
           <div className={styles.row}>
             <div className={styles.label}>{translate('transaction.fee')}</div>
