@@ -1,0 +1,194 @@
+{
+  "address": {
+    "addressLabel": "Dirección",
+    "pageTitle": "Dirección | $t(productTitle)",
+    "summaryAddressLabel": "Dirección",
+    "summaryBalanceLabel": "Balance Final ",
+    "summaryTransactionsLabel": "Transacción",
+    "totalWithdrawn": "Total Withdrawn",
+    "adaBalance": "Balance en Ada",
+    "tokensBalance": "Balance en tokens",
+    "noTokensAvailable": "Esta dirección no contiene tokens"
+  },
+  "block": {
+    "blocks": "Bloques",
+    "blockTitle": "Bloque",
+    "createdAtTitle": "Creado en",
+    "createdByTitle": "Creado por",
+    "epochTitle": "Epoch",
+    "outputTitle": "Salida (₳)",
+    "pageTitle": "Bloque | $t(productTitle)",
+    "sizeTitle": "Tamaño (Bytes)",
+    "slotNo": "Slot",
+    "summary": "Resumen del bloque",
+    "transactionsTitle": "Transacciones"
+  },
+  "blockSummary": {
+    "createdBy": "Creado por",
+    "confirmations": "Confirmaciones",
+    "block": "Bloque",
+    "epoch": "Epoch",
+    "id": "ID",
+    "merkleRoot": "Merkle root",
+    "nextBlock": "Bloque posterior",
+    "previousBlock": "Bloque anterior",
+    "size": "Tamaño",
+    "slot": "Slot",
+    "time": "Fecha",
+    "transactions": "Transaciones"
+  },
+  "browseBlocks": {
+    "pageTitle": "Navegar por los bloques | $t(productTitle)",
+    "performanceLabel": "Rendimiento",
+    "sharedRewardsLabel": "Recompensas compartidas",
+    "slotsElectedLabel": "Slot seleccionado",
+    "stakePoolLabel": "Stake pool"
+  },
+  "browseEpochs": {
+    "pageTitle": "Navegar por los Epochs | $t(productTitle)",
+    "epochsListTitle": "Navegar por los Epochs"
+  },
+  "epoch": {
+    "blocksTitle": "Bloques",
+    "slotsTitle": "Slots",
+    "createdByTitle": "Creado por",
+    "epochTitle": "Epoch",
+    "lastBlockAtTitle": "Último bloque en",
+    "outputTitle": "Salida (₳)",
+    "pageTitle": "Epoch | $t(productTitle)",
+    "startedAtTitle": "Comenzado en",
+    "transactionsTitle": "Transacciones"
+  },
+  "epochSummary": {
+    "epoch": "Epoch",
+    "epochSummaryTitle": "Resumen del Epoch",
+    "lastBlockAt": "Último bloque en",
+    "numberOfBlocks": "NR. de bloquues",
+    "numberOfSlots": "NR. de slots",
+    "startedAt": "Comenzado en",
+    "totalOutput": "Rendimiento total",
+    "transactions": "Transacciones"
+  },
+  "error": {
+    "pageTitle": "Error 404 | $t(productTitle)"
+  },
+  "footer": {
+    "cardanoChat": "Chat de Cardano Chat",
+    "cardanoCommunity": "Comunidad de Cardano",
+    "cardanoForum": "Foro de Cardano",
+    "cardanoFoundation": "Fundación Cardano",
+    "cardanoFoundationTwitter": "Twitter de la Fundación Cardano",
+    "cardanoFoundationYoutube": "Youtube de la Fundación Cardano",
+    "cardanoReddit": "Cardano Reddit",
+    "cardanoText": "Cardano es SOLO una plataforma de software y no lleva a cabo ninguna diligencia independiente o revisión sustantiva de cualquier blockchain, moneda digital, criptomoneda o tecnología asociada. El uso de este sitio web y el software es totalmente bajo su propio riesgo y responsabilidad, y este sitio web se proporciona \"tal cual\" y sólo para referencia.",
+    "cardanoSource": "Código fuente de Cardano",
+    "documentation": "Documentación",
+    "iohk": "IOHK Supported Project",
+    "joinCommunity": "Únete a la comunidad",
+    "moreAbout": "Saber más acerca de Cardano",
+    "openSource": "Open Source",
+    "ouroborosAlgorithm": "Algoritmo de Ouroboros",
+    "project": ".",
+    "shellyExplorer": "Explorador Shelley",
+    "submitASupportRequest": "Enviar una solicitud de soporte",
+    "textTitle": "Cardano es un proyecto",
+    "whyCardano": "Por qué Cardano"
+  },
+  "header": {
+    "epochsBlocks": "Epochs & Blocks",
+    "explorer": "Explorador de la Blockchain"
+  },
+  "index": {
+    "pageTitle": "$t(productTitle)"
+  },
+  "latestBlocks": {
+    "pageTitle": "Últimos bloques",
+    "showMore": "ver más"
+  },
+  "latestEpochs": {
+    "pageTitle": "Últimos Epochs",
+    "showMore": "ver más"
+  },
+  "locales": {
+    "de": "Deutsch",
+    "en": "English",
+    "ja": "日本語",
+    "es": "Español"
+  },
+  "noSearchResult": {
+    "pageTitle": "No hay resultados"
+  },
+  "outdatedBrowser": {
+    "pageTitle": "Navegador obsoleto",
+    "text": "Su navegador está desactualizado",
+    "updateBrowserFirst": "Actualize su ",
+    "updateBrowserSecond": "para obtener más seguridad, velocidad y la mejor experiencia en este sitio."
+  },
+  "pagination": {
+    "of": "de"
+  },
+  "productTitle": "Explorador de Cardano",
+  "search": {
+    "description": "Por favor, introduzca un identificador de epoch, un identificador de bloque, un identificador de transacción, una dirección o un número de epoch válidos y vuelva a intentar la búsqueda.",
+    "notExist": "La dirección no existe:",
+    "notFound": "Lo sentimos, no hemos podido encontrar ningún resultado que coincida con:",
+    "placeholder": "Búsqueda de epochs, bloques, direcciones y transacciones",
+    "suggestion_block_by_number": "Buscar un bloque por número",
+    "suggestion_block_by_slot": "Buscar un bloque por slot",
+    "suggestion_epoch": "Buscar epoch",
+    "title": "Búsqueda"
+  },
+  "stakeDistribution": {
+    "distribution": "Distribución del Stake",
+    "slotsElected": "Slots seleccionado",
+    "stakePool": "Stake pool"
+  },
+  "stakePools": {
+    "controlledStake": "Participación controlada",
+    "performance": "REndimiento",
+    "profitMargin": "Margen de beneficios",
+    "ranking": "Ranking",
+    "retiring": "Reintentando en",
+    "stakePoolsSearch": "Búsqueda de stake pool",
+    "stakePoolsTitle": "Stake Pools",
+    "unmoderated": "Ha dado su consentimiento para ver los datos de los stake pool sin moderar.",
+    "unmoderatedConfirmation": "Sí, mostrar contenido sin moderar",
+    "unmoderatedContent": "¿Quieres ver contenidos sin moderar?",
+    "unmoderatedEntitiesControl": "Esta información es proporcionada y alojada por los operadores de los stake pool y no está bajo el control de las entidades que gestionan este sitio web.",
+    "unmoderatedLeave": "Abandonar esta página",
+    "unmoderatedPoolTickerSymbols": "Los símbolos de los stake pool, los títulos, las descripciones y los sitios web no están moderados y pueden tener un contenido inapropiado.",
+    "unmoderatedStakePoolData": "Los datos de los stake pool no son moderados",
+    "unmoderatedWarning": "Advertencia:"
+  },
+  "transaction": {
+    "block": "Bloque",
+    "confirmations": "Confirmaciones",
+    "deposit": "Deposito",
+    "depositReclaim": "Reclamación del deposito",
+    "epoch": "Epoch",
+    "fee": "Comisiones de transacción",
+    "from": "Dirección origen",
+    "to": "Dirección destino",
+    "id": "Id de transacción",
+    "includedIn": "Incluido en",
+    "metadata": "Metadatos",
+    "noTransactions": "Sin transacciones",
+    "pageTitle": "Transacción | $t(productTitle)",
+    "receivedTime": "Fecha de recepción",
+    "summary": "Resumen",
+    "totalOutput": "Producción total",
+    "transactionLabel": "Transacción",
+    "transactionsLabel": "Transacciones",
+    "unmoderated": "Ha dado su consentimiento para ver los datos de las transacciones sin moderar.",
+    "unmoderatedConfirmation": "Mostrar contenido no moderado",
+    "unmoderatedContent": "¿Quieres ver contenidos sin moderar?",
+    "unmoderatedEntitiesControl": "Esta información es proporcionada y alojada por los operadores de los stake pool y no está bajo el control de las entidades que gestionan este sitio web.",
+    "unmoderatedLeave": "Abandona esta página",
+    "unmoderatedPoolTickerSymbols": "Los metadatos de las transacciones no están moderados y pueden tener contenido inapropiado. El creador de la transacción proporciona esta información y no está bajo el control del operador de este sitio web. ¿Quiere ver el contenido no moderado?",
+    "unmoderatedTransactionData": "Contenidos no moderados",
+    "unmoderatedWarning": "Advertencia:",
+    "minted": "Tokens acuñados",
+    "burned": "Tokens quemados"
+  },
+  "withdrawals": "Retiradas de fondos"
+}

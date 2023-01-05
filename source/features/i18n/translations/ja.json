@@ -111,7 +111,8 @@
   "locales": {
     "de": "Deutsch",
     "en": "English",
-    "ja": "日本語"
+    "ja": "日本語",
+    "es": "Español"
   },
   "noSearchResult": {
     "pageTitle": "結果がありません"

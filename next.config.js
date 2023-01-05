@@ -10,7 +10,7 @@ require('dotenv').config();
 
 const DEBUG = process.env.DEBUG;
 const packageJson = require('./package.json');
-const SUPPORTED_LOCALES = ['en', 'de', 'ja'];
+const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es'];
 
 module.exports = withPlugins(
   [
