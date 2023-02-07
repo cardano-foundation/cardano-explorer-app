@@ -1,4 +1,4 @@
-{ sources ? import ./sources.nix }:
+{ system ? builtins.currentSystem, sources ? import ./sources.nix }:
 
 let
   iohkNix = import sources.iohk-nix {};
@@ -6,4 +6,4 @@ let
     packages = self.callPackages ./packages.nix { };
   };
 in
-  import iohkNix.nixpkgs { overlays = [ overlay ]; config = {}; }
+  import iohkNix.nixpkgs { inherit system; overlays = [ overlay ]; config = {}; }
