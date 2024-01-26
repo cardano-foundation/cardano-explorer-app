@@ -95,7 +95,10 @@
   },
   "header": {
     "epochsBlocks": "Epochs & Blocks",
-    "explorer": "Blockchain Explorer"
+    "explorer": "Blockchain Explorer",
+    "sunsetPre": "We’ll be sunsetting this Explorer soon. Try out the beta of the new ",
+    "sunsetPost": ".",
+    "cardanoExplorer": "Cardano Explorer"
   },
   "index": {
     "pageTitle": "$t(productTitle)"

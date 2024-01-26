@@ -95,7 +95,10 @@
   },
   "header": {
     "epochsBlocks": "エポックおよびブロック",
-    "explorer": "ブロックチェーンエクスプローラー"
+    "explorer": "ブロックチェーンエクスプローラー",
+    "sunsetPre": "こちらのエクスプローラーのサービスはまもなく終了いたします。新しい",
+    "sunsetPost": "（カルダノエクスプローラー）のベータ版をお試しください。",
+    "cardanoExplorer": "Cardano Explorer"
   },
   "index": {
     "pageTitle": "$t(productTitle)"
