@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
+import { useState } from 'react';
 import { BrandType, CardanoEra, CardanoNetwork } from '../../constants';
 import { environment } from '../../environment';
 import { useI18nFeature } from '../../features/i18n/context';
@@ -8,6 +9,7 @@ import { useNavigationFeatureOptionally } from '../../features/navigation';
 import { LocalizedLink } from '../../features/navigation/ui/LocalizedLink';
 import { SearchBar } from '../../features/search/ui/SearchBar';
 import CardanoLogo from '../../public/assets/images/header/cardano-logo.svg';
+import DeleteButton from '../../public/assets/images/delete.svg';
 import styles from './Header.module.scss';
 
 export interface IHeaderProps {
@@ -16,6 +18,7 @@ export interface IHeaderProps {
 }
 
 export const Header = observer((props: IHeaderProps) => {
+  const [open, setOpen] = useState(true)
   const { translate } = useI18nFeature().store;
   const { brandType } = props;
   const navigation = useNavigationFeatureOptionally();
@@ -47,8 +50,19 @@ export const Header = observer((props: IHeaderProps) => {
     styles.triangleSign,
     stakePoolTriangleStyle,
   ]);
+
   return (
     <header className={headerContainerStyles}>
+      <div className={open ? styles.noticeContainer : styles.hiddenNoticeContainer}>
+        <button className={styles.closeButton} onClick={() => setOpen(!open)}><DeleteButton/></button>
+        <p>
+          {translate('header.sunsetPre')}
+          <a href="https://beta.explorer.cardano.org/en/">
+            <span className={styles.cardanoExplorer}>{translate("header.cardanoExplorer")}</span>
+          </a>
+          {translate('header.sunsetPost')}
+        </p>
+      </div>
       <div className={styles.contentContainer}>
         <div className={styles.brandType}>
           <div className={styles.logoContainer}>

@@ -95,7 +95,10 @@
   },
   "header": {
     "epochsBlocks": "Epochen & Blöcke",
-    "explorer": "Blockchain Explorer"
+    "explorer": "Blockchain Explorer",
+    "sunsetPre": "Dieser Explorer wird bald außer Betrieb genommen. Probier jetzt die Beta-Version des neuen ",
+    "sunsetPost": " aus.",
+    "cardanoExplorer": "Cardano Explorers"
   },
   "index": {
     "pageTitle": "$t(productTitle)"
