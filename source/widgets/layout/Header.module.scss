@@ -2,41 +2,42 @@
   position: relative;
   width: 100%;
 
-  &.enlargedHeaderContainer {
-    .hiddenNoticeContainer {
-      display: none;
-    }
+  .hiddenNoticeContainer {
+    display: none;
+  }
 
-    .noticeContainer {
-      background: var(--secondary-highlight-color);
-      color: var(--primary-bg-color);
-      padding: 0.5rem 1rem;
-      margin: 1rem 0;
+  .noticeContainer {
+    background: var(--secondary-highlight-color);
+    color: var(--primary-bg-color);
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    width: 100%;
+    text-align: center;
+
+    @media (min-width: 1049px) {
       width: 100%;
-      text-align: center;
-
-      @media (min-width: 1049px) {
-        width: 100%;
-      }
-
-      @media (max-width: 768px) {
-        width: calc(100vw - 5rem);
-      }
-
-      a {
-        color: #fff !important;
-        text-decoration: underline;
-      }
-
-      .closeButton {
-        cursor: pointer;
-        float:right;
-        display:inline-block;
-        padding:2px 5px;
-        margin-right: -0.3rem;
-        margin-left: 1rem;
-      }
     }
+
+    @media (max-width: 768px) {
+      width: calc(100vw - 5rem);
+    }
+
+    a {
+      color: #fff !important;
+      text-decoration: underline;
+    }
+
+    .closeButton {
+      cursor: pointer;
+      float:right;
+      display:inline-block;
+      padding:2px 5px;
+      margin-right: -0.3rem;
+      margin-left: 1rem;
+    }
+  }
+
+  &.enlargedHeaderContainer {
 
     .brandType {
       flex-direction: column;
